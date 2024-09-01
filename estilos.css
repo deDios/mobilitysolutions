@@ -4,3 +4,6 @@ header{
 .logo{
     display: flex;
 }
+.logo img{
+    height: 50px;
+}
