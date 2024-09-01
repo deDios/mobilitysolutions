@@ -18,7 +18,7 @@ include "Conexion.php";
             </h2>
         </a>
         <nav>
-            <a href="" class="nav-link">Catálogo</a>
+            <a href="catalogo.php" class="nav-link">Catálogo</a>
             <a href="" class="nav-link">Sobre nosotros</a>
             <a href="" class="nav-link">Contacto</a>
         </nav>
