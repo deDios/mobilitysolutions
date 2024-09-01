@@ -9,6 +9,18 @@ include "Conexion.php";
     <title>Document</title>
 </head>
 <body>
-    <h1>Hola nueva actualización</h1>
+    <header>
+        <div class="logo">
+            <img src="" alt="Logo de la compañia">
+            <h2 class="Nombre de la empresa">
+                Mobility Solutions
+            </h2>
+        </div>
+        <nav>
+            <a href="" class="nav-link">Catalogo</a>
+            <a href="" class="nav-link">Sobre nosotros</a>
+            <a href="" class="nav-link">Contacto</a>
+        </nav>
+    </header>
 </body>
 </html>
