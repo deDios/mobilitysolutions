@@ -13,7 +13,7 @@ include "Conexion.php";
 <body>
     <header>
         <a href="#" class="logo">
-            <img src="" alt="Logo de la compañia">
+            <img src="logo_MSC.png" alt="Logo de la compañia">
             <h2 class="Nombre de la empresa">
                 Mobility Solutions Corporation
             </h2>
