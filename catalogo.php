@@ -25,5 +25,41 @@ include "Conexion.php";
         </nav>
     </header>
     <h1>Catálogo</h1>
+    <div class="container-items">
+        <div class="item">
+            <figure>
+                <img src="Imagenes/Catalogo/Img01.jpg" alt="Auto 1">
+            </figure>
+            <div class="info-producto">
+                <h2>Versa 2025</h2>
+                <p class="Precio">$150,000</p>
+                <button>Detalle</button>
+            </div>
+        </div>
+    </div>
+    <div class="container-items">
+        <div class="item">
+            <figure>
+                <img src="Imagenes/Catalogo/Img01.jpg" alt="Auto 1">
+            </figure>
+            <div class="info-producto">
+                <h2>Versa 2025</h2>
+                <p class="Precio">$150,000</p>
+                <button>Detalle</button>
+            </div>
+        </div>
+    </div>
+    <div class="container-items">
+        <div class="item">
+            <figure>
+                <img src="Imagenes/Catalogo/Img01.jpg" alt="Auto 1">
+            </figure>
+            <div class="info-producto">
+                <h2>Versa 2025</h2>
+                <p class="Precio">$150,000</p>
+                <button>Detalle</button>
+            </div>
+        </div>
+    </div>
  </body>
  </html>

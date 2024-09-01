@@ -29,6 +29,9 @@ header{
     margin-right: 15px;
 }
 
+img{
+    max-width: 100%;
+}
 
 
 @media (max-width:700px){
