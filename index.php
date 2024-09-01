@@ -23,5 +23,37 @@ include "Conexion.php";
             <a href="" class="nav-link">Contacto</a>
         </nav>
     </header>
+    <div class="slider-box">
+        <ul>
+            <li>
+                <img src="Imagenes/Carrusel/carrusel 1.jpg" alt="">
+                <div class="Texto">
+                    <h2>Imagen 1</h2>
+                    <p>
+                        Descripción de primer imagen
+                    </p>
+                </div>
+            </li>
+            <li>
+                <img src="Imagenes/Carrusel/carrusel 2.jpg" alt="">
+                <div class="Texto">
+                    <h2>Imagen 1</h2>
+                    <p>
+                        Descripción de primer imagen
+                    </p>
+                </div>
+            </li>
+            <li>
+                <img src="Imagenes/Carrusel/carrusel 3.jpg" alt="">
+                <div class="Texto">
+                    <h2>Imagen 1</h2>
+                    <p>
+                        Descripción de primer imagen
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
 </body>
 </html>
