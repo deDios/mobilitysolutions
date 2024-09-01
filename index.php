@@ -8,6 +8,8 @@ include "Conexion.php";
     <meta name="viewport" content="width=, initial-scale=1.0">
     <title>Document</title>
 </head>
+<link rel="stylesheet" href="estilos.css">
+<title>mobilitysolutions</title>
 <body>
     <header>
         <div class="logo">
