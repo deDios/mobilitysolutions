@@ -1,6 +1,17 @@
 body{
     font-family: sans-serif;
 }
+a{
+    text-decoration: none;
+    color: aliceblue;
+}
+nav a{
+    font-weight: 600;
+    padding-right: 10px;
+}
+nav a:hover{
+    color: gold;
+}
 header{
     display: flex;
     height: 70px;
