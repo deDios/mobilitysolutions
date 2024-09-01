@@ -29,14 +29,6 @@ header{
     margin-right: 15px;
 }
 
-@media (max-width:700px){
-    header{
-        flex-direction: column;
-    }
-    nav{
-        padding: 10px 0px ;
-    }
-}
 .slider-box{
     height: 50%;
     margin: 25px auto 0;
@@ -66,6 +58,29 @@ header{
 }
 .slider-box img{
     width: 100%;
+}
+
+@media (max-width:700px){
+    header{
+        flex-direction: column;
+    }
+    nav{
+        padding: 10px 0px ;
+    }
+    .slider-box{
+        width: 100%;
+    }
+    .Texto_carrusel{
+        top: 50px;
+        padding: 0 25px;
+    }
+    .Texto_carrusel h2{
+        font-size: 35px;
+        margin-bottom: 15px;
+    }
+    .Texto_carrusel p{
+        font-size: 15px;
+    }
 }
 
 @keyframes slide{
