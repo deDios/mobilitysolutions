@@ -1,5 +1,10 @@
+body{
+    font-family: sans-serif;
+}
 header{
     display: flex;
+    height: 70px;
+    justify-content: space-between;
 }
 .logo{
     display: flex;
