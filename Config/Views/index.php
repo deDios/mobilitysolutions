@@ -6,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Pagina Principal</h1>
+    <h1>Pagina catalogo</h1>
 </body>
 </html>
