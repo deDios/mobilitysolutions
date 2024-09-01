@@ -15,7 +15,7 @@ include "Conexion.php";
         <a href="#" class="logo">
             <img src="" alt="Logo de la compañia">
             <h2 class="Nombre de la empresa">
-                Mobility Solutions
+                Mobility Solutions Corporation
             </h2>
         </a>
         <nav>
