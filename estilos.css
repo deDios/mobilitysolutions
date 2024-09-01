@@ -38,7 +38,7 @@ header{
     }
 }
 .slider-box{
-    height: 500px;
+    height: 50%;
     margin: 25px auto 0;
     overflow: hidden;
 }
