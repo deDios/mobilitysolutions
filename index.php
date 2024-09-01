@@ -1,5 +1,5 @@
 <?php
 
-echo "Mi primer pagina"
+echo "Mi primer pagina 2"
 
 ?>
