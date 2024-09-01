@@ -32,7 +32,7 @@ header{
 img{
     max-width: 100%;
 }
-.contains-items{
+.container-items{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }
