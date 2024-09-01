@@ -27,7 +27,7 @@ include "Conexion.php";
         <ul>
             <li>
                 <img src="Imagenes/Carrusel/carrusel 1.jpg" alt="">
-                <div class="Texto">
+                <div class="Texto_carrusel">
                     <h2>Imagen 1</h2>
                     <p>
                         Descripción de primer imagen
@@ -36,19 +36,19 @@ include "Conexion.php";
             </li>
             <li>
                 <img src="Imagenes/Carrusel/carrusel 2.jpg" alt="">
-                <div class="Texto">
-                    <h2>Imagen 1</h2>
+                <div class="Texto_carrusel">
+                    <h2>Imagen 2</h2>
                     <p>
-                        Descripción de primer imagen
+                        Descripción de segunda imagen
                     </p>
                 </div>
             </li>
             <li>
                 <img src="Imagenes/Carrusel/carrusel 3.jpg" alt="">
-                <div class="Texto">
-                    <h2>Imagen 1</h2>
+                <div class="Texto_carrusel">
+                    <h2>Imagen 3</h2>
                     <p>
-                        Descripción de primer imagen
+                        Descripción de tercer imagen
                     </p>
                 </div>
             </li>
