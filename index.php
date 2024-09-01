@@ -12,12 +12,12 @@ include "Conexion.php";
 </head>
 <body>
     <header>
-        <div class="logo">
+        <a href="#" class="logo">
             <img src="" alt="Logo de la compañia">
             <h2 class="Nombre de la empresa">
                 Mobility Solutions
             </h2>
-        </div>
+        </a>
         <nav>
             <a href="" class="nav-link">Catalogo</a>
             <a href="" class="nav-link">Sobre nosotros</a>
