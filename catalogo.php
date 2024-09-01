@@ -28,7 +28,7 @@ include "Conexion.php";
     <div class="container-items">
         <div class="item">
             <figure>
-                <img src="Imagenes/Catalogo/Img01.jpg" alt="Auto 1">
+                <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 1">
             </figure>
             <div class="info-producto">
                 <h2>Versa 2025</h2>
@@ -40,7 +40,7 @@ include "Conexion.php";
     <div class="container-items">
         <div class="item">
             <figure>
-                <img src="Imagenes/Catalogo/Img01.jpg" alt="Auto 1">
+                <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 1">
             </figure>
             <div class="info-producto">
                 <h2>Versa 2025</h2>
@@ -52,7 +52,7 @@ include "Conexion.php";
     <div class="container-items">
         <div class="item">
             <figure>
-                <img src="Imagenes/Catalogo/Img01.jpg" alt="Auto 1">
+                <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 1">
             </figure>
             <div class="info-producto">
                 <h2>Versa 2025</h2>
