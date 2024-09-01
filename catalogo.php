@@ -18,7 +18,7 @@ include "Conexion.php";
             </h2>
         </a>
         <nav>
-            <a href="index.php" class="nav-link">Catálogo</a>
+            <a href="index.php" class="nav-link">Inicio</a>
             <a href="catalogo.php" class="nav-link">Catálogo</a>
             <a href="" class="nav-link">Sobre nosotros</a>
             <a href="" class="nav-link">Contacto</a>
@@ -36,8 +36,6 @@ include "Conexion.php";
                 <button>Detalle</button>
             </div>
         </div>
-    </div>
-    <div class="container-items">
         <div class="item">
             <figure>
                 <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 1">
@@ -48,8 +46,6 @@ include "Conexion.php";
                 <button>Detalle</button>
             </div>
         </div>
-    </div>
-    <div class="container-items">
         <div class="item">
             <figure>
                 <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 1">
