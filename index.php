@@ -6,9 +6,8 @@ include "Conexion.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mobility solutions</title>
     <link rel="stylesheet" href="estilos.css">
-    <title>mobilitysolutions</title>
 </head>
 <body>
     <header>
@@ -19,7 +18,7 @@ include "Conexion.php";
             </h2>
         </a>
         <nav>
-            <a href="" class="nav-link">Catalogo</a>
+            <a href="" class="nav-link">Catálogo</a>
             <a href="" class="nav-link">Sobre nosotros</a>
             <a href="" class="nav-link">Contacto</a>
         </nav>
