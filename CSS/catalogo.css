@@ -57,8 +57,8 @@ header{
     gap: 20px;
 }
 .info-producto{
-    padding: 15px 30px;
-    line-height: 1.5;
+    padding: 15px 35px;
+    line-height: 1;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -70,7 +70,7 @@ header{
 .info-producto button{
     border: none;
     background: none;
-    background-color: darkslategray;
+    background-color: black;
     padding: 15px 10px;
     cursor: pointer;
 }
