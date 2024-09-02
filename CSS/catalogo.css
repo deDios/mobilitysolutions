@@ -34,9 +34,10 @@ header{
     justify-content: center;
     align-items: center;
     position: relative;
+    padding-top: 25px;
 }
 .Titulo-boton input{
-    width: 100%;
+    width: 500px;
     padding: 10px;
     padding-right: 35px;
     border-radius: 5px 0 0 5px;
