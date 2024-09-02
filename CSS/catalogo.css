@@ -54,10 +54,9 @@ header{
 .container-items{
     display: grid;
     grid-template-columns: repeat(4,1fr);
-    gap: 20px;
 }
 .info-producto{
-    padding: -10 40px;
+    padding: 0 40px;
     display: flex;
     flex-direction: column;
 }
