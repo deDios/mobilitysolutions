@@ -81,4 +81,8 @@ header{
     nav{
         padding: 10px 0px ;
     }
+    .container-items{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+    }
 }
