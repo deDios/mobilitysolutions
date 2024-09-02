@@ -8,6 +8,7 @@ include "Conexion.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo</title>
     <link rel="stylesheet" href="CSS/catalogo.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
  </head>
  <body>
     <header>
@@ -31,7 +32,8 @@ include "Conexion.php";
                 <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 1">
             </figure>
             <div class="info-producto">
-                <h2>Versa 2025</h2>
+                <h2>Versa Nissan 2025</h2>
+                <h6>Plaza Andares, Jal. CP 44940 | 40,000KM</h6>
                 <p class="Precio">$150,000</p>
                 <button>Detalle</button>
             </div>
@@ -41,7 +43,7 @@ include "Conexion.php";
                 <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 2">
             </figure>
             <div class="info-producto">
-                <h2>Versa 2025</h2>
+                <h2>Focus Ford 2023</h2>
                 <p class="Precio">$150,000</p>
                 <button>Detalle</button>
             </div>
@@ -51,7 +53,7 @@ include "Conexion.php";
                 <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 3">
             </figure>
             <div class="info-producto">
-                <h2>Versa 2025</h2>
+                <h2>Mazda 2 Mazda 2024</h2>
                 <p class="Precio">$150,000</p>
                 <button>Detalle</button>
             </div>
@@ -61,7 +63,7 @@ include "Conexion.php";
                 <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 4">
             </figure>
             <div class="info-producto">
-                <h2>Versa 2025</h2>
+                <h2>Versa Nissan 2024</h2>
                 <p class="Precio">$150,000</p>
                 <button>Detalle</button>
             </div>
