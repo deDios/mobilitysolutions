@@ -38,7 +38,7 @@ include "Conexion.php";
         </div>
         <div class="item">
             <figure>
-                <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 1">
+                <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 2">
             </figure>
             <div class="info-producto">
                 <h2>Versa 2025</h2>
@@ -48,7 +48,17 @@ include "Conexion.php";
         </div>
         <div class="item">
             <figure>
-                <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 1">
+                <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 3">
+            </figure>
+            <div class="info-producto">
+                <h2>Versa 2025</h2>
+                <p class="Precio">$150,000</p>
+                <button>Detalle</button>
+            </div>
+        </div>
+        <div class="item">
+            <figure>
+                <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 4">
             </figure>
             <div class="info-producto">
                 <h2>Versa 2025</h2>
