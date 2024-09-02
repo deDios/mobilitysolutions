@@ -31,19 +31,24 @@ header{
 
 /* CSS para catalogo ---------------------------------------------------------------------------------------*/
 .item {
-    border-radius: 10px;
+    border-radius: 15px;
 }
 .item:hover{
     box-shadow: 0 10px 20px rgba(0,0,0,0.20);
 }
 
 .item img{
-    max-width: 100%;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
 }
 .container-items{
     display: grid;
     grid-template-columns: repeat(4,1fr);
     gap: 20px;
+}
+.info-producto{
+    padding: 15px 30px;
 }
 
 @media (max-width:700px){
