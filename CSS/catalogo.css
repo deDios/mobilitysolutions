@@ -58,10 +58,10 @@ header{
 }
 .info-producto{
     padding: 15px 40px;
-    line-height: 1;
+    line-height: .5;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
 }
 .Precio {
     font-size: 18px;
