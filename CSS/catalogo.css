@@ -57,7 +57,7 @@ header{
 }
 .info-producto{
     padding: 0 40px;
-    line-height: normal;
+    line-height: none;
     display: flex;
     flex-direction: column;
 }
