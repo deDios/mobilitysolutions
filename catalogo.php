@@ -44,7 +44,8 @@ include "Conexion.php";
             </figure>
             <div class="info-producto">
                 <h2>Focus Ford 2023</h2>
-                <p class="Precio">$150,000</p>
+                Plaza Galerias, Mich. CP 44940 | 65,000KM
+                <p class="Precio">$185,000</p>
                 <button>Detalle</button>
             </div>
         </div>
@@ -54,7 +55,8 @@ include "Conexion.php";
             </figure>
             <div class="info-producto">
                 <h2>Mazda 2 Mazda 2024</h2>
-                <p class="Precio">$150,000</p>
+                Plaza Andares, Jal. CP 44940 | 4,000KM
+                <p class="Precio">$210,000</p>
                 <button>Detalle</button>
             </div>
         </div>
@@ -63,8 +65,9 @@ include "Conexion.php";
                 <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 4">
             </figure>
             <div class="info-producto">
-                <h2>Versa Nissan 2024</h2>
-                <p class="Precio">$150,000</p>
+                <h2>Figo Ford 2019</h2>
+                Plaza Chapalita, Jal. CP 44940 | 115,000KM
+                <p class="Precio">$65,000</p>
                 <button>Detalle</button>
             </div>
         </div>
