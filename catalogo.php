@@ -26,8 +26,8 @@ include "Conexion.php";
         </nav>
     </header>
     
+    <h1>Catálogo</h1>
     <div class="Titulo-boton">
-        <h1>Catálogo</h1>
         <input type="text" placeholder="Buscar...">
         <button>Buscar</button>
     </div>
