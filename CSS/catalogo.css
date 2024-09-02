@@ -49,6 +49,7 @@ header{
 .Menu-lateral{
     width: 100%;
     max-width: 250px;
+    height: 100vh;
 }
 
 
