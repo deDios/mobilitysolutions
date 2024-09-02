@@ -26,11 +26,13 @@ include "Conexion.php";
         </nav>
     </header>
     
-    <h1>Catálogo</h1>
+    <div class="Menu-lateral">
+        <h1>Catálogo</h1>
+    </div>
+
     <div class="Titulo-boton">
         <input type="text" placeholder="Buscar...">
     </div>
-
     <div class="container-items">
         <div class="item">
             <figure>
