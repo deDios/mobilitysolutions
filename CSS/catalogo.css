@@ -37,7 +37,7 @@ header{
     box-shadow: 0 10px 20px rgba(0,0,0,0.20);
 }
 .item:hover img{
-    transform: scale(1.4);
+    transform: scale(1.2);
 }
 
 .item img{
@@ -45,8 +45,12 @@ header{
     height: 250px;
     object-fit: cover;
     border-radius: 10px 10px 0 0;
-    transform: scale(1.2);
+    transition: all .5s;
 }
+.item figure {
+    overflow: hidden;
+}
+
 .container-items{
     display: grid;
     grid-template-columns: repeat(4,1fr);
@@ -54,6 +58,21 @@ header{
 }
 .info-producto{
     padding: 15px 30px;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.Precio {
+    font-size: 18px;
+    font-weight: 900;
+}
+.info-producto button{
+    border: none;
+    background: none;
+    background-color: darkslategray;
+    padding: 15px 10px;
+    cursor: pointer;
 }
 
 @media (max-width:700px){
