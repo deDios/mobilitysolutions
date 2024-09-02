@@ -8,7 +8,7 @@ include "Conexion.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo</title>
     <link rel="stylesheet" href="CSS/catalogo.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
  </head>
  <body>
     <header>
@@ -25,7 +25,13 @@ include "Conexion.php";
             <a href="" class="nav-link">Contacto</a>
         </nav>
     </header>
-    <h1>Catálogo</h1>
+    
+    <div class="Titulo-boton">
+        <h1>Catálogo</h1>
+        <input type="text" placeholder="Buscar...">
+        <button>Buscar</button>
+    </div>
+
     <div class="container-items">
         <div class="item">
             <figure>
