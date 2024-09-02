@@ -40,7 +40,7 @@ include "Conexion.php";
         </div>
         <div class="item">
             <figure>
-                <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 2">
+                <img src="Imagenes/Catalogo/Auto 2/Img01.jpg" alt="Auto 2">
             </figure>
             <div class="info-producto">
                 <h2>Focus Ford 2023</h2>
@@ -51,7 +51,7 @@ include "Conexion.php";
         </div>
         <div class="item">
             <figure>
-                <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 3">
+                <img src="Imagenes/Catalogo/Auto 3/Img01.jpg" alt="Auto 3">
             </figure>
             <div class="info-producto">
                 <h2>Mazda 2 Mazda 2024</h2>
@@ -62,7 +62,7 @@ include "Conexion.php";
         </div>
         <div class="item">
             <figure>
-                <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 4">
+                <img src="Imagenes/Catalogo/Auto 4/Img01.jpg" alt="Auto 4">
             </figure>
             <div class="info-producto">
                 <h2>Figo Ford 2019</h2>
