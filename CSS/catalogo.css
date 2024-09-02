@@ -39,7 +39,7 @@ header{
     width: 500px;
     padding: 10px;
     padding-right: 35px;
-    border-radius: 5px 0 0 5px;
+    border-radius: 5px 5px 5px 5px;
     border: 2;
     outline: none;
 }
@@ -83,6 +83,7 @@ header{
 }
 
 .container-items{
+    padding-top: 15px;
     display: grid;
     grid-template-columns: repeat(4,1fr);
 }
