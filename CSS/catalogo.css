@@ -30,6 +30,7 @@ header{
 }
 
 .Titulo-boton{
+    display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
@@ -44,7 +45,7 @@ header{
 }
 .Titulo-boton button {
     background-color: gold;
-    padding: 15px 5px;
+    padding: 10px 15px;
     border: 0;
     top: 0;
     bottom: 0;
