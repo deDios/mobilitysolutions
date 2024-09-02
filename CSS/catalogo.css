@@ -61,7 +61,6 @@ header{
     line-height: .5;
     display: flex;
     flex-direction: column;
-    gap: 5px;
 }
 .Precio {
     font-size: 18px;
