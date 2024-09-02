@@ -29,15 +29,15 @@ header{
     margin-right: 15px;
 }
 
-img{
+/* CSS para catalogo ---------------------------------------------------------------------------------------*/
+
+.item img{
     max-width: 100%;
 }
-
 .container-items{
     display: grid;
-    grid-template-columns: repeat(3,1);
+    grid-template-columns: repeat(3,1fr);
 }
-
 
 @media (max-width:700px){
     header{
