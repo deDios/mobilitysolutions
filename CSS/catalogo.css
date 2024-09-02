@@ -46,6 +46,12 @@ header{
 
 
 /* CSS para catalogo ---------------------------------------------------------------------------------------*/
+.Menu-lateral{
+    width: 100%;
+    max-width: 250px;
+}
+
+
 .item {
     border-radius: 10px;
 }
