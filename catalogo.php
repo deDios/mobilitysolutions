@@ -29,7 +29,6 @@ include "Conexion.php";
     <h1>Catálogo</h1>
     <div class="Titulo-boton">
         <input type="text" placeholder="Buscar...">
-        <button>Buscar</button>
     </div>
 
     <div class="container-items">

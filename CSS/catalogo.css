@@ -43,23 +43,7 @@ header{
     border: 2;
     outline: none;
 }
-.Titulo-boton button {
-    background-color: gold;
-    position: absolute;
-    align-items: center;
-    padding: 10px 15px;
-    border: 0;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    margin: auto;
-    border-radius: 0 5px 5px 0;
-    color: white;
-    cursor: pointer;
-}
-.Titulo-boton button:hover{
-    background-color: antiquewhite;
-}
+
 
 /* CSS para catalogo ---------------------------------------------------------------------------------------*/
 .item {
