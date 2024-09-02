@@ -37,7 +37,7 @@ header{
     box-shadow: 0 10px 20px rgba(0,0,0,0.20);
 }
 .item:hover img{
-    transform: scale(1.2);
+    transform: scale(1.4);
 }
 
 .item img{
@@ -45,6 +45,7 @@ header{
     height: 250px;
     object-fit: cover;
     border-radius: 10px 10px 0 0;
+    transform: scale(1.2);
 }
 .container-items{
     display: grid;
@@ -52,7 +53,7 @@ header{
     gap: 20px;
 }
 .info-producto{
-    padding: 25px 30px;
+    padding: 15px 30px;
 }
 
 @media (max-width:700px){
