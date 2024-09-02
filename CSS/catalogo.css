@@ -46,7 +46,7 @@ header{
 .Titulo-boton button {
     background-color: gold;
     padding: 10px 15px;
-    position: absolute;
+    position: relative;
     border: 0;
     top: 0;
     bottom: 0;
