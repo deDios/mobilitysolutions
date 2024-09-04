@@ -85,7 +85,7 @@ include "Conexion.php";
             <div class="info-producto">
                 <h2>Versa Nissan 2019</h2>
                 Plaza Andares, Jal. CP 44940 | 40,000KM
-                <p class="Precio">$150,000</p>
+                <p class="Precios">$150,000</p>
                 <button>Detalle</button>
             </div>
         </div>
