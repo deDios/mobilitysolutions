@@ -34,7 +34,7 @@ include "Conexion.php";
         <input type="text" placeholder="Buscar...">
     </div>
     
-/*       Inicio de contenedor ------------------------------------------------------------------------*/
+    
     <div class="container-items">
         <div class="menu_item">
 
