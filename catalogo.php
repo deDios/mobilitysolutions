@@ -33,7 +33,12 @@ include "Conexion.php";
     <div class="Titulo-boton">
         <input type="text" placeholder="Buscar...">
     </div>
+    
+/*       Inicio de contenedor ------------------------------------------------------------------------*/
     <div class="container-items">
+        <div class="menu_item">
+
+        </div>
         <div class="item">
             <figure>
                 <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 1">
