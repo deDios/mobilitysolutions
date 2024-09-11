@@ -76,16 +76,18 @@ header{
     box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.20);
 }
 
-/*
+
 .item:hover img{
     transform: scale(1.1);
 }
-*/
+
 
 .container-items .item .info-producto{
     display: flex;
     flex-direction: column;
     height: 100%;
+    padding-bottom: 5px;
+    padding-right: 5px;
 }
 
 .Precio {
