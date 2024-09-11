@@ -34,13 +34,13 @@ include "Conexion.php";
         <input type="text" placeholder="Buscar...">
     </div>
     
-    
+
     <div class="container-items">
         <div class="menu_item">
 
         </div>
         <div class="item">
-            <figure>
+            <figure class="imagen_item">
                 <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 1">
             </figure>
             <div class="info-producto">
