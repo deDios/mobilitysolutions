@@ -104,7 +104,7 @@ header{
 
 .info-producto .titulo_marca {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 .titulo_marca .titulo_carro{
     padding-top: 15px;
