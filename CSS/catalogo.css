@@ -62,6 +62,7 @@ header{
     flex-direction: row;
     height: 200px;
     width: 100%;
+    grid-row-start: 3;
 }
 
 .container-items .item figure img{
