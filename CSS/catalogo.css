@@ -108,8 +108,8 @@ header{
     align-items: center;
 }
 .titulo_marca .titulo_carro{
-    padding-top: 15px;
-    font-size: 16px;
+    padding-top: 10px;
+    font-size: 20px;
     font-weight: bold;
 }
 .titulo_marca img {
