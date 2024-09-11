@@ -53,14 +53,15 @@ header{
 
 .container-items{
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 5fr;
     padding-top: 25px;
 }
 
 .container-items .lista_item {
     display: grid;
     grid-template-columns: repeat(3,1fr);
-   
+    grid-column-gap: 10px;
+    
 }
 .container-items .item {
     display: flex;
