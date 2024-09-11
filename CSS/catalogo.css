@@ -64,14 +64,14 @@ header{
     grid-row-gap: 10px;
     padding-right: 20px;
 }
-.container-items .lista_item .item{
+.lista_item .item {
     display: flex;
     flex-direction: row;
     height: 200px;
     width: 100%;
 }
 
-.container-items .lista_item .item figure img{
+.item figure img{
     overflow: hidden;
     width: 200px;
     height: 100%;
