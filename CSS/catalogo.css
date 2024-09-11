@@ -103,10 +103,20 @@ header{
 */
 
 .info-producto .titulo_marca {
+    display: flex;
+    flex-direction: column;
+}
+.titulo_marca .titulo_carro{
     padding-top: 15px;
     font-size: 16px;
     font-weight: bold;
 }
+.titulo_marca img {
+    width: 20px;
+    height: 20px;
+}
+
+
 .info-producto .version_unidad{
     font-size: 10px;
 }

@@ -48,7 +48,10 @@ include "Conexion.php";
                     <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 1">
                 </figure>
                 <div class="info-producto">
-                    <div class="titulo_marca">Nissan Kicks 2021</div>
+                    <div class="titulo_marca">
+                        <div class="titulo_carro">Nissan Kicks 2021</div>
+                        <img src="Imagenes/Catalogo/Marcas/logo_nissan.jpg" alt="logo 1">
+                    </div>
                     <div class="version_unidad">5 PTS ADVANCE 16L TA A/AC VE RA-16-2021</div>
                     <div class="Precio">DESDE $314,685 de contado</div>
                     <div class="mensualidades">$3,000 MXN/mes</div>
