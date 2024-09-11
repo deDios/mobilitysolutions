@@ -65,10 +65,10 @@ header{
 }
 
 .container-items .item figure img{
-    /* overflow: hidden; */
+    overflow: hidden;
     width: 50%;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
     border-radius: 10px 0 0 10px;
     transition: all .5s;
 }
