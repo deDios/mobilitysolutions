@@ -54,8 +54,9 @@ header{
 
 .container-items .item {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
+
 .item:hover{
     box-shadow: 0 10px 20px rgba(0,0,0,0.20);
 }
