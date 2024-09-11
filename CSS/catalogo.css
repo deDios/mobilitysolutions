@@ -60,10 +60,10 @@ header{
 .container-items .item {
     display: flex;
     flex-direction: row;
-    height: 500px;
+    height: 250px;
 }
 
-.imagen_item {
+.container-items .item figure {
     width: 300px;
     height: 300px;
     overflow: hidden;

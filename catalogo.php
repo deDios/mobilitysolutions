@@ -40,7 +40,7 @@ include "Conexion.php";
 
         </div>
         <div class="item">
-            <figure class="imagen_item">
+            <figure>
                 <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 1">
             </figure>
             <div class="info-producto">
