@@ -67,7 +67,7 @@ header{
 .container-items .item figure{
     overflow: hidden;
     width: 100%;
-    height: 100%;
+    height: 300px;
     object-fit: cover;
     border-radius: 10px 0 0 10px;
     transition: all .5s;
