@@ -53,7 +53,6 @@ include "Conexion.php";
                     <div class="Precio">DESDE $314,685 de contado</div>
                     <div class="mensualidades">$3,000 MXN/mes</div>
                     <div class="Localidad">Andares, Jal. CP 44940</div>
-                    <button>Detalle</button>
                 </div>
             </div>
 
