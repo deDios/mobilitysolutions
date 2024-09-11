@@ -60,6 +60,19 @@ include "Conexion.php";
                     <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 1">
                 </figure>
                 <div class="info-producto">
+                    <p class="titulo_marca">Nissan Kicks 2021</p>
+                    <p class="version_unidad">5 PTS ADVANCE 16L TA A/AC VE RA-16-2021</div>
+                    <p class="Precio">DESDE $314,685 de contado</p>
+                    <p class="mensualidades">$3,000 MXN/mes</p>
+                    <p class="Localidad">Andares, Jal. CP 44940</p>
+                    <button>Detalle</button>
+                </div>
+            </div>
+            <div class="item">
+                <figure>
+                    <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 1">
+                </figure>
+                <div class="info-producto">
                     <h2>Versa Nissans 2025</h2>
                     Plaza Andares, Jal. CP 44940 | 40,000KM
                     <p class="Precio">$150,000</p>
