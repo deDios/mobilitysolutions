@@ -105,7 +105,6 @@ header{
 .info-producto .titulo_marca {
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: space-between;
 }
 .titulo_marca .titulo_carro{
