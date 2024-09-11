@@ -29,18 +29,18 @@ include "Conexion.php";
             <li>
                 <img src="Imagenes/Carrusel/carrusel 1.png" alt="">
                 <div class="Texto_carrusel">
-                    <h2>Imagen 1</h2>
+                    <h2></h2>
                     <p>
-                        Descripción de primer imagen
+                        
                     </p>
                 </div>
             </li>
             <li>
                 <img src="Imagenes/Carrusel/carrusel 2.png" alt="">
                 <div class="Texto_carrusel">
-                    <h2>Imagen 2</h2>
+                    <h2></h2>
                     <p>
-                        Descripción de segunda imagen
+                        
                     </p>
                 </div>
             </li>
