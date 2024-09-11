@@ -53,7 +53,7 @@ header{
 
 .container-items{
     display: grid;
-    grid-template-columns: 1fr 6fr;
+    grid-template-columns: 1fr 5fr;
     padding-top: 25px;
 }
 
@@ -61,6 +61,7 @@ header{
     display: grid;
     grid-template-columns: repeat(3,1fr);
     grid-column-gap: 10px;
+    grid-row-gap: 10px;
     padding-right: 20px;
 }
 .container-items .item {
