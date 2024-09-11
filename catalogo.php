@@ -40,48 +40,50 @@ include "Conexion.php";
         <div class="menu_item">
 
         </div>
-        <div class="item">
-            <figure>
-                <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 1">
-            </figure>
-            <div class="info-producto">
-                <h2>Versa Nissans 2025</h2>
-                Plaza Andares, Jal. CP 44940 | 40,000KM
-                <p class="Precio">$150,000</p>
-                <button>Detalle</button>
+        <div class="lista_item">
+            <div class="item">
+                <figure>
+                    <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 1">
+                </figure>
+                <div class="info-producto">
+                    <h2>Versa Nissans 2025</h2>
+                    Plaza Andares, Jal. CP 44940 | 40,000KM
+                    <p class="Precio">$150,000</p>
+                    <button>Detalle</button>
+                </div>
             </div>
-        </div>
-        <div class="item">
-            <figure>
-                <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 1">
-            </figure>
-            <div class="info-producto">
-                <h2>Versa Nissans 2025</h2>
-                Plaza Andares, Jal. CP 44940 | 40,000KM
-                <p class="Precio">$150,000</p>
-                <button>Detalle</button>
+            <div class="item">
+                <figure>
+                    <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 1">
+                </figure>
+                <div class="info-producto">
+                    <h2>Versa Nissans 2025</h2>
+                    Plaza Andares, Jal. CP 44940 | 40,000KM
+                    <p class="Precio">$150,000</p>
+                    <button>Detalle</button>
+                </div>
             </div>
-        </div>
-        <div class="item">
-            <figure>
-                <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 1">
-            </figure>
-            <div class="info-producto">
-                <h2>Versa Nissans 2025</h2>
-                Plaza Andares, Jal. CP 44940 | 40,000KM
-                <p class="Precio">$150,000</p>
-                <button>Detalle</button>
+            <div class="item">
+                <figure>
+                    <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 1">
+                </figure>
+                <div class="info-producto">
+                    <h2>Versa Nissans 2025</h2>
+                    Plaza Andares, Jal. CP 44940 | 40,000KM
+                    <p class="Precio">$150,000</p>
+                    <button>Detalle</button>
+                </div>
             </div>
-        </div>
-        <div class="item">
-            <figure>
-                <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 1">
-            </figure>
-            <div class="info-producto">
-                <h2>Versa Nissans 2025</h2>
-                Plaza Andares, Jal. CP 44940 | 40,000KM
-                <p class="Precio">$150,000</p>
-                <button>Detalle</button>
+            <div class="item">
+                <figure>
+                    <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 1">
+                </figure>
+                <div class="info-producto">
+                    <h2>Versa Nissans 2025</h2>
+                    Plaza Andares, Jal. CP 44940 | 40,000KM
+                    <p class="Precio">$150,000</p>
+                    <button>Detalle</button>
+                </div>
             </div>
         </div>
         
