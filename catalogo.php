@@ -49,7 +49,6 @@ include "Conexion.php";
                 </figure>
                 <div class="info-producto">
                     <div class="titulo_marca">Nissan Kicks 2021</div>
-                    <div></div>
                     <div class="version_unidad">5 PTS ADVANCE 16L TA A/AC VE RA-16-2021</div>
                     <div class="Precio">DESDE $314,685 de contado</div>
                     <div class="mensualidades">$3,000 MXN/mes</div>
