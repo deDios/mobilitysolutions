@@ -27,6 +27,7 @@ include "Conexion.php";
     <div class="slider-box">
         <ul>
             <li>
+                <img src="Imagenes/Carrusel/carrusel 2.jpg" alt="">
                 <img src="Imagenes/Carrusel/carrusel 1.jpg" alt="">
                 <div class="Texto_carrusel">
                     <h2>Imagen 1</h2>
@@ -36,6 +37,7 @@ include "Conexion.php";
                 </div>
             </li>
             <li>
+                <img src="Imagenes/Carrusel/carrusel 1.jpg" alt="">
                 <img src="Imagenes/Carrusel/carrusel 2.jpg" alt="">
                 <div class="Texto_carrusel">
                     <h2>Imagen 2</h2>
