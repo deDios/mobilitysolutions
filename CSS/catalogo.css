@@ -63,12 +63,12 @@ header{
     height: 200px;
 }
 
-.container-items .item figure {
+.container-items .item figure img{
     overflow: hidden;
-    max-width: 100%;
+    max-width: 200px;
     max-height: 200px;
     object-fit: cover;
-    border-radius: 10px 0 10px 0;
+    border-radius: 10px 0 0 10px;
     transition: all .5s;
 }
 .item:hover{
