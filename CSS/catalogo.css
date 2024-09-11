@@ -75,8 +75,6 @@ header{
 .item:hover{
     box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.20);
 }
-
-
 .item:hover img{
     transform: scale(1.1);
 }
@@ -89,7 +87,6 @@ header{
     padding-bottom: 5px;
     padding-right: 5px;
 }
-
 .Precio {
     font-size: 18px;
     font-weight: 900;
