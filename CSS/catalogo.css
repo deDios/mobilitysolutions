@@ -102,6 +102,10 @@ header{
 }
 */
 
+.info-producto .titulo_marca {
+    padding-top: 10px;
+}
+
 .item .info-producto button{
     border: none;
     background: none;
