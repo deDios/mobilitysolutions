@@ -20,6 +20,7 @@ include "Conexion.php";
         <nav>
             <a href="index.php" class="nav-link" title="Home">Inicio</a>
             <a href="catalogo.php" class="nav-link" title="Home">Catálogo</a>
+            <a href="" class="nav-link">Cotizador</a>
             <a href="" class="nav-link">Sobre nosotros</a>
             <a href="" class="nav-link">Contacto</a>
         </nav>
@@ -29,18 +30,18 @@ include "Conexion.php";
             <li>
                 <img src="Imagenes/Carrusel/carrusel 1.jpg" alt="">
                 <div class="Texto_carrusel">
-                    <h2>Imagen 1</h2>
+                    <h2></h2>
                     <p>
-                        Descripción de primer imagen
+                        
                     </p>
                 </div>
             </li>
             <li>
                 <img src="Imagenes/Carrusel/carrusel 2.jpg" alt="">
                 <div class="Texto_carrusel">
-                    <h2>Imagen 2</h2>
+                    <h2></h2>
                     <p>
-                        Descripción de segunda imagen
+                        
                     </p>
                 </div>
             </li>
