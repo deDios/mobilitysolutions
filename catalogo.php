@@ -44,7 +44,7 @@ include "Conexion.php";
                 <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 1">
             </figure>
             <div class="info-producto">
-                <h2>Versa Nissan 2025</h2>
+                <h2>Versa Nissans 2025</h2>
                 Plaza Andares, Jal. CP 44940 | 40,000KM
                 <p class="Precio">$150,000</p>
                 <button>Detalle</button>
