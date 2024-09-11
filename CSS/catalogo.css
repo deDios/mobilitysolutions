@@ -103,7 +103,9 @@ header{
 */
 
 .info-producto .titulo_marca {
-    padding-top: 10px;
+    padding-top: 15px;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .item .info-producto button{
