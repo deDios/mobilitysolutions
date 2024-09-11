@@ -61,6 +61,7 @@ header{
     display: flex;
     flex-direction: row;
     height: 200px;
+    background-color: #efefef;
 }
 
 .container-items .item figure img{
