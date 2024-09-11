@@ -51,6 +51,11 @@ header{
     max-width: 250px;
 }
 
+.container-items{
+    padding-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+}
 
 .container-items .item {
     display: flex;
@@ -79,13 +84,8 @@ header{
 }
 
 
-.container-items{
-    padding-top: 15px;
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-}
+
 .info-producto{
-    padding: 0 40px;
     line-height: none;
     display: flex;
     flex-direction: column;
