@@ -82,14 +82,12 @@ header{
 }
 */
 
-
-
-.info-producto{
-    line-height: none;
+.container-items .item .info-producto{
     display: flex;
     flex-direction: column;
     height: 100%;
 }
+
 .Precio {
     font-size: 18px;
     font-weight: 900;
