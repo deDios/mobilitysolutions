@@ -60,6 +60,7 @@ header{
 .container-items .item {
     display: flex;
     flex-direction: row;
+    height: 500px;
 }
 
 .imagen_item {
