@@ -55,7 +55,6 @@ header{
     display: grid;
     grid-template-columns: repeat(4,1fr);
     padding-top: 25px;
-    background-color: #efefef;
 }
 
 .container-items .item {
@@ -63,12 +62,13 @@ header{
     flex-direction: row;
     height: 200px;
     width: 100%;
+    background-color: #efefef;
 }
 
 .container-items .item figure img{
     overflow: hidden;
-    width: 250px;
-    height: 200px;
+    width: 40%;
+    height: 100%;
     object-fit: cover;
     border-radius: 10px 0 0 10px;
     transition: all .5s;
