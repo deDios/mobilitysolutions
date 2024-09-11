@@ -54,6 +54,7 @@ header{
 .container-items{
     display: grid;
     grid-template-columns: repeat(4,1fr);
+    padding-top: 25px;
 }
 
 .container-items .item {
