@@ -13,6 +13,11 @@
     display: none;
 }
 
+.detalle .cerrar {
+    position: absolute;
+    right: 3px;
+    top: 1px;
+}
 
 body{
     font-family: sans-serif;

@@ -66,6 +66,9 @@ include "Conexion.php";
     </div>
 
     <div class="detalle" id="detalles">
+        <div class="cerrar">
+            <img src="logo_atras.png" alt="">
+        </div>
         Detalles
     </div>
 
