@@ -211,4 +211,13 @@ header{
         border-radius: 0 0 10px 10px;
         
     }
+    .item figure img{
+        overflow: hidden;
+        width: 200px;
+        height: 100%;
+        object-fit: scale-down;
+        border-radius: 10px 0 0 10px;
+        transition: all .5s;
+        transform: scale(1.3);
+    }
 }
