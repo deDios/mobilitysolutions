@@ -214,6 +214,7 @@ header{
         overflow: hidden;
         width: 90%;
         height: 100%;
+        padding-left: 5%;
         object-fit: scale-down;
         border-radius: 10px 10px 0 10px;
         transition: all .5s;
