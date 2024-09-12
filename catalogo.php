@@ -67,7 +67,9 @@ include "Conexion.php";
 
     <div class="detalle" id="detalles">
         <div class="cerrar">
-            <img src="logo_atras.png" alt="">
+            <a href="javascript:cerrar_detalle()">
+                <img src="logo_atras.png" alt="">
+            </a>
         </div>
         Detalles
     </div>
@@ -75,6 +77,9 @@ include "Conexion.php";
 <script>
     function abrir_detalle(){
         document.getElementById("detalles").style.display="block";
+    }
+    function cerrar_detalle(){
+        document.getElementById("detalles").style.display="none";
     }
 </script>
 
