@@ -194,4 +194,21 @@ header{
         display: grid;
         grid-template-columns: repeat(1,1fr);
     }
+    .container-items .lista_item {
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+        padding-right: 20px;
+    }
+    .lista_item .item {
+        display: flex;
+        flex-direction: column;
+        height: 200px;
+        width: 100%;
+        border: 1px solid gainsboro;
+        border-top: 5px solid black;
+        border-radius: 0 0 10px 10px;
+        
+    }
 }
