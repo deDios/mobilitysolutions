@@ -212,9 +212,9 @@ header{
     }
     .item figure img{
         overflow: hidden;
-        width: 90%;
+        width: 95%;
         height: 100%;
-        padding-left: 15px;
+        padding-left: 10px;
         padding-top: 10px;
         object-fit: scale-down;
         border-radius: 10px 10px 0 0;
