@@ -15,12 +15,12 @@
 
 .detalle .cerrar {
     position: absolute;
-    right: 3px;
-    top: 1px;
+    right: 15px;
+    top: 10px;
 }
 .detalle .cerrar img {
-    width: 20px;
-    height: 20px;
+    width: 50px;
+    height: 50px;
 }
 
 
