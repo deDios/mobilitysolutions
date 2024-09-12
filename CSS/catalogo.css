@@ -88,6 +88,10 @@ header{
     border: 1px solid gainsboro;
     border-top: 5px solid;
     border-radius: 0 0 10px 10px;
+    
+}
+.lista_item .item a{
+    text-decoration: none;
 }
 
 .item figure img{
