@@ -66,10 +66,15 @@ include "Conexion.php";
                 </div>
             </a>
 
-            
-
         </div>
         
     </div>
+
+<script>
+    function abrir_detalle(){
+        document.getElementById("detalles").style.display="block";
+    }
+</script>
+
  </body>
  </html>
