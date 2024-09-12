@@ -55,7 +55,7 @@ include "Conexion.php";
                     <div class="version_unidad">5 PTS ADVANCE 16L TA A/AC VE RA-16-2021</div>
                     <div class="titulo_desde">Mensualidades, DESDE</div>
                     <div class="mensualidades">$3,000 MXN/mes*</div>
-                    <div class="Precio">$314,685 MXN de contado</div>
+                    <div class="Precio">$ 314,685 MXN de contado</div>
                     <div class="Localidad">Sucursal Andares, Jal. CP 44940</div>
                 </div>
             </div>
