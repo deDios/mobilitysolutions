@@ -69,8 +69,9 @@ header{
     flex-direction: row;
     height: 200px;
     width: 100%;
-    border: 1px solid;
+    border: 1px solid gainsboro;
     border-top: 5px solid;
+    border-radius: 10px 10px 0 0;
 }
 
 .item figure img{
