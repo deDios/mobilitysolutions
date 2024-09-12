@@ -199,12 +199,11 @@ header{
         grid-template-columns: repeat(1,1fr);
         grid-column-gap: 10px;
         grid-row-gap: 10px;
-        padding-right: 20px;
     }
     .lista_item .item {
         display: flex;
         flex-direction: column;
-        height: 200px;
+        height: 100%;
         width: 100%;
         border: 1px solid gainsboro;
         border-top: 5px solid black;
