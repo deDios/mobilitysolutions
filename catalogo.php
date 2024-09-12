@@ -56,7 +56,7 @@ include "Conexion.php";
                     <div class="titulo_desde">Mensualidades, DESDE</div>
                     <div class="mensualidades">$3,000 MXN/mes*</div>
                     <div class="Precio">$314,685 MXN de contado</div>
-                    <div class="Localidad">Andares, Jal. CP 44940</div>
+                    <div class="Localidad">Sucursal Andares, Jal. CP 44940</div>
                 </div>
             </div>
 
