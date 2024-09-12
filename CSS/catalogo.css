@@ -90,7 +90,7 @@ header{
     border-radius: 0 0 10px 10px;
     
 }
-.lista_item .item a{
+.lista_item  a{
     text-decoration: none;
 }
 
