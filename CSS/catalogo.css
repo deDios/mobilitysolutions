@@ -197,7 +197,6 @@ header{
     .container-items .lista_item {
         display: grid;
         grid-template-columns: repeat(1,1fr);
-        grid-column-gap: 10px;
         grid-row-gap: 10px;
     }
     .lista_item .item {
