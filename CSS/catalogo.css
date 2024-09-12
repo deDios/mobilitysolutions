@@ -69,6 +69,8 @@ header{
     flex-direction: row;
     height: 200px;
     width: 100%;
+    border: 1px solid;
+    border-top: 5px solid;
 }
 
 .item figure img{
