@@ -18,11 +18,16 @@
     right: 3px;
     top: 1px;
 }
+.detalle .cerrar img {
+    width: 20px;
+    height: 20px;
+}
+
 
 body{
     font-family: sans-serif;
 }
-head a{
+header a{
     text-decoration: none;
     color: aliceblue;
 }
