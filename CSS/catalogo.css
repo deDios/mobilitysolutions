@@ -222,9 +222,9 @@ header{
     }
     .item .info-producto{
         display: grid;
+        padding-top: 10px;
         grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-        height: 100%;
-        padding-right: 10px;
+        height: 200px;
     }
 
 }
