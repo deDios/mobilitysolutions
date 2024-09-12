@@ -11,6 +11,11 @@ include "Conexion.php";
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
  </head>
  <body>
+
+    <div class="detalle" id="detalles">
+        Detalles
+    </div>
+
     <header>
         <a href="index.php" class="logo" title="Home">
             <img src="logo_MSC.png" alt="Logo de la compañia">
