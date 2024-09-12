@@ -126,6 +126,7 @@ header{
 }
 
 .info-producto .titulo_marca {
+    color: black;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -133,11 +134,13 @@ header{
     justify-content: space-between;
 }
 .titulo_marca .titulo_carro{
+    color: black;
     padding-top: 10px;
     font-size: 20px;
     font-weight: bold;
 }
 .titulo_marca img {
+    color: black;
     width: 50px;
     height: 50px;
     overflow: hidden;
@@ -146,19 +149,24 @@ header{
 
 
 .info-producto .version_unidad{
+    color: black;
     font-size: 10px;
 }
 .info-producto .titulo_desde{
+    color: black;
     font-size: 10px;
 }
 .info-producto .Precio{
+    color: black;
     font-size: 12px;
 }
 .info-producto .mensualidades{
+    color: black;
     font-size: 20px;
     font-weight: bold;
 }
 .info-producto .Localidad {
+    color: black;
     font-size: 8px;
     text-decoration: underline gray;
 }
