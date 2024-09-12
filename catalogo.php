@@ -12,10 +12,6 @@ include "Conexion.php";
  </head>
  <body>
 
-    <div class="detalle" id="detalles">
-        Detalles
-    </div>
-
     <header>
         <a href="index.php" class="logo" title="Home">
             <img src="logo_MSC.png" alt="Logo de la compañia">
@@ -39,7 +35,6 @@ include "Conexion.php";
     <div class="Titulo-boton">
         <input type="text" placeholder="Buscar...">
     </div>
-    
 
     <div class="container-items">
         <div class="menu_item">
@@ -68,6 +63,10 @@ include "Conexion.php";
 
         </div>
         
+    </div>
+
+    <div class="detalle" id="detalles">
+        Detalles
     </div>
 
 <script>
