@@ -129,12 +129,19 @@ header{
     font-size: 10px;
 }
 .info-producto .Precio{
-   font-weight: bold;
+
 }
 .info-producto .mensualidades{
     font-size: 20px;
     font-weight: bold;
 }
+.info-producto .Localidad {
+    font-size: 8px;
+    text-decoration: underline wavy rgb(246, 203, 32);
+}
+
+
+
 
 .item .info-producto button{
     border: none;
