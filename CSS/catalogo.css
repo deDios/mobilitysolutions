@@ -125,6 +125,10 @@ header{
 .info-producto .version_unidad{
     font-size: 10px;
 }
+.info-producto .titulo_desde{
+    font-style: oblique;
+    font-size: 10px;
+}
 
 .item .info-producto button{
     border: none;
