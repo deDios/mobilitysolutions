@@ -220,4 +220,11 @@ header{
         border-radius: 10px 10px 0 0;
         transition: all .5s;
     }
+    .item .info-producto{
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+        height: 100%;
+        padding-right: 10px;
+    }
+
 }
