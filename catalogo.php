@@ -53,7 +53,7 @@ include "Conexion.php";
                         <img src="Imagenes/Marcas/logo_nissan.jpg" alt="logo 1">
                     </div>
                     <div class="version_unidad">5 PTS ADVANCE 16L TA A/AC VE RA-16-2021</div>
-                    <div class="titulo_desde">DESDE</div>
+                    <div class="titulo_desde">Precio total unidad, DESDE</div>
                     <div class="Precio">$314,685</div>
                     <div class="mensualidades">$3,000 MXN/mes</div>
                     <div class="Localidad">Andares, Jal. CP 44940</div>
