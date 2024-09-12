@@ -71,7 +71,7 @@ include "Conexion.php";
                 <img src="logo_atras.png" alt="">
             </a>
         </div>
-        Detalles
+        <h1>Detalles</h1> 
     </div>
 
 <script>
