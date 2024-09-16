@@ -2,7 +2,7 @@
 $inc = include "Conexion.php";
     if ($inc){
         $consulta = "select * from mobility_solutions.tmx_auto";
-        $resultado = mysqli_query($conex,$consulta);  
+        $resultado = mysqli_query($con,$consulta);  
         if ($resultado){
             while($row = $resultado->fetch_array());
                 $id = $row['id'];
