@@ -1,6 +1,6 @@
 <?php
     
-    $inc = include ("Conexion.php");    
+    $inc = include ("db/Conexion.php");    
 
         if ($inc){
             $consulta = "select * from mobility_solutions.tmx_auto";
