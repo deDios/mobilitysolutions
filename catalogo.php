@@ -1,7 +1,7 @@
 <?php
-    /*
+    
     $inc = include "Conexion.php";    
-        if ($inc){
+    /*    if ($inc){
             $consulta = "select * from mobility_solutions.tmx_auto";
             $resultado = mysqli_query($con,$consulta);  
             if ($resultado){
