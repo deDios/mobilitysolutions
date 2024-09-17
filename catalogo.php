@@ -8,12 +8,12 @@
             if ($result){
                 while($row = $result->fetch_array());
                     $id = $row['id'];
-                    $nombre = $row['nombre'];
+                    $nombre = "N/I";
                     $modelo = $row['modelo'];
                     $marca = $row['marca'];
+
             } else{
                 echo "Hubo un error en la consulta";
-                $nombre = "N/I";
             }
                
         }
