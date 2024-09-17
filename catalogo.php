@@ -65,7 +65,7 @@
                     </figure>
                     <div class="info-producto">
                         <div class="titulo_marca">
-                            <div class="titulo_carro">  <?php echo $name; ?>  </div>
+                            <div class="titulo_carro">  <?php echo $nombre; ?>  </div>
                             <img src="Imagenes/Marcas/logo_nissan.jpg" alt="logo 1">
                         </div>
                         <div class="version_unidad">5 PTS ADVANCE 16L TA A/AC VE RA-16-2021</div>
