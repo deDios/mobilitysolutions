@@ -80,6 +80,8 @@
                                 $modelo = $row['modelo'];
                                 $marca = $row['marca'];
                                 $mensualidad = $row['mensualidad'];
+                                $costo = $row['costo'];
+                                $sucursal = $row['sucursal'];
                             ?>
                                     <a href="javascript:abrir_detalle()">
                                         <div class="item">
@@ -94,8 +96,8 @@
                                                 <div class="version_unidad"><?php echo $id . " - " . $modelo; ?></div>
                                                 <div class="titulo_desde">Mensualidades, DESDE</div>
                                                 <div class="mensualidades"> <?php echo "$" . number_format($mensualidad) . " MXN/mes*"; ?> </div>
-                                                <div class="Precio">$ 314,685 MXN de contado</div>
-                                                <div class="Localidad">Sucursal Andares, Jal. CP 44940</div>
+                                                <div class="Precio"><?php echo "$" . number_format($mensualidad) . " MXN de contado"; ?> </div>
+                                                <div class="Localidad"><?php echo $sucursal; ?></div>
                                             </div>
                                         </div>
                                     </a>
