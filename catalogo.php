@@ -19,10 +19,10 @@
                 */
               
                 while($row = mysqli_fetch_assoc($result));
-                echo $row["id"];
-                echo $row["nombre"];
-                echo $row["modelo"];
-                echo $row["marca"];    
+                echo $row[0];
+                echo $row[1];
+                echo $row[2];
+                echo $row[3];    
 
                 /*
                     $id = $row['id'];
