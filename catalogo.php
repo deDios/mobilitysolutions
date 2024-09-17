@@ -64,6 +64,32 @@
                             $modelo = $row['modelo'];
                             $marca = $row['marca'];
                             $mensualidad = $row['mensualidad'];
+
+                        ?>
+                        <div class="lista_item">
+                
+                            <a href="javascript:abrir_detalle()">
+                                <div class="item">
+                                    <figure>
+                                        <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 1">
+                                    </figure>
+                                    <div class="info-producto">
+                                        <div class="titulo_marca">
+                                            <div class="titulo_carro">  <?php echo $nombre; ?>  </div>
+                                            <img src="Imagenes/Marcas/logo_nissan.jpg" alt="logo 1">
+                                        </div>
+                                        <div class="version_unidad">5 PTS ADVANCE 16L TA A/AC VE RA-16-2021</div>
+                                        <div class="titulo_desde">Mensualidades, DESDE</div>
+                                        <div class="mensualidades"><?php echo $mensualidad; ?> </div>
+                                        <div class="Precio">$ 314,685 MXN de contado</div>
+                                        <div class="Localidad">Sucursal Andares, Jal. CP 44940</div>
+                                    </div>
+                                </div>
+                            </a>
+
+                        </div>
+
+                        <?php
                         }
                     } else{
                         echo "Hubo un error en la consulta";
@@ -74,28 +100,7 @@
     
         ?>
 
-        <div class="lista_item">
-            
-            <a href="javascript:abrir_detalle()">
-                <div class="item">
-                    <figure>
-                        <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 1">
-                    </figure>
-                    <div class="info-producto">
-                        <div class="titulo_marca">
-                            <div class="titulo_carro">  <?php echo $nombre; ?>  </div>
-                            <img src="Imagenes/Marcas/logo_nissan.jpg" alt="logo 1">
-                        </div>
-                        <div class="version_unidad">5 PTS ADVANCE 16L TA A/AC VE RA-16-2021</div>
-                        <div class="titulo_desde">Mensualidades, DESDE</div>
-                        <div class="mensualidades"><?php echo $mensualidad; ?> </div>
-                        <div class="Precio">$ 314,685 MXN de contado</div>
-                        <div class="Localidad">Sucursal Andares, Jal. CP 44940</div>
-                    </div>
-                </div>
-            </a>
-
-        </div>
+        
         
     </div>
 
