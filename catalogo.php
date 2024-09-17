@@ -17,17 +17,17 @@
                echo $row[6];
                 */
               
-                while($row = mysqli_fetch_row($result)){
+                while($row = mysqli_fetch_assoc($result)){
                     $id = $row['id'];
                     $nombre = $row['nombre'];
                     $modelo = $row['modelo'];
                     $marca = $row['marca'];
                     $mensualidad = $row['mensualidad'];
-
                 }
             } else{
                 echo "Hubo un error en la consulta";
             }
+            mysqli_free_result($result);
             
         }
     
