@@ -5,8 +5,7 @@
         if ($inc){
             $query = 'select id, nombre, modelo, marca, mensualidad, costo, sucursal, img1, img2, img3, img4, img5, img6, estatus, created_at, updated_at FROM tmx_auto';
             $result = mysqli_query($con,$query);  
-            if ($result){
-            
+            if ($result){          
                 /*
                 $row = mysqli_fetch_row($result);
                echo $row[0];
@@ -18,19 +17,13 @@
                echo $row[6];
                 */
               
-                while($row = mysqli_fetch_assoc($result));
-                echo $row[0];
-                echo $row[1];
-                echo $row[2];
-                echo $row[3];    
-
-                /*
+                while($row = mysqli_fetch_assoc($result)){
+                
                     $id = $row['id'];
                     $nombre = $row['nombre'];
                     $modelo = $row['modelo'];
                     $marca = $row['marca'];
-                */
-            
+                }
             } else{
                 echo "Hubo un error en la consulta";
             }
