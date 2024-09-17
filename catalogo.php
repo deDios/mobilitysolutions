@@ -56,7 +56,7 @@
                                     <a href="javascript:abrir_detalle()">
                                         <div class="item">
                                             <figure>
-                                                <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 1">
+                                                <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="Auto 1">
                                             </figure>
                                             <div class="info-producto">
                                                 <div class="titulo_marca">
