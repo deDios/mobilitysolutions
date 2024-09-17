@@ -35,6 +35,7 @@
         <input type="text" placeholder="Buscar...">
     </div>
 
+    <div class="container-items">
         <?php
     
             $inc = include "db/Conexion.php";    
@@ -62,7 +63,6 @@
                             $mensualidad = $row['mensualidad'];
 
                         ?>
-                        <div class="container-items">
                             <div class="menu_item">
 
                             </div>
@@ -88,7 +88,7 @@
                                 </a>
 
                             </div>
-                        </div>
+                        
 
                         <?php
                         }
@@ -100,6 +100,8 @@
                 }
     
         ?>
+        
+    </div>
 
     <div class="detalle" id="detalles">
         <div class="cerrar">
