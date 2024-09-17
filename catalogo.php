@@ -3,7 +3,7 @@
     $inc = include "db/Conexion.php";    
 
         if ($inc){
-            $query = 'select id, nombre, modelo, marca, mensualidad, costo, sucursal, img1, img2, img3, img4, img5, img6, estatus, created_at, updated_at FROM mobility_solutions.tmx_auto';
+            $query = 'select id, nombre, modelo, marca, mensualidad, costo, sucursal, img1, img2, img3, img4, img5, img6, estatus, created_at, updated_at FROM tmx_auto';
             $result = mysqli_query($con,$query);  
             if ($result){
                 while($row = $result->fetch_array());
