@@ -8,10 +8,10 @@
             if ($result){
                 while($row = $result->fetch_array());
                     $id = $row['id'];
-                    $nombre = "N/I";
+                    $nombre = $row['nombre'];
                     $modelo = $row['modelo'];
                     $marca = $row['marca'];
-
+                    echo $nombre;
             } else{
                 echo "Hubo un error en la consulta";
             }
