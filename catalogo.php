@@ -36,71 +36,50 @@
     </div>
 
     <div class="container-items">
-        <?php
-    
-            $inc = include "db/Conexion.php";    
+        <div class="menu_item">
 
-                if ($inc){
-                    $query = 'select id, nombre, modelo, marca, mensualidad, costo, sucursal, img1, img2, img3, img4, img5, img6, estatus, created_at, updated_at FROM tmx_auto';
-                    $result = mysqli_query($con,$query);  
-                    if ($result){          
-                        /*
-                        $row = mysqli_fetch_row($result);
-                    echo $row[0];
-                    echo $row[1];
-                    echo $row[2];
-                    echo $row[3];
-                    echo $row[4];
-                    echo $row[5];
-                    echo $row[6];
-                        */
-                    
-                        while($row = mysqli_fetch_assoc($result)){
-                            $id = $row['id'];
-                            $nombre = $row['nombre'];
-                            $modelo = $row['modelo'];
-                            $marca = $row['marca'];
-                            $mensualidad = $row['mensualidad'];
-
-                        ?>
-                            <div class="menu_item">
-
-                            </div>
-                            <div class="lista_item">
-                    
-                                <a href="javascript:abrir_detalle()">
-                                    <div class="item">
-                                        <figure>
-                                            <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 1">
-                                        </figure>
-                                        <div class="info-producto">
-                                            <div class="titulo_marca">
-                                                <div class="titulo_carro">  <?php echo $nombre; ?>  </div>
-                                                <img src="Imagenes/Marcas/logo_nissan.jpg" alt="logo 1">
+        </div>
+        <div class="lista_item">
+            <?php
+                $inc = include "db/Conexion.php";    
+                    if ($inc){
+                        $query = 'select id, nombre, modelo, marca, mensualidad, costo, sucursal, img1, img2, img3, img4, img5, img6, estatus, created_at, updated_at FROM tmx_auto';
+                        $result = mysqli_query($con,$query);  
+                        if ($result){          
+                            while($row = mysqli_fetch_assoc($result)){
+                                $id = $row['id'];
+                                $nombre = $row['nombre'];
+                                $modelo = $row['modelo'];
+                                $marca = $row['marca'];
+                                $mensualidad = $row['mensualidad'];
+                            ?>
+                                    <a href="javascript:abrir_detalle()">
+                                        <div class="item">
+                                            <figure>
+                                                <img src="Imagenes/Catalogo/Auto 1/Img01.jpg" alt="Auto 1">
+                                            </figure>
+                                            <div class="info-producto">
+                                                <div class="titulo_marca">
+                                                    <div class="titulo_carro">  <?php echo $nombre; ?>  </div>
+                                                    <img src="Imagenes/Marcas/logo_nissan.jpg" alt="logo 1">
+                                                </div>
+                                                <div class="version_unidad">5 PTS ADVANCE 16L TA A/AC VE RA-16-2021</div>
+                                                <div class="titulo_desde">Mensualidades, DESDE</div>
+                                                <div class="mensualidades"> <?php echo $mensualidad; ?> </div>
+                                                <div class="Precio">$ 314,685 MXN de contado</div>
+                                                <div class="Localidad">Sucursal Andares, Jal. CP 44940</div>
                                             </div>
-                                            <div class="version_unidad">5 PTS ADVANCE 16L TA A/AC VE RA-16-2021</div>
-                                            <div class="titulo_desde">Mensualidades, DESDE</div>
-                                            <div class="mensualidades"> <?php echo $mensualidad; ?> </div>
-                                            <div class="Precio">$ 314,685 MXN de contado</div>
-                                            <div class="Localidad">Sucursal Andares, Jal. CP 44940</div>
                                         </div>
-                                    </div>
-                                </a>
-
-                            </div>
-                        
-
-                        <?php
+                                    </a>
+                            <?php
+                            }
+                        } else{
+                            echo "Hubo un error en la consulta";
                         }
-                    } else{
-                        echo "Hubo un error en la consulta";
+                        mysqli_free_result($result);                  
                     }
-                    mysqli_free_result($result);
-                    
-                }
-    
-        ?>
-        
+            ?>
+        </div>
     </div>
 
     <div class="detalle" id="detalles">
