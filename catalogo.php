@@ -43,7 +43,35 @@
             <?php
                 $inc = include "db/Conexion.php";    
                     if ($inc){
-                        $query = 'select id, nombre, modelo, marca, mensualidad, costo, sucursal, img1, img2, img3, img4, img5, img6, estatus, created_at, updated_at FROM tmx_auto';
+                        $query = 'select 
+                                        auto.id,
+                                        auto.nombre, 
+                                        modelo.nombre as modelo, 
+                                        marca.nombre as marca, 
+                                        auto.mensualidad, 
+                                        auto.costo, 
+                                        sucursal.nombre as sucursal, 
+                                        auto.img1, 
+                                        auto.img2, 
+                                        auto.img3, 
+                                        auto.img4, 
+                                        auto.img5, 
+                                        auto.img6, 
+                                        auto.color, 
+                                        auto.transmision, 
+                                        auto.interior, 
+                                        auto.kilometraje, 
+                                        auto.combustible, 
+                                        auto.cilindros, 
+                                        auto.eje, 
+                                        auto.estatus, 
+                                        auto.created_at, 
+                                        auto.updated_at 
+                                    FROM mobility_solutions.tmx_auto as auto
+                                    left join mobility_solutions.tmx_sucursal as sucursal on auto.sucursal = sucursal.id 
+                                    left join mobility_solutions.tmx_estatus as estatus on auto.estatus = estatus.id
+                                    left join mobility_solutions.tmx_modelo as modelo on auto.modelo = modelo.id 
+                                    left join mobility_solutions.tmx_marca as marca on auto.marca = marca.id;';
                         $result = mysqli_query($con,$query);  
                         if ($result){          
                             while($row = mysqli_fetch_assoc($result)){
