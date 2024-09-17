@@ -91,7 +91,7 @@
                                                     <div class="titulo_carro">  <?php echo $marca . " " . $nombre; ?>  </div>
                                                     <img src="Imagenes/Marcas/logo_nissan.jpg" alt="logo 1">
                                                 </div>
-                                                <div class="version_unidad">5 PTS ADVANCE 16L TA A/AC VE RA-16-2021</div>
+                                                <div class="version_unidad"><?php echo $id . " - " . $modelo; ?></div>
                                                 <div class="titulo_desde">Mensualidades, DESDE</div>
                                                 <div class="mensualidades"> <?php echo "$" . number_format($mensualidad) . " MXN/mes*"; ?> </div>
                                                 <div class="Precio">$ 314,685 MXN de contado</div>
