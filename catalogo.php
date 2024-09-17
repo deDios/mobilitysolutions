@@ -7,6 +7,7 @@
             $result = mysqli_query($con,$query);  
             if ($result){
             
+                /*
                 $row = mysqli_fetch_row($result);
                echo $row[0];
                echo $row[1];
@@ -15,18 +16,26 @@
                echo $row[4];
                echo $row[5];
                echo $row[6];
-            
-              /*
-                while($row = mysqli_fetch_row($result));
+                */
+              
+                while($row = mysqli_fetch_assoc($result));
+                echo $row["id"];
+                echo $row["nombre"];
+                echo $row["modelo"];
+                echo $row["marca"];    
+
+                /*
                     $id = $row['id'];
                     $nombre = $row['nombre'];
                     $modelo = $row['modelo'];
                     $marca = $row['marca'];
-            */
+                */
+            
             } else{
                 echo "Hubo un error en la consulta";
             }
-               
+            
+            mysqli_free_result($result);
         }
     
 ?>
