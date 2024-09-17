@@ -89,7 +89,7 @@
                                             <div class="info-producto">
                                                 <div class="titulo_marca">
                                                     <div class="titulo_carro">  <?php echo $marca . " " . $nombre; ?>  </div>
-                                                    <img src="Imagenes/Marcas/logo_nissan.jpg" alt="logo 1">
+                                                    <img src="Imagenes/Marcas/logo_<?php echo $marca; ?>.jpg" alt="logo 1">
                                                 </div>
                                                 <div class="version_unidad"><?php echo $id . " - " . $modelo; ?></div>
                                                 <div class="titulo_desde">Mensualidades, DESDE</div>
