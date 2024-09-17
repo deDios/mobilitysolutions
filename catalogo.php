@@ -3,16 +3,19 @@
     $inc = include "db/Conexion.php";    
 
         if ($inc){
-            $consulta = 'select id, nombre, modelo, marca, mensualidad, costo, sucursal, img1, img2, img3, img4, img5, img6, estatus, created_at, updated_at FROM mobility_solutions.tmx_auto';
-            $resultado = mysqli_query($con,$consulta);  
-            if ($resultado){
-                while($row = $resultado->fetch_array());
+            $query = 'select id, nombre, modelo, marca, mensualidad, costo, sucursal, img1, img2, img3, img4, img5, img6, estatus, created_at, updated_at FROM mobility_solutions.tmx_auto';
+            $result = mysqli_query($con,$query);  
+            if ($result){
+                while($row = $result->fetch_array());
                     $id = $row['id'];
                     $nombre = $row['nombre'];
                     $modelo = $row['modelo'];
                     $marca = $row['marca'];
-            } 
-            $nombre = "N/I";   
+            } else{
+                echo "Hubo un error en la consulta";
+                $nombre = "N/I";
+            }
+               
         }
     
 ?>
