@@ -12,7 +12,8 @@
                     $modelo = $row['modelo'];
                     $marca = $row['marca'];
                     $mensualidad = $row['mensualidad'];
-            }    
+            } 
+            $nombre = "N/I";   
         }
     
 ?>
