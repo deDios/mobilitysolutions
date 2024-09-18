@@ -104,10 +104,10 @@ header{
     text-decoration: none;
 }
 
-.item figure img{
+.item figure {
     overflow: hidden;
     width: 200px;
-    height: 150px;
+    height: 100%;
     object-fit: scale-down;
     border-radius: 10px 0 0 10px;
     transition: all .5s;
