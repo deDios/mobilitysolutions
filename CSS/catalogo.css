@@ -104,7 +104,12 @@ header{
     text-decoration: none;
 }
 
-.item figure {
+.item figure{
+    width: 100%;
+    height: 90%;
+}
+
+.item figure img{
     overflow: hidden;
     width: 200px;
     height: 100%;
