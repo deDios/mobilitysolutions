@@ -105,7 +105,7 @@ header{
 }
 
 .item figure{
-    width: 100%;
+    width: 200px;
     height: 90%;
 }
 
@@ -113,6 +113,7 @@ header{
     overflow: hidden;
     width: 200px;
     height: 100%;
+    padding: 10px;
     object-fit: scale-down;
     border-radius: 10px 0 0 10px;
     transition: all .5s;
