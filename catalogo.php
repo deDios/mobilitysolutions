@@ -102,7 +102,7 @@
                                                 <div class="titulo_desde">Mensualidades, DESDE</div>
                                                 <div class="mensualidades"> <?php echo "$" . number_format($mensualidad) . " MXN/mes*"; ?> </div>
                                                 <div class="Precio"><?php echo "$" . number_format($costo) . " MXN de contado"; ?> </div>
-                                                <div class="Localidad"><?php echo $sucursal; ?> <i class="fa fa-home" ></i> </div>
+                                                <div class="Localidad"><?php echo $sucursal . " ";?> <i class="fas fa-location-arrow" ></i> </div>
                                             </div>
                                         </div>
                                     </a>
