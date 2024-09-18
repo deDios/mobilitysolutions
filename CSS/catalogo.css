@@ -104,12 +104,12 @@ header{
     text-decoration: none;
 }
 
-/*
+
 .item figure{
     width: 200px;
-    height: 90%;
+    height: 168px;
 }
-*/
+
 
 .item figure img{
     overflow: hidden;
