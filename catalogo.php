@@ -9,8 +9,6 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Enlaza Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <!-- Enlaza Material Icons -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
  </head>
  <body>
@@ -102,7 +100,7 @@
                                                 <div class="titulo_desde">Mensualidades, DESDE</div>
                                                 <div class="mensualidades"> <?php echo "$" . number_format($mensualidad) . " MXN/mes*"; ?> </div>
                                                 <div class="Precio"><?php echo "$" . number_format($costo) . " MXN de contado"; ?> </div>
-                                                <div class="Localidad"> <i class="fas fa-search-location" ></i> <?php echo " " . $sucursal;?>  </div>
+                                                <div class="Localidad"> <i class="fas fa-location-arrow" ></i> <?php echo " " . $sucursal;?>  </div>
                                             </div>
                                         </div>
                                     </a>

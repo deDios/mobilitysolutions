@@ -168,6 +168,10 @@ header{
     font-size: 8px;
     text-decoration: underline gray;
 }
+.Localidad i {
+    width: 20px;
+    height: 20px;
+}
 
 
 
