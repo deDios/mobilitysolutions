@@ -130,9 +130,9 @@ header{
     width: 100%;
     display: flex;
     flex-direction: row;
-    /* align-items: center; 
+    align-items: center; 
     justify-content: space-between;
-    */
+    
 }
 .titulo_marca .titulo_carro{
     color: black;
@@ -142,8 +142,8 @@ header{
 }
 .titulo_marca img {
     color: black;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     overflow: hidden;
     object-fit: scale-down;
     margin-left: auto;
