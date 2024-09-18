@@ -85,7 +85,7 @@
                                 $mensualidad = $row['mensualidad'];
                                 $costo = $row['costo'];
                                 $sucursal = $row['sucursal'];
-                            ?>
+            ?>
                                     <a href="javascript:abrir_detalle()">
                                         <div class="item">
                                             <figure>
@@ -104,7 +104,25 @@
                                             </div>
                                         </div>
                                     </a>
-                            <?php
+
+                                    <div class="detalle" id="detalles">
+                                        <div class="cerrar">
+                                            <a href="javascript:cerrar_detalle()">
+                                                <img src="logo_atras.png" alt="">
+                                            </a>
+                                        </div>
+                                    Detalles
+                                    </div>
+
+                                    <script>
+                                        function abrir_detalle(){
+                                            document.getElementById("detalles").style.display="block";
+                                        }
+                                        function cerrar_detalle(){
+                                            document.getElementById("detalles").style.display="none";
+                                        }
+                                    </script>
+            <?php
                             }
                         } else{
                             echo "Hubo un error en la consulta";
@@ -115,23 +133,7 @@
         </div>
     </div>
 
-    <div class="detalle" id="detalles">
-        <div class="cerrar">
-            <a href="javascript:cerrar_detalle()">
-                <img src="logo_atras.png" alt="">
-            </a>
-        </div>
-        Detalles
-    </div>
-
-<script>
-    function abrir_detalle(){
-        document.getElementById("detalles").style.display="block";
-    }
-    function cerrar_detalle(){
-        document.getElementById("detalles").style.display="none";
-    }
-</script>
+   
 
  </body>
  </html>
