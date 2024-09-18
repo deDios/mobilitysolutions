@@ -220,7 +220,7 @@ header{
         
     }
     .item figure {
-        width: 300px;
+        width: 350px;
         height: 200px;
     }
 
@@ -239,7 +239,7 @@ header{
         padding-top: 10px;
         padding-left: 10px;
         grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-        height: 200px;
+        height: 150px;
     }
 
 }
