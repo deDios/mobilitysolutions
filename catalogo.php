@@ -7,6 +7,11 @@
     <title>Catálogo</title>
     <link rel="stylesheet" href="CSS/catalogo.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Enlaza Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Enlaza Material Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
  </head>
  <body>
 
@@ -97,20 +102,7 @@
                                                 <div class="titulo_desde">Mensualidades, DESDE</div>
                                                 <div class="mensualidades"> <?php echo "$" . number_format($mensualidad) . " MXN/mes*"; ?> </div>
                                                 <div class="Precio"><?php echo "$" . number_format($costo) . " MXN de contado"; ?> </div>
-                                                <div class="Localidad"><?php echo $sucursal; ?>
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    class="input-icon"
-                                                    viewBox="0 0 20 20"
-                                                    fill="currentColor"
-                                                >
-                                                    <path
-                                                        fill-rule="evenodd"
-                                                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                                                        clip-rule="evenodd"
-                                                    />
-                                                </svg>
-                                                </div>
+                                                <div class="Localidad"><?php echo $sucursal; ?> <i class="fa fa-home" ></i> </div>
                                             </div>
                                         </div>
                                     </a>
