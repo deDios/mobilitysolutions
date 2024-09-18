@@ -89,14 +89,14 @@
                                     <a href="javascript:abrir_detalle()">
                                         <div class="item">
                                             <figure>
-                                                <img src="Imagenes/Catalogo/Auto <?php echo "N° " . $id;?>/Img01.jpg" alt="Auto 1">
+                                                <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="Auto 1">
                                             </figure>
                                             <div class="info-producto">
                                                 <div class="titulo_marca">
                                                     <div class="titulo_carro">  <?php echo $marca . " " . $nombre; ?>  </div>
                                                     <img src="Imagenes/Marcas/logo_<?php echo $marca; ?>.jpg" alt="logo 1">
                                                 </div>
-                                                <div class="version_unidad"><?php echo $id . " - " . $modelo; ?></div>
+                                                <div class="version_unidad"><?php echo "N° " .  $id . " - " . $modelo; ?></div>
                                                 <div class="titulo_desde">Mensualidades, DESDE</div>
                                                 <div class="mensualidades"> <?php echo "$" . number_format($mensualidad) . " MXN/mes*"; ?> </div>
                                                 <div class="Precio"><?php echo "$" . number_format($costo) . " MXN de contado"; ?> </div>
