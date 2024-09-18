@@ -219,6 +219,11 @@ header{
         border-radius: 0 0 10px 10px;
         
     }
+    .item figure {
+        width: 90%;
+        height: 300px;
+    }
+
     .item figure img{
         overflow: hidden;
         width: 90%;
