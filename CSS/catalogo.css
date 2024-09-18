@@ -104,16 +104,17 @@ header{
     text-decoration: none;
 }
 
+/*
 .item figure{
     width: 200px;
     height: 90%;
 }
+*/
 
 .item figure img{
     overflow: hidden;
     width: 200px;
     height: 100%;
-    padding: 10px;
     object-fit: scale-down;
     border-radius: 10px 0 0 10px;
     transition: all .5s;
