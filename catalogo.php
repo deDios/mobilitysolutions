@@ -46,9 +46,9 @@
             <?php
                 $inc = include "db/Conexion.php";    
                     if ($inc){
-                        $query = 'select 
+                        $query = '  select 
                                         auto.id,
-                                        auto.nombre, 
+                                        m_auto.auto as nombre, 
                                         modelo.nombre as modelo, 
                                         marca.nombre as marca, 
                                         auto.mensualidad, 
@@ -74,7 +74,8 @@
                                     left join mobility_solutions.tmx_sucursal as sucursal on auto.sucursal = sucursal.id 
                                     left join mobility_solutions.tmx_estatus as estatus on auto.estatus = estatus.id
                                     left join mobility_solutions.tmx_modelo as modelo on auto.modelo = modelo.id 
-                                    left join mobility_solutions.tmx_marca as marca on auto.marca = marca.id;';
+                                    left join mobility_solutions.tmx_marca as marca on auto.marca = marca.id
+                                    left join mobility_solutions.tmx_marca_auto as m_auto on auto.nombre = m_auto.id;';
                         $result = mysqli_query($con,$query);  
                         if ($result){          
                             while($row = mysqli_fetch_assoc($result)){
