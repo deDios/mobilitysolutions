@@ -117,7 +117,7 @@
 
                                     <script>
                                         function abrir_detalle(){
-                                            document.getElementById("detalles").style.display="block";
+                                          /*  document.getElementById("detalles").style.display="block";*/
                                         }
                                         function cerrar_detalle(){
                                             document.getElementById("detalles").style.display="none";
