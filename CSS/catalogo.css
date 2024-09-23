@@ -91,9 +91,6 @@ header{
     padding-right: 20px;
 }
 
-.lista_item:nth-of-type(n+8) {
-    display: none;
-  }
 
 .lista_item .item {
     display: flex;
@@ -241,7 +238,7 @@ header{
 
     .item figure img{
         overflow: hidden;
-        width: 95%;
+        width: 90%;
         height: 90%;
         padding-left: 10px;
         padding-top: 15px;
