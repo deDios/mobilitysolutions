@@ -149,8 +149,8 @@ header{
     font-weight: bold;
 }
 .titulo_marca img {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     overflow: hidden;
     object-fit: scale-down;
 }
@@ -274,6 +274,8 @@ header{
         overflow: hidden;
         object-fit: scale-down;
         padding-right: 15px;
+        width: 60px;
+        height: 60px;
     }
 
 
