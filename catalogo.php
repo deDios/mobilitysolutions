@@ -89,7 +89,7 @@
                                 $costo = $row['costo'];
                                 $sucursal = $row['sucursal'];
             ?>
-                                    <a href="javascript:abrir_detalle($id)">
+                                    <a href="javascript:abrir_detalle(<?php echo $id;?>)">
                                         <div class="item">
                                             <figure>
                                                 <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="Auto 1">
