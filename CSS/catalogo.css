@@ -246,6 +246,16 @@ header{
         border-radius: 10px 10px 0 0;
         transition: all .5s;
     }
+
+    .item .info-producto{
+        display: grid;
+        grid-template-rows: 1fr 2fr 1fr 1fr 1fr 1fr;
+        height: 100%;
+        width: 100%;
+        padding-right: 10px;
+    }
+
+    /*
     .item .info-producto{
         display: grid;
         padding-top: 10px;
@@ -254,6 +264,27 @@ header{
         grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
         height: 150px;
     }
+        */
+
+    .info-producto .titulo_marca {
+        color: black;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items:center; 
+        justify-content: space-between;
+    }
+    .titulo_marca .titulo_carro{
+        padding-top: 10px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .titulo_marca img {
+        overflow: hidden;
+        object-fit: scale-down;
+    }
+
+
 
     .pie_pag{
         background: #333;
