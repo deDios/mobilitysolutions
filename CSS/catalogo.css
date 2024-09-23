@@ -214,6 +214,7 @@ header{
     .container-items{
         display: grid;
         grid-template-columns: repeat(1,1fr);
+        padding-left: 10px;
     }
     .container-items .lista_item {
         display: grid;
@@ -238,7 +239,7 @@ header{
 
     .item figure img{
         overflow: hidden;
-        width: 350px;
+        width: 90%;
         height: 90%;
         padding-left: 10px;
         padding-top: 25px;
