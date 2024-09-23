@@ -52,7 +52,6 @@ $query = 'select
         }
 
 echo $cod;
-echo $nombre;
 
 ?>
 
