@@ -226,7 +226,6 @@ header{
         flex-direction: column;
         height: 100%;
         width: 100%;
-        padding-left: 10px;
         border: 1px solid gainsboro;
         border-top: 5px solid black;
         border-radius: 0 0 10px 10px;
@@ -235,7 +234,7 @@ header{
         
     }
     .lista_item figure {
-        width: 70%;
+        width: 80%;
         height: 200px;
     }
 
