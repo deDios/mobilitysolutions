@@ -226,6 +226,7 @@ header{
         flex-direction: column;
         height: 400px;
         width: 100%;
+        padding-left: 10px;
         border: 1px solid gainsboro;
         border-top: 5px solid black;
         border-radius: 0 0 10px 10px;
