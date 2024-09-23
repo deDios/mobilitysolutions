@@ -151,9 +151,7 @@
                                           }
 
                                           xmlhttp.onreadystatechange = function(){
-                                                if(xmlhttp.readyState==4 && xmlhttp.status==200){
-                                                    resultado.innerHTML=xmlhttp.responseText;
-                                                }
+                                            resultado.innerHTML=xmlhttp.responseText;    
                                           }
                                           xmlhttp.open("GET", "detalle.php?cod="+c,true);
                                           xmlhttp.send();
