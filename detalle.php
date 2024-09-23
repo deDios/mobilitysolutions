@@ -32,8 +32,8 @@ $query = 'select
             left join mobility_solutions.tmx_estatus as estatus on auto.estatus = estatus.id
             left join mobility_solutions.tmx_modelo as modelo on auto.modelo = modelo.id 
             left join mobility_solutions.tmx_marca as marca on auto.marca = marca.id
-            left join mobility_solutions.tmx_marca_auto as m_auto on auto.nombre = m_auto.id;
-            where auto.id = $cod';
+            left join mobility_solutions.tmx_marca_auto as m_auto on auto.nombre = m_auto.id
+            where auto.id = $cod ;';
 
         $result = mysqli_query($con,$query); 
         if ($result){ 
@@ -50,7 +50,7 @@ $query = 'select
         else{
             echo "Falla en conexión";
         }
-        
+
 echo $cod;
 echo $nombre;
 
