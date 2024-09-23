@@ -2,7 +2,6 @@
 <?php
 $cod=$_REQUEST['cod'];
 
-/*
 $inc = include "db/Conexion.php"; 
 $query = 'select 
                 auto.id,
@@ -34,7 +33,7 @@ $query = 'select
             left join mobility_solutions.tmx_modelo as modelo on auto.modelo = modelo.id 
             left join mobility_solutions.tmx_marca as marca on auto.marca = marca.id
             left join mobility_solutions.tmx_marca_auto as m_auto on auto.nombre = m_auto.id
-            where auto.id = $cod ;';
+            where auto.id = '. $cod .';';
 
         $result = mysqli_query($con,$query); 
         if ($result){ 
@@ -51,8 +50,6 @@ $query = 'select
         else{
             echo "Falla en conexión";
         }
-
-*/
 
 echo $cod;
 
