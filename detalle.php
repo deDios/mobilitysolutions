@@ -2,6 +2,7 @@
 <?php
 $cod=$_REQUEST['cod'];
 
+/*
 $inc = include "db/Conexion.php"; 
 $query = 'select 
                 auto.id,
@@ -50,6 +51,8 @@ $query = 'select
         else{
             echo "Falla en conexión";
         }
+
+*/
 
 echo $cod;
 
