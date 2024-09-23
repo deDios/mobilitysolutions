@@ -227,9 +227,9 @@ header{
     .item figure img{
         overflow: hidden;
         width: 95%;
-        height: 85%;
+        height: 90%;
         padding-left: 10px;
-        padding-top: 10px;
+        padding-top: 15px;
         object-fit: scale-down;
         border-radius: 10px 10px 0 0;
         transition: all .5s;
