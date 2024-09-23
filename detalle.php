@@ -62,11 +62,11 @@ echo $nombre;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
     <title>Mobility solutions</title>
-    <link rel="stylesheet" href="CSS/estilos.css">
+    <link rel="stylesheet" href="CSS/detalle.css">
 </head>
 <body>
     <form action="">
-        <table border = "0">
+        <table class="table" border = "0">
             <tr>
                 <th rowspan="4">
                     <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="Auto 1">
