@@ -219,6 +219,7 @@ header{
         display: grid;
         grid-template-columns: repeat(1,1fr);
         grid-row-gap: 10px;
+        padding-left: 10px;
         
     }
     .lista_item .item {
