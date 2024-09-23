@@ -99,7 +99,9 @@ header{
     border: 1px solid gainsboro;
     border-top: 5px solid black;
     border-radius: 0 0 10px 10px;
-    
+    align-items: center;
+    padding: 5px;
+
 }
 .lista_item  a{
     text-decoration: none;
