@@ -89,7 +89,6 @@ header{
     grid-column-gap: 10px;
     grid-row-gap: 10px;
     padding-right: 20px;
-    height : 650px;
 }
 .lista_item .item {
     display: flex;
