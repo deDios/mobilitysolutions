@@ -106,6 +106,46 @@
                                                 <div class="Localidad"> <i class="fas fa-location-arrow" ></i> <?php echo " " . $sucursal;?>  </div>
                                             </div>
                                         </div>
+
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body" id="mostrar">
+                                                    <form action="">
+                                                        <table class="table" border = "0">
+                                                            <tr>
+                                                                <th rowspan="4">
+                                                                    <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="Auto 1">
+                                                                </th>
+                                                                <th> <?php echo $marca . " " . $nombre;?> </th>
+                                                                <th> <?php echo $modelo;?> </th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th> 
+                                                                    Costo:  <?php echo $costo;?> 
+                                                                </th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>
+                                                                    <button type="button" class="btn btn-secondary"> Cerrar </button>
+                                                                </th>
+                                                            </tr>
+                                                        </table>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
                                     </a>
 
                                     <div class="detalle" id="detalles">
@@ -117,43 +157,6 @@
                                     Detalles
                                     </div>
 
-                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body" id="mostrar">
-                                            <form action="">
-                                                <table class="table" border = "0">
-                                                    <tr>
-                                                        <th rowspan="4">
-                                                            <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="Auto 1">
-                                                        </th>
-                                                        <th> <?php echo $marca . " " . $nombre;?> </th>
-                                                        <th> <?php echo $modelo;?> </th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th> 
-                                                            Costo:  <?php echo $costo;?> 
-                                                        </th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>
-                                                            <button type="button" class="btn btn-secondary"> Cerrar </button>
-                                                        </th>
-                                                    </tr>
-                                                </table>
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
-                                        </div>
-                                        </div>
-                                    </div>
-                                    </div>
 
                                     <script>
 
