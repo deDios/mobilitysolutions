@@ -90,6 +90,11 @@ header{
     grid-row-gap: 10px;
     padding-right: 20px;
 }
+
+.lista_item:nth-of-type(n+8) {
+    display: none;
+  }
+
 .lista_item .item {
     display: flex;
     flex-direction: row;
