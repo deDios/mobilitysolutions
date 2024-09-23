@@ -111,6 +111,7 @@ header{
 .item figure{
     width: 200px;
     height: 168px;
+    padding-top: 10px;
 }
 
 
@@ -133,6 +134,7 @@ header{
     height: 100%;
     width: 100%;
     padding-right: 10px;
+    padding-left: 10px;
 }
 
 .info-producto .titulo_marca {
