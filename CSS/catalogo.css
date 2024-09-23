@@ -232,7 +232,7 @@ header{
         border-radius: 0 0 10px 10px;
         
     }
-    .item figure {
+    .lista_item .item figure {
         width: 400px;
         height: 300px;
         align-items:center; 
