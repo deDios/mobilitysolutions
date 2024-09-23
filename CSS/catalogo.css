@@ -252,7 +252,6 @@ header{
         grid-template-rows: 1fr 2fr 1fr 1fr 1fr 1fr;
         height: 150px;
         width: 100%;
-        padding-right: 10px;
         padding-top: 10px;
         padding-left: 10px;
     }
@@ -284,6 +283,7 @@ header{
     .titulo_marca img {
         overflow: hidden;
         object-fit: scale-down;
+        padding-right: 10px;
     }
 
 
