@@ -209,7 +209,7 @@ header{
         flex-direction: column;
     }
     nav{
-        padding: 10px 0px ;
+        padding: 0px 0px ;
     }
     .container-items{
         display: grid;
@@ -224,7 +224,7 @@ header{
     .lista_item .item {
         display: flex;
         flex-direction: column;
-        height: 500px;
+        height: 100%;
         width: 100%;
         padding-left: 10px;
         border: 1px solid gainsboro;
@@ -235,7 +235,7 @@ header{
         
     }
     .lista_item figure {
-        width: 90%;
+        width: 80%;
         height: 300px;
     }
 
