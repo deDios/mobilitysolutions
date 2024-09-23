@@ -129,11 +129,6 @@
                                                                     Costo:  <?php echo $costo;?> 
                                                                 </th>
                                                             </tr>
-                                                            <tr>
-                                                                <th>
-                                                                    <button type="button" class="btn btn-secondary"> Cerrar </button>
-                                                                </th>
-                                                            </tr>
                                                         </table>
                                                     </form>
                                                 </div>
