@@ -219,8 +219,6 @@ header{
         display: grid;
         grid-template-columns: repeat(1,1fr);
         grid-row-gap: 10px;
-        padding-left: 10px;
-        
     }
     .lista_item .item {
         display: flex;
@@ -234,7 +232,7 @@ header{
         
     }
     .item figure {
-        width: 300px;
+        width: 400px;
         height: 200px;
     }
 
