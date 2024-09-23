@@ -238,7 +238,7 @@ header{
 
     .item figure img{
         overflow: hidden;
-        width: 90%;
+        width: 95%;
         height: 90%;
         padding-left: 10px;
         padding-top: 15px;
@@ -250,6 +250,7 @@ header{
         display: grid;
         padding-top: 10px;
         padding-left: 10px;
+        padding-right: 10px;
         grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
         height: 150px;
     }
