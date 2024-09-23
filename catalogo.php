@@ -31,7 +31,7 @@
     </header>
     
     <div class="Menu-lateral">
-        <h1>Catálogo</h1>
+        <h1>Catálogo A</h1>
     </div>
 
     <div class="Titulo-boton">
