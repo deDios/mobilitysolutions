@@ -89,7 +89,7 @@
                                 $costo = $row['costo'];
                                 $sucursal = $row['sucursal'];
             ?> 
-                                    <a href="abrir_detalle(<?php echo $id;?>)" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                                    <a href="javascript:abrir_detalle(<?php echo $id;?>)" data-bs-toggle="modal" data-bs-target="#exampleModal" >
                                         <div class="item">
                                             <figure>
                                                 <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="Auto 1">
@@ -117,9 +117,28 @@
                                     Detalles
                                     </div>
 
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body" id="mostrar">
+                                            ...
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+
                                     <script>
 
                                         var resultado = document.getElementById("mostrar");
+
                                         function abrir_detalle(c){
                                           /*location.href="detalle.php?cod="+c;*/
                                           var xmlhttp;
@@ -155,27 +174,6 @@
             ?>
         </div>
     </div>
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body" id="mostrar">
-            ...
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-        </div>
-    </div>
-    </div>
-
-
-
 
     <footer>
         <div class="pie_pag">
