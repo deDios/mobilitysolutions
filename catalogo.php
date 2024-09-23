@@ -88,8 +88,8 @@
                                 $mensualidad = $row['mensualidad'];
                                 $costo = $row['costo'];
                                 $sucursal = $row['sucursal'];
-            ?>
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+            ?> 
+                                    <a href="abrir_detalle(<?php echo $id;?>)" data-bs-toggle="modal" data-bs-target="#exampleModal" >
                                         <div class="item">
                                             <figure>
                                                 <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="Auto 1">
@@ -118,9 +118,29 @@
                                     </div>
 
                                     <script>
+
+                                        var resultado = document.getElementById("mostrar");
                                         function abrir_detalle(c){
-                                          location.href="detalle.php?cod="+c;
+                                          /*location.href="detalle.php?cod="+c;*/
+                                          var xmlhttp;
+
+                                          if(window.XMLHttpRequest){
+                                                xmlhttp = new XMLHttpRequest();
+                                          }
+                                          else{
+                                                xmlhttp = new ActiveXObject("Microsoft.XLMHTTP");
+                                          }
+
+                                          xmlhttp.onreadystatechange = function(){
+                                                if(xmlhttp.readyState==4 && xmlhttp.status==200){
+                                                    resultado.innerHTML=xmlhttp.responseText;
+                                                }
+                                          }
+                                          xmlhttp.open("GET", "detalle.php?cod="+c,true);
+                                          xmlhttp.send();
                                         }
+
+
                                         function cerrar_detalle(){
                                             document.getElementById("detalles").style.display="none";
                                         }
@@ -143,7 +163,7 @@
             <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" id="mostrar">
             ...
         </div>
         <div class="modal-footer">
