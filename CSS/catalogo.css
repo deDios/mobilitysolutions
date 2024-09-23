@@ -252,7 +252,7 @@ header{
     .item .info-producto{
         display: grid;
         grid-template-rows: 1fr 2fr 1fr 1fr 1fr 1fr;
-        height: 150px;
+        height: 100px;
         width: 100%;
         padding-top: 10px;
         padding-left: 10px;
