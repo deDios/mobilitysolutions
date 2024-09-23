@@ -134,6 +134,13 @@
         </div>
     </div>
 
+    <footer>
+        <div class="pie_pag">
+            <p>DERECHOS DE AUTOR &COPY; 2024 - MOBILITY SOLUTIONTS CORPORATIONS</p>
+            <p>Contactanos: contacto@mobilitysolutionscorp.com</p>
+        </div>
+    </footer>
+
    
 
  </body>
