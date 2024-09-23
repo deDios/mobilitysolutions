@@ -40,6 +40,9 @@ $query = '  select
                 $lista[] = $row;
             }
         }
+        else{
+            echo "Falla en conexión";
+        }
 
         $nombre = $lista['nombre'];
 
