@@ -65,7 +65,14 @@ echo $nombre;
     <link rel="stylesheet" href="CSS/estilos.css">
 </head>
 <body>
-    <?php
-    ?>
+    <form action="">
+        <table border = "0">
+            <tr>
+                <th rowspan="4">
+                    <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="Auto 1">
+                </th>
+            </tr>
+        </table>
+    </form>
 </body>
 </html>
