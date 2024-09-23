@@ -71,6 +71,11 @@ echo $nombre;
                 <th rowspan="4">
                     <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="Auto 1">
                 </th>
+                <th> <?php echo $marca;?> . " " . <?php echo $nombre;?> </th>
+                <th> <?php echo $modelo;?> </th>
+            </tr>
+            <tr>
+                <th> "Costo: " . <?php echo $modelo;?> </th>
             </tr>
         </table>
     </form>
