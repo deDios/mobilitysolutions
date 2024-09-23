@@ -156,6 +156,7 @@ header{
 .info-producto .version_unidad{
     color: black;
     font-size: 10px;
+    width: 100%;
 }
 .info-producto .titulo_desde{
     color: black;
