@@ -253,6 +253,8 @@ header{
         height: 150px;
         width: 100%;
         padding-right: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
     }
 
     /*
