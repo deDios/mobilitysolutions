@@ -111,10 +111,10 @@
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Detalle Auto</h1>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
-                                                <div class="modal-body" id="mostrar">
+                                                <div class="modal-body">
                                                     <form action="">
                                                         <table class="table" border = "0">
                                                             <tr>
@@ -144,47 +144,8 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
                                     </a>
-
-                                    <div class="detalle" id="detalles">
-                                        <div class="cerrar">
-                                            <a href="javascript:cerrar_detalle()">
-                                                <img src="logo_atras.png" alt="">
-                                            </a>
-                                        </div>
-                                    Detalles
-                                    </div>
-
-
-                                    <script>
-
-                                        var resultado = document.getElementById("mostrar");
-
-                                        function abrir_detalle(c){
-                                          /*location.href="detalle.php?cod="+c;*/
-                                          var xmlhttp;
-
-                                          if(window.XMLHttpRequest){
-                                                xmlhttp = new XMLHttpRequest();
-                                          }
-                                          else{
-                                                xmlhttp = new ActiveXObject("Microsoft.XLMHTTP");
-                                          }
-
-                                          xmlhttp.onreadystatechange = function(){
-                                            resultado.innerHTML=xmlhttp.responseText;    
-                                          }
-                                          xmlhttp.open("GET", "detalle.php?cod="+c,true);
-                                          xmlhttp.send();
-                                        }
-
-
-                                        function cerrar_detalle(){
-                                            document.getElementById("detalles").style.display="none";
-                                        }
-                                    </script>
+                                 
             <?php
                             }
                         } else{
@@ -195,6 +156,14 @@
             ?>
         </div>
     </div>
+
+    <script>
+        function abrir_detalle(c){
+        }
+        function cerrar_detalle(){
+            document.getElementById("detalles").style.display="none";
+        }
+    </script>
 
     <footer>
         <div class="pie_pag">
