@@ -93,7 +93,7 @@ header{
 .lista_item .item {
     display: flex;
     flex-direction: row;
-    height: 180px;
+    height: 200px;
     width: 100%;
     border: 1px solid gainsboro;
     border-top: 5px solid black;
@@ -113,7 +113,7 @@ header{
 
 .item figure img{
     overflow: hidden;
-    width: 200px;
+    width: 180px;
     height: 100%;
     object-fit: scale-down;
     border-radius: 10px 0 0 10px;
