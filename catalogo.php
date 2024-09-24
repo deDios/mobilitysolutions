@@ -82,6 +82,10 @@
                             }                          
             ?>
                         <table class="table_class" id="Tablax">
+                            <thead>
+                                <th>Auto</th>
+                            </thead>
+                            <tbody>
                             <?php
                             $num=0;
                                 foreach ($carros as $reg){
@@ -135,6 +139,7 @@
                                 <?php
                                 }
                                 ?> 
+                            </tbody>
                         </table>
                         <?php
                         }
