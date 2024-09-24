@@ -1,12 +1,6 @@
 
  <!DOCTYPE html>
 
-<?php
-    $obj_metodo = include "db_consultas/Consultas.php";
-    $lista_carros = $obj_metodo->listar_carros();
-    echo sizeof($lista_carros);
-?>
-
  <html lang="en">
  <head>
     <meta charset="UTF-8">
@@ -81,10 +75,7 @@
                                     left join mobility_solutions.tmx_marca as marca on auto.marca = marca.id
                                     left join mobility_solutions.tmx_marca_auto as m_auto on auto.nombre = m_auto.id;';
                         $result = mysqli_query($con,$query);  
-                        if ($result){    
-                            foreach ($result as $row2) {
-                                $carros[]=$row2;
-                            }      
+                        if ($result){         
                             while($row = mysqli_fetch_assoc($result)){
                                 $id = $row['id'];
                                 $nombre = $row['nombre'];
