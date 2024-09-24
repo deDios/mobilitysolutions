@@ -117,27 +117,27 @@ $query = 'select
                             </div>
                         </div>
                         <div class="item">
-                            <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img02.jpg" alt="fotografia" width="600" height="300"> 
+                            <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="fotografia" width="600" height="300"> 
                             <div class="carousel-caption d-none d-md-block">
                             </div>
                         </div>
                         <div class="item">
-                            <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img03.jpg" alt="fotografia" width="600" height="300"> 
+                            <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="fotografia" width="600" height="300"> 
                             <div class="carousel-caption d-none d-md-block">
                             </div>
                         </div>
                         <div class="item">
-                            <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img04.jpg" alt="fotografia" width="600" height="300"> 
+                            <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="fotografia" width="600" height="300"> 
                             <div class="carousel-caption d-none d-md-block">
                             </div>
                         </div>
                         <div class="item">
-                            <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img05.jpg" alt="fotografia" width="600" height="300"> 
+                            <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="fotografia" width="600" height="300"> 
                             <div class="carousel-caption d-none d-md-block">
                             </div>
                         </div>
                         <div class="item">
-                            <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img06.jpg" alt="fotografia" width="600" height="300"> 
+                            <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="fotografia" width="600" height="300"> 
                             <div class="carousel-caption d-none d-md-block">
                             </div>
                         </div>
