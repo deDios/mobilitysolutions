@@ -15,7 +15,6 @@ include "Conexion.php";
 
 <script src="js/jquery-3.7.1.js">
         var div_detalle = document.getElementById('body_detalle');
-        function abrir_detalle(){
                 var xmlhttp = new XMLHttpRequest();
                 xmlhttp.open('GET','detalle.php?cod=5',true);
                 xmlhttp.onload = function (){
@@ -27,7 +26,7 @@ include "Conexion.php";
                     }       
             }
             xmlhttp.send();   
-        }
+        
     </script>
 
 </body>
