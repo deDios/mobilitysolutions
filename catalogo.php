@@ -132,7 +132,7 @@
                                                 </div>
                                             </div>            
 
-    <script src="js/jquery-3.2.1.min.js">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
         var div_detalle = document.getElementById("body_detalle");
         function abrir_detalle(cod){
                 var xmlhttp; 
