@@ -161,17 +161,14 @@ header{
     color: black;
     font-size: 10px;
     width: 100%;
-    font-weight:lighter;
 }
 .info-producto .titulo_desde{
     color: black;
     font-size: 10px;
-    font-weight:lighter;
 }
 .info-producto .Precio{
     color: black;
     font-size: 12px;
-    font-weight:lighter;
 }
 .info-producto .mensualidades{
     color: black;
@@ -182,7 +179,6 @@ header{
     color: black;
     font-size: 8px;
     text-decoration: underline gray;
-    font-weight:lighter;
 }
 .Localidad i {
     width: 20px;

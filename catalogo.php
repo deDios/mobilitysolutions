@@ -102,10 +102,7 @@
                                                 <div class="Precio"><?php echo "$" . number_format($costo) . " MXN de contado"; ?> </div>
                                                 <div class="Localidad"> <i class="fas fa-location-arrow" ></i> <?php echo " " . $sucursal;?>  </div>
                                             </div>
-                                            
-                                        </div>
-
-                                            
+                                        </div>            
                                     </a>                             
             <?php
                             }
@@ -143,7 +140,6 @@
         
         function abrir_detalle(cod){
             
-            console.log('Entrando a función');
             var xmlhttp = new XMLHttpRequest();  
             xmlhttp.open("GET","detalle.php?cod="+cod,true);  
                 xmlhttp.onload = function (){
