@@ -124,8 +124,7 @@ header{
 
 .carrusel_carr {
     width: 100%;
-    min-height: 500px;
-    max-height: 500px;
+    height: 200px;
 }
 .carrusel_carr .carousel-inner .item img,
     .carrusel_carr .carousel-inner .item a img {
