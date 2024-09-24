@@ -64,8 +64,8 @@ header{
 .contenedor{
     display: grid;
     grid-template-columns: 3fr 2fr;
-    padding-top: 25px;
-    height: 700px;
+    padding-top: 15px;
+    height: 100%;
 }
 .contenedor .contenedor_carr {
     display: grid;
