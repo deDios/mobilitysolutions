@@ -155,7 +155,7 @@ $query = 'select
 <!-------------------------------------- Div detalle de auto ----------------------------------------------------------->
 
             <div class="detalle_carr">
-            <form action="">
+                <form action="">
                     <table class="table" border = "0">
                         <tr>
                             <th rowspan="4">
