@@ -86,7 +86,7 @@
                                 $costo = $row['costo'];
                                 $sucursal = $row['sucursal'];
             ?> 
-                                    <a href="javascript:detalle(<?php echo $id;?>)" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                                    <a href="javascript:detalle(<?php echo $id;?>)">
                                         <div class="item">
                                             <figure>
                                                 <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="Auto 1">
