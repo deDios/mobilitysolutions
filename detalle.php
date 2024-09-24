@@ -83,18 +83,18 @@ echo $nombre;
     <div class="contenedor">
         <div class="contenedor_carr">
 
-        <!-- Titulo de carrusel -->
+            <!-- Titulo de carrusel -->
             <div class="titulo_carr">
                 <img src="Imagenes/Marcas/logo_<?php echo $marca; ?>.jpg" alt="logo 1">
                 <div class="texto">  <?php echo $marca . " " . $nombre; ?>  </div>
             </div>
 
-        <!-- Carrusel auto seleccionado -->
+            <!-- Carrusel auto seleccionado -->
             <div class="carrusel_carr">
                 <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="Auto 1">
             </div>
 
-        <!-- Div detalle de auto -->
+            <!-- Div detalle de auto -->
             <div class="detalle_carr">
             <form action="">
                     <table class="table" border = "0">
@@ -117,13 +117,12 @@ echo $nombre;
                     </table>
                 </form>
             </div>
+            
         </div>
         <div class="cotizador">
 
         </div>
     </div>
-
-
 
     <footer>
         <div class="pie_pag">
