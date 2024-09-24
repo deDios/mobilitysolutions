@@ -132,12 +132,11 @@
                                                 </div>
                                             </div>            
 
-    <script src="js/jquery-3.2.1.min.js">
+    <script src="js/jquery-3.7.1.js"> 
         var div_detalle = document.getElementById("body_detalle");
         function abrir_detalle(cod){
-                var xmlhttp; 
-                xmlhttp = new XMLHttpRequest();
                 
+            var xmlhttp = new XMLHttpRequest();    
                 xmlhttp.onload = function (){
                     if (xmlhttp.status==200){
                         div_detalle.innerHTML = xmlhttp.responseText;
