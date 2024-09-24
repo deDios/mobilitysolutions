@@ -81,7 +81,7 @@
                                 $carros[]=$row;
                             }                          
             ?>
-                        <table class="table_class" id = "Tablax">
+                        <table class="table_class" id="Tablax">
                             <?php
                             $num=0;
                                 foreach ($carros as $reg){
@@ -187,9 +187,9 @@
 
     <script>
         $(document).ready(function () {
-        $('Tablax').DataTable();
+        $('#Tablax').DataTable();
         });
     </script>
-    
+
  </body>
  </html>
