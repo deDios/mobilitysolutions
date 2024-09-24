@@ -123,7 +123,7 @@
                                                         <h1 class="modal-title fs-5" id="exampleModalLabel">Detalle Auto</h1>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
-                                                    <div class="modal-body" id = "mostrar">
+                                                    <div class="modal-body" id="body_detalle">
                                                         ...
                                                     </div>
                                                     <div class="modal-footer">
@@ -135,20 +135,22 @@
                                             </div>            
 
     <script>
+        var div_detalle = document.getElementById("body_detalle");
         function abrir_detalle(cod){
                 var xmlhttp;
                 xmlhttp = new XMLHttpRequest();
                 xmlhttp.open('GET','detalle.php?cod='+cod,true);
                 xmlhttp.onload = function (){
                     if (xmlhttp.status==200){
-                        document.querySelector("mostrar").innerHTML = xmlhttp.responseText;
+                        div_detalle.innerHTML = xmlhttp.responseText;
                     }
                     else{
-                        document.querySelector("mostrar").innerHTML = "Cargando....";
+                        div_detalle.innerHTML = "Cargando....";
                     }
                 xmlhttp.send();          
             }
-            document.querySelector("mostrar").innerHTML = "Cargando....";
+            xmlhttp.send(); 
+            div_detalle.innerHTML = 'Cargando....';
         }
     </script>
 
