@@ -92,6 +92,11 @@ header{
     row-gap: 10px;
 }
 
+.table_class th {
+    column-gap: 10px;
+    row-gap: 10px;
+}
+
 .lista_item .item {
     display: flex;
     flex-direction: row;
