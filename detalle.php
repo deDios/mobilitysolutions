@@ -53,8 +53,6 @@ $query = 'select
 
 echo $cod;
 echo $nombre;
-
-
 ?>
 
 <html lang="en">

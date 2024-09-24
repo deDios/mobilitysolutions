@@ -137,9 +137,6 @@
                                             </div>            
 
     <script>
-        
-
-        var resultado = document.getElementById("mostrar");
         function abrir_detalle(c){
             var xmlhttp;
             xmlhttp = new XMLHttpRequest();
@@ -147,10 +144,10 @@
             xmlhttp.onreadystatechange = function (){
                 if (xmlhttp.readyState==4 && xmlhttp.status==200) {
                     console.log ("Cambiando de estado" + xmlhttp.readyState);
-                    resultado.innerHTML = xmlhttp.responseText;
+                    document.querySelector("mostrar").innerHTML = xmlhttp.responseText;
                 }
                 else{
-                    resultado.innerHTML = "Espere....";
+                    document.querySelector("mostrar").innerHTML = "Espere....";
                 }
                 
             }
