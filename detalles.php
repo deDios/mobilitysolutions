@@ -49,6 +49,7 @@ $query = 'select
                                 $interior = $row['interior'];
                                 $combustible = $row['combustible'];
                                 $cilindros = $row['cilindros'];
+                                $transmision = $row['transmision'];
             }
         }
         else{
@@ -159,16 +160,16 @@ $query = 'select
             <div class="detalle_carr">
                 <ul class="list-group">
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Interior
+                        Interior de vehiculo.
                         <span class="badge bg-primary rounded-pill"><?php echo $interior;?></span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        A second list item
-                        <span class="badge bg-primary rounded-pill">2</span>
+                        Color de vehiculo.
+                        <span class="badge bg-primary rounded-pill"><?php echo $color;?></span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        A third list item
-                        <span class="badge bg-primary rounded-pill">1</span>
+                        Transmision
+                        <span class="badge bg-primary rounded-pill"><?php echo $transmision;?></span>
                     </li>
                 </ul>
                 <ul class="list-group">
