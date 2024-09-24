@@ -85,8 +85,8 @@ header{
 
 .table_class{
     border: 0px;
-    width: 90%; 
-    height: 300px;
+    width: 95%; 
+    height: auto;
     align-items: center;
     column-gap: 10px;
     row-gap: 10px;
