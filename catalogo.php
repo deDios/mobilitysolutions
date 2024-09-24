@@ -40,7 +40,7 @@
 
         </div>
         <div class="lista_item">
-            <?php
+            <?php 
                 $inc = include "db/Conexion.php";    
                     if ($inc){
                         $query = '  select 
@@ -74,7 +74,10 @@
                                     left join mobility_solutions.tmx_marca as marca on auto.marca = marca.id
                                     left join mobility_solutions.tmx_marca_auto as m_auto on auto.nombre = m_auto.id;';
                         $result = mysqli_query($con,$query);  
-                        if ($result){          
+                        if ($result){    
+                            foreach ($result as $row2) {
+                                $carros[]=$row2;
+                            }      
                             while($row = mysqli_fetch_assoc($result)){
                                 $id = $row['id'];
                                 $nombre = $row['nombre'];

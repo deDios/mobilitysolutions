@@ -19,7 +19,7 @@ include "Conexion.php";
         </a>
         <nav>
             <a href="index.php" class="nav-link" title="Home">Inicio</a>
-            <a href="catalogo.php" class="nav-link" title="Home">Catálogo</a>
+            <a href="db_consultas/Tienda.php?op=1" class="nav-link" title="Home">Catálogo</a>
             <a href="" class="nav-link">Cotizador</a>
             <a href="" class="nav-link">Sobre nosotros</a>
             <a href="" class="nav-link">Contacto</a>
