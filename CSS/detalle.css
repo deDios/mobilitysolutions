@@ -143,4 +143,10 @@ header{
         grid-template-columns: repeat(1,1fr);
         height: 100%;
     }
+    .Descripcion .texto2{
+        color: black;
+        font-size: 8px;
+        font-weight:lighter;
+        padding-top: 5px;
+    }
 }
