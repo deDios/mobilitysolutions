@@ -116,8 +116,8 @@ header{
 
 /* ---------------------------- Estilo para carrusel detalle auto  ----------------------------*/
 .carousel-inner > .item > img,
-  .carousel-inner > .item > a > img {
-      width: 60%;
+    .carousel-inner > .item > a > img {
+      width: 80%;
       margin: auto;
   }
 /* ----------------------------- Cierre para estilo carrusel en detalle auto  -----------------------------*/
