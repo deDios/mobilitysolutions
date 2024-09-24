@@ -74,7 +74,7 @@ header{
     grid-template-rows: 1fr 4fr 2fr ;
     grid-column-gap: 10px;
     padding-left: 10px;
-    padding-right: 10px;;
+    padding-right: 10px;
 }
 
 .contenedor_carr .titulo_carr { /* Estilo para titulo de detalle auto  */
@@ -94,4 +94,11 @@ header{
     height: 60px;
     overflow: hidden;
     object-fit: scale-down;
+}
+
+.titulo_carr .Descripcion {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    padding-left: 10px;
+    padding-right: 10px;
 }

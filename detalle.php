@@ -86,7 +86,10 @@ echo $nombre;
             <!-- Titulo de carrusel -->
             <div class="titulo_carr">
                 <img src="Imagenes/Marcas/logo_<?php echo $marca; ?>.jpg" alt="logo 1">
-                <div class="texto">  <?php echo $marca . " " . $nombre; ?>  </div>
+                <div class="Descripcion">
+                    <div class="texto">  <?php echo $marca; ?> </div>
+                    <div class="texto2"> <?php echo $modelo; ?> </div>
+                </div>
             </div>
 
             <!-- Carrusel auto seleccionado -->
@@ -117,7 +120,7 @@ echo $nombre;
                     </table>
                 </form>
             </div>
-            
+
         </div>
         <div class="cotizador">
 
