@@ -45,6 +45,10 @@ $query = 'select
                                 $mensualidad = $row['mensualidad'];
                                 $costo = $row['costo'];
                                 $sucursal = $row['sucursal'];
+                                $color = $row['color'];
+                                $interior = $row['interior'];
+                                $combustible = $row['combustible'];
+                                $cilindros = $row['cilindros'];
             }
         }
         else{
@@ -88,7 +92,7 @@ echo $nombre;
                 <img src="Imagenes/Marcas/logo_<?php echo $marca; ?>.jpg" alt="logo 1">
                 <div class="Descripcion">
                     <div class="texto">  <?php echo $marca; ?> </div>
-                    <div class="texto2"> <?php echo $modelo; ?> </div>
+                    <div class="texto2"> <?php echo $modelo . " | " . $interior ." | " . $combustible . " | " . $cilindros ;?> </div>
                 </div>
             </div>
 
