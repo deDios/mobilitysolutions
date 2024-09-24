@@ -136,16 +136,16 @@
         var div_detalle = document.getElementById("body_detalle");
         function abrir_detalle(cod){
                 var xmlhttp = new XMLHttpRequest();
-                xmlhttp.open('GET','detalle.php?cod='+cod,true);
-                xmlhttp.onload = function (){
-                    if (xmlhttp.status==200){
+                xmlhttp.onreadystatechange = function (){
+                    if (xmlhttp.readyState==4 && xmlhttp.status==200){
                         div_detalle.innerHTML = xmlhttp.responseText;
                     }
                     else{
                         div_detalle.innerHTML = "Cargando....";
-                    }
-                xmlhttp.send();          
+                    }       
             }
+            xmlhttp.open("GET","detalle.php?cod="+cod,true);
+            xmlhttp.send();   
         }
     </script>
 
