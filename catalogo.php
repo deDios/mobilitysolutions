@@ -81,7 +81,7 @@
                             } 
                             echo sizeof($carros);     
                             
-                        ?>
+            ?>
                         <table class="table_class">
                             <?php
                             $num=0;
