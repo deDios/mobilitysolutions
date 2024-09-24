@@ -95,8 +95,8 @@ header{
 .lista_item .item {
     display: flex;
     flex-direction: row;
-    height: 300px;
-    width: 250px;
+    height: 250px;
+    width: 100%;
     border: 1px solid gainsboro;
     border-top: 5px solid black;
     border-radius: 0 0 10px 10px;
