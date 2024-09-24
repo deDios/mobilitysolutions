@@ -50,6 +50,8 @@ $query = 'select
                                 $combustible = $row['combustible'];
                                 $cilindros = $row['cilindros'];
                                 $transmision = $row['transmision'];
+                                $kilometraje = $row['kilometraje'];
+                                $eje = $row['eje'];
             }
         }
         else{
@@ -174,30 +176,26 @@ $query = 'select
                 </ul>
                 <ul class="list-group">
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Interior
-                        <span class="badge bg-primary rounded-pill"><?php echo $interior;?></span>
+                        kilometraje
+                        <span class="badge bg-primary rounded-pill"><?php echo number_format($kilometraje) . "km";?></span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        A second list item
-                        <span class="badge bg-primary rounded-pill">2</span>
+                        Tipo de combustible
+                        <span class="badge bg-primary rounded-pill"><?php echo $combustible;?></span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        A third list item
-                        <span class="badge bg-primary rounded-pill">1</span>
+                        Cilindros
+                        <span class="badge bg-primary rounded-pill"><?php echo $cilindros;?></span>
                     </li>
                 </ul>
                 <ul class="list-group">
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Interior
-                        <span class="badge bg-primary rounded-pill"><?php echo $interior;?></span>
+                        EJE
+                        <span class="badge bg-primary rounded-pill"><?php echo $eje;?></span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        A second list item
-                        <span class="badge bg-primary rounded-pill">2</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        A third list item
-                        <span class="badge bg-primary rounded-pill">1</span>
+                        Sucursal
+                        <span class="badge bg-primary rounded-pill"><?php echo $sucursal;?></span>
                     </li>
                 </ul>
             </div>
