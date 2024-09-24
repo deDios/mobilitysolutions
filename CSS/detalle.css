@@ -123,7 +123,7 @@ header{
 }
 .carrusel_carr .carousel-inner .item img,
     .carrusel_carr .carousel-inner .item a img {
-      width: 60%;
+      width: 90%;
       margin: auto;
   }
 /* ----------------------------- Cierre para estilo carrusel en detalle auto  -------------------------------*/
