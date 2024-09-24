@@ -70,7 +70,6 @@ header{
 .contenedor .contenedor_carr {
     display: grid;
     grid-template-rows: 1fr 2fr 1fr ;
-    grid-column-gap: 10px;
     padding-left: 10px;
     padding-right: 10px;
 }
