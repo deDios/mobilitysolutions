@@ -116,6 +116,11 @@ $query = 'select
                             <div class="carousel-caption d-none d-md-block">
                             </div>
                         </div>
+                        <div class="item">
+                            <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="fotografia" width="600" height="300"> 
+                            <div class="carousel-caption d-none d-md-block">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
