@@ -105,8 +105,20 @@
                                                 <div class="Precio"><?php echo "$" . number_format($costo) . " MXN de contado"; ?> </div>
                                                 <div class="Localidad"> <i class="fas fa-location-arrow" ></i> <?php echo " " . $sucursal;?>  </div>
                                             </div>
-
-                                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        </div>
+                                    </a>
+                                 
+            <?php
+                            }
+                        } else{
+                            echo "Hubo un error en la consulta";
+                        }
+                        mysqli_free_result($result);                  
+                    }
+            ?>
+        </div>
+    </div>
+                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                     <div class="modal-header">
@@ -137,20 +149,7 @@
                                                     </div>
                                                     </div>
                                                 </div>
-                                                </div>
-                                        </div>
-                                    </a>
-                                 
-            <?php
-                            }
-                        } else{
-                            echo "Hubo un error en la consulta";
-                        }
-                        mysqli_free_result($result);                  
-                    }
-            ?>
-        </div>
-    </div>
+                                            </div>            
 
     <script>
         function abrir_detalle(c){
