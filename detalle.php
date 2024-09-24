@@ -149,6 +149,7 @@ $query = 'select
                             <span class="sr-only">siguiente</span>
                         </a>
                     </div>
+                </div>
             </div>
 
 <!-------------------------------------- Div detalle de auto ----------------------------------------------------------->
