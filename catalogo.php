@@ -1,5 +1,6 @@
 
  <!DOCTYPE html>
+
 <?php
     $obj_metodo = include "db_consultas/Consultas.php";
     $lista_carros = $obj_metodo->listar_carros();
