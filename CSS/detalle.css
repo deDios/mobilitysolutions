@@ -124,6 +124,7 @@ header{
 .carrusel_carr {
     width: 100%;
     height: 100%;
+    align-items: center;
 }
 .carrusel_carr .carousel-inner{
     width: 100%;
@@ -133,6 +134,5 @@ header{
 .carrusel_carr .carousel-inner .item img,
     .carrusel_carr .carousel-inner .item a img {
       width: 80%;
-      margin: auto;
   }
 /* ----------------------------- Cierre para estilo carrusel en detalle auto  -------------------------------*/
