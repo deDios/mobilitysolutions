@@ -141,7 +141,7 @@ header{
     .contenedor{
         display: grid;
         grid-template-columns: repeat(1,1fr);
-        padding-left: 25px;
+        padding-left: 10px;
         height: 100%;
     }
 }
