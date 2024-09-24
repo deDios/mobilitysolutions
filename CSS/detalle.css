@@ -61,22 +61,16 @@ header{
 }
 
 /*--------------------------------------- cuerpo de pagina--------------------*/
-
 .contenedor{
     display: grid;
     grid-template-columns: 3fr 2fr;
     padding-top: 25px;
     height: 100%;
 }
-
 .contenedor .contenedor_carr {
     display: grid;
     grid-template-rows: 1fr 2fr 1fr ;
     grid-column-gap: 10px;
-    padding-right: 10px;
-}
-
-.contenedor_carr {
     padding-left: 10px;
     padding-right: 10px;
 }
