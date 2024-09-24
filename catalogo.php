@@ -75,44 +75,33 @@
                                     left join mobility_solutions.tmx_marca as marca on auto.marca = marca.id
                                     left join mobility_solutions.tmx_marca_auto as m_auto on auto.nombre = m_auto.id;';
                         $result = mysqli_query($con,$query);  
-                        if ($result){         
-                            while($row = mysqli_fetch_assoc($result)){
+                        if ($result){    
+                            foreach ($result as $row) {
+                                $carros[]=$row;
+                            } 
+                            echo sizeof($carros);     
+                            
+                            /*while($row = mysqli_fetch_assoc($result)){
                                 $id = $row['id'];
                                 $nombre = $row['nombre'];
                                 $modelo = $row['modelo'];
                                 $marca = $row['marca'];
                                 $mensualidad = $row['mensualidad'];
                                 $costo = $row['costo'];
-                                $sucursal = $row['sucursal'];
+                                $sucursal = $row['sucursal'];*/
             ?> 
-                                    <a href="javascript:abrir_detalle(<?php echo $id;?>)" data-bs-toggle="modal" data-bs-target="#exampleModal" >
-                                        <div class="item">
-                                            <figure>
-                                                <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="Auto 1">
-                                            </figure>
-                                            <div class="info-producto">
-                                                <div class="titulo_marca">
-                                                    <div class="titulo_carro">  <?php echo $marca . " " . $nombre; ?>  </div>
-                                                    <img src="Imagenes/Marcas/logo_<?php echo $marca; ?>.jpg" alt="logo 1">
-                                                </div>
-                                                <div class="version_unidad"><?php echo "N°25000A/" .  $id . " - " . $modelo; ?></div>
-                                                <div class="titulo_desde">Mensualidades, DESDE</div>
-                                                <div class="mensualidades"> <?php echo "$" . number_format($mensualidad) . " MXN/mes*"; ?> </div>
-                                                <div class="Precio"><?php echo "$" . number_format($costo) . " MXN de contado"; ?> </div>
-                                                <div class="Localidad"> <i class="fas fa-location-arrow" ></i> <?php echo " " . $sucursal;?>  </div>
-                                            </div>
-                                            
-                                        </div>
-
-                                            
-                                    </a>                             
+            
+                                                                
             <?php
-                            }
-                        } else{
-                            echo "Hubo un error en la consulta";
                         }
-                        mysqli_free_result($result);                  
-                    }
+                        }else{
+
+                        } 
+                        /*
+                        }
+                        mysqli_free_result($result); 
+                        */                 
+                    
             ?>
         </div>
     </div>
