@@ -76,7 +76,6 @@ header{
     max-width: 250px;
 }
 
-
 .container-items{
     display: grid;
     grid-template-columns: 1fr 5fr;
@@ -88,19 +87,17 @@ header{
     width: 95%; 
     height: auto;
     align-items: center;
-    column-gap: 10px;
-    row-gap: 10px;
 }
 
 .table_class th {
-    column-gap: 10px;
-    row-gap: 10px;
+    column-gap: 20px;
+    row-gap: 20px;
 }
 
 .lista_item .item {
     display: flex;
     flex-direction: row;
-    height: 250px;
+    height: 200px;
     width: 100%;
     border: 1px solid gainsboro;
     border-top: 5px solid black;
@@ -112,7 +109,6 @@ header{
 .lista_item  a{
     text-decoration: none;
 }
-
 
 .item figure{
     width: 250px;
