@@ -164,6 +164,7 @@ header{
     color: black;
     font-size: 10px;
     width: 100%;
+    font-weight:lighter;
 }
 .info-producto .titulo_desde{
     color: black;
