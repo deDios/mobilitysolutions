@@ -112,10 +112,9 @@ header{
     padding-top: 5px;
 }
 /* ----------------------------- Cierre para estilo para titulo de detalle auto  -----------------------------*/
-
 /* ---------------------------- Estilo para carrusel detalle auto  -------------------------------------------*/
-.carrusel_carr .carousel-inner .item img,
-    .carrusel_carr .carousel-inner .item a img {
+.contenedor_carr .carrusel_carr_auto .carousel-inner .item img,
+    .contenedor_carr .carrusel_carr_auto .carousel-inner .item a img {
       width: 90%;
       margin: auto;
   }

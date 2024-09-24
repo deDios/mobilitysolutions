@@ -97,7 +97,7 @@ $query = 'select
                 </div>
             </div>
 <!-------------------------------- Carrusel auto seleccionado -------------------------------------->
-            <div class="carrusel_carr">
+            <div class="carrusel_carr_auto">
                 <div id="theCarousel" class="carousel slide" data-ride="carousel">
                     <!-- Indicadores -->
                     <ol class="carousel-indicators">
