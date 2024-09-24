@@ -102,6 +102,8 @@
                                                 <div class="Precio"><?php echo "$" . number_format($costo) . " MXN de contado"; ?> </div>
                                                 <div class="Localidad"> <i class="fas fa-location-arrow" ></i> <?php echo " " . $sucursal;?>  </div>
                                             </div>
+                                            <button type="button" class="btn btn-primary" onclick="abrir_detalle(<?php echo $id;?>)">Agregar
+                                            </button>
                                         </div>
                                     </a>
                                  
