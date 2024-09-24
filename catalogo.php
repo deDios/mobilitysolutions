@@ -133,21 +133,25 @@
                                             </div>            
 
     <script src="js/jquery-3.7.1.js"> 
+        
         var div_detalle = document.getElementById("body_detalle");
+        
         function abrir_detalle(cod){
                 
-            var xmlhttp = new XMLHttpRequest();    
+            var xmlhttp = new XMLHttpRequest();  
+            xmlhttp.open("GET","detalle.php?cod="+cod,true);  
                 xmlhttp.onload = function (){
                     if (xmlhttp.status==200){
                         document.querySelector("body_detalle").innerHTML = xmlhttp.responseText;
+                        div_detalle.innerHTML= xmlhttp.responseText;
                     }
                     else{
                         div_detalle.innerHTML = "Cargando....";
                     }       
-            }
-            xmlhttp.open("GET","detalle.php?cod="+cod,true);
-            xmlhttp.send();   
+            }  
+            xmlhttp.send(); 
         }
+
     </script>
 
     <footer>
