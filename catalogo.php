@@ -122,7 +122,8 @@
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body" id="body_detalle">
-                                                        abrir_detalle(5);
+                                                        <?php echo $id; ?>    
+                                                        <?php echo $nombre; ?>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
