@@ -110,7 +110,7 @@ $query = 'select
                         <li data-target="#theCarousel" data-slide-to="4"></li> 
                         <li data-target="#theCarousel" data-slide-to="5"></li>    
                     </ol>
-                    <div class="carousel-inner" role="listbox" style="padding-left: 0;">
+                    <div class="carousel-inner" role="listbox" style="padding-left: 0;" style="padding-top: 0;">
                         <div class="item active">
                             <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="Ilustracion">
                             <div class="carousel-caption d-none d-md-block">
