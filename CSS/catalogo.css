@@ -96,7 +96,7 @@ header{
     display: flex;
     flex-direction: row;
     height: 300px;
-    width: 100%;
+    width: 250px;
     border: 1px solid gainsboro;
     border-top: 5px solid black;
     border-radius: 0 0 10px 10px;
