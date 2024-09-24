@@ -73,7 +73,8 @@ header{
     display: grid;
     grid-template-rows: 1fr 4fr 2fr ;
     grid-column-gap: 10px;
-    padding-left: 20px;
+    padding-left: 10px;
+    padding-right: 10px;;
 }
 
 .contenedor_carr .titulo_carr { /* Estilo para titulo de detalle auto  */
