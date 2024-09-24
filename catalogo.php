@@ -132,11 +132,10 @@
                                                 </div>
                                             </div>            
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    <script src="js/jquery-3.2.1.min.js">
         var div_detalle = document.getElementById("body_detalle");
         function abrir_detalle(cod){
-                var xmlhttp;
-                xmlhttp = new XMLHttpRequest();
+                var xmlhttp = new XMLHttpRequest();
                 xmlhttp.open('GET','detalle.php?cod='+cod,true);
                 xmlhttp.onload = function (){
                     if (xmlhttp.status==200){
@@ -147,8 +146,6 @@
                     }
                 xmlhttp.send();          
             }
-            xmlhttp.send(); 
-            div_detalle.innerHTML = 'Cargando....';
         }
     </script>
 
