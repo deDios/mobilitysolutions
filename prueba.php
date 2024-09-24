@@ -11,17 +11,12 @@ include "Conexion.php";
     <link rel="stylesheet" href="CSS/estilos.css">
 </head>
 <body>
-<div id = "body_detalle"> esta es mi texto </div>
-<script src="js/jquery-3.2.1.min.js">
+<div id = "body_detalle"> Este es mi texto </div>
+<script src="js/jquery-3.7.1.js">
         var div_detalle = document.getElementById("body_detalle");
         function abrir_detalle(){
-                var xmlhttp; 
-                if(window.XMLHttpRequest){
-                    xmlhttp = new XMLHttpRequest();
-                }
-                else{
-                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                }
+                var xmlhttp = new XMLHttpRequest();
+                
                 xmlhttp.onload = function (){
                     if (xmlhttp.status==200){
                         div_detalle.innerHTML = xmlhttp.responseText;
