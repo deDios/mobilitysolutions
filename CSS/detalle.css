@@ -87,6 +87,7 @@ header{
     width: 100%;
     height: 65px;
     align-items:center;
+    padding-left: 10px;
 }
 .titulo_carr img {
     width: 60px;
