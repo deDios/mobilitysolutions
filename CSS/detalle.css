@@ -65,11 +65,11 @@ header{
     display: grid;
     grid-template-columns: 3fr 2fr;
     padding-top: 25px;
-    height: 100%;
+    height: 700px;
 }
 .contenedor .contenedor_carr {
     display: grid;
-    grid-template-rows: 1fr .5fr 1fr ;
+    grid-template-rows: 1fr 1fr 1fr ;
     padding-left: 10px;
     padding-right: 10px;
 }
