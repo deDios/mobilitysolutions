@@ -100,7 +100,8 @@ echo $nombre;
                 </div>
             </div>
 
-            <!-- Carrusel auto seleccionado -->
+<!-------------------------------- Carrusel auto seleccionado -------------------------------------->
+
             <div class="carrusel_carr">
                 <div id="theCarousel" class="carousel slide" data-ride="carousel">
                     <!-- Indicadores -->
