@@ -126,22 +126,7 @@
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body" id = "mostrar">
-                                                        <form action="">
-                                                            <table class="table" border = "0">
-                                                                <tr>
-                                                                    <th rowspan="4">
-                                                                        <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="Auto 1">
-                                                                    </th>
-                                                                    <th> <?php echo $marca . " " . $nombre;?> </th>
-                                                                    <th> <?php echo $modelo;?> </th>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th> 
-                                                                        Costo:  <?php echo $costo;?> 
-                                                                    </th>
-                                                                </tr>
-                                                            </table>
-                                                        </form>
+                                                        ...
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -154,7 +139,7 @@
     <script>
         
 
-        var resultado = document.getElementById("mostrar");
+        var resultado = document.getElementById("#mostrar");
         function abrir_detalle(c){
             var xmlhttp;
             xmlhttp = new XMLHttpRequest();
