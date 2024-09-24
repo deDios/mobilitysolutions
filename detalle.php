@@ -96,7 +96,58 @@ $query = 'select
             </div>
 <!-------------------------------- Carrusel auto seleccionado -------------------------------------->
           
+            <div class="carrusel_carr_auto">
+                <div id="theCarousel" class="carousel slide" data-ride="carousel">
+                    <!-- Indicadores -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#theCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#theCarousel" data-slide-to="1"></li>
+                        <li data-target="#theCarousel" data-slide-to="2"></li>
+                        <li data-target="#theCarousel" data-slide-to="3"></li>    
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="Ilustracion">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h3>Gusti Ilustración</h3>
+                                <p>Exposición</p>
+                            </div>
+                        </div>
 
+                        <div class="item">
+                            <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="fotografia" width="600" height="424"> 
+                            <div class="carousel-caption d-none d-md-block">
+                                <h3> Xataka Fotografía</h3>
+                                <p>Concurso</p>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="pintura" width="600" height="424">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h3>DoArt Pintura</h3>
+                                <p>Curso</p>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="diseno" width="600" height="424"> 
+                            <div class="carousel-caption d-none d-md-block">
+                                <h3>UX UI Diseño Gráfico</h3>
+                                <p>Curso</p>
+                            </div>
+                        </div>
+                        <a class="left carousel-control" href="#theCarousel" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">anterior</span>
+                        </a>
+                        <a class="right carousel-control" href="#theCarousel" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">siguiente</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
 
 <!-------------------------------------- Div detalle de auto ----------------------------------------------------------->
 
