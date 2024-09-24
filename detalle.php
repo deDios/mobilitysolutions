@@ -54,9 +54,6 @@ $query = 'select
         else{
             echo "Falla en conexión";
         }
-
-echo $cod;
-echo $nombre;
 ?>
 
 <!DOCTYPE html>
@@ -112,7 +109,6 @@ echo $nombre;
                         <li data-target="#theCarousel" data-slide-to="3"></li>    
                     </ol>
                     <div class="carousel-inner" role="listbox">
-
                         <div class="item active">
                             <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="Ilustracion">
                             <div class="carousel-caption d-none d-md-block">
@@ -144,8 +140,6 @@ echo $nombre;
                                 <p>Curso</p>
                             </div>
                         </div>
-
-
                         <a class="left carousel-control" href="#theCarousel" role="button" data-slide="prev">
                             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                             <span class="sr-only">anterior</span>
@@ -157,7 +151,8 @@ echo $nombre;
                     </div>
             </div>
 
-            <!-- Div detalle de auto -->
+<!-------------------------------------- Div detalle de auto ----------------------------------------------------------->
+
             <div class="detalle_carr">
             <form action="">
                     <table class="table" border = "0">
