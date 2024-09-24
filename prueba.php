@@ -15,7 +15,7 @@ include "Conexion.php";
 
 <script src="js/jquery-3.7.1.js">
         var div_detalle = document.getElementById('body_detalle');
-                var xmlhttp = new XMLHttpRequest();
+        let xmlhttp = new XMLHttpRequest();
                 xmlhttp.open('GET','detalle.php?cod=5',true);
                 xmlhttp.onload = function (){
                     if (xmlhttp.status==200){
@@ -25,9 +25,8 @@ include "Conexion.php";
                         div_detalle.innerHTML = 'Cargando....';
                     }       
             }
-            xmlhttp.send();   
-        
-    </script>
+            xmlhttp.send();           
+</script>
 
 </body>
 </html>
