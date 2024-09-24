@@ -82,7 +82,7 @@
                             echo sizeof($carros);     
                             
                         ?>
-                        <table border="0" width="700" align="center">
+                        <table class="table_class">
                             <?php
                             $num=0;
                                 foreach ($carros as $reg){

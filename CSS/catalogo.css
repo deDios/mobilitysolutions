@@ -76,6 +76,12 @@ header{
     max-width: 250px;
 }
 
+.table_class{
+    border: 0px;
+    width: 100%; 
+    align-items: center;
+}
+
 .container-items{
     display: grid;
     grid-template-columns: 1fr 5fr;
