@@ -139,7 +139,7 @@
     <script>
         
 
-        var resultado = document.getElementById("#mostrar");
+        var resultado = document.getElementById("mostrar");
         function abrir_detalle(c){
             var xmlhttp;
             xmlhttp = new XMLHttpRequest();
