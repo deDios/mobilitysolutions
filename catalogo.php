@@ -138,20 +138,18 @@
 
     <script>
         function abrir_detalle(c){
-            var xmlhttp;
-            xmlhttp = new XMLHttpRequest();
-            xmlhttp.open("GET","detalle.php?cod="+c,true);
-            xmlhttp.onreadystatechange = function (){
-                if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-                    console.log ("Cambiando de estado" + xmlhttp.readyState);
-                    document.querySelector("mostrar").innerHTML = xmlhttp.responseText;
-                }
-                else{
-                    document.querySelector("mostrar").innerHTML = "Espere....";
-                }
-                
+                var xmlhttp;
+                xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("GET","detalle.php?cod="+c,true);
+                xmlhttp.onload = function (){
+                    if (xmlhttp.status==200){
+                        document.querySelector("mostrar").innerHTML = xmlhttp.responseText;
+                    }
+                    else{
+                        document.querySelector("mostrar").innerHTML = "Cargando....";
+                    }
+                xmlhttp.send();          
             }
-            xmlhttp.send();          
         }
         function cerrar_detalle(){
             document.getElementById("detalles").style.display="none";
