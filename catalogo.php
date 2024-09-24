@@ -160,7 +160,12 @@
             xmlhttp = new XMLHttpRequest();
             xmlhttp.open("GET","detalle.php?cod="+c,true);
             xmlhttp.onreadystatechange = function (){
-                console.log ("Cambiando de estado" + xmlhttp.readyState);
+                if (xmlhttp.readyState==4 ) {
+                    console.log ("Cambiando de estado" + xmlhttp.readyState);
+                }
+                else{
+                    resultado.innerHTML = "Espere....";
+                }
                 resultado.innerHTML = xmlhttp.responseText;
             }
             xmlhttp.send();
