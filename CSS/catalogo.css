@@ -90,7 +90,6 @@ header{
     padding-top: 10px;
 }
 
-
 .item figure img{
     overflow: hidden;
     width: 240px;
@@ -131,7 +130,6 @@ header{
     overflow: hidden;
     object-fit: scale-down;
 }
-
 
 .info-producto .version_unidad{
     color: black;
@@ -195,7 +193,7 @@ header{
     .container-items .lista_item {
         display: grid;
         grid-template-columns: repeat(1,1fr);
-        grid-row-gap: 15px;
+        grid-row-gap: 10px;
     }
     .lista_item .item {
         display: flex;
@@ -207,13 +205,12 @@ header{
         border-radius: 0 0 10px 10px;
         align-items: center;
         justify-content: center;
-        
+        grid-row-gap: 10px;
     }
     .lista_item figure {
         width: 90%;
         height: 250px;
     }
-
     .item figure img{
         overflow: hidden;
         width: 100%;
@@ -223,7 +220,6 @@ header{
         border-radius: 10px 10px 0 0;
         transition: all .5s;
     }
-
     .item .info-producto{
         display: grid;
         grid-template-rows: 1fr 2fr 1fr 1fr 1fr 1fr;
@@ -232,8 +228,6 @@ header{
         padding-top: 10px;
         padding-left: 10px;
     }
-
-
     .info-producto .titulo_marca {
         color: black;
         width: 100%;
@@ -253,9 +247,6 @@ header{
         width: 60px;
         height: 60px;
     }
-
-
-
     .pie_pag{
         background: #333;
         color: #fff;
