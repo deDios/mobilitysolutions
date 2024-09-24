@@ -110,7 +110,8 @@ $query = 'select
                         <li data-target="#theCarousel" data-slide-to="4"></li> 
                         <li data-target="#theCarousel" data-slide-to="5"></li>    
                     </ol>
-
+                    <div class="carousel-inner" role="listbox">
+                    </div>
                 </div>
             </div>
 
