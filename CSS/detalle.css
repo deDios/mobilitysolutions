@@ -3,31 +3,6 @@ html {
     position: relative;
   }
 
-.detalle{
-    background: gainsboro;
-    width: 50%;
-    height: 50%;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
-    text-align: center;
-    padding: 33px;
-    border-radius: 20px;
-    position: absolute;
-    left: 25%;
-    top: 25%;
-    display: none;
-}
-
-.detalle .cerrar {
-    position: absolute;
-    right: 15px;
-    top: 10px;
-}
-.detalle .cerrar img {
-    width: 50px;
-    height: 50px;
-}
-
 body{
     font-family: sans-serif;
 }
