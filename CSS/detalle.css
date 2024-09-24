@@ -77,7 +77,8 @@ header{
     padding-right: 10px;
 }
 
-.contenedor_carr .titulo_carr { /* Estilo para titulo de detalle auto  */
+/* ---------------------------- Estilo para titulo de detalle auto  ----------------------------*/
+.contenedor_carr .titulo_carr { 
     display: flex;
     flex-direction: row;
     color: black;
@@ -88,17 +89,16 @@ header{
     height: 65px;
     align-items:center;
 }
-
 .titulo_carr img {
     width: 60px;
     height: 60px;
     overflow: hidden;
     object-fit: scale-down;
 }
-
 .titulo_carr .Descripcion {
     display: grid;
     grid-template-rows: 1fr 1fr;
     padding-left: 10px;
     padding-right: 10px;
 }
+/* ----------------------------- Cierre para estilo para titulo de detalle auto  -----------------------------*/
