@@ -122,6 +122,7 @@ header{
 .carousel-inner > .item > img,
   .carousel-inner > .item > a > img {
       width: 80%;
+      max-height: 300px;
       margin: auto;
   }
 /* ----------------------------- Cierre para estilo carrusel en detalle auto  -------------------------------*/
