@@ -82,7 +82,7 @@
                             echo sizeof($carros);     
                             
                         ?>
-                        <table border="0" align="center">
+                        <table border="0" width="700" align="center">
                             <?php
                             $num=0;
                                 foreach ($carros as $reg){
@@ -97,7 +97,7 @@
                                     <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" >
                                         <div class="item">
                                             <figure>
-                                                <img src="Imagenes/Catalogo/Auto <?php echo $reg[0]?>/Img01.jpg" alt="Auto 1">
+                                                <img src="Imagenes/Catalogo/Auto <?php echo $reg[0];?>/Img01.jpg" alt="Auto 1">
                                             </figure>
                                             <div class="info-producto">
                                                 <div class="titulo_marca">
