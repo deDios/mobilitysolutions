@@ -100,6 +100,7 @@
                                                 <div class="Precio"><?php echo "$" . number_format($costo) . " MXN de contado"; ?> </div>
                                                 <div class="Localidad"> <i class="fas fa-location-arrow" ></i> <?php echo " " . $sucursal;?>  </div>
                                             </div>
+                                            <button type="button" class="btn btn-primary" onclick="abrir_detalle(<?php echo $id;?>)">detalle</button>
                                             
                                         </div>
                                     </a>
@@ -137,8 +138,7 @@
         function abrir_detalle(cod){
                 
             var xmlhttp = new XMLHttpRequest();    
-                xmlhttp.onreadystatechange = function (){
-                    console.log ("Cambio de estatus: " + xmlhttp.readyState)
+                xmlhttp.onload = function (){
                     if (xmlhttp.status==200){
                         document.querySelector("body_detalle").innerHTML = xmlhttp.responseText;
                     }
