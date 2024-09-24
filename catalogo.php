@@ -137,9 +137,10 @@
         function abrir_detalle(cod){
                 
             var xmlhttp = new XMLHttpRequest();    
-                xmlhttp.onload = function (){
+                xmlhttp.onreadystatechange = function (){
+                    console.log ("Cambio de estatus: " + xmlhttp.readyState)
                     if (xmlhttp.status==200){
-                        div_detalle.innerHTML = xmlhttp.responseText;
+                        document.querySelector("body_detalle").innerHTML = xmlhttp.responseText;
                     }
                     else{
                         div_detalle.innerHTML = "Cargando....";
