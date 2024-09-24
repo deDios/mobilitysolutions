@@ -135,9 +135,15 @@
     <script src="js/jquery-3.2.1.min.js">
         var div_detalle = document.getElementById("body_detalle");
         function abrir_detalle(cod){
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange = function (){
-                    if (xmlhttp.readyState==4 && xmlhttp.status==200){
+                var xmlhttp; 
+                if(window.XMLHttpRequest){
+                    xmlhttp = new XMLHttpRequest();
+                }
+                else{
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onload = function (){
+                    if (xmlhttp.status==200){
                         div_detalle.innerHTML = xmlhttp.responseText;
                     }
                     else{
