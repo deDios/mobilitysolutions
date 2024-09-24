@@ -68,3 +68,11 @@ header{
     border: 2;
     outline: none;
 }
+
+
+.pie_pag{
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
