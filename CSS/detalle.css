@@ -113,9 +113,9 @@ header{
 }
 /* ----------------------------- Cierre para estilo para titulo de detalle auto  -----------------------------*/
 /* ---------------------------- Estilo para carrusel detalle auto  -------------------------------------------*/
-.contenedor_carr .carrusel_carr_auto .carousel-inner .item img,
-    .contenedor_carr .carrusel_carr_auto .carousel-inner .item a img {
-      width: 80%;
+.carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 60%;
       margin: auto;
   }
 /* ----------------------------- Cierre para estilo carrusel en detalle auto  -------------------------------*/
