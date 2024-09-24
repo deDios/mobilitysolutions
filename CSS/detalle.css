@@ -127,10 +127,9 @@ header{
 }
 .carrusel_carr .carousel-inner{
     width: 100%;
-    height: 500px;
+    height: 600px;
     border-radius: 10px 10px 10px 10px;
 }
-
 .carrusel_carr .carousel-inner .item img,
     .carrusel_carr .carousel-inner .item a img {
       width: 80%;
