@@ -121,6 +121,9 @@ header{
 /* ----------------------------- Cierre para estilo para titulo de detalle auto  -----------------------------*/
 
 /* ---------------------------- Estilo para carrusel detalle auto  -------------------------------------------*/
+.carrusel_carr{
+    align-items: center;
+}
 .carrusel_carr .carousel-inner{
     border-radius: 10px 10px 10px 10px;
 }
