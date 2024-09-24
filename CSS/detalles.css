@@ -69,7 +69,7 @@ header{
 }
 .contenedor .contenedor_carr {
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr ;
+    grid-template-rows: 1fr 8fr 2fr ;
     padding-left: 10px;
     padding-right: 10px;
     height: 100%;
