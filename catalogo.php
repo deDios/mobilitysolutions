@@ -112,7 +112,7 @@
                                                        
     <script>        
         function detalle (cod){
-            location.href="detalle.php?cod="+cod;
+            location.href="detalles.php?cod="+cod;
         }
     </script>
 
