@@ -137,10 +137,10 @@
                                             </div>            
 
     <script>
-        function abrir_detalle(c){
+        function abrir_detalle(cod){
                 var xmlhttp;
                 xmlhttp = new XMLHttpRequest();
-                xmlhttp.open("GET","detalle.php?cod="+c,true);
+                xmlhttp.open('GET','detalle.php?cod='+cod,true);
                 xmlhttp.onload = function (){
                     if (xmlhttp.status==200){
                         document.querySelector("mostrar").innerHTML = xmlhttp.responseText;
@@ -150,9 +150,6 @@
                     }
                 xmlhttp.send();          
             }
-        }
-        function cerrar_detalle(){
-            document.getElementById("detalles").style.display="none";
         }
     </script>
 
