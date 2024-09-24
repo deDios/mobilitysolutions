@@ -61,7 +61,7 @@ echo $nombre;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalle del auto</title>
-    <link rel="stylesheet" href="CSS/catalogo.css">
+    <link rel="stylesheet" href="CSS/detalle.css">
  </head>
  <body>
     <header>
@@ -82,15 +82,18 @@ echo $nombre;
 
     <div class="contenedor">
         <div class="contenedor_carr">
+
         <!-- Titulo de carrusel -->
             <div class="titulo_carr">
                 <img src="Imagenes/Marcas/logo_<?php echo $marca; ?>.jpg" alt="logo 1">
-                <div class="titulo_carro">  <?php echo $marca . " " . $nombre; ?>  </div>
+                <div class="texto">  <?php echo $marca . " " . $nombre; ?>  </div>
             </div>
+
         <!-- Carrusel auto seleccionado -->
             <div class="carrusel_carr">
                 <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="Auto 1">
             </div>
+
         <!-- Div detalle de auto -->
             <div class="detalle_carr">
             <form action="">
