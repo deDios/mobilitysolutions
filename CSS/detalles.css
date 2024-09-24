@@ -136,7 +136,7 @@ header{
     }
     .contenedor{
         display: grid;
-        grid-template-columns: 1fr 8fr 2fr;
+        grid-template-rows: 1fr 8fr 2fr;
         height: 100%;
     }
     .Descripcion .texto2{
