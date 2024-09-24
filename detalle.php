@@ -96,9 +96,7 @@ $query = 'select
                     <div class="texto2"> <?php echo $modelo . " | " . $interior ." | " . $combustible . " | " . $cilindros ;?> </div>
                 </div>
             </div>
-
 <!-------------------------------- Carrusel auto seleccionado -------------------------------------->
-
             <div class="carrusel_carr">
                 <div id="theCarousel" class="carousel slide" data-ride="carousel">
                     <!-- Indicadores -->

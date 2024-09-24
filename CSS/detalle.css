@@ -114,7 +114,7 @@ header{
 /* ----------------------------- Cierre para estilo para titulo de detalle auto  -----------------------------*/
 
 /* ---------------------------- Estilo para carrusel detalle auto  -------------------------------------------*/
-.carrusel_carr{
+.contenedor_carr .carrusel_carr{
     width: 100%;
 }
 .carrusel_carr .carousel-inner{
