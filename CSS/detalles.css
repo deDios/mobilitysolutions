@@ -132,7 +132,6 @@ header{
     grid-template-columns: repeat(3,1fr);
     grid-column-gap: 10px;
     grid-row-gap: 10px;
-    padding-right: 20px;
     width: 100%;
 }
 
@@ -167,4 +166,11 @@ header{
       max-height: 300px;
       margin: auto;
   }
+  .contenedor_carr .detalle_carr {
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    grid-column-gap: 10px;
+    width: 100%;
+}
+
 }
