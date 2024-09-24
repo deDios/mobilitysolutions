@@ -158,12 +158,15 @@
         function abrir_detalle(c){
             var xmlhttp;
             xmlhttp = new XMLHttpRequest();
-
+            xmlhttp.open("GET","detalle.php?cod="+c,true);
             xmlhttp.onreadystatechange = function (){
+                console.log ("Cambiando de estado");
                 resultado.innerHTML = xmlhttp.responseText;
             }
-            xmlhttp.open("GET","detalle.php?cod="+c,true);
             xmlhttp.send();
+
+            
+            
             
         }
         function cerrar_detalle(){
