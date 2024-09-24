@@ -81,18 +81,43 @@
                             } 
                             echo sizeof($carros);     
                             
-                            /*while($row = mysqli_fetch_assoc($result)){
-                                $id = $row['id'];
-                                $nombre = $row['nombre'];
-                                $modelo = $row['modelo'];
-                                $marca = $row['marca'];
-                                $mensualidad = $row['mensualidad'];
-                                $costo = $row['costo'];
-                                $sucursal = $row['sucursal'];*/
-            ?> 
-            
-                                                                
-            <?php
+                        ?>
+                        <table border="0" align="center">
+                            <?php
+                            $num=0;
+                                foreach ($carros as $reg){
+                                    if ($num==3){
+                                        echo "<tr>";
+                                        $num=1;
+                                    }else{
+                                        $num++;
+                                    }
+                            ?>
+                                <th>
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                                        <div class="item">
+                                            <figure>
+                                                <img src="Imagenes/Catalogo/Auto <?php echo $reg[0]?>/Img01.jpg" alt="Auto 1">
+                                            </figure>
+                                            <div class="info-producto">
+                                                <div class="titulo_marca">
+                                                    <div class="titulo_carro">  <?php echo $reg[3] . " " . $reg[1]; ?>  </div>
+                                                    <img src="Imagenes/Marcas/logo_<?php echo $reg[3]; ?>.jpg" alt="logo 1">
+                                                </div>
+                                                <div class="version_unidad"><?php echo "N°25000A/" .  $reg[0] . " - " . $reg[2]; ?></div>
+                                                <div class="titulo_desde">Mensualidades, DESDE</div>
+                                                <div class="mensualidades"> <?php echo "$" . number_format($reg[4]) . " MXN/mes*"; ?> </div>
+                                                <div class="Precio"><?php echo "$" . number_format($reg[5]) . " MXN de contado"; ?> </div>
+                                                <div class="Localidad"> <i class="fas fa-location-arrow" ></i> <?php echo " " . $reg[6];?>  </div>
+                                            </div>
+                                        </div>                                            
+                                    </a> 
+                                </th>
+                                <?php
+                                }
+                                ?> 
+                        </table>
+                        <?php
                         }
                         }else{
 
