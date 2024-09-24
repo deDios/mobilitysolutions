@@ -156,7 +156,6 @@ $query = 'select
             </div>
 
 <!-------------------------------------- Div detalle de auto ----------------------------------------------------------->
-
             <div class="detalle_carr">
                 <ul class="list-group">
                     <li class="list-group-item d-flex justify-content-between align-items-center">

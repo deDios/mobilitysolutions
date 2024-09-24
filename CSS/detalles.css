@@ -127,6 +127,9 @@ header{
       margin: auto;
   }
 /* ----------------------------- Cierre para estilo carrusel en detalle auto  -------------------------------*/
+.contenedor_carr .detalle_carr {
+    width: 100%;
+}
 
 @media (max-width:700px){
     header{
