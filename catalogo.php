@@ -78,9 +78,7 @@
                         if ($result){    
                             foreach ($result as $row) {
                                 $carros[]=$row;
-                            } 
-                            echo sizeof($carros);     
-                            
+                            }                          
             ?>
                         <table class="table_class">
                             <?php
