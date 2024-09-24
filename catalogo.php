@@ -1,5 +1,11 @@
 
  <!DOCTYPE html>
+<?php
+    session_start();
+    $lista_carros = $_SESSION['carros'];
+    echo sizeof($lista_carros);
+?>
+
  <html lang="en">
  <head>
     <meta charset="UTF-8">
