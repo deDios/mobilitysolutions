@@ -160,19 +160,16 @@
             xmlhttp = new XMLHttpRequest();
             xmlhttp.open("GET","detalle.php?cod="+c,true);
             xmlhttp.onreadystatechange = function (){
-                if (xmlhttp.readyState==4 ) {
+                if (xmlhttp.readyState==4 && xmlhttp.status==200) {
                     console.log ("Cambiando de estado" + xmlhttp.readyState);
+                    resultado.innerHTML = xmlhttp.responseText;
                 }
                 else{
                     resultado.innerHTML = "Espere....";
                 }
-                resultado.innerHTML = xmlhttp.responseText;
+                
             }
-            xmlhttp.send();
-
-            
-            
-            
+            xmlhttp.send();          
         }
         function cerrar_detalle(){
             document.getElementById("detalles").style.display="none";
