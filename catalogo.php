@@ -137,7 +137,8 @@
         var div_detalle = document.getElementById("body_detalle");
         
         function abrir_detalle(cod){
-                
+            
+            console.log('Entrando a función');
             var xmlhttp = new XMLHttpRequest();  
             xmlhttp.open("GET","detalle.php?cod="+cod,true);  
                 xmlhttp.onload = function (){
