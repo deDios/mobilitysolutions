@@ -125,7 +125,7 @@
                                                         <h1 class="modal-title fs-5" id="exampleModalLabel">Detalle Auto</h1>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
-                                                    <div class="modal-body">
+                                                    <div class="modal-body" id = "mostrar">
                                                         <form action="">
                                                             <table class="table" border = "0">
                                                                 <tr>
@@ -152,7 +152,19 @@
                                             </div>            
 
     <script>
+        
+
+        var resultado = document.getElementById("mostrar");
         function abrir_detalle(c){
+            var xmlhttp;
+            xmlhttp = new XMLHttpRequest();
+
+            xmlhttp.onreadystatechange = function (){
+                resultado.innerHTML = xmlhttp.responseText;
+            }
+            xmlhttp.open("GET","detalle.php?cod="+c,true);
+            xmlhttp.send();
+            
         }
         function cerrar_detalle(){
             document.getElementById("detalles").style.display="none";
