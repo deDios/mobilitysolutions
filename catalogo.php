@@ -1,8 +1,8 @@
 
  <!DOCTYPE html>
 <?php
-    session_start();
-    $lista_carros = $_SESSION['carros'];
+    $obj_metodo = include "db_consultas/Consultas.php";
+    $lista_carros = $obj_metodo->listar_carros();
     echo sizeof($lista_carros);
 ?>
 
