@@ -101,17 +101,17 @@
                                             </figure>
                                             <div class="info-producto">
                                                 <div class="titulo_marca">
-                                                    <div class="titulo_carro">  <?php echo $reg[3] . " " . $reg[1]; ?>  </div>
-                                                    <img src="Imagenes/Marcas/logo_<?php echo $reg[3]; ?>.jpg" alt="logo 1">
+                                                    <div class="titulo_carro">  <?php echo $reg['marca'] . " " . $reg['nombre']; ?>  </div>
+                                                    <img src="Imagenes/Marcas/logo_<?php echo $reg['marca']; ?>.jpg" alt="logo 1">
                                                 </div>
-                                                <div class="version_unidad"><?php echo "N°25000A/" .  $reg[0] . " - " . $reg[2]; ?></div>
+                                                <div class="version_unidad"><?php echo "N°25000A/" .  $reg['id'] . " - " . $reg['modelo']; ?></div>
                                                 <div class="titulo_desde">Mensualidades, DESDE</div>
-                                                <div class="mensualidades"> <?php echo "$" . number_format($reg[4]) . " MXN/mes*"; ?> </div>
-                                                <div class="Precio"><?php echo "$" . number_format($reg[5]) . " MXN de contado"; ?> </div>
-                                                <div class="Localidad"> <i class="fas fa-location-arrow" ></i> <?php echo " " . $reg[6];?>  </div>
+                                                <div class="mensualidades"> <?php echo "$" . number_format($reg['mensualidad']) . " MXN/mes*"; ?> </div>
+                                                <div class="Precio"><?php echo "$" . number_format($reg['costo']) . " MXN de contado"; ?> </div>
+                                                <div class="Localidad"> <i class="fas fa-location-arrow" ></i> <?php echo " " . $reg['sucursal'];?>  </div>
                                             </div>
                                         </div>                                            
-                                    </a> 
+                                    </a>  
                                 </th>
                                 <?php
                                 }
