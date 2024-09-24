@@ -115,10 +115,7 @@ header{
 
 /* ---------------------------- Estilo para carrusel detalle auto  -------------------------------------------*/
 .carrusel_carr{
-    align-items: center;
-    padding-top: 0px;
     width: 100%;
-    height: 100%;
 }
 .carrusel_carr .carousel-inner{
     width: 100%;
