@@ -190,8 +190,8 @@ $query = 'select
                 </ul>
                 <ul class="list-group">
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        EJE
-                        <span class="badge bg-primary rounded-pill"><?php echo $eje;?></span>
+                        Motor
+                        <span class="badge bg-primary rounded-pill">2.0</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         Sucursal
