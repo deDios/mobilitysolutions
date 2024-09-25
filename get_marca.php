@@ -1,7 +1,6 @@
 <?php
 $Marca=$_POST['Marca'];
 $inc = include "db/Conexion.php";    
-echo("<script>console.log('. $Marca .');</script>");
     if ($inc){
         $query = 'select 
                     id,
@@ -15,7 +14,7 @@ echo("<script>console.log('. $Marca .');</script>");
                     <select id='InputNombre' class='form-select' aria-label='Default select example' name='InputNombre'>";
         if ($result){ 
             while ($ver=mysqli_fetch_row($result)){
-                $cadena=$cadena. '<opcion value'.$ver['id'].'>'.$ver['nombre'].'</option>';
+                $cadena=$cadena. '<opcion value'.$ver[0].'>'.$ver[2].'</option>';
             }
         }
         else{
@@ -24,14 +23,3 @@ echo("<script>console.log('. $Marca .');</script>");
         echo $cadena."</select>";
     }  
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>get_marca</title>
-</head>
-<body>
-    
-</body>
-</html>

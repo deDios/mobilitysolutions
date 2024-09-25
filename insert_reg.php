@@ -67,6 +67,28 @@
                         </div>
                     </div>
 
+
+                    <script >
+                        $(document).ready(function(){
+                            $('#InputMarca').val(0);
+                            get_marca();
+                            $('#InputMarca').change(function(){
+                                get_marca();
+                            });
+                        })
+                    </script>
+                    <script>
+                        function get_marca(){
+                            $.ajax({
+                                type:   "POST" ,
+                                url:    "get_marca.php",
+                                data:   "Marca=" + $('#InputMarca').val(),
+                                success: function(r){
+                                    $('#div_auto') .html(r);
+                                }
+                            });
+                        }
+                    </script>
                     <script>
                         var select = document.getElementById('InputMarca');
                             $('#InputMarca').change(function(){
@@ -78,6 +100,8 @@
                             });
                         });               
                     </script>
+
+                        
                     
                     
                     <div class="col mb-3 form-check">
