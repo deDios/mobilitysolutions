@@ -16,7 +16,7 @@ $cod=$_REQUEST['id'];
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"></script>
     <script src="https://cdn.datatables.net/2.1.7/css/dataTables.bootstrap5.css"></script>
-    
+
  </head>
  <body>
     <header>
@@ -155,7 +155,7 @@ $cod=$_REQUEST['id'];
         </div>
     </div>
 
-<script>
+<script src="https://code.jquery.com/jquery-3.7.1.js">
     new DataTable('mytable');
 </script>
 
