@@ -55,7 +55,7 @@
                         </select>
                     </div>
                     <div class="row mt-5">
-                        <div id="div_auto" class="col-3">
+                        <div class="col-3"> <div id="div_auto" ></div>
                             <label for='InputNombre' class='form-label'>Vehiculo</label>
                             <select id="InputNombre" class="form-select" aria-label="Default select example" name="InputNombre">
                                 <option value="0">Open this select menu</option> 
@@ -84,7 +84,7 @@
                                 url:    "get_marca.php",
                                 data:   "Marca=" + $('#InputMarca').val(),
                                 success: function(r){
-                                    $('#div_auto') .html(r);
+                                    $('#div_auto').html(r);
                                 }
                             });
                         }
