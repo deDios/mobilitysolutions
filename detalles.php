@@ -115,7 +115,9 @@ $query = 'select
                         <li data-target="#theCarousel" data-slide-to="2"></li>
                         <li data-target="#theCarousel" data-slide-to="3"></li> 
                         <li data-target="#theCarousel" data-slide-to="4"></li> 
-                        <li data-target="#theCarousel" data-slide-to="5"></li>    
+                        <li data-target="#theCarousel" data-slide-to="5"></li> 
+                        <li data-target="#theCarousel" data-slide-to="6"></li> 
+                        <li data-target="#theCarousel" data-slide-to="7"></li>    
                     </ol>
                     <div class="carousel-inner" role="listbox">
                         <div class="item active">
@@ -145,6 +147,16 @@ $query = 'select
                         </div>
                         <div class="item">
                             <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img06.jpg" alt="fotografia" width="600" height="300"> 
+                            <div class="carousel-caption d-none d-md-block">
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img07.jpg" alt="fotografia" width="600" height="300"> 
+                            <div class="carousel-caption d-none d-md-block">
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img08.jpg" alt="fotografia" width="600" height="300"> 
                             <div class="carousel-caption d-none d-md-block">
                             </div>
                         </div>
