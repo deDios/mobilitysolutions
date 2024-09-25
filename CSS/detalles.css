@@ -154,12 +154,10 @@ header{
         padding-top: 5px;
     }
     .contenedor .contenedor_carr {
-        display: grid;
-        grid-template-rows: 1fr 8fr 2fr ;
+        display: flex;
+        flex-direction:column ;
         padding-left: 10px;
-        padding-right: 10px;
-        grid-row-gap: 10px;
-        grid-column-gap: 10px;       
+        padding-right: 10px;       
     }
     .contenedor_carr .detalle_carr {
         display: grid;
