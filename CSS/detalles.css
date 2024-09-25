@@ -167,6 +167,7 @@ header{
     .carousel-inner > .item > img,
         .carousel-inner > .item > a > img {
       width: 80%;
+      min-height: 300px;
       max-height: 300px;
       margin: auto;
   }
