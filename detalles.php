@@ -198,7 +198,7 @@ $query = 'select
                         <span class="badge bg-primary rounded-pill"><?php echo $sucursal;?></span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Numero de dueños
+                        N°Dueños
                         <span class="badge bg-primary rounded-pill"><?php echo $id;?></span>
                     </li>
                 </ul>
