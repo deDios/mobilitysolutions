@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link href="https://cdn.datatables.net/v/dt/dt-2.1.7/datatables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/2.1.7/css/dataTables.bootstrap5.css" rel="stylesheet"> 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href=*https://cdn_jsdelivr.net/npm/bootstrap®5.2.2/dist/css/bootstrap.min.css* rel="stylesheet"
-    integrity="sha384-Zenh87qX5JnK2JL0vWaBCk2rdkQ2Bzep5IDxbcnCeu0xjzrPF/et3URy9BvIWTR1* crossorigin="anonymous">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <title>Insertar cat</title>
     <link rel="stylesheet" href="CSS/insert_reg.css">
@@ -22,7 +20,7 @@
             <div class="col">
                 <form action="">
                     <label for="InputMarca" class="form-label">Marca</label>
-                    <select class="">
+                    <select class="form-select" aria-label="Default select example">
                         <option value="0">Open this select menu</option>                      
                         <?php 
                         $inc = include "db/Conexion.php";    
