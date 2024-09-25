@@ -12,12 +12,8 @@ $cod=$_REQUEST['id'];
     <link rel="stylesheet" href="CSS/editar_cat.css">
 	
     <link href="https://cdn.datatables.net/v/dt/dt-2.1.7/datatables.min.css" rel="stylesheet">
-     
+    <link href="https://cdn.datatables.net/2.1.7/css/dataTables.bootstrap5.css" rel="stylesheet"> 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"></script>
-    <script src="https://cdn.datatables.net/2.1.7/css/dataTables.bootstrap5.css"></script>
 
  </head>
  <body>
@@ -157,6 +153,10 @@ $cod=$_REQUEST['id'];
         </div>
     </div>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"></script>
+    <script src="https://cdn.datatables.net/2.1.7/css/dataTables.bootstrap5.css"></script>
     <script src="https://cdn.datatables.net/v/dt/dt-2.1.7/datatables.min.js">
         new DataTable('mytable');
     </script>
