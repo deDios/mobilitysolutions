@@ -15,7 +15,7 @@ $inc = include "db/Conexion.php";
                     <select id='InputNombre' class='form-select' aria-label='Default select example' name='InputNombre'>";
 
         while ($ver=mysqli_fetch_row($result)){
-            $cadena=$cadena. '<opcion value'.$ver['id'].'>'.$ver[2].'</option>';
+            $cadena=$cadena. '<opcion value'.$ver['id'].'>'.$ver['nombre'].'</option>';
         }
         echo $cadena."</select>";
     }
