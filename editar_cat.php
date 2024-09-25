@@ -151,5 +151,9 @@ $cod=$_REQUEST['id'];
             </table>
         </div>
     </div>
+
+<script>
+    new DataTable('#mytable');
+</script>
 </body>
 </html>
