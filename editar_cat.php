@@ -52,30 +52,32 @@ $cod=$_REQUEST['id'];
                 <th>estatus</th>
                 <th>created_at</th>
                 <th>updated_at</th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
-            <td>
-                <tr>1</tr>
-                <tr>1</tr>
-                <tr>1</tr>
-                <tr>1</tr>
-                <tr>1</tr>
-                <tr>1</tr>
-                <tr>1</tr>
-                <tr>1</tr>
-                <tr>1</tr>
-                <tr>1</tr>
-                <tr>1</tr>
-                <tr>1</tr>
-                <tr>1</tr>
-                <tr>1</tr>
-                <tr>1</tr>
-                <tr>1</tr>
-                <tr>1</tr>
-                <td><a href="htt://sitioweb.com/a"><button class="btn btn-info">Editar</button></a></td>
-                <td><button class="btn btn-danger eliminar"  id="785">Eliminar</button> </td>
-            </td>
+            <tr>
+                <th class="">1</th>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td><button class="btn btn-info">Editar</button></td>
+                <td><button class="btn btn-danger eliminar">Eliminar</button> </td>
+            </tr>
         </tbody>
     </table>
 </body>
