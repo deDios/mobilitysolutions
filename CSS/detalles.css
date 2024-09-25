@@ -161,14 +161,14 @@ header{
     }
     .contenedor_carr .carrusel_carr_auto {
         width: 100%;
-        max-height: 250px;
+        max-height: 400px;
         border-radius: 10px 10px 10px 10px;
     }
     .carousel-inner > .item > img,
         .carousel-inner > .item > a > img {
       width: 80%;
-      min-height: 250px;
-      max-height: 250px;
+      min-height: 400px;
+      max-height: 400px;
       margin: auto;
   }
     .contenedor_carr .detalle_carr {
