@@ -55,12 +55,15 @@
                         </select>
                     </div>
                     <div class="row mt-5">
-                        <div id="div_auto" class="col-3"></div>
+                        <div id="div_auto" class="col-3">
+                            <label for='InputNombre' class='form-label'>Vehiculo</label>
+                        </div>
                         <div class="col-3">
                             <label for="InputModelo" class="form-label">Modelo</label>
                             <input type="text" class="form-control" id="InputModelo">
                         </div>
                     </div>
+
                     <script>
                         $(document).ready(function(){
                             $('#InputMarca').val(0);
