@@ -14,6 +14,10 @@
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
+    <script
+			  src="https://code.jquery.com/jquery-3.7.1.js"
+			  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+			  crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -50,30 +54,36 @@
                             ?>
                         </select>
                     </div>
-                    <script>
-                        function get_marca(){
-                            var select = document.getElementById('InputMarca');
-                            select.addEventListener('change',
-                            function(){
-                                var selectedOption = this.options[select.selectedIndex];
-                                console.log(selectedOption.value + ': ' + selectedOption.text);
-                            })
-                            return selectedOption.value;
-                        };
-                    </script>
-
-                    <h2><script> get_marca() </script></h2>
-
                     <div class="row mt-5">
-                        <div class="col-3">
-                            <label for="InputNombre" class="form-label">Vehiculo</label>
-                            <input type="text" class="form-control" id="InputNombre">
-                        </div>
+                        <div id="div_auto" class="col-3"></div>
                         <div class="col-3">
                             <label for="InputModelo" class="form-label">Modelo</label>
                             <input type="text" class="form-control" id="InputModelo">
                         </div>
                     </div>
+                    <script type="text/javascript">
+                        $(document).ready(function(){
+                            get_marca();
+
+                            $('InputMarca').change(function(){
+                                get_marca();
+                            });
+                        })
+                    </script>
+                    <script type="text/javascript">
+                        function get_marca(){
+                            $.ajax({
+                                type: "POST",
+                                url: "get_marca.php",
+                                data: "Marca=" + $('InputMarca').val(),
+                                success:function(r){
+                                    $('div_auto').html(r);
+                                }
+                            });
+                        }
+                    </script>
+
+                    
                     <div class="col mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Sucursal</label>
