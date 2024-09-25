@@ -13,6 +13,7 @@
 <body>
 
     <div class="container">
+        <h1>Registro autos</h1>
         <div class="row mt-5">
             <div class="col">
                 <form>
