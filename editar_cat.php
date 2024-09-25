@@ -33,6 +33,7 @@ $cod=$_REQUEST['id'];
     </header>
     <div class="container">
         <div>
+            <br>
             Registros Catálogo
             <br>
             <button class="btn btn-danger eliminar">Agregar</button>
