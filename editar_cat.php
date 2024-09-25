@@ -32,6 +32,12 @@ $cod=$_REQUEST['id'];
         </nav>
     </header>
     <div class="container">
+        <div>
+            Registros Catálogo
+            <br>
+            <button class="btn btn-danger eliminar">Agregar</button>
+        </div>
+
         <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="mytable">
             <thead>
                 <tr>
