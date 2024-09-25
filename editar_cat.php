@@ -36,35 +36,45 @@ $cod=$_REQUEST['id'];
         <thead>
             <tr>
                 <th>#</th>
-                <th>Título</th>
-                <th>Publicado</th>
-                <th>Vencimiento</th>
-                <th>Estado</th>
-                <th>Visitas Únicas</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
+                <th>marca</th>
+                <th>nombre</th>
+                <th>modelo</th>
+                <th>mensualidad</th>
+                <th>costo</th>
+                <th>sucursal</th>
+                <th>color</th>
+                <th>transmision</th>
+                <th>interior</th>
+                <th>kilometraje</th>
+                <th>combustible</th>
+                <th>cilindros</th>
+                <th>eje</th>
+                <th>estatus</th>
+                <th>created_at</th>
+                <th>updated_at</th>
             </tr>
         </thead>
         <tbody>
             <td>
                 <tr>1</tr>
-                <tr>Título1</tr>
-                <tr>2018-08-20</tr>
-                <tr>2018-09-20</tr>
-                <tr>Activa</tr>
-                <tr>6</tr>
+                <tr>1</tr>
+                <tr>1</tr>
+                <tr>1</tr>
+                <tr>1</tr>
+                <tr>1</tr>
+                <tr>1</tr>
+                <tr>1</tr>
+                <tr>1</tr>
+                <tr>1</tr>
+                <tr>1</tr>
+                <tr>1</tr>
+                <tr>1</tr>
+                <tr>1</tr>
+                <tr>1</tr>
+                <tr>1</tr>
+                <tr>1</tr>
                 <td><a href="htt://sitioweb.com/a"><button class="btn btn-info">Editar</button></a></td>
                 <td><button class="btn btn-danger eliminar"  id="785">Eliminar</button> </td>
-            </td>
-            <td>
-                <tr>2</tr>
-                <tr>Título2</tr>
-                <tr>2018-08-22</tr>
-                <tr>2018-09-23</tr>
-                <tr>Activa</tr>
-                <tr>5</tr>
-                <td><a href="htt://sitioweb.com/a"><button class="btn btn-info">Editar</button></a></td>
-                <td><button class="btn btn-danger eliminar"  id="786">Eliminar</button> </td>
             </td>
         </tbody>
     </table>
