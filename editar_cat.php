@@ -153,7 +153,7 @@ $cod=$_REQUEST['id'];
     </div>
 
 <script>
-    new DataTable('#mytable');
+    new DataTable('mytable');
 </script>
 </body>
 </html>
