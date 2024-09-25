@@ -61,24 +61,24 @@
                             <input type="text" class="form-control" id="InputModelo">
                         </div>
                     </div>
-                    <script type="text/javascript">
+                    <script>
                         $(document).ready(function(){
-                            $('InputMarca').val(1);
+                            $('#InputMarca').val(1);
                             get_marca();
 
-                            $('InputMarca').change(function(){
+                            $('#InputMarca').change(function(){
                                 get_marca();
                             });
                         })
                     </script>
-                    <script type="text/javascript">
+                    <script>
                         function get_marca(){
                             $.ajax({
-                                type: "POST",
-                                url: "get_marca.php",
-                                data: "Marca=" + $('InputMarca').val(),
+                                type:   "POST",
+                                url:    "get_marca.php",
+                                data:   "Marca=" + $('#InputMarca').val(),
                                 success:function(r){
-                                    $('div_auto').html(r);
+                                    $('#div_auto').html(r);
                                 }
                             });
                         }
