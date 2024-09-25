@@ -63,7 +63,7 @@
                     </div>
                     <script type="text/javascript">
                         $(document).ready(function(){
-                            $('InputMarca').val(4);
+                            $('InputMarca').val(1);
                             get_marca();
 
                             $('InputMarca').change(function(){
