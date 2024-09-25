@@ -34,59 +34,60 @@ $cod=$_REQUEST['id'];
     <div class="container">
         <div>
             <br>
-            Registros Catálogo
+            <h1>Registros Catálogo</h1>
             <br>
             <button class="btn btn-primary">Agregar</button>
         </div>
-
-        <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="mytable">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>marca</th>
-                    <th>nombre</th>
-                    <th>modelo</th>
-                    <th>mensualidad</th>
-                    <th>costo</th>
-                    <th>sucursal</th>
-                    <th>color</th>
-                    <th>transmision</th>
-                    <th>interior</th>
-                    <th>kilometraje</th>
-                    <th>combustible</th>
-                    <th>cilindros</th>
-                    <th>eje</th>
-                    <th>estatus</th>
-                    <th>created_at</th>
-                    <th>updated_at</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th class="">1</th>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td><button class="btn btn-warning">Editar</button></td>
-                    <td><button class="btn btn-danger">Eliminar</button> </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="container_tab">
+            <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="mytable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>marca</th>
+                        <th>nombre</th>
+                        <th>modelo</th>
+                        <th>mensualidad</th>
+                        <th>costo</th>
+                        <th>sucursal</th>
+                        <th>color</th>
+                        <th>transmision</th>
+                        <th>interior</th>
+                        <th>kilometraje</th>
+                        <th>combustible</th>
+                        <th>cilindros</th>
+                        <th>eje</th>
+                        <th>estatus</th>
+                        <th>created_at</th>
+                        <th>updated_at</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="">1</th>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td><button class="btn btn-warning">Editar</button></td>
+                        <td><button class="btn btn-danger">Eliminar</button> </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
 </html>
