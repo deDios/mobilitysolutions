@@ -20,8 +20,7 @@
     <div class="container">
         <h1>Registro autos</h1>
         <div class="row mt-5">
-            <div class="col">
-                <form action="db_consultas/insert_sp.php" method="POST">
+            <form action="db_consultas/insert_sp.php" method="POST">
                     <div class="col-3">
                         <label for="InputMarca" class="form-label">Marca</label>
                         <select id="InputMarca" class="form-select" aria-label="Default select example" name="InputMarca">
@@ -50,13 +49,15 @@
                             ?>
                         </select>
                     </div>
-                    <div class="col-6">
-                        <label for="InputNombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="InputNombre">
-                    </div>
-                    <div class="col-6">
-                        <label for="InputModelo" class="form-label">Modelo</label>
-                        <input type="text" class="form-control" id="InputModelo">
+                    <div class="row mt-5">
+                        <div class="col-3">
+                            <label for="InputNombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="InputNombre">
+                        </div>
+                        <div class="col-3">
+                            <label for="InputModelo" class="form-label">Modelo</label>
+                            <input type="text" class="form-control" id="InputModelo">
+                        </div>
                     </div>
                     <div class="col mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -112,8 +113,7 @@
                     </div>
 
                     <button type="button" class="btn btn-success">Guardar</button>
-                </form>
-            </div>
+            </form>
         </div>
     </div>
     
