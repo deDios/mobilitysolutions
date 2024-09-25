@@ -124,6 +124,7 @@ header{
       width: 80%;
       min-height: 679px;
       max-height: 680px;
+      object-fit: cover;
       margin: auto;
   }
 /* ----------------------------- Cierre para estilo carrusel en detalle auto  -------------------------------*/
