@@ -37,7 +37,7 @@ $cod=$_REQUEST['id'];
             <br>
             <h1>Registros Catálogo</h1>
             <br>
-            <a href="db_consultas/insert_reg.php"  class="btn btn-primary">Agregar</a>
+            <a href="insert_reg.php"  class="btn btn-primary">Agregar</a>
         </div>
         <div class="container_tab">
             <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="mytable">
