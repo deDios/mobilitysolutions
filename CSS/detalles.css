@@ -144,8 +144,8 @@ header{
     }
     .contenedor{
         display: grid;
-        grid-template-columns: repeat(1,1fr);
-        height: 500px;
+        grid-template-columns: 1fr;
+        height: 100%;
     }
     .Descripcion .texto2{
         color: black;
