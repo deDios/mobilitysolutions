@@ -67,26 +67,18 @@
                     <script>
                         $(document).ready(function(){
                             $('#InputMarca').val(0);
-                            get_marca();
 
                             $('#InputMarca').change(function(){
-                                get_marca();
+                                var select = document.getElementById('InputMarca');
+                                    select.addEventListener('change',
+                                    function(){
+                                        var selectedOption = this.options[select.selectedIndex];
+                                        console.log(selectedOption.value + ': ' + selectedOption.text);
+                                    });
                             });
                         })
                     </script>
-                    <script>
-                        function get_marca(){
-                            $.ajax({
-                                type:   "POST",
-                                url:    "get_marca.php",
-                                data:   "Marca=" + $('#InputMarca').val(),
-                                success:function(r){
-                                    $('#div_auto').html(r);
-                                }
-                            });
-                        }
-                    </script>
-
+                    
                     
                     <div class="col mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
