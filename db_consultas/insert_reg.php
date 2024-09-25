@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href=*https://cdn_jsdelivr.net/npm/bootstrap®5.2.2/dist/css/bootstrap.min.css* rel="stylesheet"
     integrity="sha384-Zenh87qX5JnK2JL0vWaBCk2rdkQ2Bzep5IDxbcnCeu0xjzrPF/et3URy9BvIWTR1* crossorigin="anonymous">
-    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -20,11 +20,13 @@
         <div class="row mt-5">
             <div class="col">
                 <form action="">
-                    <div class="col mb-3">
-                        <label for="InputMarca" class="form-label">Marca</label>
-                        <input type="text" class="form-control" id="InputMarca" aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                    </div>
+                    <label for="InputMarca" class="form-label">Marca</label>
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
                     <div class="col-6">
                         <label for="InputNombre" class="form-label">Nombre</label>
                         <input type="text" class="form-control" id="InputNombre">
