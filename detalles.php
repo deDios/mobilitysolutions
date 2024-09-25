@@ -25,6 +25,7 @@ $query = 'select
                 auto.cilindros, 
                 auto.eje, 
                 auto.estatus, 
+                auto.pasajeros, 
                 auto.created_at, 
                 auto.updated_at 
             FROM mobility_solutions.tmx_auto as auto
@@ -52,6 +53,7 @@ $query = 'select
                                 $transmision = $row['transmision'];
                                 $kilometraje = $row['kilometraje'];
                                 $eje = $row['eje'];
+                                $pasajeros = $row['pasajeros'];
             }
         }
         else{
@@ -190,8 +192,8 @@ $query = 'select
                 </ul>
                 <ul class="list-group">
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Motor
-                        <span class="badge bg-primary rounded-pill">2.0</span>
+                        Pasajeros
+                        <span class="badge bg-primary rounded-pill"><?php echo $pasajeros;?></span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         Sucursal
