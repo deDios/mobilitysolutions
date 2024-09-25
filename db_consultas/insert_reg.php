@@ -11,7 +11,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <title>Form insert registro</title>
+    <title>Insertar cat</title>
+    <link rel="stylesheet" href="CSS/insert_reg.css">
 </head>
 <body>
 
