@@ -26,6 +26,7 @@ $query = 'select
                 auto.eje, 
                 auto.estatus, 
                 auto.pasajeros, 
+                auto.propietarios,
                 auto.created_at, 
                 auto.updated_at 
             FROM mobility_solutions.tmx_auto as auto
@@ -54,6 +55,7 @@ $query = 'select
                                 $kilometraje = $row['kilometraje'];
                                 $eje = $row['eje'];
                                 $pasajeros = $row['pasajeros'];
+                                $propietarios = $row['propietarios'];
             }
         }
         else{
@@ -200,8 +202,8 @@ $query = 'select
                         <span class="badge bg-primary rounded-pill"><?php echo $sucursal;?></span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        N°Dueños
-                        <span class="badge bg-primary rounded-pill"><?php echo $id;?></span>
+                        N° de propietarios
+                        <span class="badge bg-primary rounded-pill"><?php echo $propietarios;?></span>
                     </li>
                 </ul>
             </div>
