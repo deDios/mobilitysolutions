@@ -62,7 +62,7 @@
                         };
                     </script>
 
-                    <h2>get_marca()</h2>
+                    <h2><script> get_marca() </script></h2>
 
                     <div class="row mt-5">
                         <div class="col-3">
