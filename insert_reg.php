@@ -10,6 +10,9 @@
 
     <title>Insertar cat</title>
     <link rel="stylesheet" href="CSS/insert_reg.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </head>
 <body>
@@ -106,7 +109,7 @@
                         <label class="form-check-label" for="exampleCheck1">Estatus</label>
                     </div>
 
-                    <button type="success" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-success">Guardar</button>
                 </form>
             </div>
         </div>
