@@ -10,7 +10,9 @@ $cod=$_REQUEST['id'];
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Editar catálogo</title>
     <link rel="stylesheet" href="CSS/editar_cat.css">
-    
+	
+    <link href="https://cdn.datatables.net/v/dt/dt-2.1.7/datatables.min.css" rel="stylesheet">
+     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -155,9 +157,9 @@ $cod=$_REQUEST['id'];
         </div>
     </div>
 
-<script src="https://code.jquery.com/jquery-3.7.1.js">
-    new DataTable('mytable');
-</script>
+    <script src="https://cdn.datatables.net/v/dt/dt-2.1.7/datatables.min.js">
+        new DataTable('mytable');
+    </script>
 
 </body>
 </html>
