@@ -51,11 +51,12 @@
                                     }
                                         mysqli_free_result($result);                  
                                 }
+                            $valor_marca = 0;
                             ?>
                         </select>
                     </div>
                     <div class="row mt-5">
-                        <div class="col-3"> <div id="div_auto" ></div>
+                        <div class="col-3"> <div id="div_auto" > <?php echo $valor_marca;?></div>
                             <label for='InputNombre' class='form-label'>Vehiculo</label>
                             <select id="InputNombre" class="form-select" aria-label="Default select example" name="InputNombre">
                                 <option value="0">Open this select menu</option> 
@@ -85,6 +86,7 @@
                                 data:   "Marca=" + $('#InputMarca').val(),
                                 success: function(r){
                                     $('#div_auto').html(r);
+                                    $valor_marca = (r);
                                 }
                             });
                         }
