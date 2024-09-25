@@ -22,8 +22,7 @@
                 <form action="">
                     <label for="InputMarca" class="form-label">Marca</label>
                     <select class="form-select" aria-label="Default select example">
-                        <option value="0">Open this select menu</option>
-                        
+                        <option value="0">Open this select menu</option>                      
                         <?php 
                         $inc = include "db/Conexion.php";    
                             if ($inc){
