@@ -51,13 +51,19 @@
                         </select>
                     </div>
                     <script>
-                        var select = document.getElementById('InputMarca');
-                        select.addEventListener('change',
-                        function(){
-                            var selectedOption = this.options[select.selectedIndex];
-                            console.log(selectedOption.value + ': ' + selectedOption.text);
-                        });
+                        function get_marca(){
+                            var select = document.getElementById('InputMarca');
+                            select.addEventListener('change',
+                            function(){
+                                var selectedOption = this.options[select.selectedIndex];
+                                console.log(selectedOption.value + ': ' + selectedOption.text);
+                            })
+                            return selectedOption.value;
+                        };
                     </script>
+
+                    <h2>get_marca()</h2>
+
                     <div class="row mt-5">
                         <div class="col-3">
                             <label for="InputNombre" class="form-label">Vehiculo</label>
