@@ -159,12 +159,12 @@ header{
         flex-direction:column ;
         padding-left: 10px;
         padding-right: 10px; 
-        padding-bottom: 10px;      
+        padding-bottom: 10px;  
+        border-radius: 10px 10px 10px 10px;    
     }
     .contenedor_carr .carrusel_carr_auto {
         width: 100%;
         max-height: 300px;
-        border-radius: 10px 10px 10px 10px;
         padding-top: 10px;
     }
     .carousel-inner > .item > img,
