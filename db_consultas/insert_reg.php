@@ -8,9 +8,9 @@
     <link href="https://cdn.datatables.net/2.1.7/css/dataTables.bootstrap5.css" rel="stylesheet"> 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-
     <title>Insertar cat</title>
     <link rel="stylesheet" href="CSS/insert_reg.css">
+
 </head>
 <body>
 
