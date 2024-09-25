@@ -158,7 +158,8 @@ header{
         display: flex;
         flex-direction:column ;
         padding-left: 10px;
-        padding-right: 10px;       
+        padding-right: 10px; 
+        padding-bottom: 10px;      
     }
     .contenedor_carr .carrusel_carr_auto {
         width: 100%;
