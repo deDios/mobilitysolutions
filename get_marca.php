@@ -1,25 +1,26 @@
 <?php
 $Marca=$_POST['Marca'];
-$inc = include "db/Conexion.php";    
-    if ($inc){
-        $query = 'select 
+    
+    $cadena = " <label for='InputNombre' class='form-label'>Vehiculo</label>
+                <select id='InputNombre' class='form-select' aria-label='Default select example' name='InputNombre'>";
+    $inc = include "db/Conexion.php"; 
+    $query = 'select 
                     id,
                     marca,
                     nombre
                 FROM mobility_solutions.tmx_marca_auto
-                where marca='. $Marca .';';
-        $result = mysqli_query($con,$query);  
+                where marca = '. $Marca .';';
     
-        $cadena = " <label for='InputNombre' class='form-label'>Vehiculo</label>
-                    <select id='InputNombre' class='form-select' aria-label='Default select example' name='InputNombre'>";
-        if ($result){ 
-            while ($ver=mysqli_fetch_row($result)){
-                $cadena=$cadena. '<opcion value'.$ver[0].'>'.$ver[2].'</option>';
+            $result = mysqli_query($con,$query); 
+            if ($result){ 
+                while($row = mysqli_fetch_assoc($result)){
+                                    $id = $row['id'];
+                                    $nombre = $row['nombre'];
+                    $cadena = $cadena . '<opcion value'. $id .'>'. $nombre .'</option>';
+                }
             }
-        }
-        else{
-            echo "Hubo un error en la consulta";
-        }
-        echo $cadena."</select>";
-    }  
+            else{
+                echo "Falla en conexión";
+            }
+            echo $cadena . "</select>";
 ?>
