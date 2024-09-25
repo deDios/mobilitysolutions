@@ -21,9 +21,9 @@
         <h1>Registro autos</h1>
         <div class="row mt-5">
             <div class="col">
-                <form action="">
+                <form action="db_consultas/insert_sp.php" method="POST">
                     <label for="InputMarca" class="form-label">Marca</label>
-                    <select class="form-select" aria-label="Default select example">
+                    <select id="InputMarca" class="form-select" aria-label="Default select example" name="InputMarca">
                         <option value="0">Open this select menu</option>                      
                         <?php 
                         $inc = include "db/Conexion.php";    
