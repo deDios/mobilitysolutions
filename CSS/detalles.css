@@ -152,7 +152,7 @@ header{
         grid-template-rows: 1fr 3fr 1fr ;
         padding-left: 10px;
         padding-right: 10px;
-        height: 100%;
+        height: 700px;
     }
     .Descripcion .texto2{
         color: black;
