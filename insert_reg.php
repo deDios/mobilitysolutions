@@ -65,9 +65,7 @@
                     </div>
 
                     <script>
-                        $(document).ready(function(){
                             $('#InputMarca').val(0);
-
                             $('#InputMarca').change(function(){
                                 var select = document.getElementById('InputMarca');
                                     select.addEventListener('change',
@@ -76,7 +74,6 @@
                                         console.log(selectedOption.value + ': ' + selectedOption.text);
                                     });
                             });
-                        })
                     </script>
                     
                     
