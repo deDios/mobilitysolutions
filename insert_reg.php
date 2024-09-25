@@ -51,7 +51,7 @@
                     </div>
                     <div class="row mt-5">
                         <div class="col-3">
-                            <label for="InputNombre" class="form-label">Nombre</label>
+                            <label for="InputNombre" class="form-label">Vehiculo</label>
                             <input type="text" class="form-control" id="InputNombre">
                         </div>
                         <div class="col-3">
