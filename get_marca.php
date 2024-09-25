@@ -7,7 +7,7 @@ $inc = include "db/Conexion.php";
                     marca,
                     nombre
                 FROM mobility_solutions.tmx_marca_auto
-                where='. $Marca .';';
+                where marca='. $Marca .';';
         $result = mysqli_query($con,$query);  
     
         $cadena = " <label for='InputNombre' class='form-label'>Vehiculo</label>
@@ -20,7 +20,6 @@ $inc = include "db/Conexion.php";
         else{
             echo "Hubo un error en la consulta";
         }
-
         echo $cadena."</select>";
     }  
 ?>
