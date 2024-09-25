@@ -49,6 +49,14 @@
                             ?>
                         </select>
                     </div>
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+                        var select = document.getElementById('InputMarca');
+                        select.addEventListener('change',
+                        function(){
+                            var selectedOption = this.options[select.selectedIndex];
+                            console.log(selectedOption.value + ': ' + selectedOption.text);
+                        });
+                    </script>
                     <div class="row mt-5">
                         <div class="col-3">
                             <label for="InputNombre" class="form-label">Vehiculo</label>
