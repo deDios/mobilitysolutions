@@ -71,8 +71,10 @@
                                     function(){
                                         var selectedOption = this.options[select.selectedIndex];
                                         console.log(selectedOption.value + ': ' + selectedOption.text);
+                                        var resultado = selectedOption.value ;
                                     });
-                            });
+                                return resultado;
+                            });               
                     </script>
                     
                     
