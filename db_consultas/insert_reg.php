@@ -21,15 +21,15 @@
             <div class="col">
                 <form action="">
                     <label for="InputMarca" class="form-label">Marca</label>
-                    <select class="form-select" aria-label="Default select example">
+                    <select class="">
                         <option value="0">Open this select menu</option>                      
                         <?php 
                         $inc = include "db/Conexion.php";    
                             if ($inc){
-                                $query = '  select 
-                                                id,
-                                                nombre
-                                            FROM mobility_solutions.tmx_marca;';
+                                $query = 'select 
+                                            id,
+                                            nombre
+                                        FROM mobility_solutions.tmx_marca;';
                                 $result = mysqli_query($con,$query);  
                                 if ($result){         
                                     while($row = mysqli_fetch_assoc($result)){
@@ -37,14 +37,14 @@
                                         $nombre = $row['nombre'];
                         ?> 
                                     <option value="<?php echo $id;?>"><?php echo $nombre;?></option>
-                    <?php
-                                     }
+                        <?php
+                                    }
                                 } else{
                                         echo "Hubo un error en la consulta";
                                 }
                                     mysqli_free_result($result);                  
                             }
-                    ?>
+                        ?>
                     </select>
                     <div class="col-6">
                         <label for="InputNombre" class="form-label">Nombre</label>
