@@ -159,6 +159,11 @@ header{
         padding-left: 10px;
         padding-right: 10px;       
     }
+    .contenedor_carr .carrusel_carr_auto {
+        width: 100%;
+        max-height: 200px;
+        border-radius: 10px 10px 10px 10px;
+    }
     .contenedor_carr .detalle_carr {
         display: grid;
         grid-template-columns: repeat(1,1fr);
