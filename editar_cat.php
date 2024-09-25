@@ -32,5 +32,41 @@ $cod=$_REQUEST['id'];
         </nav>
     </header>
 
+    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="mytable">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Título</th>
+                <th>Publicado</th>
+                <th>Vencimiento</th>
+                <th>Estado</th>
+                <th>Visitas Únicas</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <td>
+                <tr>1</tr>
+                <tr>Título1</tr>
+                <tr>2018-08-20</tr>
+                <tr>2018-09-20</tr>
+                <tr>Activa</tr>
+                <tr>6</tr>
+                <td><a href="htt://sitioweb.com/a"><button class="btn btn-info">Editar</button></a></td>
+                <td><button class="btn btn-danger eliminar"  id="785">Eliminar</button> </td>
+            </td>
+            <td>
+                <tr>2</tr>
+                <tr>Título2</tr>
+                <tr>2018-08-22</tr>
+                <tr>2018-09-23</tr>
+                <tr>Activa</tr>
+                <tr>5</tr>
+                <td><a href="htt://sitioweb.com/a"><button class="btn btn-info">Editar</button></a></td>
+                <td><button class="btn btn-danger eliminar"  id="786">Eliminar</button> </td>
+            </td>
+        </tbody>
+    </table>
 </body>
 </html>
