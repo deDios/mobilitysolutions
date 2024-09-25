@@ -11,8 +11,8 @@ $inc = include "db/Conexion.php";
                 ;';
         $result = mysqli_query($con,$query);  
     
-        $cadena = "<label for='InputNombre' class='form-label'>Vehiculo</label>
-                    <input type='text' class='form-control' id='InputNombre'>";
+        $cadena = " <label for='InputNombre' class='form-label'>Vehiculo</label>
+                    <select id='InputNombre' class='form-select' aria-label='Default select example' name='InputNombre'>";
 
         while ($ver=mysqli_fetch_row($result)){
             $cadena=$cadena. '<opcion value'.$ver['id'].'>'.$ver[2].'</option>';
