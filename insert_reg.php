@@ -65,8 +65,8 @@
                     </div>
 
                     <script>
+                            var select = document.getElementById('InputMarca');
                             $('#InputMarca').change(function(){
-                                var select = document.getElementById('InputMarca');
                                     select.addEventListener('change',
                                     function(){
                                         var selectedOption = this.options[select.selectedIndex];
