@@ -57,6 +57,9 @@
                     <div class="row mt-5">
                         <div id="div_auto" class="col-3">
                             <label for='InputNombre' class='form-label'>Vehiculo</label>
+                            <select id="InputNombre" class="form-select" aria-label="Default select example" name="InputNombre">
+                                <option value="0">Open this select menu</option> 
+                            </select>
                         </div>
                         <div class="col-3">
                             <label for="InputModelo" class="form-label">Modelo</label>
