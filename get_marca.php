@@ -1,6 +1,8 @@
 <?php
 $Marca=$_POST['Marca'];
     
+echo $Marca;
+
     $cadena = " <label for='InputNombre' class='form-label'>Vehiculo</label>
                 <select id='InputNombre' class='form-select' aria-label='Default select example' name='InputNombre'>";
     $inc = include "db/Conexion.php"; 
