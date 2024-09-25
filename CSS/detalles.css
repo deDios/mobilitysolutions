@@ -169,6 +169,7 @@ header{
       width: 80%;
       min-height: 300px;
       max-height: 300px;
+      object-fit: cover;
       margin: auto;
   }
     .contenedor_carr .detalle_carr {
