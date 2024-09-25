@@ -65,16 +65,15 @@
                     </div>
 
                     <script>
-                            var select = document.getElementById('InputMarca');
+                        var select = document.getElementById('InputMarca');
                             $('#InputMarca').change(function(){
                                     select.addEventListener('change',
                                     function(){
                                         var selectedOption = this.options[select.selectedIndex];
                                         console.log(selectedOption.value + ': ' + selectedOption.text);
                                         var resultado = selectedOption.value ;
-                                    });
-                                return resultado;
-                            });               
+                            });
+                        });               
                     </script>
                     
                     
