@@ -106,7 +106,7 @@
                         <label class="form-check-label" for="exampleCheck1">Estatus</label>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="success" class="btn btn-primary">Submit</button>
                 </form>
             </div>
         </div>
