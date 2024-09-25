@@ -36,7 +36,7 @@ $cod=$_REQUEST['id'];
             <br>
             Registros Catálogo
             <br>
-            <button class="btn btn-danger eliminar">Agregar</button>
+            <button class="btn btn-primary">Agregar</button>
         </div>
 
         <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="mytable">
@@ -82,8 +82,8 @@ $cod=$_REQUEST['id'];
                     <td>1</td>
                     <td>1</td>
                     <td>1</td>
-                    <td><button class="btn btn-info">Editar</button></td>
-                    <td><button class="btn btn-danger eliminar">Eliminar</button> </td>
+                    <td><button class="btn btn-warning">Editar</button></td>
+                    <td><button class="btn btn-danger">Eliminar</button> </td>
                 </tr>
             </tbody>
         </table>
