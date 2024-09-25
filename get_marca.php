@@ -1,6 +1,7 @@
 <?php
 $Marca=$_POST['Marca'];
 $inc = include "db/Conexion.php";    
+echo("<script>console.log('PHP: inicia la consulta');</script>");
     if ($inc){
         $query = 'select 
                     id,
