@@ -123,13 +123,13 @@ $cod=$_REQUEST['id'];
                         <td><?php echo $marca;?></td>
                         <td><?php echo $nombre;?></td>
                         <td><?php echo $modelo;?></td>
-                        <td><?php echo $mensualidad;?></td>
-                        <td><?php echo $costo;?></td>
+                        <td><?php echo "$" . number_format($mensualidad);?></td>
+                        <td><?php echo "$" . number_format($costo);?></td>
                         <td><?php echo $sucursal;?></td>
                         <td><?php echo $color;?></td>
                         <td><?php echo $transmision;?></td>
                         <td><?php echo $interior;?></td>
-                        <td><?php echo $kilometraje;?></td>
+                        <td><?php echo number_format($kilometraje) . " km";?></td>
                         <td><?php echo $combustible;?></td>
                         <td><?php echo $cilindros;?></td>
                         <td><?php echo $eje;?></td>
