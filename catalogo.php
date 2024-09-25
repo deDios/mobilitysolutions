@@ -69,7 +69,9 @@
                                     left join mobility_solutions.tmx_estatus as estatus on auto.estatus = estatus.id
                                     left join mobility_solutions.tmx_modelo as modelo on auto.modelo = modelo.id 
                                     left join mobility_solutions.tmx_marca as marca on auto.marca = marca.id
-                                    left join mobility_solutions.tmx_marca_auto as m_auto on auto.nombre = m_auto.id;';
+                                    left join mobility_solutions.tmx_marca_auto as m_auto on auto.nombre = m_auto.id
+                                    where auto.estatus = 1
+                                    ;';
                         $result = mysqli_query($con,$query);  
                         if ($result){         
                             while($row = mysqli_fetch_assoc($result)){
