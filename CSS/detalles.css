@@ -164,7 +164,7 @@ header{
     }
     .contenedor_carr .carrusel_carr_auto {
         width: 100%;
-        max-height: 300px;
+        max-height: 320px;
         padding-top: 10px;
     }
     .carousel-inner > .item > img,
