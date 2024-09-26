@@ -36,6 +36,7 @@ $query = 'insert into mobility_solutions.tmx_auto (nombre, modelo, marca, mensua
 $result = mysqli_query($con,$query); 
 if ($result){ 
     echo "Exito¡¡";
+    echo $con->insert_id;;
 }
 else{
     echo "Falla en conexión";
