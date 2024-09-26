@@ -133,15 +133,17 @@
                     </div>
 
                     <!-- Input Transmision ------------------------------------------------------------------->
-                    <label for='InputTransmision' class='form-label'>Tipo de transmision</label>
-                    <div class="col mb-3 form-check"> 
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="InputTransmision" id="InputTransmision" value="option1">
-                            <label class="form-check-label" for="inlineRadio1">TM (Manual)</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="InputTransmision" id="InputTransmision" value="option2">
-                            <label class="form-check-label" for="inlineRadio2">TA (Automatico)</label>
+                    <div class="col-2 mt-2">
+                        <label for='InputTransmision' class='form-label'>Tipo de transmision</label>
+                        <div class="col mb-3 form-check"> 
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="InputTransmision" id="InputTransmision" value="option1">
+                                <label class="form-check-label" for="inlineRadio1">TM (Manual)</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="InputTransmision" id="InputTransmision" value="option2">
+                                <label class="form-check-label" for="inlineRadio2">TA (Automatico)</label>
+                            </div>
                         </div>
                     </div>
 
