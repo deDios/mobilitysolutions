@@ -134,8 +134,11 @@
                             $('#InputMarca').change(function(){
                                 get_marca();
                             }); 
+
+                            var select = document.getElementById('InputModelo');
                             $('#div_auto').change(function(){
-                                get_modelo();
+                                var selectedOption = this.options[select.selectedIndex];
+                                get_modelo(selectedOption.value);
                             });                       
                         });
                     </script>                        
@@ -150,13 +153,11 @@
                                 }
                             });
                         }
-                        function get_modelo(){
-                            
-                            var selectedOption = this.options[$('#InputNombre').selectedIndex];    
+                        function get_modelo(cod){
                             $.ajax({
                                 type:   "POST" ,
                                 url:    "get_modelo.php",
-                                data:   "Auto=" + selectedOption.text,
+                                data:   "Auto=" + cod,
                                 success: function(r){
                                     $('#div_modelo').html(r);
                                 }
