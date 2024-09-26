@@ -100,7 +100,7 @@
 
                     </div>
                     
-                    <div class="input-group mb-3 col-6 mt-5">
+                    <div class="input-group mb-3 col-6 mt-2">
                         <span class="input-group-text">$</span>
                             <input id="InputMensualidad" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" required>
                         <span class="input-group-text">MX/mensuales</span>
