@@ -11,7 +11,7 @@ $inc = include "db/Conexion.php";
                     marca,
                     auto
                 FROM mobility_solutions.tmx_marca_auto
-                where marca = 4;";
+                where marca = '$Marca';";
     
     $result = mysqli_query($con,$query); 
             if ($result){ 
@@ -19,7 +19,7 @@ $inc = include "db/Conexion.php";
                                     $id = $row['id'];
                                     $auto = $row['auto'];
 
-                    $cadena = $cadena . '<opcion value'. $id .'>'. $auto .'</option>';
+                    $cadena = $cadena . "<opcion value=" . "'" . $row['id'] . "'" .">" . $row['auto'] . "</option>";
                 }
             }
             else{
