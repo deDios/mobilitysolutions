@@ -134,11 +134,8 @@
                             $('#InputMarca').change(function(){
                                 get_marca();
                             }); 
-
-                            var select = document.getElementById('InputModelo');
                             $('#div_auto').change(function(){
-                                var selectedOption = this.options[select.selectedIndex];
-                                get_modelo(selectedOption.value);
+                                get_modelo();
                             });                       
                         });
                     </script>                        
@@ -153,13 +150,13 @@
                                 }
                             });
                         }
-                        function get_modelo(cod){
+                        function get_modelo(){
                             $.ajax({
                                 type:   "POST" ,
                                 url:    "get_modelo.php",
-                                data:   "Auto=" + cod,
-                                success: function(r){
-                                    $('#div_modelo').html(r);
+                                data:   "Auto=" + $('#InputNombre').val(),
+                                success: function(a){
+                                    $('#div_modelo').html(a);
                                 }
                             });
                         }
