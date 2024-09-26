@@ -53,7 +53,7 @@
                         </select>
                     </div>
             
-                    <div class="col-3">
+                    <div class="col-3 mt-5">
                         <label for="InputMarca" class="form-label">Marca</label>
                         <select id="InputMarca" class="form-select" aria-label="Default select example" name="InputMarca">
                             <option value="0">Open this select menu</option>                      
