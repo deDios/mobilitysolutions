@@ -239,6 +239,56 @@
                         </select>
                     </div>
 
+                    <!-- Input Imagenes ------------------------------------------------------------------->
+                    <div class="col-2 mt-2">
+                        <div class="mb-3">
+                            <label for="FileImg1" class="form-label">Img de portada</label>
+                            <input class="form-control form-control-sm" id="FileImg1" type="file">
+                        </div>
+                    </div>
+                    <div class="col-2 mt-2">
+                        <div class="mb-3">
+                            <label for="FileImg2" class="form-label">Img de perfil</label>
+                            <input class="form-control form-control-sm" id="FileImg2" type="file">
+                        </div>
+                    </div>
+                    <div class="col-2 mt-2">
+                        <div class="mb-3">
+                            <label for="FileImg3" class="form-label">Img de llanta</label>
+                            <input class="form-control form-control-sm" id="FileImg3" type="file">
+                        </div>
+                    </div>
+                    <div class="col-2 mt-2">
+                        <div class="mb-3">
+                            <label for="FileImg4" class="form-label">Img de asientos traseros</label>
+                            <input class="form-control form-control-sm" id="FileImg4" type="file">
+                        </div>
+                    </div>
+                    <div class="col-2 mt-2">
+                        <div class="mb-3">
+                            <label for="FileImg5" class="form-label">Img de asientos delanteros</label>
+                            <input class="form-control form-control-sm" id="FileImg5" type="file">
+                        </div>
+                    </div>
+                    <div class="col-2 mt-2">
+                        <div class="mb-3">
+                            <label for="FileImg6" class="form-label">Img de motor</label>
+                            <input class="form-control form-control-sm" id="FileImg6" type="file">
+                        </div>
+                    </div>
+                    <div class="col-2 mt-2">
+                        <div class="mb-3">
+                            <label for="FileImg7" class="form-label">Img de tablero</label>
+                            <input class="form-control form-control-sm" id="FileImg7" type="file">
+                        </div>
+                    </div>
+                    <div class="col-2 mt-2">
+                        <div class="mb-3">
+                            <label for="FileImg8" class="form-label">Img de cajuela</label>
+                            <input class="form-control form-control-sm" id="FileImg8" type="file">
+                        </div>
+                    </div>
+
                     <button type="submit" class="btn btn-success mt-5">Guardar registro</button>
             </form>
         </div>
