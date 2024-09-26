@@ -231,7 +231,7 @@
                     </div>
 
                     <!-- Input Propietarios ------------------------------------------------------------------->
-                    <div class="col-2 mt-2">
+                    <div class="col-2 mt-5">
                         <label for="InputPropietarios" class="form-label">Eje</label>
                         <select id="InputPropietarios" class="form-select" aria-label="Default select example" name="InputPropietarios">
                             <option value="1">1</option>  
