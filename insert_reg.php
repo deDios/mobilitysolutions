@@ -136,7 +136,7 @@
                             $('#InputNombre').change(function(){
                                 get_modelo();
                             });
-                        })
+                        });
                     </script>                        
                     <script>
                         function get_marca(){
