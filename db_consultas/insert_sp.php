@@ -35,8 +35,6 @@ $query = 'insert into mobility_solutions.tmx_auto (nombre, modelo, marca, mensua
         
 $result = mysqli_query($con,$query); 
 if ($result){ 
-    echo "Exito¡¡";
-    echo $con->insert_id;;
 }
 else{
     echo "Falla en conexión";
@@ -57,7 +55,7 @@ else{
 <body>
 
 <div class="container">
-        <h1>Exito en el registro</h1>
+        <h1>Exito en el registro Id de auto: <?php echo $con->insert_id;?></h1>
         <div class="row mt-5">
             <label for="" class="form-label">Se requiere cargar imagenes para el auto</label>
             <form action="db_consultas/insert_sp.php" method="POST">
