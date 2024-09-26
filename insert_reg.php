@@ -23,7 +23,7 @@
         <h1>Registro autos</h1>
         <div class="row mt-5">
             <form action="db_consultas/insert_sp.php" method="POST">
-                    <div class="col-2">
+                    <div class="col-3">
                         <label for="InputMarca" class="form-label">Marca</label>
                         <select id="InputMarca" class="form-select" aria-label="Default select example" name="InputMarca">
                             <option value="0">Open this select menu</option>                      
@@ -52,15 +52,10 @@
                         </select>
                     </div>
                     <div class="row mt-5">
+
                         <div id="div_auto" class="col-3">
                             <label for='InputNombre' class='form-label'>Vehiculo</label>
                             <select id="InputNombre" class="form-select" aria-label="Default select example" name="InputNombre">
-                                <option value="0">Open this select menu</option> 
-                            </select>
-                        </div>
-                        <div id="div_modelo" class="col-3">
-                            <label for='InputModelo' class='form-label'>Modelo</label>
-                            <select id="InputModelo" class="form-select" aria-label="Default select example" name="InputModelo">
                                 <option value="0">Open this select menu</option> 
                             </select>
                         </div>
@@ -131,9 +126,8 @@
                                 get_marca();
                             $('#InputMarca').change(function(){
                                 get_marca();
-                            });
-                            
-                        });
+                            });                       
+                        })
                     </script>                        
                     <script>
                         function get_marca(){
