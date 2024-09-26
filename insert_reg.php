@@ -134,11 +134,9 @@
                                 get_marca();
                             $('#InputMarca').change(function(){
                                 get_marca();
-                            });
-                            $('#InputNombre').change(function(){
                                 get_modelo();
                             });                       
-                        })
+                        });
                     </script>                        
                     <script>
                         function get_marca(){
