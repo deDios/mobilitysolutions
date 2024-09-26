@@ -165,16 +165,32 @@
                     <!-- Input kilometraje ------------------------------------------------------------------->
                     <div class="col-2 mt-2">
                         <div class="input-group mb-3 ">
+                                <label for='InputKilometraje' class='form-label'>Kilometraje</label>
                                 <input id="InputKilometraje" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
                             <span class="input-group-text">km</span>
                         </div>
                     </div>
 
                     <!-- Input Combustible ------------------------------------------------------------------->
-                    <div class="col mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Tipo de Combustible</label>
+                    <div class="col-2 mt-2">
+                        <label for='InputCombustible' class='form-label'>Combustible</label>
+                        <div class="col mb-3 form-check"> 
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible" value="Gasolina">
+                                <label class="form-check-label" for="InputCombustible">Gasolina</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible" value="Electrico">
+                                <label class="form-check-label" for="InputCombustible">Electrico</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible" value="Hibrido">
+                                <label class="form-check-label" for="InputCombustible">Hibrido</label>
+                            </div>
+                        </div>
                     </div>
+
+                    <!-- Input Cilindros ------------------------------------------------------------------->
                     <div class="col mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Numero de cilindros</label>
