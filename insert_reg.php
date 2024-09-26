@@ -130,11 +130,11 @@
     </div>
                     <script >
                         $(document).ready(function(){
-                            $('#InputMarca').val(1);
-                                get_marca();
+                            $('#InputMarca').val(0);
                             $('#InputMarca').change(function(){
                                 get_marca();
-                                demo();
+                            }); 
+                            $('#InputMarca').change(function(){
                                 get_modelo();
                             });                       
                         });
@@ -160,13 +160,6 @@
                                 }
                             });
                         }
-                        async function demo() {
-                        for (let i = 0; i < 3; i++) {
-                            console.log(`Waiting ${i} seconds...`);
-                            await sleep(i * 1000);
-                        }
-                        console.log('Done');
-}
                     </script>
 </body>
 </html>
