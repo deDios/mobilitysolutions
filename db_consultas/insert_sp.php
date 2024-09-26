@@ -47,9 +47,9 @@ if (file_exists($carpeta)) {
     if (file_exists($carpeta_id)) {
         echo "Existe la carpeta 2";
     }else{
-        echo "No existe la carpeta 2";
+        mkdir($carpeta, 0777, true);
+        echo 'Se creo carpeta para auto '.$con->insert_id.' ';
     }
-    //mkdir($carpeta, 0777, true);
     //file_put_contents('index.php', $contenido);
 }else
 echo "No existe la carpeta 1";
