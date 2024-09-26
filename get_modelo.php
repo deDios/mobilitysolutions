@@ -3,7 +3,7 @@ $Auto=$_POST['Auto'];
  
     $cadena = "<label for='InputModelo' class='form-label'>Modelo</label>
                 <select id='InputModelo' class='form-select' aria-label='Default select example' name='InputModelo'>
-                    <option value='0'> $cadena </option>
+                    <option value='0'> $Auto </option>
                 </select>";
 
 echo $cadena;
