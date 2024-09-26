@@ -58,9 +58,11 @@
                                 <option value="0">Open this select menu</option> 
                             </select>
                         </div>
-                        <div class="col-3">
-                            <label for="InputModelo" class="form-label">Modelo</label>
-                            <input type="text" class="form-control" id="InputModelo">
+                        <div id="div_modelo" class="col-3">
+                            <label for='InputModelo' class='form-label'>Modelo</label>
+                            <select id="InputModelo" class="form-select" aria-label="Default select example" name="InputModelo">
+                                <option value="0">Open this select menu</option> 
+                            </select>
                         </div>
                     </div>
 
