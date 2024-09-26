@@ -194,20 +194,20 @@
                     <div class="col-6 mt-2">
                     <label for='InputCilindros' class='form-label'>Cilindros</label>
                         <div class="p-3 m-0 border-0 bd-example m-0 border-0">
-                            <input type="radio" class="btn-check" name="options-base" id="InputCilindros" autocomplete="off" checked="">
-                            <label class="btn" for="InputCilindros">V4</label>
+                            <input type="radio" class="btn-check" name="options-base" id="InputCilindros1" autocomplete="off" checked="">
+                            <label class="btn" for="InputCilindros1">V4</label>
                             
-                            <input type="radio" class="btn-check" name="options-base" id="InputCilindros" autocomplete="off">
-                            <label class="btn" for="InputCilindros">V6</label>
+                            <input type="radio" class="btn-check" name="options-base" id="InputCilindros2" autocomplete="off">
+                            <label class="btn" for="InputCilindros2">V6</label>
                             
-                            <input type="radio" class="btn-check" name="options-base" id="InputCilindros" autocomplete="off">
-                            <label class="btn" for="InputCilindros">V8</label>
+                            <input type="radio" class="btn-check" name="options-base" id="InputCilindros3" autocomplete="off">
+                            <label class="btn" for="InputCilindros3">V8</label>
                             
-                            <input type="radio" class="btn-check" name="options-base" id="InputCilindros" autocomplete="off">
-                            <label class="btn" for="InputCilindros">V10</label>
+                            <input type="radio" class="btn-check" name="options-base" id="InputCilindros4" autocomplete="off">
+                            <label class="btn" for="InputCilindros4">V10</label>
 
-                            <input type="radio" class="btn-check" name="options-base" id="InputCilindros" autocomplete="off">
-                            <label class="btn" for="InputCilindros">V12</label>
+                            <input type="radio" class="btn-check" name="options-base" id="InputCilindros5" autocomplete="off">
+                            <label class="btn" for="InputCilindros5">V12</label>
                         </div>
                     </div>
 
