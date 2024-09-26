@@ -151,10 +151,16 @@
                             });
                         }
                         function get_modelo(){
+                            var select = document.getElementById('InputNombre');
+                            select.addEventListener('change',
+                            function(){
+                                var selectedOption = this.options[select.selectedIndex];
+                                console.log(selectedOption.value + ': ' + selectedOption.text);
+                            })
                             $.ajax({
                                 type:   "POST" ,
                                 url:    "get_modelo.php",
-                                data:   "Auto=" + $('#InputNombre').text(),
+                                data:   "Auto=" + selectedOption.text,
                                 success: function(r){
                                     $('#div_modelo').html(r);
                                 }
