@@ -17,7 +17,7 @@ $inc = include "db/Conexion.php";
                 while($row = mysqli_fetch_assoc($result)){
                                     $id = $row['id'];
                                     $auto = $row['auto'];
-                    $cadena = $cadena . "<opcion value=''$id''> '$auto' </option>";
+                    $cadena = $cadena . "<opcion value='0'> '$auto' </option>";
               
                 }
             }
