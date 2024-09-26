@@ -73,6 +73,11 @@
                             $('#InputMarca').change(function(){
                                 get_marca();
                             });
+                        })
+                    </script>
+
+                    <script >
+                        $(document).ready(function(){
                             get_modelo();
                             $('#InputNombre').change(function(){
                                 get_modelo();
