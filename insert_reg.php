@@ -82,7 +82,7 @@
                             ?>
                         </select>
                     </div>
-                    <div class="row mt-5">
+                    <div class="row mt-3">
 
                         <div id="div_auto" class="col-3">
                             <label for='InputNombre' class='form-label'>Vehiculo</label>
