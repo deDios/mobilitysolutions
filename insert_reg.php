@@ -128,8 +128,8 @@
                     <script >
                         $(document).ready(function(){
                             $('#InputMarca').val(0);
-                            $('#InputNombre').val(0);
                             get_marca();
+                            $('#InputNombre').val(0);
                             get_modelo();
                             $('#InputMarca').change(function(){
                                 get_marca();
