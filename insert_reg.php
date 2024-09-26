@@ -231,15 +231,15 @@
                     </div>
 
                     <!-- Input Propietarios ------------------------------------------------------------------->
-                    <div class="col-2 mt-5">
-                        <label for="InputPropietarios" class="form-label">Eje</label>
+                    <div class="col-2 mt-2">
+                        <label for="InputPropietarios" class="form-label">Propietarios</label>
                         <select id="InputPropietarios" class="form-select" aria-label="Default select example" name="InputPropietarios">
                             <option value="1">1</option>  
                             <option value="2">2</option>  
                         </select>
                     </div>
 
-                    <button type="submit" class="btn btn-success">Guardar registro</button>
+                    <button type="submit" class="btn btn-success mt-5">Guardar registro</button>
             </form>
         </div>
     </div>
