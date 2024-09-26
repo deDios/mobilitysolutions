@@ -11,14 +11,12 @@ $inc = include "db/Conexion.php";
                     auto
                 FROM mobility_solutions.tmx_marca_auto
                 where marca = '$Marca';";
-    
     $result = mysqli_query($con,$query); 
             if ($result){ 
                 while($row = mysqli_fetch_assoc($result)){
-                                    $id = $row['id'];
-                                    $auto = $row['auto'];
-                    $cadena = $cadena . "<opcion value='0'> Opcion </option>";
-              
+                        $id = $row['id'];
+                        $auto = $row['auto'];
+                    $cadena = $cadena . "<opcion value='0'> Opcion </option>";         
                 }
             }
             else{
