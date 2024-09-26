@@ -129,12 +129,8 @@
                         $(document).ready(function(){
                             $('#InputMarca').val(0);
                                 get_marca();
-                            $('#InputNombre').val(0);
                             $('#InputMarca').change(function(){
                                 get_marca();
-                                $('#InputNombre').change(function(){
-                                   // get_modelo();
-                                });
                             });
                             
                         });
@@ -147,16 +143,6 @@
                                 data:   "Marca=" + $('#InputMarca').val(),
                                 success: function(r){
                                     $('#div_auto').html(r);
-                                }
-                            });
-                        }
-                        function get_modelo(){
-                            $.ajax({
-                                type:   "POST" ,
-                                url:    "get_modelo.php",
-                                data:   "Auto=" + $('#InputNombre').val(),
-                                success: function(r){
-                                    $('#div_modelo').html(r);
                                 }
                             });
                         }
