@@ -106,10 +106,12 @@
                         <span class="input-group-text">MX/mensuales</span>
                     </div>
 
-                    <div class="col mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Costo de contado</label>
+                    <div class="input-group mb-3 col-6 mt-5">
+                        <span class="input-group-text">$</span>
+                            <input id="InputCosto" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                        <span class="input-group-text">MX/Contado</span>
                     </div>
+
                     <div class="col mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Color</label>
