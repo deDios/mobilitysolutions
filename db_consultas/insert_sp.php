@@ -6,6 +6,7 @@ $modelo = $_POST['InputModelo'];
 $mensualidad = $_POST['InputMensualidad'];
 $costo = $_POST['InputCosto'];
 $color = $_POST['InputColor'];
+$color_valor = '"' . $color . '"';
 $transmision = $_POST['InputTransmision'];
 $interior = $_POST['InputInterior'];
 $kilometraje = $_POST['InputKilometraje'];
@@ -15,9 +16,22 @@ $eje = $_POST['InputEje'];
 $pasajeros = $_POST['InputPasajeros'];
 $propietarios = $_POST['InputPropietarios'];
 
+$color_valor = '"' . $color . '"';
+$transmision_valor = '"' . $transmision . '"';
+$interior_valor = '"' . $interior . '"';
+$combustible_valor = '"' . $combustible . '"';
+$eje_valor = '"' . $eje . '"';
+
+$img1 = '"' . 'img1' . '"';
+$img2 = '"' . 'img2' . '"';
+$img3 = '"' . 'img3' . '"';
+$img4 = '"' . 'img4' . '"';
+$img5 = '"' . 'img5' . '"';
+$img6 = '"' . 'img6' . '"';
+
 $inc = include "db/Conexion.php"; 
-$query = "insert into tmx_auto (nombre, modelo, marca, mensualidad, costo, sucursal, img1, img2, img3, img4, img5, img6, color, transmision, interior, kilometraje, combustible, cilindros, eje, estatus, created_at, pasajeros, propietarios) values
-($auto,$modelo,$marca,$mensualidad,$costo,$sucursal,'img1', 'img2', 'img3', 'img4', 'img5', 'img6', 'Blanco', 'Automatica','Piel',$kilometraje,'Gasolina',$cilindros,'Delantera',2,NULL,$pasajeros,$propietarios);";
+$query = 'insert into tmx_auto (nombre, modelo, marca, mensualidad, costo, sucursal, img1, img2, img3, img4, img5, img6, color, transmision, interior, kilometraje, combustible, cilindros, eje, estatus, created_at, pasajeros, propietarios) values
+('.$auto.','.$modelo.','.$marca.','.$mensualidad.','.$costo.','.$sucursal.','.$img1.', '.$img2.', '.$img3.', '.$img4.', '.$img5.', '.$img6.','.$color_valor.', '.$transmision_valor.','.$interior_valor.','.$kilometraje.','.$combustible_valor.','.$cilindros.','.$eje_valor.',2,NULL,'.$pasajeros.','.$propietarios.');';
         $result = mysqli_query($con,$query); 
 
 echo "sucursal" . $sucursal;
