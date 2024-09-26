@@ -1,10 +1,12 @@
 <?php
 $Marca=$_POST['Marca'];
     
-echo $Marca;
-
     $cadena = " <label for='InputNombre' class='form-label'>Vehiculo</label>
-                <select id='InputNombre' class='form-select' aria-label='Default select example' name='InputNombre'>";
+                <select id='InputNombre' class='form-select' aria-label='Default select example' name='InputNombre'>
+                    <option value='0'>Menu recuperado</option>
+                </select>";
+echo $cadena;
+
     $inc = include "db/Conexion.php"; 
     $query = 'select 
                     id,
