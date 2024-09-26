@@ -16,7 +16,7 @@ $inc = include "db/Conexion.php";
                 while($row = mysqli_fetch_assoc($result)){
                         $id = $row['id'];
                         $auto = $row['auto'];
-                    $cadena = $cadena . "<opcion value='0'> Opcion </option>";         
+                    $cadena = $cadena . "<option value='0'>Open this select menu</option> ";         
                 }
             }
             else{
