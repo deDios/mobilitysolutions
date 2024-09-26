@@ -130,9 +130,9 @@
                             $('#InputMarca').val(0);
                             get_marca();
                             $('#InputNombre').val(0);
-                            get_modelo();
                             $('#InputMarca').change(function(){
                                 get_marca();
+                                get_modelo();
                             });
                             $('#InputNombre').change(function(){
                                 get_modelo();
@@ -154,7 +154,7 @@
                             $.ajax({
                                 type:   "POST" ,
                                 url:    "get_modelo.php",
-                                data:   "Auto=" + "1",
+                                data:   "Auto=" + $('#InputNombre').val(),
                                 success: function(r){
                                     $('#div_modelo').html(r);
                                 }
