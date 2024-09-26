@@ -66,47 +66,7 @@
                         </div>
                     </div>
 
-                    <script >
-                        $(document).ready(function(){
-                            $('#InputMarca').val(0);
-                            get_marca();
-                            $('#InputMarca').change(function(){
-                                get_marca();
-                            });
-                        })
-                    </script>
-
-                    <script >
-                        $(document).ready(function(){
-                            get_modelo();
-                            $('#InputNombre').change(function(){
-                                get_modelo();
-                            });
-                        })
-                    </script>
-                        
-                    <script>
-                        function get_marca(){
-                            $.ajax({
-                                type:   "POST" ,
-                                url:    "get_marca.php",
-                                data:   "Marca=" + $('#InputMarca').val(),
-                                success: function(r){
-                                    $('#div_auto').html(r);
-                                }
-                            });
-                        }
-                        function get_modelo(){
-                            $.ajax({
-                                type:   "POST" ,
-                                url:    "get_modelo.php",
-                                data:   "Auto=" + $('#InputNombre').val(),
-                                success: function(r){
-                                    $('#div_modelo').html(r);
-                                }
-                            });
-                        }
-                    </script>
+                    
           
                     <div class="col mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -166,5 +126,47 @@
         </div>
     </div>
     
+                    <script >
+                        $(document).ready(function(){
+                            $('#InputMarca').val(0);
+                            get_marca();
+                            $('#InputMarca').change(function(){
+                                get_marca();
+                            });
+                        })
+                    </script>
+
+                    <script >
+                        $(document).ready(function(){
+                            $('#InputNombre').change(function(){
+                                get_modelo();
+                            });
+                        })
+                    </script>
+                        
+                    <script>
+                        function get_marca(){
+                            $.ajax({
+                                type:   "POST" ,
+                                url:    "get_marca.php",
+                                data:   "Marca=" + $('#InputMarca').val(),
+                                success: function(r){
+                                    $('#div_auto').html(r);
+                                }
+                            });
+                        }
+                        function get_modelo(){
+                            $.ajax({
+                                type:   "POST" ,
+                                url:    "get_modelo.php",
+                                data:   "Auto=" + $('#InputNombre').val(),
+                                success: function(r){
+                                    $('#div_modelo').html(r);
+                                }
+                            });
+                        }
+                    </script>
+
+
 </body>
 </html>
