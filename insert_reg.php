@@ -66,8 +66,7 @@
                             <input type="text" class="form-control" id="InputModelo">
                         </div>
                     </div>
-
-
+                    
                     <script >
                         $(document).ready(function(){
                             $('#InputMarca').val(0);
@@ -89,21 +88,7 @@
                             });
                         }
                     </script>
-                    <script>
-                        var select = document.getElementById('InputMarca');
-                            $('#InputMarca').change(function(){
-                                    select.addEventListener('change',
-                                    function(){
-                                        var selectedOption = this.options[select.selectedIndex];
-                                        console.log(selectedOption.value + ': ' + selectedOption.text);
-                                        var resultado = selectedOption.value ;
-                            });
-                        });               
-                    </script>
-
-                        
-                    
-                    
+          
                     <div class="col mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Sucursal</label>
