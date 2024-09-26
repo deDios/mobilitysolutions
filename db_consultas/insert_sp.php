@@ -15,6 +15,11 @@ $eje = $_POST['InputEje'];
 $pasajeros = $_POST['InputPasajeros'];
 $propietarios = $_POST['InputPropietarios'];
 
+$inc = include "db/Conexion.php"; 
+$query = "insert into tmx_auto (nombre, modelo, marca, mensualidad, costo, sucursal, img1, img2, img3, img4, img5, img6, color, transmision, interior, kilometraje, combustible, cilindros, eje, estatus, updated_at) values
+('$auto','$modelo','$marca','$mensualidad','$costo','$sucursal',img1, img2, img3, img4, img5, img6,'$color','$transmision','$interior','$kilometraje','$combustible','$cilindros','$eje',2,NULL);";
+        $result = mysqli_query($con,$query); 
+
 echo "sucursal" . $sucursal;
 echo "marca" . $marca;
 echo "auto" . $auto;
