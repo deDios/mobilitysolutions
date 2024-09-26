@@ -130,7 +130,7 @@
     </div>
                     <script >
                         $(document).ready(function(){
-                            $('#InputMarca').val(0);
+                            $('#InputMarca').val(1);
                                 get_marca();
                             $('#InputMarca').change(function(){
                                 get_marca();
