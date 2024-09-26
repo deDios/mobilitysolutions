@@ -10,17 +10,17 @@ $inc = include "db/Conexion.php";
     $query = "select 
                     id,
                     automovil,
-                    nombre
+                    nombre as modelo
                 FROM mobility_solutions.tmx_modelo
                 where automovil = '$Auto';";
     $result = mysqli_query($con,$query); 
             if ($result){ 
                 while($row = mysqli_fetch_assoc($result)){
                         $id = $row['id'];
-                        $nombre = $row['nombre'];
+                        $modelo = $row['modelo'];
                     $id_valor = '"' . $id . '"';
                     //$cadena = $cadena . "<option value=$id_valor> $nombre </option>";
-                    $cadena = $cadena . "<option value=$id_valor> Opcion </option>";         
+                    $cadena = $cadena . "<option value=$id_valor> $modelo </option>";         
                 }
             }
             else{
