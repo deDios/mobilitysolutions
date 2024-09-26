@@ -102,9 +102,13 @@
                     
                     <div class="input-group mb-3 col-6 mt-5">
                         <span class="input-group-text">$</span>
-                            <input id="InputMensualidad" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                            <input id="InputMensualidad" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" required>
                         <span class="input-group-text">MX/mensuales</span>
                     </div>
+                    <div class="invalid-feedback">
+                        Porfavor llenar campo de mensualidad
+                    </div>
+
 
                     <div class="input-group mb-3 col-6 mt-5">
                         <span class="input-group-text">$</span>
@@ -153,7 +157,7 @@
                         <label class="form-check-label" for="exampleCheck1">Estatus</label>
                     </div>
 
-                    <button type="button" class="btn btn-success">Guardar</button>
+                    <button type="submit" class="btn btn-success">Guardar registro</button>
             </form>
         </div>
     </div>
