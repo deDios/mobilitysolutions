@@ -222,17 +222,21 @@
                     </div>
 
                     <!-- Input pasajeros ------------------------------------------------------------------->
-                    <div class="col mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Capacidad de pasajeros</label>
+                    <div class="col-2 mt-2">
+                        <label for='InputPasajeros' class='form-label'>Capacidad de pasajeros</label>
+                        <div class="input-group mb-3 ">
+                                <input id="InputPasajeros" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                            <span class="input-group-text">Pasajeros</span>
+                        </div>
                     </div>
-                    <div class="col mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Numero de propietarios</label>
-                    </div>
-                    <div class="col mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Estatus</label>
+
+                    <!-- Input Propietarios ------------------------------------------------------------------->
+                    <div class="col-2 mt-2">
+                        <label for="InputPropietarios" class="form-label">Eje</label>
+                        <select id="InputPropietarios" class="form-select" aria-label="Default select example" name="InputPropietarios">
+                            <option value="Delantera">1</option>  
+                            <option value="Trasera">2</option>  
+                        </select>
                     </div>
 
                     <button type="submit" class="btn btn-success">Guardar registro</button>
