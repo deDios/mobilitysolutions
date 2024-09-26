@@ -192,17 +192,17 @@
 
                     <!-- Input Cilindros ------------------------------------------------------------------->
                     <div class="col-6 mt-2">
-                        <div class="col mb-3 form-check">
+                        <div class="p-3 m-0 border-0 bd-example m-0 border-0">
                             <input type="radio" class="btn-check" name="InputCilindros" id="InputCilindros" value="V4" autocomplete="off" checked="">
-                            <label class="btn btn-outline-primary" for="InputCilindros">V4</label>
+                            <label class="btn" for="InputCilindros">V4</label>
                             <input type="radio" class="btn-check" name="InputCilindros" id="InputCilindros" value="V6" autocomplete="off">
-                            <label class="btn btn-outline-primary" for="InputCilindros">V6</label>
+                            <label class="btn" for="InputCilindros">V6</label>
                             <input type="radio" class="btn-check" name="InputCilindros" id="InputCilindros" value="V8" autocomplete="off">
-                            <label class="btn btn-outline-primary" for="InputCilindros">V8</label>
+                            <label class="btn" for="InputCilindros">V8</label>
                             <input type="radio" class="btn-check" name="InputCilindros" id="InputCilindros" value="V10" autocomplete="off">
-                            <label class="btn btn-outline-primary" for="InputCilindros">V10</label>
+                            <label class="btn" for="InputCilindros">V10</label>
                             <input type="radio" class="btn-check" name="InputCilindros" id="InputCilindros" value="V12" autocomplete="off">
-                            <label class="btn btn-outline-primary" for="InputCilindros">V12</label>                        
+                            <label class="btn" for="InputCilindros">V12</label>                        
                         </div>
                     </div>
 
