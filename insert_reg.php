@@ -57,7 +57,7 @@
                     <div class="col-3 mt-5">
                         <label for="InputMarca" class="form-label">Marca</label>
                         <select id="InputMarca" class="form-select" aria-label="Default select example" name="InputMarca">
-                            <option value="0">Open this select menu</option>                      
+                            <option value="0">Selecciona una Marca</option>                      
                             <?php 
                             $inc = include "db/Conexion.php";    
                                 if ($inc){
@@ -87,7 +87,7 @@
                         <div id="div_auto" class="col-3">
                             <label for='InputNombre' class='form-label'>Vehiculo</label>
                             <select id="InputNombre" class="form-select" aria-label="Default select example" name="InputNombre">
-                                <option value="0">Open this select menu</option> 
+                                <option value="0">Selecciona un Vehiculo</option> 
                             </select>
                         </div>
 
@@ -95,10 +95,9 @@
                         <div id="div_modelo" class="col-3">
                             <label for='InputModelo' class='form-label'>Modelo</label>
                             <select id="InputModelo" class="form-select" aria-label="Default select example" name="InputModelo">
-                                <option value="0">Open this select menu</option> 
+                                <option value="0">Selecciona un Modelo</option> 
                             </select>
                         </div>
-
                     </div>
                     
                     <!-- Input Mensualidad ------------------------------------------------------------------->
@@ -119,9 +118,18 @@
                     </div>
 
                     <!-- Input Color ------------------------------------------------------------------->
-                    <div class="col mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Color</label>
+                    <div class="col-2 mt-5">
+                        <label for="InputColor" class="form-label">Color</label>
+                        <select id="InputColor" class="form-select" aria-label="Default select example" name="InputColor">
+                            <option value="0">Negro</option>  
+                            <option value="0">Rojo</option>  
+                            <option value="0">Azul</option>  
+                            <option value="0">Blanco</option>  
+                            <option value="0">Verde</option>
+                            <option value="0">Gris</option>
+                            <option value="0">Amarillo</option>
+                            <option value="0">Arena</option>  
+                        </select>
                     </div>
 
                     <!-- Input Transmision ------------------------------------------------------------------->
@@ -133,7 +141,7 @@
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="InputTransmision" id="InputTransmision" value="option2">
-                            <label class="form-check-label" for="inlineRadio2">TA (Automatica)</label>
+                            <label class="form-check-label" for="inlineRadio2">TA (Automatico)</label>
                         </div>
                     </div>
 
