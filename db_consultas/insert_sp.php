@@ -38,6 +38,7 @@ if ($result){
     while($row = mysqli_fetch_assoc($result)){
         $id = $row['id'];
     }
+    echo "Exito en conexión Id de auto: " . $id;
 }
 else{
     echo "Falla en conexión";
