@@ -9,8 +9,8 @@ $inc = include "db/Conexion.php";
                     id,
                     automovil,
                     nombre
-                FROM mobility_solutions.tmx_marca_auto
-                where marca = '$Auto';";
+                FROM mobility_solutions.tmx_modelo
+                where automovil = '$Auto';";
     $result = mysqli_query($con,$query); 
             if ($result){ 
                 while($row = mysqli_fetch_assoc($result)){
