@@ -40,6 +40,18 @@ else{
     echo "Falla en conexión";
 }
 
+$carpeta = '../Imagenes/Catalogo/Auto';
+$carpeta_id = '../Imagenes/Catalogo/Auto/'.$con->insert_id.'';
+if (file_exists($carpeta)) {
+    echo "Existe la carpeta 1";
+    if (file_exists($carpeta_id)) {
+        echo "Existe la carpeta 2";
+    }else{
+        echo "Existe la carpeta 2";
+    }
+    //mkdir($carpeta, 0777, true);
+    //file_put_contents('index.php', $contenido);
+}
 
 ?>
 <!DOCTYPE html>
