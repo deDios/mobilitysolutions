@@ -7,7 +7,7 @@ $Auto=$_POST['Auto'];
                 </select>";
 
 echo $cadena;
-
+/*
 $inc = include "db/Conexion.php"; 
     $query = "select 
                     id,
@@ -28,4 +28,5 @@ $inc = include "db/Conexion.php";
                 echo "Falla en conexión";
             }
             echo $cadena . "</select>";
+*/
 ?>
