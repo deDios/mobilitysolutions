@@ -149,8 +149,6 @@
                                 }
                             });
                         }
-                    </script>
-                    <script>
                         function get_modelo(){
                             $.ajax({
                                 type:   "POST" ,
@@ -162,7 +160,5 @@
                             });
                         }
                     </script>
-
-
 </body>
 </html>
