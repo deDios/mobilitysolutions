@@ -11,7 +11,7 @@ $inc = include "db/Conexion.php";
     $query = "select 
                     id,
                     marca,
-                    nombre
+                    auto
                 FROM mobility_solutions.tmx_marca_auto
                 where marca = 4;";
     
@@ -19,14 +19,13 @@ $inc = include "db/Conexion.php";
             if ($result){ 
                 while($row = mysqli_fetch_assoc($result)){
                                     $id = $row['id'];
-                                    $nombre = $row['nombre'];
+                                    $auto = $row['auto'];
 
-                    $cadena = $cadena . '<opcion value'. $id .'>'. $nombre .'</option>';
+                    $cadena = $cadena . '<opcion value'. $id .'>'. $auto .'</option>';
                 }
             }
             else{
                 echo "Falla en conexión";
             }
-            $cadena = $cadena . "</select>"; 
-            echo $cadena;
+            echo $cadena . "</select>";
 ?>
