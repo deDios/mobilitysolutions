@@ -43,6 +43,13 @@ else{
 $carpeta = '/home/site/wwwroot/Imagenes/Catalogo';
 $carpeta_id = '/home/site/wwwroot/Imagenes/Catalogo/Auto '.$con->insert_id.'';
 
+if (file_exists($carpeta_id)){
+    echo "Ya existe la carpeta";
+}
+else{
+    mkdir($carpeta_id, 0777, true);
+    echo "Se creo la carpeta" . $carpeta_id;
+}
 
 ?>
 <!DOCTYPE html>
@@ -88,7 +95,7 @@ $carpeta_id = '/home/site/wwwroot/Imagenes/Catalogo/Auto '.$con->insert_id.'';
 
                     for ($i=0;$i<count($_FILES["archivo"]["name"]);$i++) {
                         if ($_FILES["archivo"]["type"][$i] == "image/jpg" || $_FILES["archivo"]["type"][$i] == "image/jpeg" ){
-                            if (file_exists($carpeta_id) || mkdir($carpeta_id, 0777, true)) {
+                            if (file_exists($carpeta_id)) {
                                 $origen_archivo = $_FILES["archivo"]["tmp_name"][$i];
                                 $destino_archivo = $carpeta_id.$_FILES["archivo"]["name"][$i];
 
@@ -98,7 +105,7 @@ $carpeta_id = '/home/site/wwwroot/Imagenes/Catalogo/Auto '.$con->insert_id.'';
                                     echo "<br>".$_FILES["archivo"]["name"][$i]."Archivo no insertado";
                                 }
                             }else{
-                                echo "No se creo la carpeta correctamente";
+                                echo "La carpeta no existe";
                             }
                         }else{
                             echo "<br>".$_FILES["archivo"]["name"][$i]." no corresponde a un archivo jpg";
