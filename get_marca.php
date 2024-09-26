@@ -18,8 +18,6 @@ $inc = include "db/Conexion.php";
                 while($row = mysqli_fetch_assoc($result)){
                                     $id = $row['id'];
                                     $auto = $row['auto'];
-
-                    $cadena = $cadena . "<opcion value=" . "'" . $row['id'] . "'" .">" . $row['auto'] . "</option>";
                 }
             }
             else{
