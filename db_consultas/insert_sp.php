@@ -17,7 +17,7 @@ $propietarios = $_POST['InputPropietarios'];
 
 $inc = include "db/Conexion.php"; 
 $query = "insert into tmx_auto (nombre, modelo, marca, mensualidad, costo, sucursal, img1, img2, img3, img4, img5, img6, color, transmision, interior, kilometraje, combustible, cilindros, eje, estatus, created_at, pasajeros, propietarios) values
-($auto,$modelo,$marca,$mensualidad,$costo,$sucursal,'img1', 'img2', 'img3', 'img4', 'img5', 'img6', '$color', '$transmision','$interior',$kilometraje,'$combustible',$cilindros,'$eje',2,NULL,$pasajeros,$propietarios);";
+($auto,$modelo,$marca,$mensualidad,$costo,$sucursal,'img1', 'img2', 'img3', 'img4', 'img5', 'img6', 'Blanco', 'Automatica','Piel',$kilometraje,'Gasolina',$cilindros,'Delantera',2,NULL,$pasajeros,$propietarios);";
         $result = mysqli_query($con,$query); 
 
 echo "sucursal" . $sucursal;
