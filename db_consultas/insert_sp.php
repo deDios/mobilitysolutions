@@ -74,20 +74,20 @@ $carpeta_id = '/home/site/wwwroot/Imagenes/Catalogo/Auto '.$con->insert_id.'';
             <!-- Input Imagenes ------------------------------------------------------------------->
                     <div class="col-2 mt-2">
                         <div class="mb-3">
-                            <label for="FileImg1" class="form-label">Carga de imagenes</label>
+                            <label for="" class="form-label">Carga de imagenes</label>
                             <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
                         </div>
                         <button type="submit" class="btn btn-success mt-5">Cargar imagenes</button>
                     </div>
             </form>
         </div>
-</div>
+</div> 
 
             <?php
                 if (isset($_FILES["archivo"]) && $_FILES["archivo"]["name"][0]){
 
                     for ($i=0;$i<count($_FILES["archivo"]["name"]);$i++) {
-                        if ($_FILES["archivo"] ["type"][$i] == "image/jpg"){
+                        if ($_FILES["archivo"]["type"][$i] == "image/jpg" || $_FILES["archivo"]["type"][$i] == "image/jpeg" ){
                             if (file_exists($carpeta_id) || mkdir($carpeta_id, 0777, true)) {
                                 $origen_archivo = $_FILES["archivo"]["tmp_name"][$i];
                                 $destino_archivo = $carpeta_id.$_FILES["archivo"]["name"][$i];
