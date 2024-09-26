@@ -35,10 +35,7 @@ $query = 'insert into mobility_solutions.tmx_auto (nombre, modelo, marca, mensua
         
 $result = mysqli_query($con,$query); 
 if ($result){ 
-    while($row = mysqli_fetch_assoc($result)){
-        $id = $row['id'];
-    }
-    echo "Exito en conexión Id de auto: " . $id;
+    echo "Exito¡¡";
 }
 else{
     echo "Falla en conexión";
