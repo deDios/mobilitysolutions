@@ -35,7 +35,9 @@ $query = 'insert into mobility_solutions.tmx_auto (nombre, modelo, marca, mensua
         
 $result = mysqli_query($con,$query); 
 if ($result){ 
-    echo "Exito en conexión";
+    while($row = mysqli_fetch_assoc($result)){
+        $id = $row['id'];
+    }
 }
 else{
     echo "Falla en conexión";
@@ -54,6 +56,15 @@ else{
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-    
+
+<div class="container">
+        <h1>Exito en el registro</h1>
+        <div class="row mt-5">
+            <label for="" class="form-label">Se requiere cargar imagenes para el auto</label>
+            <form action="db_consultas/insert_sp.php" method="POST">
+
+            </form>
+        </div>
+</div>
 </body>
 </html>
