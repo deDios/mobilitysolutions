@@ -103,7 +103,7 @@
                     <!-- Input Mensualidad ------------------------------------------------------------------->
                     <div class="input-group mb-3 col-6 mt-5">
                         <span class="input-group-text">$</span>
-                            <input id="InputMensualidad" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" required>
+                            <input id="InputMensualidad" type="text" class="form-control" name="InputMensualidad" aria-label="Amount (to the nearest dollar)" required>
                         <span class="input-group-text">MX/mensuales</span>
                     </div>
                     <div class="invalid-feedback">
@@ -113,7 +113,7 @@
                     <!-- Input Costo ------------------------------------------------------------------->
                     <div class="input-group mb-3 col-6 mt-2">
                         <span class="input-group-text">$</span>
-                            <input id="InputCosto" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                            <input id="InputCosto" type="text" class="form-control" name="InputCosto" aria-label="Amount (to the nearest dollar)">
                         <span class="input-group-text">MX/Contado</span>
                     </div>
 
@@ -166,7 +166,7 @@
                     <div class="col-2 mt-2">
                         <label for='InputKilometraje' class='form-label'>Kilometraje</label>
                         <div class="input-group mb-3 ">
-                                <input id="InputKilometraje" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                <input id="InputKilometraje" type="text" class="form-control" name="InputKilometraje"  aria-label="Amount (to the nearest dollar)">
                             <span class="input-group-text">km</span>
                         </div>
                     </div>
@@ -194,19 +194,19 @@
                     <div class="col-6 mt-2">
                     <label for='InputCilindros' class='form-label'>Cilindros</label>
                         <div class="p-3 m-0 border-0 bd-example m-0 border-0">
-                            <input type="radio" class="btn-check" name="options-base" id="InputCilindros1" autocomplete="off" checked="">
+                            <input type="radio" class="btn-check" name="InputCilindros" value="V4" id="InputCilindros1" autocomplete="off" checked="">
                             <label class="btn" for="InputCilindros1">V4</label>
                             
-                            <input type="radio" class="btn-check" name="options-base" id="InputCilindros2" autocomplete="off">
+                            <input type="radio" class="btn-check" name="InputCilindros" value="V6" id="InputCilindros2" autocomplete="off">
                             <label class="btn" for="InputCilindros2">V6</label>
                             
-                            <input type="radio" class="btn-check" name="options-base" id="InputCilindros3" autocomplete="off">
+                            <input type="radio" class="btn-check" name="InputCilindros" value="V8" id="InputCilindros3" autocomplete="off">
                             <label class="btn" for="InputCilindros3">V8</label>
                             
-                            <input type="radio" class="btn-check" name="options-base" id="InputCilindros4" autocomplete="off">
+                            <input type="radio" class="btn-check" name="InputCilindros" value="V10" id="InputCilindros4" autocomplete="off">
                             <label class="btn" for="InputCilindros4">V10</label>
 
-                            <input type="radio" class="btn-check" name="options-base" id="InputCilindros5" autocomplete="off">
+                            <input type="radio" class="btn-check" name="InputCilindros" value="V12" id="InputCilindros5" autocomplete="off">
                             <label class="btn" for="InputCilindros5">V12</label>
                         </div>
                     </div>
@@ -225,7 +225,7 @@
                     <div class="col-2 mt-2">
                         <label for='InputPasajeros' class='form-label'>Capacidad de pasajeros</label>
                         <div class="input-group mb-3 ">
-                                <input id="InputPasajeros" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                <input id="InputPasajeros" type="text" class="form-control" name="InputPasajeros" aria-label="Amount (to the nearest dollar)">
                             <span class="input-group-text">Pasajeros</span>
                         </div>
                     </div>
