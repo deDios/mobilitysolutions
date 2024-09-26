@@ -137,7 +137,7 @@
                         <label for='InputTransmision' class='form-label'>Tipo de transmision</label>
                         <div class="col mb-3 form-check"> 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="InputTransmision" id="InputTransmision" value="Manual">
+                                <input class="form-check-input" type="radio" name="InputTransmision" id="InputTransmision" value="Manual" checked="">
                                 <label class="form-check-label" for="InputTransmision">TM (Manual)</label>
                             </div>
                             <div class="form-check form-check-inline">
@@ -152,7 +152,7 @@
                         <label for='InputInterior' class='form-label'>Interior</label>
                         <div class="col mb-3 form-check"> 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="InputInterior" id="InputInterior" value="Tela">
+                                <input class="form-check-input" type="radio" name="InputInterior" id="InputInterior" value="Tela" checked="">
                                 <label class="form-check-label" for="InputInterior">Tela</label>
                             </div>
                             <div class="form-check form-check-inline">
@@ -176,7 +176,7 @@
                         <label for='InputCombustible' class='form-label'>Combustible</label>
                         <div class="col mb-3 form-check"> 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible" value="Gasolina">
+                                <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible" value="Gasolina" checked="">
                                 <label class="form-check-label" for="InputCombustible">Gasolina</label>
                             </div>
                             <div class="form-check form-check-inline">
