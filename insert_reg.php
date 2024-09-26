@@ -194,19 +194,19 @@
                     <div class="col-6 mt-2">
                     <label for='InputCilindros' class='form-label'>Cilindros</label>
                         <div class="p-3 m-0 border-0 bd-example m-0 border-0">
-                            <input type="radio" class="btn-check" name="InputCilindros" value="V4" id="InputCilindros1" autocomplete="off" checked="">
+                            <input type="radio" class="btn-check" name="InputCilindros" value="4" id="InputCilindros1" autocomplete="off" checked="">
                             <label class="btn" for="InputCilindros1">V4</label>
                             
-                            <input type="radio" class="btn-check" name="InputCilindros" value="V6" id="InputCilindros2" autocomplete="off">
+                            <input type="radio" class="btn-check" name="InputCilindros" value="6" id="InputCilindros2" autocomplete="off">
                             <label class="btn" for="InputCilindros2">V6</label>
                             
-                            <input type="radio" class="btn-check" name="InputCilindros" value="V8" id="InputCilindros3" autocomplete="off">
+                            <input type="radio" class="btn-check" name="InputCilindros" value="8" id="InputCilindros3" autocomplete="off">
                             <label class="btn" for="InputCilindros3">V8</label>
                             
-                            <input type="radio" class="btn-check" name="InputCilindros" value="V10" id="InputCilindros4" autocomplete="off">
+                            <input type="radio" class="btn-check" name="InputCilindros" value="10" id="InputCilindros4" autocomplete="off">
                             <label class="btn" for="InputCilindros4">V10</label>
 
-                            <input type="radio" class="btn-check" name="InputCilindros" value="V12" id="InputCilindros5" autocomplete="off">
+                            <input type="radio" class="btn-check" name="InputCilindros" value="12" id="InputCilindros5" autocomplete="off">
                             <label class="btn" for="InputCilindros5">V12</label>
                         </div>
                     </div>
