@@ -15,6 +15,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    
 
 </head>
 <body>
@@ -98,13 +99,11 @@
                         </div>
 
                     </div>
-
                     
-          
-                    
-                    <div class="col mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Mensualidad</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">$</span>
+                            <input id="InputMensualidad" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                        <span class="input-group-text">MX/mensuales</span>
                     </div>
                     <div class="col mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
