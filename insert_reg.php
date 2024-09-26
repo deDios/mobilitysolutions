@@ -83,7 +83,7 @@
                         </select>
                     </div>
                     <div class="row mt-3">
-
+                    <!-- Input Auto ------------------------------------------------------------------->
                         <div id="div_auto" class="col-3">
                             <label for='InputNombre' class='form-label'>Vehiculo</label>
                             <select id="InputNombre" class="form-select" aria-label="Default select example" name="InputNombre">
@@ -91,6 +91,7 @@
                             </select>
                         </div>
 
+                    <!-- Input Modelo ------------------------------------------------------------------->
                         <div id="div_modelo" class="col-3">
                             <label for='InputModelo' class='form-label'>Modelo</label>
                             <select id="InputModelo" class="form-select" aria-label="Default select example" name="InputModelo">
@@ -100,6 +101,7 @@
 
                     </div>
                     
+                    <!-- Input Mensualidad ------------------------------------------------------------------->
                     <div class="input-group mb-3 col-6 mt-5">
                         <span class="input-group-text">$</span>
                             <input id="InputMensualidad" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" required>
@@ -109,20 +111,22 @@
                         Porfavor llenar campo de mensualidad
                     </div>
 
+                    <!-- Input Costo ------------------------------------------------------------------->
                     <div class="input-group mb-3 col-6 mt-2">
                         <span class="input-group-text">$</span>
                             <input id="InputCosto" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
                         <span class="input-group-text">MX/Contado</span>
                     </div>
 
-
+                    <!-- Input Color ------------------------------------------------------------------->
                     <div class="col mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Color</label>
                     </div>
 
-                    <div class="col mb-3 form-check">
-                    <label class="form-check-label" for="InputTransmision">Tipo de transmision</label>
+                    <!-- Input Transmision ------------------------------------------------------------------->
+                    <div class="col mb-3 form-check"> 
+                    <label for='InputTransmision' class='form-label'>Tipo de transmision</label>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="InputTransmision" id="InputTransmision" value="option1">
                             <label class="form-check-label" for="inlineRadio1">TM (Manual)</label>
