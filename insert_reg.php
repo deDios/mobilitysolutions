@@ -163,10 +163,13 @@
                     </div>
 
                     <!-- Input kilometraje ------------------------------------------------------------------->
-                    <div class="col mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">kilometraje</label>
+                    <div class="col-2 mt-2">
+                        <div class="input-group mb-3 ">
+                                <input id="InputKilometraje" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                            <span class="input-group-text">km</span>
+                        </div>
                     </div>
+
                     <div class="col mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Tipo de Combustible</label>
