@@ -1,5 +1,7 @@
 <?php
-echo "Hola";
+$sucursal = $_POST['InputSucursal'];
+
+echo $sucursal;
 ?>
 <!DOCTYPE html>
 <html lang="en">
