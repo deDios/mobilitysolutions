@@ -134,7 +134,7 @@
                             $('#InputMarca').change(function(){
                                 get_marca();
                             }); 
-                            $('#InputNombre').change(function(){
+                            $('#div_auto').change(function(){
                                 get_modelo();
                             });                       
                         });
