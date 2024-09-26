@@ -1,10 +1,12 @@
 <?php
 $Auto=$_POST['Auto'];
  
-echo $Auto;
-
     $cadena = "<label for='InputModelo' class='form-label'>Modelo</label>
-                <select id='InputModelo' class='form-select' aria-label='Default select example' name='InputModelo'>";
+                <select id='InputModelo' class='form-select' aria-label='Default select example' name='InputModelo'>
+                    <option value='0'> $cadena </option>
+                </select>";
+
+echo $cadena;
 
 $inc = include "db/Conexion.php"; 
     $query = "select 
