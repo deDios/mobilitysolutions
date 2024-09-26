@@ -134,6 +134,7 @@
                                 get_marca();
                             $('#InputMarca').change(function(){
                                 get_marca();
+                                demo();
                                 get_modelo();
                             });                       
                         });
@@ -159,6 +160,13 @@
                                 }
                             });
                         }
+                        async function demo() {
+                        for (let i = 0; i < 3; i++) {
+                            console.log(`Waiting ${i} seconds...`);
+                            await sleep(i * 1000);
+                        }
+                        console.log('Done');
+}
                     </script>
 </body>
 </html>
