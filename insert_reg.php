@@ -133,17 +133,11 @@
                             $('#InputMarca').change(function(){
                                 get_marca();
                             });
-                        })
-                    </script>
-
-                    <script >
-                        $(document).ready(function(){
                             $('#InputNombre').change(function(){
                                 get_modelo();
                             });
                         })
-                    </script>
-                        
+                    </script>                        
                     <script>
                         function get_marca(){
                             $.ajax({
@@ -155,6 +149,8 @@
                                 }
                             });
                         }
+                    </script>
+                    <script>
                         function get_modelo(){
                             $.ajax({
                                 type:   "POST" ,
