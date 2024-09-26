@@ -23,6 +23,36 @@
         <h1>Registro autos</h1>
         <div class="row mt-5">
             <form action="db_consultas/insert_sp.php" method="POST">
+                    
+                    <div class="col-2 mt-5">
+                        <label for="InputSucursal" class="form-label">Sucursal</label>
+                        <select id="InputSucursal" class="form-select" aria-label="Default select example" name="InputSucursal">
+                            <option value="0">Selecciona una sucursal</option>                      
+                            <?php 
+                            $inc = include "db/Conexion.php";    
+                                if ($inc){
+                                    $query = 'select 
+                                                id,
+                                                nombre
+                                            FROM mobility_solutions.tmx_sucursal;';
+                                    $result = mysqli_query($con,$query);  
+                                    if ($result){         
+                                        while($row = mysqli_fetch_assoc($result)){
+                                            $id = $row['id'];
+                                            $nombre = $row['nombre'];
+                            ?> 
+                                        <option value="<?php echo $id;?>"><?php echo $nombre;?></option>
+                            <?php
+                                        }
+                                    } else{
+                                            echo "Hubo un error en la consulta";
+                                    }
+                                        mysqli_free_result($result);                  
+                                }
+                            ?>
+                        </select>
+                    </div>
+            
                     <div class="col-3">
                         <label for="InputMarca" class="form-label">Marca</label>
                         <select id="InputMarca" class="form-select" aria-label="Default select example" name="InputMarca">
@@ -71,10 +101,7 @@
 
                     
           
-                    <div class="col mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Sucursal</label>
-                    </div>
+                    
                     <div class="col mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Mensualidad</label>
