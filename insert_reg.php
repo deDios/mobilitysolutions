@@ -164,15 +164,15 @@
 
                     <!-- Input kilometraje ------------------------------------------------------------------->
                     <div class="col-2 mt-2">
+                        <label for='InputKilometraje' class='form-label'>Kilometraje</label>
                         <div class="input-group mb-3 ">
-                                <label for='InputKilometraje' class='form-label'>Kilometraje</label>
                                 <input id="InputKilometraje" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
                             <span class="input-group-text">km</span>
                         </div>
                     </div>
 
                     <!-- Input Combustible ------------------------------------------------------------------->
-                    <div class="col-2 mt-2">
+                    <div class="col-3 mt-2">
                         <label for='InputCombustible' class='form-label'>Combustible</label>
                         <div class="col mb-3 form-check"> 
                             <div class="form-check form-check-inline">
