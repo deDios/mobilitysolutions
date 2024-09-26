@@ -125,8 +125,8 @@
                     </div>
 
                     <!-- Input Transmision ------------------------------------------------------------------->
-                    <div class="col mb-3 form-check"> 
                     <label for='InputTransmision' class='form-label'>Tipo de transmision</label>
+                    <div class="col mb-3 form-check"> 
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="InputTransmision" id="InputTransmision" value="option1">
                             <label class="form-check-label" for="inlineRadio1">TM (Manual)</label>
@@ -137,6 +137,7 @@
                         </div>
                     </div>
 
+                    <!-- Input Interior ------------------------------------------------------------------->
                     <div class="col mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Tipo de interior</label>
