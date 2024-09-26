@@ -126,18 +126,18 @@
         </div>
     </div>
                     <script >
-                        $(document).ready(function(){
+                       // $(document).ready(function(){
                             $('#InputMarca').val(0);
-                            get_marca();
+                                get_marca();
                             $('#InputNombre').val(0);
+                                get_modelo();
                             $('#InputMarca').change(function(){
                                 get_marca();
-                                get_modelo();
                             });
                             $('#InputNombre').change(function(){
                                 get_modelo();
                             });
-                        });
+                       // });
                     </script>                        
                     <script>
                         function get_marca(){
