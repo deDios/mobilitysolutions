@@ -151,12 +151,8 @@
                             });
                         }
                         function get_modelo(){
-                            var select = document.getElementById('InputNombre');
-                            select.addEventListener('change',
-                            function(){
-                                var selectedOption = this.options[select.selectedIndex];
-                                console.log(selectedOption.value + ': ' + selectedOption.text);
-                            })
+                            
+                            var selectedOption = this.options[$('#InputNombre').selectedIndex];    
                             $.ajax({
                                 type:   "POST" ,
                                 url:    "get_modelo.php",
