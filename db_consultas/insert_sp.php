@@ -42,17 +42,7 @@ else{
 
 $carpeta = '/home/site/wwwroot/Imagenes/Catalogo';
 $carpeta_id = '/home/site/wwwroot/Imagenes/Catalogo/Auto '.$con->insert_id.'';
-if (file_exists($carpeta)) {
-    echo "Existe la carpeta 1";
-    if (file_exists($carpeta_id)) {
-        echo "Existe la carpeta 2";
-    }else{
-        mkdir($carpeta_id, 0777, true);
-        echo 'Se creo carpeta para auto con Id: '.$con->insert_id.' ';
-    }
-    //file_put_contents('index.php', $contenido);
-}else
-echo "No existe la carpeta 1";
+
 
 ?>
 <!DOCTYPE html>
@@ -70,59 +60,54 @@ echo "No existe la carpeta 1";
 <div class="container">
         <h1>Exito en el registro Id de auto: <?php echo $con->insert_id;?></h1>
         <div class="row mt-5">
-            <label for="" class="form-label">Se requiere cargar imagenes para el auto</label>
-            <form action="db_consultas/insert_sp.php" method="POST">
+            <label for="" class="form-label">Se requiere cargar imagenes para el auto
+                <br> Foto portada "Colocar nombre Img01.jpg"
+                <br> Foto de perfil "Colocar nombre Img02.jpg"
+                <br> Foto llanta "Colocar nombre Img03.jpg"
+                <br> Foto asientos traseros "Colocar nombre Img04.jpg"
+                <br> Foto asientos delanteros "Colocar nombre Img05.jpg"
+                <br> Foto motor "Colocar nombre Img06.jpg"
+                <br> Foto tablero "Colocar nombre Img07.jpg"
+                <br> Foto cajuela "Colocar nombre Img08.jpg"
+            </label>
+            <form action="<?php echo $_SERVER["PHP_SELF"]?>" method="POST" enctype="multipart/form-data" name = "InputAuto">
             <!-- Input Imagenes ------------------------------------------------------------------->
                     <div class="col-2 mt-2">
                         <div class="mb-3">
-                            <label for="FileImg1" class="form-label">Img de portada</label>
-                            <input class="form-control form-control-sm" id="FileImg1" type="file">
+                            <label for="FileImg1" class="form-label">Carga de imagenes</label>
+                            <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
                         </div>
-                    </div>
-                    <div class="col-2 mt-2">
-                        <div class="mb-3">
-                            <label for="FileImg2" class="form-label">Img de perfil</label>
-                            <input class="form-control form-control-sm" id="FileImg2" type="file">
-                        </div>
-                    </div>
-                    <div class="col-2 mt-2">
-                        <div class="mb-3">
-                            <label for="FileImg3" class="form-label">Img de llanta</label>
-                            <input class="form-control form-control-sm" id="FileImg3" type="file">
-                        </div>
-                    </div>
-                    <div class="col-2 mt-2">
-                        <div class="mb-3">
-                            <label for="FileImg4" class="form-label">Img de asientos traseros</label>
-                            <input class="form-control form-control-sm" id="FileImg4" type="file">
-                        </div>
-                    </div>
-                    <div class="col-2 mt-2">
-                        <div class="mb-3">
-                            <label for="FileImg5" class="form-label">Img de asientos delanteros</label>
-                            <input class="form-control form-control-sm" id="FileImg5" type="file">
-                        </div>
-                    </div>
-                    <div class="col-2 mt-2">
-                        <div class="mb-3">
-                            <label for="FileImg6" class="form-label">Img de motor</label>
-                            <input class="form-control form-control-sm" id="FileImg6" type="file">
-                        </div>
-                    </div>
-                    <div class="col-2 mt-2">
-                        <div class="mb-3">
-                            <label for="FileImg7" class="form-label">Img de tablero</label>
-                            <input class="form-control form-control-sm" id="FileImg7" type="file">
-                        </div>
-                    </div>
-                    <div class="col-2 mt-2">
-                        <div class="mb-3">
-                            <label for="FileImg8" class="form-label">Img de cajuela</label>
-                            <input class="form-control form-control-sm" id="FileImg8" type="file">
-                        </div>
+                        <button type="submit" class="btn btn-success mt-5">Cargar imagenes</button>
                     </div>
             </form>
         </div>
 </div>
+
+            <?php
+                if (isset($_FILES["archivo"]) && $_FILES["archivo"]["name"][0]){
+
+                    for ($i=0;$i<count($_FILES["archivo"]["name"]);$i++) {
+                        if ($_FILES["archivo"] ["type"][$i] == "image/jpg"){
+                            if (file_exists($carpeta_id) || mkdir($carpeta_id, 0777, true)) {
+                                $origen_archivo = $_FILES["archivo"]["tmp_name"][$i];
+                                $destino_archivo = $carpeta_id.$_FILES["archivo"]["name"][$i];
+
+                                if(@move_uploaded_file($origen_archivo,$destino_archivo)){
+                                    echo "<br>".$_FILES["archivo"]["name"][$i]."Archivo insertado";
+                                }else{
+                                    echo "<br>".$_FILES["archivo"]["name"][$i]."Archivo no insertado";
+                                }
+                            }else{
+                                echo "No se creo la carpeta correctamente";
+                            }
+                        }else{
+                            echo "<br>".$_FILES["archivo"]["name"][$i]." no corresponde a un archivo jpg";
+                        }
+                    }
+                }else{
+                    echo "<br> No se ha cargado ningun archivo.";
+                }
+            ?>
+
 </body>
 </html>
