@@ -126,7 +126,7 @@
         </div>
     </div>
                     <script >
-                       // $(document).ready(function(){
+                        $(document).ready(function(){
                             $('#InputMarca').val(0);
                                 get_marca();
                             $('#InputNombre').val(0);
@@ -137,7 +137,7 @@
                             $('#InputNombre').change(function(){
                                 get_modelo();
                             });
-                       // });
+                        });
                     </script>                        
                     <script>
                         function get_marca(){
