@@ -133,7 +133,7 @@
                             $('#InputMarca').change(function(){
                                 get_marca();
                                 $('#InputNombre').change(function(){
-                                    get_modelo();
+                                   // get_modelo();
                                 });
                             });
                             
