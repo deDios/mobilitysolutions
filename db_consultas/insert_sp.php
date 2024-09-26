@@ -47,7 +47,6 @@ if (file_exists($carpeta_id)){
     echo "Ya existe la carpeta";
 }
 else{
-    mkdir($carpeta_id, 0777, true);
     echo "Se creo la carpeta" . $carpeta_id;
 }
 
@@ -95,7 +94,7 @@ else{
 
                     for ($i=0;$i<count($_FILES["archivo"]["name"]);$i++) {
                         if ($_FILES["archivo"]["type"][$i] == "image/jpg" || $_FILES["archivo"]["type"][$i] == "image/jpeg" ){
-                            if (file_exists($carpeta_id)) {
+                            if (file_exists($carpeta_id)||mkdir($carpeta_id)) {
                                 $origen_archivo = $_FILES["archivo"]["tmp_name"][$i];
                                 $destino_archivo = $carpeta_id.$_FILES["archivo"]["name"][$i];
 
