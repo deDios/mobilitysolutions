@@ -109,21 +109,30 @@
                         Porfavor llenar campo de mensualidad
                     </div>
 
-
                     <div class="input-group mb-3 col-6 mt-2">
                         <span class="input-group-text">$</span>
                             <input id="InputCosto" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
                         <span class="input-group-text">MX/Contado</span>
                     </div>
 
+
                     <div class="col mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Color</label>
                     </div>
+
                     <div class="col mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Transmision</label>
+                    <label class="form-check-label" for="InputTransmision">Tipo de transmision</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="InputTransmision" id="InputTransmision" value="option1">
+                            <label class="form-check-label" for="inlineRadio1">TM (Manual)</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="InputTransmision" id="InputTransmision" value="option2">
+                            <label class="form-check-label" for="inlineRadio2">TA (Automatica)</label>
+                        </div>
                     </div>
+
                     <div class="col mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Tipo de interior</label>
