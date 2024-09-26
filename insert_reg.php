@@ -151,7 +151,7 @@
                                 }
                             });
                         }
-                        function get_marca(){
+                        function get_modelo(){
                             $.ajax({
                                 type:   "POST" ,
                                 url:    "get_modelo.php",
