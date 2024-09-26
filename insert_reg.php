@@ -59,6 +59,14 @@
                                 <option value="0">Open this select menu</option> 
                             </select>
                         </div>
+
+                        <div id="div_modelo" class="col-3">
+                            <label for='InputModelo' class='form-label'>Modelo</label>
+                            <select id="InputModelo" class="form-select" aria-label="Default select example" name="InputModelo">
+                                <option value="0">Open this select menu</option> 
+                            </select>
+                        </div>
+
                     </div>
 
                     
@@ -126,6 +134,9 @@
                                 get_marca();
                             $('#InputMarca').change(function(){
                                 get_marca();
+                            });
+                            $('#InputNombre').change(function(){
+                                get_modelo();
                             });                       
                         })
                     </script>                        
@@ -137,6 +148,16 @@
                                 data:   "Marca=" + $('#InputMarca').val(),
                                 success: function(r){
                                     $('#div_auto').html(r);
+                                }
+                            });
+                        }
+                        function get_marca(){
+                            $.ajax({
+                                type:   "POST" ,
+                                url:    "get_modelo.php",
+                                data:   "Auto=" + $('#InputNombre').val(),
+                                success: function(r){
+                                    $('#div_modelo').html(r);
                                 }
                             });
                         }

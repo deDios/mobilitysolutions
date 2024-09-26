@@ -1,6 +1,8 @@
 <?php
 $Auto=$_POST['Auto'];
-    
+ 
+echo $Auto;
+
     $cadena = "<label for='InputModelo' class='form-label'>Modelo</label>
                 <select id='InputModelo' class='form-select' aria-label='Default select example' name='InputModelo'>";
 
