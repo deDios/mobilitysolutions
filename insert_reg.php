@@ -121,14 +121,14 @@
                     <div class="col-2 mt-5">
                         <label for="InputColor" class="form-label">Color</label>
                         <select id="InputColor" class="form-select" aria-label="Default select example" name="InputColor">
-                            <option value="0">Negro</option>  
-                            <option value="0">Rojo</option>  
-                            <option value="0">Azul</option>  
-                            <option value="0">Blanco</option>  
-                            <option value="0">Verde</option>
-                            <option value="0">Gris</option>
-                            <option value="0">Amarillo</option>
-                            <option value="0">Arena</option>  
+                            <option value="Negro">Negro</option>  
+                            <option value="Rojo">Rojo</option>  
+                            <option value="Azul">Azul</option>  
+                            <option value="Blanco">Blanco</option>  
+                            <option value="Verde">Verde</option>
+                            <option value="Gris">Gris</option>
+                            <option value="Amarillo">Amarillo</option>
+                            <option value="Arena">Arena</option>  
                         </select>
                     </div>
 
