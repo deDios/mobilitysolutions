@@ -40,16 +40,6 @@ else{
     echo "Falla en conexión";
 }
 
-$carpeta = '/home/site/wwwroot/Imagenes/Catalogo';
-$carpeta_id = '/home/site/wwwroot/Imagenes/Catalogo/Auto '.$con->insert_id.'';
-
-if (file_exists($carpeta_id)){
-    echo "Ya existe la carpeta";
-}
-else{
-    echo "Se creo la carpeta" . $carpeta_id;
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -76,7 +66,7 @@ else{
                 <br> Foto tablero "Colocar nombre Img07.jpg"
                 <br> Foto cajuela "Colocar nombre Img08.jpg"
             </label>
-            <form action="<?php echo $_SERVER["PHP_SELF"]?>" method="POST" enctype="multipart/form-data" name = "InputAuto">
+            <form action="<?php echo $_SERVER["PHP_SELF"]?>" method="post" enctype="multipart/form-data" name = "InputAuto">
             <!-- Input Imagenes ------------------------------------------------------------------->
                     <div class="col-2 mt-2">
                         <div class="mb-3">
@@ -90,8 +80,17 @@ else{
 </div> 
 
             <?php
-                if (isset($_FILES["archivo"]) && $_FILES["archivo"]["name"][0]){
+            $carpeta = '/home/site/wwwroot/Imagenes/Catalogo';
+            $carpeta_id = '/home/site/wwwroot/Imagenes/Catalogo/Auto '.$con->insert_id.'';
+            
+            if (file_exists($carpeta_id)){
+                echo "Ya existe la carpeta";
+            }
+            else{
+                echo "Se creo la carpeta" . $carpeta_id;
+            }
 
+                if (isset($_FILES["archivo"]) && $_FILES["archivo"]["name"][0]){
                     for ($i=0;$i<count($_FILES["archivo"]["name"]);$i++) {
                         if ($_FILES["archivo"]["type"][$i] == "image/jpg" || $_FILES["archivo"]["type"][$i] == "image/jpeg" ){
                             if (file_exists($carpeta_id)||mkdir($carpeta_id)) {
