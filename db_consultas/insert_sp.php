@@ -40,8 +40,8 @@ else{
     echo "Falla en conexión";
 }
 
-$carpeta = '/home/site/wwwroot/Imagenes/Catalogo/Auto';
-$carpeta_id = '/home/site/wwwroot/Imagenes/Catalogo/Auto/'.$con->insert_id.'';
+$carpeta = '/home/site/wwwroot/Imagenes/Catalogo';
+$carpeta_id = '/home/site/wwwroot/Imagenes/Catalogo/Auto '.$con->insert_id.'';
 if (file_exists($carpeta)) {
     echo "Existe la carpeta 1";
     if (file_exists($carpeta_id)) {
