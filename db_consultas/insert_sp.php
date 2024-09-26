@@ -30,28 +30,14 @@ $img5 = '"' . 'img5' . '"';
 $img6 = '"' . 'img6' . '"';
 
 $inc = include "db/Conexion.php"; 
-$query = 'insert into tmx_auto (nombre, modelo, marca, mensualidad, costo, sucursal, img1, img2, img3, img4, img5, img6, color, transmision, interior, kilometraje, combustible, cilindros, eje, estatus, created_at, pasajeros, propietarios) values
+$query = 'insert into mobility_solutions.tmx_auto (nombre, modelo, marca, mensualidad, costo, sucursal, img1, img2, img3, img4, img5, img6, color, transmision, interior, kilometraje, combustible, cilindros, eje, estatus, created_at, pasajeros, propietarios) values
 ('.$auto.','.$modelo.','.$marca.','.$mensualidad.','.$costo.','.$sucursal.','.$img1.', '.$img2.', '.$img3.', '.$img4.', '.$img5.', '.$img6.','.$color_valor.', '.$transmision_valor.','.$interior_valor.','.$kilometraje.','.$combustible_valor.','.$cilindros.','.$eje_valor.',2,NULL,'.$pasajeros.','.$propietarios.');';
         
 
 echo $query;
     //$result = mysqli_query($con,$query); 
 
-echo "sucursal" . $sucursal;
-echo "marca" . $marca;
-echo "auto" . $auto;
-echo "modelo" . $modelo;
-echo "mensualidad" . $mensualidad;
-echo "costo" . $costo;
-echo "color" . $color;
-echo "transmision" . $transmision;
-echo "interior" . $interior;
-echo "kilometraje" . $kilometraje;
-echo "combustible" . $combustible;
-echo "cilindros" . $cilindros;
-echo "eje" . $eje;
-echo "pasajeros" . $pasajeros;
-echo "propietarios" . $propietarios;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
