@@ -3,7 +3,7 @@ $Marca=$_POST['Marca'];
     
     $cadena = "<label for='InputNombre' class='form-label'>Vehiculo</label>
                 <select id='InputNombre' class='form-select' aria-label='Default select example' name='InputNombre'>
-                <option value='0'> Selecciona un Auto </option>
+                <option value='0'> Selecciona un Vehiculo </option>
                 ";
 
 $inc = include "db/Conexion.php"; 

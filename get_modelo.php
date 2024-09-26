@@ -3,11 +3,9 @@ $Auto=$_POST['Auto'];
  
     $cadena = "<label for='InputModelo' class='form-label'>Modelo</label>
                 <select id='InputModelo' class='form-select' aria-label='Default select example' name='InputModelo'>
-                    <option value='0'> $Auto </option>
-                </select>";
+                    <option value='0'> Selecciona un Modelo </option>
+                    ";
 
-echo $cadena;
-/*
 $inc = include "db/Conexion.php"; 
     $query = "select 
                     id,
@@ -28,5 +26,5 @@ $inc = include "db/Conexion.php";
                 echo "Falla en conexión";
             }
             echo $cadena . "</select>";
-*/
+
 ?>
