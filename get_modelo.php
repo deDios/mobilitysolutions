@@ -19,7 +19,8 @@ $inc = include "db/Conexion.php";
                         $id = $row['id'];
                         $nombre = $row['nombre'];
                     $id_valor = '"' . $id . '"';
-                    $cadena = $cadena . "<option value=$id_valor> $nombre </option>";         
+                    //$cadena = $cadena . "<option value=$id_valor> $nombre </option>";
+                    $cadena = $cadena . "<option value='0'> Opcion </option>";         
                 }
             }
             else{
