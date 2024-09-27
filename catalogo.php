@@ -17,22 +17,57 @@
 
 
  </head>
- <body>
-    <header>
-        <a href="index.php" class="logo" title="Home">
-            <img src="logo_MSC.png" alt="Logo de la compañia">
-            <h2 class="Nombre de la empresa">
-                Mobility Solutions Corporation
-            </h2>
-        </a>
-        <nav>
-            <a href="index.php" class="nav-link" title="Home">Inicio</a>
-            <a href="catalogo.php" class="nav-link" title="Home">Catálogo</a>
-            <a href="" class="nav-link">Cotizador</a>
-            <a href="" class="nav-link">Sobre nosotros</a>
-            <a href="" class="nav-link">Contacto</a>
-        </nav>
-    </header>
+ <div class="fixed-top">
+  <header class="topbar">
+      <div class="container">
+        <div class="row">
+          <!-- social icon-->
+          <div class="col-sm-12">
+            <ul class="social-network">
+              <li><a class="waves-effect waves-dark" href="https://www.facebook.com/profile.php?id=61563909313215&mibextid=kFxxJD"><i class="fa fa-facebook"></i></a></li>
+              <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-instagram"></i></a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+  </header>
+  <nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear">
+    <div class="container">
+      <a class="navbar-brand" rel="nofollow" target="_blank" href="https://mobilitysolutionscorp.com"> Mobility Solutions Corporation</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+
+        <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item active">
+            <a class="nav-link" href="https://mobilitysolutionscorp.com">Inicio
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://mobilitysolutionscorp.com/catalogo.php">Catálogo</a>
+          </li>
+
+         <li class="nav-item">
+            <a class="nav-link" href="https://mobilitysolutionscorp.com/about_us.php">Nosotros</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://mobilitysolutionscorp.com/contact.php">Contacto</a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<!--------------------------------------- Termina Menu ----------------------------------------------->
     
     <div class="Menu-lateral">
         <h1>Catálogo</h1>
