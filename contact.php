@@ -91,7 +91,7 @@
                         <br> C.P: 58070 Morelia, Mich.
     
                         <div class="mt-3">
-                            <a href="https://www.google.com/maps" target="_blank" class="text-link link--right-icon text-white">Get directions <i class="link__icon fa fa-directions"></i></a>
+                            <a href="https://www.google.com/maps" target="_blank" class="text-link link--right-icon text-white">Maps Indicaciones<i class="link__icon fa fa-directions"></i></a>
                         </div>
                     </li>
                 </ul>
