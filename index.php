@@ -25,7 +25,7 @@
             <ul class="social-network">
               <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-facebook"></i></a></li>
               <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-twitter"></i></a></li>
-              <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-tiktok"></i></a></li>
+              <li><a class="waves-effect waves-dark" href="#"><i class="fa-brands fa-tiktok"></i></a></li>
               <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-pinterest"></i></a></li>
               <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-google-plus"></i></a></li>
             </ul>
