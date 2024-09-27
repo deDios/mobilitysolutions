@@ -91,13 +91,17 @@ else{
             }
 
                 if (isset($_FILES["archivo"]) && $_FILES["archivo"]["name"][0]){
+                    echo("<script>console.log('PHP: 1');</script>");
                     for ($i=0;$i<count($_FILES["archivo"]["name"]);$i++) {
                         if ($_FILES["archivo"]["type"][$i] == "image/jpg" || $_FILES["archivo"]["type"][$i] == "image/jpeg" ){
+                            echo("<script>console.log('PHP: 2');</script>");
                             if (file_exists($carpeta_id)||mkdir($carpeta_id)) {
+                                echo("<script>console.log('PHP: 3');</script>");
                                 $origen_archivo = $_FILES["archivo"]["tmp_name"][$i];
                                 $destino_archivo = $carpeta_id.$_FILES["archivo"]["name"][$i];
 
                                 if(@move_uploaded_file($origen_archivo,$destino_archivo)){
+                                    echo("<script>console.log('PHP: 4');</script>");
                                     echo "<br>".$_FILES["archivo"]["name"][$i]."Archivo insertado";
                                 }else{
                                     echo "<br>".$_FILES["archivo"]["name"][$i]."Archivo no insertado";
