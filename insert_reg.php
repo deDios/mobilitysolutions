@@ -23,7 +23,7 @@
     <div class="container">
         <h1>Registro autos</h1>
         <div class="row mt-5">
-            <form action="db_consultas/insert_sp.php" method="POST">
+            <form action="db_consultas/insert_sp.php" method="POST" enctype="multipart/form-data">
                     
                     <div class="col-2 mt-5">
                         <label for="InputSucursal" class="form-label">Sucursal</label>
@@ -238,6 +238,15 @@
                             <option value="2">2</option>  
                         </select>
                     </div>
+
+                    <!-- Input Img ------------------------------------------------------------------->
+                    <div class="col-2 mt-5">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Carga de imagenes</label>
+                            <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
+                        </div>
+                    </div>
+
 
                     <button type="submit" class="btn btn-success mt-5">Guardar registro</button>
             </form>
