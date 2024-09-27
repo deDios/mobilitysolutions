@@ -10,20 +10,24 @@ include "Conexion.php";
     <link rel="stylesheet" href="CSS/estilos.css">
 </head>
 <body>
-    <header>
-        <a href="#" class="logo">
-            <img src="logo_MSC.png" alt="Logo de la compañia">
-            <h2 class="Nombre de la empresa">
-                Mobility Solutions Corporation
-            </h2>
+
+<header class="p-3 bg-dark text-white">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><img src="logo_MSC.png" alt="Logo de la compañia"></svg>
         </a>
-        <nav>
-            <a href="index.php" class="nav-link" title="Home">Inicio</a>
-            <a href="catalogo.php" class="nav-link" title="Home">Catálogo</a>
-            <a href="" class="nav-link">Sobre nosotros</a>
-            <a href="" class="nav-link">Contacto</a>
-        </nav>
-    </header>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="index.php" class="nav-link px-2 text-secondary">Home</a></li>
+          <li><a href="catalogo.php" class="nav-link px-2 text-white">Catalogo</a></li>
+          <li><a href="#" class="nav-link px-2 text-white">Sobre nosotros</a></li>
+          <li><a href="#" class="nav-link px-2 text-white">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
     <div class="slider-box">
         <ul>
             <li>
