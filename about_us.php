@@ -76,8 +76,8 @@
         <h1 class="fw-light">Sobre nosotros</h1>
         <p class="lead text-muted">
         Mobility Solutions Corporation es un equipo especializado en brindar soluciones integrales para la adquisición de vehículos nuevos y seminuevos. 
-        Nuestra misión es facilitar el acceso a la movilidad mediante soluciones de financiamiento personalizadas que se adaptan a las necesidades de cada cliente. 
-        Gracias a nuestro sistema de aportaciones periódicas, nuestros clientes pueden ahorrar para el enganche y, en el momento adecuado, elegir el vehículo que mejor se adapte a sus gustos y necesidades de nuestro amplio catálogo de autos nuevos y seminuevos.
+        <br><br>Nuestra misión es facilitar el acceso a la movilidad mediante soluciones de financiamiento personalizadas que se adaptan a las necesidades de cada cliente. 
+        <br><br>Gracias a nuestro sistema de aportaciones periódicas, nuestros clientes pueden ahorrar para el enganche y, en el momento adecuado, elegir el vehículo que mejor se adapte a sus gustos y necesidades de nuestro amplio catálogo de autos nuevos y seminuevos.
         </p>
         <p>
           <a href="#" class="btn btn-primary my-2">Main call to action</a>
