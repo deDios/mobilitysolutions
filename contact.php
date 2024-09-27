@@ -43,21 +43,21 @@
       <ul class="navbar-nav ml-auto">
 
         <li class="nav-item">
-        <a class="nav-link" href="https://mobilitysolutionscorp.com">Home
+        <a class="nav-link" href="https://mobilitysolutionscorp.com">Inicio
             <span class="sr-only">(current)</span>
         </a>
         </li>
 
         <li class="nav-item">
-        <a class="nav-link" href="https://mobilitysolutionscorp.com/catalogo.php">Catalog</a>
+        <a class="nav-link" href="https://mobilitysolutionscorp.com/catalogo.php">Catalog0</a>
         </li>
 
         <li class="nav-item">
-        <a class="nav-link" href="https://mobilitysolutionscorp.com/about_us.php">About us</a>
+        <a class="nav-link" href="https://mobilitysolutionscorp.com/about_us.php">Nosotros</a>
         </li>
 
         <li class="nav-item active">
-        <a class="nav-link" href="https://mobilitysolutionscorp.com/contact.php">Contact</a>
+        <a class="nav-link" href="https://mobilitysolutionscorp.com/contact.php">Contacto</a>
         </li>
 
         </ul>
