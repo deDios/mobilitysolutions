@@ -34,7 +34,7 @@
   </header>
   <nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear">
     <div class="container">
-      <a class="navbar-brand" rel="nofollow" target="_blank" href="mobilitysolutionscorp.com" style="text-transform: uppercase;"> Mobility Solutions Corporation</a>
+      <a class="navbar-brand" rel="nofollow" target="_blank" href="https://mobilitysolutionscorp.com" style="text-transform: uppercase;"> Mobility Solutions Corporation</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -43,7 +43,7 @@
         <ul class="navbar-nav ml-auto">
 
           <li class="nav-item active">
-            <a class="nav-link" href="https://nusasatu.com">Home
+            <a class="nav-link" href="https://mobilitysolutionscorp.com">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
