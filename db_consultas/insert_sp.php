@@ -50,6 +50,7 @@ $carpeta_id = '/home/site/wwwroot/Imagenes/Catalogo/Auto '.$con->insert_id.'';
     else{
         echo "La carpeta no existe y se creara" . $carpeta_id;
     }
+            if (isset($_FILES["archivo"])){
                 //if (isset($_FILES["archivo"]) && $_FILES["archivo"]["name"][0]){
                     for ($i=0;$i<count($_FILES["archivo"]["name"]);$i++) {
                         if ($_FILES["archivo"]["type"][$i] == "image/jpg" || $_FILES["archivo"]["type"][$i] == "image/jpeg" ){
@@ -57,9 +58,9 @@ $carpeta_id = '/home/site/wwwroot/Imagenes/Catalogo/Auto '.$con->insert_id.'';
                                 $origen_archivo = $_FILES["archivo"]["tmp_name"][$i];
                                 $destino_archivo = $carpeta_id.$_FILES["archivo"]["name"][$i];
                                 if(@move_uploaded_file($origen_archivo,$destino_archivo)){
-                                    echo "<br>".$_FILES["archivo"]["name"][$i]."Archivo insertado";
+                                    echo "<br>".$_FILES["archivo"]["name"][$i]." - La img fue insertada";
                                 }else{
-                                    echo "<br>".$_FILES["archivo"]["name"][$i]."Archivo no insertado";
+                                    echo "<br>".$_FILES["archivo"]["name"][$i]."La img no pudo ser insertada";
                                 }
                             }else{
                                 echo "La carpeta no existe";
@@ -72,6 +73,9 @@ $carpeta_id = '/home/site/wwwroot/Imagenes/Catalogo/Auto '.$con->insert_id.'';
                 //else{
                   //  echo "<br> No se ha cargado ningun archivo.";
                 //}
+            }else{
+                echo "<br> No se ha cargado ningun archivo.";
+            }
 ?>
 </body>
 </html>
