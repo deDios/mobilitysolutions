@@ -20,7 +20,6 @@ include "Conexion.php";
         <nav>
             <a href="index.php" class="nav-link" title="Home">Inicio</a>
             <a href="catalogo.php" class="nav-link" title="Home">Catálogo</a>
-            <a href="" class="nav-link">Cotizador</a>
             <a href="" class="nav-link">Sobre nosotros</a>
             <a href="" class="nav-link">Contacto</a>
         </nav>
