@@ -173,8 +173,8 @@ li {
 }
 
 .gradient-brand-color {
-    background-image: -webkit-linear-gradient(0deg, #376be6 0%, #6470ef 100%);
-    background-image: -ms-linear-gradient(0deg, #376be6 0%, #6470ef 100%);
+    background-image: -webkit-linear-gradient(0deg, #ffad00 0%, #ffd600 100%);
+    background-image: -ms-linear-gradient(0deg, #ffad00 0%, #ffd600 100%);
     color: #fff;
 }
 .contact-info__wrapper {
