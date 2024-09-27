@@ -70,6 +70,7 @@
   </nav>
 </div>
 
+<div class="div_contact">
 <div class="container">
     <div class="contact__wrapper shadow-lg mt-n9">
         <div class="row no-gutters">
@@ -158,6 +159,7 @@
     
         </div>
     </div>
+</div>
 </div>
 
 
