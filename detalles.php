@@ -152,12 +152,16 @@ $query = 'select
             <div class="carrusel_carr_auto">
                 <div class="div_carrusel">
                 <div id="demo" class="py-5 carousel slide" data-bs-ride="carousel" py-36>
-
                     <!-- Indicators/dots -->
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
                         <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
                         <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+                        <button type="button" data-bs-target="#demo" data-bs-slide-to="3"></button>
+                        <button type="button" data-bs-target="#demo" data-bs-slide-to="4"></button>
+                        <button type="button" data-bs-target="#demo" data-bs-slide-to="5"></button>
+                        <button type="button" data-bs-target="#demo" data-bs-slide-to="6"></button>
+                        <button type="button" data-bs-target="#demo" data-bs-slide-to="7"></button>
                     </div>
                     <!-- The slideshow/carousel -->
                             <div class="carousel-inner">
