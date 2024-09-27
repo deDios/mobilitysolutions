@@ -74,9 +74,50 @@
     </div>
 
 <div class="contenido_cat">
-    <div class="Titulo-boton">
-        <input type="text" placeholder="Buscar...">
+    <div class="input-group">
+        <div class="form-outline" data-mdb-input-init>
+            <input id="search-focus" type="search" id="form1" class="form-control" />
+            <label class="form-label" for="form1">Buscar</label>
+        </div>
+        <button type="button" class="btn btn-primary" data-mdb-ripple-init>
+            <i class="fas fa-search"></i>
+        </button>
     </div>
+</div>
+
+    <script>
+        import { Input, Ripple, initMDB } from "mdb-ui-kit";
+
+        initMDB({ Input, Ripple });
+
+        const searchFocus = document.getElementById('search-focus');
+        const keys = [
+        { keyCode: 'AltLeft', isTriggered: false },
+        { keyCode: 'ControlLeft', isTriggered: false },
+        ];
+
+        window.addEventListener('keydown', (e) => {
+        keys.forEach((obj) => {
+            if (obj.keyCode === e.code) {
+            obj.isTriggered = true;
+            }
+        });
+
+        const shortcutTriggered = keys.filter((obj) => obj.isTriggered).length === keys.length;
+
+        if (shortcutTriggered) {
+            searchFocus.focus();
+        }
+        });
+
+        window.addEventListener('keyup', (e) => {
+        keys.forEach((obj) => {
+            if (obj.keyCode === e.code) {
+            obj.isTriggered = false;
+            }
+        });
+        });
+    </script>
 
     <div class="container-items">
         <div class="menu_item">
