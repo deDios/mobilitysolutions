@@ -220,9 +220,6 @@ li {
     padding-top: 5px;
 }
 /* ----------------------------- Cierre para estilo para titulo de detalle auto  -----------------------------*/
-/* ---------------------------- Estilo para carrusel detalle auto  -------------------------------------------*/
-
-/* ----------------------------- Cierre para estilo carrusel en detalle auto  -------------------------------*/
 .contenedor_carr .detalle_carr {
     display: grid;
     grid-template-columns: repeat(3,1fr);
