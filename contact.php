@@ -49,7 +49,7 @@
         </li>
 
         <li class="nav-item">
-        <a class="nav-link" href="https://mobilitysolutionscorp.com/catalogo.php">Catalog0</a>
+        <a class="nav-link" href="https://mobilitysolutionscorp.com/catalogo.php">Catálogo</a>
         </li>
 
         <li class="nav-item">

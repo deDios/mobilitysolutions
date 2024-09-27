@@ -49,7 +49,7 @@
         </li>
 
         <li class="nav-item">
-        <a class="nav-link" href="https://mobilitysolutionscorp.com/catalogo.php">Catalogo</a>
+        <a class="nav-link" href="https://mobilitysolutionscorp.com/catalogo.php">Catálogo</a>
         </li>
 
         <li class="nav-item active">
@@ -81,8 +81,8 @@
         <br><br>Gracias a nuestro sistema de aportaciones periódicas, nuestros clientes pueden ahorrar para el enganche y, en el momento adecuado, elegir el vehículo que mejor se adapte a sus gustos y necesidades de nuestro amplio catálogo de autos nuevos y seminuevos.
         </p>
         <p>
-          <a href="https://mobilitysolutionscorp.com/catalogo.php" class="btn btn-primary my-2">Conoce nuestros autos</a>
-          <a href="https://mobilitysolutionscorp.com/contact.php" class="btn btn-secondary my-2">Contacta con un agente</a>
+          <a href="https://mobilitysolutionscorp.com/catalogo.php" class="btn btn-primary my-2">Ir al catálogo</a>
+          <a href="https://mobilitysolutionscorp.com/contact.php" class="btn btn-secondary my-2">Contactanos</a>
         </p>
       </div>
     </div>
