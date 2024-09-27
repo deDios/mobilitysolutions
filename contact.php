@@ -86,12 +86,12 @@
                         <span class="position-absolute"><i class="fa fa-phone"></i></span> (044)-352272-13
                     </li>
                     <li class="mb-4 pl-4">
-                        <span class="position-absolute"><i class="fa fa-map-marker-alt"></i></span> Vicente Santa Maria #1516
+                        <span class="position-absolute"><i class="fa fa-map-marker"></i></span> Vicente Santa Maria #1516
                         <br> col. Felix Ireta,
                         <br> C.P: 58070 Morelia, Mich.
     
                         <div class="mt-3">
-                            <a href="https://www.google.com/maps" target="_blank" class="text-link link--right-icon text-white">Indicaciones Ir<i class="fa fa-map-marker"></i></a>
+                            <a href="https://www.google.com/maps" target="_blank" class="text-link link--right-icon text-white">Indicaciones Ir   <i class="fa fa-map-pin"></i></a>
                         </div>
                     </li>
                 </ul>
