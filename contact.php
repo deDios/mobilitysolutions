@@ -70,6 +70,7 @@
   </nav>
 </div>
 
+<main>
 <div class="div_contact">
 <div class="container">
     <div class="contact__wrapper shadow-lg mt-n9">
@@ -161,6 +162,7 @@
     </div>
 </div>
 </div>
+</main>
 
 <footer class="text-muted py-5">
   <div class="container">
