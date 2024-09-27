@@ -138,7 +138,7 @@
                         <div class="col-sm-6 mb-3">
                             <div class="form-group">
                                 <label for="phone">Número teléfonico</label>
-                                <input type="tel" class="form-control" id="phone" name="phone" placeholder="(044)-225-576">
+                                <input type="tel" class="form-control" id="phone" name="phone" placeholder="(044)-352272-13">
                             </div>
                         </div>
     
