@@ -14,7 +14,6 @@
     <!------ Include the above in your HEAD tag ---------->
 </head>
 
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <body>
 <!-- Navigation -->
 <div class="fixed-top">
@@ -36,7 +35,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear">
     <div class="container">
       <a class="navbar-brand" rel="nofollow" target="_blank" href="https://mobilitysolutionscorp.com" style="text-transform: uppercase;"> Mobility Solutions Corporation</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
