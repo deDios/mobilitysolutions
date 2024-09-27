@@ -73,51 +73,42 @@
         <h1>Catálogo</h1>
     </div>
 
-<div class="contenido_cat">
-    <div class="input-group">
-        <div class="form-outline" data-mdb-input-init>
-            <input id="search-focus" type="search" id="form1" class="form-control" />
-            <label class="form-label" for="form1">Buscar</label>
+<section class="intro">
+    <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0,0,0, 0.5);">
+      <div class="container">
+        <p class="h2 mb-4 text-white">The best free stock photos & videos <br> shared by
+          talented creators.</p>
+        <div class="card">
+          <div class="card-body p-4">
+            <div class="row">
+              <div class="col-12 mb-4">
+                <div class="input-group">
+                  <div class="form-outline flex-fill">
+                    <input type="search" id="form1" class="form-control form-control-lg" />
+                    <label class="form-label" for="form1">Search for free photos and videos</label>
+                    <div class="form-helper pt-2"><span class="font-weight-bold">Suggested:</span> 
+                      <a href="#!" class="text-black-50">spring,</a>  
+                      <a href="#!" class="text-black-50">natural,</a>  
+                      <a href="#!" class="text-black-50">outdoors,</a>  
+                      <a href="#!" class="text-black-50">forest,</a>  
+                      <a href="#!" class="text-black-50">cactus,</a>  
+                      <a href="#!" class="text-black-50">flowers,</a>  
+                      <a href="#!" class="text-black-50">more</a>
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <button type="button" class="btn btn-primary" data-mdb-ripple-init>
-            <i class="fas fa-search"></i>
-        </button>
+      </div>
     </div>
-</div>
+</section>
 
-    <script>
-        import { Input, Ripple, initMDB } from "mdb-ui-kit";
 
-        initMDB({ Input, Ripple });
-
-        const searchFocus = document.getElementById('search-focus');
-        const keys = [
-        { keyCode: 'AltLeft', isTriggered: false },
-        { keyCode: 'ControlLeft', isTriggered: false },
-        ];
-
-        window.addEventListener('keydown', (e) => {
-        keys.forEach((obj) => {
-            if (obj.keyCode === e.code) {
-            obj.isTriggered = true;
-            }
-        });
-
-        const shortcutTriggered = keys.filter((obj) => obj.isTriggered).length === keys.length;
-
-        if (shortcutTriggered) {
-            searchFocus.focus();
-        }
-        });
-
-        window.addEventListener('keyup', (e) => {
-        keys.forEach((obj) => {
-            if (obj.keyCode === e.code) {
-            obj.isTriggered = false;
-            }
-        });
-        });
-    </script>
 
     <div class="container-items">
         <div class="menu_item">
