@@ -27,7 +27,7 @@ include "Conexion.php";
       }
     </style>  
     <!-- Custom styles for this template -->
-    <link href="headers.css" rel="stylesheet">
+    <link href="CSS/headers.css" rel="stylesheet">
 </head>
 <body>
 
@@ -48,7 +48,7 @@ include "Conexion.php";
     </div>
   </header>
 
-    <div class="slider-box">
+<div class="slider-box">
         <ul>
             <li>
                 <img src="Imagenes/Carrusel/carrusel 1.jpg" alt="">
@@ -78,7 +78,7 @@ include "Conexion.php";
                 </div>
             </li>
         </ul>
-    </div>
+</div>
 
 </body>
 </html>
