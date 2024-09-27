@@ -66,7 +66,7 @@ else{
                 <br> Foto tablero "Colocar nombre Img07.jpg"
                 <br> Foto cajuela "Colocar nombre Img08.jpg"
             </label>
-            <form action="" method="post" enctype="multipart/form-data" name = "InputAuto">
+            <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post" enctype="multipart/form-data" name = "InputAuto">
             <!-- Input Imagenes ------------------------------------------------------------------->
                     <div class="col-2 mt-2">
                         <div class="mb-3">
