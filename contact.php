@@ -14,7 +14,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
     
 <!------ Include the above in your HEAD tag ---------->
 </head>
@@ -28,7 +27,7 @@
           <!-- social icon-->
           <div class="col-sm-12">
             <ul class="social-network">
-              <li><a class="waves-effect waves-dark" href="https://www.facebook.com/profile.php?id=61563909313215&mibextid=kFxxJD"><i class="fa-brand fa-facebook"></i></a></li>
+              <li><a class="waves-effect waves-dark" href="https://www.facebook.com/profile.php?id=61563909313215&mibextid=kFxxJD"><i class="fa fa-facebook"></i></a></li>
               <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-twitter"></i></a></li>
               <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-instagram"></i></a></li>
             </ul>
@@ -81,13 +80,13 @@
     
                 <ul class="contact-info__list list-style--none position-relative z-index-101">
                     <li class="mb-4 pl-4">
-                        <span class="position-absolute"><i class="fas fa-envelope"></i></span> support@bootdey.com
+                        <span class="position-absolute"><i class="fa fa-envelope"></i></span> support@bootdey.com
                     </li>
                     <li class="mb-4 pl-4">
-                        <span class="position-absolute"><i class="fas fa-phone"></i></span> (021)-241454-545
+                        <span class="position-absolute"><i class="fa fa-phone"></i></span> (021)-241454-545
                     </li>
                     <li class="mb-4 pl-4">
-                        <span class="position-absolute"><i class="fas fa-map-marker-alt"></i></span> bootdey Technologies Inc.
+                        <span class="position-absolute"><i class="fa fa-map-marker-alt"></i></span> bootdey Technologies Inc.
                         <br> 2694 Queen City Rainbow Drive
                         <br> Florida 99161
     
