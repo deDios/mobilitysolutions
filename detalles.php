@@ -82,6 +82,7 @@ $query = 'select
 </head>
  <body>
 
+
  <div class="fixed-top">
   <header class="topbar">
       <div class="container">
@@ -149,70 +150,50 @@ $query = 'select
 <!-------------------------------- Carrusel auto seleccionado -------------------------------------->
           
             <div class="carrusel_carr_auto">
-                <div id="theCarousel" class="carousel slide" data-ride="carousel">
-                    <!-- Indicadores -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#theCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#theCarousel" data-slide-to="1"></li>
-                        <li data-target="#theCarousel" data-slide-to="2"></li>
-                        <li data-target="#theCarousel" data-slide-to="3"></li> 
-                        <li data-target="#theCarousel" data-slide-to="4"></li> 
-                        <li data-target="#theCarousel" data-slide-to="5"></li> 
-                        <li data-target="#theCarousel" data-slide-to="6"></li> 
-                        <li data-target="#theCarousel" data-slide-to="7"></li>    
-                    </ol>
-                    <div class="carousel-inner" role="listbox">
-                        <div class="item active">
-                            <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="Ilustracion">
-                            <div class="carousel-caption d-none d-md-block">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img02.jpg" alt="fotografia" width="600" height="300"> 
-                            <div class="carousel-caption d-none d-md-block">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img03.jpg" alt="fotografia" width="600" height="300"> 
-                            <div class="carousel-caption d-none d-md-block">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img04.jpg" alt="fotografia" width="600" height="300"> 
-                            <div class="carousel-caption d-none d-md-block">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img05.jpg" alt="fotografia" width="600" height="300"> 
-                            <div class="carousel-caption d-none d-md-block">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img06.jpg" alt="fotografia" width="600" height="300"> 
-                            <div class="carousel-caption d-none d-md-block">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img07.jpg" alt="fotografia" width="600" height="300"> 
-                            <div class="carousel-caption d-none d-md-block">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img08.jpg" alt="fotografia" width="600" height="300"> 
-                            <div class="carousel-caption d-none d-md-block">
-                            </div>
-                        </div>
+                <div class="div_carrusel">
+                <div id="demo" class="py-5 carousel slide" data-bs-ride="carousel" py-36>
 
-                        <a class="left carousel-control" href="#theCarousel" role="button" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                            <span class="sr-only">anterior</span>
-                        </a>
-                        <a class="right carousel-control" href="#theCarousel" role="button" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                            <span class="sr-only">siguiente</span>
-                        </a>
-
+                    <!-- Indicators/dots -->
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+                        <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+                        <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
                     </div>
+                    <!-- The slideshow/carousel -->
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="Los Angeles" class="d-block w-100">
+                                </div>
+                                <div class="carousel-item">
+                                <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img02.jpg" class="d-block w-100">
+                                </div>
+                                <div class="carousel-item">
+                                <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img03.jpg" class="d-block w-100">
+                                </div>
+                                <div class="carousel-item">
+                                <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img04.jpg" class="d-block w-100">
+                                </div>
+                                <div class="carousel-item">
+                                <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img05.jpg" class="d-block w-100">
+                                </div>
+                                <div class="carousel-item">
+                                <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img06.jpg" class="d-block w-100">
+                                </div>
+                                <div class="carousel-item">
+                                <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img07.jpg" class="d-block w-100">
+                                </div>
+                                <div class="carousel-item">
+                                <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img08.jpg" class="d-block w-100">
+                                </div>
+                            </div>
+                    <!-- Left and right controls/icons -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
+                </div>
                 </div>
             </div>
 
