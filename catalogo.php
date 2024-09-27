@@ -43,13 +43,13 @@
 
         <ul class="navbar-nav ml-auto">
 
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="https://mobilitysolutionscorp.com">Inicio
               <span class="sr-only">(current)</span>
             </a>
           </li>
 
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="https://mobilitysolutionscorp.com/catalogo.php">Catálogo</a>
           </li>
 
@@ -73,6 +73,7 @@
         <h1>Catálogo</h1>
     </div>
 
+<div class="contenido_cat">
     <div class="Titulo-boton">
         <input type="text" placeholder="Buscar...">
     </div>
@@ -156,7 +157,8 @@
             ?>
         </div>
     </div>
-                                                       
+
+</div>
     <script>        
         function detalle (cod){
             location.href="detalles.php?cod="+cod;
