@@ -80,15 +80,15 @@
     
                 <ul class="contact-info__list list-style--none position-relative z-index-101">
                     <li class="mb-4 pl-4">
-                        <span class="position-absolute"><i class="fa fa-envelope"></i></span> support@bootdey.com
+                        <span class="position-absolute"><i class="fa fa-envelope"></i></span> contacto@mobilitysolutionscorp.com
                     </li>
                     <li class="mb-4 pl-4">
-                        <span class="position-absolute"><i class="fa fa-phone"></i></span> (021)-241454-545
+                        <span class="position-absolute"><i class="fa fa-phone"></i></span> (044)-352272-13
                     </li>
                     <li class="mb-4 pl-4">
-                        <span class="position-absolute"><i class="fa fa-map-marker-alt"></i></span> bootdey Technologies Inc.
-                        <br> 2694 Queen City Rainbow Drive
-                        <br> Florida 99161
+                        <span class="position-absolute"><i class="fa fa-map-marker-alt"></i></span> Vicente Santa Maria #1516
+                        <br> col. Felix Ireta,
+                        <br> C.P: 58070 Morelia, Mich.
     
                         <div class="mt-3">
                             <a href="https://www.google.com/maps" target="_blank" class="text-link link--right-icon text-white">Get directions <i class="link__icon fa fa-directions"></i></a>
