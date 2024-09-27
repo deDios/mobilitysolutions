@@ -73,42 +73,10 @@
         <h1>Catálogo</h1>
     </div>
 
-<section class="intro">
-    <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0,0,0, 0.5);">
-      <div class="container">
-        <p class="h2 mb-4 text-white">The best free stock photos & videos <br> shared by
-          talented creators.</p>
-        <div class="card">
-          <div class="card-body p-4">
-            <div class="row">
-              <div class="col-12 mb-4">
-                <div class="input-group">
-                  <div class="form-outline flex-fill">
-                    <input type="search" id="form1" class="form-control form-control-lg" />
-                    <label class="form-label" for="form1">Search for free photos and videos</label>
-                    <div class="form-helper pt-2"><span class="font-weight-bold">Suggested:</span> 
-                      <a href="#!" class="text-black-50">spring,</a>  
-                      <a href="#!" class="text-black-50">natural,</a>  
-                      <a href="#!" class="text-black-50">outdoors,</a>  
-                      <a href="#!" class="text-black-50">forest,</a>  
-                      <a href="#!" class="text-black-50">cactus,</a>  
-                      <a href="#!" class="text-black-50">flowers,</a>  
-                      <a href="#!" class="text-black-50">more</a>
-                    </div>
-                  </div>
-                  <button type="button" class="btn btn-primary">
-                    <i class="fas fa-search"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="contenido_cat">
+        <div class="Titulo-boton">
+            <input type="text" placeholder="Buscar...">
     </div>
-</section>
-
-
 
     <div class="container-items">
         <div class="menu_item">
