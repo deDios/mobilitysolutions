@@ -137,7 +137,7 @@
     
                         <div class="col-sm-6 mb-3">
                             <div class="form-group">
-                                <label for="phone">Numero telefonicor</label>
+                                <label for="phone">Numero telefonico</label>
                                 <input type="tel" class="form-control" id="phone" name="phone" placeholder="(044)-225-576">
                             </div>
                         </div>
@@ -145,7 +145,7 @@
                         <div class="col-sm-12 mb-3">
                             <div class="form-group">
                                 <label class="required-field" for="message">¿Como podemos ayudarte?</label>
-                                <textarea class="form-control" id="message" name="message" rows="4" placeholder="Hi there, I would like to....."></textarea>
+                                <textarea class="form-control" id="message" name="message" rows="4" placeholder="Hola, me gustaria saber....."></textarea>
                             </div>
                         </div>
     
