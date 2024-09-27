@@ -68,59 +68,49 @@ else{
             </label>
             <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post" enctype="multipart/form-data" name = "InputAuto">
             <!-- Input Imagenes ------------------------------------------------------------------->
-                    <div class="col-2 mt-2">
+                    <div class="col-2 mt-5">
                         <div class="mb-3">
                             <label for="" class="form-label">Carga de imagenes</label>
                             <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
                         </div>
-                        <button type="submit" class="btn btn-success mt-5">Cargar imagenes</button>
                     </div>
+                    <button type="submit" class="btn btn-success mt-5">Cargar imagenes</button>
             </form>
         </div>
 </div> 
 
-            <?php
+<?php          
+            $carpeta = '/home/site/wwwroot/Imagenes/Catalogo';
+            $carpeta_id = '/home/site/wwwroot/Imagenes/Catalogo/Auto '.$con->insert_id.'';
+            
+            if (file_exists($carpeta_id)){
+                echo "Ya existe la carpeta";
+            }
+            else{
+                echo "Se creo la carpeta" . $carpeta_id;
+            }
 
-                $carpeta = '/home/site/wwwroot/Imagenes/Catalogo';
-                $carpeta_id = '/home/site/wwwroot/Imagenes/Catalogo/Auto '.$con->insert_id.'';
-
-                if (isset($_FILES["archivo"]) && $_FILES["archivo"]["name"]) {
-                    if ($_FILES['archivo']['error'] == 0) { //Valida si no hay errores
-                        $tamanio = 2000; //Tamaño permitido en kb
-                        $permitidos = array('jpg', 'jpeg'); //Archivos permitido
-                        $ruta_carga = $carpeta_id . $_FILES['archivo']['name'];
-                        //Obtenemos la extensión del archivo
-                        $arregloArchivo = explode(".", $_FILES['archivo']['name']);
-                        $extension = strtolower(end($arregloArchivo));
-                        
-                        if (in_array($extension, $permitidos)) { //Valida si la extensión es permitida
-                            
-                            if ($_FILES['archivo']['size'] < ($tamanio * 1024)) { //Valida el tamaño
-                                
-                                //Valida si no existe la carpeta y la crea
-                                if (!file_exists($carpeta_id)) {
-                                    mkdir($carpeta_id, 0777);
+                if (isset($_FILES["archivo"]) && $_FILES["archivo"]["name"][0]){
+                    for ($i=0;$i<count($_FILES["archivo"]["name"]);$i++) {
+                        if ($_FILES["archivo"]["type"][$i] == "image/jpg" || $_FILES["archivo"]["type"][$i] == "image/jpeg" ){
+                            if (file_exists($carpeta_id)||mkdir($carpeta_id,0777,true)) {
+                                $origen_archivo = $_FILES["archivo"]["tmp_name"][$i];
+                                $destino_archivo = $carpeta_id.$_FILES["archivo"]["name"][$i];
+                                if(@move_uploaded_file($origen_archivo,$destino_archivo)){
+                                    echo "<br>".$_FILES["archivo"]["name"][$i]."Archivo insertado";
+                                }else{
+                                    echo "<br>".$_FILES["archivo"]["name"][$i]."Archivo no insertado";
                                 }
-                                
-                                if (move_uploaded_file($_FILES['archivo']['tmp_name'], $ruta_carga)) {
-                                    echo "El archivo se cargó correctamente";
-                                    } else {
-                                    echo "Error al cargar archivo";
-                                }
-                                } else {
-                                echo "Archivo excede el tamaño permitido";
+                            }else{
+                                echo "La carpeta no existe";
                             }
-                            } else {
-                            echo "Archivo no permitido";
+                        }else{
+                            echo "<br>".$_FILES["archivo"]["name"][$i]." no corresponde a un archivo jpg";
                         }
-                    } else {
-                        echo "No enviaste archivo";
                     }
-                }else {
-                    echo "No se ha cargado ningun archivo.";
+                }else{
+                    echo "<br> No se ha cargado ningun archivo.";
                 }
-                
-            ?>
-
+?>
 </body>
 </html>
