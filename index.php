@@ -9,6 +9,8 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 </head>
 <body>
@@ -76,17 +78,17 @@
     <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
   </div>
   <!-- The slideshow/carousel -->
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="Imagenes/Carrusel/carrusel 1.jpg" alt="Los Angeles" class="d-block w-100">
-    </div>
-    <div class="carousel-item">
-      <img src="Imagenes/Carrusel/carrusel 2.jpg" alt="Chicago" class="d-block w-100">
-    </div>
-    <div class="carousel-item">
-      <img src="Imagenes/Carrusel/carrusel 3.jpg" alt="New York" class="d-block w-100">
-    </div>
-  </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+            <img src="Imagenes/Carrusel/carrusel 1.jpg" alt="Los Angeles" class="d-block w-100">
+            </div>
+            <div class="carousel-item">
+            <img src="Imagenes/Carrusel/carrusel 2.jpg" alt="Chicago" class="d-block w-100">
+            </div>
+            <div class="carousel-item">
+            <img src="Imagenes/Carrusel/carrusel 3.jpg" alt="New York" class="d-block w-100">
+            </div>
+        </div>
   <!-- Left and right controls/icons -->
   <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
     <span class="carousel-control-prev-icon"></span>
