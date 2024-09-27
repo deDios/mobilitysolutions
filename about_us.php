@@ -114,7 +114,7 @@
             <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
 
             <div class="card-body">
-              <p class="card-text">En Mobility Solutions Corporation, nos enorgullecemos de fomentar una filosofía de colaboración y pertenencia, creando un proyecto donde todos nuestros integrantes se sientan parte de algo más grande.</p>
+              <p class="card-text">En Mobility Solutions Corporation, nos enorgullecemos de fomentar una filosofía de colaboración y pertenencia.</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
@@ -130,7 +130,7 @@
             <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
 
             <div class="card-body">
-              <p class="card-text">Mobility Solutions Corporation es la elección inteligente para aquellos que buscan una solución de movilidad eficiente, accesible y personalizada. Juntos, estamos construyendo un camino hacia un futuro donde cada persona pueda acceder fácilmente a su propio vehículo.</p>
+              <p class="card-text">Mobility Solutions Corporation es la elección inteligente para aquellos que buscan una solución de movilidad eficiente, accesible y personalizada. Juntos.</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
