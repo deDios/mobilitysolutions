@@ -51,7 +51,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="#">Catalog</a>
+            <a class="nav-link" href="https://mobilitysolutionscorp.com/catalogo.php">Catalog</a>
           </li>
 
          <li class="nav-item">
@@ -69,7 +69,8 @@
 </div>
 
 <!-- Carousel -->
-<div id="demo" class="carousel slide" data-bs-ride="carousel" mt-5>
+<div class="div_carrusel">
+<div id="demo" class="carousel slide" data-bs-ride="carousel">
 
   <!-- Indicators/dots -->
   <div class="carousel-indicators">
@@ -83,10 +84,10 @@
             <img src="Imagenes/Carrusel/carrusel 1.jpg" alt="Los Angeles" class="d-block w-100">
             </div>
             <div class="carousel-item">
-            <img src="Imagenes/Carrusel/carrusel 2.jpg" alt="Chicago" class="d-block w-100">
+            <img src="Imagenes/Carrusel/carrusel 1.jpg" alt="Chicago" class="d-block w-100">
             </div>
             <div class="carousel-item">
-            <img src="Imagenes/Carrusel/carrusel 3.jpg" alt="New York" class="d-block w-100">
+            <img src="Imagenes/Carrusel/carrusel 1.jpg" alt="New York" class="d-block w-100">
             </div>
         </div>
   <!-- Left and right controls/icons -->
@@ -96,6 +97,7 @@
   <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
     <span class="carousel-control-next-icon"></span>
   </button>
+</div>
 </div>
 
 

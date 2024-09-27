@@ -165,7 +165,9 @@ li {
     background: linear-gradient(45deg, gold 48%, #1b1e21 48%);
 }
 
-
+.div_carrusel {
+    padding-top: 25px;
+}
 
 
 
