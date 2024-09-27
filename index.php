@@ -69,7 +69,7 @@
 </div>
 
 <!-- Carousel -->
-<div id="demo" class="carousel slide" data-bs-ride="carousel">
+<div id="demo" class="carousel slide" data-bs-ride="carousel" mt-5>
 
   <!-- Indicators/dots -->
   <div class="carousel-indicators">
