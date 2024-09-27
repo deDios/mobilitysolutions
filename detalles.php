@@ -151,7 +151,7 @@ $query = 'select
           
             <div class="carrusel_carr_auto">
                 <div class="div_carrusel">
-                <div id="demo" class="py-5 carousel slide" data-bs-ride="carousel" py-2>
+                <div id="demo" class="py-2 carousel slide" data-bs-ride="carousel" py-2>
                     <!-- Indicators/dots -->
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
