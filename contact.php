@@ -116,15 +116,15 @@
                     <div class="row">
                         <div class="col-sm-6 mb-3">
                             <div class="form-group">
-                                <label class="required-field" for="firstName">First Name</label>
+                                <label class="required-field" for="firstName">Nombre</label>
                                 <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Wendy">
                             </div>
                         </div>
     
                         <div class="col-sm-6 mb-3">
                             <div class="form-group">
-                                <label for="lastName">Last Name</label>
-                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Appleseed">
+                                <label for="lastName">Apellidos</label>
+                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Ramirez">
                             </div>
                         </div>
     
@@ -137,20 +137,20 @@
     
                         <div class="col-sm-6 mb-3">
                             <div class="form-group">
-                                <label for="phone">Phone Number</label>
-                                <input type="tel" class="form-control" id="phone" name="phone" placeholder="(021)-454-545">
+                                <label for="phone">Numero telefonicor</label>
+                                <input type="tel" class="form-control" id="phone" name="phone" placeholder="(044)-225-576">
                             </div>
                         </div>
     
                         <div class="col-sm-12 mb-3">
                             <div class="form-group">
-                                <label class="required-field" for="message">How can we help?</label>
+                                <label class="required-field" for="message">¿Como podemos ayudarte?</label>
                                 <textarea class="form-control" id="message" name="message" rows="4" placeholder="Hi there, I would like to....."></textarea>
                             </div>
                         </div>
     
                         <div class="col-sm-12 mb-3">
-                            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" name="submit" class="btn btn-primary">Enviar</button>
                         </div>
     
                     </div>
