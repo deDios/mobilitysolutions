@@ -76,7 +76,7 @@
     <div class="contact__wrapper shadow-lg mt-n9">
         <div class="row no-gutters">
             <div class="col-lg-5 contact-info__wrapper gradient-brand-color p-5 order-lg-2">
-                <h3 class="color--white mb-5">Get in Touch</h3>
+                <h3 class="color--white mb-5">Contacta con nosotros</h3>
     
                 <ul class="contact-info__list list-style--none position-relative z-index-101">
                     <li class="mb-4 pl-4">
