@@ -66,8 +66,24 @@
   </nav>
 </div>
 
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-mdb-ride="carousel" data-mdb-carousel-init>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="Imagenes/Carrusel/carrusel 1.jpg" class="d-block w-100" alt="Img 1"/>
+    </div>
+    <div class="carousel-item">
+      <img src="Imagenes/Carrusel/carrusel 2.jpg" class="d-block w-100" alt="Img 2"/>
+    </div>
+    <div class="carousel-item">
+      <img src="Imagenes/Carrusel/carrusel 1.jpg" class="d-block w-100" alt="Img 3"/>
+    </div>
+  </div>
+</div>
 
-
+<script>
+    import { Carousel, initMDB } from "mdb-ui-kit";
+    initMDB({ Carousel });
+</script>
 
 </body>
 </html>
