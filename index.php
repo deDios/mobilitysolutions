@@ -67,6 +67,7 @@
 </div>
 
 <!-- Carousel -->
+<div class="div_carrusel">
 <div id="demo" class="carousel slide" data-bs-ride="carousel" py-36>
 
     <!-- Indicators/dots -->
@@ -94,6 +95,7 @@
     <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
         <span class="carousel-control-next-icon"></span>
     </button>
+</div>
 </div>
 
 
