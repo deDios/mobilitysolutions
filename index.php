@@ -1,87 +1,79 @@
-<?php
-include "Conexion.php";
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Pablo de Dios">
-    <title>Mobility Solutions Corporation</title>
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/headers/">
-    <!-- Bootstrap core CSS -->
-    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>  
-    <!-- Custom styles for this template -->
-    <link href="CSS/headers.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 </head>
 <body>
 
-<header class="p-3 bg-dark text-white">
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><img src="logo_MSC.png" alt="Logo de la compañia"></svg>
-        </a>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<!-- Navigation -->
+<div class="fixed-top">
+  <header class="topbar">
+      <div class="container">
+        <div class="row">
+          <!-- social icon-->
+          <div class="col-sm-12">
+            <ul class="social-network">
+              <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-linkedin"></i></a></li>
+              <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-pinterest"></i></a></li>
+              <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-google-plus"></i></a></li>
+            </ul>
+          </div>
 
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="index.php" class="nav-link px-2 text-secondary">Home</a></li>
-          <li><a href="catalogo.php" class="nav-link px-2 text-white">Catalogo</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Sobre nosotros</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Contacto</a></li>
+        </div>
+      </div>
+  </header>
+  <nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear">
+    <div class="container">
+      <a class="navbar-brand" rel="nofollow" target="_blank" href="http://scadonsak.com/7bF" style="text-transform: uppercase;"> NUSASATU.COM</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+
+        <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item active">
+            <a class="nav-link" href="https://nusasatu.com">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+
+         <li class="nav-item">
+            <a class="nav-link" href="#">Fruits</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">Sea food</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">Vegetables</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">Blog</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
         </ul>
       </div>
     </div>
-  </header>
-
-<div class="slider-box">
-        <ul>
-            <li>
-                <img src="Imagenes/Carrusel/carrusel 1.jpg" alt="">
-                <div class="Texto_carrusel">
-                    <h2></h2>
-                    <p>
-                        
-                    </p>
-                </div>
-            </li>
-            <li>
-                <img src="Imagenes/Carrusel/carrusel 2.jpg" alt="">
-                <div class="Texto_carrusel">
-                    <h2></h2>
-                    <p>
-                        
-                    </p>
-                </div>
-            </li>
-            <li>
-                <img src="Imagenes/Carrusel/carrusel 3.jpg" alt="">
-                <div class="Texto_carrusel">
-                    <h2>Imagen 3</h2>
-                    <p>
-                        Descripción de tercer imagen
-                    </p>
-                </div>
-            </li>
-        </ul>
+  </nav>
 </div>
 
 </body>
