@@ -173,11 +173,12 @@ li {
 }
 
 @media (max-width:700px){
-    .topbar a:not(:first-child) {display: none;}
-    .topbar a.icon {
-    float: right;
-    display: block;
-  }
+    .topbar p{
+        margin:0;
+        display:inline-block;
+        font-size: 8px;
+        color: #f1f6ff;
+      }
 }
 
 
