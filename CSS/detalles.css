@@ -229,6 +229,7 @@ li {
     grid-template-columns: repeat(3,1fr);
     grid-column-gap: 10px;
     grid-row-gap: 10px;
+    padding-top: 25px;
     width: 100%;
 }
 
