@@ -76,6 +76,7 @@
     <div class="contenido_cat">
         <div class="Titulo-boton">
             <input type="text" placeholder="Buscar...">
+        </div>
     </div>
 
     <div class="container-items">
