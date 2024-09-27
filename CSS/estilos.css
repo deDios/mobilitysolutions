@@ -1,97 +1,167 @@
-body{
-    font-family: sans-serif;
+body {
+    margin: 0;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #f7f7f7;
 }
-a{
-    text-decoration: none;
-    color: aliceblue;
-}
-nav a{
-    font-weight: 600;
-    padding-right: 10px;
-}
-nav a:hover{
-    color: gold;
-}
-header{
+.navbar {
+    display: -ms-flexbox;
     display: flex;
-    min-height: 70px;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
     justify-content: space-between;
-    background-color: black;
-    align-items: center;
-    padding: 10px;
-}
-.logo{
-    display: flex;
-    align-items: center;
-}
-.logo img{
-    height: 50px;
-    margin-right: 15px;
+    padding: 5px;
 }
 
-.slider-box{
-    height: 800px;
-    margin: 25px auto 0;
-    overflow: hidden;
+/*
+headeer top
+*/
+.topbar{
+  background-color: #212529;
+  padding: 0;
 }
-.slider-box ul{
-    display: flex;
-    padding: 0;
-    width: 300%;
-    animation: slide 20s infinite ease-in-out;
+
+.topbar .container .row {
+  margin:-7px;
+  padding:0;
 }
-.slider-box li{
-    width: 100%;
-    height: 100%;
-    list-style: none;
+
+.topbar .container .row .col-md-12 { 
+  padding:0;
+}
+
+.topbar p{
+  margin:0;
+  display:inline-block;
+  font-size: 13px;
+  color: #f1f6ff;
+}
+
+.topbar p > i{
+  margin-right:5px;
+}
+.topbar p:last-child{
+  text-align:right;
+} 
+
+header .navbar {
+    margin-bottom: 0;
+}
+
+.topbar li.topbar {
+    display: inline;
+    padding-right: 18px;
+    line-height: 52px;
+    transition: all .3s linear;
+}
+
+.topbar li.topbar:hover {
+    color: #1bbde8;
+}
+
+.topbar ul.info i {
+    color: #131313;
+    font-style: normal;
+    margin-right: 8px;
+    display: inline-block;
     position: relative;
+    top: 4px;
 }
-.Texto_carrusel {
-    position: absolute;
+
+.topbar ul.info li {
+    float: right;
+    padding-left: 30px;
+    color: #ffffff;
+    font-size: 13px;
+    line-height: 44px;
+}
+
+.topbar ul.info i span {
+    color: #aaa;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 50px;
+    padding-left: 18px;
+}
+
+ul.social-network {
+  border:none;
+  margin:0;
+  padding:0;
+}
+
+ul.social-network li {
+  border:none;  
+  margin:0;
+}
+
+ul.social-network li i {
+  margin:0;
+}
+
+ul.social-network li {
+    display:inline;
+    margin: 0 5px;
+    border: 0px solid #2D2D2D;
+    padding: 5px 0 0;
+    width: 32px;
+    display: inline-block;
     text-align: center;
-    padding: 0 20%;
-    top: 250px;
-    color: aliceblue;
-}
-.Texto_carrusel h2{
-    font-size: 45px;
-    margin-bottom: 35px;
-}
-.slider-box img{
-    object-fit:fill;
-    width: 100%;
-    height: 100%;
+    height: 32px;
+    vertical-align: baseline;
+    color: #000;
 }
 
-@media (max-width:700px){
-    header{
-        flex-direction: column;
-    }
-    nav{
-        padding: 10px 0px ;
-    }
-    .slider-box{
-        width: 100%;
-        height: 250px;
-    }
-    .Texto_carrusel{
-        top: 50px;
-        padding: 0 25px;
-    }
-    .Texto_carrusel h2{
-        font-size: 35px;
-        margin-bottom: 15px;
-    }
-    .Texto_carrusel p{
-        font-size: 15px;
-    }
+ul.social-network {
+  list-style: none;
+  margin: 5px 0 10px -25px;
+  float: right;
 }
 
-@keyframes slide{
-    0% { margin-left: 0;}
-    20% { margin-left: 0;}
-    25% { margin-left: -100%;}
-    45% { margin-left: -100%;}
-    50% { margin-left: -200%;}
-    70% { margin-left: -200%;}
+.waves-effect {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    vertical-align: middle;
+    z-index: 1;
+    will-change: opacity, transform;
+    transition: .3s ease-out;
+    color: #fff;
+}
+a {
+  color: #0a0a0a;
+  text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
+.bg-image-full {
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+.bg-dark {
+    background-color: #222!important;
+}
+
+.mx-background-top-linear {
+    background: -webkit-linear-gradient(45deg, #54d400 48%, #1b1e21 48%);
+    background: -webkit-linear-gradient(left, #54d400 48%, #1b1e21 48%);
+    background: linear-gradient(45deg, #54d400 48%, #1b1e21 48%);
 }
