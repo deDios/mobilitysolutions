@@ -82,7 +82,7 @@
         </p>
         <p>
           <a href="https://mobilitysolutionscorp.com/catalogo.php" class="btn btn-primary my-2">Ir al catálogo</a>
-          <a href="https://mobilitysolutionscorp.com/contact.php" class="btn btn-secondary my-2">Contactanos</a>
+          <a href="https://mobilitysolutionscorp.com/contact.php" class="btn btn-secondary my-2">Contáctanos</a>
         </p>
       </div>
     </div>
