@@ -181,7 +181,9 @@ li {
     overflow: hidden;
     border-radius: .625rem .625rem 0 0
 }
-
+.div_contact {
+    padding-top: 100px;
+}
 
 @media (min-width: 1024px) {
     .contact-info__wrapper {
@@ -216,3 +218,4 @@ li {
 .shadow-lg, .shadow-lg--on-hover:hover {
     box-shadow: 0 1rem 3rem rgba(132,138,163,0.1) !important;
 }
+
