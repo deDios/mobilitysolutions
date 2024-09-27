@@ -23,7 +23,7 @@
             <ul class="social-network">
               <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-facebook"></i></a></li>
               <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-twitter"></i></a></li>
-              <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-linkedin"></i></a></li>
+              <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-tiktok"></i></a></li>
               <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-pinterest"></i></a></li>
               <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-google-plus"></i></a></li>
             </ul>
@@ -59,7 +59,7 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Contact</a>
           </li>
-          
+
         </ul>
       </div>
     </div>
