@@ -300,6 +300,9 @@ li {
 }
 
 /*--------------------Boton-------------------------*/
+.lay_btn{
+    padding-top: 100px;
+}
 
 .demo, .demo-2 {
     position:relative;

@@ -70,18 +70,15 @@
 </div>
 
 <!--------------------------------------- Termina Menu ----------------------------------------------->
-    
-    <div class="Menu-lateral">
-        <h1>Catálogo</h1>
-    </div>
-
-<div class="demo">
-  <form class="form-search">
-    <div class="input-group">
-      <input class="form-control form-text" maxlength="128" placeholder="Buscar" size="15" type="text" />
-      <span class="input-group-btn"><button class="btn btn-primary"><i class="fa fa-search fa-lg">&nbsp;</i></button></span>
-    </div>
-  </form>
+<div class="lay_btn">    
+  <div class="demo">
+    <form class="form-search">
+      <div class="input-group">
+        <input class="form-control form-text" maxlength="128" placeholder="Buscar" size="15" type="text" />
+        <span class="input-group-btn"><button class="btn btn-primary"><i class="fa fa-search fa-lg">&nbsp;</i></button></span>
+      </div>
+    </form>
+  </div>
 </div>
 
     <div class="container-items">
