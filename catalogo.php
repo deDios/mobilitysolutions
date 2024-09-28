@@ -75,11 +75,12 @@
         <h1>Catálogo</h1>
     </div>
 
-    <div class="contenido_cat">
-        <div class="Titulo-boton">
-            <input type="text" placeholder="Buscar...">
-        </div>
-    </div>
+  <form action="javascript: alert('búsqueda enviada')">
+    <input type="search" name="buscar" placeholder="Búsqueda libre" autocomplete="off" required/>
+    <button type="reset"></button>
+    <button type="submit"></button>
+  </form>
+
 
     <div class="container-items">
         <div class="menu_item">
