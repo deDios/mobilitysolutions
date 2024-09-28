@@ -75,17 +75,11 @@
         <h1>Catálogo</h1>
     </div>
 
-    <div class="container d-flex justify-content-center">
-           <div class="input-group col-sm-7  input-group-lg">
-                       <div class="input-group-prepend">
-                         <span class="input-group-text google"><img src="logo_MSC.png"></span>
-                       </div>
-              <input type="text" class="form-control">
-                       <div class="input-group-append">
-                         <span class="input-group-text microphone"><img src="https://img.icons8.com/nolan/48/000000/microphone.png"></span>
-                       </div>
-            </div>
-      </div>
+    <div class="contenido_cat">
+        <div class="Titulo-boton">
+            <input type="text" placeholder="Buscar...">
+        </div>
+    </div>
 
     <div class="container-items">
         <div class="menu_item">
