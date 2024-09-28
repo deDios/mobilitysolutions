@@ -297,7 +297,6 @@ li {
         grid-template-rows: 1fr 1fr;
         padding-left: 10px;
         padding-right: 10px;
-        place-items: center;
     }
 
 }
