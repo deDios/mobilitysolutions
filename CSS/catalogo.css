@@ -174,7 +174,7 @@ li {
 .container-items{
     display: grid;
     grid-template-columns: 1fr 5fr;
-    padding-top: 120px;
+    padding-top: 150px;
 }
 
 
