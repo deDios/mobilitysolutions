@@ -75,6 +75,7 @@
     <div class="container-items">
         <div class="menu_item">
           <div class="lay_btn">    
+            
             <div class="demo">
               <form class="form-search">
                 <div class="input-group">
@@ -83,8 +84,12 @@
                 </div>
               </form>
             </div>
+            
           </div>
         </div>
+
+<!--------------------------------------- Menu izquierda ----------------------------------------------->
+
         <div class="lista_item">
             <?php 
                 $inc = include "db/Conexion.php";    
