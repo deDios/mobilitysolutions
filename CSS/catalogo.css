@@ -302,7 +302,7 @@ li {
 /*--------------------Boton-------------------------*/
 .lay_btn{
     padding-top: 100px;
-    float: right;
+    float: left;
 }
 
 .demo, .demo-2 {
