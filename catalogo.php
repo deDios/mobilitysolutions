@@ -75,12 +75,14 @@
         <h1>Catálogo</h1>
     </div>
 
-  <form action="javascript: alert('búsqueda enviada')">
-    <input type="search" name="buscar" placeholder="Búsqueda libre" autocomplete="off" required/>
-    <button type="reset"></button>
-    <button type="submit"></button>
-  </form>
-
+    <form action="#">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search" name="search">
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+        </div>
+      </div>
+    </form>
 
     <div class="container-items">
         <div class="menu_item">
