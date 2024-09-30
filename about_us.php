@@ -41,24 +41,20 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
 
         <ul class="navbar-nav ml-auto">
-
-        <li class="nav-item">
-        <a class="nav-link" href="https://mobilitysolutionscorp.com">Inicio
-            <span class="sr-only">(current)</span>
-        </a>
-        </li>
-
-        <li class="nav-item">
-        <a class="nav-link" href="https://mobilitysolutionscorp.com/catalogo.php">Catálogo</a>
-        </li>
-
-        <li class="nav-item active">
-        <a class="nav-link" href="https://mobilitysolutionscorp.com/about_us.php">Nosotros</a>
-        </li>
-
-        <li class="nav-item">
-        <a class="nav-link" href="https://mobilitysolutionscorp.com/contact.php">Contacto</a>
-        </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://mobilitysolutionscorp.com">Inicio
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://mobilitysolutionscorp.com/catalogo.php">Catálogo</a>
+          </li>
+         <li class="nav-item active">
+            <a class="nav-link" href="https://mobilitysolutionscorp.com/about_us.php">Nosotros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://mobilitysolutionscorp.com/contact.php">Contacto</a>
+          </li>
 
         </ul>
       </div>
