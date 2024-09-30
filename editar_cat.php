@@ -40,7 +40,7 @@ $cod=$_REQUEST['id'];
             <br>
             <h1>Registros Catálogo</h1>
             <br>
-            <a href="insert_reg.php"  class="btn btn-primary mt-5">Agregar automóvil</a>
+            <a href="insert_reg.php"  class="btn btn-primary mt-5">Agregar automóvil a catálogo</a>
             <br>
             <a href="insert_reg_auto.php"  class="btn btn-secondary mt-5">Agregar auto a marca</a>
             <br>
