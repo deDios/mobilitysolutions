@@ -48,7 +48,7 @@ $cod=$_REQUEST['id'];
 
         </div>
 
-        <div class="container_tab">
+        <div class="container_tab mt-5">
             <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="mytable">
                 <thead>
                     <tr>
