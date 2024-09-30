@@ -70,7 +70,7 @@
                         Porfavor llenar campo de auto
                     </div>
 
-                    <button type="submit" class="btn btn-success mt-5">Cargar Auto</button>
+                    <button type="submit" class="btn btn-success mt-5">Insertar registro</button>
             </form>
         </div>
     </div>
