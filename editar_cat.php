@@ -44,7 +44,7 @@ $cod=$_REQUEST['id'];
             <br>
             <a href="insert_reg_auto.php"  class="btn btn-secondary mt-5">Agregar auto a marca</a>
             <br>
-            <a href="insert_reg.php"  class="btn btn-secondary mt-5">Agregar modelo a auto</a>
+            <a href="insert_reg_mod.php"  class="btn btn-secondary mt-5">Agregar modelo a auto</a>
 
         </div>
 
