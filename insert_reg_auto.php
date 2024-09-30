@@ -23,7 +23,7 @@
     <div class="container">
         <h1>Registro autos en marcas</h1>
         <div class="row mt-5">
-            <form action="db_consultas/insert_sp.php" method="POST" enctype="multipart/form-data">
+            <form action="db_consultas/insert_sp_auto.php" method="POST" enctype="multipart/form-data">
                     
                     <div class="col-3 mt-5">
                         <label for="InputMarca" class="form-label">Marca</label>
