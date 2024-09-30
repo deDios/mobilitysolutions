@@ -336,6 +336,10 @@ li {
     cursor:not-allowed;
 }
 
+.input-group-btn btn {
+    color: gray;
+}
+
 /* */
 
 @media (max-width:700px){
