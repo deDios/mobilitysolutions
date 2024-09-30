@@ -18,6 +18,9 @@ else{
     echo "Falla en conexión";
 }
 
+header('Location: https://mobilitysolutionscorp.com/editar_cat.php');
+die();
+
 ?>
 </body>
 </html>
