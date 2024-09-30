@@ -80,11 +80,11 @@
               <form class="form-search">
                 <div class="input-group">
                   <input class="form-control form-text" maxlength="128" placeholder="Buscar" size="15" type="text" />
-                  <span class="input-group-btn"><button class="btn btn-primary"><i class="fa fa-search fa-lg">&nbsp;</i></button></span>
+                  <span class="input-group-btn"><button class="btn btn-secondary"><i class="fa fa-search fa-lg">&nbsp;</i></button></span>
                 </div>
               </form>
             </div>
-            
+
           </div>
         </div>
 
