@@ -96,7 +96,7 @@
         
       <div class="col">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="/Imagenes/About_us/about_01.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+          <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="/Imagenes/About_us/about_01.jpg">
 
             <div class="card-body">
               <p class="card-text">Con más de 10 años de experiencia en el mercado, hemos establecido alianzas estratégicas que nos permiten ofrecer las mejores soluciones de financiamiento.</p>
