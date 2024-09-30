@@ -24,7 +24,7 @@ $cod=$_REQUEST['id'];
         <a href="index.php" class="logo" title="Home">
             <img src="logo_MSC.png" alt="Logo de la compañia">
             <h2 class="Nombre de la empresa">
-                Mobility Solutions Corporation
+                Mobility Solutions Corporation 
             </h2>
         </a>
         <nav>
@@ -41,7 +41,9 @@ $cod=$_REQUEST['id'];
             <h1>Registros Catálogo</h1>
             <br>
             <a href="insert_reg.php"  class="btn btn-primary">Agregar</a>
+            <br>
         </div>
+        
         <div class="container_tab">
             <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="mytable">
                 <thead>
