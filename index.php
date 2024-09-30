@@ -84,10 +84,10 @@
                 <img src="Imagenes/Carrusel/carrusel 1.jpg" alt="Los Angeles" class="d-block w-100">
                 </div>
                 <div class="carousel-item">
-                <img src="Imagenes/Carrusel/carrusel 2.jpg" alt="Chicago" class="d-block w-100">
+                <img src="Imagenes/Carrusel/carrusel 1.jpg" alt="Chicago" class="d-block w-100">
                 </div>
                 <div class="carousel-item">
-                <img src="Imagenes/Carrusel/carrusel 3.jpg" alt="New York" class="d-block w-100">
+                <img src="Imagenes/Carrusel/carrusel 1.jpg" alt="New York" class="d-block w-100">
                 </div>
             </div>
     <!-- Left and right controls/icons -->
