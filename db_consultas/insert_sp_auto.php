@@ -6,7 +6,7 @@ $auto = $_POST['InputAuto'];
 $auto_valor = '"' . $auto . '"';
 
 $inc = include "../db/Conexion.php"; 
-$query = 'insert into tmx_marca_auto (marca, auto, updated_at) values 
+$query = 'insert into mobility_solutions.tmx_marca_auto (marca, auto, updated_at) values 
 ('.$marca.','.$auto_valor.',NULL);';
         
 $result = mysqli_query($con,$query); 
