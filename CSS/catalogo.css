@@ -320,7 +320,7 @@ li {
     font-size: 100%;
     border: solid 1px #ccc;
     padding: 9px 18px;
-    width: 200px;
+    width: 80%;
     -webkit-transition: all .5s;
     -moz-transition: all .5s;
     transition: all .5s;
@@ -330,7 +330,8 @@ li {
 }
 
 .demo .form-search button.btn{
-    padding-top: 30px 10px;
+    width: 10%;
+    padding-top: 25px 10px;
     border-top-right-radius:4px;
     border-bottom-right-radius: 4px;
     cursor:not-allowed;
