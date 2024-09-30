@@ -96,7 +96,7 @@
         
       <div class="col">
           <div class="card shadow-sm">
-          <img class="bd-placeholder-img card-img-top" width="100%" height="250" src="/Imagenes/About_us/about_01.jpg">
+          <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="/Imagenes/About_us/about_01.jpg">
 
             <div class="card-body">
               <p class="card-text">Con más de 10 años de experiencia en el mercado, hemos establecido alianzas estratégicas que nos permiten ofrecer las mejores soluciones de financiamiento.</p>
@@ -113,7 +113,7 @@
 
         <div class="col">
           <div class="card shadow-sm">
-            <img class="bd-placeholder-img card-img-top" width="100%" height="250" src="/Imagenes/About_us/about_03.jpg">
+            <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="/Imagenes/About_us/about_03.jpg">
 
             <div class="card-body">
               <p class="card-text">En Mobility Solutions Corporation, nos enorgullecemos de fomentar una filosofía de colaboración y pertenencia.</p>
@@ -130,7 +130,7 @@
 
         <div class="col">
           <div class="card shadow-sm">
-            <img class="bd-placeholder-img card-img-top" width="100%" height="250" src="/Imagenes/About_us/about_02.jpg">
+            <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="/Imagenes/About_us/about_02.jpg">
 
             <div class="card-body">
               <p class="card-text">Mobility Solutions Corporation es la elección inteligente para aquellos que buscan una solución de movilidad eficiente, accesible y personalizada.</p>
