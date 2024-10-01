@@ -77,7 +77,7 @@ $carpeta_id = '/home/site/wwwroot/Imagenes/Catalogo/Auto '.$con->insert_id.'';
                 echo "<br> No se ha cargado ningun archivo.";
             }
 
-            header('Location: https://mobilitysolutionscorp.com/editar_cat.php');
+            header("Location: https://mobilitysolutionscorp.com/editar_cat.php",true,301);
             die();
 ?>
 </body>
