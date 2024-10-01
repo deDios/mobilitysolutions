@@ -185,3 +185,8 @@ li {
     padding-left: 10px;
     padding-right: 10px;
 }
+
+.container-items .menu_der{
+    width: 90%;
+    padding-right: 10px;
+}

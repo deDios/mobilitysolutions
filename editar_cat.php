@@ -91,7 +91,7 @@ $cod=$_REQUEST['id'];
             <a href="insert_reg_mod.php"  class="btn btn-secondary mt-5">Agregar modelo a auto</a>
         </div>
 
-        <div class="container_tab mt-5">
+        <div class="menu_der">
             <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="mytable">
                 <thead>
                     <tr>
