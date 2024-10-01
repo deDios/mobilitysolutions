@@ -188,7 +188,7 @@ $cod=$_REQUEST['id'];
                         <td><?php echo $estatus;?></td>
                         <td><?php echo $created_at;?></td>
                         <td><?php echo $updated_at;?></td>
-                        <td><button class="btn btn-primary"><a href="javascript:detalle(<?php echo $id;?>)">Ver</a></button></td>
+                        <td><a href="javascript:detalle(<?php echo $id;?>)" class="btn btn-primary">Ver</a></td>
                         <td><button class="btn btn-warning">Editar</button></td>
                         <td><button class="btn btn-danger">Eliminar</button> </td>
                     </tr>
