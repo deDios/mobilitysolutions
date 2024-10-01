@@ -120,36 +120,34 @@ $cod=$_REQUEST['id'];
                 <?php 
                 $inc = include "db/Conexion.php";    
                     if ($inc){
-                        $query = '  select 
-                                        auto.id,
-                                        m_auto.auto as nombre, 
-                                        modelo.nombre as modelo, 
-                                        marca.nombre as marca, 
-                                        auto.mensualidad, 
-                                        auto.costo, 
-                                        sucursal.nombre as sucursal, 
-                                        auto.img1, 
-                                        auto.img2, 
-                                        auto.img3, 
-                                        auto.img4, 
-                                        auto.img5, 
-                                        auto.img6, 
-                                        auto.color, 
-                                        auto.transmision, 
-                                        auto.interior, 
-                                        auto.kilometraje, 
-                                        auto.combustible, 
-                                        auto.cilindros, 
-                                        auto.eje, 
-                                        auto.estatus, 
-                                        auto.created_at, 
-                                        auto.updated_at 
-                                    FROM mobility_solutions.tmx_auto as auto
-                                    left join mobility_solutions.tmx_sucursal as sucursal on auto.sucursal = sucursal.id 
-                                    left join mobility_solutions.tmx_estatus as estatus on auto.estatus = estatus.id
-                                    left join mobility_solutions.tmx_modelo as modelo on auto.modelo = modelo.id 
-                                    left join mobility_solutions.tmx_marca as marca on auto.marca = marca.id
-                                    left join mobility_solutions.tmx_marca_auto as m_auto on auto.nombre = m_auto.id;';
+                        $query = 'select 
+                                    id, 
+                                    nombre, 
+                                    modelo, 
+                                    marca, 
+                                    mensualidad, 
+                                    costo, 
+                                    sucursal, 
+                                    img1, 
+                                    img2, 
+                                    img3, 
+                                    img4, 
+                                    img5, 
+                                    img6, 
+                                    color, 
+                                    transmision, 
+                                    interior, 
+                                    kilometraje, 
+                                    combustible, 
+                                    cilindros, 
+                                    eje, 
+                                    estatus, 
+                                    pasajeros, 
+                                    propietarios, 
+                                    created_at, 
+                                    updated_at, 
+                                    search_key
+                                  from mobility_solutions.v_catalogo_active;';
                         $result = mysqli_query($con,$query);  
                         if ($result){         
                             while($row = mysqli_fetch_assoc($result)){
@@ -189,6 +187,7 @@ $cod=$_REQUEST['id'];
                         <td><?php echo $estatus;?></td>
                         <td><?php echo $created_at;?></td>
                         <td><?php echo $updated_at;?></td>
+                        <td><button class="btn btn-primary">Ver</button></td>
                         <td><button class="btn btn-warning">Editar</button></td>
                         <td><button class="btn btn-danger">Eliminar</button> </td>
                     </tr>
