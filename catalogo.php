@@ -163,6 +163,73 @@
                         mysqli_free_result($result);                  
                     }
                 }
+                else{
+                  if ($inc){
+                    $query = "select 
+                                id, 
+                                nombre, 
+                                modelo, 
+                                marca, 
+                                mensualidad, 
+                                costo, 
+                                sucursal, 
+                                img1, 
+                                img2, 
+                                img3, 
+                                img4, 
+                                img5, 
+                                img6, 
+                                color, 
+                                transmision, 
+                                interior, 
+                                kilometraje, 
+                                combustible, 
+                                cilindros, 
+                                eje, 
+                                estatus, 
+                                pasajeros, 
+                                propietarios, 
+                                created_at, 
+                                updated_at, 
+                                search_key
+                              from mobility_solutions.v_catalogo_active;";
+                    $result = mysqli_query($con,$query);  
+                    if ($result){         
+                        while($row = mysqli_fetch_assoc($result)){
+                            $id = $row['id'];
+                            $nombre = $row['nombre'];
+                            $modelo = $row['modelo'];
+                            $marca = $row['marca'];
+                            $mensualidad = $row['mensualidad'];
+                            $costo = $row['costo'];
+                            $sucursal = $row['sucursal'];
+        ?> 
+                                <a href="javascript:detalle(<?php echo $id;?>)">
+                                    <div class="item">
+                                        <figure>
+                                            <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="Auto 1">
+                                        </figure>
+                                        <div class="info-producto">
+                                            <div class="titulo_marca">
+                                                <div class="titulo_carro">  <?php echo $marca . " " . $nombre; ?>  </div>
+                                                <img src="Imagenes/Marcas/logo_<?php echo $marca; ?>.jpg" alt="logo 1">
+                                            </div>
+                                            <div class="version_unidad"><?php echo "N°25000A/" .  $id . " - " . $modelo; ?></div>
+                                            <div class="titulo_desde">Mensualidad DESDE</div>
+                                            <div class="mensualidades"> <?php echo "$" . number_format($mensualidad) . "/mes"; ?> </div>
+                                            <div class="Precio"><?php echo "$" . number_format($costo); ?> </div>
+                                            <div class="Localidad"> <i class="fas fa-location-arrow" ></i> <?php echo " " . $sucursal;?>  </div>
+                                        </div>
+                                    </div>            
+                                </a>                             
+        <?php
+                        }
+                    } else{
+                        echo "Hubo un error en la consulta";
+                    }
+                    mysqli_free_result($result);                  
+                }
+                }
             ?>
         </div>
     </div>
