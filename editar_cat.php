@@ -63,11 +63,15 @@ $cod=$_REQUEST['id'];
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="Tareas">Aprobaciones</a>
+            <a class="nav-link" href="#">Aprobaciones</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="Tareas">Tareas</a>
+            <a class="nav-link" href="#">Tareas</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">Tableros</a>
           </li>
 
         </ul>
