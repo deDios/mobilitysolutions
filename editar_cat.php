@@ -49,21 +49,25 @@ $cod=$_REQUEST['id'];
         <ul class="navbar-nav ml-auto">
 
           <li class="nav-item">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com">Inicio
+            <a class="nav-link" href="#">Inicio
               <span class="sr-only">(current)</span>
             </a>
           </li>
 
           <li class="nav-item active">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/catalogo.php">Catálogo</a>
+            <a class="nav-link" href="https://mobilitysolutionscorp.com/editar_cat.php">Catálogo</a>
           </li>
 
          <li class="nav-item">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/about_us.php">Nosotros</a>
+            <a class="nav-link" href="#">Requerimientos</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/contact.php">Contacto</a>
+            <a class="nav-link" href="Tareas">Aprobaciones</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="Tareas">Tareas</a>
           </li>
 
         </ul>
