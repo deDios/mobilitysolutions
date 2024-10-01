@@ -188,7 +188,7 @@ $cod=$_REQUEST['id'];
                         <td><?php echo $estatus;?></td>
                         <td><?php echo $created_at;?></td>
                         <td><?php echo $updated_at;?></td>
-                        <td><button class="btn btn-primary">Ver</button></td>
+                        <td><button class="btn btn-primary"><a href="javascript:detalle(<?php echo $id;?>)">Ver</a></button></td>
                         <td><button class="btn btn-warning">Editar</button></td>
                         <td><button class="btn btn-danger">Eliminar</button> </td>
                     </tr>
@@ -214,6 +214,11 @@ $cod=$_REQUEST['id'];
 <script src="https://cdn.datatables.net/2.1.7/css/dataTables.bootstrap5.css"></script>
 <script src="https://cdn.datatables.net/v/dt/dt-2.1.7/datatables.min.js">
     new DataTable('mytable');
+</script>
+<script>        
+        function detalle (cod){
+            location.href="detalles.php?cod="+cod;
+        }
 </script>
 
 </body>
