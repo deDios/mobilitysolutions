@@ -177,6 +177,9 @@ li {
     padding-top: 150px;
 }
 
+.container-items .menu_izq{
+    width: 90%;
+}
 
 .container-items .lista_item {
     display: grid;

@@ -83,14 +83,11 @@ $cod=$_REQUEST['id'];
 <!--------------------------------------- Termina Menu ----------------------------------------------->
 
 <div class="container-items">
-        <div>
-            <br>
-            <h1>Registros Catálogo</h1>
+        <div class="menu_izq">
+            <h3>Registros Catálogo</h3>
             <br>
             <a href="insert_reg.php"  class="btn btn-primary mt-5">Agregar automóvil a catálogo</a>
-            <br>
             <a href="insert_reg_auto.php"  class="btn btn-secondary mt-5">Agregar auto a marca</a>
-            <br>
             <a href="insert_reg_mod.php"  class="btn btn-secondary mt-5">Agregar modelo a auto</a>
         </div>
 
