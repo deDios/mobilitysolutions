@@ -177,12 +177,6 @@ li {
     padding-top: 150px;
 }
 
-.container-items .menu_izq{
-    width: 90%;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
 .container-items .lista_item {
     display: grid;
     grid-template-columns: repeat(3,1fr);

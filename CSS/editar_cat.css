@@ -179,3 +179,9 @@ li {
     grid-template-columns: 1fr 5fr;
     padding-top: 150px;
 }
+
+.container-items .menu_izq{
+    width: 90%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
