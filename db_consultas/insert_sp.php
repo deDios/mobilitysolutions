@@ -22,12 +22,12 @@ $interior_valor = '"' . $interior . '"';
 $combustible_valor = '"' . $combustible . '"';
 $eje_valor = '"' . $eje . '"';
 
-$img1 = '"' . 'img1' . '"';
-$img2 = '"' . 'img2' . '"';
-$img3 = '"' . 'img3' . '"';
-$img4 = '"' . 'img4' . '"';
-$img5 = '"' . 'img5' . '"';
-$img6 = '"' . 'img6' . '"';
+$img1 = '"' . 'img01' . '"';
+$img2 = '"' . 'img02' . '"';
+$img3 = '"' . 'img03' . '"';
+$img4 = '"' . 'img04' . '"';
+$img5 = '"' . 'img05' . '"';
+$img6 = '"' . 'img06' . '"';
 
 $inc = include "../db/Conexion.php"; 
 $query = 'insert into mobility_solutions.tmx_auto (nombre, modelo, marca, mensualidad, costo, sucursal, img1, img2, img3, img4, img5, img6, color, transmision, interior, kilometraje, combustible, cilindros, eje, estatus, updated_at, pasajeros, propietarios) values
