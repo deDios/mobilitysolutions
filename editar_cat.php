@@ -82,7 +82,7 @@ $cod=$_REQUEST['id'];
 
 <!--------------------------------------- Termina Menu ----------------------------------------------->
 
-    <div class="container">
+<div class="container-items">
         <div>
             <br>
             <h1>Registros Catálogo</h1>
@@ -92,7 +92,6 @@ $cod=$_REQUEST['id'];
             <a href="insert_reg_auto.php"  class="btn btn-secondary mt-5">Agregar auto a marca</a>
             <br>
             <a href="insert_reg_mod.php"  class="btn btn-secondary mt-5">Agregar modelo a auto</a>
-
         </div>
 
         <div class="container_tab mt-5">
@@ -207,15 +206,18 @@ $cod=$_REQUEST['id'];
                 </tbody>
             </table>
         </div>
-    </div>
+</div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"></script>
-    <script src="https://cdn.datatables.net/2.1.7/css/dataTables.bootstrap5.css"></script>
-    <script src="https://cdn.datatables.net/v/dt/dt-2.1.7/datatables.min.js">
-        new DataTable('mytable');
-    </script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"></script>
+<script src="https://cdn.datatables.net/2.1.7/css/dataTables.bootstrap5.css"></script>
+<script src="https://cdn.datatables.net/v/dt/dt-2.1.7/datatables.min.js">
+    new DataTable('mytable');
+</script>
 
 </body>
 </html>
