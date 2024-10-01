@@ -114,6 +114,7 @@ $cod=$_REQUEST['id'];
                         <th>updated_at</th>
                         <th></th>
                         <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
