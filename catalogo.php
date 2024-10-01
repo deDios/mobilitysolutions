@@ -148,9 +148,9 @@
                                                     <img src="Imagenes/Marcas/logo_<?php echo $marca; ?>.jpg" alt="logo 1">
                                                 </div>
                                                 <div class="version_unidad"><?php echo "N°25000A/" .  $id . " - " . $modelo; ?></div>
-                                                <div class="titulo_desde">Mensualidades, DESDE</div>
-                                                <div class="mensualidades"> <?php echo "$" . number_format($mensualidad) . " MXN/mes*"; ?> </div>
-                                                <div class="Precio"><?php echo "$" . number_format($costo) . " MXN de contado"; ?> </div>
+                                                <div class="titulo_desde">Mensualidad DESDE</div>
+                                                <div class="mensualidades"> <?php echo "$" . number_format($mensualidad) . " /mes"; ?> </div>
+                                                <div class="Precio"><?php echo "$" . number_format($costo); ?> </div>
                                                 <div class="Localidad"> <i class="fas fa-location-arrow" ></i> <?php echo " " . $sucursal;?>  </div>
                                             </div>
                                         </div>            
