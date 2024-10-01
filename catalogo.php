@@ -77,10 +77,10 @@
           <div class="lay_btn">    
             
             <div class="demo">
-              <form class="form-search">
+              <form class="form-search" action="" method="get">
                 <div class="input-group">
-                  <input class="form-control form-text" maxlength="128" placeholder="Buscar" size="15" type="text" />
-                  <span class="input-group-btn"><button class="btn btn-secondary"><i class="fa fa-search fa-lg">&nbsp;</i></button></span>
+                  <input class="form-control form-text" maxlength="128" placeholder="Buscar" size="15" type="text" name="buscar" />
+                  <span class="input-group-btn"><button class="btn btn-secondary" type="submit" name="enviar"><i class="fa fa-search fa-lg">&nbsp;</i></button></span>
                 </div>
               </form>
             </div>
@@ -93,39 +93,39 @@
         <div class="lista_item">
             <?php 
                 $inc = include "db/Conexion.php";    
+                if(isset($_GET['enviar'])) {
+                  $busqueda = $_GET['busqueda'];
                     if ($inc){
-                        $query = '  select 
-                                        auto.id,
-                                        m_auto.auto as nombre, 
-                                        modelo.nombre as modelo, 
-                                        marca.nombre as marca, 
-                                        auto.mensualidad, 
-                                        auto.costo, 
-                                        sucursal.nombre as sucursal, 
-                                        auto.img1, 
-                                        auto.img2, 
-                                        auto.img3, 
-                                        auto.img4, 
-                                        auto.img5, 
-                                        auto.img6, 
-                                        auto.color, 
-                                        auto.transmision, 
-                                        auto.interior, 
-                                        auto.kilometraje, 
-                                        auto.combustible, 
-                                        auto.cilindros, 
-                                        auto.eje, 
-                                        auto.estatus, 
-                                        auto.created_at, 
-                                        auto.updated_at 
-                                    FROM mobility_solutions.tmx_auto as auto
-                                    left join mobility_solutions.tmx_sucursal as sucursal on auto.sucursal = sucursal.id 
-                                    left join mobility_solutions.tmx_estatus as estatus on auto.estatus = estatus.id
-                                    left join mobility_solutions.tmx_modelo as modelo on auto.modelo = modelo.id 
-                                    left join mobility_solutions.tmx_marca as marca on auto.marca = marca.id
-                                    left join mobility_solutions.tmx_marca_auto as m_auto on auto.nombre = m_auto.id
-                                    where auto.estatus = 1
-                                    ;';
+                        $query = "select 
+                                    id, 
+                                    nombre, 
+                                    modelo, 
+                                    marca, 
+                                    mensualidad, 
+                                    costo, 
+                                    sucursal, 
+                                    img1, 
+                                    img2, 
+                                    img3, 
+                                    img4, 
+                                    img5, 
+                                    img6, 
+                                    color, 
+                                    transmision, 
+                                    interior, 
+                                    kilometraje, 
+                                    combustible, 
+                                    cilindros, 
+                                    eje, 
+                                    estatus, 
+                                    pasajeros, 
+                                    propietarios, 
+                                    created_at, 
+                                    updated_at, 
+                                    search_key
+                                  from mobility_solutions.v_catalogo_active 
+                                  where search_key like '%$busqueda%'
+                                  ;";
                         $result = mysqli_query($con,$query);  
                         if ($result){         
                             while($row = mysqli_fetch_assoc($result)){
@@ -162,6 +162,7 @@
                         }
                         mysqli_free_result($result);                  
                     }
+                }
             ?>
         </div>
     </div>
