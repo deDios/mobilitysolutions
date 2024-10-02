@@ -169,7 +169,7 @@ li {
 /*--------------------------------------- cuerpo de pagina--------------------*/
 .contenedor{
     display: grid;
-    grid-template-columns: 3fr 2fr;
+    grid-template-columns: 2fr 2fr;
     padding-top: 15px;
     height: 100%;
 }
