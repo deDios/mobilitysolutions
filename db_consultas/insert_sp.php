@@ -80,5 +80,9 @@ $carpeta_id = '/home/site/wwwroot/Imagenes/Catalogo/Auto '.$con->insert_id.'';
             header("Location: https://mobilitysolutionscorp.com/editar_cat.php",true,301);
             die();
 ?>
+
+<br>
+<a href="editar_cat.php"  class="btn btn-primary mt-5">Regresar a Inicio</a>
+
 </body>
 </html>
