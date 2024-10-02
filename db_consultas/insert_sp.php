@@ -77,12 +77,21 @@ $carpeta_id = '/home/site/wwwroot/Imagenes/Catalogo/Auto '.$con->insert_id.'';
                 echo "<br> No se ha cargado ningun archivo.";
             }
 
-            header("Location: https://mobilitysolutionscorp.com/editar_cat.php",true,301);
-            die();
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
 <br>
 <a href="editar_cat.php"  class="btn btn-primary mt-5">Regresar a Inicio</a>
 
+
 </body>
 </html>
+
