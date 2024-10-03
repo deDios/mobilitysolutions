@@ -87,7 +87,7 @@
                     </li>
                     <li class="mb-4 pl-4">
                         <span class="position-absolute"><i class="fa fa-map-marker"></i></span> Vicente Santa Maria #1516
-                        <br> col. Felix Ireta,
+                        <br> Col. Felix Ireta,
                         <br> C.P: 58070 Morelia, Mich.
     
                         <div class="mt-3">
