@@ -251,10 +251,10 @@ li {
         font-weight:lighter;
         padding-top: 5px;
     }
-    
+
     .titulo_carr img {
-        width: 60px;
-        height: 60px;
+        width: 100px;
+        height: 100px;
         overflow: hidden;
         object-fit: scale-down;
     }
