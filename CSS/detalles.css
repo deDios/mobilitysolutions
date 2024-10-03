@@ -251,6 +251,13 @@ li {
         font-weight:lighter;
         padding-top: 5px;
     }
+    
+    .titulo_carr img {
+        width: 60px;
+        height: 60px;
+        overflow: hidden;
+        object-fit: scale-down;
+    }
     .contenedor .contenedor_carr {
         display: flex;
         flex-direction:column ;
