@@ -292,7 +292,17 @@ li {
         padding-left: 10px;
         padding-right: 10px;
     }
-
+    .Descripcion .texto{
+        color: black;
+        font-size: 12px;
+        font-weight: bold;
+    }
+    .Descripcion .texto2{
+        color: black;
+        font-size: 12px;
+        font-weight:lighter;
+        padding-top: 5px;
+    }
     .titulo_carr .Descripcion {
         display: grid;
         grid-template-rows: 1fr 1fr;
