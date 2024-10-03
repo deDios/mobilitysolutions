@@ -80,7 +80,7 @@
     
                 <ul class="contact-info__list list-style--none position-relative z-index-101">
                     <li class="mb-4 pl-4">
-                        <span class="position-absolute"><i class="fa fa-envelope"></i></span> contacto@mobilitysolutionscorp.com
+                        <span class="position-absolute"><i class="fa fa-envelope"></i></span> contacto@autobienestar.com
                     </li>
                     <li class="mb-4 pl-4">
                         <span class="position-absolute"><i class="fa fa-phone"></i></span> (443)-522-7214
