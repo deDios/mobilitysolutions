@@ -295,6 +295,7 @@ li {
     .Descripcion .texto{
         color: black;
         font-size: 15px;
+        padding-top: 10px;
         font-weight: bold;
     }
     .Descripcion .texto2{
