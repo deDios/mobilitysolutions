@@ -73,23 +73,19 @@
 
 
     <div class="container-items">
-        <div class="menu_item">
-          <div class="lay_btn">    
-            
-            <div class="demo">
-              <form class="form-search" action="" method="get">
-                <div class="input-group">
-                  <input class="form-control form-text" maxlength="128" placeholder="Buscar" size="15" type="text" name="buscar" />
-                  <span class="input-group-btn"><button class="btn btn-secondary" type="submit" name="enviar"><i class="fa fa-search fa-lg">&nbsp;</i></button></span>
-                </div>
-              </form>
-            </div>
-
-
-            
-
+      <div class="dropdown-menu">
+        <form class="px-4 py-3">
+          <div class="form-group">
+            <label for="exampleDropdownFormEmail1">Buscar auto</label>
+            <input class="form-control form-text" maxlength="128" placeholder="Buscar" size="15" type="text" name="buscar" />
+            <span class="input-group-btn"><button class="btn btn-secondary" type="submit" name="enviar"><i class="fa fa-search fa-lg">&nbsp;</i></button></span>
           </div>
-        </div>
+          
+        </form>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Preguntas frecuentes</a>
+        <a class="dropdown-item" href="#"></a>
+      </div>
 
 <!--------------------------------------- Menu izquierda ----------------------------------------------->
 
