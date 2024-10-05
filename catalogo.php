@@ -73,19 +73,35 @@
 
 
     <div class="container-items">
-      <div class="dropdown-menu">
-        <form class="px-4 py-3">
-          <div class="form-group">
-            <label for="exampleDropdownFormEmail1">Buscar auto</label>
-            <input class="form-control form-text" maxlength="128" placeholder="Buscar" size="15" type="text" name="buscar" />
-            <span class="input-group-btn"><button class="btn btn-secondary" type="submit" name="enviar"><i class="fa fa-search fa-lg">&nbsp;</i></button></span>
+     
+    <div class="menu_item">
+          <div class="lay_btn">    
+            
+            <div class="demo">
+              <form class="form-search" action="" method="get">
+                <div class="input-group">
+                
+                  <div class="dropdown-menu">
+                    <div class="form-group">
+                      <label for="exampleDropdownFormEmail1">Buscar auto</label>
+                      <input class="form-control form-text" maxlength="128" placeholder="Buscar" size="15" type="text" name="buscar" />
+                      <span class="input-group-btn"><button class="btn btn-secondary" type="submit" name="enviar"><i class="fa fa-search fa-lg">&nbsp;</i></button></span>
+                    </div>
+                    
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Preguntas frecuentes</a>
+                    <a class="dropdown-item" href="#"></a>
+                  </div>
+
+                </div>
+              </form>
+            </div>
+
+
+            
+
           </div>
-          
-        </form>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Preguntas frecuentes</a>
-        <a class="dropdown-item" href="#"></a>
-      </div>
+        </div>
 
 <!--------------------------------------- Menu izquierda ----------------------------------------------->
 
