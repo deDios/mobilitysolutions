@@ -192,11 +192,11 @@
 
       <div class="accordion-item">
           <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-4" aria-expanded="false" aria-controls="flush-4">
                 ¿Cuánto tiempo tarda en aprobarse mi solicitud?
               </button>
           </h2>
-          <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+          <div id="flush-4" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
               <div class="accordion-body">
               Una vez presentada toda la documentación requerida y el llenado de tu solicitud el proceso de aprobación puede tomar entre 24 y 72 horas.
               </div>
