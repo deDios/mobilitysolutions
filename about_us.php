@@ -146,9 +146,12 @@
   </div>
 
 <!-- ------------------------------------------------preguntas frecuentes  --------------------------------->
-    <div class="accordion accordion-flush col-6" id="accordionFlushExample">
+  <div class="preguntas_f"> 
+    <div class="div_f1"> </div>
+    
+    <div class="accordion accordion-flush" id="accordionFlushExample">
 
-      <div class="accordion-item justify-content-center">
+      <div class="accordion-item">
           <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                 ¿Qué tipo de autos seminuevos ofrecen?
@@ -188,9 +191,11 @@
                   vería en una aplicación del mundo real.</div>
           </div>
       </div>
+    </div>
 
+    <div class="div_f3"></div>
+    
   </div>
-
 <!-- ------------------------------------------------ Termina preguntas frecuentes  --------------------------------->
 
 </main>
