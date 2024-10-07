@@ -441,6 +441,11 @@
       <a href="#">Regresa al inicio</a>
     </p>
     <p class="mb-1">DERECHOS DE AUTOR &COPY; 2024 - MOBILITY SOLUTIONTS CORPORATIONS</p>
+    <a title="Descargar Archivo" href="#" style="color: blue; font-size:18px;"> Consulta nuestro aviso de privacidad 
+      <span class="glyphicon glyphicon-download-alt" aria-hidden="true">
+      </span> 
+    </a>
+      
     <p class="mb-0">Contactanos: contacto@mobilitysolutionscorp.com</p>
   </div>
 </footer>
