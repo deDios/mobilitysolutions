@@ -148,7 +148,7 @@
 <!-- ------------------------------------------------preguntas frecuentes  --------------------------------->
 <section class="py-5 container">  
   <h1 class="fw-light text-center">Preguntas frecuentes</h1>
-  <div class="accordion accordion-flush col-lg-6 col-md-8 mx-auto py-5" id="accordionFlushExample">
+  <div class="accordion accordion-flush col-lg-8 col-md-8 mx-auto py-5" id="accordionFlushExample">
 
         <div class="accordion-item">
             <h2 class="accordion-header">
