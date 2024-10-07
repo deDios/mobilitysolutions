@@ -73,10 +73,8 @@
 
 
     <div class="container-items">
-       
     
-    
-    <div class="menu_item">
+        <div class="menu_item">
           <div class="lay_btn">    
             
             <div class="demo">
@@ -87,9 +85,6 @@
                 </div>
               </form>
             </div>
-
-
-            
 
           </div>
         </div>

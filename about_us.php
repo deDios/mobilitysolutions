@@ -145,6 +145,51 @@
     </div>
   </div>
 
+<!-- ------------------------------------------------preguntas frecuentes  --------------------------------->
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+      <div class="accordion-item">
+          <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                ¿Qué tipo de autos seminuevos ofrecen?
+              </button>
+          </h2>
+          <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                Ofrecemos todas las marcas de autos seminuevos en modelos no mayor de 8 anos al ano en curso, en excelente estado, previamente inspeccionados y con garantía.
+              </div>
+          </div>
+      </div>
+      <div class="accordion-item">
+          <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                  Acordeón Item #2
+              </button>
+          </h2>
+          <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                  Contenido de marcador de posición para este acordeón, cuyo objetivo es
+                  demostrar la clase <code>.accordion-flush</code>. Este es el cuerpo de acordeón del segundo
+                  elemento. Imaginemos que esto está lleno de contenido real.
+              </div>
+          </div>
+      </div>
+      <div class="accordion-item">
+          <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                  Acordeón Item #3
+              </button>
+          </h2>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">Contenido de marcador de posición para este acordeón, cuyo objetivo es
+                  demostrar la clase <code>.accordion-flush</code>. Este es el cuerpo de acordeón del tercer
+                  elemento. Aquí no sucede nada más interesante en términos de contenido, sino simplemente llenar
+                  el espacio para que parezca, al menos a primera vista, un poco más representativo de cómo se
+                  vería en una aplicación del mundo real.</div>
+          </div>
+      </div>
+  </div>
+
+
 </main>
 
 <footer class="text-muted py-5">
