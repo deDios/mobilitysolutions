@@ -147,6 +147,7 @@
 
 <!-- ------------------------------------------------preguntas frecuentes  --------------------------------->
   <div class="preguntas_f"> 
+    
     <div class="div_f1"> </div>
     
     <div class="accordion accordion-flush" id="accordionFlushExample">

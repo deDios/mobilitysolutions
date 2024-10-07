@@ -179,6 +179,14 @@ li {
   padding-right: 10px;
 }
 
+.preguntas_f .div_f1 {
+  width: 100%;
+}
+
+.preguntas_f .div_f3 {
+  width: 100%;
+}
+
 @media (max-width:700px){
 
   .preguntas_f{
