@@ -159,36 +159,274 @@
           </h2>
           <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
               <div class="accordion-body">
-                Ofrecemos todas las marcas de autos seminuevos en modelos no mayor de 8 anos al ano en curso, en excelente estado, previamente inspeccionados y con garantía.
+                Ofrecemos todas las marcas de autos seminuevos en modelos no mayor de 8 años al ano en curso, en excelente estado, previamente inspeccionados y con garantía.
               </div>
           </div>
       </div>
       <div class="accordion-item">
           <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                  Acordeón Item #2
+                ¿Cuál es el proceso para solicitar financiamiento?
               </button>
           </h2>
           <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
               <div class="accordion-body">
-                  Contenido de marcador de posición para este acordeón, cuyo objetivo es
-                  demostrar la clase <code>.accordion-flush</code>. Este es el cuerpo de acordeón del segundo
-                  elemento. Imaginemos que esto está lleno de contenido real.
+                  El proceso es sencillo: elige el auto que te interesa, llena el formulario de solicitud en una visita en una de nuestras sucursales, 
+                  y uno de nuestros asesores te contactará para guiarte en los siguientes pasos.
               </div>
           </div>
       </div>
       <div class="accordion-item">
           <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                  Acordeón Item #3
+                ¿Cuáles son los requisitos para obtener financiamiento?
               </button>
           </h2>
           <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-              <div class="accordion-body">Contenido de marcador de posición para este acordeón, cuyo objetivo es
-                  demostrar la clase <code>.accordion-flush</code>. Este es el cuerpo de acordeón del tercer
-                  elemento. Aquí no sucede nada más interesante en términos de contenido, sino simplemente llenar
-                  el espacio para que parezca, al menos a primera vista, un poco más representativo de cómo se
-                  vería en una aplicación del mundo real.</div>
+              <div class="accordion-body">
+              Los requisitos básicos incluyen identificación oficial, comprobante de ingresos ya sea los últimos recibos de nomina o estados de cuenta y 
+              comprobante de domicilio. Para más detalles, consulta con uno de nuestros asesores.
+              </div>
+          </div>
+      </div>
+
+      <div class="accordion-item">
+          <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                ¿Cuánto tiempo tarda en aprobarse mi solicitud?
+              </button>
+          </h2>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+              Una vez presentada toda la documentación requerida y el llenado de tu solicitud el proceso de aprobación puede tomar entre 24 y 72 horas.
+              </div>
+          </div>
+      </div>
+
+      <div class="accordion-item">
+          <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                ¿Ofrecen planes de financiamiento personalizados?
+              </button>
+          </h2>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+              Sí, adaptamos nuestros planes de financiamiento a tus necesidades..
+              </div>
+          </div>
+      </div>
+
+      <div class="accordion-item">
+          <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                ¿Hay alguna penalización por pagos anticipados?
+              </button>
+          </h2>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                No, puedes realizar pagos anticipados sin penalización, lo que te permite reducir el costo total del financiamiento.
+              </div>
+          </div>
+      </div>
+
+      <div class="accordion-item">
+          <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                ¿Mobility Solutions ofrece garantía en los autos seminuevos?
+              </button>
+          </h2>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                Sí, todos nuestros autos seminuevos incluyen una garantía para brindarte tranquilidad en tu compra.
+              </div>
+          </div>
+      </div>
+
+      <div class="accordion-item">
+          <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                ¿Qué opciones de seguros ofrecen para los autos financiados? 
+              </button>
+          </h2>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                Trabajamos con varias aseguradoras para ofrecerte opciones de seguro que se adapten a tus necesidades, y puedes incluir el costo del seguro en tu plan de financiamiento.
+              </div>
+          </div>
+      </div>
+
+      <div class="accordion-item">
+          <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                ¿Puedo solicitar financiamiento si tengo un historial crediticio negativo? 
+              </button>
+          </h2>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                Evaluamos cada caso de manera individual, por lo que incluso si tienes un historial crediticio negativo, podrías ser elegible para financiamiento bajo ciertas condiciones.
+              </div>
+          </div>
+      </div>
+
+      <div class="accordion-item">
+          <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                ¿Qué hago si no encuentro el auto que estoy buscando?
+              </button>
+          </h2>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                Si no encuentras el auto que deseas en nuestro inventario actual, puedes contactarnos, y nuestros asesores te ayudarán a buscar la mejor opción disponible.
+              </div>
+          </div>
+      </div>
+
+      <div class="accordion-item">
+          <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                ¿Cómo sé que mi solicitud fue recibida correctamente?
+              </button>
+          </h2>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                Recibirás un mensaje SMS confirmando la recepción de tu solicitud dentro de las próximas 24 horas, lo que te asegurará que tu solicitud ha sido procesada.
+              </div>
+          </div>
+      </div>
+
+      <div class="accordion-item">
+          <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                ¿Puedo obtener financiamiento sin importar a qué me dedique?
+              </button>
+          </h2>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                Sí, no importa a qué te dediques, en Mobility Solutions trabajamos para encontrar la mejor solución de financiamiento que se ajuste a tu situación particular.
+              </div>
+          </div>
+      </div>
+
+      <div class="accordion-item">
+          <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                ¿Cómo sabré si mi solicitud fue autorizada?
+              </button>
+          </h2>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                Una vez que tu solicitud haya sido evaluada, uno de nuestros asesores se pondrá en contacto contigo en breve, después de que recibas el mensaje SMS de confirmación.
+              </div>
+          </div>
+      </div>
+
+      <div class="accordion-item">
+          <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                ¿Cómo puedo realizar mi primer pago?
+              </button>
+          </h2>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                Puedes hacer tu primer pago en efectivo en cualquiera de nuestras sucursales, donde recibirás un recibo original que acredita la cantidad pagada.
+              </div>
+          </div>
+      </div>
+
+      <div class="accordion-item">
+          <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                ¿Cómo se realizan los pagos de las mensualidades?
+              </button>
+          </h2>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                Las mensualidades se deben pagar únicamente a las cuentas oficiales, ya sea mediante depósito o domiciliación, nunca a cuentas particulares.
+              </div>
+          </div>
+      </div>
+
+      <div class="accordion-item">
+          <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                ¿Cuándo puedo obtener la factura original del vehículo?
+              </button>
+          </h2>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                Puedes obtener la factura original una vez que hayas liquidado el financiamiento por completo.
+              </div>
+          </div>
+      </div>
+
+      <div class="accordion-item">
+          <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                ¿Es Mobility Solutions una empresa confiable?
+              </button>
+          </h2>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                Sí, somos una empresa con todos nuestros registros actualizados y en orden, operamos bajo estrictas normativas legales y regulatorias. 
+                Nuestro objetivo es brindarte seguridad y confianza en cada paso de tu proceso de financiamiento y compra.
+              </div>
+          </div>
+      </div>
+
+      <div class="accordion-item">
+          <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                ¿Cómo puedo protegerme de fraudes financieros como el phishing?
+              </button>
+          </h2>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                Para evitar ser víctima de phishing, nunca hagas clic en enlaces sospechosos recibidos por correo o mensaje. 
+                Mobility Solutions nunca te pedirá tu información confidencial como contraseñas o datos bancarios a través de correos electrónicos o mensajes no solicitados. 
+                Siempre verifica que la comunicación provenga de nuestras cuentas oficiales.
+              </div>
+          </div>
+      </div>
+
+      <div class="accordion-item">
+          <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                ¿Cómo sé si un asesor es realmente parte de Mobility Solutions?
+              </button>
+          </h2>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+              Nuestros asesores siempre se comunicarán desde correos electrónicos o teléfonos oficiales de Mobility Solutions Corporation. 
+              Si tienes dudas sobre la autenticidad de un asesor, puedes contactarnos directamente a nuestras líneas oficiales para verificar su identidad.
+              </div>
+          </div>
+      </div>
+
+      <div class="accordion-item">
+          <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                ¿Qué hago si creo que estoy siendo víctima de fraude o si alguien se hace pasar por un asesor de Mobility Solutions?
+              </button>
+          </h2>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                Si sospechas que alguien se está haciendo pasar por un asesor, o si recibes una solicitud sospechosa, reporta inmediatamente el caso a nuestras 
+                líneas de atención al cliente. Nunca compartas información personal ni realices depósitos sin confirmar que provienen de un canal oficial.
+              </div>
+          </div>
+      </div>
+
+      <div class="accordion-item">
+          <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                ¿Cómo puedo contactarlos si tengo más preguntas?
+              </button>
+          </h2>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                Puedes llamarnos al (443)-522-7214, enviar un correo a contacto@autobienestar.com, o llenar el formulario de contacto en nuestro sitio web. 
+                ¿Te gustaría agregar alguna pregunta más o ajustar alguna de estas respuestas?
+              </div>
           </div>
       </div>
     </div>
