@@ -146,11 +146,7 @@
   </div>
 
 <!-- ------------------------------------------------preguntas frecuentes  --------------------------------->
-  <div class="preguntas_f"> 
-
-    <div class="div_f1"> </div>
-    
-    <div class="accordion accordion-flush col-lg-6 col-md-8 mx-auto" id="accordionFlushExample">
+  <div class="accordion accordion-flush col-lg-6 col-md-8 mx-auto" id="accordionFlushExample">
 
       <div class="accordion-item">
           <h2 class="accordion-header">
@@ -430,9 +426,6 @@
               </div>
           </div>
       </div>
-    </div>
-
-    <div class="div_f3"></div>
     
   </div>
 <!-- ------------------------------------------------ Termina preguntas frecuentes  --------------------------------->
