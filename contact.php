@@ -117,35 +117,35 @@
                         <div class="col-sm-6 mb-3">
                             <div class="form-group">
                                 <label class="required-field" for="firstName">Nombre</label>
-                                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Wendy">
+                                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Wendy" required>
                             </div>
                         </div>
     
                         <div class="col-sm-6 mb-3">
                             <div class="form-group">
                                 <label for="lastName">Apellidos</label>
-                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Ramirez">
+                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Ramirez" required>
                             </div>
                         </div>
     
                         <div class="col-sm-6 mb-3">
                             <div class="form-group">
                                 <label class="required-field" for="email">Email</label>
-                                <input type="text" class="form-control" id="email" name="email" placeholder="wendy.apple@seed.com">
+                                <input type="text" class="form-control" id="email" name="email" placeholder="wendy.apple@gmail.com" required>
                             </div>
                         </div>
     
                         <div class="col-sm-6 mb-3">
                             <div class="form-group">
                                 <label for="phone">Número teléfonico</label>
-                                <input type="tel" class="form-control" id="phone" name="phone" placeholder="(044)-352272-13">
+                                <input type="tel" class="form-control" id="phone" name="phone" placeholder="(044)-352272-13" required>
                             </div>
                         </div>
     
                         <div class="col-sm-12 mb-3">
                             <div class="form-group">
                                 <label class="required-field" for="message">¿Cómo podemos ayudarte?</label>
-                                <textarea class="form-control" id="message" name="message" rows="4" placeholder="Hola, me gustaria saber....."></textarea>
+                                <textarea class="form-control" id="message" name="message" rows="4" placeholder="Hola, me gustaria saber....." required></textarea>
                             </div>
                         </div>
     
