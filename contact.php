@@ -167,7 +167,10 @@
 
                         <script>
                             function datos_enviados (){
-                                alert("Datos compartidos correctamente");
+                                if (isset($_GET['firstName'])){
+                                    alert("Datos compartidos correctamente.");
+                                }
+                                alert("Es necesario llenar los campos.");
                             }                           
                         </script>
     
