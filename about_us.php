@@ -148,7 +148,7 @@
 <!-- ------------------------------------------------preguntas frecuentes  --------------------------------->
     <div class="accordion accordion-flush col-6" id="accordionFlushExample">
 
-      <div class="accordion-item">
+      <div class="accordion-item center-block">
           <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                 ¿Qué tipo de autos seminuevos ofrecen?
