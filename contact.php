@@ -112,7 +112,7 @@
             </div>
     
             <div class="col-lg-7 contact-form__wrapper p-5 order-lg-1">
-                <form action="javascript:datos_enviados()" class="contact-form form-validate" novalidate="novalidate">
+                <form action="javascript:datos_enviados()" method="POST" class="contact-form form-validate" novalidate="novalidate">
                     <div class="row">
                         <div class="col-sm-6 mb-3">
                             <div class="form-group">
