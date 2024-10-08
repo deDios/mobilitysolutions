@@ -311,6 +311,8 @@ li {
     -webkit-transition: all .5s;
     -moz-transition: all .5s;
     transition: all .5s;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 .demo .form-search input[type=text]:focus {
     background-color: #fff;
