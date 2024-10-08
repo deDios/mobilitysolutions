@@ -211,7 +211,7 @@ li {
 
 .item figure img{
     overflow: hidden;
-    width: 250px;
+    width: 240px;
     height: 100%;
     object-fit: scale-down;
     border-radius: 10px 0 0 10px;
@@ -229,6 +229,7 @@ li {
     width: 100%;
     padding-right: 10px;
     padding-left: 10px;
+    padding-bottom: 10px;
 }
 
 .info-producto .titulo_marca {
