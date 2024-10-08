@@ -233,6 +233,7 @@
                             $mensualidad = $row['mensualidad'];
                             $costo = $row['costo'];
                             $sucursal = $row['sucursal'];
+                            $estatus = $row['estatus'];
         ?> 
                                 <a href="javascript:detalle(<?php echo $id;?>)">
                                     <div class="item">
@@ -252,7 +253,13 @@
                                               <div>
                                                 <i class="fas fa-location-arrow" ></i> <?php echo " " . $sucursal;?>  
                                               </div>
-                                              <img src="Imagenes/Sellos/reservado.jpg" alt="Auto 1">
+                                              <?php 
+                                                if ($estatus = 3){
+                                              ?>
+                                                <img src="Imagenes/Sellos/reservado.jpg" alt="Auto 1">
+                                              <?php
+                                                }
+                                              ?>
                                             </div>
                                         </div>
                                     </div>            
