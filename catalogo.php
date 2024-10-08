@@ -90,7 +90,7 @@
 
           <div class="anuncios">
             
-          <div class="card py-5">
+          <div class="card">
               <div class="card-header">
                   Referencias
               </div>
@@ -104,6 +104,7 @@
               </div>
               </div>
             </div>
+
             <p><small>Publicidad</small></p>
               <hr class="mt-2 mb-3"/>
               <div>
