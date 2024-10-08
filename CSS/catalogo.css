@@ -276,7 +276,7 @@ li {
 .Localidad {
     display: flex;
     flex-direction: row;
-    height: 50px;
+    height: 40px;
     justify-content: space-between;
     align-items: center;
 }
