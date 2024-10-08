@@ -100,43 +100,7 @@
               <div class="card-body">
 
 <!--------------------------------------- Inicia carrusel de reseñas ----------------------------------------------->  
-                <div class="carousel-reviews broun-block">
-                  <div class="container">
-                      <div class="row">
-                          <div id="carousel-reviews" class="carousel slide" data-ride="carousel">                        
-                            <div class="carousel-inner">
-                 
-                              <div class="item active">    
-                                <div class="">
-                                    <div class="block-text rel zmin">
-                                      <a title="" href="#">Pablo de Dios</a>
-                                      <div class="mark">My rating: 
-                                        <span class="rating-input">
-                                          <span data-value="0" class="glyphicon glyphicon-star"></span>
-                                          <span data-value="1" class="glyphicon glyphicon-star"></span>
-                                          <span data-value="2" class="glyphicon glyphicon-star"></span>
-                                          <span data-value="3" class="glyphicon glyphicon-star"></span>
-                                          <span data-value="4" class="glyphicon glyphicon-star"></span>
-                                          <span data-value="5" class="glyphicon glyphicon-star"></span>  
-                                        </span>
-                                      </div>
-                                        <p>Muy rapido el tramite y el personal siempre muy amable y atento.</p>
-                                    </div>
-                                </div>
-                              </div>                                
-                            </div>
-                              
-                            <a class="left carousel-control" href="#carousel-reviews" role="button" data-slide="prev">
-                                  <span class="glyphicon glyphicon-chevron-left"></span>
-                            </a>
-                            <a class="right carousel-control" href="#carousel-reviews" role="button" data-slide="next">
-                                  <span class="glyphicon glyphicon-chevron-right"></span>
-                            </a>
-
-                          </div>
-                      </div>
-                  </div>
-                </div>
+               
 <!--------------------------------------- Termina carrusel de reseñas ----------------------------------------------->  
               </div>
           </div>
