@@ -89,7 +89,10 @@
           </div>
 
           <div class="anuncios">
-            
+           
+          <p class="titulo_r py-5"><small></small></p>
+              <hr class="mt-2 mb-3"/>
+
           <div class="card">
               <div class="card-header">
                   Referencias
@@ -98,6 +101,9 @@
                 
               </div>
           </div>
+
+          <p class="titulo_p py-5"><small></small></p>
+              <hr class="mt-2 mb-3"/>
 
           <div class="card">
               <div class="card-header">
@@ -108,6 +114,7 @@
               </div>
           </div>
 
+            
           </div>
         </div>
 
