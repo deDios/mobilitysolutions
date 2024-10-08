@@ -89,16 +89,16 @@
           </div>
 
           <div class="anuncios">
-          <p><small>Referencias</small></p>
-            <hr class="mt-2 mb-3"/>
-            <div>
+            <p><small>Referencias</small></p>
+              <hr class="mt-2 mb-3"/>
+              <div>
 
-            </div>
-          <p><small>Publicidad</small></p>
-            <hr class="mt-2 mb-3"/>
-            <div>
-              
-            </div>
+              </div>
+            <p><small>Publicidad</small></p>
+              <hr class="mt-2 mb-3"/>
+              <div>
+                
+              </div>
           </div>
         </div>
 
