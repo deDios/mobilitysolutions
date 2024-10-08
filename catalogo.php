@@ -95,21 +95,19 @@
                   Referencias
               </div>
               <div class="card-body">
-                <div class="card mb-3" style="max-width: 18rem;">
-                <div class="card-header text-white bg-primary">Header</div>
-                <div class="card-body">
-                  <h5 class="card-title">Primary card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-              </div>
-              </div>
-            </div>
-
-            <p class="titulo_p py-5"><small>Publicidad</small></p>
-              <hr class="mt-2 mb-3"/>
-              <div>
                 
               </div>
+          </div>
+
+          <div class="card">
+              <div class="card-header">
+                  Publicidad
+              </div>
+              <div class="card-body">
+                
+              </div>
+          </div>
+
           </div>
         </div>
 
