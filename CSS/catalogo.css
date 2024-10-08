@@ -300,6 +300,11 @@ li {
 
 /*--------------------Boton-------------------------*/
 
+.demo .form-search {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 .demo .form-search input[type=text] {
     -webkit-appearance: textfield;
     -webkit-box-sizing: content-box;
