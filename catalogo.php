@@ -89,10 +89,8 @@
           </div>
 
           <div class="anuncios">
-           
-          <p class="titulo_r py-5"><small></small></p>
-              <hr class="mt-2 mb-3"/>
-            
+            <p class="titulo_r py-5"><small></small></p>
+            Publicidad<hr class="mt-2 mb-3"/>
           </div>
         </div>
 
