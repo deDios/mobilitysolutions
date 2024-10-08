@@ -254,10 +254,14 @@
                                                 <i class="fas fa-location-arrow" ></i> <?php echo " " . $sucursal;?>  
                                               </div>
                                               <?php 
-                                                if ($estatus = 3){
+                                                if ($estatus == 3){
                                               ?>
                                                 <img src="Imagenes/Sellos/reservado.jpg" alt="Auto 1">
                                               <?php
+                                                } else {
+                                              ?>
+                                                <img src="Imagenes/Sellos/reservados.jpg" alt="D">
+                                               <?php
                                                 }
                                               ?>
                                             </div>
