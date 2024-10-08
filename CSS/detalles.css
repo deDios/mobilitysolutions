@@ -222,20 +222,7 @@ li {
 /* ----------------------------- Cierre para estilo para titulo de detalle auto  -----------------------------*/
 /* ----------------------------- Inicio carrusel detalle auto  -----------------------------*/
 
-.carrusel_carr_auto{
-    height: 100%;
-}
 
-.carrusel_carr_auto .div_carrusel{
-    min-height: 800px;
-    max-height: 800px;
-}
-
-.div_carrusel .carousel{
-    min-height: 800px;
-    max-height: 800px;
-    object-fit: cover;
-}
 
 /* ----------------------------- Cierre carrusel  detalle auto  -----------------------------*/
 .contenedor_carr .detalle_carr {
