@@ -279,6 +279,11 @@ li {
     justify-content: center;
 }
 
+.Localidad img {
+    width: 40px;
+    height: 20px;
+}
+
 .Localidad i {
     width: 20px;
     height: 20px;
