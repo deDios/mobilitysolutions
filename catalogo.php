@@ -249,7 +249,9 @@
                                             <div class="mensualidades"> <?php echo "$" . number_format($mensualidad) . "/mes"; ?> </div>
                                             <div class="Precio"><?php echo "$" . number_format($costo); ?> </div>
                                             <div class="Localidad"> 
-                                              <i class="fas fa-location-arrow" ></i> <?php echo " " . $sucursal;?>  
+                                              <div>
+                                                <i class="fas fa-location-arrow" ></i> <?php echo " " . $sucursal;?>  
+                                              </div>
                                               <img src="Imagenes/Sellos/reservado.jpg" alt="Auto 1">
                                             </div>
                                         </div>
