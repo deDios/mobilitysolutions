@@ -279,11 +279,12 @@ li {
     height: 70px;
     justify-content: space-between;
     align-items: center;
+    padding-bottom: 20px;
 }
 
 .Localidad img {
     width: 100px;
-    height: 50px;
+    height: 60px;
 }
 
 .Localidad i {
