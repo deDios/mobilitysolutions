@@ -273,6 +273,12 @@ li {
     font-size: 8px;
     text-decoration: underline gray;
 }
+.Localidad {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 .Localidad i {
     width: 20px;
     height: 20px;
