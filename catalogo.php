@@ -90,32 +90,9 @@
 
           <div class="anuncios">
            
-          <p class="titulo_r py-5"><small></small></p>
+          <p class="titulo_r py-5"><small>Publicidad</small></p>
               <hr class="mt-2 mb-3"/>
 
-          <div class="card">
-              <div class="card-header">
-                  Reseñas
-              </div>
-              <div class="card-body">
-
-<!--------------------------------------- Inicia carrusel de reseñas ----------------------------------------------->  
-               
-<!--------------------------------------- Termina carrusel de reseñas ----------------------------------------------->  
-              </div>
-          </div>
-
-          <p class="titulo_p py-5"><small></small></p>
-              <hr class="mt-2 mb-3"/>
-
-          <div class="card">
-              <div class="card-header">
-                  Publicidad
-              </div>
-              <div class="card-body">
-                
-              </div>
-          </div>
 
             
           </div>
