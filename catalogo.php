@@ -251,7 +251,7 @@
                                             <div class="Precio"><?php echo "$" . number_format($costo); ?> </div>
                                             <div class="Localidad"> 
                                               <div>
-                                                <i class="fa-duotone fa-solid fa-arrows-split-up-and-left" ></i> <?php echo " " . $sucursal;?>  
+                                                <i class="fas fa-location-arrow" ></i> <?php echo " " . $sucursal;?>  
                                               </div>
                                               <?php 
                                                 if ($estatus == 3){
