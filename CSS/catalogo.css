@@ -211,7 +211,7 @@ li {
 
 .item figure img{
     overflow: hidden;
-    width: 240px;
+    width: 250px;
     height: 100%;
     object-fit: scale-down;
     border-radius: 10px 0 0 10px;
