@@ -260,7 +260,7 @@
                                               <?php
                                                 } else {
                                               ?>
-                                                <img src="Imagenes/Sellos/reservados.jpg" alt="D">
+                                                <img src="Imagenes/Sellos/reservadoos.jpg" alt="">
                                                <?php
                                                 }
                                               ?>
