@@ -109,7 +109,7 @@
                               <div class="item active">    
                                 <div class="">
                                     <div class="block-text rel zmin">
-                                      <a title="" href="#">Hercules</a>
+                                      <a title="" href="#">Pablo de Dios</a>
                                       <div class="mark">My rating: 
                                         <span class="rating-input">
                                           <span data-value="0" class="glyphicon glyphicon-star"></span>
@@ -120,22 +120,10 @@
                                           <span data-value="5" class="glyphicon glyphicon-star"></span>  
                                         </span>
                                       </div>
-                                        <p>Never before has there been a good film portrayal of ancient Greece's favourite myth. So why would Hollywood start now? This latest attempt at bringing the son of Zeus to the big screen is brought to us by X-Men: The last Stand director Brett Ratner. If the name of the director wasn't enough to dissuade ...</p>
-                                        <ins class="ab zmin sprite sprite-i-triangle block"></ins>
+                                        <p>Muy rapido el tramite y el personal siempre muy amable y atento.</p>
                                     </div>
                                 </div>
-                              </div>
-                              <div class="item">
-                                  <div class="">
-                                          <div class="block-text rel zmin">
-                                          <a title="" href="#">Hercules</a>
-                                        <div class="mark">My rating: <span class="rating-input"><span data-value="0" class="glyphicon glyphicon-star"></span><span data-value="1" class="glyphicon glyphicon-star"></span><span data-value="2" class="glyphicon glyphicon-star"></span><span data-value="3" class="glyphicon glyphicon-star"></span><span data-value="4" class="glyphicon glyphicon-star-empty"></span><span data-value="5" class="glyphicon glyphicon-star-empty"></span>  </span></div>
-                                          <p>Never before has there been a good film portrayal of ancient Greece's favourite myth. So why would Hollywood start now? This latest attempt at bringing the son of Zeus to the big screen is brought to us by X-Men: The last Stand director Brett Ratner. If the name of the director wasn't enough to dissuade ...</p>
-                                        <ins class="ab zmin sprite sprite-i-triangle block"></ins>
-                                        </div>
-                                  </div>
-                              </div>
-                                                        
+                              </div>                                
                             </div>
                               
                             <a class="left carousel-control" href="#carousel-reviews" role="button" data-slide="prev">
