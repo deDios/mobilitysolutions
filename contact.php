@@ -127,7 +127,7 @@
                         <div class="col-sm-6 mb-3">
                             <div class="form-group">
                                 <label for="lastName">Apellidos</label>
-                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Ramirez" >
+                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Ramirez" required>
                             </div>
                         </div>
     
