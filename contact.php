@@ -112,7 +112,7 @@
             </div>
     
             <div class="col-lg-7 contact-form__wrapper p-5 order-lg-1">
-                <form action="javascript:datos_enviados()" class="contact-form needs-validation" novalidate="novalidate">
+                <form class="contact-form needs-validation" novalidate>
                     <div class="row">
                         <div class="col-sm-6 mb-3">
                             <div class="form-group">
@@ -169,9 +169,26 @@
                         </div>
 
                         <script>
-                            function datos_enviados (){
-                                    alert("Datos compartidos correctamente.");
-                            }                           
+                            // Ejemplo de JavaScript inicial para deshabilitar el envío de formularios si hay campos no válidos
+                            (function () {
+                            'use strict'
+
+                            // Obtener todos los formularios a los que queremos aplicar estilos de validación de Bootstrap personalizados
+                            var forms = document.querySelectorAll('.needs-validation')
+
+                            // Bucle sobre ellos y evitar el envío
+                            Array.prototype.slice.call(forms)
+                                .forEach(function (form) {
+                                form.addEventListener('submit', function (event) {
+                                    if (!form.checkValidity()) {
+                                    event.preventDefault()
+                                    event.stopPropagation()
+                                    }
+
+                                    form.classList.add('was-validated')
+                                }, false)
+                                })
+                            })();                                
                         </script>
     
                     </div>
