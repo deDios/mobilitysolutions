@@ -107,7 +107,7 @@
                             <div class="carousel-inner">
                  
                               <div class="item active">    
-                                <div class="col-md-4 col-sm-6">
+                                <div class="">
                                     <div class="block-text rel zmin">
                                       <a title="" href="#">Hercules</a>
                                       <div class="mark">My rating: 
@@ -125,9 +125,8 @@
                                     </div>
                                 </div>
                               </div>
-
                               <div class="item">
-                                  <div class="col-md-4 col-sm-6">
+                                  <div class="">
                                           <div class="block-text rel zmin">
                                           <a title="" href="#">Hercules</a>
                                         <div class="mark">My rating: <span class="rating-input"><span data-value="0" class="glyphicon glyphicon-star"></span><span data-value="1" class="glyphicon glyphicon-star"></span><span data-value="2" class="glyphicon glyphicon-star"></span><span data-value="3" class="glyphicon glyphicon-star"></span><span data-value="4" class="glyphicon glyphicon-star-empty"></span><span data-value="5" class="glyphicon glyphicon-star-empty"></span>  </span></div>
