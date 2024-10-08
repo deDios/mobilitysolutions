@@ -105,7 +105,7 @@
               </div>
             </div>
 
-            <p><small>Publicidad</small></p>
+            <p class="py-5"><small>Publicidad</small></p>
               <hr class="mt-2 mb-3"/>
               <div>
                 
