@@ -299,16 +299,7 @@ li {
 }
 
 /*--------------------Boton-------------------------*/
-.demo {
-    position:relative;
-    height:100px;
-    width:90%;
-}
-.demo .form-search{
-    position:absolute;
-    right:0px;
-    top:0px;
-}
+
 .demo .form-search input[type=text] {
     -webkit-appearance: textfield;
     -webkit-box-sizing: content-box;
