@@ -234,6 +234,7 @@ li {
 .div_carrusel .carousel{
     min-height: 800px;
     max-height: 800px;
+    object-fit: cover;
 }
 
 /* ----------------------------- Cierre carrusel  detalle auto  -----------------------------*/
