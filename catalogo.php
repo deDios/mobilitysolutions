@@ -95,7 +95,7 @@
 
           <div class="card">
               <div class="card-header">
-                  Reseñas Google
+                  Google
               </div>
               <div class="card-body">
                 
