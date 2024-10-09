@@ -185,6 +185,17 @@ li {
     padding-top: 150px;
 }
 
+@media (max-width:700px){
+  
+  .mx-background-top-linear {
+    background: -webkit-linear-gradient(45deg, gold 70%, #1b1e21 26%);
+    background: -webkit-linear-gradient(left, gold 70%, #1b1e21 26%);
+    background: linear-gradient(45deg, gold 70%, #1b1e21 26%);
+  }
+  
+  }
+
+
 @media (min-width: 1024px) {
     .contact-info__wrapper {
         border-radius: 0 .625rem .625rem 0;
@@ -214,6 +225,8 @@ li {
     .contact-form__wrapper {
         padding: 5rem !important
     }
+    
+
 }
 .shadow-lg, .shadow-lg--on-hover:hover {
     box-shadow: 0 1rem 3rem rgba(132,138,163,0.1) !important;
