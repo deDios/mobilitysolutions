@@ -90,7 +90,7 @@
 
           <div class="anuncios">
             <p class="titulo_r py-5"><small></small></p>
-            Anuncios<hr class="mt-2 mb-3"/>
+            <p><small>Anuncios</small></p> <hr class="mt-2 mb-3"/>
           </div>
         </div>
 
