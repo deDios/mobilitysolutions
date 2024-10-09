@@ -196,6 +196,12 @@ li {
     padding-right: 10px;
 }
 
+.mx-background-top-linear {
+  background: -webkit-linear-gradient(45deg, gold 70%, #1b1e21 26%);
+  background: -webkit-linear-gradient(left, gold 70%, #1b1e21 26%);
+  background: linear-gradient(45deg, gold 70%, #1b1e21 26%);
+}
+
 }
 
 
