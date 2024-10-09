@@ -101,6 +101,7 @@
                 $inc = include "db/Conexion.php";    
                 if(isset($_GET['enviar'])) {
                   $busqueda = $_GET['buscar'];
+                  $busqueda = trim($busqueda);
                     if ($inc){
                         $query = "select 
                                     id, 
