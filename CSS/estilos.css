@@ -201,11 +201,10 @@ li {
   align-items: center;
   position: relative;
   .additional-info {
-    font-size: 2rem;
-    position: absolute;
+    font-size: 18px;
     top: 0;
     left: 0;
-    padding: 5px 5px 5px 15px;
+    padding: 5px 5px 5px 5px;
   }
   &.top {
   }

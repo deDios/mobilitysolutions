@@ -164,7 +164,7 @@
         <div class="col">
           <div class="count-up-wrapper top">
             <span id="count-up-container-top">356+</span>
-            <span class="additional-info">MDP Financiados:</span>
+            <span class="additional-info">MDP Financiado:</span>
           </div>
         </div>
 
