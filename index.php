@@ -115,6 +115,32 @@
         </div>
       </div>
     </section>
+
+    <div class="row counters counters-sm text-6 pb-5 pt-4 mt-5">
+        <div class="col-sm-6 col-lg-4 mb-5 mb-1g-0">
+          <div class="counter">
+            <strong class="text-color-light font-weight-extra-bold text-8 line-height-1" data-to="8385" data-append="+">
+              8385+</strong>
+            <span class="text-color-light font-weight-normal line-height-1 text-0 mt-0">Contratos firmados</span>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-4 mb-5 mb-sm-0">
+          <div class="counter">
+            <strong class="text-color-light font-weight-extra-bold text-8 line-height-1" data-to="1702" data-append="+">
+              1702+</strong>
+            <span class="text-color-light font-weight-normal line-height-1 text-0 mt-0">MDP De financiamiento</span>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-4 mb-5 mb-1g-0">
+          <div class="counter">
+            <strong class="text-color-light font-weight-extra-bold text-8 line-height-1" data-to="19" data-append="+">19+
+            </strong>
+            <span class="text-color-light font-weight-normal line-height-1 text-0 mt-0">Años de Experiencia</span>
+          </div>
+        </div>
+    </div>
+
   </div>
 </main>
 
