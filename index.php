@@ -115,10 +115,46 @@
         </div>
       </div>
     </section>
-
-    
-
   </div>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        
+        <div class="col">
+          <div class="count-up-wrapper top">
+            <span id="count-up-container-top">0</span>
+          </div>
+
+          <script>
+            import { CountUp } from "https://cdn.skypack.dev/countup.js@2.0.8";
+              const duration = 9;
+              const stars = new CountUp("count-up-container-top", 1354 , {
+                prefix: '+',
+                duration,
+                separator: ".",
+              });
+              const endContainer = document.querySelector(".end-container");
+              window.setTimeout(()=>{
+                stars.start();
+              }, 1000);
+          </script>
+        </div>
+
+        <div class="col">
+          
+        </div>
+
+        <div class="col">
+          
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
 </main>
 
 
