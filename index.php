@@ -140,15 +140,29 @@
                 demo.start();
               } else {
                 console.error(demo.error);
-              }
+              };
           </script>
         </div>
 
         <div class="col">
           <div class="count-up-wrapper top">
-            <span id="count-up-container-top">356+</span>
+            <span id="count-up-container-top">0</span>
             <span class="additional-info">MDP Financiado</span>
           </div>
+
+          <script type="module">
+            import { CountUp } from '/js/countup.js/dist/countUP.min.js';
+              const options2 = {
+                duration: 4,
+                prefix: '+',
+              };
+              let demo2 = new CountUp('count-up-container-top', 356, options2);
+              if (!demo2.error) {
+                demo2.start();
+              } else {
+                console.error(demo2.error);
+              }
+          </script>
         </div>
 
         <div class="col">
