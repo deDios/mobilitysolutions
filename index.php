@@ -146,7 +146,7 @@
 
         <div class="col">
           <div class="count-up-wrapper top">
-            <span id="count-up-container-top">0</span>
+            <span id="count-up-container-top2">+364</span>
             <span class="additional-info">MDP Financiado</span>
           </div>
 
@@ -156,7 +156,7 @@
                 duration: 4,
                 prefix: '+',
               };
-              let demo2 = new CountUp('count-up-container-top', 356, options2);
+              let demo2 = new CountUp('count-up-container-top2', 356, options2);
               if (!demo2.error) {
                 demo2.start();
               } else {
