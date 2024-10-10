@@ -132,7 +132,7 @@
           <script type="module">
             import { CountUp } from '/js/countup.js/dist/countUP.min.js';
               const options = {
-                duration: 20,
+                duration: 100,
                 prefix: '+',
               };
               let demo = new CountUp('count-up-container-top', 1356, options);
@@ -153,7 +153,7 @@
           <script type="module">
             import { CountUp } from '/js/countup.js/dist/countUP.min.js';
               const options2 = {
-                duration: 20,
+                duration: 100,
                 prefix: '+',
               };
               let demo2 = new CountUp('count-up-container-top2', 356, options2);
@@ -174,7 +174,7 @@
           <script type="module">
             import { CountUp } from '/js/countup.js/dist/countUP.min.js';
               const options3 = {
-                duration: 6,
+                duration: 50,
                 prefix: '+',
               };
               let demo3 = new CountUp('count-up-container-top3', 10, options3);
