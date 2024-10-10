@@ -191,8 +191,8 @@ li {
 
 .count-up-wrapper {
   text-align: center;
-  font-size: 15rem;
-  color: #fff;
+  font-size: 7rem;
+  color: rgb(37, 37, 37);
   height: 100%;
   width: 100%;
   margin: 0;
@@ -200,10 +200,17 @@ li {
   justify-content: center;
   align-items: center;
   position: relative;
+  .additional-info {
+    font-size: 2rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 5px 5px 5px 15px;
+  }
   &.top {
   }
   &.bottom {
-    background-color: #000;
+    background-color: rgb(37, 37, 37);
     color: beige;
   }
 }
