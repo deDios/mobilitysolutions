@@ -124,14 +124,9 @@
         
         <div class="col">
 
-        <div class="end-container">Thanks for visitarnos</div>
           <div class="count-up-wrapper top">
-            <span id="count-up-container-top">0</span>
-            <span class="additional-info">Stars:</span>
-          </div>
-          <div class="count-up-wrapper bottom">
-            <span class="additional-info">Used by:</span>
-            <span id="count-up-container-bottom">0</span>
+            <span id="count-up-container-top">1356+</span>
+            <span class="additional-info">Contratos Firmados:</span>
           </div>
 
           <script>
@@ -167,11 +162,17 @@
         </div>
 
         <div class="col">
-          
+          <div class="count-up-wrapper top">
+            <span id="count-up-container-top">356+</span>
+            <span class="additional-info">MDP Financiados:</span>
+          </div>
         </div>
 
         <div class="col">
-          
+        <div class="count-up-wrapper top">
+            <span id="count-up-container-top">10+</span>
+            <span class="additional-info">Años de experiencia:</span>
+          </div>
         </div>
 
       </div>
