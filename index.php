@@ -132,7 +132,7 @@
           <script type="module">
             import { CountUp } from '/js/countup.js/dist/countUP.min.js';
               const options = {
-                duration: 2,
+                duration: 4,
                 prefix: '+',
               };
               let demo = new CountUp('count-up-container-top', 1356, options);
