@@ -126,52 +126,24 @@
 
           <div class="count-up-wrapper top">
             <span id="count-up-container-top">1356+</span>
-            <span class="additional-info">Contratos Firmados:</span>
+            <span class="additional-info">Contratos Firmados</span>
           </div>
 
           <script>
-            import { CountUp } from "countup.js";
-            const duration = 6;
-            const stars = new CountUp("count-up-container-top", 1352, {
-              prefix: "+ ",
-              suffix: " ⭐️",
-              duration,
-              separator: ".",
-            });
-            const users = new CountUp("count-up-container-bottom", 15300, {
-              prefix: "+ ",
-              suffix: " 💻",
-              duration,
-              separator: ".",
-            });
-
-            const endContainer = document.querySelector(".end-container");
-            if (!stars.error && !users.error) {
-              stars.start();
-              window.setTimeout(() => {
-                users.start(() => {
-                  window.setTimeout(() => {
-                    endContainer.classList.add("active");
-                  }, 1000);
-                });
-              }, (duration * 1000) / 3);
-            } else {
-              console.error(stars.error, users.error);
-            }
           </script>
         </div>
 
         <div class="col">
           <div class="count-up-wrapper top">
             <span id="count-up-container-top">356+</span>
-            <span class="additional-info">MDP Financiado:</span>
+            <span class="additional-info">MDP Financiado</span>
           </div>
         </div>
 
         <div class="col">
         <div class="count-up-wrapper top">
             <span id="count-up-container-top">10+</span>
-            <span class="additional-info">Años de experiencia:</span>
+            <span class="additional-info">Años de experiencia</span>
           </div>
         </div>
 
