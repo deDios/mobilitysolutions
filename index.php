@@ -132,7 +132,7 @@
           <script type="module">
             import { CountUp } from '/js/countup.js/dist/countUP.min.js';
               const options = {
-                duration: 6,
+                duration: 50,
                 prefix: '+',
               };
               let demo = new CountUp('count-up-container-top', 1356, options);
@@ -146,14 +146,14 @@
 
         <div class="col">
           <div class="count-up-wrapper top">
-            <span id="count-up-container-top2">+364</span>
+            <span id="count-up-container-top2">0</span>
             <span class="additional-info">MDP Financiado</span>
           </div>
 
           <script type="module">
             import { CountUp } from '/js/countup.js/dist/countUP.min.js';
               const options2 = {
-                duration: 6,
+                duration: 50,
                 prefix: '+',
               };
               let demo2 = new CountUp('count-up-container-top2', 356, options2);
@@ -166,10 +166,25 @@
         </div>
 
         <div class="col">
-        <div class="count-up-wrapper top">
-            <span id="count-up-container-top">10+</span>
+          <div class="count-up-wrapper top">
+            <span id="count-up-container-top3">10+</span>
             <span class="additional-info">Años de experiencia</span>
           </div>
+          
+          <script type="module">
+            import { CountUp } from '/js/countup.js/dist/countUP.min.js';
+              const options3 = {
+                duration: 4,
+                prefix: '+',
+              };
+              let demo3 = new CountUp('count-up-container-top3', 356, options3);
+              if (!demo3.error) {
+                demo3.start();
+              } else {
+                console.error(demo3.error);
+              }
+          </script>
+
         </div>
 
       </div>
