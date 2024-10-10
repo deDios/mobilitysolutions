@@ -174,7 +174,7 @@
           <script type="module">
             import { CountUp } from '/js/countup.js/dist/countUP.min.js';
               const options3 = {
-                duration: 50,
+                duration: 20,
                 prefix: '+',
               };
               let demo3 = new CountUp('count-up-container-top3', 10, options3);
