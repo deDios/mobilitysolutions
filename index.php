@@ -130,6 +130,16 @@
           </div>
 
           <script>
+              const options = {
+                duration: 6,
+                prefix: '+',
+              };
+              let demo = new CountUp('count-up-container-top', 1356, options);
+              if (!demo.error) {
+                demo.start();
+              } else {
+                console.error(demo.error);
+              }
           </script>
         </div>
 
