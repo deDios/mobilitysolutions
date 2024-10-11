@@ -267,6 +267,8 @@ li {
   height: 20px;
   overflow: hidden;
   object-fit: scale-down;
+  padding-left: 5px;
+  padding-bottom: 2px;
 }
 
 @keyframes scroll{
