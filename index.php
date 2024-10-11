@@ -207,7 +207,7 @@
                         $result = mysqli_query($con,$query);  
                         if ($result){         
                             while($row = mysqli_fetch_assoc($result)){
-                                $id = $row['id'];
+                                $id = $row['Id'];
                                 $Nombre = $row['Nombre'];
                                 $Dias = $row['Dias'];
                                 $Descripcion = $row['Descripcion'];
@@ -218,7 +218,7 @@
             <div class="card-body">
               <div class="titulo_carta">
                   <div class="Imagenes">
-                    <img src="logo_google.jpg" alt="Imagen perfil" class="imagen-circular">
+                    <img src="/Imagenes/Perfil_resena/Img0<?php echo $id;?>" alt="Imagen perfil" class="imagen-circular">
                     <img src="logo_google.jpg" alt="Imagen google" class="imagen-pequeña">
                   </div>
                   <div class="Descripcion">
