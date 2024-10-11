@@ -228,12 +228,12 @@ li {
   animation: scroll 40s linear infinite;
   -webkit-animation: scroll 40s linear infinite; 
   width: calc(200px * 16);
-  padding: 10px;
 }
 .slider .sliders {
   width: 200px;
   background-color: gainsboro;
   border-radius: 10px 10px 10px 10px;
+  padding-left: 10px;
 }
 
 .sliders img {
