@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta name='robots' content='max-image-preview:large' />
+<link rel="preconnect" href="https://font.gstatic.com" crossorigin><link rel="preconnect" href="https://s-adzone.com" crossorigin><link rel="preconnect" href="https://www.googletagmanager.com/" crossorigin><link rel="preconnect" href="https://cdn.onesignal.com" crossorigin><link rel="preconnect" href="https://cdn.parsely.com" crossorigin><link rel="preconnect" href="https://cdn.lavoz.com.ar" crossorigin><link rel="preconnect" href="https://applets.ebxcdn.com" crossorigin><link crossorigin="anonymous" rel="preload" as="style" id="preload-font-css" href="https://fonts.googleapis.com/css?family=Fira+Sans:400,600,900|PT+Serif:400,700&display=swap" media="all" /><link crossorigin="anonymous" rel="stylesheet" id="font-css" href="https://fonts.googleapis.com/css?family=Fira+Sans:400,600,900|PT+Serif:400,700&display=swap" media="all" /><style type="text/css">/*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;font:16px/16px Fira Sans,sans-serif;-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-overflow-scrolling:touch;font-display:swap}body,h1,h2,h3,h4,h5,h6,p{margin:0}li,ol,ul{list-style:none;margin:0;padding:0}a{background-color:transparent;text-decoration:none}b,strong{font-weight:bolder}img{border-style:none;vertical-align:top}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0;outline:none}button,input{overflow:visible}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button;cursor:pointer}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}fieldset,figure{border:none;margin:0;padding:0}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}.row{margin:0 auto;max-width:1260px;width:100%}.row:after{clear:both;content:"";display:table}.row__container{margin:0 -10px}.col--main{margin-left:320px}.col--main.no-sidebar{margin:0!important}.col--main+.col--aside{float:left}.col--aside{float:right;width:300px}.col--aside+.col--main{margin-left:auto;margin-right:320px}.col{box-sizing:border-box;-webkit-box-sizing:border-box;float:left;padding:0 10px}.col--1{width:8.33%}.col--2{width:16.66%}.col--3{width:25%}.col--4{width:33.33%}.col--5{width:41.66%}.col--6{width:50%}.col--7{width:58.33%}.col--8{width:66.66%}.col--9{width:75%}.col--10{width:83.33%}.col--11{width:91.66%}.col--12{width:100%}@media only screen and (max-width:1290px){.row{box-sizing:border-box;padding:0 15px}}@media only screen and (max-width:1023px){.col--3{width:50%}}@media only screen and (max-width:767px){.col--1,.col--10,.col--11,.col--12,.col--2,.col--3,.col--4,.col--5,.col--6,.col--7,.col--8,.col--9,.col--aside,.col--main{width:100%!important}.col--aside,.col--main{margin-left:0!important;margin-right:0!important}}@media only screen and (min-width:475px)and (max-width:992px){.grid__news .col--4{width:50%!important}}.gridv2 .mod__title{border:none;display:flex;padding-bottom:15px}.gridv2 .mod__title a{display:flex}@media only screen and (max-width:767px){.gridv2 .mod__title{font-size:20px;padding-bottom:0}}.gridv2 .mod__title .icon{padding-left:0;padding-right:3px}.gridv2.--with-bg{padding:30px}@media only screen and (max-width:767px){.gridv2.--with-bg{margin:0 -15px;padding:30px 15px}}.gridv2.--text-white .author-thumb__data,.gridv2.--text-white .author-thumb__data a,.gridv2.--text-white .lists-news__list-item,.gridv2.--text-white .lists-news__list-item a,.gridv2.--text-white .mod__title,.gridv2.--text-white .news__author,.gridv2.--text-white .news__excerpt,.gridv2.--text-white .news__title,.gridv2.--text-white .summary__author,.gridv2.--text-white .summary__author span a,.gridv2.--text-white .summary__news-title a{color:#fff}.gridv2.--text-white .grid-item:after,.gridv2.--text-white .grid-item:before{background:hsla(0,0%,100%,.12)!important}.gridv2.--text-white .grid-item.destacada{background-color:inherit!important}.gridv2.--text-white .grid-item .summary{border-color:hsla(0,0%,100%,.12)!important}.grid-container{box-sizing:border-box;display:grid;margin-bottom:30px;min-width:-moz-min-content;min-width:min-content;position:relative;width:100%}@media only screen and (max-width:767px){.grid-container{margin-bottom:0}}.grid-container .grid-item .news--box{border-bottom:none;margin-bottom:0}.grid-container .grid-item .news--box .news__data{height:auto}.grid-container .grid-item.destacada .news--box .news__title{font-size:28px;font-weight:700;line-height:32px}@media only screen and (max-width:767px){.grid-container .grid-item.destacada .news--box .news__title{font-size:24px;line-height:28px}.grid-container .grid-item.destacada{background-color:#ededed;margin:0 -15px;padding:15px 15px 0}.grid-container .grid-item.destacada .summary__image{height:100px!important;width:150px!important}}.grid-container .grid-item.--first-title .news--box{display:flex;flex-direction:column-reverse}.grid-container .grid-item.--first-title .news--box .news__data{padding-top:0}.grid-container .grid-item.--first-title .news--box .news__media{margin-top:15px}.grid-container .grid-item.--without-image .news--box .news__data{padding-top:0}.grid-container .grid-item.--without-image .news--box .news__media{display:none}.grid-container .grid-item.--limit-title-2 .news--box .news__title{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;text-overflow:ellipsis}.grid-container .grid-item.--limit-title-3 .news--box .news__title{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;text-overflow:ellipsis}.grid-container .grid-item.--limit-title-4 .news--box .news__title{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow:hidden;text-overflow:ellipsis}.grid-container .grid-item:last-child .summary{border-bottom:none;padding-bottom:0}.grid-container.--type--1{grid-template-columns:repeat(12,1fr);grid-template-rows:repeat(2,auto);grid-column-gap:32px;grid-row-gap:20px;grid-template-areas:"--0 --0 --0 --0 --0 --0 --1 --1 --1 --2 --2 --2" "--0 --0 --0 --0 --0 --0 --3 --3 --3 --4 --4 --4"}@media only screen and (max-width:767px){.grid-container.--type--1{grid-template-areas:none;grid-template-columns:1fr;grid-template-rows:auto;grid-column-gap:0;display:block}}.grid-container.--type--1 .--0{grid-area:--0;position:relative}@media only screen and (min-width:768px){.grid-container.--type--1 .--0:after{background:rgba(0,0,0,.12);content:"";height:100%;position:absolute;right:-16px;top:0;width:1px}}.grid-container.--type--1 .--1{grid-area:--1;position:relative}@media only screen and (min-width:768px){.grid-container.--type--1 .--1:after{background:rgba(0,0,0,.12);content:"";height:100%;position:absolute;right:-16px;top:0;width:1px}}.grid-container.--type--1 .--2{grid-area:--2;position:relative}.grid-container.--type--1 .--3{grid-area:--3;position:relative}@media only screen and (min-width:768px){.grid-container.--type--1 .--3:before{background:rgba(0,0,0,.12);content:"";height:1px;left:0;position:absolute;top:-10px;width:100%}.grid-container.--type--1 .--3:after{background:rgba(0,0,0,.12);content:"";height:100%;position:absolute;right:-16px;top:0;width:1px}}.grid-container.--type--1 .--4{grid-area:--4;position:relative}@media only screen and (min-width:768px){.grid-container.--type--1 .--4:before{background:rgba(0,0,0,.12);content:"";height:1px;left:0;position:absolute;top:-10px;width:100%}}.grid-container.--type--2{grid-template-columns:repeat(12,1fr);grid-template-rows:repeat(2,auto);grid-column-gap:32px;grid-row-gap:20px;grid-template-areas:"--1 --1 --1 --0 --0 --0 --0 --0 --0 --2 --2 --2" "--3 --3 --3 --0 --0 --0 --0 --0 --0 --4 --4 --4"}@media only screen and (max-width:767px){.grid-container.--type--2{grid-template-areas:none;grid-template-columns:1fr;grid-template-rows:auto;grid-column-gap:0;display:block}}.grid-container.--type--2 .--0{grid-area:--0;position:relative}@media only screen and (min-width:768px){.grid-container.--type--2 .--0:before{left:-16px}.grid-container.--type--2 .--0:after,.grid-container.--type--2 .--0:before{background:rgba(0,0,0,.12);content:"";height:100%;position:absolute;top:0;width:1px}.grid-container.--type--2 .--0:after{right:-16px}}.grid-container.--type--2 .--1{grid-area:--1;position:relative}.grid-container.--type--2 .--2{grid-area:--2;position:relative}.grid-container.--type--2 .--3{grid-area:--3;position:relative}@media only screen and (min-width:768px){.grid-container.--type--2 .--3:before{background:rgba(0,0,0,.12);content:"";height:1px;left:0;position:absolute;top:-10px;width:100%}}.grid-container.--type--2 .--4{grid-area:--4;position:relative}@media only screen and (min-width:768px){.grid-container.--type--2 .--4:before{background:rgba(0,0,0,.12);content:"";height:1px;left:0;position:absolute;top:-10px;width:100%}}.grid-container.--type--3{grid-template-columns:repeat(12,1fr);grid-template-rows:repeat(2,auto);grid-column-gap:32px;grid-row-gap:20px;grid-template-areas:"--1 --1 --1 --2 --2 --2 --0 --0 --0 --0 --0 --0" "--3 --3 --3 --4 --4 --4 --0 --0 --0 --0 --0 --0"}@media only screen and (max-width:767px){.grid-container.--type--3{grid-template-areas:none;grid-template-columns:1fr;grid-template-rows:auto;grid-column-gap:0;display:block}}.grid-container.--type--3 .--0{grid-area:--0;position:relative}@media only screen and (min-width:768px){.grid-container.--type--3 .--0:before{background:rgba(0,0,0,.12);content:"";height:100%;left:-16px;position:absolute;top:0;width:1px}}.grid-container.--type--3 .--1{grid-area:--1;position:relative}@media only screen and (min-width:768px){.grid-container.--type--3 .--1:after{background:rgba(0,0,0,.12);content:"";height:100%;position:absolute;right:-16px;top:0;width:1px}}.grid-container.--type--3 .--2{grid-area:--2;position:relative}.grid-container.--type--3 .--3{grid-area:--3;position:relative}@media only screen and (min-width:768px){.grid-container.--type--3 .--3:before{background:rgba(0,0,0,.12);content:"";height:1px;left:0;position:absolute;top:-10px;width:100%}.grid-container.--type--3 .--3:after{background:rgba(0,0,0,.12);content:"";height:100%;position:absolute;right:-16px;top:0;width:1px}}.grid-container.--type--3 .--4{grid-area:--4;position:relative}@media only screen and (min-width:768px){.grid-container.--type--3 .--4:before{background:rgba(0,0,0,.12);content:"";height:1px;left:0;position:absolute;top:-10px;width:100%}}.grid-container.--type--4{grid-template-columns:repeat(12,1fr);grid-template-rows:repeat(3,auto);grid-column-gap:32px;grid-row-gap:20px;grid-template-areas:"--0 --0 --0 --0 --0 --0 --0 --0 --1 --1 --1 --1" "--0 --0 --0 --0 --0 --0 --0 --0 --2 --2 --2 --2" "--0 --0 --0 --0 --0 --0 --0 --0 --3 --3 --3 --3"}@media only screen and (max-width:767px){.grid-container.--type--4{grid-template-areas:none;grid-template-columns:1fr;grid-template-rows:auto;grid-column-gap:0;display:block}}.grid-container.--type--4 .--0{grid-area:--0;position:relative}.grid-container.--type--4 .--1{grid-area:--1;position:relative}.grid-container.--type--4 .--2{grid-area:--2;position:relative}.grid-container.--type--4 .--3{grid-area:--3;position:relative}.grid-container.--type--5{grid-template-columns:repeat(12,1fr);grid-template-rows:repeat(3,auto);grid-column-gap:32px;grid-row-gap:20px;grid-template-areas:"--1 --1 --1 --1 --0 --0 --0 --0 --0 --0 --0 --0" "--2 --2 --2 --2 --0 --0 --0 --0 --0 --0 --0 --0" "--3 --3 --3 --3 --0 --0 --0 --0 --0 --0 --0 --0"}@media only screen and (max-width:767px){.grid-container.--type--5{grid-template-areas:none;grid-template-columns:1fr;grid-template-rows:auto;grid-column-gap:0;display:block}}.grid-container.--type--5 .--0{grid-area:--0;position:relative}.grid-container.--type--5 .--1{grid-area:--1;position:relative}.grid-container.--type--5 .--2{grid-area:--2;position:relative}.grid-container.--type--5 .--3{grid-area:--3;position:relative}.grid-container.--type--6{grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,auto);grid-column-gap:32px;grid-row-gap:20px;grid-template-areas:"--0 --0 --0 --0" "--1 --1 --2 --2"}@media only screen and (max-width:767px){.grid-container.--type--6{grid-template-areas:none;grid-template-columns:1fr;grid-template-rows:auto;grid-column-gap:0;display:block}}.grid-container.--type--6 .--0{grid-area:--0;position:relative}.grid-container.--type--6 .--1{grid-area:--1;position:relative}.grid-container.--type--6 .--2{grid-area:--2;position:relative}.grid-container.--type--7{grid-template-columns:repeat(16,1fr);grid-template-rows:repeat(2,auto);grid-column-gap:32px;grid-row-gap:20px;grid-template-areas:"--0 --0 --0 --0 --0 --0 --1 --1 --1 --2 --2 --2 --5 --5 --5" "--0 --0 --0 --0 --0 --0 --3 --3 --3 --4 --4 --4 --5 --5 --5"}@media only screen and (max-width:767px){.grid-container.--type--7{grid-template-areas:none;grid-template-columns:1fr;grid-template-rows:auto;grid-column-gap:0;display:block}}.grid-container.--type--7 .--0{grid-area:--0;position:relative}.grid-container.--type--7 .--1{grid-area:--1;position:relative}.grid-container.--type--7 .--2{grid-area:--2;position:relative}.grid-container.--type--7 .--3{grid-area:--3;position:relative}.grid-container.--type--7 .--4{grid-area:--4;position:relative}.grid-container.--type--7 .--5{grid-area:--5;position:relative}.grid-container.--type--8{grid-template-columns:repeat(16,1fr);grid-template-rows:repeat(2,auto);grid-column-gap:32px;grid-row-gap:20px;grid-template-areas:"--0 --0 --0 --0 --0 --0 --0 --1 --1 --1 --2 --2 --2 --3 --3 --3" "--0 --0 --0 --0 --0 --0 --0 --4 --4 --4 --5 --5 --5 --6 --6 --6"}@media only screen and (max-width:1024px){.grid-container.--type--8{grid-template-columns:repeat(12,1fr);grid-template-rows:repeat(3,auto);grid-column-gap:32px;grid-row-gap:20px;grid-template-areas:"--0 --0 --0 --0 --0 --0 --1 --1 --1 --2 --2 --2" "--0 --0 --0 --0 --0 --0 --3 --3 --3 --4 --4 --4" "--5 --5 --5 --5 --5 --5 --6 --6 --6 --6 --6 --6"}}@media only screen and (max-width:1024px)and (max-width:767px){.grid-container.--type--8{grid-template-areas:none;grid-template-columns:1fr;grid-template-rows:auto;grid-column-gap:0;display:block}}.grid-container.--type--8 .--0{grid-area:--0;position:relative}@media only screen and (min-width:768px){.grid-container.--type--8 .--0:after{background:rgba(0,0,0,.12);content:"";height:100%;position:absolute;right:-16px;top:0;width:1px}}.grid-container.--type--8 .--1{grid-area:--1;position:relative}@media only screen and (min-width:768px){.grid-container.--type--8 .--1:after{background:rgba(0,0,0,.12);content:"";height:100%;position:absolute;right:-16px;top:0;width:1px}}.grid-container.--type--8 .--2{grid-area:--2;position:relative}@media only screen and (min-width:768px){.grid-container.--type--8 .--2:after{background:rgba(0,0,0,.12);content:"";height:100%;position:absolute;right:-16px;top:0;width:1px}}.grid-container.--type--8 .--3{grid-area:--3;position:relative}.grid-container.--type--8 .--4{grid-area:--4;position:relative}@media only screen and (min-width:768px){.grid-container.--type--8 .--4:before{background:rgba(0,0,0,.12);content:"";height:1px;left:0;position:absolute;top:-10px;width:100%}.grid-container.--type--8 .--4:after{background:rgba(0,0,0,.12);content:"";height:100%;position:absolute;right:-16px;top:0;width:1px}}.grid-container.--type--8 .--5{grid-area:--5;position:relative}@media only screen and (min-width:768px){.grid-container.--type--8 .--5:before{background:rgba(0,0,0,.12);content:"";height:1px;left:0;position:absolute;top:-10px;width:100%}.grid-container.--type--8 .--5:after{background:rgba(0,0,0,.12);content:"";height:100%;position:absolute;right:-16px;top:0;width:1px}}.grid-container.--type--8 .--6{grid-area:--6;position:relative}@media only screen and (min-width:768px){.grid-container.--type--8 .--6:before{background:rgba(0,0,0,.12);content:"";height:1px;left:0;position:absolute;top:-10px;width:100%}}.grid-container.--type--9{grid-template-columns:repeat(12,1fr);grid-template-rows:repeat(3,auto);grid-column-gap:32px;grid-row-gap:20px;grid-template-areas:"--0 --0 --0 --0 --0 --0 --1 --1 --1 --2 --2 --2" "--0 --0 --0 --0 --0 --0 --3 --3 --3 --4 --4 --4" "--0 --0 --0 --0 --0 --0 --3 --3 --3 --5 --5 --5"}@media only screen and (max-width:767px){.grid-container.--type--9{grid-template-areas:none;grid-template-columns:1fr;grid-template-rows:auto;grid-column-gap:0;display:block}}.grid-container.--type--9 .--0{grid-area:--0;position:relative}@media only screen and (min-width:768px){.grid-container.--type--9 .--0:after{background:rgba(0,0,0,.12);content:"";height:100%;position:absolute;right:-16px;top:0;width:1px}}.grid-container.--type--9 .--1{grid-area:--1;position:relative}@media only screen and (min-width:768px){.grid-container.--type--9 .--1:after{background:rgba(0,0,0,.12);content:"";height:100%;position:absolute;right:-16px;top:0;width:1px}}.grid-container.--type--9 .--2{grid-area:--2;position:relative}.grid-container.--type--9 .--3{grid-area:--3;position:relative}@media only screen and (min-width:768px){.grid-container.--type--9 .--3:before{background:rgba(0,0,0,.12);content:"";height:1px;left:0;position:absolute;top:-10px;width:100%}.grid-container.--type--9 .--3:after{background:rgba(0,0,0,.12);content:"";height:100%;position:absolute;right:-16px;top:0;width:1px}}.grid-container.--type--9 .--4{grid-area:--4;position:relative}@media only screen and (min-width:768px){.grid-container.--type--9 .--4:before{background:rgba(0,0,0,.12);content:"";height:1px;left:0;position:absolute;top:-10px;width:100%}}.grid-container.--type--9 .--5{grid-area:--5;position:relative}@media only screen and (min-width:768px){.grid-container.--type--9 .--5:before{background:rgba(0,0,0,.12);content:"";height:1px;left:0;position:absolute;top:-10px;width:100%}}.grid-container.--type--9 .--4 .summary,.grid-container.--type--9 .--5 .summary{border-bottom:none;padding:0}@media only screen and (min-width:768px){.grid-container.--type--9 .--4 .summary__image.nota-author-summary,.grid-container.--type--9 .--5 .summary__image.nota-author-summary{height:100px;width:100px}.grid-container.--type--9 .--4 .summary__news-title,.grid-container.--type--9 .--5 .summary__news-title{font-size:16px;line-height:18px}.grid-container.--type--9 .--4 .summary__author,.grid-container.--type--9 .--5 .summary__author{margin-top:4px}.grid-container.--type--9 .--4 .summary__data,.grid-container.--type--9 .--5 .summary__data{justify-content:center}}@media only screen and (max-width:767px){.grid-container.--type--9 .--4 .summary,.grid-container.--type--9 .--5 .summary{border-bottom:1px solid #e5e5e5;padding:15px 0}}#button-login-container-b:hover,#button-login-container:hover{cursor:pointer}.dropdown__signin{background-color:#fff;border:1px solid #e2dada;border-radius:3px;display:grid;grid-template-rows:1fr 1fr;height:60px;margin-left:87.5%;margin-top:-70px;position:absolute;width:150px;z-index:3000}.dropdown__signin__item{justify-items:left}.dropdown__signin__item,.dropdown__signin__item a{align-items:center;display:grid;height:30px;width:100%}.dropdown__signin__item a{color:#000;justify-content:left;text-decoration:none}.dropdown__signin__item a p{color:#000;display:grid;font-size:14px;grid-template-columns:30px 120px;justify-content:center}.dropdown__signin__item a p img{height:15px}.dropdown__signin__item a:hover{background-color:#ece4e4;cursor:pointer}.topnav{background-color:#ededed}.topnav .topnav__wrapper{align-items:center;display:flex;justify-content:space-between;position:relative}.topnav__group{display:flex}.topnav .topnav__wrapper:after{content:none}.topnav ul:last-child li{margin-left:35px;margin-right:0}.topnav li{float:left;margin-right:15px}.topnav li.active a{color:#000;font-weight:700}.topnav li.active a:after{bottom:0;content:"";height:3px;left:50%;margin-left:-15px;position:absolute;width:30px}.topnav a{color:#000;float:left;font-size:15px;padding-bottom:17px;padding-top:17px;position:relative}.topnav a:hover{color:#de0303}.topnav a.bariloche:after{background-color:#ffae73}.topnav a.cipolletti:after{background-color:#ddd22a}.topnav a.neuquen:after{background-color:#96c523}.topnav a.roca:after{background-color:#f9cc69}.topnav a.viedma:after{background-color:#23b0e1}.header{position:relative;text-align:left}.header__tags{background:#fff;border-bottom:2px solid #eee;max-height:69px;transition:all .3s ease}.header__tags.hide{border:none;max-height:0;overflow:hidden}.header__tags.none{display:none}.menu-extra-menu-container{padding-left:40px}.header__menu,.header_menu_close{width:20px;z-index:3000}.header__menu:hover,.header_menu_close:hover{cursor:pointer}.header__logo{left:50%;position:absolute;transform:translateX(-50%)}@media only screen and (max-width:600px){.header__logo{left:25px;margin-top:-5px;transform:translateX(0)}}.header__search{border:1px solid #d4d4d4;border-radius:25px;float:left;height:48px;overflow:hidden;position:relative;transition:all .3s ease;-ms-transition:all .3s ease;-moz-transition:all .3s ease;-webkit-transition:all .3s ease;width:48px}.header__search--active{background-color:#ededed;width:260px}.header__search fieldset{float:right;font-size:0;line-height:0;white-space:nowrap}.header__search input{box-sizing:border-box;font-size:16px;line-height:16px;padding:0 15px;width:210px}.header__search button,.header__search input{background:transparent;border:none;display:inline-block;height:48px;outline:none;vertical-align:top}.header__search button{color:#282828;cursor:pointer;font-size:20px;line-height:52px;padding:0;width:48px}.header__user{align-items:center;border:1px solid #de0303;border-radius:30px;display:flex;height:33px;justify-content:center;overflow:hidden;padding:0 15px 0 3.5px}@media only screen and (max-width:1024px){.header__user{height:30px;padding:0;width:30px}}.header__user img{margin-right:10px}.header__user .header__user-data{display:flex;flex-direction:column;text-align:left}@media only screen and (max-width:1024px){.header__user .header__user-data{display:none}}.header__user .header__user-data p{color:#de0303;font-family:Fira Sans,sans-serif;font-size:13px;font-weight:600;line-height:1;text-transform:uppercase}.header__user .header__user-data small{font-size:11px;line-height:1;margin-top:2px}.header__user .header__avatar{align-items:center;background:#ededed;border-radius:50%;color:#de0303;display:flex;font-size:12px;font-weight:600;height:28px;justify-content:center;line-height:1;margin-right:10px;width:28px}@media only screen and (max-width:1024px){.header__user .header__avatar{background:#fff;font-size:14px;height:100%;margin-right:0;width:100%}}.back-rn{align-items:center;background:#fff;border:1px solid #de0303;border-radius:17px;display:flex;gap:5px;height:33px;justify-content:center;padding:0 12px;transition:all .3s ease}@media only screen and (max-width:1024px){.back-rn{height:30px}}.back-rn:hover{background:#de0303}.back-rn:hover svg path,.back-rn:hover svg stroke{stroke:#fff;fill:#fff}.back-rn svg{height:14px;width:14px}.back-rn svg.rn{height:24px;width:24px}.back-rn svg path,.back-rn svg stroke{stroke:#de0303;fill:#de0303}.header__button{align-items:center;background:#fff;border:1px solid #de0303;border-radius:17px;color:#de0303;display:flex;font-size:13px;font-weight:600;height:33px;justify-content:center;padding:0 15px 0 35px;position:relative;text-transform:uppercase;transition:all .3s ease}.header__button svg{height:20px;left:15px;position:absolute;top:50%;transform:translateY(-50%);width:20px}@media only screen and (max-width:1024px){.header__button svg{left:50%;transform:translate(-50%,-50%)}.header__button{height:30px;padding:0;width:30px}}.header__button:hover{background:#de0303;color:#fff}.header__button:hover .icon path{stroke:#fff!important}.header__button p{line-height:1;margin-left:5px}@media only screen and (max-width:1024px){.header__button p{display:none!important}}.header__actions{align-items:center;display:flex}.header__nav{display:block;line-height:0;margin-top:20px;position:relative}.radio-header-section{margin-right:5px}.header__nav a,.header__nav li{display:inline-block}.header__nav a{color:#000;cursor:pointer;font-size:15px;font-weight:600;letter-spacing:1px;line-height:15px;padding:18px 22px;position:relative;text-transform:uppercase}.header__nav a:hover{color:#de0303}.header__nav a:hover span{background-color:#de0303}.header__nav a span{background-color:#000;height:1px;position:absolute;right:-2px;top:24px;width:16px}.header__nav a span:after,.header__nav a span:before{background-color:inherit;content:"";height:100%;position:absolute;right:0;top:-4px;width:100%}.header__nav a span:before{top:4px}.header__nav .active a:hover{color:#000}.header__nav .active a:after{background-color:#000;border:1px solid #000;bottom:-3px;content:"";height:3px;left:50%;margin-left:-15px;position:absolute;width:30px}.headersticky{background:#fff;border-bottom:1px solid #f9f9f9;height:70px;left:0;position:fixed;top:-71px;transition:transform .3s ease;-webkit-transition:transform .3s ease;width:100%;will-change:transform;z-index:20}.headersticky .header__wrapper{min-height:70px}@media only screen and (max-width:768px){.headersticky{display:none}}.headersticky--active{transform:translateY(100%);-webkit-transform:translateY(100%)}.headersticky--global .headersticky__logo img{height:30px;width:auto}.headersticky .row{height:100%;position:relative}.header__menu__sticky{height:20px;position:absolute;top:100px;width:20px;z-index:3000}.headersticky__triggernav,.headersticky__triggernav__close{height:20px;position:absolute;top:20px;width:20px;z-index:3000}.headersticky__triggernav span:after,.headersticky__triggernav span:before{background-color:inherit;content:"";height:100%;left:0;position:absolute;top:-5px;width:100%}.headersticky__triggernav span:before{top:5px}.headersticky__logo{float:left}.headersticky__logo-single{margin-left:50px;margin-top:20px}.headersticky__title{border-left:1px solid #f6f6f6;font-size:22px;font-weight:900;left:150px;line-height:44px;overflow:hidden;padding-left:30px;position:absolute;right:120px;text-overflow:ellipsis;top:14px;white-space:nowrap}.headersticky__actions{float:right;margin-top:15px}.headersticky__search{border:1px solid #d4d4d4;border-radius:20px;float:left;height:40px;overflow:hidden;position:relative;transition:all .3s ease;-ms-transition:all .3s ease;-moz-transition:all .3s ease;-webkit-transition:all .3s ease;width:40px}.headersticky__search--active{background-color:#ededed;width:260px}.headersticky__search fieldset{float:right;font-size:0;line-height:0;white-space:nowrap}.headersticky__search input{box-sizing:border-box;font-size:16px;line-height:16px;padding:0 15px;width:210px}.headersticky__search button,.headersticky__search input{background:transparent;border:none;display:inline-block;height:40px;outline:none;vertical-align:top}.headersticky__search button{color:#282828;cursor:pointer;font-size:20px;line-height:48px;padding:0;width:40px}.headersticky__user{border:1px solid #d4d4d4;border-radius:100%;float:left;height:40px;margin-left:10px;overflow:hidden;width:40px}.headersticky__user a{color:#282828;display:block;font-size:20px;height:40px;line-height:46px;text-align:center;width:40px}.headersticky__social{display:none;float:right;padding-top:16px}.headersticky__social .icon{border:1px solid #d4d4d4;border-radius:100%;color:#000;float:left;font-size:15px;height:38px;line-height:44px;margin-left:5px;text-align:center;width:38px}.headersticky__social .icon:hover{background-color:#f2f2f2}.headersticky__social .icon--mail{font-size:13px}.navigation{background:hsla(0,0%,100%,.97);box-shadow:0 1px 6px rgba(0,0,0,.3);box-sizing:border-box;-webkit-box-sizing:border-box;height:100vh;left:0;opacity:0;overflow-x:hidden;overflow-y:scroll;padding-top:20px;pointer-events:none;position:fixed;top:0;transform:translate(-300px);-webkit-transform:translate(-300px);transition:transform .3s ease;-webkit-transition:transform .3s ease;width:300px;will-change:transform;z-index:30}.navigationSticky{top:-90px}.navigation--active{opacity:1;pointer-events:auto;transform:translate(0);-webkit-transform:translate(0)}.navigation--active .navigation__club{background:url(../img/bg_club_navigation.png) no-repeat 0 100%;background-size:84px auto;display:none}.navigation__logo img{display:block;height:36px;margin-left:15px;width:auto}.navigation .row{position:relative;width:100%}.navigation__actions{display:none;left:-10px;position:absolute;right:0;top:-50px}.header__wrapper{align-items:center;border-bottom:2px solid #eee;display:flex;justify-content:space-between;min-height:90px}@media only screen and (max-width:1024px){.header__wrapper{justify-content:flex-end}}@media only screen and (max-width:767px){.header__wrapper{min-height:50px}}.header__first-section{gap:5px}.header__first-section,.header__icons{align-items:center;display:flex}.header__hamburger{bottom:18px;position:absolute}.header__hamburger a{padding:0!important}@media screen and (min-width:1024px){.admin-bar .navigation,.admin-bar .navigation--active{height:calc(100vh - 32px);top:32px}}.navigation__close{background:none;border:none;cursor:pointer;height:36px;margin:0;outline:none;padding:0;position:absolute;right:20px;top:20px;width:36px;z-index:30}.navigation__search{display:block;margin:0 auto;position:relative;width:calc(100% - 30px)}.navigation__search input{border:2px solid #d9d9d9;box-sizing:border-box;-webkit-box-sizing:border-box;height:50px;outline:none;padding:0 60px 0 15px;width:100%}.navigation__search button{background:#de0303;border:2px solid #d9d9d9;border-left:0;color:#fff;font-size:20px;height:50px;line-height:50px;outline:none;position:absolute;right:0;top:0;width:60px}.navigation__links h3{border-bottom:3px solid hsla(0,0%,100%,.08);color:#000;display:inline-block;font-size:15px;font-weight:600;letter-spacing:1px;line-height:15px;margin-bottom:10px;margin-left:15px;padding-bottom:6px;text-transform:uppercase}.navigation__links li.active a{color:#de0303}.navigation__links{display:block;margin-top:20px;width:100%}.navigation__links a{color:#000;display:block;font-size:15px;font-weight:400;line-height:15px;padding:10px 0 10px 20px;text-transform:uppercase;width:100%}.navigation__links a:hover{background-color:#de0303;color:#eee}.navigation__club{display:none;padding:30px 0 0 100px}.navigation__club span,.navigation__social{display:none}.navigation__social .footer__item p{display:none!important}.navigation__social a{display:none}.navigation__social a:hover{background:#de0303}.menu ul{display:block}.menu ul .page_item a{display:block;width:100%}@media only screen and (max-width:1024px){.topnav{display:none}.headersticky__title{font-size:18px;font-weight:600}.header{padding:15px 0 20px}.header__nav{display:none;left:0;position:absolute;top:0}.header__hamburger{bottom:inherit;left:15px;top:50%;transform:translateY(-50%)}.header__nav li{display:none}.header__nav li:last-child{display:block}.header__nav [data-navigation]{height:50px;overflow:hidden;padding:0;width:50px}.header__nav [data-navigation] span{left:16px;top:25px;width:21px}.header__nav [data-navigation] span:after{top:-5px}.header__nav [data-navigation] span:before{top:5px}.header__actions{right:15px;top:19px}.navigation__links{margin-left:0}.navigation__club{background:none!important;padding-left:0;text-align:center}.dropdown__signin{margin-left:80%;margin-top:0}}@media only screen and (max-width:767px){.dropdown__signin{margin-left:75%;margin-top:15px}body.single alert-component{display:block;margin-bottom:20px}.headersticky{height:51px;top:-51px}.headersticky--global{display:none}.headersticky .row{padding:0}.headersticky__triggernav{height:51px}.headersticky__triggernav span{left:15px;top:26px}.headersticky__logo{margin-left:10px;margin-top:13px}.headersticky__logo img{height:25px;width:auto}.headersticky__actions,.headersticky__title{display:none}.headersticky__social{display:block;padding-right:6px;padding-top:8px}.headersticky__social .icon{font-size:14px;height:32px;line-height:38px;width:32px}.headersticky__social .icon--mail{font-size:13px}.header{background:#fff;border:none;padding:0;width:100%;z-index:10}.header,.header__nav{margin:0}.header__menu,.header_menu_close{top:15px}.header__logo img{height:22px;width:auto}.header__actions{right:0;top:-10px}.header__search{border:none;border-radius:0;float:right;height:50px}.header__search button,.header__search input{height:50px}.header__search button{line-height:57px}.header__search--active{width:100%}.navigation{transform:translate(-110%);-webkit-transform:translate(-110%)}.navigation--active{transform:translate(0);-webkit-transform:translate(0)}.navigation--active .navigation__club{background:url(../img/bg_club_navigation.png) no-repeat 0 100%!important;background-size:84px auto!important}.navigation__logo img{height:36px;margin-left:0;width:auto}.navigation__actions{position:static}.navigation__close:after,.navigation__close:before{background-color:#fff!important}.navigation__user{background-color:#2a2a2a;border:none;display:none!important;height:40px;margin:0;position:absolute;right:10px;top:7px;width:40px}.navigation__user a{font-size:17px;height:100%;line-height:44px;width:100%}.navigation__search{box-sizing:border-box;-webkit-box-sizing:border-box;display:block;margin:0 auto;width:auto}.navigation__search input{height:42px}.navigation__search button{font-size:18px;height:42px;line-height:40px;width:45px}.navigation__links{margin:20px 0 0;padding:0!important;width:50%}.navigation__links h3{margin-left:0}.navigation__links:first-child ul{column-count:1;-moz-column-count:1;-webkit-column-count:1;overflow:hidden}.navigation__links:first-child li{float:left;width:50%}.navigation__links:last-child{width:100%}.navigation__club{padding:30px 0 0 100px!important}.navigation__social{border-width:1px;padding:30px 0}}.menu ul .page_item{display:block;width:100%}@media only screen and (max-width:766px){.navigation{width:100%}.navigation .row__container{margin-top:10px}.navigation--active{opacity:1;pointer-events:auto;transform:translate(0);-webkit-transform:translate(0)}.navigation__actions{display:block}.navigation__club,.navigation__social{display:none}.navigation__user{display:none!important}.navigation__links{float:left;width:100%}.navigation__close{display:block}.navigation__links:first-child{padding-left:3%;width:100%}.menu ul .page_item{width:100%}.menu ul .page_item a{padding-left:3px;width:100%}.menu ul .page_item a:hover{background-color:#de0303;color:#fff;cursor:pointer;display:block}.navigation__links a:hover{color:#fff}#button-login-container a,#button-login-container-b a{font-size:14px!important}}@media only screen and (max-width:1024px){#button-search{display:none}}.circle__button{align-items:center;border:1px solid #de0303;border-radius:50%;cursor:pointer;display:flex;height:35px;justify-content:center;transition:all .3s ease;width:35px}.circle__button svg{height:16px;width:16px}.circle__button:hover{background:#de0303}.circle__button:hover svg .st1{stroke:#fff}@media only screen and (max-width:1024px){#button-menu{border:none;left:0;position:absolute;width:auto}#button-menu svg .st1{stroke:#000;stroke-width:1.5}#button-menu:hover{background:none}}#button-login-container-b>a,#button-login-container>a{background-color:#fff;color:#de1d03;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:19px;text-decoration:none}@media(max-width:950px){.logo_news_radio{display:none}.logo__radio__mobile{display:block}}.header-custom__logo{height:23px!important;width:auto}.logo__radio__mobile{margin-left:75%;top:20px}@media(max-width:650px){.dropdown__signin{margin-left:68%}}.icono-an-radio-1a svg{color:#fff;height:22px;margin-right:5px;width:22px}.icono-an-radio-1a{align-items:center;background-color:#de0303;border-radius:20px;display:flex;font-family:Fira Sans,sans-serif;font-weight:800;justify-content:center;padding:7px 12px}@media only screen and (max-width:1024px){.icono-an-radio-1a{height:32px;padding:0 10px}}.icono-an-radio-1a p{color:#fff;font-size:14px;padding-top:1px;text-transform:uppercase}.icono-an-radio-1a p span{color:#f1f1f1}@media only screen and (max-width:1024px){.icono-an-radio-1a p span{display:none}.icono-an-radio-1a svg{border-radius:50%;height:25px;margin-right:0;width:17.5px}}.body-hidden{overflow:hidden!important}.body-hidden:after{background:rgba(0,0,0,.3);content:"";cursor:pointer;height:100vh;left:0;pointer-events:auto;position:fixed;top:0;width:100%;z-index:29}.navigation::-webkit-scrollbar{width:6px}.navigation::-webkit-scrollbar-track{background-color:#ddd}.navigation::-webkit-scrollbar-thumb{background-color:#888;border-radius:3px}.navigation::-webkit-scrollbar-thumb:hover{background-color:#555}body .sticky__header{background:#fff;position:sticky;top:0;transition:all .3s ease;width:100%;z-index:28}body .adzoneTopSticky{position:fixed;z-index:19}@media screen and (min-width:1024px){body.admin-bar #rn-header.--sticky,body.admin-bar .sticky__header{top:32px}}#rn-header{background:#fff;transition:all .3s ease;width:100%}#rn-header.--sticky{animation-delay:0s;animation-direction:normal;animation-duration:.5s;animation-fill-mode:none;animation-iteration-count:1;animation-name:headerSticky;animation-play-state:running;animation-timing-function:ease;left:0;position:fixed;top:0;z-index:20}@keyframes headerSticky{0%{transform:translateY(-100%)}to{transform:translateY(0)}}.swiper-container{list-style:none;margin:0 auto;overflow:hidden;padding:0;position:relative;z-index:1}.swiper-container-no-flexbox .swiper-slide{float:left}.swiper-container-vertical>.swiper-wrapper{-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column}.swiper-wrapper{-webkit-box-sizing:content-box;box-sizing:content-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:100%;margin-left:0!important;position:relative;-webkit-transition-property:-webkit-transform;transition-property:-webkit-transform;-o-transition-property:transform;transition-property:transform;transition-property:transform,-webkit-transform;width:100%;z-index:1}.swiper-container-android .swiper-slide,.swiper-wrapper{-webkit-transform:translateZ(0);transform:translateZ(0)}.swiper-container-multirow>.swiper-wrapper{-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap}.swiper-container-free-mode>.swiper-wrapper{margin:0 auto;-webkit-transition-timing-function:ease-out;-o-transition-timing-function:ease-out;transition-timing-function:ease-out}.swiper-slide{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;height:100%;position:relative;-webkit-transition-property:-webkit-transform;transition-property:-webkit-transform;-o-transition-property:transform;transition-property:transform;transition-property:transform,-webkit-transform;width:100%}.swiper-invisible-blank-slide{visibility:hidden}.swiper-container-autoheight,.swiper-container-autoheight .swiper-slide{height:auto}.swiper-container-autoheight .swiper-wrapper{-webkit-box-align:start;-webkit-align-items:flex-start;-ms-flex-align:start;align-items:flex-start;-webkit-transition-property:height,-webkit-transform;transition-property:height,-webkit-transform;-o-transition-property:transform,height;transition-property:transform,height;transition-property:transform,height,-webkit-transform}.swiper-container-3d{-webkit-perspective:1200px;perspective:1200px}.swiper-container-3d .swiper-cube-shadow,.swiper-container-3d .swiper-slide,.swiper-container-3d .swiper-slide-shadow-bottom,.swiper-container-3d .swiper-slide-shadow-left,.swiper-container-3d .swiper-slide-shadow-right,.swiper-container-3d .swiper-slide-shadow-top,.swiper-container-3d .swiper-wrapper{-webkit-transform-style:preserve-3d;transform-style:preserve-3d}.swiper-container-3d .swiper-slide-shadow-bottom,.swiper-container-3d .swiper-slide-shadow-left,.swiper-container-3d .swiper-slide-shadow-right,.swiper-container-3d .swiper-slide-shadow-top{height:100%;left:0;pointer-events:none;position:absolute;top:0;width:100%;z-index:10}.swiper-container-3d .swiper-slide-shadow-left{background-image:-webkit-gradient(linear,right top,left top,from(rgba(0,0,0,.5)),to(transparent));background-image:-webkit-linear-gradient(right,rgba(0,0,0,.5),transparent);background-image:-o-linear-gradient(right,rgba(0,0,0,.5),transparent);background-image:linear-gradient(270deg,rgba(0,0,0,.5),transparent)}.swiper-container-3d .swiper-slide-shadow-right{background-image:-webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.5)),to(transparent));background-image:-webkit-linear-gradient(left,rgba(0,0,0,.5),transparent);background-image:-o-linear-gradient(left,rgba(0,0,0,.5),transparent);background-image:linear-gradient(90deg,rgba(0,0,0,.5),transparent)}.swiper-container-3d .swiper-slide-shadow-top{background-image:-webkit-gradient(linear,left bottom,left top,from(rgba(0,0,0,.5)),to(transparent));background-image:-webkit-linear-gradient(bottom,rgba(0,0,0,.5),transparent);background-image:-o-linear-gradient(bottom,rgba(0,0,0,.5),transparent);background-image:linear-gradient(0deg,rgba(0,0,0,.5),transparent)}.swiper-container-3d .swiper-slide-shadow-bottom{background-image:-webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,.5)),to(transparent));background-image:-webkit-linear-gradient(top,rgba(0,0,0,.5),transparent);background-image:-o-linear-gradient(top,rgba(0,0,0,.5),transparent);background-image:linear-gradient(180deg,rgba(0,0,0,.5),transparent)}.swiper-container-wp8-horizontal,.swiper-container-wp8-horizontal>.swiper-wrapper{-ms-touch-action:pan-y;touch-action:pan-y}.swiper-container-wp8-vertical,.swiper-container-wp8-vertical>.swiper-wrapper{-ms-touch-action:pan-x;touch-action:pan-x}.swiper-button-next,.swiper-button-prev{background-position:50%;background-repeat:no-repeat;background-size:27px 44px;cursor:pointer;height:44px;margin-top:-22px;position:absolute;top:50%;width:27px;z-index:10}.swiper-button-next.swiper-button-disabled,.swiper-button-prev.swiper-button-disabled{cursor:auto;opacity:.35;pointer-events:none}.swiper-button-prev,.swiper-container-rtl .swiper-button-next{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27 44'%3E%3Cpath fill='%23007aff' d='M0 22 22 0l2.1 2.1L4.2 22l19.9 19.9L22 44z'/%3E%3C/svg%3E");left:10px;right:auto}.swiper-button-next,.swiper-container-rtl .swiper-button-prev{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27 44'%3E%3Cpath fill='%23007aff' d='M27 22 5 44l-2.1-2.1L22.8 22 2.9 2.1 5 0z'/%3E%3C/svg%3E");left:auto;right:10px}.swiper-button-prev.swiper-button-white,.swiper-container-rtl .swiper-button-next.swiper-button-white{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27 44'%3E%3Cpath fill='%23fff' d='M0 22 22 0l2.1 2.1L4.2 22l19.9 19.9L22 44z'/%3E%3C/svg%3E")}.swiper-button-next.swiper-button-white,.swiper-container-rtl .swiper-button-prev.swiper-button-white{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27 44'%3E%3Cpath fill='%23fff' d='M27 22 5 44l-2.1-2.1L22.8 22 2.9 2.1 5 0z'/%3E%3C/svg%3E")}.swiper-button-prev.swiper-button-black,.swiper-container-rtl .swiper-button-next.swiper-button-black{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27 44'%3E%3Cpath d='M0 22 22 0l2.1 2.1L4.2 22l19.9 19.9L22 44z'/%3E%3C/svg%3E")}.swiper-button-next.swiper-button-black,.swiper-container-rtl .swiper-button-prev.swiper-button-black{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27 44'%3E%3Cpath d='M27 22 5 44l-2.1-2.1L22.8 22 2.9 2.1 5 0z'/%3E%3C/svg%3E")}.swiper-button-lock{display:none}.swiper-pagination{position:absolute;text-align:center;-webkit-transform:translateZ(0);transform:translateZ(0);-webkit-transition:opacity .3s;-o-transition:opacity .3s;transition:opacity .3s;z-index:10}.swiper-pagination.swiper-pagination-hidden{opacity:0}.swiper-container-horizontal>.swiper-pagination-bullets,.swiper-pagination-custom,.swiper-pagination-fraction{bottom:10px;left:0;width:100%}.swiper-pagination-bullets-dynamic{font-size:0;overflow:hidden}.swiper-pagination-bullets-dynamic .swiper-pagination-bullet{position:relative;-webkit-transform:scale(.33);-ms-transform:scale(.33);transform:scale(.33)}.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active,.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-main{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-prev{-webkit-transform:scale(.66);-ms-transform:scale(.66);transform:scale(.66)}.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-prev-prev{-webkit-transform:scale(.33);-ms-transform:scale(.33);transform:scale(.33)}.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-next{-webkit-transform:scale(.66);-ms-transform:scale(.66);transform:scale(.66)}.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-next-next{-webkit-transform:scale(.33);-ms-transform:scale(.33);transform:scale(.33)}.swiper-pagination-bullet{background:#000;border-radius:100%;display:inline-block;height:8px;opacity:.2;width:8px}button.swiper-pagination-bullet{-webkit-appearance:none;-moz-appearance:none;appearance:none;border:none;-webkit-box-shadow:none;box-shadow:none;margin:0;padding:0}.swiper-pagination-clickable .swiper-pagination-bullet{cursor:pointer}.swiper-pagination-bullet-active{background:#007aff;opacity:1}.swiper-container-vertical>.swiper-pagination-bullets{right:10px;top:50%;-webkit-transform:translate3d(0,-50%,0);transform:translate3d(0,-50%,0)}.swiper-container-vertical>.swiper-pagination-bullets .swiper-pagination-bullet{display:block;margin:6px 0}.swiper-container-vertical>.swiper-pagination-bullets.swiper-pagination-bullets-dynamic{top:50%;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%);width:8px}.swiper-container-vertical>.swiper-pagination-bullets.swiper-pagination-bullets-dynamic .swiper-pagination-bullet{display:inline-block;-webkit-transition:top .2s,-webkit-transform .2s;transition:top .2s,-webkit-transform .2s;-o-transition:transform .2s,top .2s;transition:transform .2s,top .2s;transition:transform .2s,top .2s,-webkit-transform .2s}.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet{margin:0 4px}.swiper-container-horizontal>.swiper-pagination-bullets.swiper-pagination-bullets-dynamic{left:50%;-webkit-transform:translateX(-50%);-ms-transform:translateX(-50%);transform:translateX(-50%);white-space:nowrap}.swiper-container-horizontal>.swiper-pagination-bullets.swiper-pagination-bullets-dynamic .swiper-pagination-bullet{-webkit-transition:left .2s,-webkit-transform .2s;transition:left .2s,-webkit-transform .2s;-o-transition:transform .2s,left .2s;transition:transform .2s,left .2s;transition:transform .2s,left .2s,-webkit-transform .2s}.swiper-container-horizontal.swiper-container-rtl>.swiper-pagination-bullets-dynamic .swiper-pagination-bullet{-webkit-transition:right .2s,-webkit-transform .2s;transition:right .2s,-webkit-transform .2s;-o-transition:transform .2s,right .2s;transition:transform .2s,right .2s;transition:transform .2s,right .2s,-webkit-transform .2s}.swiper-pagination-progressbar{background:rgba(0,0,0,.25);position:absolute}.swiper-pagination-progressbar .swiper-pagination-progressbar-fill{background:#007aff;height:100%;left:0;position:absolute;top:0;-webkit-transform:scale(0);-ms-transform:scale(0);transform:scale(0);-webkit-transform-origin:left top;-ms-transform-origin:left top;transform-origin:left top;width:100%}.swiper-container-rtl .swiper-pagination-progressbar .swiper-pagination-progressbar-fill{-webkit-transform-origin:right top;-ms-transform-origin:right top;transform-origin:right top}.swiper-container-horizontal>.swiper-pagination-progressbar,.swiper-container-vertical>.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite{height:4px;left:0;top:0;width:100%}.swiper-container-horizontal>.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite,.swiper-container-vertical>.swiper-pagination-progressbar{height:100%;left:0;top:0;width:4px}.swiper-pagination-white .swiper-pagination-bullet-active{background:#fff}.swiper-pagination-progressbar.swiper-pagination-white{background:hsla(0,0%,100%,.25)}.swiper-pagination-progressbar.swiper-pagination-white .swiper-pagination-progressbar-fill{background:#fff}.swiper-pagination-black .swiper-pagination-bullet-active{background:#000}.swiper-pagination-progressbar.swiper-pagination-black{background:rgba(0,0,0,.25)}.swiper-pagination-progressbar.swiper-pagination-black .swiper-pagination-progressbar-fill{background:#000}.swiper-pagination-lock{display:none}.swiper-scrollbar{background:rgba(0,0,0,.1);border-radius:10px;position:relative;-ms-touch-action:none}.swiper-container-horizontal>.swiper-scrollbar{bottom:3px;height:5px;left:1%;position:absolute;width:98%;z-index:50}.swiper-container-vertical>.swiper-scrollbar{height:98%;position:absolute;right:3px;top:1%;width:5px;z-index:50}.swiper-scrollbar-drag{background:rgba(0,0,0,.5);border-radius:10px;height:100%;left:0;position:relative;top:0;width:100%}.swiper-scrollbar-cursor-drag{cursor:move}.swiper-scrollbar-lock{display:none}.swiper-zoom-container{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:100%;width:100%;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;text-align:center}.swiper-zoom-container>canvas,.swiper-zoom-container>img,.swiper-zoom-container>svg{max-height:100%;max-width:100%;-o-object-fit:contain;object-fit:contain}.swiper-slide-zoomed{cursor:move}.swiper-lazy-preloader{-webkit-animation:swiper-preloader-spin 1s steps(12) infinite;animation:swiper-preloader-spin 1s steps(12) infinite;height:42px;left:50%;margin-left:-21px;margin-top:-21px;position:absolute;top:50%;-webkit-transform-origin:50%;-ms-transform-origin:50%;transform-origin:50%;width:42px;z-index:10}.swiper-lazy-preloader:after{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 120 120'%3E%3Cdefs%3E%3Cpath id='a' stroke='%236c6c6c' stroke-linecap='round' stroke-width='11' d='M60 7v20'/%3E%3C/defs%3E%3Cuse xlink:href='%23a' opacity='.27'/%3E%3Cuse xlink:href='%23a' opacity='.27' transform='rotate(30 60 60)'/%3E%3Cuse xlink:href='%23a' opacity='.27' transform='rotate(60 60 60)'/%3E%3Cuse xlink:href='%23a' opacity='.27' transform='rotate(90 60 60)'/%3E%3Cuse xlink:href='%23a' opacity='.27' transform='rotate(120 60 60)'/%3E%3Cuse xlink:href='%23a' opacity='.27' transform='rotate(150 60 60)'/%3E%3Cuse xlink:href='%23a' opacity='.37' transform='rotate(180 60 60)'/%3E%3Cuse xlink:href='%23a' opacity='.46' transform='rotate(210 60 60)'/%3E%3Cuse xlink:href='%23a' opacity='.56' transform='rotate(240 60 60)'/%3E%3Cuse xlink:href='%23a' opacity='.66' transform='rotate(270 60 60)'/%3E%3Cuse xlink:href='%23a' opacity='.75' transform='rotate(300 60 60)'/%3E%3Cuse xlink:href='%23a' opacity='.85' transform='rotate(330 60 60)'/%3E%3C/svg%3E");background-position:50%;background-repeat:no-repeat;background-size:100%;content:"";display:block;height:100%;width:100%}.swiper-lazy-preloader-white:after{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 120 120'%3E%3Cdefs%3E%3Cpath id='a' stroke='%23fff' stroke-linecap='round' stroke-width='11' d='M60 7v20'/%3E%3C/defs%3E%3Cuse xlink:href='%23a' opacity='.27'/%3E%3Cuse xlink:href='%23a' opacity='.27' transform='rotate(30 60 60)'/%3E%3Cuse xlink:href='%23a' opacity='.27' transform='rotate(60 60 60)'/%3E%3Cuse xlink:href='%23a' opacity='.27' transform='rotate(90 60 60)'/%3E%3Cuse xlink:href='%23a' opacity='.27' transform='rotate(120 60 60)'/%3E%3Cuse xlink:href='%23a' opacity='.27' transform='rotate(150 60 60)'/%3E%3Cuse xlink:href='%23a' opacity='.37' transform='rotate(180 60 60)'/%3E%3Cuse xlink:href='%23a' opacity='.46' transform='rotate(210 60 60)'/%3E%3Cuse xlink:href='%23a' opacity='.56' transform='rotate(240 60 60)'/%3E%3Cuse xlink:href='%23a' opacity='.66' transform='rotate(270 60 60)'/%3E%3Cuse xlink:href='%23a' opacity='.75' transform='rotate(300 60 60)'/%3E%3Cuse xlink:href='%23a' opacity='.85' transform='rotate(330 60 60)'/%3E%3C/svg%3E")}@-webkit-keyframes swiper-preloader-spin{to{-webkit-transform:rotate(1turn);transform:rotate(1turn)}}@keyframes swiper-preloader-spin{to{-webkit-transform:rotate(1turn);transform:rotate(1turn)}}.swiper-container .swiper-notification{left:0;opacity:0;pointer-events:none;position:absolute;top:0;z-index:-1000}.swiper-container-fade.swiper-container-free-mode .swiper-slide{-webkit-transition-timing-function:ease-out;-o-transition-timing-function:ease-out;transition-timing-function:ease-out}.swiper-container-fade .swiper-slide{pointer-events:none;-webkit-transition-property:opacity;-o-transition-property:opacity;transition-property:opacity}.swiper-container-fade .swiper-slide .swiper-slide{pointer-events:none}.swiper-container-fade .swiper-slide-active,.swiper-container-fade .swiper-slide-active .swiper-slide-active{pointer-events:auto}.swiper-container-cube{overflow:visible}.swiper-container-cube .swiper-slide{-webkit-backface-visibility:hidden;backface-visibility:hidden;height:100%;pointer-events:none;-webkit-transform-origin:0 0;-ms-transform-origin:0 0;transform-origin:0 0;visibility:hidden;width:100%;z-index:1}.swiper-container-cube .swiper-slide .swiper-slide{pointer-events:none}.swiper-container-cube.swiper-container-rtl .swiper-slide{-webkit-transform-origin:100% 0;-ms-transform-origin:100% 0;transform-origin:100% 0}.swiper-container-cube .swiper-slide-active,.swiper-container-cube .swiper-slide-active .swiper-slide-active{pointer-events:auto}.swiper-container-cube .swiper-slide-active,.swiper-container-cube .swiper-slide-next,.swiper-container-cube .swiper-slide-next+.swiper-slide,.swiper-container-cube .swiper-slide-prev{pointer-events:auto;visibility:visible}.swiper-container-cube .swiper-slide-shadow-bottom,.swiper-container-cube .swiper-slide-shadow-left,.swiper-container-cube .swiper-slide-shadow-right,.swiper-container-cube .swiper-slide-shadow-top{-webkit-backface-visibility:hidden;backface-visibility:hidden;z-index:0}.swiper-container-cube .swiper-cube-shadow{background:#000;bottom:0;-webkit-filter:blur(50px);filter:blur(50px);height:100%;left:0;opacity:.6;position:absolute;width:100%;z-index:0}.swiper-container-flip{overflow:visible}.swiper-container-flip .swiper-slide{-webkit-backface-visibility:hidden;backface-visibility:hidden;pointer-events:none;z-index:1}.swiper-container-flip .swiper-slide .swiper-slide{pointer-events:none}.swiper-container-flip .swiper-slide-active,.swiper-container-flip .swiper-slide-active .swiper-slide-active{pointer-events:auto}.swiper-container-flip .swiper-slide-shadow-bottom,.swiper-container-flip .swiper-slide-shadow-left,.swiper-container-flip .swiper-slide-shadow-right,.swiper-container-flip .swiper-slide-shadow-top{-webkit-backface-visibility:hidden;backface-visibility:hidden;z-index:0}.swiper-container-coverflow .swiper-wrapper{-ms-perspective:1200px}.sticky__wrapper{display:flex;justify-content:space-between;margin:20px auto 0;max-width:1260px;width:100%}.sticky__main{display:flex;flex-direction:column;width:calc(100% - 320px)}@media only screen and (max-width:1024px){.sticky__main{width:100%}}.sticky__sidebar{width:320px}@media only screen and (max-width:1024px){.sticky__sidebar{width:100%}.sticky__sidebar:not(.--sidebar-show-mobile){display:none}}.sticky__sidebar .sticky{padding:0 0 20px 20px;position:-webkit-sticky;position:sticky;top:110px}@media only screen and (max-width:1024px){.sticky__sidebar .sticky{padding:0 0 20px}}.sticky__sidebar .sticky img{height:auto;width:100%}body.admin-bar .sticky{top:140px}.news{position:relative}.news--41-49 .news__media{padding-top:41.49%}.home-component .col--8 .news__data{height:auto!important}.news--100 .news__media{padding-top:100%}.news__media{background-color:#ededed;height:0;padding-top:56.25%;position:relative;width:100%}.news__media img,.news__media video{height:100%;left:0;object-fit:cover;position:absolute;top:0;width:100%;z-index:1}.news__media>a:after{color:#d2d2d2;content:"";font-family:icons;font-size:38px;left:50%;position:absolute;top:50%;transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%)}.news__media a .icon{background:#de0303;bottom:0;color:#fff;font-size:15px;height:35px;left:0;line-height:40px;position:absolute;text-align:center;width:35px;z-index:5}.news__media a .icon.icon--status:before{animation-duration:2s;animation-iteration-count:infinite;animation-name:live_animation;animation-timing-function:linear}@keyframes live_animation{0%{opacity:1}50%{opacity:.5}to{opacity:1}}.news__media a .icon.icon--suscribers{background:#343431}.news__social{overflow:hidden;position:absolute;right:0;top:0;z-index:2}.news__social a.icon{background:#de0303;color:#fff;float:left;font-size:13px;height:35px;line-height:38px;opacity:0;pointer-events:none;text-align:center;transform:translate(100%);-webkit-transform:translate(100%);transition:transform .2s ease,opacity .2s ease;-webkit-transition:transform .2s ease,opacity .2s ease;width:35px}.news__social a.icon+a.icon{transition-delay:.1s;-webkit-transition-delay:.1s}.news__social a.icon+a.icon+a.icon{transition-delay:.2s;-webkit-transition-delay:.2s}.news__social a.icon:hover{background:#be0202}.news__social a.icon.icon--whatsapp{font-size:16px}.news__social .icon--share_dots{color:#fff;display:none;float:left;font-size:16px;height:35px;line-height:40px;text-align:center;text-shadow:1px 1px 1px rgba(0,0,0,.5);transition:background .2s ease .3s;-webkit-transition:background .2s ease .3s;width:35px}.news__social--active a.icon{opacity:1;pointer-events:auto;transform:translate(0);transition-delay:.3s;-webkit-transition-delay:.3s}.news__social--active a.icon+a.icon{transition-delay:.15s;-webkit-transition-delay:.15s}.news__social--active .icon--share_dots,.news__social--active a.icon+a.icon+a.icon{transition-delay:0s;-webkit-transition-delay:0s}.news__social--active .icon--share_dots{background:#de0303;text-shadow:none}.news__section{color:#de0303;display:inline-block;font-size:11px;font-weight:700;letter-spacing:1px;line-height:11px;text-transform:uppercase}.news a.news__section:hover,.news__title{color:#000}.news__title a{color:inherit;font:inherit}.news__title a:hover{color:#de0303}.news__excerpt p{color:inherit;font:inherit;margin:0}.news__line{display:block;letter-spacing:1px;text-transform:uppercase}.news__author,.news__line--sep,.news__time{color:#000;display:inline-block;font-size:11px;line-height:19px;vertical-align:top}.news--box .news__author{margin-top:10px}.news__author{font-size:14px;line-height:16px}.news__author a,.news__author span{color:inherit;display:inline-block;transition:color .2s ease}.news__author a{font-weight:600}.news__author a:hover{color:#de0303}.tag_exclusive_post{background-color:#f2f2f2;color:#222;font-size:12px;font-weight:600;left:0;padding:6px;position:absolute;top:0;z-index:4}.tag_exclusive_post img{height:auto;margin-right:6px;position:relative;width:12px}.tag_exclusive_post.--single{display:inline-block;line-height:1;margin-right:10px;padding:8px;position:relative}.tag_exclusive_post .icon{background:#faff00;border-radius:50%;margin-right:5px;padding:4px 5px 3px}.badge{bottom:10px}.badge,.badge__superdestacada{background-color:#de0303;box-sizing:border-box;color:#fff;font-size:15px;font-weight:600;left:10px;max-width:calc(100% - 20px);padding:5px 10px;position:absolute;text-transform:uppercase;z-index:4}.badge__superdestacada{top:10px}.--with-format .badge{align-items:center;bottom:0;display:flex;height:35px;left:35px;padding-left:0}@media only screen and (min-width:1024px){.news:hover .news__social a.icon{opacity:1;pointer-events:auto;transform:translate(0);transition-delay:.3s}.news:hover .news__social a.icon+a.icon{transition-delay:.15s;-webkit-transition-delay:.15s}.news:hover .news__social .icon--share_dots,.news:hover .news__social a.icon+a.icon+a.icon{transition-delay:0s;-webkit-transition-delay:0s}.news:hover .news__social .icon--share_dots{background:#de0303}}@media only screen and (max-width:1024px){.news__social .icon--share_dots{display:block}}.current-tags{align-items:center;border-bottom:2px solid #eee;border-top:2px solid #eee;display:flex;flex-direction:row;height:auto;justify-content:space-between;margin-bottom:30px;margin-top:-2px;overflow:hidden;padding:1rem 0;width:100%}@media(max-width:670px){.current-tags{align-items:flex-start;flex-direction:column;font-size:14px;justify-content:space-between;line-height:2;margin-bottom:0;padding:5px 0}}.current-tags__title{background:#fff;color:#de0303;font-weight:600;padding-right:1rem;white-space:nowrap;z-index:2}@media(max-width:670px){.current-tags__title{margin-right:0!important}}.current-tags__tags{display:flex}@media(max-width:670px){.current-tags__tags{display:block}}.current-tags__wrapper{z-index:1}.current-tags__wrapper-tag{margin-right:1rem;width:auto!important}.current-tags__wrapper-tag-link{color:#000;transition:color .3s}.current-tags__wrapper-tag-link:hover{color:#de0303}.current-tags__wrapper-cotizacion{margin-right:0!important;width:auto!important}.current-tags__date{background:-moz-linear-gradient(left,hsla(0,0%,100%,0) 0,#fff 10%,#fff 100%);background:-webkit-linear-gradient(left,hsla(0,0%,100%,0),#fff 10%,#fff);background:linear-gradient(90deg,hsla(0,0%,100%,0) 0,#fff 10%,#fff);display:inherit;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#00ffffff",endColorstr="#ffffff",GradientType=1);line-height:1.5;right:0;top:50%;z-index:2}@media(max-width:670px){.current-tags__date{width:100%}}.current-tags__date p{white-space:nowrap}.current-tags__cotizaciones{background:-moz-linear-gradient(left,hsla(0,0%,100%,0) 0,#fff 5%,#fff 100%);background:-webkit-linear-gradient(left,hsla(0,0%,100%,0),#fff 5%,#fff);background:linear-gradient(90deg,hsla(0,0%,100%,0) 0,#fff 5%,#fff);display:flex;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#00ffffff",endColorstr="#ffffff",GradientType=1);justify-content:center;max-width:75%;padding:2px 0 2px 30px;right:0;z-index:2}@media(max-width:670px){.current-tags__cotizaciones{justify-content:center;max-width:100%;padding:0;width:100%}}.current-tags__cotizaciones p{white-space:nowrap}.current-tags__cotizaciones a,.current-tags__cotizaciones a:visited{color:#000}.current-tags .no-mobile{display:block}@media(max-width:670px){.current-tags .no-mobile{display:none}}.current-tags .no-desktop{display:none}@media(max-width:670px){.current-tags .no-desktop{display:block}.mobile_none{display:none}}stats-carousel{display:block;min-height:90px}.stats__slider{background:#ededed;margin:0;overflow:hidden;padding:0 15px;position:relative}.stats__slider .swiper-button-disabled{opacity:0}.stats__slider-prev{left:0}.stats__slider-next,.stats__slider-prev{align-items:center;background:#ededed;display:flex;height:100%;justify-content:center;position:absolute;top:0;transition:opacity .3s;width:30px;z-index:8}.stats__slider-next{right:0}.stats__slider-pagination{display:flex;justify-content:center;margin-bottom:12px}.stats__slider-pagination .swiper-pagination-bullet{margin:0 2px}.stats__slider-pagination .swiper-pagination-bullet-active{background:#000!important}@media only screen and (min-width:450px){.stats__slider-pagination{display:none}}.stats__slide{background:#fff;border-radius:10px;box-shadow:0 4px 9px rgba(0,0,0,.1);cursor:ew-resize;display:flex;flex-direction:column;height:60px;justify-content:center;margin:15px 0;overflow:hidden;padding:0 20px;position:relative;width:150px}.stats__slide.--xl{width:170px}@media only screen and (max-width:450px){.stats__slide{width:120px}}.stats__value{align-items:center;display:flex;z-index:9}.stats__price{font-size:20px;line-height:1}.stats__price span{font-size:80%}.stats__average{border-radius:10px;display:flex;font-size:12px;height:min-content;margin-left:8px;padding:1px 0;width:fit-content}.stats__average.--positive{color:#3f9142}.stats__average.--negative{color:#c93126}.stats__average.--equal{color:#919191}.stats__average svg{height:14px;margin-right:2px;width:14px}.stats__average svg.--positive polygon{fill:#3f9142}.stats__average svg.--negative{transform:rotate(180deg)}.stats__average svg.--negative polygon{fill:#c93126}.stats__name{color:#000;font-size:14px;font-weight:600;margin-bottom:5px;text-transform:uppercase;z-index:9}.stats__name a{color:#000}.stats__view-more{display:flex;justify-content:center}.stats__view-more a{color:#000;font-weight:600}.stats__view-more a small{display:block;font-size:10px;font-weight:400;margin-top:5px;text-transform:uppercase}.stats__view-more a small strong{font-weight:600}.stats__sparkline{bottom:-5px;position:absolute;right:-1px;z-index:1}.stats__sparkline:after{background:linear-gradient(66deg,#fff 25%,hsla(0,0%,100%,.1));content:"";height:100%;left:0;position:absolute;top:0;width:100%}.stats__sparkline svg{width:65px}.stats__sparkline.--positive svg path.area{fill:url(#downtack-sube)}.stats__sparkline.--positive svg path.line{stroke:#3f9142}.stats__sparkline.--negative svg path.area{fill:url(#downtack-baja)}.stats__sparkline.--negative svg path.line{stroke:#c93126}.stats__sparkline.--equal svg path.area{fill:url(#downtack-igual)}.stats__sparkline.--equal svg path.line{stroke:#919191}@media only screen and (max-width:450px){.stats__sparkline{display:none}}.stats__grid{background:#ededed;margin:0 0 30px;padding:15px 30px}@media only screen and (max-width:450px){.stats__grid{padding:8px 15px}}.stats__grid-wrapper{display:grid;grid-template-columns:repeat(3,1fr);grid-column-gap:30px}@media only screen and (max-width:450px){.stats__grid-wrapper{grid-template-columns:1fr}.stats__grid-wrapper .stats__slide{margin:7px 0}}.stats__grid .stats__slide{box-sizing:border-box;cursor:inherit;height:85px;width:100%!important}.stats__grid .stats__sparkline svg{width:100px}.stats__grid .stats__copyright{font-size:12px;text-align:right}.stats__grid .stats__copyright a{color:#000;font-weight:600;text-decoration:underline;text-transform:uppercase}@media only screen and (max-width:450px){.stats__grid .stats__copyright{margin:10px 0;text-align:center}}div.ad-slot,div[class^=ad-slot]{align-items:center;background:repeating-linear-gradient(45deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,.1),hsla(0,0%,100%,.1),hsla(0,0%,100%,.1) 4px,rgba(0,0,0,.15) 6px);display:inline-block;display:flex;justify-content:center;min-width:100%;position:relative;z-index:1}div[class^=ad-slot]:not(#ad_slot_zocalo):not(#ad_slot_itt):before{background:#fff;color:#323232;content:"PUBLICIDAD";font-size:11px;margin:0 auto;padding:2px 10px;position:absolute;top:0;z-index:-1}.ad-slot-transparent:before{background:transparent!important;color:#898989!important}.ad-slot-itt,.ad-slot-zocalo{display:none;height:1px;width:1px}.ad-slot-horizontal{height:auto;min-height:200px}.ad-slot-billboard{height:300px;overflow:hidden}.ad-slot-box{height:250px}.ad-slot-bigbox{height:600px}.banner{margin:0 auto 30px;max-width:1260px!important;width:100%!important}@media screen and (max-width:730px){.ad-slot-billboard{height:90px}.ad-slot-bigbox{height:250px}}@media screen and (min-width:731px){.ad-slot-streaming{height:410px}.ad-slot-lateral{height:600px}}@media only screen and (min-device-width:992px){.ad-slot-right-align{left:-32px;position:relative}}home-regular{display:block;min-height:700px}@media only screen and (max-width:767px){home-regular{min-height:1100px}}.author-thumb{align-items:center;display:flex;margin-top:16px}.author-thumb__avatars{display:flex}.author-thumb__avatar{display:inline-block;height:40px;margin-right:-5px;position:relative;width:40px}.author-thumb__avatar a img{border:3px solid #fff;border-radius:50%;display:block;height:auto;width:100%}@media screen and (max-width:767px){.author-thumb__avatar a img{border-color:#ededed}}.author-thumb__avatar:last-child{margin-right:15px}.author-thumb__data{color:rgba(0,0,0,.8);font-size:14px;margin-top:6px}.author-thumb__data-bottom a,.author-thumb__data-top a{color:rgba(0,0,0,.8);text-decoration:none;transition:color .3s ease-in-out}.author-thumb__data-bottom a:hover,.author-thumb__data-top a:hover{color:#de0303}.author-thumb__data-top a{text-transform:uppercase}.author-thumb__data-bottom a{font-weight:600;text-transform:capitalize}.authors-widget{background:#eee;display:block;margin-bottom:30px;margin-left:15px;padding:30px}.authors-widget h1{border-bottom:3px solid #de0303;display:inline-block;font-size:24px;font-weight:900;line-height:24px;margin-bottom:24px;margin-top:0;padding-bottom:6px}.authors-widget ul{list-style-type:none;margin:0;padding:0}.authors-widget li{margin-bottom:20px;transition:all .2s}.authors-widget li:hover{margin-left:5px}.authors-widget li:last-child{margin-bottom:0}.authors-widget a{align-items:center;display:flex;text-decoration:none}.authors-widget img{border-radius:50%!important;margin-right:15px!important;width:45px!important}.authors-widget h6{color:#000;font-size:16px;font-weight:600;margin:0;text-transform:capitalize}.authors-widget span{color:gray;font-size:12px}.lists-news{margin:30px 0 0}@media(max-width:670px){.lists-news{margin:0;padding-bottom:10px}}.lists-news__list{list-style-type:disc}.lists-news__list-item{list-style:disc;margin-bottom:8px;margin-left:1rem}.lists-news__list-item::marker{color:#de0303}.lists-news__list-item a{color:#000;font-weight:600;line-height:1.1}.lists-news__list-item a:hover{color:#de0303}.lists-news__list-item::last-child{margin-bottom:0}#paywall-wrapper{bottom:-100vh;left:0;opacity:0;position:fixed;transition:all .5s ease}html.paywall{overflow:hidden;position:relative}html.paywall:before{background:rgba(0,0,0,.5);content:"";height:100%;left:0;position:absolute;top:0;width:100%;z-index:9999}html.paywall .bg__premium{background:#343431;color:#fff}html.paywall .bg__metered{background:#fff;color:#000}html.paywall #paywall-wrapper{background-size:75px;bottom:0;box-shadow:3px 4px 20px 20px rgba(0,0,0,.1);box-sizing:border-box;opacity:1;padding:60px;width:100%;z-index:999999999999}@media only screen and (max-width:768px){html.paywall #paywall-wrapper{padding:36px}}html.paywall #paywall-wrapper .paywall__container{padding:0}html.paywall #paywall-wrapper .paywall__container.--with-image{align-items:center;display:flex;gap:42px;justify-content:center}@media only screen and (max-width:768px){html.paywall #paywall-wrapper .paywall__container.--with-image{flex-direction:column;gap:20px}}@media only screen and (min-width:769px){html.paywall #paywall-wrapper .paywall__container.--with-image .paywall__data{text-align:left}html.paywall #paywall-wrapper .paywall__container.--with-image .paywall__data strong{margin:0}html.paywall #paywall-wrapper .paywall__container.--with-image .paywall__data .btn{margin:34px 0 16px}}html.paywall #paywall-wrapper .paywall__container.--with-image .btn__metered,html.paywall #paywall-wrapper .paywall__container.--with-image .btn__premium{margin:34px 0 16px}html.paywall #paywall-wrapper .paywall__image{height:260px}@media only screen and (max-width:768px){html.paywall #paywall-wrapper .paywall__image{height:220px}}html.paywall #paywall-wrapper .paywall__image img{height:100%;object-fit:cover;width:100%}html.paywall #paywall-wrapper .paywall__data{text-align:center}html.paywall #paywall-wrapper .paywall__data img{height:auto;margin-bottom:20px;width:75px}html.paywall #paywall-wrapper .paywall__data h4{font-size:22px;font-weight:400;line-height:32px}html.paywall #paywall-wrapper .paywall__data h4 strong{display:block;font-size:28px;font-weight:600;margin:0 auto;position:relative;width:fit-content;z-index:2}html.paywall #paywall-wrapper .paywall__data .icon{margin-bottom:26px;width:auto!important}html.paywall #paywall-wrapper .paywall__data .icon:before{font-size:64px}html.paywall #paywall-wrapper .paywall__data .btn__premium{background-color:#faff00;border-radius:50px;color:#000;display:block;margin:34px auto 16px;padding:12px 24px;width:fit-content}html.paywall #paywall-wrapper .paywall__data .btn__metered{background-color:#de0303;border-radius:50px;color:#fff;display:block;margin:34px auto 16px;padding:12px 24px;width:fit-content}html.paywall #paywall-wrapper .paywall__data .link{font-weight:600}html.paywall #paywall-wrapper .paywall__data .link__premium{color:#fff}html.paywall #paywall-wrapper .paywall__data .link__metered{color:#000}</style>        <link rel="preload" href="https://www.rionegro.com.ar/wp-content/themes/rn-v2/dist/css/style.min.css?ver=4.4.6" as="style">
+        <link rel='stylesheet' href="https://www.rionegro.com.ar/wp-content/themes/rn-v2/dist/css/style.min.css?ver=4.4.6" media="print" onload="this.media='all'"> 
+        <noscript><link rel="stylesheet" href="https://www.rionegro.com.ar/wp-content/themes/rn-v2/dist/css/style.min.css?ver=4.4.6"></noscript>
+    <title>Creó un perfil de Facebook para José de San Martín e incluyó a una famosa entre sus amigos - Diario Río Negro</title>
+
+<meta charSet="UTF-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=0.5, maximum-scale=2.0" />
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+<meta name="robots" content="all" />
+<meta name="Googlebot" content="all" />
+<meta name="language" content="es" />
+<meta name="classification" content="noticias, información, videos, diario, newspaper" />
+<meta name="generator" content="Editorial Río Negro" />
+<meta name="subject" content="Editorial Río Negro" />
+<meta name="google-signin-client_id" content="900576339312-k2f4fdltb7dnouhn4huqlrsuvcllbksr.apps.googleusercontent.com" />
+<link rel="dns-prefetch" href="https://www.google-analytics.com">
+
+<meta name="title" content="Creó un perfil de Facebook para José de San Martín e incluyó a una famosa entre sus amigos - Diario Río Negro" />
+<meta name="description" content="El insólito reflejo del prócer fue como respuesta a una tarea de Historia, en Entre Ríos, y se volvió viral." />
+<meta name="abstract" content="El insólito reflejo del prócer fue como respuesta a una tarea de Historia, en Entre Ríos, y se volvió viral." />
+<link rel="canonical" href="https://www.rionegro.com.ar/redes/creo-un-perfil-de-facebook-para-jose-de-san-martin-e-incluyo-a-una-famosa-entre-sus-amigos-2233626/" />
+
+<!-- Facebook -->
+<meta name="facebook-domain-verification" content="rgsfwh04uf4q5u9b3m52u07snau6ex" />
+<meta property="og:locale" content="es_ES" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Creó un perfil de Facebook para José de San Martín e incluyó a una famosa entre sus amigos - Diario Río Negro" />
+<meta property="og:description" content="El insólito reflejo del prócer fue como respuesta a una tarea de Historia, en Entre Ríos, y se volvió viral." />
+<meta property="og:url" content="https://www.rionegro.com.ar/redes/creo-un-perfil-de-facebook-para-jose-de-san-martin-e-incluyo-a-una-famosa-entre-sus-amigos-2233626/" />
+<meta property="og:site_name" content="Diario Río Negro | Periodismo en la Patagonia" />
+<meta property="og:image" content="https://www.rionegro.com.ar/wp-content/uploads/2022/04/720.jpeg?w=1200&amp;h=630&amp;crop=1" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="fb:app_id" content="176037545936299" />
+<meta property="fb:pages" content="27333901999" />
+<meta property="article:publisher" content="27333901999" />
+
+<!-- Twitter -->
+<meta itemprop="url" content="https://www.rionegro.com.ar/redes/creo-un-perfil-de-facebook-para-jose-de-san-martin-e-incluyo-a-una-famosa-entre-sus-amigos-2233626/" />
+<meta itemprop="name" content="Creó un perfil de Facebook para José de San Martín e incluyó a una famosa entre sus amigos" />
+<meta itemprop="headline" content="Creó un perfil de Facebook para José de San Martín e incluyó a una famosa entre sus amigos" />
+<meta itemprop="alternativeHeadline" content="El insólito reflejo del prócer fue como respuesta a una tarea de Historia, en Entre Ríos, y se volvió viral." />
+<meta itemprop="description" content="El insólito reflejo del prócer fue como respuesta a una tarea de Historia, en Entre Ríos, y se volvió viral." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@rionegrocomar" />
+<meta name="twitter:creator" content="@rionegrocomar" />
+<meta name="twitter:title" content="Creó un perfil de Facebook para José de San Martín e incluyó a una famosa entre sus amigos" />
+<meta name="twitter:description" content="El insólito reflejo del prócer fue como respuesta a una tarea de Historia, en Entre Ríos, y se volvió viral." />
+<meta name="twitter:image" content="https://www.rionegro.com.ar/wp-content/uploads/2022/04/720.jpeg?w=808" />
+<meta property="og:updated_time" content="1728678395" />
+<meta property="article:published_time" content="2022-04-05T20:32:44-03:00" />
+<meta name="author" content="Redacción" />
+<meta property="mrf:authors" content="Daniela Castro" />
+<link rel="amphtml" href="https://www.rionegro.com.ar/redes/creo-un-perfil-de-facebook-para-jose-de-san-martin-e-incluyo-a-una-famosa-entre-sus-amigos-2233626/amp/" />
+<!-- echobox -->
+<script async id="ebx" src="//applets.ebxcdn.com/ebx.js"></script>
+<!-- Pinterest Verification -->
+<meta name="p:domain_verify" content="d4d6af3f9c6628fad300d83cf07be5fb"/><!-- Favicon -->
+<link rel="shortcut icon" href="https://www.rionegro.com.ar/wp-content/themes/rn-v2/dist/img/apps/favicon96.png">
+<link rel="apple-touch-icon-precomposed" href="https://www.rionegro.com.ar/wp-content/themes/rn-v2/dist/img/apps/favicon96.png">
+<link rel="apple-touch-icon" sizes="57x57" href="https://www.rionegro.com.ar/wp-content/themes/rn-v2/dist/img/apps/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="https://www.rionegro.com.ar/wp-content/themes/rn-v2/dist/img/apps/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="https://www.rionegro.com.ar/wp-content/themes/rn-v2/dist/img/apps/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://www.rionegro.com.ar/wp-content/themes/rn-v2/dist/img/apps/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="https://www.rionegro.com.ar/wp-content/themes/rn-v2/dist/img/apps/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://www.rionegro.com.ar/wp-content/themes/rn-v2/dist/img/apps/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="https://www.rionegro.com.ar/wp-content/themes/rn-v2/dist/img/apps/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://www.rionegro.com.ar/wp-content/themes/rn-v2/dist/img/apps/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://www.rionegro.com.ar/wp-content/themes/rn-v2/dist/img/apps/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="https://www.rionegro.com.ar/wp-content/themes/rn-v2/dist/img/apps/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://www.rionegro.com.ar/wp-content/themes/rn-v2/dist/img/apps/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="https://www.rionegro.com.ar/wp-content/themes/rn-v2/dist/img/apps/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://www.rionegro.com.ar/wp-content/themes/rn-v2/dist/img/apps/favicon-16x16.png"><script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"NewsArticle","name":"Cre\u00f3 un perfil de Facebook para Jos\u00e9 de San Mart\u00edn e incluy\u00f3 a una famosa entre sus amigos","headline":"Cre\u00f3 un perfil de Facebook para Jos\u00e9 de San Mart\u00edn e incluy\u00f3 a una famosa entre sus amigos","alternativeHeadline":"El ins\u00f3lito reflejo del pr\u00f3cer fue como respuesta a una tarea de Historia, en Entre R\u00edos, y se volvi\u00f3 viral.","description":"El ins\u00f3lito reflejo del pr\u00f3cer fue como respuesta a una tarea de Historia, en Entre R\u00edos, y se volvi\u00f3 viral.","articleBody":"La ingeniosa resoluci\u00f3n de un estudiante a un ejercicio de Historia en Entre R\u00edos se llev\u00f3 todas las miradas, cuando se les pidi\u00f3 resolver una biograf\u00eda de Jos\u00e9 de San Mart\u00edn como tarea. \n\n\n\n\n\nSi bien podr\u00eda haber resuelto un ensayo para cumplir con ese t\u00f3pico, el chico eligi\u00f3 hacerle un \"perfil de Facebook\" al pr\u00f3cer y, no conforme con eso, tambi\u00e9n agreg\u00f3 un simp\u00e1tico \u00edtem entre los amigos del h\u00e9roe sudamericano. \n\n\n\n\u00bfQui\u00e9n le acept\u00f3 la solicitud? A nadie m\u00e1s y nadie menos q","url":"https:\/\/www.rionegro.com.ar\/redes\/creo-un-perfil-de-facebook-para-jose-de-san-martin-e-incluyo-a-una-famosa-entre-sus-amigos-2233626\/","thumbnailUrl":"https:\/\/www.rionegro.com.ar\/wp-content\/uploads\/2022\/04\/720.jpeg?w=1200&h=630&crop=1","dateCreated":"2022-04-05T20:32:44-03:00","datePublished":"2022-04-05T20:32:44-03:00","dateModified":"2022-04-05T22:04:07-03:00","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/www.rionegro.com.ar\/redes\/creo-un-perfil-de-facebook-para-jose-de-san-martin-e-incluyo-a-una-famosa-entre-sus-amigos-2233626\/","name":"Cre\u00f3 un perfil de Facebook para Jos\u00e9 de San Mart\u00edn e incluy\u00f3 a una famosa entre sus amigos"},"articleSection":"Redes","keywords":["Educaci\u00f3n","Entre R\u00edos","Historia","Mirtha Legrand","Redes Sociales","San Mart\u00edn"],"image":{"@type":"ImageObject","url":"https:\/\/www.rionegro.com.ar\/wp-content\/uploads\/2022\/04\/720.jpeg?w=1200&h=630&crop=1","width":1200,"height":630},"author":{"@type":"Person","name":"Redacci\u00f3n","url":"https:\/\/www.rionegro.com.ar\/autor\/daniela-castro\/","jobTitle":"Editor de Diario R\u00edo Negro","contactPoint":{"@type":"contactPoint","contactType":"Periodista"}},"creator":{"@type":"Person","name":"Redacci\u00f3n"},"publisher":{"@type":"Organization","name":"Diario R\u00edo Negro","url":"https:\/\/www.rionegro.com.ar","logo":{"@context":"https:\/\/schema.org","@type":"ImageObject","url":"https:\/\/www.rionegro.com.ar\/wp-content\/themes\/rn-v2\/dist\/img\/apps\/rionegro.png","height":40,"width":220},"@id":"rionegro.com.ar","sameAs":["https:\/\/www.facebook.com\/diariorionegro\/","https:\/\/www.instagram.com\/rionegrocomar\/","https:\/\/twitter.com\/rionegrocomar","https:\/\/www.youtube.com\/user\/DiarioRioNegro"]},"isAccessibleForFree":true,"isPartOf":{"@type":["CreativeWork","Product"],"name":"R\u00edo Negro","productID":"rionegro.com.ar:showcase"},"sourceOrganization":{"@type":"Organization","name":"Diario R\u00edo Negro","url":"https:\/\/www.rionegro.com.ar\/redes\/creo-un-perfil-de-facebook-para-jose-de-san-martin-e-incluyo-a-una-famosa-entre-sus-amigos-2233626\/"}}</script><script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"Organization","url":"https:\/\/www.rionegro.com.ar","name":"Diario Rio Negro","sameAs":["https:\/\/www.facebook.com\/diariorionegro\/","https:\/\/www.instagram.com\/rionegrocomar\/","https:\/\/twitter.com\/rionegrocomar","https:\/\/www.youtube.com\/user\/DiarioRioNegro"],"foundingDate":"1912-05-01","logo":"https:\/\/www.rionegro.com.ar\/wp-content\/themes\/rionegro\/images\/logo_rionegro.svg","description":"\u00daltimas noticias de Neuqu\u00e9n, R\u00edo Negro y la Patagonia Argentina. Informaci\u00f3n confiable, videos y fotos. L\u00e9elo antes en tu diario R\u00edo Negro"}</script><script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Diario R\u00edo Negro","item":"https:\/\/www.rionegro.com.ar"},{"@type":"ListItem","position":2,"name":"Redes","item":"https:\/\/www.rionegro.com.ar\/redes\/"},{"@type":"ListItem","position":3,"name":"Cre\u00f3 un perfil de Facebook para Jos\u00e9 de San Mart\u00edn e incluy\u00f3 a una famosa entre sus amigos","item":"https:\/\/www.rionegro.com.ar\/redes\/creo-un-perfil-de-facebook-para-jose-de-san-martin-e-incluyo-a-una-famosa-entre-sus-amigos-2233626\/"}]}</script><script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"NewsMediaOrganization","url":"https:\/\/www.rionegro.com.ar","name":"Diario R\u00edo Negro","description":"\u00daltimas noticias de Neuqu\u00e9n, R\u00edo Negro y la Patagonia Argentina. Informaci\u00f3n confiable, videos y fotos. L\u00e9elo antes en tu diario R\u00edo Negro","alternateName":"RN","logo":{"@context":"https:\/\/schema.org","@type":"ImageObject","url":"https:\/\/www.rionegro.com.ar\/wp-content\/themes\/rn-v2\/dist\/img\/apps\/rionegro.png","height":40,"width":220},"sameAs":["https:\/\/www.facebook.com\/diariorionegro\/","https:\/\/www.instagram.com\/rionegrocomar\/","https:\/\/twitter.com\/rionegrocomar","https:\/\/www.youtube.com\/user\/DiarioRioNegro"]}</script><script type="text/javascript">
+	dataLayer = [{
+		'tipoPagina': 'Nota',
+		'tipoArticulo': 'Nota',
+		'articuloID': '2233626',
+		'seccion': 'Redes',
+		'tags': 'Educación,Entre Ríos,Historia,Mirtha Legrand,Redes Sociales,San Martín',
+		'autor': 'Daniela Castro',
+		'tipoAcceso': 'free_access',
+		'impresa': false,
+		'fechaPublicacion': '2022-04-05 20:32:44',
+		'fechaModificacion': '2022-04-05 22:04:07',
+	}];
+</script><!-- INICIO SCRIPT ADZONE EN HEAD -->     
+<script async src='https://securepubads.g.doubleclick.net/tag/js/gpt.js'></script>
+<script async src="https://s1.adzonestatic.com/c/22_rionegro-2023-01.js"></script>
+<style>
+.ad-slot-inline::before { content: none !important; }
+.ad-slot-inline { background: none !important; }
+current-tags {min-height: 84px; display: block;}
+    div[class^="ad-slot"], div.ad-slot{min-width: 100%; background: repeating-linear-gradient(45deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,.1),hsla(0,0%,100%,.1),hsla(0,0%,100%,.1) 4px,rgba(0,0,0,.15) 6px); display: flex; align-items: center; justify-content: center; z-index:1; position: relative;}
+    .ad-slot-transparent::before {color: #898989 !important; background: transparent !important; }
+    .ad-slot-itt{height:1px;width:1px;}
+    .ad-slot-zocalo{height:1px;width:1px;display:none;}
+    .ad-slot-tab.xx-slot-nobackground.ad-slot:before{content: none !important}
+    .ad-slot-billboard{height:90px; overflow: hidden }
+    .ad-slot-box{height:250px}
+    .ad-slot-bigbox{height:600px}
+    .ad-slot-bigcard{height:250px}
+    .ad-slot-horizontal{height:auto;min-height:200px }
+    .ad-slot-mapa{height:auto;height:200px }
+    .ad-slot-horizontaltop{height: 90px;}
+    .ad-slot-horizontalbig{height: 200px;}
+   .ad-slot-inline {overflow: hidden;}
+
+    .banner {margin: 0 auto 30px; width: 100%; max-width: 1260px;}
+
+    @media screen and (max-width:730px){
+    /* Mobile */
+       current-tags {min-height: 42px !important; display: block;}
+      .ad-slot-billboard{height:50px}
+      .ad-slot-bigbox{height:450px}
+      .ad-slot-bigcard{height:450px}
+      .ad-slot-horizontal{height: 250px;}
+      .ad-slot-mapa{height: 50px;}
+      .ad-slot-horizontaltop{height: 100px !important;}
+      .ad-slot-horizontalbig{height:450px !important;}
+    }
+    @media screen and (min-width:731px){
+    /* Desktop */
+      .ad-slot-streaming{height:410px}
+      .ad-slot-lateral{height:600px}
+    }
+    /* Sólo Desktop */
+    @media only screen and (min-device-width: 992px){
+        .ad-right-align {position: relative; left: -32px;width: calc(100% + 32px)}
+     }
+  </style>
+<!-- FIN SCRIPT ADZONE EN HEAD--><link rel='dns-prefetch' href='//news.google.com' />
+<link rel='dns-prefetch' href='//accounts.google.com' />
+<link rel='dns-prefetch' href='//cdn.gravitec.net' />
+<link rel='dns-prefetch' href='//stats.wp.com' />
+<link rel="alternate" type="application/rss+xml" title="Diario Río Negro &raquo; Feed" href="https://www.rionegro.com.ar/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Diario Río Negro &raquo; Feed de los comentarios" href="https://www.rionegro.com.ar/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Diario Río Negro &raquo; Stories Feed" href="https://www.rionegro.com.ar/web-stories/feed/"><style id='jetpack-sharing-buttons-style-inline-css'>
+.jetpack-sharing-buttons__services-list{display:flex;flex-direction:row;flex-wrap:wrap;gap:0;list-style-type:none;margin:5px;padding:0}.jetpack-sharing-buttons__services-list.has-small-icon-size{font-size:12px}.jetpack-sharing-buttons__services-list.has-normal-icon-size{font-size:16px}.jetpack-sharing-buttons__services-list.has-large-icon-size{font-size:24px}.jetpack-sharing-buttons__services-list.has-huge-icon-size{font-size:36px}@media print{.jetpack-sharing-buttons__services-list{display:none!important}}.editor-styles-wrapper .wp-block-jetpack-sharing-buttons{gap:0;padding-inline-start:0}ul.jetpack-sharing-buttons__services-list.has-background{padding:1.25em 2.375em}
+</style>
+<style id='elasticpress-facet-style-inline-css'>
+.widget_ep-facet input[type=search],.wp-block-elasticpress-facet input[type=search]{margin-bottom:1rem}.widget_ep-facet .searchable .inner,.wp-block-elasticpress-facet .searchable .inner{max-height:20em;overflow:scroll}.widget_ep-facet .term.hide,.wp-block-elasticpress-facet .term.hide{display:none}.widget_ep-facet .empty-term,.wp-block-elasticpress-facet .empty-term{opacity:.5;position:relative}.widget_ep-facet .empty-term:after,.wp-block-elasticpress-facet .empty-term:after{bottom:0;content:" ";display:block;left:0;position:absolute;right:0;top:0;width:100%;z-index:2}.widget_ep-facet .level-1,.wp-block-elasticpress-facet .level-1{padding-left:20px}.widget_ep-facet .level-2,.wp-block-elasticpress-facet .level-2{padding-left:40px}.widget_ep-facet .level-3,.wp-block-elasticpress-facet .level-3{padding-left:60px}.widget_ep-facet .level-4,.wp-block-elasticpress-facet .level-4{padding-left:5pc}.widget_ep-facet .level-5,.wp-block-elasticpress-facet .level-5{padding-left:75pt}.widget_ep-facet input[disabled],.wp-block-elasticpress-facet input[disabled]{cursor:pointer;opacity:1}.widget_ep-facet .term a,.wp-block-elasticpress-facet .term a{-webkit-box-align:center;-ms-flex-align:center;align-items:center;display:-webkit-box;display:-ms-flexbox;display:flex;position:relative}.widget_ep-facet .term a:hover .ep-checkbox,.wp-block-elasticpress-facet .term a:hover .ep-checkbox{background-color:#ccc}.ep-checkbox{-webkit-box-align:center;-ms-flex-align:center;-ms-flex-negative:0;-webkit-box-pack:center;-ms-flex-pack:center;align-items:center;background-color:#eee;display:-webkit-box;display:-ms-flexbox;display:flex;flex-shrink:0;height:1em;justify-content:center;margin-right:.25em;width:1em}.ep-checkbox:after{border:solid #fff;border-width:0 .125em .125em 0;content:"";display:none;height:.5em;-webkit-transform:rotate(45deg);transform:rotate(45deg);width:.25em}.ep-checkbox.checked{background-color:#5e5e5e}.ep-checkbox.checked:after{display:block}
+
+</style>
+<link rel='stylesheet' id='audio-player-styles-css' href='https://www.rionegro.com.ar/wp-content/plugins/rn-audio-player/assets/styles.css' media='all' />
+<script type="text/javascript" async="" src="https://www.rionegro.com.ar/wp-content/themes/rn-v2/inc/templateV1/assets/rn-client-0.7.5.min.js?ver=4.4.6" id="RNAnalyticsClient-async-js"></script>
+<script type="text/javascript" async="" subscriptions-control="manual" src="https://news.google.com/swg/js/v1/swg.js?ver=4.4.6" id="google-1-async-subscriptions-control-js"></script>
+<script type="text/javascript" async="" src="https://news.google.com/swg/js/v1/swg-gaa.js?ver=4.4.6" id="google-2-async-js"></script>
+<script type="text/javascript" src="https://accounts.google.com/gsi/client?ver=4.4.6" id="google-3-js"></script>
+<script type="text/javascript" src="https://cdn.gravitec.net/storage/ec19f94594c82b3aa711d98b90a3a1f7/client.js?service=wp&amp;wpath=https%3A%2F%2Fwww.rionegro.com.ar%2Fwp-content%2Fplugins%2Fgravitec-net-web-push-notifications%2F%2Fsdk_files%2Fsw.php&amp;ver=2.9.6" id="gravitecnet-js"></script>
+<link rel="https://api.w.org/" href="https://www.rionegro.com.ar/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://www.rionegro.com.ar/wp-json/wp/v2/posts/2233626" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.rionegro.com.ar/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 6.6.2" />
+<link rel='shortlink' href='https://www.rionegro.com.ar/?p=2233626' />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://www.rionegro.com.ar/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.rionegro.com.ar%2Fredes%2Fcreo-un-perfil-de-facebook-para-jose-de-san-martin-e-incluyo-a-una-famosa-entre-sus-amigos-2233626%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://www.rionegro.com.ar/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.rionegro.com.ar%2Fredes%2Fcreo-un-perfil-de-facebook-para-jose-de-san-martin-e-incluyo-a-una-famosa-entre-sus-amigos-2233626%2F&#038;format=xml" />
+	<style>img#wpstats{display:none}</style>
+		<link rel="amphtml" href="https://www.rionegro.com.ar/redes/creo-un-perfil-de-facebook-para-jose-de-san-martin-e-incluyo-a-una-famosa-entre-sus-amigos-2233626/amp/"><link rel="icon" href="https://www.rionegro.com.ar/wp-content/uploads/2021/11/cropped-apple-icon-152x152-1.png?w=32" sizes="32x32" />
+<link rel="icon" href="https://www.rionegro.com.ar/wp-content/uploads/2021/11/cropped-apple-icon-152x152-1.png?w=192" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://www.rionegro.com.ar/wp-content/uploads/2021/11/cropped-apple-icon-152x152-1.png?w=180" />
+<meta name="msapplication-TileImage" content="https://www.rionegro.com.ar/wp-content/uploads/2021/11/cropped-apple-icon-152x152-1.png?w=270" />
+		<style type="text/css" id="wp-custom-css">
+			@media only screen and (min-width: 1024px) {
+	#ad-home-energiaABC iframe {
+		transform: scale(0.93) translateX(-40px) translateY(-10px);
+			max-width: 970px;
+	}
+	
+	.headline-live {margin-bottom: 30px}
+}
+@media only screen and (max-width: 767px) {
+	.page-template-template-vertices {
+		padding-top: 0 !important;
+	}
+	
+	.grid-item.destacada .news__excerpt {
+		display: none;
+	}
+	
+	#video-component {
+		margin: 30px 0;
+	}
+	
+	.page-specialsummary:not(.post-template-template-contenido-patrocinado) {padding: 0 !important;}
+	
+	.category-simple.mod--slider-manual .row {
+		padding: 0 15px !important;
+	}
+}
+
+.timeline__card-content p {
+	line-height: 26px !important;
+}
+
+.tag_exclusive_post {
+  padding: 1px;
+  font-weight: 40;
+}
+
+figcaption.wp-element-caption {
+	line-height: 1.5;
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+table.has-fixed-layout {
+	border: 1px solid black;
+	width: 100%;
+	border-collapse: collapse;
+}
+
+table.has-fixed-layout td, table.has-fixed-layout th {
+	border: 1px solid black;
+  padding: 8px;
+}
+table.has-fixed-layout thead {
+	text-align: left;
+}
+
+.sub-menu li {padding-left: 10px}
+.sub-menu {column-count: 1 !important; -webkit-column-count: 1 !important; -moz-column-count: 1 !important;}
+
+.summary__image img {z-index: 4}
+
+		</style>
+		<meta http-equiv="refresh" content="500" ></head>
+
+<body class="post-template-default single single-post postid-2233626 single-format-standard">
+				<div class="sticky__header" id="sticky-ad">                                    <div class="row" id="adHeaderTopSticky" data-sticky-desktop="700" data-sticky-mobile="-1">
+                <ads-component content='{"ad":{"margin_t":"10px","margin_b":"10px","class":"ad-slot-billboard","id":"ad-slot-abc2","refresh":"60","edit":""}}'></ads-component>            </div>
+        </div>            <nav class="topnav">
+                <div class="row topnav__wrapper">
+                    <ul><li id="menu-item-3581729" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3581729"><a href="https://rionegro.com.ar/tag/neuquen">Neuquén</a></li>
+<li id="menu-item-3503180" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3503180"><a href="https://rionegro.com.ar/tag/alto-valle">Alto Valle</a></li>
+<li id="menu-item-924726" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-924726"><a href="https://rionegro.com.ar/tag/roca/">Roca</a></li>
+<li id="menu-item-3583169" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3583169"><a href="https://www.rionegro.com.ar/tag/bariloche/">Bariloche</a></li>
+<li id="menu-item-924723" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-924723"><a href="https://rionegro.com.ar/tag/cipolletti/">Cipolletti</a></li>
+<li id="menu-item-3583172" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3583172"><a href="https://www.rionegro.com.ar/tag/viedma/">Viedma</a></li>
+</ul>                    <div class="topnav__group">
+    <ul><li id="menu-item-2194426" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2194426"><a target="_blank" rel="noopener" href="https://www.rionegro.com.ar/club/">Club Río Negro</a></li>
+<li id="menu-item-3597942" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3597942"><a href="https://publicatuaviso.rionegro.com.ar/captura/login.php">Publicá tu aviso</a></li>
+<li id="menu-item-2144245" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2144245"><a target="_blank" rel="noopener" href="https://www.rionegro.com.ar/necrologicas/">Necrológicas</a></li>
+<li id="menu-item-2494923" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2494923"><a target="_blank" rel="noopener" href="https://www.rionegro.com.ar/newsletters/">Newsletters</a></li>
+</ul>    <weather-dropdown content="{&quot;items&quot;:[{&quot;slug&quot;:&quot;neuquen&quot;,&quot;name&quot;:&quot;Neuqu\u00e9n&quot;},{&quot;slug&quot;:&quot;general-roca&quot;,&quot;name&quot;:&quot;General Roca&quot;},{&quot;slug&quot;:&quot;bariloche&quot;,&quot;name&quot;:&quot;Bariloche&quot;},{&quot;slug&quot;:&quot;viedma&quot;,&quot;name&quot;:&quot;Viedma&quot;},{&quot;slug&quot;:&quot;las-grutas-sao&quot;,&quot;name&quot;:&quot;Las Grutas - SAO&quot;},{&quot;slug&quot;:&quot;cipolletti&quot;,&quot;name&quot;:&quot;Cipolletti&quot;},{&quot;slug&quot;:&quot;zapala&quot;,&quot;name&quot;:&quot;Zapala&quot;},{&quot;slug&quot;:&quot;buenos-aires&quot;,&quot;name&quot;:&quot;Buenos Aires&quot;},{&quot;slug&quot;:&quot;bahia-blanca&quot;,&quot;name&quot;:&quot;Bahia Blanca&quot;},{&quot;slug&quot;:&quot;chos-malal&quot;,&quot;name&quot;:&quot;Chos Malal&quot;},{&quot;slug&quot;:&quot;vaca-muerta&quot;,&quot;name&quot;:&quot;Vaca Muerta&quot;},{&quot;slug&quot;:&quot;san-martin-de-los-andes&quot;,&quot;name&quot;:&quot;San Martin de los Andes&quot;},{&quot;slug&quot;:&quot;villa-la-angostura&quot;,&quot;name&quot;:&quot;Villa La Angostura&quot;}]}"></weather-dropdown></div>                </div>
+            </nav>
+                        <div class="sticky__header" id="sticky-header">
+	<div id="rn-header">
+		<div class="row">
+			<header class="header">
+				<div class="header__wrapper">
+					<div class="header__first-section">
+						<div class="circle__button" id="button-menu" data-navigation="open">
+    <svg style="enable-background:new 0 0 36.1 36.2;" xmlns="http://www.w3.org/2000/svg" viewBox="9.82 12.17 16.45 11.86">
+        <style type="text/css">
+            .st1 {
+                fill: none;
+                stroke: #DE0303;
+                stroke-width: 1.1023;
+                stroke-miterlimit: 10;
+            }
+        </style>
+        <path class="st1" d="M 10.445 12.893 L 25.724 12.721"></path>
+        <path class="st1" d="M 10.411 18.185 L 25.689 18.013"></path>
+        <path class="st1" d="M 10.376 23.478 L 25.655 23.306"></path>
+    </svg>
+</div>						<div class="circle__button" id="button-search">
+    <a href="https://www.rionegro.com.ar/?s=" title="Buscar" aria-label="Buscar">
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" style="enable-background:new 0 0 36.1 36.2;" xml:space="preserve" viewBox="10.05 8.85 16.9 17.2">
+            <style type="text/css">
+                .st1 {
+                    fill: none;
+                    stroke: #DE0303;
+                    stroke-width: 1.1023;
+                    stroke-miterlimit: 10;
+                }
+            </style>
+            <g>
+                <path class="st1" d="M23.4,15.9c0,3.6-2.9,6.5-6.4,6.5s-6.4-2.9-6.4-6.5s2.9-6.5,6.4-6.5S23.4,12.3,23.4,15.9z"></path>
+                <line class="st1" x1="26.4" y1="25.5" x2="21.5" y2="20.5"></line>
+            </g>
+        </svg>
+    </a>
+</div>						<a class="btn__radio --hide-mobile" target="_blank" href="https://www.rionegro.com.ar/radio-en-vivo">
+  <div class="icono-an-radio-1a">
+    <!-- partial:index.partial.html -->
+    <svg width="10px" height="8px" viewBox="0 0 10 8" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <g
+        id="Audio"
+        transform="translate(0.000000, 0.500000)"
+        stroke="currentColor"
+        stroke-width="1"
+        fill-rule="evenodd"
+        stroke-linecap="round"
+      >
+        <line x1="6.5" y1="0.493135" x2="6.5" y2="6.50687" id="Line-5">
+          <animate
+            attributeType="XML"
+            attributeName="y1"
+            values="2;0;2"
+            keyTimes="0;0.5;1"
+            dur=".8s"
+            repeatCount="indefinite"
+          ></animate>
+          <animate
+            attributeType="XML"
+            attributeName="y2"
+            values="5;7;5"
+            keyTimes="0;0.5;1"
+            dur=".8s"
+            repeatCount="indefinite"
+          ></animate>
+        </line>
+        <line x1="4.5" y1="0.789016" x2="4.5" y2="6.21098" id="Line-4">
+          <animate
+            attributeType="XML"
+            attributeName="y1"
+            values="0;2;0"
+            keyTimes="0;0.5;1"
+            dur=".5s"
+            repeatCount="indefinite"
+          ></animate>
+          <animate
+            attributeType="XML"
+            attributeName="y2"
+            values="7;5;7"
+            keyTimes="0;0.5;1"
+            dur=".5s"
+            repeatCount="indefinite"
+          ></animate>
+        </line>
+        <line x1="2.5" y1="1.67582" x2="2.5" y2="5.32418" id="Line-3">
+          <animate
+            attributeType="XML"
+            attributeName="y1"
+            values="1;3;1"
+            keyTimes="0;0.5;1"
+            dur=".6s"
+            repeatCount="indefinite"
+          ></animate>
+          <animate
+            attributeType="XML"
+            attributeName="y2"
+            values="6;4;6"
+            keyTimes="0;0.5;1"
+            dur=".6s"
+            repeatCount="indefinite"
+          ></animate>
+        </line>
+      </g>
+    </svg>
+    <!-- partial -->
+    <p><span>ESCUCHÁ</span> RN RADIO</p>
+  </div>
+</a>					</div>
+					<a class="header__logo" href="https://www.rionegro.com.ar/" title="Diario Río Negro">
+						<picture>
+							<source
+								media="(max-width: 359px)"
+								srcset="https://www.rionegro.com.ar/wp-content/themes/rn-v2/dist/img/logo_rionegro_small.svg">
+							<img
+								src="https://www.rionegro.com.ar/wp-content/themes/rn-v2/dist/img/logo_rionegro.svg"
+								width="321"
+								height="50"
+								alt="Diario Río Negro">
+						</picture>
+					</a>
+					<div class="header__icons">
+						<div class="radio-header-section">
+															<a href="https://suscripciones.rionegro.com.ar/?utm_source=boton-suscribite" 
+   class="button button--invert button--red header__custom-btn --hidden "
+   style="color: #000000;background-color: #faff00;border: none;">
+    SUSCRIBITE DESDE $599    </a>													</div>
+						<div class="header__actions">
+							<dropdown-user></dropdown-user>
+						</div>
+					</div>
+				</div>
+			</header>
+		</div>
+	</div>
+</div>        					<article class="newsfull">
+						<div class="row">
+				<header class="newsfull__header">
+	<div class="newsfull__info">
+		            <a class="newsfull__section" href="https://www.rionegro.com.ar/redes/" title="Redes">
+                Redes            </a>
+            	</div>
+		<h1 class="newsfull__title">Creó un perfil de Facebook para José de San Martín e incluyó a una famosa entre sus amigos</h1>
+	<div class="newsfull__excerpt">
+		<p>
+			El insólito reflejo del prócer fue como respuesta a una tarea de Historia, en Entre Ríos, y se volvió viral.		</p>
+	</div>
+	<div class="newsfull__line">
+		<div class="newsfull__authors">
+	<div class="newsfull__authors_media">
+		<a href="" title="Redacción Central"><img src="https://www.rionegro.com.ar/wp-content/themes/rn-v2/dist/img/placeholder_sm.png"  width=44  height=44 alt="Redacción"></a>
+	</div>
+	<div class="newsfull__authors_data">
+		<p>Por Redacción</p>
+		<time class="newsfull__time" datetime="yyyy-MM-dd'T'HH:mm">05/04/2022 20:32  | Actualizado 05/04/2022 22:04</time>
+	</div>
+</div>
+
+						<div class="newsfull__share"
+										>
+							<a style="display:none" id="news_link">https://www.rionegro.com.ar/redes/creo-un-perfil-de-facebook-para-jose-de-san-martin-e-incluyo-a-una-famosa-entre-sus-amigos-2233626/</a>
+		<a class="icon icon--whatsapp" target="_blank" rel="nofollow" href="https://wa.me/?text=https%3A%2F%2Fwww.rionegro.com.ar%2Fredes%2Fcreo-un-perfil-de-facebook-para-jose-de-san-martin-e-incluyo-a-una-famosa-entre-sus-amigos-2233626%2F" title="Creó un perfil de Facebook para José de San Martín e incluyó a una famosa entre sus amigos" data-action="share/whatsapp/share"></a>
+		<a class="icon icon--facebook" target="_blank" rel="nofollow" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.rionegro.com.ar%2Fredes%2Fcreo-un-perfil-de-facebook-para-jose-de-san-martin-e-incluyo-a-una-famosa-entre-sus-amigos-2233626%2F&#038;t=Cre%C3%B3+un+perfil+de+Facebook+para+Jos%C3%A9+de+San+Mart%C3%ADn+e+incluy%C3%B3+a+una+famosa+entre+sus+amigos" title="Creó un perfil de Facebook para José de San Martín e incluyó a una famosa entre sus amigos"></a>
+		<a class="icon icon--twitter" target="_blank" rel="nofollow" href="https://twitter.com/intent/tweet?text=Cre%C3%B3+un+perfil+de+Facebook+para+Jos%C3%A9+de+San+Mart%C3%ADn+e+incluy%C3%B3+a+una+famosa+entre+sus+amigos&#038;url=https%3A%2F%2Fwww.rionegro.com.ar%2Fredes%2Fcreo-un-perfil-de-facebook-para-jose-de-san-martin-e-incluyo-a-una-famosa-entre-sus-amigos-2233626%2F" title="Creó un perfil de Facebook para José de San Martín e incluyó a una famosa entre sus amigos"></a>
+		<a class="icon icon--telegram" target="_blank" rel="nofollow" href="https://t.me/share/url?url=https%3A%2F%2Fwww.rionegro.com.ar%2Fredes%2Fcreo-un-perfil-de-facebook-para-jose-de-san-martin-e-incluyo-a-una-famosa-entre-sus-amigos-2233626%2F&#038;text=Cre%C3%B3+un+perfil+de+Facebook+para+Jos%C3%A9+de+San+Mart%C3%ADn+e+incluy%C3%B3+a+una+famosa+entre+sus+amigos" title="Creó un perfil de Facebook para José de San Martín e incluyó a una famosa entre sus amigos"></a>
+		<a class="icon icon--pinterest" target="_blank" rel="nofollow" href="http://pinterest.com/pin/create/button/?url=https%3A%2F%2Fwww.rionegro.com.ar%2Fredes%2Fcreo-un-perfil-de-facebook-para-jose-de-san-martin-e-incluyo-a-una-famosa-entre-sus-amigos-2233626%2F&#038;media=https%3A%2F%2Fwww.rionegro.com.ar%2Fwp-content%2Fuploads%2F2022%2F04%2F720.jpeg&#038;description=Cre%C3%B3+un+perfil+de+Facebook+para+Jos%C3%A9+de+San+Mart%C3%ADn+e+incluy%C3%B3+a+una+famosa+entre+sus+amigos" title="Creó un perfil de Facebook para José de San Martín e incluyó a una famosa entre sus amigos"></a>
+		<a class="icon icon--mail" target="_blank" rel="nofollow" href="mailto:?subject=Creó%20un%20perfil%20de%20Facebook%20para%20José%20de%20San%20Martín%20e%20incluyó%20a%20una%20famosa%20entre%20sus%20amigos&#038;body=Creó%20un%20perfil%20de%20Facebook%20para%20José%20de%20San%20Martín%20e%20incluyó%20a%20una%20famosa%20entre%20sus%20amigos:%20https://www.rionegro.com.ar/redes/creo-un-perfil-de-facebook-para-jose-de-san-martin-e-incluyo-a-una-famosa-entre-sus-amigos-2233626/" title="Creó un perfil de Facebook para José de San Martín e incluyó a una famosa entre sus amigos"></a>
+		<div class="tooltiptext" id="myTooltip"></div>
+				</div>
+				</div>
+</header>
+				<div class="newsfull__content sticky__wrapper">
+					<div class="sticky__main">
+						<div class="photogallery" data-swiper="{simulateTouch:false,paginationClickable:true,loop:true}">
+		<div class="swiper-container swiper-container-horizontal new-gallery-rn" style="max-width: 920px !important;">
+			<button class="swiper-fullscreen icon icon--fullscreen" type="button"></button>
+			<div class="swiper-wrapper">
+									<div class="swiper-slide">
+						<figure>
+							<div class="photogallery__image">
+								<div class="swiper-fraction">
+									<span class="icon icon--gallery"></span><span> </span>
+								</div>
+								<img srcset="https://www.rionegro.com.ar/wp-content/uploads/2022/04/720.jpeg?w=920&h=517&crop=1 1x,https://www.rionegro.com.ar/wp-content/uploads/2022/04/720.jpeg?w=720&h=405&crop=1 1x,https://www.rionegro.com.ar/wp-content/uploads/2022/04/720.jpeg?w=425&h=239&crop=1 2x,https://www.rionegro.com.ar/wp-content/uploads/2022/04/720.jpeg?w=375&h=211&crop=1 2x" data-full="https://www.rionegro.com.ar/wp-content/uploads/2022/04/720.jpeg" data-width="920" data-height="517" src="https://www.rionegro.com.ar/wp-content/uploads/2022/04/720.jpeg" width="920" height="517" alt="Así se ve el perfil de San Martín en Facebook, según el reflejo del estudiante.-" class="attachment-nota-gallery size-nota-gallery wp-post-image">
+							</div>
+							<figcaption>
+								<p>Así se ve el perfil de San Martín en Facebook, según el reflejo del estudiante.-</p>
+							</figcaption>
+						</figure>
+					</div>
+							</div>
+					</div>
+</div>
+						<div class="newsfull__body">
+											<div class="newsfull__share"
+										data-fixabox="socialshare" data-top="120"
+										>
+							<a style="display:none" id="news_link">https://www.rionegro.com.ar/redes/creo-un-perfil-de-facebook-para-jose-de-san-martin-e-incluyo-a-una-famosa-entre-sus-amigos-2233626/</a>
+		<a class="icon icon--whatsapp" target="_blank" rel="nofollow" href="https://wa.me/?text=https%3A%2F%2Fwww.rionegro.com.ar%2Fredes%2Fcreo-un-perfil-de-facebook-para-jose-de-san-martin-e-incluyo-a-una-famosa-entre-sus-amigos-2233626%2F" title="Creó un perfil de Facebook para José de San Martín e incluyó a una famosa entre sus amigos" data-action="share/whatsapp/share"></a>
+		<a class="icon icon--facebook" target="_blank" rel="nofollow" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.rionegro.com.ar%2Fredes%2Fcreo-un-perfil-de-facebook-para-jose-de-san-martin-e-incluyo-a-una-famosa-entre-sus-amigos-2233626%2F&#038;t=Cre%C3%B3+un+perfil+de+Facebook+para+Jos%C3%A9+de+San+Mart%C3%ADn+e+incluy%C3%B3+a+una+famosa+entre+sus+amigos" title="Creó un perfil de Facebook para José de San Martín e incluyó a una famosa entre sus amigos"></a>
+		<a class="icon icon--twitter" target="_blank" rel="nofollow" href="https://twitter.com/intent/tweet?text=Cre%C3%B3+un+perfil+de+Facebook+para+Jos%C3%A9+de+San+Mart%C3%ADn+e+incluy%C3%B3+a+una+famosa+entre+sus+amigos&#038;url=https%3A%2F%2Fwww.rionegro.com.ar%2Fredes%2Fcreo-un-perfil-de-facebook-para-jose-de-san-martin-e-incluyo-a-una-famosa-entre-sus-amigos-2233626%2F" title="Creó un perfil de Facebook para José de San Martín e incluyó a una famosa entre sus amigos"></a>
+		<a class="icon icon--telegram" target="_blank" rel="nofollow" href="https://t.me/share/url?url=https%3A%2F%2Fwww.rionegro.com.ar%2Fredes%2Fcreo-un-perfil-de-facebook-para-jose-de-san-martin-e-incluyo-a-una-famosa-entre-sus-amigos-2233626%2F&#038;text=Cre%C3%B3+un+perfil+de+Facebook+para+Jos%C3%A9+de+San+Mart%C3%ADn+e+incluy%C3%B3+a+una+famosa+entre+sus+amigos" title="Creó un perfil de Facebook para José de San Martín e incluyó a una famosa entre sus amigos"></a>
+		<a class="icon icon--pinterest" target="_blank" rel="nofollow" href="http://pinterest.com/pin/create/button/?url=https%3A%2F%2Fwww.rionegro.com.ar%2Fredes%2Fcreo-un-perfil-de-facebook-para-jose-de-san-martin-e-incluyo-a-una-famosa-entre-sus-amigos-2233626%2F&#038;media=https%3A%2F%2Fwww.rionegro.com.ar%2Fwp-content%2Fuploads%2F2022%2F04%2F720.jpeg&#038;description=Cre%C3%B3+un+perfil+de+Facebook+para+Jos%C3%A9+de+San+Mart%C3%ADn+e+incluy%C3%B3+a+una+famosa+entre+sus+amigos" title="Creó un perfil de Facebook para José de San Martín e incluyó a una famosa entre sus amigos"></a>
+		<a class="icon icon--mail" target="_blank" rel="nofollow" href="mailto:?subject=Creó%20un%20perfil%20de%20Facebook%20para%20José%20de%20San%20Martín%20e%20incluyó%20a%20una%20famosa%20entre%20sus%20amigos&#038;body=Creó%20un%20perfil%20de%20Facebook%20para%20José%20de%20San%20Martín%20e%20incluyó%20a%20una%20famosa%20entre%20sus%20amigos:%20https://www.rionegro.com.ar/redes/creo-un-perfil-de-facebook-para-jose-de-san-martin-e-incluyo-a-una-famosa-entre-sus-amigos-2233626/" title="Creó un perfil de Facebook para José de San Martín e incluyó a una famosa entre sus amigos"></a>
+		<div class="tooltiptext" id="myTooltip"></div>
+				</div>
+										<!-- <script type="text/javascript">eplAD4M("Notas_AB1");</script><noscript><a href="https://ads.e-planning.net/ei/3/4d3e/Notas/Notas_AB1?it=i&rnd=$RANDOM" target="_blank"><img width="300" height="250"  alt="e-planning.net ad" src="https://ads.e-planning.net/eb/3/4d3e/Notas/Notas_AB1?o=i&rnd=$RANDOM" border=0></a></noscript>     -->
+																							
+<p>La <strong>ingeniosa resolución de un estudiante</strong> a un ejercicio de<strong> Historia en Entre Ríos </strong>se llevó todas las miradas, cuando se les pidió resolver<strong> una biografía de José de San Martín</strong> como tarea. </p>
+
+
+<div class="lazyblock-leer-mas-Z13kr1q wp-block-lazyblock-leer-mas"><article class="news news--summary news--55-81" >
+    <figure class="news__media">
+        <a href="https://www.rionegro.com.ar/justicia/insolito-momento-en-una-audiencia-por-zoom-no-prendio-la-camara-porque-estaba-en-toallon-2233221/" title="Insólito momento en una audiencia por Zoom: no prendió la cámara porque estaba «en toallón»" class="recomendation__link">
+            <img decoding="async" src="https://www.rionegro.com.ar/wp-content/uploads/2022/04/juez-tan-sorpresa.jpg?w=215&#038;h=120&#038;crop=1" alt="Imagen de Insólito momento en una audiencia por Zoom: no prendió la cámara porque estaba «en toallón»" loading="lazy">
+                    </a>
+    </figure>
+    <div class="news__data">
+                            <span class="news__section">Lee También</span>
+                <h2 class="news__title">
+            <a href="https://www.rionegro.com.ar/justicia/insolito-momento-en-una-audiencia-por-zoom-no-prendio-la-camara-porque-estaba-en-toallon-2233221/" title="Insólito momento en una audiencia por Zoom: no prendió la cámara porque estaba «en toallón»" class="recomendation__link">Insólito momento en una audiencia por Zoom: no prendió la cámara porque estaba «en toallón»</a>
+        </h2>
+    </div>
+</article>    </div>
+
+
+<p>Si bien podría haber resuelto un ensayo para cumplir con ese tópico,<strong> el chico eligió hacerle un «perfil de Facebook» al prócer</strong> y, no conforme con eso, también agregó un simpático ítem entre los amigos del héroe sudamericano. </p>
+
+
+
+<p>¿Quién le aceptó la solicitud? A nadie más y nadie menos que <strong>a la diva de los almuerzos, Mirtha Legrand</strong>. Ese excéntrico hecho dio lugar a que la profesora mostrara el trabajo en las redes sociales. </p>
+
+
+
+<p>Además, entre otros contactos de San Martín, también se observan a <strong>“Juanma Belgrano” y a “Simón Bolívar”.</strong></p>
+
+
+
+<p>La biografía<strong> fue dibujada a mano</strong> y, entre otras cosas, <strong>muestra al prócer con una bandera de Argentina en su foto de perfil. </strong>También puso una imagen de portada <strong>donde el Libertador está montando su caballo blanco.</strong></p>
+
+
+
+<figure class="wp-block-image size-large"><img fetchpriority="high" decoding="async" width="1024" height="768" src="https://www.rionegro.com.ar/wp-content/uploads/2022/04/1649163927896Perfil-San-martin.jpg?w=960" alt="" class="wp-image-2233672" srcset="https://www.rionegro.com.ar/wp-content/uploads/2022/04/1649163927896Perfil-San-martin.jpg 1024w, https://www.rionegro.com.ar/wp-content/uploads/2022/04/1649163927896Perfil-San-martin.jpg?resize=689,517 689w, https://www.rionegro.com.ar/wp-content/uploads/2022/04/1649163927896Perfil-San-martin.jpg?resize=768,576 768w, https://www.rionegro.com.ar/wp-content/uploads/2022/04/1649163927896Perfil-San-martin.jpg?resize=960,720 960w, https://www.rionegro.com.ar/wp-content/uploads/2022/04/1649163927896Perfil-San-martin.jpg?resize=150,113 150w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption>Así se ve el perfil de San Martín en Facebook, según el reflejo del estudiante.-</figcaption></figure>
+
+
+
+<p>En la información pública, eligió mostrar que<strong> «trabaja en el Ejército, estudió en el Real Seminario de Nobles, que radica en Boulogne Sur-Mer, Francia»</strong>. Oriundo de Yapeyú, contó también que<strong> está casado con María de los Remedios.</strong></p>
+
+
+
+<p>Y se volvió viral.</p>
+
+
+<div class="lazyblock-leer-mas-2jYLnO wp-block-lazyblock-leer-mas"><article class="news news--summary news--55-81" >
+    <figure class="news__media">
+        <a href="https://www.rionegro.com.ar/politica/murio-graciela-giannettasio-ex-ministra-de-educacion-2233780/" title="Murió Graciela Giannettasio, exministra de Educación" class="recomendation__link">
+            <img decoding="async" src="https://www.rionegro.com.ar/wp-content/uploads/2022/04/bbx_608654412_13.jpg?w=215&#038;h=120&#038;crop=1" alt="Imagen de Murió Graciela Giannettasio, exministra de Educación" loading="lazy">
+                    </a>
+    </figure>
+    <div class="news__data">
+                            <span class="news__section">Lee También</span>
+                <h2 class="news__title">
+            <a href="https://www.rionegro.com.ar/politica/murio-graciela-giannettasio-ex-ministra-de-educacion-2233780/" title="Murió Graciela Giannettasio, exministra de Educación" class="recomendation__link">Murió Graciela Giannettasio, exministra de Educación</a>
+        </h2>
+    </div>
+</article>    </div>
+
+<div class="lazyblock-leer-mas-Z8v5Hr wp-block-lazyblock-leer-mas"><article class="news news--summary news--55-81" >
+    <figure class="news__media">
+        <a href="https://www.rionegro.com.ar/sociedad/retiran-de-la-venta-un-lote-de-chocolates-kinder-por-la-deteccion-de-casos-de-salmonella-2233356/" title="Retiran de la venta un lote de chocolates Kinder, por la detección de casos de salmonella" class="recomendation__link">
+            <img decoding="async" src="https://www.rionegro.com.ar/wp-content/uploads/2022/04/kinderrrr-e1649196029855.jpg?w=215&#038;h=120&#038;crop=1" alt="Imagen de Retiran de la venta un lote de chocolates Kinder, por la detección de casos de salmonella" loading="lazy">
+                    </a>
+    </figure>
+    <div class="news__data">
+                            <span class="news__section">Lee También</span>
+                <h2 class="news__title">
+            <a href="https://www.rionegro.com.ar/sociedad/retiran-de-la-venta-un-lote-de-chocolates-kinder-por-la-deteccion-de-casos-de-salmonella-2233356/" title="Retiran de la venta un lote de chocolates Kinder, por la detección de casos de salmonella" class="recomendation__link">Retiran de la venta un lote de chocolates Kinder, por la detección de casos de salmonella</a>
+        </h2>
+    </div>
+</article>    </div>									<br class="clear">
+																															<div class="newsfull__tags">
+			<p>Temas </p>
+				<a href="https://www.rionegro.com.ar/tag/educacion/" title="Educación">Educación</a>
+				<a href="https://www.rionegro.com.ar/tag/entre-rios/" title="Entre Ríos">Entre Ríos</a>
+				<a href="https://www.rionegro.com.ar/tag/historia/" title="Historia">Historia</a>
+				<a href="https://www.rionegro.com.ar/tag/mirtha-legrand/" title="Mirtha Legrand">Mirtha Legrand</a>
+				<a href="https://www.rionegro.com.ar/tag/redes-sociales/" title="Redes Sociales">Redes Sociales</a>
+				<a href="https://www.rionegro.com.ar/tag/san-martin/" title="San Martín">San Martín</a>
+								
+</div>
+						</div>
+					</div>
+					<div class="sticky__sidebar --sidebar-show-mobile">
+					  <div class="sticky">
+			<ads-component content='{"ad":{"margin_t":"0","margin_b":"20px","class":"ad-slot-box","id":"ad-slot-c1","refresh":"120","edit":""}}'></ads-component>					
+<div class="mod mod--lastesnews">
+    <div class="mod__header">
+        <h2 class="mod__title">Lo Último</h2>
+    </div>
+    <ol class="mod__content">
+                        <li class="last-hour">
+                    <article class="news news--line">
+                        <div class="news__data">
+                            <h2 class="news__title">
+                                <a href="https://www.rionegro.com.ar/deportes/futbol/valentin-carboni-tuvo-una-grave-lesion-en-la-seleccion-argentina-que-dice-el-parte-medico-3834241/" title="Valentín Carboni tuvo una grave lesión en la Selección Argentina: qué dice el parte médico">
+                                    Valentín Carboni tuvo una grave lesión en la Selección Argentina: qué dice el parte médico                                </a>
+                            </h2>
+                            <div class="news__line">
+                                <time class="news__time"></time>
+                            </div>
+                        </div>
+                    </article>
+                </li>
+                                <li class="last-hour">
+                    <article class="news news--line">
+                        <div class="news__data">
+                            <h2 class="news__title">
+                                <a href="https://www.rionegro.com.ar/voy-turismo/los-pasos-a-chile-este-fin-de-semana-largo-los-horarios-a-saber-si-vas-de-compras-3834252/" title="Los pasos a Chile este fin de semana largo: los horarios a saber si vas de compras">
+                                    Los pasos a Chile este fin de semana largo: los horarios a saber si vas de compras                                </a>
+                            </h2>
+                            <div class="news__line">
+                                <time class="news__time"></time>
+                            </div>
+                        </div>
+                    </article>
+                </li>
+                                <li class="last-hour">
+                    <article class="news news--line">
+                        <div class="news__data">
+                            <h2 class="news__title">
+                                <a href="https://www.rionegro.com.ar/sociedad/entre-risas-y-humoradas-giorgio-enseno-a-cocinar-a-los-ninos-en-bariloche-3834255/" title="Entre risas y humoradas, “Giorgio” enseñó a cocinar a los niños en Bariloche">
+                                    Entre risas y humoradas, “Giorgio” enseñó a cocinar a los niños en Bariloche                                </a>
+                            </h2>
+                            <div class="news__line">
+                                <time class="news__time"></time>
+                            </div>
+                        </div>
+                    </article>
+                </li>
+                                <li class="last-hour">
+                    <article class="news news--line">
+                        <div class="news__data">
+                            <h2 class="news__title">
+                                <a href="https://www.rionegro.com.ar/redes/la-amistad-mas-tierna-un-caballo-y-un-gatito-disfrutan-juntos-de-un-paseo-en-un-campo-de-argentina-3834248/" title="La amistad más tierna: un caballo y un gatito disfrutan juntos de un paseo en un campo de Argentina ">
+                                    La amistad más tierna: un caballo y un gatito disfrutan juntos de un paseo en un campo de Argentina                                 </a>
+                            </h2>
+                            <div class="news__line">
+                                <time class="news__time"></time>
+                            </div>
+                        </div>
+                    </article>
+                </li>
+                                <li class="last-hour">
+                    <article class="news news--line">
+                        <div class="news__data">
+                            <h2 class="news__title">
+                                <a href="https://www.rionegro.com.ar/politica/auditorias-a-universidades-cuales-fueron-elegidas-y-que-buscaran-evaluar-en-cada-una-3834199/" title="Auditorias a universidades: cuáles fueron elegidas y qué buscarán evaluar en cada una">
+                                    Auditorias a universidades: cuáles fueron elegidas y qué buscarán evaluar en cada una                                </a>
+                            </h2>
+                            <div class="news__line">
+                                <time class="news__time"></time>
+                            </div>
+                        </div>
+                    </article>
+                </li>
+                    </ol>
+</div>				<ads-component content='{"ad":{"margin_t":"20px","margin_b":"20px","class":"ad-slot-bigbox","id":"ad-slot-c2","refresh":"120","edit":""}}'></ads-component>	</div>
+<!-- /sidebar -->					</div>
+				</div>
+			</div>
+		</article>
+		<div data-fixaboxend="sectionlist"></div>
+		<div data-fixaboxend="socialshare"></div>
+		<div data-fixaboxend="asidebanner"></div>
+		<article class="newsfull --second">
+			<div class="row">
+				<div class="newsfull__content sticky__wrapper">
+					<div class="sticky__main">
+						    <div class="row single-module cert__section">
+        <div class="cert__title">
+            <div>
+                <span>Adherido a los criterios de <br><strong>Journalism Trust Initiative</strong></span>                <a class="cert__link" target="" href="https://www.rionegro.com.ar/directrices-editoriales/">
+                    Nuestras directrices editoriales                </a>
+            </div>
+            <img class="cert__image" src="https://www.rionegro.com.ar/wp-content/uploads/2024/04/JTI-web.svg" alt="<span>Adherido a los criterios de <br><strong>Journalism Trust Initiative</strong></span>">
+        </div>
+    </div>
+    <div class="row single-module" id="suscribite__section">
+        <div class="mod mod--opinion">
+            <div class="mod__header">
+                                    <h3 class="mod__title">Formá parte de nuestra comunidad de lectores</h3>
+                            </div>
+            <div class="mod__content">
+                                    <p>Más de un siglo comprometidos con nuestra comunidad. Elegí la mejor información, análisis y entretenimiento, desde la Patagonia para todo el país.</p>
+                                                    <a class="button" target="" href="https://suscripciones.rionegro.com.ar/?utm_source=suscribite-notas" title="Suscribirme">Quiero mi suscripción</a>
+                            </div>
+        </div>
+    </div>
+		<div class="mod mod--comments single-module" id="comments__section">
+			<div class="mod__header">
+				<h3 class="mod__title">Comentarios</h3>
+			</div>
+							<div class="mod__content" id="comments__wrapper"><div class="fb-comments" data-href="https://www.rionegro.com.ar/redes/creo-un-perfil-de-facebook-para-jose-de-san-martin-e-incluyo-a-una-famosa-entre-sus-amigos-2233626/" data-colorscheme="light" data-numposts="5" data-width="100%"></div></div>					</div>
+	    <div class="single-module single-modules__social">
+                    <div class="card">
+                <a href="https://news.google.com/publications/CAAqBwgKMO6cgQswn7v8Ag?hl=es-419&#038;gl=AR&#038;ceid=AR%3Aes-419" target="_blank">
+                    <div class="card__icon">
+                        <img src="https://www.rionegro.com.ar/wp-content/themes/rn-v2/dist/img/gnews_icon.svg" alt="Icono gnews">
+                    </div>
+                    <div class="card__text">
+                        Seguí todas las noticias de <strong>Rio Negro</strong> en Google News                    </div>
+                    <div class="card__cta">
+                        <icon-svg icon="arrow"></icon-svg>
+                    </div>
+                </a>
+            </div>
+                    <div class="card">
+                <a href="https://whatsapp.com/channel/0029VaLl458D8SDrWBPazs0J" target="_blank">
+                    <div class="card__icon">
+                        <img src="https://www.rionegro.com.ar/wp-content/themes/rn-v2/dist/img/whatsapp_icon.svg" alt="Icono whatsapp">
+                    </div>
+                    <div class="card__text">
+                        Seguí todas las noticias de <strong>Rio Negro</strong> en Whatsapp                    </div>
+                    <div class="card__cta">
+                        <icon-svg icon="arrow"></icon-svg>
+                    </div>
+                </a>
+            </div>
+            </div>
+        <div class="row recomendations discover single-module">
+            <h3 class="mod__title">Lo más leído</h3>
+            <div class="row__container">
+                                    <div class="col col--6">
+                        <article class="news news--summary --with-number recomendation" >
+    <figure class="news__media">
+        <a href="https://www.rionegro.com.ar/gastronomia/cocotorta-de-coco-hecha-en-casa-en-3-simples-pasos-3827346/" title="Cocotorta (de coco) hecha en casa en 3 simples pasos" class="recomendation__link">
+            <img src="https://www.rionegro.com.ar/wp-content/uploads/2024/10/coco.jpg?w=100&#038;h=100&#038;crop=1" alt="Imagen de Cocotorta (de coco) hecha en casa en 3 simples pasos" loading="lazy">
+                    </a>
+    </figure>
+    <div class="news__data">
+                        <h2 class="news__title">
+            <a href="https://www.rionegro.com.ar/gastronomia/cocotorta-de-coco-hecha-en-casa-en-3-simples-pasos-3827346/" title="Cocotorta (de coco) hecha en casa en 3 simples pasos" class="recomendation__link">Cocotorta (de coco) hecha en casa en 3 simples pasos</a>
+        </h2>
+    </div>
+</article>                    </div>
+                                    <div class="col col--6">
+                        <article class="news news--summary --with-number recomendation" >
+    <figure class="news__media">
+        <a href="https://www.rionegro.com.ar/servicios/cuanto-cobraran-las-pensiones-no-contributivas-por-invalidez-de-anses-en-octubre-2024-3816969/" title="Cuánto cobrarán las Pensiones No Contributivas por Invalidez de Anses en octubre 2024" class="recomendation__link">
+            <img src="https://www.rionegro.com.ar/wp-content/uploads/2024/10/Pensiones-ACT-2.png?w=100&#038;h=100&#038;crop=1" alt="Imagen de Cuánto cobrarán las Pensiones No Contributivas por Invalidez de Anses en octubre 2024" loading="lazy">
+                    </a>
+    </figure>
+    <div class="news__data">
+                        <h2 class="news__title">
+            <a href="https://www.rionegro.com.ar/servicios/cuanto-cobraran-las-pensiones-no-contributivas-por-invalidez-de-anses-en-octubre-2024-3816969/" title="Cuánto cobrarán las Pensiones No Contributivas por Invalidez de Anses en octubre 2024" class="recomendation__link">Cuánto cobrarán las Pensiones No Contributivas por Invalidez de Anses en octubre 2024</a>
+        </h2>
+    </div>
+</article>                    </div>
+                                    <div class="col col--6">
+                        <article class="news news--summary --with-number recomendation" >
+    <figure class="news__media">
+        <a href="https://www.rionegro.com.ar/energia/reversion-del-gasoducto-norte-es-falso-que-se-inauguro-la-obra-para-llevar-el-gas-de-vaca-muerta-3825672/" title="Reversión del Gasoducto Norte: es falso que se inauguró la obra para llevar el gas de Vaca Muerta" class="recomendation__link">
+            <img src="https://www.rionegro.com.ar/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-21-at-6.54.06-PM.jpeg?w=100&#038;h=100&#038;crop=1" alt="Imagen de Reversión del Gasoducto Norte: es falso que se inauguró la obra para llevar el gas de Vaca Muerta" loading="lazy">
+                    </a>
+    </figure>
+    <div class="news__data">
+                        <h2 class="news__title">
+            <a href="https://www.rionegro.com.ar/energia/reversion-del-gasoducto-norte-es-falso-que-se-inauguro-la-obra-para-llevar-el-gas-de-vaca-muerta-3825672/" title="Reversión del Gasoducto Norte: es falso que se inauguró la obra para llevar el gas de Vaca Muerta" class="recomendation__link">Reversión del Gasoducto Norte: es falso que se inauguró la obra para llevar el gas de Vaca Muerta</a>
+        </h2>
+    </div>
+</article>                    </div>
+                                    <div class="col col--6">
+                        <article class="news news--summary --with-number recomendation" >
+    <figure class="news__media">
+        <a href="https://www.rionegro.com.ar/redes/salud-de-jorge-lanata-hasta-que-no-fallezca-las-hijas-no-pueden-pedir-nada-de-su-padre-3823664/" title="Salud de Jorge Lanata: “Hasta que no fallezca” las hijas no pueden pedir nada de su padre " class="recomendation__link">
+            <img src="https://www.rionegro.com.ar/wp-content/uploads/2024/10/Jorge-Lanata-y-Elba-Marcovecchio.jpg?w=100&#038;h=100&#038;crop=1" alt="Imagen de Salud de Jorge Lanata: “Hasta que no fallezca” las hijas no pueden pedir nada de su padre " loading="lazy">
+                    </a>
+    </figure>
+    <div class="news__data">
+                        <h2 class="news__title">
+            <a href="https://www.rionegro.com.ar/redes/salud-de-jorge-lanata-hasta-que-no-fallezca-las-hijas-no-pueden-pedir-nada-de-su-padre-3823664/" title="Salud de Jorge Lanata: “Hasta que no fallezca” las hijas no pueden pedir nada de su padre " class="recomendation__link">Salud de Jorge Lanata: “Hasta que no fallezca” las hijas no pueden pedir nada de su padre </a>
+        </h2>
+    </div>
+</article>                    </div>
+                                    <div class="col col--6">
+                        <article class="news news--summary --with-number recomendation" >
+    <figure class="news__media">
+        <a href="https://www.rionegro.com.ar/servicios/aumento-para-empleadas-domesticas-en-octubre-2024-cuando-pueden-llegar-las-buenas-noticias-3809427/" title="Aumento para empleadas domésticas en octubre 2024: cuándo pueden llegar las buenas noticias" class="recomendation__link">
+            <img src="https://www.rionegro.com.ar/wp-content/uploads/2024/10/empleo-domestico2.jpg?w=100&#038;h=100&#038;crop=1" alt="Imagen de Aumento para empleadas domésticas en octubre 2024: cuándo pueden llegar las buenas noticias" loading="lazy">
+                    </a>
+    </figure>
+    <div class="news__data">
+                        <h2 class="news__title">
+            <a href="https://www.rionegro.com.ar/servicios/aumento-para-empleadas-domesticas-en-octubre-2024-cuando-pueden-llegar-las-buenas-noticias-3809427/" title="Aumento para empleadas domésticas en octubre 2024: cuándo pueden llegar las buenas noticias" class="recomendation__link">Aumento para empleadas domésticas en octubre 2024: cuándo pueden llegar las buenas noticias</a>
+        </h2>
+    </div>
+</article>                    </div>
+                                    <div class="col col--6">
+                        <article class="news news--summary --with-number recomendation" >
+    <figure class="news__media">
+        <a href="https://www.rionegro.com.ar/servicios/pami-advirtio-sobre-estas-practicas-prohibidas-por-la-obra-social-cuales-son-y-como-evitarlas-3823492/" title="PAMI advirtió sobre estas prácticas prohibidas por la obra social: cuáles son y cómo evitarlas" class="recomendation__link">
+            <img src="https://www.rionegro.com.ar/wp-content/uploads/2024/10/medicamentos-PAMI2.jpg?w=100&#038;h=100&#038;crop=1" alt="Imagen de PAMI advirtió sobre estas prácticas prohibidas por la obra social: cuáles son y cómo evitarlas" loading="lazy">
+                    </a>
+    </figure>
+    <div class="news__data">
+                        <h2 class="news__title">
+            <a href="https://www.rionegro.com.ar/servicios/pami-advirtio-sobre-estas-practicas-prohibidas-por-la-obra-social-cuales-son-y-como-evitarlas-3823492/" title="PAMI advirtió sobre estas prácticas prohibidas por la obra social: cuáles son y cómo evitarlas" class="recomendation__link">PAMI advirtió sobre estas prácticas prohibidas por la obra social: cuáles son y cómo evitarlas</a>
+        </h2>
+    </div>
+</article>                    </div>
+                                            </div>
+        </div>
+            <div class="row recomendations comments single-module">
+            <h3 class="mod__title">Lo más comentado</h3>
+            <div class="row__container">
+                                    <div class="col col--6">
+                        <article class="news news--summary recomendation" >
+    <figure class="news__media">
+        <a href="https://www.rionegro.com.ar/sociedad/despiden-al-camionero-de-cipolletti-que-murio-en-un-accidente-en-chile-3833782/" title="Despidieron al camionero de Cipolletti que murió en un accidente en Chile" class="recomendation__link">
+            <img src="https://www.rionegro.com.ar/wp-content/uploads/2024/10/camionero-armado-.jpg?w=100&#038;h=100&#038;crop=1" alt="Imagen de Despidieron al camionero de Cipolletti que murió en un accidente en Chile" loading="lazy">
+                    </a>
+    </figure>
+    <div class="news__data">
+                        <h2 class="news__title">
+            <a href="https://www.rionegro.com.ar/sociedad/despiden-al-camionero-de-cipolletti-que-murio-en-un-accidente-en-chile-3833782/" title="Despidieron al camionero de Cipolletti que murió en un accidente en Chile" class="recomendation__link">Despidieron al camionero de Cipolletti que murió en un accidente en Chile</a>
+        </h2>
+    </div>
+</article>                    </div>
+                                    <div class="col col--6">
+                        <article class="news news--summary recomendation" >
+    <figure class="news__media">
+        <a href="https://www.rionegro.com.ar/sociedad/estudiantes-de-bariloche-lograron-el-oro-en-las-olimpiadas-federales-de-programacion-y-robotica-3833783/" title="Estudiantes de Bariloche lograron el «oro» en las Olimpíadas Federales de Programación y Robótica" class="recomendation__link">
+            <img src="https://www.rionegro.com.ar/wp-content/uploads/2024/10/bosco2.jpg?w=100&#038;h=100&#038;crop=1" alt="Imagen de Estudiantes de Bariloche lograron el «oro» en las Olimpíadas Federales de Programación y Robótica" loading="lazy">
+                    </a>
+    </figure>
+    <div class="news__data">
+                        <h2 class="news__title">
+            <a href="https://www.rionegro.com.ar/sociedad/estudiantes-de-bariloche-lograron-el-oro-en-las-olimpiadas-federales-de-programacion-y-robotica-3833783/" title="Estudiantes de Bariloche lograron el «oro» en las Olimpíadas Federales de Programación y Robótica" class="recomendation__link">Estudiantes de Bariloche lograron el «oro» en las Olimpíadas Federales de Programación y Robótica</a>
+        </h2>
+    </div>
+</article>                    </div>
+                                    <div class="col col--6">
+                        <article class="news news--summary recomendation" >
+    <figure class="news__media">
+        <a href="https://www.rionegro.com.ar/servicios/clima-en-neuquen-y-rio-negro-como-estara-el-tiempo-este-viernes-11-de-octubre-2024-3832365/" title="Clima en Neuquén y Río Negro: cómo estará el tiempo este viernes 11 de octubre 2024" class="recomendation__link">
+            <img src="https://www.rionegro.com.ar/wp-content/uploads/2024/10/Pronostico.png?w=100&#038;h=100&#038;crop=1" alt="Imagen de Clima en Neuquén y Río Negro: cómo estará el tiempo este viernes 11 de octubre 2024" loading="lazy">
+                    </a>
+    </figure>
+    <div class="news__data">
+                        <h2 class="news__title">
+            <a href="https://www.rionegro.com.ar/servicios/clima-en-neuquen-y-rio-negro-como-estara-el-tiempo-este-viernes-11-de-octubre-2024-3832365/" title="Clima en Neuquén y Río Negro: cómo estará el tiempo este viernes 11 de octubre 2024" class="recomendation__link">Clima en Neuquén y Río Negro: cómo estará el tiempo este viernes 11 de octubre 2024</a>
+        </h2>
+    </div>
+</article>                    </div>
+                                    <div class="col col--6">
+                        <article class="news news--summary recomendation" >
+    <figure class="news__media">
+        <a href="https://www.rionegro.com.ar/policiales/donde-esta-el-narco-liberado-en-neuquen-que-llevaba-700-mil-dolares-de-cocaina-en-un-auto-3832595/" title="Dónde está el narco liberado en Neuquén que llevaba 700 mil dólares de cocaína en un auto" class="recomendation__link">
+            <img src="https://www.rionegro.com.ar/wp-content/uploads/2024/10/tercera.jpg?w=100&#038;h=100&#038;crop=1" alt="Imagen de Dónde está el narco liberado en Neuquén que llevaba 700 mil dólares de cocaína en un auto" loading="lazy">
+                    </a>
+    </figure>
+    <div class="news__data">
+                        <h2 class="news__title">
+            <a href="https://www.rionegro.com.ar/policiales/donde-esta-el-narco-liberado-en-neuquen-que-llevaba-700-mil-dolares-de-cocaina-en-un-auto-3832595/" title="Dónde está el narco liberado en Neuquén que llevaba 700 mil dólares de cocaína en un auto" class="recomendation__link">Dónde está el narco liberado en Neuquén que llevaba 700 mil dólares de cocaína en un auto</a>
+        </h2>
+    </div>
+</article>                    </div>
+                                    <div class="col col--6">
+                        <article class="news news--summary recomendation" >
+    <figure class="news__media">
+        <a href="https://www.rionegro.com.ar/policiales/detienen-en-anelo-al-autor-del-intento-de-femicidio-en-cinco-saltos-3833536/" title="Detienen al autor del intento de femicidio de Cinco Saltos en Añelo" class="recomendation__link">
+            <img src="https://www.rionegro.com.ar/wp-content/uploads/2024/10/anelo.jpg?w=100&#038;h=100&#038;crop=1" alt="Imagen de Detienen al autor del intento de femicidio de Cinco Saltos en Añelo" loading="lazy">
+                    </a>
+    </figure>
+    <div class="news__data">
+                        <h2 class="news__title">
+            <a href="https://www.rionegro.com.ar/policiales/detienen-en-anelo-al-autor-del-intento-de-femicidio-en-cinco-saltos-3833536/" title="Detienen al autor del intento de femicidio de Cinco Saltos en Añelo" class="recomendation__link">Detienen al autor del intento de femicidio de Cinco Saltos en Añelo</a>
+        </h2>
+    </div>
+</article>                    </div>
+                                    <div class="col col--6">
+                        <article class="news news--summary recomendation" >
+    <figure class="news__media">
+        <a href="https://www.rionegro.com.ar/contenido-de-marca/casinos-del-rio-te-espera-en-cipolletti-para-disfrutar-de-la-feria-gastronomica-paladar-este-fin-de-semana-largo-3832473/" title="Casinos del Río te espera en Cipolletti para disfrutar de la «Feria Gastronómica Paladar» este fin de semana largo" class="recomendation__link">
+            <img src="https://www.rionegro.com.ar/wp-content/uploads/2024/10/Imagen-de-WhatsApp-2024-10-10-a-las-15.00.34_ee4b3e03.jpg?w=100&#038;h=100&#038;crop=1" alt="Imagen de Casinos del Río te espera en Cipolletti para disfrutar de la «Feria Gastronómica Paladar» este fin de semana largo" loading="lazy">
+                    </a>
+    </figure>
+    <div class="news__data">
+                        <h2 class="news__title">
+            <a href="https://www.rionegro.com.ar/contenido-de-marca/casinos-del-rio-te-espera-en-cipolletti-para-disfrutar-de-la-feria-gastronomica-paladar-este-fin-de-semana-largo-3832473/" title="Casinos del Río te espera en Cipolletti para disfrutar de la «Feria Gastronómica Paladar» este fin de semana largo" class="recomendation__link">Casinos del Río te espera en Cipolletti para disfrutar de la «Feria Gastronómica Paladar» este fin de semana largo</a>
+        </h2>
+    </div>
+</article>                    </div>
+                            </div>
+        </div>
+    <div class="row recomendations te-puede-interesar single-module">
+        <h3 class="mod__title">Te puede interesar</h3>
+        <div class="row__container">
+                            <div class="col col--6">
+                    <article class="news news--summary recomendation" >
+    <figure class="news__media">
+        <a href="https://www.rionegro.com.ar/lo-escuchaste-a-berto/podcast/escucha-un-nuevo-episodio-la-armada-brancaleone-2572835/" title="Escuchá un nuevo episodio: La armada Brancaleone" class="recomendation__link">
+            <img src="https://www.rionegro.com.ar/wp-content/uploads/2022/11/podcast-lo-escuchaste-a-Berto.jpeg?w=100&#038;h=100&#038;crop=1" alt="Imagen de Escuchá un nuevo episodio: La armada Brancaleone" loading="lazy">
+                    </a>
+    </figure>
+    <div class="news__data">
+                        <h2 class="news__title">
+            <a href="https://www.rionegro.com.ar/lo-escuchaste-a-berto/podcast/escucha-un-nuevo-episodio-la-armada-brancaleone-2572835/" title="Escuchá un nuevo episodio: La armada Brancaleone" class="recomendation__link">Escuchá un nuevo episodio: La armada Brancaleone</a>
+        </h2>
+    </div>
+</article>                </div>
+                            <div class="col col--6">
+                    <article class="news news--summary recomendation" >
+    <figure class="news__media">
+        <a href="https://www.rionegro.com.ar/voy-turismo/las-grutas-arranca-con-expectativa-el-anteultimo-feriado-del-ano-3828680/" title="Precios: Las Grutas arranca con expectativa el anteúltimo feriado del año" class="recomendation__link">
+            <img src="https://www.rionegro.com.ar/wp-content/uploads/2024/10/ESTA-ES-2.jpg?w=100&#038;h=100&#038;crop=1" alt="Imagen de Precios: Las Grutas arranca con expectativa el anteúltimo feriado del año" loading="lazy">
+                    </a>
+    </figure>
+    <div class="news__data">
+                        <h2 class="news__title">
+            <a href="https://www.rionegro.com.ar/voy-turismo/las-grutas-arranca-con-expectativa-el-anteultimo-feriado-del-ano-3828680/" title="Precios: Las Grutas arranca con expectativa el anteúltimo feriado del año" class="recomendation__link">Precios: Las Grutas arranca con expectativa el anteúltimo feriado del año</a>
+        </h2>
+    </div>
+</article>                </div>
+                            <div class="col col--6">
+                    <article class="news news--summary recomendation" >
+    <figure class="news__media">
+        <a href="https://www.rionegro.com.ar/sociedad/estudiantes-sufrieron-un-impactante-vuelco-sobre-ruta-22-en-valle-medio-viajaban-desde-bahia-blanca-3832801/" title="Estudiantes del Alto Valle sufrieron un impactante vuelco sobre Ruta 22: viajaban desde Bahía Blanca" class="recomendation__link">
+            <img src="https://www.rionegro.com.ar/wp-content/uploads/2024/10/vuelco-ruta-22.png?w=100&#038;h=100&#038;crop=1" alt="Imagen de Estudiantes del Alto Valle sufrieron un impactante vuelco sobre Ruta 22: viajaban desde Bahía Blanca" loading="lazy">
+                    </a>
+    </figure>
+    <div class="news__data">
+                        <h2 class="news__title">
+            <a href="https://www.rionegro.com.ar/sociedad/estudiantes-sufrieron-un-impactante-vuelco-sobre-ruta-22-en-valle-medio-viajaban-desde-bahia-blanca-3832801/" title="Estudiantes del Alto Valle sufrieron un impactante vuelco sobre Ruta 22: viajaban desde Bahía Blanca" class="recomendation__link">Estudiantes del Alto Valle sufrieron un impactante vuelco sobre Ruta 22: viajaban desde Bahía Blanca</a>
+        </h2>
+    </div>
+</article>                </div>
+                            <div class="col col--6">
+                    <article class="news news--summary recomendation" >
+    <figure class="news__media">
+        <a href="https://www.rionegro.com.ar/sociedad/despiden-en-rincon-de-los-sauces-al-petrolero-que-murio-en-vaca-muerta-3833299/" title="Despidieron en Rincón de los Sauces al petrolero que murió en Vaca Muerta" class="recomendation__link">
+            <img src="https://www.rionegro.com.ar/wp-content/uploads/2024/10/Miguel-petrolero-muerto-3-1.png?w=100&#038;h=100&#038;crop=1" alt="Imagen de Despidieron en Rincón de los Sauces al petrolero que murió en Vaca Muerta" loading="lazy">
+                    </a>
+    </figure>
+    <div class="news__data">
+                        <h2 class="news__title">
+            <a href="https://www.rionegro.com.ar/sociedad/despiden-en-rincon-de-los-sauces-al-petrolero-que-murio-en-vaca-muerta-3833299/" title="Despidieron en Rincón de los Sauces al petrolero que murió en Vaca Muerta" class="recomendation__link">Despidieron en Rincón de los Sauces al petrolero que murió en Vaca Muerta</a>
+        </h2>
+    </div>
+</article>                </div>
+                    </div>
+    </div>
+        <div class="row recomendations te-puede-interesar single-module">
+            <h3 class="mod__title">Más de servicios</h3>
+            <div class="row__container">
+                                    <div class="col col--6">
+                        <article class="news news--summary recomendation" >
+    <figure class="news__media">
+        <a href="https://www.rionegro.com.ar/servicios/pasos-a-chile-asi-estan-los-cruces-fronterizos-con-argentina-este-viernes-11-de-octubre-2024-3833518/" title="Pasos a Chile: así están los cruces fronterizos con Argentina este viernes 11 de octubre 2024" class="recomendation__link">
+            <img src="https://www.rionegro.com.ar/wp-content/uploads/2024/09/pino-hachado.jpg?w=100&#038;h=100&#038;crop=1" alt="Imagen de Pasos a Chile: así están los cruces fronterizos con Argentina este viernes 11 de octubre 2024" loading="lazy">
+                    </a>
+    </figure>
+    <div class="news__data">
+                        <h2 class="news__title">
+            <a href="https://www.rionegro.com.ar/servicios/pasos-a-chile-asi-estan-los-cruces-fronterizos-con-argentina-este-viernes-11-de-octubre-2024-3833518/" title="Pasos a Chile: así están los cruces fronterizos con Argentina este viernes 11 de octubre 2024" class="recomendation__link">Pasos a Chile: así están los cruces fronterizos con Argentina este viernes 11 de octubre 2024</a>
+        </h2>
+    </div>
+</article>                    </div>
+                                    <div class="col col--6">
+                        <article class="news news--summary recomendation" >
+    <figure class="news__media">
+        <a href="https://www.rionegro.com.ar/servicios/estado-de-las-rutas-en-neuquen-este-viernes-11-de-octubre-3833502/" title="Estado de las rutas en Neuquén este viernes 11 de octubre" class="recomendation__link">
+            <img src="https://www.rionegro.com.ar/wp-content/uploads/2024/10/50e239c20ced1425b2cf0c00fdae370f87c032c4b4443c60_840.jpg?w=100&#038;h=100&#038;crop=1" alt="Imagen de Estado de las rutas en Neuquén este viernes 11 de octubre" loading="lazy">
+                    </a>
+    </figure>
+    <div class="news__data">
+                        <h2 class="news__title">
+            <a href="https://www.rionegro.com.ar/servicios/estado-de-las-rutas-en-neuquen-este-viernes-11-de-octubre-3833502/" title="Estado de las rutas en Neuquén este viernes 11 de octubre" class="recomendation__link">Estado de las rutas en Neuquén este viernes 11 de octubre</a>
+        </h2>
+    </div>
+</article>                    </div>
+                                    <div class="col col--6">
+                        <article class="news news--summary recomendation" >
+    <figure class="news__media">
+        <a href="https://www.rionegro.com.ar/servicios/clima-en-neuquen-y-rio-negro-como-estara-el-tiempo-este-viernes-11-de-octubre-2024-3832365/" title="Clima en Neuquén y Río Negro: cómo estará el tiempo este viernes 11 de octubre 2024" class="recomendation__link">
+            <img src="https://www.rionegro.com.ar/wp-content/uploads/2024/10/Pronostico.png?w=100&#038;h=100&#038;crop=1" alt="Imagen de Clima en Neuquén y Río Negro: cómo estará el tiempo este viernes 11 de octubre 2024" loading="lazy">
+                    </a>
+    </figure>
+    <div class="news__data">
+                        <h2 class="news__title">
+            <a href="https://www.rionegro.com.ar/servicios/clima-en-neuquen-y-rio-negro-como-estara-el-tiempo-este-viernes-11-de-octubre-2024-3832365/" title="Clima en Neuquén y Río Negro: cómo estará el tiempo este viernes 11 de octubre 2024" class="recomendation__link">Clima en Neuquén y Río Negro: cómo estará el tiempo este viernes 11 de octubre 2024</a>
+        </h2>
+    </div>
+</article>                    </div>
+                                    <div class="col col--6">
+                        <article class="news news--summary recomendation" >
+    <figure class="news__media">
+        <a href="https://www.rionegro.com.ar/servicios/calendario-anses-por-que-no-habra-pagos-este-viernes-11-de-octubre-2024-3832540/" title="Calendario Anses: por qué no habrá pagos este viernes 11 de octubre 2024" class="recomendation__link">
+            <img src="https://www.rionegro.com.ar/wp-content/uploads/2024/10/Anses-Crono-5.png?w=100&#038;h=100&#038;crop=1" alt="Imagen de Calendario Anses: por qué no habrá pagos este viernes 11 de octubre 2024" loading="lazy">
+                    </a>
+    </figure>
+    <div class="news__data">
+                        <h2 class="news__title">
+            <a href="https://www.rionegro.com.ar/servicios/calendario-anses-por-que-no-habra-pagos-este-viernes-11-de-octubre-2024-3832540/" title="Calendario Anses: por qué no habrá pagos este viernes 11 de octubre 2024" class="recomendation__link">Calendario Anses: por qué no habrá pagos este viernes 11 de octubre 2024</a>
+        </h2>
+    </div>
+</article>                    </div>
+                            </div>
+        </div>
+					</div>
+					<div class="sticky__sidebar --sidebar-show-mobile">
+					  <div class="sticky">
+			<ads-component content='{"ad":{"margin_t":"20px","margin_b":"20px","class":"ad-slot-bigbox","id":"ad-slot-c3","refresh":"","edit":""}}'></ads-component>			</div>
+<!-- /sidebar -->
+					</div>
+				</div>
+			</div>
+		</article>
+		<ads-component content='{"ad":{"margin_t":"0","margin_b":"0","class":null,"id":null,"refresh":null,"edit":""}}'></ads-component><ads-component content='{"ad":{"margin_t":"0","margin_b":"0","class":null,"id":null,"refresh":null,"edit":""}}'></ads-component><ads-component content='{"ad":{"margin_t":"30px","margin_b":"30px","class":"ad-slot-horizontal","id":"ad-slot-abc3","refresh":null,"edit":""}}'></ads-component>		<related-posts class="section-most-related" content="{&quot;slider_title&quot;:&quot;Segu\u00ed Leyendo&quot;,&quot;background&quot;:&quot;#fff&quot;,&quot;posts&quot;:false,&quot;post&quot;:2233626,&quot;category&quot;:8}" load="true"></related-posts><related-posts class="section-most-related" content="{&quot;slider_title&quot;:&quot;Temas Relacionados&quot;,&quot;background&quot;:&quot;#fff&quot;,&quot;post&quot;:2233626,&quot;tag&quot;:&quot;36,6948,459,934,423,6046&quot;}" load="true"></related-posts>    <footer class="footer">
+        <div class="row">
+            <div class="row__container">
+                <div class="footer__links">
+                    <h3>Temas</h3>
+                    <div class="menu-{menu slug}-container"><ul><li id="menu-item-3425677" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3425677"><a href="https://www.rionegro.com.ar/ultimas-noticias/">Últimas Noticias <sup style="color: white; font-weight: 500; background: #de0303; padding: 2px 4px; border-radius: 8px; font-size: 8px; border: 1px solid #5c5c5c; margin: 0px 2px;">EN VIVO</sup></a></li>
+<li id="menu-item-2142286" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2142286"><a href="https://www.rionegro.com.ar/politica/">Política</a>
+<ul class="sub-menu">
+	<li id="menu-item-2191636" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2191636"><a href="https://www.rionegro.com.ar/gremios/">Gremios</a></li>
+	<li id="menu-item-2142296" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2142296"><a href="https://www.rionegro.com.ar/justicia/">Justicia</a></li>
+</ul>
+</li>
+<li id="menu-item-3477836" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3477836"><a href="https://www.rionegro.com.ar/energia/">Energía</a></li>
+<li id="menu-item-3477819" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3477819"><a href="https://www.rionegro.com.ar/economia/">Economía</a></li>
+<li id="menu-item-2142365" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2142365"><a href="https://www.rionegro.com.ar/voy-turismo/">Turismo</a></li>
+<li id="menu-item-3477859" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3477859"><a href="https://www.rionegro.com.ar/servicios/">Servicios</a></li>
+<li id="menu-item-2142283" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2142283"><a href="https://www.rionegro.com.ar/newsletters/">Newsletters  <sup style="color: white; font-weight: 500; background: #de0303; padding: 2px 4px; border-radius: 8px; font-size: 8px; border: 1px solid #5c5c5c; margin: 0px 2px;">Novedad</sup></a></li>
+<li id="menu-item-3775124" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3775124"><a href="https://www.rionegro.com.ar/redes/">Redes</a></li>
+<li id="menu-item-3707437" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3707437"><a href="https://www.rionegro.com.ar/agendate/">Agendate  <sup style="color: white; font-weight: 500; background: #de0303; padding: 2px 4px; border-radius: 8px; font-size: 8px; border: 1px solid #5c5c5c; margin: 0px 2px;">Nuevo</sup></a></li>
+<li id="menu-item-3477817" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3477817"><a href="https://www.rionegro.com.ar/deportes/">Deportes</a></li>
+<li id="menu-item-3432645" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-3432645"><a href="https://www.rionegro.com.ar/cultura/">Cultura</a>
+<ul class="sub-menu">
+	<li id="menu-item-2750709" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2750709"><a href="https://www.rionegro.com.ar/tag/erre-n/">Erre-N</a></li>
+	<li id="menu-item-2142301" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2142301"><a href="https://www.rionegro.com.ar/espectaculos/">Espectáculos</a></li>
+	<li id="menu-item-2755453" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2755453"><a href="https://www.rionegro.com.ar/tag/la-patagonica/">La Patagónica</a></li>
+</ul>
+</li>
+<li id="menu-item-3635755" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3635755"><a href="https://www.rionegro.com.ar/estar-bien/">Estar Bien <sup style="color: white; font-weight: 500; background: #de0303; padding: 2px 4px; border-radius: 8px; font-size: 8px; border: 1px solid #5c5c5c; margin: 0px 2px;">Nuevo</sup></a></li>
+<li id="menu-item-2142299" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2142299"><a href="https://www.rionegro.com.ar/sociedad/">Sociedad</a>
+<ul class="sub-menu">
+	<li id="menu-item-2142449" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2142449"><a href="https://www.rionegro.com.ar/clima/">Clima</a></li>
+	<li id="menu-item-3477861" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3477861"><a href="https://www.rionegro.com.ar/horoscopo/">Horóscopo</a></li>
+	<li id="menu-item-2142442" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2142442"><a href="https://www.rionegro.com.ar/ciencia/">Bio</a></li>
+	<li id="menu-item-2606675" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2606675"><a href="https://www.rionegro.com.ar/digo/">DIGO</a></li>
+	<li id="menu-item-2755454" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2755454"><a href="https://www.rionegro.com.ar/tecnologia/">Tecnología</a></li>
+	<li id="menu-item-2142364" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2142364"><a href="https://www.rionegro.com.ar/gastronomia/">Yo Como</a></li>
+</ul>
+</li>
+<li id="menu-item-3477830" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-3477830"><a href="https://www.rionegro.com.ar/opinion/">Opinión</a>
+<ul class="sub-menu">
+	<li id="menu-item-3490376" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3490376"><a href="https://www.rionegro.com.ar/opinion/editorial/">Editorial</a></li>
+	<li id="menu-item-3490380" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3490380"><a href="https://www.rionegro.com.ar/tag/panorama-neuquino/">Panorama de Neuquén</a></li>
+	<li id="menu-item-3490382" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3490382"><a href="https://www.rionegro.com.ar/tag/panorama-rionegrino/">Panorama de Río Negro</a></li>
+	<li id="menu-item-3703362" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3703362"><a href="https://www.rionegro.com.ar/tag/panorama-chubutense/">Panorama de Chubut</a></li>
+	<li id="menu-item-3490385" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3490385"><a href="https://www.rionegro.com.ar/tag/panorama-nacional/">Panorama Nacional</a></li>
+	<li id="menu-item-2142305" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2142305"><a href="https://www.rionegro.com.ar/cartas/">Cartas</a></li>
+	<li id="menu-item-3477891" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3477891"><a href="https://www.rionegro.com.ar/envio-cartas/">Enviá tu Carta</a></li>
+</ul>
+</li>
+<li id="menu-item-2142298" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2142298"><a href="https://www.rionegro.com.ar/policiales/">Policiales</a></li>
+<li id="menu-item-2530614" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2530614"><a href="https://www.rionegro.com.ar/podcast/">Podcasts</a></li>
+<li id="menu-item-3511476" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3511476"><a href="https://www.rionegro.com.ar/propiedades/">Propiedades</a></li>
+<li id="menu-item-3477942" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3477942"><a href="https://www.rionegro.com.ar/tag/exclusivo-suscriptores/">Contenido Exclusivo</a></li>
+<li id="menu-item-2142279" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2142279"><a href="https://www.rionegro.com.ar/contenido-de-marca/">Contenido de Marca</a></li>
+<li id="menu-item-3477943" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3477943"><a href="https://micuenta.rionegro.com.ar/kiosco/">Edición impresa</a></li>
+<li id="menu-item-3542789" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3542789"><a href="https://libros.rionegro.com.ar/library">Libros</a></li>
+</ul></div>                </div>
+                <div class="footer__links">
+                    <h3>Ciudades</h3>
+                    <div class="menu-{menu slug}-container"><ul><li id="menu-item-924676" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-924676"><a href="https://www.rionegro.com.ar/tag/neuquen/">Neuquén</a></li>
+<li id="menu-item-3503810" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3503810"><a href="https://www.rionegro.com.ar/tag/alto-valle">Alto Valle</a></li>
+<li id="menu-item-924679" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-924679"><a href="https://www.rionegro.com.ar/tag/roca/">Roca</a></li>
+<li id="menu-item-924673" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-924673"><a href="https://www.rionegro.com.ar/tag/bariloche/">Bariloche</a></li>
+<li id="menu-item-924678" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-924678"><a href="https://www.rionegro.com.ar/tag/cipolletti/">Cipolletti</a></li>
+<li id="menu-item-924680" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-924680"><a href="https://www.rionegro.com.ar/tag/viedma/">Viedma</a></li>
+</ul></div>                </div>
+                <div class="footer__links">
+                    <h3>Servicios</h3>
+                    <div class="menu-{menu slug}-container"><ul><li id="menu-item-3477929" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3477929"><a href="https://www.rionegro.com.ar/empleo/">Empleo</a></li>
+<li id="menu-item-1172108" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1172108"><a target="_blank" rel="noopener" href="https://publicatuaviso.rionegro.com.ar/">Publicá tu aviso</a></li>
+<li id="menu-item-2851162" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2851162"><a target="_blank" rel="noopener" href="https://www.rionegro.com.ar/necrologicas/">Necrológicas</a></li>
+<li id="menu-item-2255789" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2255789"><a href="https://www.rionegro.com.ar/quiniela-loteria-nacional-y-provincia/">Loterías y Quinielas</a></li>
+<li id="menu-item-2851159" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2851159"><a target="_blank" rel="noopener" href="https://www.rionegro.com.ar/farmacias-de-turno/">Farmacias de turno</a></li>
+<li id="menu-item-2318018" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2318018"><a target="_blank" rel="noopener" href="https://www.rionegro.com.ar/riole/">Riole &#8211; El juego de las palabras</a></li>
+<li id="menu-item-2143091" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2143091"><a target="_blank" rel="noopener" href="https://www.rionegro.com.ar/comunicate/"><b>Comunicate con nosotros</b></a></li>
+<li id="menu-item-2143093" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2143093"><a target="_blank" rel="noopener" href="https://www.rionegro.com.ar/telefonos-urgencias-rio-negro/">Teléfonos de urgencia en Río Negro</a></li>
+<li id="menu-item-2143094" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2143094"><a target="_blank" rel="noopener" href="https://www.rionegro.com.ar/telefonos-urgencias-neuquen/">Teléfonos de urgencias en Neuquén</a></li>
+</ul></div>                </div>
+                <div class="footer__links">
+                    <h3>Club Rio Negro</h3>
+                    <div class="menu-{menu slug}-container"><ul><li id="menu-item-3745568" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3745568"><a href="https://www.rionegro.com.ar/club/">Beneficios</a></li>
+</ul></div>                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="footer__actions">
+                <div class="footer__item">
+                    <p>Descarga la App:</p><a class="icon icon--android" target="_blank" href="https://play.google.com/store/apps/details?id=com.diarioapp" title="Android App"></a>
+                </div>
+                <div class="footer__item">
+    <p>Seguinos:</p>
+    <a class="icon icon--facebook" href= "https://www.facebook.com/diariorionegro/" title="Seguinos en Facebook" target="_blank" rel="nofollow"></a>
+    <a class="icon icon--twitter" href="https://twitter.com/rionegrocomar" title="Seguinos en Twitter" target="_blank" rel="nofollow"></a>
+    <a class="icon icon--youtube" href="https://www.youtube.com/user/diariorionegro?sub_confirmation=1" title="Seguinos en Youtube" target="_blank" rel="nofollow"></a>
+    <a class="icon icon--instagram" href="https://www.instagram.com/rionegrocomar" title="Seguinos en Instagram" target="_blank" rel="nofollow"></a>
+    <a class="icon icon--tiktok" href="https://www.tiktok.com/@rionegrocomar" title="Seguinos en Tik-Tok" target="_blank" rel="nofollow"></a>
+</div>                <div class="footer__item"><button class="button button--primary" onclick="window.scroll(0, 0)">Subir<span class="icon icon--uptotop"></span></button></div>
+            </div>
+            <div class="footer__copy"><a class="footer__logo" href="/" title="Diario Rio Negro"><img src="https://www.rionegro.com.ar/wp-content/themes/rn-v2/dist/img/logo_rionegro_blanco.svg" width="161" height="25" alt="Logo Rio Negro"></a>
+                <p>Es una publicación de Editorial Río Negro S.A. Todos los derechos reservados. Copyright 2020. Propietario Editorial Río Negro S.A. Fundado el 1° de mayo de 1912 por Fernando Emilio Rajneri. Presidenta del Directorio: Laura Gamba. Editor Responsable: Federico Aringoli. <a href="https://www.rionegro.com.ar/directrices-editoriales/">Misión y directrices editoriales.</a> Registro de la Propiedad Intelectual: 72234608. Edición Nro: 26.584 - Domicilio legal: 9 de Julio 733 - General Roca -</p>
+                <div class="footer__logos"></div>
+            </div>
+        </div>
+        <!--
+                -->
+    </footer>
+    <div class="navigation">
+    <div class="navigation__close circle__button" data-navigation="close">
+        <svg style="enable-background:new 0 0 36.1 36.2;" xmlns="http://www.w3.org/2000/svg" viewBox="11.48 11.73 13.14 12.74">
+            <defs>
+                <style type="text/css">
+                    .st1 {
+                        fill: none;
+                        stroke: #DE0303;
+                        stroke-width: 1.187;
+                        stroke-miterlimit: 10;
+                    }
+                </style>
+            </defs>
+            <path class="st1" d="M 12.074 23.877 L 24.026 12.323" transform="matrix(1, 0, 0, 1, 0, -7.105427357601002e-15)"></path>
+            <path class="st1" d="M 12.124 12.522 L 23.925 23.678" transform="matrix(1, 0, 0, 1, 0, -7.105427357601002e-15)"></path>
+        </svg>
+    </div>
+    <div class="row">
+        <a class="navigation__logo" href="https://www.rionegro.com.ar" title="Rio Negro">
+            <img src="https://www.rionegro.com.ar/wp-content/themes/rn-v2/dist/img/logo_rionegro_small.svg" width="80%" height="auto" alt="Logo Rio Negro">
+        </a>
+        <div class="navigation__container">
+            <div class="navigation__links">
+                <form role="search" method="get" class="navigation__search" action="https://www.rionegro.com.ar/">
+	<input type="text" id="search-form-1" placeholder="Buscar..." value="" name="s" />
+	<button type="submit" class="icon icon--search" title="Buscar" aria-label="Buscar"></button>
+</form>
+            </div>
+            <div class="navigation__links">
+                <h3>Temas</h3>
+                <div class="menu-{menu slug}-container"><ul><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3425677"><a href="https://www.rionegro.com.ar/ultimas-noticias/">Últimas Noticias <sup style="color: white; font-weight: 500; background: #de0303; padding: 2px 4px; border-radius: 8px; font-size: 8px; border: 1px solid #5c5c5c; margin: 0px 2px;">EN VIVO</sup></a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2142286"><a href="https://www.rionegro.com.ar/politica/">Política</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2191636"><a href="https://www.rionegro.com.ar/gremios/">Gremios</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2142296"><a href="https://www.rionegro.com.ar/justicia/">Justicia</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3477836"><a href="https://www.rionegro.com.ar/energia/">Energía</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3477819"><a href="https://www.rionegro.com.ar/economia/">Economía</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2142365"><a href="https://www.rionegro.com.ar/voy-turismo/">Turismo</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3477859"><a href="https://www.rionegro.com.ar/servicios/">Servicios</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2142283"><a href="https://www.rionegro.com.ar/newsletters/">Newsletters  <sup style="color: white; font-weight: 500; background: #de0303; padding: 2px 4px; border-radius: 8px; font-size: 8px; border: 1px solid #5c5c5c; margin: 0px 2px;">Novedad</sup></a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3775124"><a href="https://www.rionegro.com.ar/redes/">Redes</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3707437"><a href="https://www.rionegro.com.ar/agendate/">Agendate  <sup style="color: white; font-weight: 500; background: #de0303; padding: 2px 4px; border-radius: 8px; font-size: 8px; border: 1px solid #5c5c5c; margin: 0px 2px;">Nuevo</sup></a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3477817"><a href="https://www.rionegro.com.ar/deportes/">Deportes</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-3432645"><a href="https://www.rionegro.com.ar/cultura/">Cultura</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2750709"><a href="https://www.rionegro.com.ar/tag/erre-n/">Erre-N</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2142301"><a href="https://www.rionegro.com.ar/espectaculos/">Espectáculos</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2755453"><a href="https://www.rionegro.com.ar/tag/la-patagonica/">La Patagónica</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3635755"><a href="https://www.rionegro.com.ar/estar-bien/">Estar Bien <sup style="color: white; font-weight: 500; background: #de0303; padding: 2px 4px; border-radius: 8px; font-size: 8px; border: 1px solid #5c5c5c; margin: 0px 2px;">Nuevo</sup></a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2142299"><a href="https://www.rionegro.com.ar/sociedad/">Sociedad</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2142449"><a href="https://www.rionegro.com.ar/clima/">Clima</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3477861"><a href="https://www.rionegro.com.ar/horoscopo/">Horóscopo</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2142442"><a href="https://www.rionegro.com.ar/ciencia/">Bio</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2606675"><a href="https://www.rionegro.com.ar/digo/">DIGO</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2755454"><a href="https://www.rionegro.com.ar/tecnologia/">Tecnología</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2142364"><a href="https://www.rionegro.com.ar/gastronomia/">Yo Como</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-3477830"><a href="https://www.rionegro.com.ar/opinion/">Opinión</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3490376"><a href="https://www.rionegro.com.ar/opinion/editorial/">Editorial</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3490380"><a href="https://www.rionegro.com.ar/tag/panorama-neuquino/">Panorama de Neuquén</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3490382"><a href="https://www.rionegro.com.ar/tag/panorama-rionegrino/">Panorama de Río Negro</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3703362"><a href="https://www.rionegro.com.ar/tag/panorama-chubutense/">Panorama de Chubut</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3490385"><a href="https://www.rionegro.com.ar/tag/panorama-nacional/">Panorama Nacional</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2142305"><a href="https://www.rionegro.com.ar/cartas/">Cartas</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3477891"><a href="https://www.rionegro.com.ar/envio-cartas/">Enviá tu Carta</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2142298"><a href="https://www.rionegro.com.ar/policiales/">Policiales</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2530614"><a href="https://www.rionegro.com.ar/podcast/">Podcasts</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3511476"><a href="https://www.rionegro.com.ar/propiedades/">Propiedades</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3477942"><a href="https://www.rionegro.com.ar/tag/exclusivo-suscriptores/">Contenido Exclusivo</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2142279"><a href="https://www.rionegro.com.ar/contenido-de-marca/">Contenido de Marca</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3477943"><a href="https://micuenta.rionegro.com.ar/kiosco/">Edición impresa</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3542789"><a href="https://libros.rionegro.com.ar/library">Libros</a></li>
+</ul></div>            </div>
+            <div class="navigation__links">
+                <h3>Ciudades</h3>
+                <div class="menu-{menu slug}-container"><ul><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-924676"><a href="https://www.rionegro.com.ar/tag/neuquen/">Neuquén</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3503810"><a href="https://www.rionegro.com.ar/tag/alto-valle">Alto Valle</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-924679"><a href="https://www.rionegro.com.ar/tag/roca/">Roca</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-924673"><a href="https://www.rionegro.com.ar/tag/bariloche/">Bariloche</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-924678"><a href="https://www.rionegro.com.ar/tag/cipolletti/">Cipolletti</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-924680"><a href="https://www.rionegro.com.ar/tag/viedma/">Viedma</a></li>
+</ul></div>            </div>
+            <div class="navigation__links">
+                <h3>Información Útil</h3>
+                <div class="menu-{menu slug}-container"><ul><li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3477929"><a href="https://www.rionegro.com.ar/empleo/">Empleo</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1172108"><a target="_blank" rel="noopener" href="https://publicatuaviso.rionegro.com.ar/">Publicá tu aviso</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2851162"><a target="_blank" rel="noopener" href="https://www.rionegro.com.ar/necrologicas/">Necrológicas</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2255789"><a href="https://www.rionegro.com.ar/quiniela-loteria-nacional-y-provincia/">Loterías y Quinielas</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2851159"><a target="_blank" rel="noopener" href="https://www.rionegro.com.ar/farmacias-de-turno/">Farmacias de turno</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2318018"><a target="_blank" rel="noopener" href="https://www.rionegro.com.ar/riole/">Riole &#8211; El juego de las palabras</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2143091"><a target="_blank" rel="noopener" href="https://www.rionegro.com.ar/comunicate/"><b>Comunicate con nosotros</b></a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2143093"><a target="_blank" rel="noopener" href="https://www.rionegro.com.ar/telefonos-urgencias-rio-negro/">Teléfonos de urgencia en Río Negro</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2143094"><a target="_blank" rel="noopener" href="https://www.rionegro.com.ar/telefonos-urgencias-neuquen/">Teléfonos de urgencias en Neuquén</a></li>
+</ul></div>            </div>
+            <div class="navigation__links">
+                <h3>Club Río Negro</h3>
+                <div class="menu-{menu slug}-container"><ul><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3745568"><a href="https://www.rionegro.com.ar/club/">Beneficios</a></li>
+</ul></div>            </div>
+        </div>
+        <div class="navigation__social">
+            <div class="footer__item">
+    <p>Seguinos:</p>
+    <a class="icon icon--facebook" href= "https://www.facebook.com/diariorionegro/" title="Seguinos en Facebook" target="_blank" rel="nofollow"></a>
+    <a class="icon icon--twitter" href="https://twitter.com/rionegrocomar" title="Seguinos en Twitter" target="_blank" rel="nofollow"></a>
+    <a class="icon icon--youtube" href="https://www.youtube.com/user/diariorionegro?sub_confirmation=1" title="Seguinos en Youtube" target="_blank" rel="nofollow"></a>
+    <a class="icon icon--instagram" href="https://www.instagram.com/rionegrocomar" title="Seguinos en Instagram" target="_blank" rel="nofollow"></a>
+    <a class="icon icon--tiktok" href="https://www.tiktok.com/@rionegrocomar" title="Seguinos en Tik-Tok" target="_blank" rel="nofollow"></a>
+</div>        </div>
+    </div>
+</div>
+
+        <script type="text/javascript">
+            function getCookie(name) {
+                const c = document.cookie.match(`(?:(?:^|.*; *)${name} *= *([^;]*).*$)|^.*$`)[1];
+                if (c) return decodeURIComponent(c);
+                return null;
+            }
+            var user_micuenta_cookie_rn = 'anon';
+            var logged = JSON.parse(getCookie('rio_negro_mi_cuenta_logged_in_user'));
+            if (logged !== null) {
+                user_micuenta_cookie_rn = 'lgdin';
+
+                if(logged.subscription){
+                    user_micuenta_cookie_rn = 'paid';
+                }
+            } 
+        </script>
+            <script type="text/javascript">
+        ! function() {
+            "use strict";
+
+            function e(e) {
+                var t = !(arguments.length > 1 && void 0 !== arguments[1]) || arguments[1],
+                    c = document.createElement("script");
+                c.src = e, t ? c.type = "module" : (c.async = !0, c.type = "text/javascript", c.setAttribute("nomodule", ""));
+                var n = document.getElementsByTagName("script")[0];
+                n.parentNode.insertBefore(c, n)
+            }! function(t, c) {
+                ! function(t, c, n) {
+                    var a, o, r;
+                    n.accountId = c, null !== (a = t.marfeel) && void 0 !== a || (t.marfeel = {}), null !== (o = (r = t.marfeel).cmd) && void 0 !== o || (r.cmd = []), t.marfeel.config = n;
+                    var i = "https://sdk.mrf.io/statics";
+                    e("".concat(i, "/marfeel-sdk.js?id=").concat(c), !0), e("".concat(i, "/marfeel-sdk.es5.js?id=").concat(c), !1)
+                }(t, c, arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : {})
+            }(window, 5819, {
+                multimedia: {
+                    providers: ['youtube']
+                }
+            } /*Config*/ )
+        }();
+    </script>
+<script type="module" src="https://marfeelexperimentsexperienceengine.mrf.io/experimentsexperience/render?siteId=5819&url=https://www.rionegro.com.ar&experimentType=HeadlineAB&lang=es&version=esnext" async></script>
+<script type="application/javascript" src="https://marfeelexperimentsexperienceengine.mrf.io/experimentsexperience/render?siteId=5819&url=https://www.rionegro.com.ar&experimentType=HeadlineAB&lang=es&version=legacy" nomodule="" async></script>
+<script>
+    //Push user type in Marfeel
+    const userType = user_micuenta_cookie_rn === 'paid' ? 3 : user_micuenta_cookie_rn === 'lgdin' ? 2 : 0;
+    window.marfeel = window.marfeel || { cmd: [] };
+    window.marfeel.cmd.push(['compass', function(compass) {
+        compass.setUserType(userType);
+    }]);
+</script><!-- Begin comScore Tag -->
+<script>
+    var _comscore = _comscore || [];
+    _comscore.push({
+        c1: "2",
+        c2: "6906376",
+        options: {
+            enableFirstPartyCookie: true,
+            bypassUserConsentRequirementFor1PCookie: true
+        }
+    });
+    (function() {
+        var s = document.createElement("script"),
+            el = document.getElementsByTagName("script")[0];
+        s.async = true;
+        s.src = "https://sb.scorecardresearch.com/cs/6906376/beacon.js";
+        el.parentNode.insertBefore(s, el);
+    })();
+</script>
+<noscript>
+    <img src="https://sb.scorecardresearch.com/p?c1=2&amp;c2=6906376&amp;cv=4.4.0&amp;cj=1">
+</noscript>
+<!-- End comScore Tag --><!-- Google Tag Manager -->
+<script>
+	(function(w, d, s, l, i) {
+		w[l] = w[l] || [];
+		w[l].push({
+			'gtm.start': new Date().getTime(),
+			event: 'gtm.js'
+		});
+		var f = d.getElementsByTagName(s)[0],
+			j = d.createElement(s),
+			dl = l != 'dataLayer' ? '&l=' + l : '';
+		j.async = true;
+		j.src =
+			'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+		f.parentNode.insertBefore(j, f);
+	})(window, document, 'script', 'dataLayer', 'GTM-MKCQVCV');
+</script>
+<!-- End Google Tag Manager -->
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKCQVCV" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><div id="fb-root"></div>
+	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v10.0&appId=176037545936299&autoLogAppEvents=1" nonce="VgnEbAGo"></script>
+<script type="text/javascript">
+	const user = JSON.parse(getCookiee('rio_negro_mi_cuenta_logged_in_user'));
+	var reader_type_rn = 'anonymous';
+
+	if (user !== null) {
+		reader_type_rn = 'registered';
+	}
+
+	if (user !== null && user.subscription !== null) {
+		reader_type_rn = 'subscribed';
+	}
+
+	/* CONFIGURATION START */
+	var _ain = {
+		id: "1589",
+		postid: "2233626",
+		maincontent: ".newsfull__title, .newsfull__excerpt, .newsfull__body",
+		title: "Creó un perfil de Facebook para José de San Martín e incluyó a una famosa entre sus amigos",
+		pubdate: "2022-04-05T20:32:44-03:00",
+		authors: "Daniela Castro",
+		sections: "Redes",
+		tags: "Educación,Entre Ríos,Historia,Mirtha Legrand,Redes Sociales,San Martín",
+		access_level: "free",
+		reader_type: reader_type_rn,
+		article_type: "article",
+	};
+	/* CONFIGURATION END */
+	(function(d, s) {
+		var sf = d.createElement(s);
+		sf.type = 'text/javascript';
+		sf.async = true;
+		sf.src = (('https:' == d.location.protocol) ?
+			'https://d7d3cf2e81d293050033-3dfc0615b0fd7b49143049256703bfce.ssl.cf1.rackcdn.com' :
+			'http://t.contentinsights.com') + '/stf.js';
+		var t = d.getElementsByTagName(s)[0];
+		t.parentNode.insertBefore(sf, t);
+	})(document, 'script');
+
+	function getCookiee(name) {
+		let c = document.cookie.match(`(?:(?:^|.*; *)${name} *= *([^;]*).*$)|^.*$`)[1];
+		if (c) return decodeURIComponent(c);
+		return null;
+	}
+</script><script type="text/javascript" src="https://www.rionegro.com.ar/wp-content/themes/rn-v2/dist/js/critic.js?ver=4.4.6" id="critic-js"></script>
+<script type="text/javascript" async="" src="https://www.rionegro.com.ar/wp-content/themes/rn-v2/dist/js/main.js?ver=4.4.6" id="base-theme-script-async-js"></script>
+<script type="text/javascript" src="https://www.rionegro.com.ar/wp-content/themes/rn-v2/dist/js/portada.js?ver=4.4.6" id="portada-js"></script>
+<script type="text/javascript" async="" src="https://www.rionegro.com.ar/wp-content/themes/rn-v2/inc/templateV1/assets/js.cookie.js?ver=4.4.6" id="JSCookie-async-js"></script>
+<script type="text/javascript" id="paywall-async-js-extra">
+/* <![CDATA[ */
+var paywallConfig = {"field_paywall_type":"inline","field_signwall_min":"2000","field_paywall_min":"4","field_paywall_allowed_referrer":[]};
+/* ]]> */
+</script>
+<script type="text/javascript" async="" src="https://www.rionegro.com.ar/wp-content/themes/rn-v2/inc/templateV1/assets/paywall.js?ver=4.4.6" id="paywall-async-js"></script>
+<script type="text/javascript" id="audio-script-js-extra">
+/* <![CDATA[ */
+var wp = {"is_logged":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://www.rionegro.com.ar/wp-content/plugins/rn-audio-player/assets/play.js?ver=1.3" id="audio-script-js"></script>
+<script type="text/javascript" src="https://www.rionegro.com.ar/wp-content/themes/rn-v2/assets/js/v1/libs/swiper.js?ver=4.4.6" id="swiper-js"></script>
+<script type="text/javascript" src="https://www.rionegro.com.ar/wp-content/themes/rn-v2/assets/js/v1/libs/fixabox.js?ver=4.4.6" id="fixabox-js"></script>
+<script type="text/javascript" src="https://www.rionegro.com.ar/wp-content/themes/rn-v2/assets/js/v1/Fixed.js?ver=4.4.6" id="Fixed-js"></script>
+<script type="text/javascript" src="https://www.rionegro.com.ar/wp-content/themes/rn-v2/assets/js/v1/Sliders.js?ver=4.4.6" id="Sliders-js"></script>
+<script type="text/javascript" src="https://www.rionegro.com.ar/wp-content/themes/rn-v2/dist/js/single.js?ver=4.4.6" id="single-js"></script>
+<script type="text/javascript" src="https://stats.wp.com/e-202441.js" id="jetpack-stats-js" data-wp-strategy="defer"></script>
+<script type="text/javascript" id="jetpack-stats-js-after">
+/* <![CDATA[ */
+_stq = window._stq || [];
+_stq.push([ "view", JSON.parse("{\"v\":\"ext\",\"blog\":\"146691927\",\"post\":\"2233626\",\"tz\":\"-3\",\"srv\":\"www.rionegro.com.ar\",\"hp\":\"vip\",\"j\":\"1:13.8.1\"}") ]);
+_stq.push([ "clickTrackerInit", "146691927", "2233626" ]);
+/* ]]> */
+</script>
+</body>
+</html>
