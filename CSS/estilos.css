@@ -230,7 +230,7 @@ li {
   width: calc(200px * 646);
 }
 .slide-tracks .cartas {
-  width: 250px;
+  width: 255px;
   background-color: gainsboro;
   border-radius: 10px 10px 10px 10px;
   padding-left: 10px;
