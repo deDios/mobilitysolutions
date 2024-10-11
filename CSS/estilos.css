@@ -243,12 +243,37 @@ li {
   height: auto;
   align-items:center;
 }
+
+/*-------------------*/
+
+.titulo_carta .imagen-circular {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%; /* Hace que la imagen sea circular */
+    overflow: hidden;
+    object-fit: scale-down; /* Asegura que la imagen se ajuste correctamente */
+}
+
+.titulo_carta .imagen-pequeña {
+    position: absolute;
+    bottom: 10px; /* Ajusta la posición vertical */
+    right: 10px; /* Ajusta la posición horizontal */
+    width: 50px; /* Ajusta el tamaño de la imagen pequeña */
+    height: 50px; /* Ajusta el tamaño de la imagen pequeña */
+    border-radius: 50%; /* Opcional, hace que la imagen pequeña también sea circular */
+}
+
+
+/*----------------------*/
+
+/*
 .titulo_carta img {
   width: 45px;
   height: 45px;
   overflow: hidden;
   object-fit: scale-down;
 }
+*/
 .titulo_carta .Descripcion {
   display: grid;
   grid-template-rows: 1fr 1fr;
