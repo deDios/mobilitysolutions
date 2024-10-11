@@ -245,9 +245,7 @@ li {
 }
 
 /*-------------------*/
-
 .titulo_carta .Imagenes{
-  position: relative;
   width: 50px;
   height: 50px;
 }
@@ -268,8 +266,6 @@ li {
     height: 25px; /* Ajusta el tamaño de la imagen pequeña */
     border-radius: 50%; /* Opcional, hace que la imagen pequeña también sea circular */
 }
-
-
 /*----------------------*/
 
 /*
