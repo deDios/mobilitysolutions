@@ -244,8 +244,8 @@ li {
   align-items:center;
 }
 .titulo_carta img {
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   overflow: hidden;
   object-fit: scale-down;
 }
