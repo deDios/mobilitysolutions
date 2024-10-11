@@ -290,9 +290,12 @@ li {
   height: auto;
   align-items:center;
 }
+.T_L h5{
+  padding-top: 5px;
+}
 .T_L img {
-  width: 20px;
-  height: 20px;
+  width: 23px;
+  height: 23px;
   overflow: hidden;
   object-fit: scale-down;
   padding-left: 5px;
