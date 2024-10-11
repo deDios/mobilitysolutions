@@ -217,8 +217,10 @@
           <div class="card" style="width: 18rem;">
             <div class="card-body">
               <div class="titulo_carta">
-                  <img src="imagen-circular.jpg" alt="Imagen perfil" class="imagen-circular">
-                  <img src="logo_google.jpg" alt="Imagen google" class="imagen-pequeña">
+                  <div class="Imagenes">
+                    <img src="imagen-circular.jpg" alt="Imagen perfil" class="imagen-circular">
+                    <img src="logo_google.jpg" alt="Imagen google" class="imagen-pequeña">
+                  </div>
                   <div class="Descripcion">
                       <div class="T_L">
                         <h5 class="card-title">  <?php echo $Nombre;?> </h5>
