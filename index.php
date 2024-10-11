@@ -208,6 +208,13 @@
                       <h6 class="card-subtitle mb-2 text-muted"> 1 day ago  </h6>
                   </div>
               </div>
+              <p class="clasificacion">
+                <label for="radio1">★</label>
+                <label for="radio2">★</label>
+                <label for="radio3">★</label>
+                <label for="radio4">★</label>
+                <label for="radio5">★</label>
+              </p>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
               <a href="#" class="card-link">Read more</a>
             </div>
