@@ -117,6 +117,8 @@
     </section>
   </div>
 
+  <div class="album_con">
+
   <div class="album py-5">
     <div class="container">
 
@@ -191,7 +193,7 @@
     </div>
   </div>
 
-
+</div>
 </main>
 
 
