@@ -201,8 +201,8 @@
               <div class="titulo_carta">
                   <img src="logo_google.jpg" alt="logo 1">
                   <div class="Descripcion">
-                      <div class="card-title">  Pablo de Dios </div>
-                      <div class="card-subtitle mb-2 text-muted"> Reseña  </div>
+                      <h5 class="card-title">  Pablo de Dios </h5>
+                      <h6 class="card-subtitle mb-2 text-muted"> Reseña  </h6>
                   </div>
               </div>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
