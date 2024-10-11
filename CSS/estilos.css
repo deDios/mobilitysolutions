@@ -226,7 +226,7 @@ li {
   display: flex;
   animation: scroll 40s linear infinite;
   -webkit-animation: scroll 40s linear infinite; 
-  width: calc(200px * 52);
+  width: calc(200px * 16);
 }
 .slider .slider {
   width: 200px;
@@ -242,8 +242,8 @@ li {
     transform: translate(0);
   }
   100% {
-    -webkit-transform: translateX(calc(-200px * 26)); 
-    transform: translate(calc(-200px * 26));
+    -webkit-transform: translateX(calc(-200px * 8)); 
+    transform: translate(calc(-200px * 8));
   }
 }
 
