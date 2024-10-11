@@ -231,10 +231,8 @@ li {
 }
 .slider .slider {
   width: 200px;
-}
-
-.slider .slider img {
-  width: 100%;
+  background-color: gainsboro;
+  border-radius: 10px 10px 10px 10px;
 }
 
 @keyframes scroll{
