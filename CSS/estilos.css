@@ -221,6 +221,7 @@ li {
   margin: auto; 
   overflow: hidden;
   padding-top: 100px;
+  padding-bottom: 100px;
 }
 .slider .slide-track{
   display: flex;
