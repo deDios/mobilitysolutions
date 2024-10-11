@@ -229,7 +229,7 @@ li {
   -webkit-animation: scroll 60s linear infinite; 
   width: calc(200px * 16);
 }
-.slider .sliders {
+.slide-tracks .sliders {
   width: 200px;
   background-color: gainsboro;
   border-radius: 10px 10px 10px 10px;
