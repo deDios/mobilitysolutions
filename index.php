@@ -196,83 +196,30 @@
     <div class="slide-track">
       
         <div class="slide">
-          <img src="Imagenes/Marcas/logo_Audi.jpg" alt="logo 1">
+          <img src="resena.jpg" alt="logo 1">
         </div>
         <div class="slide">
-          <img src="Imagenes/Marcas/logo_Audi.jpg" alt="logo 1">
+          <img src="resena.jpg" alt="logo 1">
         </div>
         <div class="slide">
-          <img src="Imagenes/Marcas/logo_Audi.jpg" alt="logo 1">
+          <img src="resena.jpg" alt="logo 1">
         </div>
         <div class="slide">
-          <img src="Imagenes/Marcas/logo_Audi.jpg" alt="logo 1">
+          <img src="resena.jpg" alt="logo 1">
         </div>
         <div class="slide">
-          <img src="Imagenes/Marcas/logo_Audi.jpg" alt="logo 1">
+          <img src="resena.jpg" alt="logo 1">
         </div>
         <div class="slide">
-          <img src="Imagenes/Marcas/logo_Audi.jpg" alt="logo 1">
+          <img src="resena.jpg" alt="logo 1">
         </div>
         <div class="slide">
-          <img src="Imagenes/Marcas/logo_Audi.jpg" alt="logo 1">
+          <img src="resena.jpg" alt="logo 1">
         </div>
         <div class="slide">
-          <img src="Imagenes/Marcas/logo_Audi.jpg" alt="logo 1">
+          <img src="resena.jpg" alt="logo 1">
         </div>
-        <div class="slide">
-          <img src="Imagenes/Marcas/logo_Audi.jpg" alt="logo 1">
-        </div>
-        <div class="slide">
-          <img src="Imagenes/Marcas/logo_Audi.jpg" alt="logo 1">
-        </div>
-        <div class="slide">
-          <img src="Imagenes/Marcas/logo_Audi.jpg" alt="logo 1">
-        </div>
-        <div class="slide">
-          <img src="Imagenes/Marcas/logo_Audi.jpg" alt="logo 1">
-        </div>
-        <div class="slide">
-          <img src="Imagenes/Marcas/logo_Audi.jpg" alt="logo 1">
-        </div>
-        <div class="slide">
-          <img src="Imagenes/Marcas/logo_Audi.jpg" alt="logo 1">
-        </div>
-        <div class="slide">
-          <img src="Imagenes/Marcas/logo_Audi.jpg" alt="logo 1">
-        </div>
-        <div class="slide">
-          <img src="Imagenes/Marcas/logo_Audi.jpg" alt="logo 1">
-        </div>
-        <div class="slide">
-          <img src="Imagenes/Marcas/logo_Audi.jpg" alt="logo 1">
-        </div>
-        <div class="slide">
-          <img src="Imagenes/Marcas/logo_Audi.jpg" alt="logo 1">
-        </div>
-        <div class="slide">
-          <img src="Imagenes/Marcas/logo_Audi.jpg" alt="logo 1">
-        </div>
-        <div class="slide">
-          <img src="Imagenes/Marcas/logo_Audi.jpg" alt="logo 1">
-        </div>
-        <div class="slide">
-          <img src="Imagenes/Marcas/logo_Audi.jpg" alt="logo 1">
-        </div>
-        <div class="slide">
-          <img src="Imagenes/Marcas/logo_Audi.jpg" alt="logo 1">
-        </div>
-        <div class="slide">
-          <img src="Imagenes/Marcas/logo_Audi.jpg" alt="logo 1">
-        </div>
-        <div class="slide">
-          <img src="Imagenes/Marcas/logo_Audi.jpg" alt="logo 1">
-        </div>
-        <div class="slide">
-          <img src="Imagenes/Marcas/logo_Audi.jpg" alt="logo 1">
-        </div>
-        <div class="slide">
-          <img src="Imagenes/Marcas/logo_Audi.jpg" alt="logo 1">
-        </div>
+        
     
     </div>
   </div>
