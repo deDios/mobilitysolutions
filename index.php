@@ -205,7 +205,7 @@
                         <h5 class="card-title">  Pablo de Dios </h5>
                         <img src="ver.jpg" alt="logo 1">
                       </div>
-                      <h6 class="card-subtitle mb-2 text-muted"> 1 day ago  </h6>
+                      <h6 class="card-subtitle mb-2 text-muted"> 2 days ago  </h6>
                   </div>
               </div>
               <p class="clasificacion">
