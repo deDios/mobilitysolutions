@@ -195,28 +195,36 @@
   <div class="slider">
     <div class="slide-track">
       
-        <div class="slide">
+        <div class="slides">
+          <img src="logo_google.jpg" alt="logo 1">
            A
         </div>
-        <div class="slide">
+        <div class="slides">
+          <img src="logo_google.jpg" alt="logo 1">
           B
         </div>
-        <div class="slide">
+        <div class="slides">
+          <img src="logo_google.jpg" alt="logo 1">
           C
         </div>
-        <div class="slide">
+        <div class="slides">
+          <img src="logo_google.jpg" alt="logo 1">
           D
         </div>
-        <div class="slide">
+        <div class="slides">
+          <img src="logo_google.jpg" alt="logo 1">
           E
         </div>
-        <div class="slide">
+        <div class="slides">
+          <img src="logo_google.jpg" alt="logo 1">
           F
         </div>
-        <div class="slide">
+        <div class="slides">
+          <img src="logo_google.jpg" alt="logo 1">
           G
         </div>
-        <div class="slide">
+        <div class="slides">
+          <img src="logo_google.jpg" alt="logo 1">
           H
         </div>
         
