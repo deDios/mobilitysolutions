@@ -220,6 +220,7 @@ li {
   height: auto; 
   margin: auto; 
   overflow: hidden;
+  padding-top: 100px;
 }
 .slider .slide-track{
   display: flex;
