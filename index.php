@@ -214,7 +214,7 @@
     ?>
 
         <div class="cartas pl-3">
-          <div class="card" style="width: 19rem;">
+          <div class="card" style="width: 20rem;">
             <div class="card-body">
               <div class="titulo_carta">
                   <div class="Imagenes">
