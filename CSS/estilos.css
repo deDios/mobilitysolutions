@@ -255,6 +255,19 @@ li {
   padding-left: 10px;
   padding-right: 10px;
 }
+.Descripcion .T_L{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: auto;
+  align-items:center;
+}
+.T_L img {
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+  object-fit: scale-down;
+}
 
 @keyframes scroll{
   0% {
