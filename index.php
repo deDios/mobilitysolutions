@@ -237,10 +237,6 @@
             </div>
           </div>
         </div>
-    
-    </div>
-  </div>
-
   <?php
                             }
                         } else{
@@ -249,6 +245,10 @@
                         mysqli_free_result($result);                  
                     }
   ?>
+    </div>
+  </div>
+
+  
 
 </main>
 
