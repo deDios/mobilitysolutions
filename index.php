@@ -195,6 +195,24 @@
   <div class="slider">
     <div class="slide-track">
       
+    <?php 
+                $inc = include "db/Conexion.php";
+                    if ($inc){
+                        $query = "select  
+                                    Id, 
+                                    Nombre, 
+                                    Dias, 
+                                    Descripcion
+                                  FROM mobility_solutions.tmx_resenas;";
+                        $result = mysqli_query($con,$query);  
+                        if ($result){         
+                            while($row = mysqli_fetch_assoc($result)){
+                                $id = $row['id'];
+                                $Nombre = $row['Nombre'];
+                                $Dias = $row['Dias'];
+                                $Descripcion = $row['Descripcion'];
+    ?>
+
         <div class="cartas pl-3">
           <div class="card" style="width: 18rem;">
             <div class="card-body">
@@ -202,10 +220,10 @@
                   <img src="logo_google.jpg" alt="logo 1">
                   <div class="Descripcion">
                       <div class="T_L">
-                        <h5 class="card-title">  Pablo de Dios </h5>
+                        <h5 class="card-title">  <?php echo $Nombre;?> </h5>
                         <img src="ver.jpg" alt="logo 1">
                       </div>
-                      <h6 class="card-subtitle mb-2 text-muted"> 2 days ago  </h6>
+                      <h6 class="card-subtitle mb-2 text-muted"> <?php echo $Dias;?> days ago  </h6>
                   </div>
               </div>
               <p class="clasificacion">
@@ -215,97 +233,22 @@
                 <label for="radio4">★</label>
                 <label for="radio5">★</label>
               </p>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="cartas pl-3">
-          <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="cartas pl-3">
-          <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="cartas pl-3">
-          <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="cartas pl-3">
-          <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="cartas pl-3">
-          <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="cartas pl-3">
-          <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="cartas pl-3">
-          <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
+              <p class="card-text"><?php echo $Descripcion;?></p>
             </div>
           </div>
         </div>
     
     </div>
   </div>
+
+  <?php
+                            }
+                        } else{
+                            echo "Hubo un error en la consulta";
+                        }
+                        mysqli_free_result($result);                  
+                    }
+  ?>
 
 </main>
 
