@@ -212,7 +212,6 @@
                                 $Dias = $row['Dias'];
                                 $Descripcion = $row['Descripcion'];
     ?>
-
         <div class="cartas pl-3">
           <div class="card" style="width: 20rem;">
             <div class="card-body">
@@ -226,7 +225,7 @@
                         <h5 class="card-title">  <?php echo $Nombre;?> </h5>
                         <img src="ver.jpg" alt="logo 1">
                       </div>
-                      <h6 class="card-subtitle mb-2 text-muted"> <?php echo $Dias;?> days ago  </h6>
+                      <h6 class="card-subtitle mb-2 text-muted"> <?php echo $Dias;?> days ago</h6>
                   </div>
               </div>
               <p class="clasificacion">
