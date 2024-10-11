@@ -225,8 +225,8 @@ li {
 }
 .slider .slide-track{
   display: flex;
-  animation: scroll 40s linear infinite;
-  -webkit-animation: scroll 40s linear infinite; 
+  animation: scroll 60s linear infinite;
+  -webkit-animation: scroll 60s linear infinite; 
   width: calc(200px * 16);
 }
 .slider .sliders {
@@ -236,10 +236,6 @@ li {
   padding-left: 10px;
 }
 
-.sliders img {
-  width: 60px;
-  height: 60px;
-}
 
 @keyframes scroll{
   0% {
