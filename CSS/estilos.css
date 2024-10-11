@@ -249,7 +249,12 @@ li {
   overflow: hidden;
   object-fit: scale-down;
 }
-
+.titulo_carta .Descripcion {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  padding-left: 10px;
+  padding-right: 10px;
+}
 
 @keyframes scroll{
   0% {
