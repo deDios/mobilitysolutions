@@ -264,8 +264,8 @@ li {
     position: absolute;
     bottom: 10px; /* Ajusta la posición vertical */
     right: 10px; /* Ajusta la posición horizontal */
-    width: 50px; /* Ajusta el tamaño de la imagen pequeña */
-    height: 50px; /* Ajusta el tamaño de la imagen pequeña */
+    width: 25px; /* Ajusta el tamaño de la imagen pequeña */
+    height: 25px; /* Ajusta el tamaño de la imagen pequeña */
     border-radius: 50%; /* Opcional, hace que la imagen pequeña también sea circular */
 }
 
