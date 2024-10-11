@@ -218,7 +218,7 @@
             <div class="card-body">
               <div class="titulo_carta">
                   <div class="Imagenes">
-                    <img src="logo_google.jpg" alt="Imagen perfil" class="imagen-circular"> 
+                    <img src="Imagenes/Perfil_resena/Img<?php echo $id;?>.jpg" alt="Imagen perfil" class="imagen-circular">
                     <img src="logo_google.jpg" alt="Imagen google" class="imagen-pequeña">
                   </div>
                   <div class="Descripcion">
