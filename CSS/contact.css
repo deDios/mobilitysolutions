@@ -160,9 +160,9 @@ li {
 }
 
 .mx-background-top-linear {
-    background: -webkit-linear-gradient(45deg, gold 48%, #1b1e21 48%);
-    background: -webkit-linear-gradient(left, gold 48%, #1b1e21 48%);
-    background: linear-gradient(45deg, gold 48%, #1b1e21 48%);
+    background: -webkit-linear-gradient(45deg, #FFC00A 48%, #1b1e21 48%);
+    background: -webkit-linear-gradient(left, #FFC00A 48%, #1b1e21 48%);
+    background: linear-gradient(45deg, #FFC00A 48%, #1b1e21 48%);
 }
 
 .div_carrusel {
