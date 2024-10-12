@@ -80,7 +80,7 @@
     
                 <ul class="contact-info__list list-style--none position-relative z-index-101">
                     <li class="mb-4 pl-4">
-                        <span class="position-absolute"><i class="fa fa-envelope"></i></span> Atencioncliente@mobilitysolutionscorp.com
+                        <span class="position-absolute"><i class="fa fa-envelope"></i></span> Atencioncte@mobilitysolutionscorp.com
                     </li>
                     <li class="mb-4 pl-4">
                         <span class="position-absolute"><i class="fa fa-phone"></i></span> (443)-522-7213
