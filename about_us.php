@@ -423,7 +423,7 @@
             </h2>
             <div id="flush-21" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                 <div class="accordion-body">
-                  Puedes llamarnos al (443)-522-7214, enviar un correo a contacto@autobienestar.com, o llenar el formulario de contacto en nuestro sitio web. 
+                  Puedes llamarnos al (443)-522-7213, enviar un correo a Atencioncte@mobilitysolutionscorp.com, o llenar el formulario de contacto en nuestro sitio web. 
                   ¿Te gustaría agregar alguna pregunta más o ajustar alguna de estas respuestas?
                 </div>
             </div>
