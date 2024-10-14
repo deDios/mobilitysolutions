@@ -12,7 +12,7 @@ $inc = include "db/Conexion.php";
                     automovil,
                     nombre as modelo
                 FROM mobility_solutions.tmx_modelo
-                where automovil = '$Auto';";
+                where automovil = '$Auto' order by nombre asc;";
     $result = mysqli_query($con,$query); 
             if ($result){ 
                 while($row = mysqli_fetch_assoc($result)){

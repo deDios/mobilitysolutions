@@ -12,7 +12,7 @@ $inc = include "db/Conexion.php";
                     marca,
                     auto
                 FROM mobility_solutions.tmx_marca_auto
-                where marca = '$Marca';";
+                where marca = '$Marca' order by auto asc;";
     $result = mysqli_query($con,$query); 
             if ($result){ 
                 while($row = mysqli_fetch_assoc($result)){
