@@ -326,6 +326,8 @@ $inc = include "db/Conexion.php";
                             $('#InputSucursal').val(<?php echo $sucursal_update;?>);
                             $('#InputMarca').val(<?php echo $marca_update;?>);
                             
+                            get_marca();
+                            get_modelo();
                             $('#InputNombre').val(<?php echo $vehiculo_update;?>);
                             $('#InputModelo').val(<?php echo $modelo_update;?>);
 
