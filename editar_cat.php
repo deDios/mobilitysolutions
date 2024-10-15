@@ -124,8 +124,11 @@ $cod=$_REQUEST['id'];
                         $query = 'select 
                                     auto.id,
                                     m_auto.auto as nombre, 
+                                    auto.nombre as id_vehiculo,
                                     modelo.nombre as modelo, 
+                                    auto.modelo as id_modelo,
                                     marca.nombre as marca, 
+                                    auto.marca as id_marca,
                                     auto.mensualidad, 
                                     auto.costo, 
                                     sucursal.nombre as sucursal, 
@@ -159,8 +162,11 @@ $cod=$_REQUEST['id'];
                             while($row = mysqli_fetch_assoc($result)){
                                 $id = $row['id'];
                                 $nombre = $row['nombre'];
+                                $id_vehiculo = $row['id_vehiculo'];
                                 $modelo = $row['modelo'];
+                                $id_modelo = $row['id_modelo'];
                                 $marca = $row['marca'];
+                                $id_marca = $row['id_marca'];
                                 $mensualidad = $row['mensualidad'];
                                 $costo = $row['costo'];
                                 $sucursal = $row['sucursal'];
@@ -195,7 +201,7 @@ $cod=$_REQUEST['id'];
                         <td><?php echo $created_at;?></td>
                         <td><?php echo $updated_at;?></td>
                         <td><a href="javascript:detalle(<?php echo $id;?>)" class="btn btn-primary">Ver</a></td>
-                        <td><a href="update_reg.php?id=<?php echo $id;?>&sucursal=<?php echo $id_sucursal;?>" class="btn btn-warning">Editar</a></td>
+                        <td><a href="update_reg.php?i=<?php echo $id;?>&s=<?php echo $id_sucursal;?>&m=<?php echo $id_marca;?>&v=<?php echo $id_vehiculo;?>&mm=<?php echo $id_modelo;?>" class="btn btn-warning">Editar</a></td>
                         <td><button class="btn btn-danger">Eliminar</button> </td>
                     </tr>
                 <?php

@@ -1,8 +1,11 @@
 <?php
 
 $inc = include "db/Conexion.php"; 
-    $id_update = $_GET['id'];
-    $sucursal_update = $_GET['sucursal'];
+    $id_update = $_GET['i'];
+    $sucursal_update = $_GET['s'];
+    $marca_update = $_GET['m'];
+    $vehiculo_update = $_GET['v'];
+    $modelo_update = $_GET['mm'];
         $query = 'select 
         auto.id,
         m_auto.auto as nombre, 
@@ -186,7 +189,7 @@ $inc = include "db/Conexion.php";
                     <!-- Input Color ------------------------------------------------------------------->
                     <div class="col-2 mt-5">
                         <label for="InputColor" class="form-label">Color</label>
-                        <select id="InputColor" class="form-select" aria-label="Default select example" name="InputColor">
+                        <select id="InputColor" class="form-select" aria-label="Default select example" name="InputColor" value="<?php echo $color_get;?>">
                             <option value="Negro">Negro</option>  
                             <option value="Rojo">Rojo</option>  
                             <option value="Azul">Azul</option>  
@@ -280,7 +283,7 @@ $inc = include "db/Conexion.php";
                     <!-- Input eje ------------------------------------------------------------------->
                     <div class="col-2 mt-2">
                         <label for="InputEje" class="form-label">Eje</label>
-                        <select id="InputEje" class="form-select" aria-label="Default select example" name="InputEje">
+                        <select id="InputEje" class="form-select" aria-label="Default select example" name="InputEje" value="<?php echo $eje_get;?>">
                             <option value="Delantera">Delantera</option>  
                             <option value="Trasera">Trasera</option>  
                             <option value="4X4">4X4</option>  
@@ -291,7 +294,7 @@ $inc = include "db/Conexion.php";
                     <div class="col-2 mt-2">
                         <label for='InputPasajeros' class='form-label'>Capacidad de pasajeros</label>
                         <div class="input-group mb-3 ">
-                                <input id="InputPasajeros" type="text" class="form-control" name="InputPasajeros" aria-label="Amount (to the nearest dollar)">
+                                <input id="InputPasajeros" type="text" class="form-control" name="InputPasajeros" aria-label="Amount (to the nearest dollar)" value="<?php echo $pasajeros_get;?>">
                             <span class="input-group-text">Pasajeros</span>
                         </div>
                     </div>
@@ -299,7 +302,7 @@ $inc = include "db/Conexion.php";
                     <!-- Input Propietarios ------------------------------------------------------------------->
                     <div class="col-2 mt-2">
                         <label for="InputPropietarios" class="form-label">Propietarios</label>
-                        <select id="InputPropietarios" class="form-select" aria-label="Default select example" name="InputPropietarios">
+                        <select id="InputPropietarios" class="form-select" aria-label="Default select example" name="InputPropietarios" value="<?php echo $propietarios_get;?>">
                             <option value="1">1</option>  
                             <option value="2">2</option>  
                         </select>
@@ -321,7 +324,9 @@ $inc = include "db/Conexion.php";
                     <script >
                         $(document).ready(function(){
                             $('#InputSucursal').val(<?php echo $sucursal_update;?>);
-                            $('#InputMarca').val(0);
+                            $('#InputMarca').val(<?php echo $marca_update;?>);
+                            $('#InputNombre').val(<?php echo $vehiculo_update;?>);
+                            $('#InputModelo').val(<?php echo $modelo_update;?>);
                             $('#InputMarca').change(function(){
                                 get_marca();
                                 get_modelo();
