@@ -93,7 +93,7 @@ $inc = include "db/Conexion.php";
                     
                     <div class="col-2 mt-5">
                         <label for="InputSucursal" class="form-label">Sucursal</label>
-                        <select id="InputSucursal" class="form-select" aria-label="Default select example" name="InputSucursal" value="<?php echo $sucursal_update;?>">
+                        <select id="InputSucursal" class="form-select" aria-label="Default select example" name="InputSucursal">
                             <option value="0">Selecciona una sucursal</option>                      
                             <?php 
                             $inc = include "db/Conexion.php";    
@@ -320,6 +320,7 @@ $inc = include "db/Conexion.php";
     </div>
                     <script >
                         $(document).ready(function(){
+                            $('#InputSucursal').val(<?php echo $sucursal_update;?>);
                             $('#InputMarca').val(0);
                             $('#InputMarca').change(function(){
                                 get_marca();
