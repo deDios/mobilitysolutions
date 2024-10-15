@@ -189,7 +189,7 @@ $inc = include "db/Conexion.php";
                     <!-- Input Color ------------------------------------------------------------------->
                     <div class="col-2 mt-5">
                         <label for="InputColor" class="form-label">Color</label>
-                        <select id="InputColor" class="form-select" aria-label="Default select example" name="InputColor" value="<?php echo $color_get;?>">
+                        <select id="InputColor" class="form-select" aria-label="Default select example" name="InputColor">
                             <option value="Negro">Negro</option>  
                             <option value="Rojo">Rojo</option>  
                             <option value="Azul">Azul</option>  
@@ -302,7 +302,7 @@ $inc = include "db/Conexion.php";
                     <!-- Input Propietarios ------------------------------------------------------------------->
                     <div class="col-2 mt-2">
                         <label for="InputPropietarios" class="form-label">Propietarios</label>
-                        <select id="InputPropietarios" class="form-select" aria-label="Default select example" name="InputPropietarios" value="<?php echo $propietarios_get;?>">
+                        <select id="InputPropietarios" class="form-select" aria-label="Default select example" name="InputPropietarios">
                             <option value="1">1</option>  
                             <option value="2">2</option>  
                         </select>
@@ -317,14 +317,13 @@ $inc = include "db/Conexion.php";
                     </div>
 
 
-                    <button type="submit" class="btn btn-success mt-5">Guardar registro</button>
+                    <button type="submit" class="btn btn-success mt-5">Actualizar</button>
             </form>
         </div>
     </div>
                     <script >
                         $(document).ready(function(){
                             $('#InputSucursal').val(<?php echo $sucursal_update;?>);
-                            $('#InputEje').val(<?php echo $eje_get;?>);
                             $('#InputMarca').val(<?php echo $marca_update;?>);
                             $('#InputNombre').val(<?php echo $vehiculo_update;?>);
                             $('#InputModelo').val(<?php echo $modelo_update;?>);
