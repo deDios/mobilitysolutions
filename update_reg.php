@@ -172,7 +172,7 @@ $inc = include "db/Conexion.php";
                     <!-- Input Mensualidad ------------------------------------------------------------------->
                     <div class="input-group mb-3 col-6 mt-5">
                         <span class="input-group-text">$</span>
-                            <input id="InputMensualidad" type="text" class="form-control" name="InputMensualidad" aria-label="Amount (to the nearest dollar)" required>
+                            <input id="InputMensualidad" type="text" class="form-control" name="InputMensualidad" aria-label="Amount (to the nearest dollar)" value="<?php echo $mensualidad_get;?>" required>
                         <span class="input-group-text">MX/mensuales</span>
                     </div>
                     <div class="invalid-feedback">
@@ -182,7 +182,7 @@ $inc = include "db/Conexion.php";
                     <!-- Input Costo ------------------------------------------------------------------->
                     <div class="input-group mb-3 col-6 mt-2">
                         <span class="input-group-text">$</span>
-                            <input id="InputCosto" type="text" class="form-control" name="InputCosto" aria-label="Amount (to the nearest dollar)">
+                            <input id="InputCosto" type="text" class="form-control" name="InputCosto" aria-label="Amount (to the nearest dollar)" value="<?php echo $costo_get;?>">
                         <span class="input-group-text">MX/Contado</span>
                     </div>
 
@@ -235,7 +235,7 @@ $inc = include "db/Conexion.php";
                     <div class="col-2 mt-2">
                         <label for='InputKilometraje' class='form-label'>Kilometraje</label>
                         <div class="input-group mb-3 ">
-                                <input id="InputKilometraje" type="text" class="form-control" name="InputKilometraje"  aria-label="Amount (to the nearest dollar)">
+                                <input id="InputKilometraje" type="text" class="form-control" name="InputKilometraje"  aria-label="Amount (to the nearest dollar)" value="<?php echo $kilometraje_get;?>">
                             <span class="input-group-text">km</span>
                         </div>
                     </div>
