@@ -129,6 +129,7 @@ $cod=$_REQUEST['id'];
                                     auto.mensualidad, 
                                     auto.costo, 
                                     sucursal.nombre as sucursal, 
+                                    auto.sucursal as id_sucursal,
                                     auto.img1, 
                                     auto.img2, 
                                     auto.img3, 
@@ -163,6 +164,7 @@ $cod=$_REQUEST['id'];
                                 $mensualidad = $row['mensualidad'];
                                 $costo = $row['costo'];
                                 $sucursal = $row['sucursal'];
+                                $id_sucursal = $row['id_sucursal'];
                                 $color = $row['color'];
                                 $interior = $row['interior'];
                                 $combustible = $row['combustible'];
@@ -193,7 +195,7 @@ $cod=$_REQUEST['id'];
                         <td><?php echo $created_at;?></td>
                         <td><?php echo $updated_at;?></td>
                         <td><a href="javascript:detalle(<?php echo $id;?>)" class="btn btn-primary">Ver</a></td>
-                        <td><a href="update_reg.php?id=<?php echo $id;?>" class="btn btn-warning">Editar</a></td>
+                        <td><a href="update_reg.php?id=<?php echo $id;?>&sucursal=<?php echo $id_sucursal;?>" class="btn btn-warning">Editar</a></td>
                         <td><button class="btn btn-danger">Eliminar</button> </td>
                     </tr>
                 <?php

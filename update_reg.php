@@ -2,6 +2,7 @@
 
 $inc = include "db/Conexion.php"; 
     $id_update = $_GET['id'];
+    $sucursal_update = $_GET['sucursal'];
         $query = 'select 
         auto.id,
         m_auto.auto as nombre, 
@@ -92,7 +93,7 @@ $inc = include "db/Conexion.php";
                     
                     <div class="col-2 mt-5">
                         <label for="InputSucursal" class="form-label">Sucursal</label>
-                        <select id="InputSucursal" class="form-select" aria-label="Default select example" name="InputSucursal" value="<?php echo $sucursal_get;?>">
+                        <select id="InputSucursal" class="form-select" aria-label="Default select example" name="InputSucursal" value="<?php echo $sucursal_update;?>">
                             <option value="0">Selecciona una sucursal</option>                      
                             <?php 
                             $inc = include "db/Conexion.php";    
