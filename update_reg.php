@@ -64,6 +64,7 @@ $inc = include "db/Conexion.php";
     echo "Falla en conexión";
     }
 
+    echo("<script>console.log('PHP: " . $costo_get . "');</script>");
 ?>
 
 <!DOCTYPE html>
