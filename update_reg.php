@@ -6,6 +6,7 @@ $inc = include "db/Conexion.php";
     $marca_update = $_GET['m'];
     $vehiculo_update = $_GET['v'];
     $modelo_update = $_GET['mm'];
+    $color_update = $_GET['c'];
         $query = 'select 
         auto.id,
         m_auto.auto as nombre, 
@@ -326,13 +327,10 @@ $inc = include "db/Conexion.php";
                             $('#InputSucursal').val(<?php echo $sucursal_update;?>);
                             $('#InputMarca').val(<?php echo $marca_update;?>);
                             
-                            async function demo(){
-                                get_marca();
-                                get_modelo();  
-                            }
-                            demo();
                             $('#InputNombre').val(<?php echo $vehiculo_update;?>);
                             $('#InputModelo').val(<?php echo $modelo_update;?>);
+
+                            $('#InputColor').val(<?php echo $color_update;?>);
 
                             $('#InputMarca').change(function(){
                                 get_marca();

@@ -201,7 +201,7 @@ $cod=$_REQUEST['id'];
                         <td><?php echo $created_at;?></td>
                         <td><?php echo $updated_at;?></td>
                         <td><a href="javascript:detalle(<?php echo $id;?>)" class="btn btn-primary">Ver</a></td>
-                        <td><a href="update_reg.php?i=<?php echo $id;?>&s=<?php echo $id_sucursal;?>&m=<?php echo $id_marca;?>&v=<?php echo $id_vehiculo;?>&mm=<?php echo $id_modelo;?>" class="btn btn-warning">Editar</a></td>
+                        <td><a href="update_reg.php?i=<?php echo $id;?>&s=<?php echo $id_sucursal;?>&m=<?php echo $id_marca;?>&v=<?php echo $id_vehiculo;?>&mm=<?php echo $id_modelo;?>&c=<?php echo $color;?>" class="btn btn-warning">Editar</a></td>
                         <td><button class="btn btn-danger">Eliminar</button> </td>
                     </tr>
                 <?php
