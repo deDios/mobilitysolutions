@@ -328,15 +328,11 @@ $inc = include "db/Conexion.php";
                             
                             async function demo(){
                                 get_marca();
-                                await sleep(5000);
-                                console.log('Waiting 1');
-                                $('#InputNombre').val(<?php echo $vehiculo_update;?>);
-                                get_modelo();
-                                await sleep(5000);
-                                console.log('Waiting 2');
-                                $('#InputModelo').val(<?php echo $modelo_update;?>);
+                                get_modelo();  
                             }
                             demo();
+                            $('#InputNombre').val(<?php echo $vehiculo_update;?>);
+                            $('#InputModelo').val(<?php echo $modelo_update;?>);
 
                             $('#InputMarca').change(function(){
                                 get_marca();
