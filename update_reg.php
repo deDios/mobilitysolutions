@@ -49,7 +49,6 @@ $inc = include "db/Conexion.php";
                         $marca_get = $row['marca'];
                         $mensualidad_get = $row['mensualidad'];
                         $costo_get = $row['costo'];
-                        $sucursal_get = $row['sucursal'];
                         $color_get = $row['color'];
                         $interior_get = $row['interior'];
                         $combustible_get = $row['combustible'];
@@ -189,7 +188,7 @@ $inc = include "db/Conexion.php";
                     <!-- Input Color ------------------------------------------------------------------->
                     <div class="col-2 mt-5">
                         <label for="InputColor" class="form-label">Color</label>
-                        <select id="InputColor" class="form-select" aria-label="Default select example" name="InputColor">
+                        <select id="InputColor" class="form-select" aria-label="Default select example" name="InputColor" value="<?php echo $color_get;?>">
                             <option value="Negro">Negro</option>  
                             <option value="Rojo">Rojo</option>  
                             <option value="Azul">Azul</option>  
