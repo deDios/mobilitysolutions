@@ -188,7 +188,7 @@ $inc = include "db/Conexion.php";
                     <!-- Input Color ------------------------------------------------------------------->
                     <div class="col-2 mt-5">
                         <label for="InputColor" class="form-label">Color</label>
-                        <select id="InputColor" class="form-select" aria-label="Default select example" name="InputColor" value="<?php echo $color_get;?>">
+                        <select id="InputColor" class="form-select" aria-label="Default select example" name="InputColor">
                             <option value="Negro">Negro</option>  
                             <option value="Rojo">Rojo</option>  
                             <option value="Azul">Azul</option>  
@@ -329,6 +329,8 @@ $inc = include "db/Conexion.php";
                             get_modelo();
                             $('#InputNombre').val(<?php echo $vehiculo_update;?>);
                             $('#InputModelo').val(<?php echo $modelo_update;?>);
+
+                            $('#InputColor').val(<?php echo $color_get;?>);
 
                             $('#InputMarca').change(function(){
                                 get_marca();
