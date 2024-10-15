@@ -1,5 +1,6 @@
 <?php
 
+$inc = include "db/Conexion.php"; 
     $id_update = $_GET['id'];
         $query = 'select 
         auto.id,
@@ -85,7 +86,7 @@
 <body>
 
     <div class="container">
-        <h1>Registro autos</h1>
+        <h1>Actualizar auto</h1>
         <div class="row mt-5">
             <form action="db_consultas/update_sp.php" method="POST" enctype="multipart/form-data">
                     
