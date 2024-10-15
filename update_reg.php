@@ -326,16 +326,16 @@ $inc = include "db/Conexion.php";
                             $('#InputSucursal').val(<?php echo $sucursal_update;?>);
                             $('#InputMarca').val(<?php echo $marca_update;?>);
                             get_marca();
-                            const sleep = ms => new Promise(r => setTimeout(r, 200000));
-                            $('#InputNombre').val(<?php echo $vehiculo_update;?>);
                             get_modelo();
-                            $('#InputModelo').val(<?php echo $modelo_update;?>);
+                            
                             $('#InputMarca').change(function(){
                                 get_marca();
                                 get_modelo();
+                                $('#InputNombre').val(<?php echo $vehiculo_update;?>);
                             }); 
                             $('#div_auto').change(function(){
                                 get_modelo();
+                                $('#InputModelo').val(<?php echo $modelo_update;?>);
                             });                       
                         });
                     </script>                        
