@@ -128,7 +128,10 @@
                             <option value="Verde">Verde</option>
                             <option value="Gris">Gris</option>
                             <option value="Amarillo">Amarillo</option>
-                            <option value="Arena">Arena</option>  
+                            <option value="Arena">Arena</option>
+                            <option value="Guinda">Guinda</option>
+                            <option value="Plata">Plata</option>
+                            <option value="Naranja">Naranja</option>  
                         </select>
                     </div>
 
