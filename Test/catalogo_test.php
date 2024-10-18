@@ -148,12 +148,12 @@
                                     <a href="javascript:detalle(<?php echo $id;?>)">
                                         <div class="item">
                                             <figure>
-                                                <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="Auto 1">
+                                                <img src="../Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="Auto 1">
                                             </figure>
                                             <div class="info-producto">
                                                 <div class="titulo_marca">
                                                     <div class="titulo_carro">  <?php echo $marca . " " . $nombre; ?>  </div>
-                                                    <img src="Imagenes/Marcas/logo_<?php echo $marca; ?>.jpg" alt="logo 1">
+                                                    <img src="../Imagenes/Marcas/logo_<?php echo $marca; ?>.jpg" alt="logo 1">
                                                 </div>
                                                 <div class="version_unidad"><?php echo "N°25000A/" .  $id . " - " . $modelo; ?></div>
                                                 <div class="titulo_desde">Mensualidad DESDE</div>
