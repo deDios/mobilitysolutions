@@ -410,6 +410,12 @@ li {
         padding-left: 10px;
     }
 
+    .info-producto .mensualidades{
+        color: black;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
     .info-producto .titulo_marca {
         color: black;
         width: 100%;
