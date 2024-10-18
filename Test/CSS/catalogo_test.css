@@ -286,13 +286,15 @@ li {
     align-items: center;
 }
 
-.Localidad img {
-    width: 10px;
-    height: 10px;
-    object-fit:fill;
+.Localidad imagen-sello {
+    position: absolute;
+    bottom: 1px; /* Ajusta la posición vertical */
+    right: 1px; /* Ajusta la posición horizontal */
+    width: 50px; /* Ajusta el tamaño de la imagen pequeña */
+    height: 25px; /* Ajusta el tamaño de la imagen pequeña */
 }
 
-.info-producto .Loc i {
+.info-producto .Localidad i {
     width: 40px;
     height: 40px;
 }

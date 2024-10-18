@@ -157,21 +157,15 @@
                                                 </div>
                                                 <div class="version_unidad"><?php echo "N°25000A/" .  $id . " - " . $modelo; ?></div>
                                                 <div class="titulo_desde">Mensualidad DESDE</div>
-                                                <div class="Localidad">
-                                                  <div class="mensualidades"> <?php echo "$" . number_format($mensualidad) . "/mes"; ?> </div>
-                                                  <?php 
-                                                    if ($estatus == 3){
-                                                  ?>
-                                                    <img src="../Imagenes/Sellos/reservado.jpg" alt="sello">
-                                                  <?php
-                                                    } else {
-                                                  ?>
-                                                  <?php
-                                                    }
-                                                  ?>
-                                                </div>
+                                                <div class="mensualidades"> <?php echo "$" . number_format($mensualidad) . "/mes"; ?> </div>
                                                 <div class="Precio"><?php echo "$" . number_format($costo); ?> </div> 
-                                                <div class="Loc"> <i class="fas fa-location-arrow" ></i> <?php echo " " . $sucursal;?> </div>
+                                                <div class="Localidad">
+                                                  <div> <i class="fas fa-location-arrow" ></i> <?php echo " " . $sucursal;?> </div>
+                                                  <?php if ($estatus == 3){?>
+                                                    <img src="../Imagenes/Sellos/reservado.jpg" class="imagen-sello" alt="sello">
+                                                  <?php } else { ?>
+                                                  <?php } ?>
+                                                </div>
                                                 
                                             </div>
                                         </div>            
