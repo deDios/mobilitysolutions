@@ -391,7 +391,7 @@ li {
     }
     .lista_item figure {
         width: 50%;
-        height: 120px;
+        height: 125px;
     }
     .item figure img{
         overflow: hidden;
@@ -405,7 +405,7 @@ li {
     .item .info-producto{
         display: grid;
         grid-template-rows: 1fr 2fr 1fr 1fr 1fr 1fr;
-        height: 125px;
+        height: 130px;
         width: 100%;
         padding-left: 10px;
     }
