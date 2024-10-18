@@ -389,7 +389,7 @@ li {
     }
     .lista_item figure {
         width: 30%;
-        height: 60px;
+        height: 100px;
     }
     .item figure img{
         overflow: hidden;
