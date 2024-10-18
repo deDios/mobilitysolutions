@@ -166,7 +166,7 @@
                                                 <?php 
                                                   if ($estatus == 3){
                                                 ?>
-                                                  <img src="Imagenes/Sellos/reservado.jpg" alt="sello">
+                                                  <img src="../Imagenes/Sellos/reservado.jpg" alt="sello">
                                                 <?php
                                                   } else {
                                                 ?>

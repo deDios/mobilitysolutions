@@ -377,7 +377,7 @@ li {
     }
     .lista_item .item {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         height: 100%;
         width: 100%;
         border: 1px solid gainsboro;
@@ -388,8 +388,8 @@ li {
         grid-row-gap: 10px;
     }
     .lista_item figure {
-        width: 90%;
-        height: 250px;
+        width: 30%;
+        height: 60px;
     }
     .item figure img{
         overflow: hidden;
