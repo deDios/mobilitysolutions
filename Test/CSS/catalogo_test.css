@@ -287,9 +287,6 @@ li {
 }
 
 .Localidad img {
-    position: absolute;
-    bottom: 1px; /* Ajusta la posición vertical */
-    right: 1px; /* Ajusta la posición horizontal */
     width: 100px;
     height: 45px;
     object-fit:fill;
@@ -391,7 +388,7 @@ li {
     }
     .lista_item figure {
         width: 40%;
-        height: 80px;
+        height: 100px;
         padding-left: 10px;
     }
     .item figure img{
@@ -413,7 +410,7 @@ li {
 
     .info-producto .mensualidades{
         color: black;
-        font-size: 8px;
+        font-size: 10px;
         font-weight: bold;
     }
 
