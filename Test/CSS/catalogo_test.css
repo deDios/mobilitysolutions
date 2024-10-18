@@ -435,8 +435,8 @@ li {
     .titulo_marca img {
         overflow: hidden;
         object-fit: scale-down;
-        width: 40px;
-        height: 40px;
+        width: 50px;
+        height: 50px;
     }
     .pie_pag{
         background: #333;
