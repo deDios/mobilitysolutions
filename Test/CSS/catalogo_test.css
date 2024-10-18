@@ -392,12 +392,12 @@ li {
     }
     .lista_item figure {
         width: 50%;
-        height: 100px;
+        height: 120px;
     }
     .item figure img{
         overflow: hidden;
         width: 100%;
-        height: 110%;
+        height: 100%;
         padding-top: 10px;
         object-fit: scale-down;
         border-radius: 10px 10px 0 0;
@@ -406,7 +406,7 @@ li {
     .item .info-producto{
         display: grid;
         grid-template-rows: 1fr 2fr 1fr 1fr 1fr 1fr;
-        height: 110px;
+        height: 120px;
         width: 100%;
         padding-left: 10px;
     }
