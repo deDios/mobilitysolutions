@@ -6,6 +6,7 @@ $inc = include "db/Conexion.php";
     $marca_update = $_GET['m'];
     $vehiculo_update = $_GET['v'];
     $modelo_update = $_GET['mm'];
+    
         $query = 'select 
         auto.id,
         m_auto.auto as nombre, 
