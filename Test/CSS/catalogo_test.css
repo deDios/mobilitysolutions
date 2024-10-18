@@ -388,7 +388,7 @@ li {
         grid-row-gap: 10px;
     }
     .lista_item figure {
-        width: 30%;
+        width: 50%;
         height: 150px;
     }
     .item figure img{
