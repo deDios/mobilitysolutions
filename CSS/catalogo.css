@@ -193,7 +193,7 @@ li {
 .lista_item .item {
     display: flex;
     flex-direction: row;
-    height: 200px;
+    height: 210px;
     width: 100%;
     border: 1px solid gainsboro;
     border-top: 5px solid black;
