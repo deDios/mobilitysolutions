@@ -389,7 +389,7 @@ li {
     }
     .lista_item figure {
         width: 60%;
-        height: 200px;
+        height: 100px;
     }
     .item figure img{
         overflow: hidden;
@@ -399,6 +399,7 @@ li {
         object-fit: scale-down;
         border-radius: 10px 10px 0 0;
         transition: all .5s;
+        transform: scale(1.5);
     }
     .item .info-producto{
         display: grid;
