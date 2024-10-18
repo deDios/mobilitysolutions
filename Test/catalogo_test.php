@@ -151,6 +151,7 @@
                                                 <img src="../Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="Auto 1">
                                             </figure>
                                             <div class="info-producto">
+                                              
                                                 <div class="titulo_marca">
                                                     <div class="titulo_carro">  <?php echo $marca . " " . $nombre; ?>  </div>
                                                     <img src="../Imagenes/Marcas/logo_<?php echo $marca; ?>.jpg" alt="logo 1">

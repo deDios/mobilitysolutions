@@ -434,8 +434,8 @@ li {
         justify-content: space-between;
         align-items: center;
     }
-    
-    .Localidad imagen-sello {
+
+    .Localidad .imagen-sello {
         position: absolute;
         bottom: 1px; /* Ajusta la posición vertical */
         right: 1px; /* Ajusta la posición horizontal */
