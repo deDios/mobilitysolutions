@@ -292,6 +292,8 @@ li {
     right: 1px; /* Ajusta la posición horizontal */
     width: 50px; /* Ajusta el tamaño de la imagen pequeña */
     height: 25px; /* Ajusta el tamaño de la imagen pequeña */
+    overflow: hidden;
+    object-fit: scale-down;
 }
 
 .info-producto .Localidad i {
