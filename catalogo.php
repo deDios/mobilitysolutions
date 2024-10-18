@@ -162,7 +162,7 @@
                                                 <div class="Localidad"> 
                                                 <div> <i class="fas fa-location-arrow" ></i> <?php echo " " . $sucursal;?> </div>
                                                 <?php if ($estatus == 3){?>
-                                                  <img src="Imagenes/Sellos/reservado.jpg" alt="sello">
+                                                  <img src="Imagenes/Sellos/reservado.jpg" class="imagen-sello" alt="sello">
                                                 <?php
                                                   } else {
                                                 ?> <?php } ?>

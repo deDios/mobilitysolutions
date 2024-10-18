@@ -377,7 +377,7 @@ li {
     }
     .lista_item .item {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         height: 100%;
         width: 100%;
         border: 1px solid gainsboro;
@@ -388,8 +388,8 @@ li {
         grid-row-gap: 10px;
     }
     .lista_item figure {
-        width: 90%;
-        height: 250px;
+        width: 50%;
+        height: 130px;
     }
     .item figure img{
         overflow: hidden;
@@ -403,11 +403,45 @@ li {
     .item .info-producto{
         display: grid;
         grid-template-rows: 1fr 2fr 1fr 1fr 1fr 1fr;
-        height: 200px;
+        height: 130px;
         width: 100%;
-        padding-top: 10px;
         padding-left: 10px;
     }
+
+    .info-producto .mensualidades{
+        color: black;
+        font-size: 11px;
+        font-weight: bold;
+    }
+    .info-producto .Precio{
+        color: black;
+        font-size: 8px;
+        font-weight: bold;
+    }
+
+    .info-producto .Localidad {
+        color: black;
+        font-size: 8px;
+        text-decoration: underline gray;
+    }
+    .Localidad {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 25px;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .Localidad .imagen-sello {
+        bottom: 1px; /* Ajusta la posición vertical */
+        right: 1px; /* Ajusta la posición horizontal */
+        width: 80px; /* Ajusta el tamaño de la imagen pequeña */
+        height: 35px; /* Ajusta el tamaño de la imagen pequeña */
+        overflow: hidden;
+        object-fit: scale-down;
+    }
+
     .info-producto .titulo_marca {
         color: black;
         width: 100%;
@@ -417,15 +451,14 @@ li {
         justify-content: space-between;
     }
     .titulo_marca .titulo_carro{
-        padding-top: 10px;
-        font-size: 20px;
+        font-size: 12px;
         font-weight: bold;
     }
     .titulo_marca img {
         overflow: hidden;
         object-fit: scale-down;
-        width: 60px;
-        height: 60px;
+        width: 40px;
+        height: 40px;
     }
     .pie_pag{
         background: #333;
