@@ -438,8 +438,8 @@ li {
     .Localidad .imagen-sello {
         bottom: 1px; /* Ajusta la posición vertical */
         right: 1px; /* Ajusta la posición horizontal */
-        width: 50px; /* Ajusta el tamaño de la imagen pequeña */
-        height: 25px; /* Ajusta el tamaño de la imagen pequeña */
+        width: 80px; /* Ajusta el tamaño de la imagen pequeña */
+        height: 35px; /* Ajusta el tamaño de la imagen pequeña */
         overflow: hidden;
         object-fit: scale-down;
     }
