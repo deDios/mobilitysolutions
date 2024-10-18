@@ -405,7 +405,7 @@ li {
     .item .info-producto{
         display: grid;
         grid-template-rows: 1fr 2fr 1fr 1fr 1fr 1fr;
-        height: 200px;
+        height: 150px;
         width: 100%;
         padding-top: 10px;
         padding-left: 10px;
