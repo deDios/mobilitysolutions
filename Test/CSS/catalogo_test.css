@@ -388,8 +388,8 @@ li {
         grid-row-gap: 10px;
     }
     .lista_item figure {
-        width: 50%;
-        height: 150px;
+        width: 60%;
+        height: 100px;
     }
     .item figure img{
         overflow: hidden;
@@ -418,7 +418,7 @@ li {
     }
     .titulo_marca .titulo_carro{
         padding-top: 10px;
-        font-size: 20px;
+        font-size: 16px;
         font-weight: bold;
     }
     .titulo_marca img {
