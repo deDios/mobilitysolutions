@@ -287,6 +287,9 @@ li {
 }
 
 .Localidad img {
+    position: absolute;
+    bottom: 1px; /* Ajusta la posición vertical */
+    right: 1px; /* Ajusta la posición horizontal */
     width: 100px;
     height: 45px;
     object-fit:fill;
