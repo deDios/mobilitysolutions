@@ -171,7 +171,7 @@
                                                   ?>
                                                 </div>
                                                 <div class="Precio"><?php echo "$" . number_format($costo); ?> </div> 
-                                                <div> <i class="fas fa-location-arrow" ></i> <?php echo " " . $sucursal;?> </div>
+                                                <div class="Loc"> <i class="fas fa-location-arrow" ></i> <?php echo " " . $sucursal;?> </div>
                                                 
                                             </div>
                                         </div>            
