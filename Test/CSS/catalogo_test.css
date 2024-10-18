@@ -387,9 +387,8 @@ li {
         grid-row-gap: 10px;
     }
     .lista_item figure {
-        width: 40%;
+        width: 50%;
         height: 100px;
-        padding-left: 10px;
     }
     .item figure img{
         overflow: hidden;
