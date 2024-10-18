@@ -281,7 +281,7 @@ li {
 .Localidad {
     display: flex;
     flex-direction: row;
-    height: 60px;
+    height: 100%;
     justify-content: space-between;
     align-items: center;
     padding-bottom: 10px;
@@ -289,7 +289,6 @@ li {
 
 .Localidad img {
     width: 90px;
-    height: 50px;
     object-fit:fill;
 }
 
