@@ -419,7 +419,7 @@ li {
     .info-producto .Localidad {
         display: none;
     }
-    
+
     .info-producto .titulo_marca {
         color: black;
         width: 100%;
@@ -436,8 +436,8 @@ li {
     .titulo_marca img {
         overflow: hidden;
         object-fit: scale-down;
-        width: 60px;
-        height: 60px;
+        width: 40px;
+        height: 40px;
     }
     .pie_pag{
         background: #333;
