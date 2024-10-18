@@ -421,8 +421,28 @@ li {
         font-size: 8px;
         font-weight: bold;
     }
-    .info-producto .Loc {
-        display: none;
+
+    .info-producto .Localidad {
+        color: black;
+        font-size: 8px;
+        text-decoration: underline gray;
+    }
+    .Localidad {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .Localidad imagen-sello {
+        position: absolute;
+        bottom: 1px; /* Ajusta la posición vertical */
+        right: 1px; /* Ajusta la posición horizontal */
+        width: 50px; /* Ajusta el tamaño de la imagen pequeña */
+        height: 25px; /* Ajusta el tamaño de la imagen pequeña */
+        overflow: hidden;
+        object-fit: scale-down;
     }
 
     .info-producto .titulo_marca {
