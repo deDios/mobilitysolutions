@@ -14,6 +14,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 
  </head>
@@ -160,9 +161,9 @@
                                                 <div class="mensualidades"> <?php echo "$" . number_format($mensualidad) . "/mes"; ?> </div>
                                                 <div class="Precio"><?php echo "$" . number_format($costo); ?> </div>
                                                 <div class="Localidad"> 
-                                                <div> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
-                                                      <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
-                                                      </svg> <?php echo " " . $sucursal;?> </div>
+                                                <div> <i class="bi bi-geo-alt-fill"></i> 
+                                                  <?php echo " " . $sucursal;?> 
+                                                </div>
                                                 <?php if ($estatus == 3){?>
                                                   <img src="Imagenes/Sellos/reservado.jpg" class="imagen-sello" alt="sello">
                                                 <?php
@@ -238,7 +239,7 @@
                                             <div class="Precio"><?php echo "$" . number_format($costo); ?> </div>
                                             <div class="Localidad"> 
                                               <div>
-                                                <i class="fas fa-location-arrow" ></i> <?php echo " " . $sucursal;?>  
+                                                <i class="bi bi-geo-alt-fill"></i>  <?php echo " " . $sucursal;?>  
                                               </div>
                                               <?php 
                                                 if ($estatus == 3){
