@@ -132,8 +132,8 @@
                                     updated_at, 
                                     search_key
                                   from mobility_solutions.v_catalogo_active 
-                                  where search_key like '%$busqueda%'
-                                  ;";
+                                  where search_key like '%$busqueda%' 
+                                  order by RAND();";
                         $result = mysqli_query($con,$query);  
                         if ($result){         
                             while($row = mysqli_fetch_assoc($result)){
@@ -210,7 +210,8 @@
                                 created_at, 
                                 updated_at, 
                                 search_key
-                              from mobility_solutions.v_catalogo_active;";
+                              from mobility_solutions.v_catalogo_active
+                              order by RAND();";
                     $result = mysqli_query($con,$query);  
                     if ($result){         
                         while($row = mysqli_fetch_assoc($result)){
