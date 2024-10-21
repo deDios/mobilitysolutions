@@ -160,7 +160,7 @@
                                                 <div class="mensualidades"> <?php echo "$" . number_format($mensualidad) . "/mes"; ?> </div>
                                                 <div class="Precio"><?php echo "$" . number_format($costo); ?> </div>
                                                 <div class="Localidad"> 
-                                                <div> <i class="fas fa-location-arrow" ></i> <?php echo " " . $sucursal;?> </div>
+                                                <div> <i class="bi bi-geo-alt-fill"></i> <?php echo " " . $sucursal;?> </div>
                                                 <?php if ($estatus == 3){?>
                                                   <img src="Imagenes/Sellos/reservado.jpg" class="imagen-sello" alt="sello">
                                                 <?php
