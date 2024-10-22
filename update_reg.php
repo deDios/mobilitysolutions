@@ -414,6 +414,7 @@ $inc = include "db/Conexion.php";
                                 <label class="form-check-label" for="InputTransmision">TA (Automatico)</label>
                             </div>
                         <?php
+                            break;
                         }
                         ?>
                         </div>
@@ -423,14 +424,34 @@ $inc = include "db/Conexion.php";
                     <div class="col-2 mt-2">
                         <label for='InputInterior' class='form-label'>Interior</label>
                         <div class="col mb-3 form-check"> 
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="InputInterior" id="InputInterior" value="Tela" checked="">
-                                <label class="form-check-label" for="InputInterior">Tela</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="InputInterior" id="InputInterior" value="Piel">
-                                <label class="form-check-label" for="InputInterior">Piel</label>
-                            </div>
+                        <?php
+                        switch ($interior_get) {
+                            case "Tela":
+                            ?>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="InputInterior" id="InputInterior" value="Tela" checked="">
+                                    <label class="form-check-label" for="InputInterior">Tela</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="InputInterior" id="InputInterior" value="Piel">
+                                    <label class="form-check-label" for="InputInterior">Piel</label>
+                                </div>
+                            <?php
+                            break;
+                            case "Piel":
+                            ?>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="InputInterior" id="InputInterior" value="Tela">
+                                    <label class="form-check-label" for="InputInterior">Tela</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="InputInterior" id="InputInterior" value="Piel" checked="">
+                                    <label class="form-check-label" for="InputInterior">Piel</label>
+                                </div>
+                        <?php
+                            break;
+                        }
+                        ?>
                         </div>
                     </div>
 
@@ -447,6 +468,10 @@ $inc = include "db/Conexion.php";
                     <div class="col-3 mt-2">
                         <label for='InputCombustible' class='form-label'>Combustible</label>
                         <div class="col mb-3 form-check"> 
+                        <?php
+                        switch ($combustible_get) {
+                            case "Gasolina":
+                            ?>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible" value="Gasolina" checked="">
                                 <label class="form-check-label" for="InputCombustible">Gasolina</label>
@@ -459,6 +484,42 @@ $inc = include "db/Conexion.php";
                                 <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible" value="Hibrido">
                                 <label class="form-check-label" for="InputCombustible">Hibrido</label>
                             </div>
+                            <?php
+                            break;
+                            case "Electrico":
+                            ?>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible" value="Gasolina">
+                                <label class="form-check-label" for="InputCombustible">Gasolina</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible" value="Electrico" checked="">
+                                <label class="form-check-label" for="InputCombustible">Electrico</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible" value="Hibrido">
+                                <label class="form-check-label" for="InputCombustible">Hibrido</label>
+                            </div>
+                            <?php
+                            break;
+                            case "Hibrido":
+                            ?>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible" value="Gasolina">
+                                <label class="form-check-label" for="InputCombustible">Gasolina</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible" value="Electrico">
+                                <label class="form-check-label" for="InputCombustible">Electrico</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible" value="Hibrido" checked="">
+                                <label class="form-check-label" for="InputCombustible">Hibrido</label>
+                            </div>
+                        <?php
+                            break;
+                        }
+                        ?>
                         </div>
                     </div>
 
