@@ -695,9 +695,9 @@ $inc = include "db/Conexion.php";
                             <script>
                                 Img01.addEventListener('click',() => Change_Img01.click())
 
-                                Change_Img01.addEventListener('change', (files) => { 
+                                Change_Img01.addEventListener('change',(files) => { 
                                     console. log(files)
-                                    const fileUpload = files. target.files[0]
+                                    const fileUpload = files.target.files[0]
                                     const form = new FormData()
                                     form.append("file", fileUpload)
                                 })
