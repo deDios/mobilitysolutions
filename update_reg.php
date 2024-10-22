@@ -675,6 +675,10 @@ $inc = include "db/Conexion.php";
                     </div>
 
                     <button type="submit" class="btn btn-success mt-5">Actualizar</button>
+
+
+            </form>
+            
                     <div class="col-12 mt-5">
                         <p><small>Actualización de imagenes</small></p> <hr class="mt-2 mb-3"/>
                     </div>
@@ -723,9 +727,6 @@ $inc = include "db/Conexion.php";
                             <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
                         </div>
                     </div>
-
-
-            </form>
         </div>
     </div>
                     <script >
