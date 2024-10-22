@@ -677,8 +677,39 @@ $inc = include "db/Conexion.php";
                     <!-- Input Img ------------------------------------------------------------------->
                     <div class="col-2 mt-5">
                         <div class="mb-3">
-                            <label for="" class="form-label">Carga de imagenes</label>
+                            <label for="" class="form-label">Actualiza imagenes</label>
+                            <label for="" class="form-label">Imagen de portada</label>
+                            <img src="Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img01.jpg" alt="Auto 1">
                             <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
+
+                            <label for="" class="form-label mt-2">Imagen de perfil</label>
+                            <img src="Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img02.jpg" alt="Auto 1">
+                            <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
+
+                            <label for="" class="form-label mt-2">Imagen de llanta</label>
+                            <img src="Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img03.jpg" alt="Auto 1">
+                            <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
+
+                            <label for="" class="form-label mt-2">Asientos traseros</label>
+                            <img src="Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img04.jpg" alt="Auto 1">
+                            <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
+
+                            <label for="" class="form-label mt-2">Asientos delanteros</label>
+                            <img src="Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img05.jpg" alt="Auto 1">
+                            <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
+
+                            <label for="" class="form-label mt-2">Imagen de motor</label>
+                            <img src="Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img06.jpg" alt="Auto 1">
+                            <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
+
+                            <label for="" class="form-label mt-2">Imagen de tablero</label>
+                            <img src="Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img07.jpg" alt="Auto 1">
+                            <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
+
+                            <label for="" class="form-label mt-2">Imagen de cajuela</label>
+                            <img src="Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img08.jpg" alt="Auto 1">
+                            <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
+
                         </div>
                     </div>
 
