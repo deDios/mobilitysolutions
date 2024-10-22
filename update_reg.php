@@ -678,13 +678,13 @@ $inc = include "db/Conexion.php";
 
 
             </form>
-            
+
                     <div class="col-12 mt-5">
                         <p><small>Actualización de imagenes</small></p> <hr class="mt-2 mb-3"/>
                     </div>
 
                     <!-- Input Img ------------------------------------------------------------------->
-                    <div class="col-12 mt-5">
+                    <div class="row mt-3">
                         <div class="col-4">
                             <label for="" class="form-label">Actualiza imagenes</label>
                             <label for="" class="form-label">Imagen de portada</label>
