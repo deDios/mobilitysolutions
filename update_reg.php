@@ -690,56 +690,56 @@ $inc = include "db/Conexion.php";
                             <label for="" class="form-label">Imagen de portada</label>
                             <img src="Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img01.jpg" alt="Auto 1">
                             <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
-                            <button type="submit" class="btn btn-success mt-5">Actualizar</button>
+                            <button type="submit" class="btn btn-success">Actualizar</button>
                             <div class="col-4 mt-3"></div>
                         </div>
                         <div class="col-4 py-2">
                             <label for="" class="form-label mt-2">Imagen de perfil</label>
                             <img src="Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img02.jpg" alt="Auto 1">
                             <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
-                            <button type="submit" class="btn btn-success mt-5">Actualizar</button>
+                            <button type="submit" class="btn btn-success">Actualizar</button>
                             <div class="col-4 mt-3"></div>
                         </div>
                         <div class="col-4 py-2">
                             <label for="" class="form-label mt-2">Imagen de llanta</label>
                             <img src="Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img03.jpg" alt="Auto 1">
                             <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
-                            <button type="submit" class="btn btn-success mt-5">Actualizar</button>
+                            <button type="submit" class="btn btn-success">Actualizar</button>
                             <div class="col-4 mt-3"></div>
                         </div>
                         <div class="col-4 py-2">
                             <label for="" class="form-label mt-2">Asientos traseros</label>
                             <img src="Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img04.jpg" alt="Auto 1">
                             <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
-                            <button type="submit" class="btn btn-success mt-5">Actualizar</button>
+                            <button type="submit" class="btn btn-success">Actualizar</button>
                             <div class="col-4 mt-3"></div>
                         </div>
                         <div class="col-4 py-2">
                             <label for="" class="form-label mt-2">Asientos delanteros</label>
                             <img src="Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img05.jpg" alt="Auto 1">
                             <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
-                            <button type="submit" class="btn btn-success mt-5">Actualizar</button>
+                            <button type="submit" class="btn btn-success">Actualizar</button>
                             <div class="col-4 mt-3"></div>
                         </div>
                         <div class="col-4 py-2">
                             <label for="" class="form-label mt-2">Imagen de motor</label>
                             <img src="Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img06.jpg" alt="Auto 1">
                             <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
-                            <button type="submit" class="btn btn-success mt-5">Actualizar</button>
+                            <button type="submit" class="btn btn-success">Actualizar</button>
                             <div class="col-4 mt-3"></div>
                         </div>
                         <div class="col-4 py-2">
                             <label for="" class="form-label mt-2">Imagen de tablero</label>
                             <img src="Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img07.jpg" alt="Auto 1">
                             <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
-                            <button type="submit" class="btn btn-success mt-5">Actualizar</button>
+                            <button type="submit" class="btn btn-success">Actualizar</button>
                             <div class="col-4 mt-3"></div>
                         </div>
                         <div class="col-4 py-2">
                             <label for="" class="form-label mt-2">Imagen de cajuela</label>
                             <img src="Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img08.jpg" alt="Auto 1">
                             <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
-                            <button type="submit" class="btn btn-success mt-5">Actualizar</button>
+                            <button type="submit" class="btn btn-success">Actualizar</button>
                             <div class="col-4 mt-3"></div>
                         </div>
                     </div>
