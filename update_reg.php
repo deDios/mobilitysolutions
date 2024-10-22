@@ -693,7 +693,7 @@ $inc = include "db/Conexion.php";
                             <button type="submit" class="btn btn-success">Actualizar</button>
                             <div class="col-4 mt-3"></div>
                             <script>
-                                Img01.addEventListener('click',Change_Img01.click())
+                                Img01.addEventListener('click',() => Change_Img01.click())
                             </script>
                         </div>
                         <div class="col-4 py-2">
