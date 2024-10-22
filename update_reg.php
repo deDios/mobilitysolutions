@@ -527,20 +527,80 @@ $inc = include "db/Conexion.php";
                     <div class="col-6 mt-2">
                     <label for='InputCilindros' class='form-label'>Cilindros</label>
                         <div class="p-3 m-0 border-0 bd-example m-0 border-0">
+                        <?php
+                        switch ($cilindros_get) {
+                            case "4":
+                            ?>
                             <input type="radio" class="btn-check" name="InputCilindros" value="4" id="InputCilindros1" autocomplete="off" checked="">
-                            <label class="btn" for="InputCilindros1">V4</label>
-                            
+                            <label class="btn" for="InputCilindros1">V4</label>                       
                             <input type="radio" class="btn-check" name="InputCilindros" value="6" id="InputCilindros2" autocomplete="off">
                             <label class="btn" for="InputCilindros2">V6</label>
-                            
                             <input type="radio" class="btn-check" name="InputCilindros" value="8" id="InputCilindros3" autocomplete="off">
                             <label class="btn" for="InputCilindros3">V8</label>
-                            
                             <input type="radio" class="btn-check" name="InputCilindros" value="10" id="InputCilindros4" autocomplete="off">
                             <label class="btn" for="InputCilindros4">V10</label>
-
                             <input type="radio" class="btn-check" name="InputCilindros" value="12" id="InputCilindros5" autocomplete="off">
                             <label class="btn" for="InputCilindros5">V12</label>
+                            <?php
+                            break;
+                            case "6":
+                            ?>
+                            <input type="radio" class="btn-check" name="InputCilindros" value="4" id="InputCilindros1" autocomplete="off">
+                            <label class="btn" for="InputCilindros1">V4</label>                       
+                            <input type="radio" class="btn-check" name="InputCilindros" value="6" id="InputCilindros2" autocomplete="off" checked="">
+                            <label class="btn" for="InputCilindros2">V6</label>
+                            <input type="radio" class="btn-check" name="InputCilindros" value="8" id="InputCilindros3" autocomplete="off">
+                            <label class="btn" for="InputCilindros3">V8</label>
+                            <input type="radio" class="btn-check" name="InputCilindros" value="10" id="InputCilindros4" autocomplete="off">
+                            <label class="btn" for="InputCilindros4">V10</label>
+                            <input type="radio" class="btn-check" name="InputCilindros" value="12" id="InputCilindros5" autocomplete="off">
+                            <label class="btn" for="InputCilindros5">V12</label>
+                            <?php
+                            break;
+                            case "8":
+                            ?>
+                            <input type="radio" class="btn-check" name="InputCilindros" value="4" id="InputCilindros1" autocomplete="off">
+                            <label class="btn" for="InputCilindros1">V4</label>                       
+                            <input type="radio" class="btn-check" name="InputCilindros" value="6" id="InputCilindros2" autocomplete="off">
+                            <label class="btn" for="InputCilindros2">V6</label>
+                            <input type="radio" class="btn-check" name="InputCilindros" value="8" id="InputCilindros3" autocomplete="off" checked="">
+                            <label class="btn" for="InputCilindros3">V8</label>
+                            <input type="radio" class="btn-check" name="InputCilindros" value="10" id="InputCilindros4" autocomplete="off">
+                            <label class="btn" for="InputCilindros4">V10</label>
+                            <input type="radio" class="btn-check" name="InputCilindros" value="12" id="InputCilindros5" autocomplete="off">
+                            <label class="btn" for="InputCilindros5">V12</label>
+                            <?php
+                            break;
+                            case "10":
+                            ?>
+                            <input type="radio" class="btn-check" name="InputCilindros" value="4" id="InputCilindros1" autocomplete="off">
+                            <label class="btn" for="InputCilindros1">V4</label>                       
+                            <input type="radio" class="btn-check" name="InputCilindros" value="6" id="InputCilindros2" autocomplete="off">
+                            <label class="btn" for="InputCilindros2">V6</label>
+                            <input type="radio" class="btn-check" name="InputCilindros" value="8" id="InputCilindros3" autocomplete="off">
+                            <label class="btn" for="InputCilindros3">V8</label>
+                            <input type="radio" class="btn-check" name="InputCilindros" value="10" id="InputCilindros4" autocomplete="off" checked="">
+                            <label class="btn" for="InputCilindros4">V10</label>
+                            <input type="radio" class="btn-check" name="InputCilindros" value="12" id="InputCilindros5" autocomplete="off">
+                            <label class="btn" for="InputCilindros5">V12</label>
+                            <?php
+                            break;
+                            case "12":
+                            ?>
+                            <input type="radio" class="btn-check" name="InputCilindros" value="4" id="InputCilindros1" autocomplete="off">
+                            <label class="btn" for="InputCilindros1">V4</label>                       
+                            <input type="radio" class="btn-check" name="InputCilindros" value="6" id="InputCilindros2" autocomplete="off">
+                            <label class="btn" for="InputCilindros2">V6</label>
+                            <input type="radio" class="btn-check" name="InputCilindros" value="8" id="InputCilindros3" autocomplete="off">
+                            <label class="btn" for="InputCilindros3">V8</label>
+                            <input type="radio" class="btn-check" name="InputCilindros" value="10" id="InputCilindros4" autocomplete="off">
+                            <label class="btn" for="InputCilindros4">V10</label>
+                            <input type="radio" class="btn-check" name="InputCilindros" value="12" id="InputCilindros5" autocomplete="off" checked="">
+                            <label class="btn" for="InputCilindros5">V12</label>
+                        <?php
+                            break;
+                        }
+                        ?>
                         </div>
                     </div>
 
