@@ -652,10 +652,26 @@ $inc = include "db/Conexion.php";
                     <!-- Input Propietarios ------------------------------------------------------------------->
                     <div class="col-2 mt-2">
                         <label for="InputPropietarios" class="form-label">Propietarios</label>
-                        <select id="InputPropietarios" class="form-select" aria-label="Default select example" name="InputPropietarios">
-                            <option value="1">1</option>  
-                            <option value="2">2</option>  
-                        </select>
+                        <?php
+                        switch ($eje_get) {
+                            case "1":
+                            ?>
+                            <select id="InputPropietarios" class="form-select" aria-label="Default select example" name="InputPropietarios">
+                                <option value="1" selected>1</option>  
+                                <option value="2">2</option>  
+                            </select>
+                            <?php
+                            break;
+                            case "2":
+                            ?>
+                            <select id="InputPropietarios" class="form-select" aria-label="Default select example" name="InputPropietarios">
+                                <option value="1">1</option>  
+                                <option value="2" selected>2</option>  
+                            </select>
+                        <?php
+                            break;
+                        }
+                        ?>
                     </div>
 
                     <!-- Input Img ------------------------------------------------------------------->
