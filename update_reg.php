@@ -694,6 +694,13 @@ $inc = include "db/Conexion.php";
                             <div class="col-4 mt-3"></div>
                             <script>
                                 Img01.addEventListener('click',() => Change_Img01.click())
+
+                                Change_Img01.addEventListener('change', (files) => { 
+                                    console. log(files)
+                                    const fileUpload = files. target.files[0]
+                                    const form = new FormData()
+                                    form.append("file", fileUpload)
+                                })
                             </script>
                         </div>
                         <div class="col-4 py-2">
