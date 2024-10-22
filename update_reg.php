@@ -190,16 +190,199 @@ $inc = include "db/Conexion.php";
                     <!-- Input Color ------------------------------------------------------------------->
                     <div class="col-2 mt-5">
                         <label for="InputColor" class="form-label">Color</label>
-                        <select id="InputColor" class="form-select" aria-label="Default select example" name="InputColor">
-                            <option value="Negro">Negro</option>  
-                            <option value="Rojo">Rojo</option>  
-                            <option value="Azul">Azul</option>  
-                            <option value="Blanco">Blanco</option>  
-                            <option value="Verde">Verde</option>
-                            <option value="Gris">Gris</option>
-                            <option value="Amarillo">Amarillo</option>
-                            <option value="Arena">Arena</option>  
-                        </select>
+                        
+                        <?php
+                        switch ($color_get) {
+                            case "Negro":
+                                ?>
+                                    <select id="InputColor" class="form-select" aria-label="Default select example" name="InputColor">
+                                        <option value="Negro" selected>Negro</option>  
+                                        <option value="Rojo">Rojo</option>  
+                                        <option value="Azul">Azul</option>  
+                                        <option value="Blanco">Blanco</option>  
+                                        <option value="Verde">Verde</option>
+                                        <option value="Gris">Gris</option>
+                                        <option value="Amarillo">Amarillo</option>
+                                        <option value="Arena">Arena</option>
+                                        <option value="Guinda">Guinda</option>
+                                        <option value="Plata">Plata</option>
+                                        <option value="Naranja">Naranja</option>  
+                                    </select>
+                                <?php
+                                break;
+                            case "Rojo":
+                                ?>
+                                    <select id="InputColor" class="form-select" aria-label="Default select example" name="InputColor">
+                                        <option value="Negro">Negro</option>  
+                                        <option value="Rojo" selected>Rojo</option>  
+                                        <option value="Azul">Azul</option>  
+                                        <option value="Blanco">Blanco</option>  
+                                        <option value="Verde">Verde</option>
+                                        <option value="Gris">Gris</option>
+                                        <option value="Amarillo">Amarillo</option>
+                                        <option value="Arena">Arena</option>
+                                        <option value="Guinda">Guinda</option>
+                                        <option value="Plata">Plata</option>
+                                        <option value="Naranja">Naranja</option>  
+                                    </select>
+                                <?php
+                                break;
+                            case "Azul":
+                                ?>
+                                    <select id="InputColor" class="form-select" aria-label="Default select example" name="InputColor">
+                                        <option value="Negro">Negro</option>  
+                                        <option value="Rojo">Rojo</option>  
+                                        <option value="Azul" selected>Azul</option>  
+                                        <option value="Blanco">Blanco</option>  
+                                        <option value="Verde">Verde</option>
+                                        <option value="Gris">Gris</option>
+                                        <option value="Amarillo">Amarillo</option>
+                                        <option value="Arena">Arena</option>
+                                        <option value="Guinda">Guinda</option>
+                                        <option value="Plata">Plata</option>
+                                        <option value="Naranja">Naranja</option>  
+                                    </select>
+                                <?php
+                                break;
+                            case "Blanco":
+                                ?>
+                                    <select id="InputColor" class="form-select" aria-label="Default select example" name="InputColor">
+                                        <option value="Negro">Negro</option>  
+                                        <option value="Rojo">Rojo</option>  
+                                        <option value="Azul">Azul</option>  
+                                        <option value="Blanco" selected>Blanco</option>  
+                                        <option value="Verde">Verde</option>
+                                        <option value="Gris">Gris</option>
+                                        <option value="Amarillo">Amarillo</option>
+                                        <option value="Arena">Arena</option>
+                                        <option value="Guinda">Guinda</option>
+                                        <option value="Plata">Plata</option>
+                                        <option value="Naranja">Naranja</option>  
+                                    </select>
+                                <?php
+                                break;
+                            case "Verde":
+                                ?>
+                                    <select id="InputColor" class="form-select" aria-label="Default select example" name="InputColor">
+                                        <option value="Negro">Negro</option>  
+                                        <option value="Rojo">Rojo</option>  
+                                        <option value="Azul">Azul</option>  
+                                        <option value="Blanco">Blanco</option>  
+                                        <option value="Verde" selected>Verde</option>
+                                        <option value="Gris">Gris</option>
+                                        <option value="Amarillo">Amarillo</option>
+                                        <option value="Arena">Arena</option>
+                                        <option value="Guinda">Guinda</option>
+                                        <option value="Plata">Plata</option>
+                                        <option value="Naranja">Naranja</option>  
+                                    </select>
+                                <?php
+                                break;
+                            case "Gris":
+                                ?>
+                                    <select id="InputColor" class="form-select" aria-label="Default select example" name="InputColor">
+                                        <option value="Negro">Negro</option>  
+                                        <option value="Rojo">Rojo</option>  
+                                        <option value="Azul">Azul</option>  
+                                        <option value="Blanco">Blanco</option>  
+                                        <option value="Verde">Verde</option>
+                                        <option value="Gris" selected>Gris</option>
+                                        <option value="Amarillo">Amarillo</option>
+                                        <option value="Arena">Arena</option>
+                                        <option value="Guinda">Guinda</option>
+                                        <option value="Plata">Plata</option>
+                                        <option value="Naranja">Naranja</option>  
+                                    </select>
+                                <?php
+                                break;
+                            case "Amarillo":
+                                ?>
+                                    <select id="InputColor" class="form-select" aria-label="Default select example" name="InputColor">
+                                        <option value="Negro">Negro</option>  
+                                        <option value="Rojo">Rojo</option>  
+                                        <option value="Azul">Azul</option>  
+                                        <option value="Blanco">Blanco</option>  
+                                        <option value="Verde">Verde</option>
+                                        <option value="Gris">Gris</option>
+                                        <option value="Amarillo" selected>Amarillo</option>
+                                        <option value="Arena">Arena</option>
+                                        <option value="Guinda">Guinda</option>
+                                        <option value="Plata">Plata</option>
+                                        <option value="Naranja">Naranja</option>  
+                                    </select>
+                                <?php
+                                break;
+                            case "Arena":
+                                ?>
+                                    <select id="InputColor" class="form-select" aria-label="Default select example" name="InputColor">
+                                        <option value="Negro">Negro</option>  
+                                        <option value="Rojo" >Rojo</option>  
+                                        <option value="Azul">Azul</option>  
+                                        <option value="Blanco">Blanco</option>  
+                                        <option value="Verde">Verde</option>
+                                        <option value="Gris">Gris</option>
+                                        <option value="Amarillo">Amarillo</option>
+                                        <option value="Arena" selected>Arena</option>
+                                        <option value="Guinda">Guinda</option>
+                                        <option value="Plata">Plata</option>
+                                        <option value="Naranja">Naranja</option>  
+                                    </select>
+                                <?php
+                                break;
+                            case "Guinda":
+                                ?>
+                                    <select id="InputColor" class="form-select" aria-label="Default select example" name="InputColor">
+                                        <option value="Negro">Negro</option>  
+                                        <option value="Rojo">Rojo</option>  
+                                        <option value="Azul">Azul</option>  
+                                        <option value="Blanco">Blanco</option>  
+                                        <option value="Verde">Verde</option>
+                                        <option value="Gris">Gris</option>
+                                        <option value="Amarillo">Amarillo</option>
+                                        <option value="Arena">Arena</option>
+                                        <option value="Guinda" selected>Guinda</option>
+                                        <option value="Plata">Plata</option>
+                                        <option value="Naranja">Naranja</option>  
+                                    </select>
+                                <?php
+                                break;
+                            case "Plata":
+                                ?>
+                                    <select id="InputColor" class="form-select" aria-label="Default select example" name="InputColor">
+                                        <option value="Negro">Negro</option>  
+                                        <option value="Rojo">Rojo</option>  
+                                        <option value="Azul">Azul</option>  
+                                        <option value="Blanco">Blanco</option>  
+                                        <option value="Verde">Verde</option>
+                                        <option value="Gris">Gris</option>
+                                        <option value="Amarillo">Amarillo</option>
+                                        <option value="Arena">Arena</option>
+                                        <option value="Guinda">Guinda</option>
+                                        <option value="Plata" selected>Plata</option>
+                                        <option value="Naranja">Naranja</option>  
+                                    </select>
+                                <?php
+                                break;
+                            case "Naranja":
+                                ?>
+                                    <select id="InputColor" class="form-select" aria-label="Default select example" name="InputColor">
+                                        <option value="Negro">Negro</option>  
+                                        <option value="Rojo">Rojo</option>  
+                                        <option value="Azul">Azul</option>  
+                                        <option value="Blanco">Blanco</option>  
+                                        <option value="Verde">Verde</option>
+                                        <option value="Gris">Gris</option>
+                                        <option value="Amarillo">Amarillo</option>
+                                        <option value="Arena">Arena</option>
+                                        <option value="Guinda">Guinda</option>
+                                        <option value="Plata">Plata</option>
+                                        <option value="Naranja" selected>Naranja</option>  
+                                    </select>
+                                <?php
+                                break;
+                        }
+                        ?>
+
                     </div>
 
                     <!-- Input Transmision ------------------------------------------------------------------->
@@ -331,9 +514,6 @@ $inc = include "db/Conexion.php";
                             get_modelo();
                             $('#InputNombre').val(<?php echo $vehiculo_update;?>);
                             $('#InputModelo').val(<?php echo $modelo_update;?>);
-
-                            let element = document.getElementById(InputColor);
-                            element.value = <?php echo $color_get;?>;
 
                             $('#InputMarca').change(function(){
                                 get_marca();
