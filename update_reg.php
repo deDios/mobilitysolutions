@@ -674,6 +674,10 @@ $inc = include "db/Conexion.php";
                         ?>
                     </div>
 
+                    <button type="submit" class="btn btn-success mt-5">Actualizar</button>
+
+                    <p><small>Actualización de imagenes</small></p> <hr class="mt-2 mb-3"/>
+
                     <!-- Input Img ------------------------------------------------------------------->
                     <div class="col-2 mt-5">
                         <div class="mb-3">
@@ -714,7 +718,6 @@ $inc = include "db/Conexion.php";
                     </div>
 
 
-                    <button type="submit" class="btn btn-success mt-5">Actualizar</button>
             </form>
         </div>
     </div>
