@@ -607,11 +607,37 @@ $inc = include "db/Conexion.php";
                     <!-- Input eje ------------------------------------------------------------------->
                     <div class="col-2 mt-2">
                         <label for="InputEje" class="form-label">Eje</label>
-                        <select id="InputEje" class="form-select" aria-label="Default select example" name="InputEje">
-                            <option value="Delantera">Delantera</option>  
-                            <option value="Trasera">Trasera</option>  
-                            <option value="4X4">4X4</option>  
-                        </select>
+                        <?php
+                        switch ($eje_get) {
+                            case "Delantera":
+                            ?>
+                                <select id="InputEje" class="form-select" aria-label="Default select example" name="InputEje">
+                                    <option value="Delantera" selected>Delantera</option>  
+                                    <option value="Trasera">Trasera</option>  
+                                    <option value="4X4">4X4</option>  
+                                </select>
+                            <?php
+                            break;
+                            case "Trasera":
+                            ?>
+                                <select id="InputEje" class="form-select" aria-label="Default select example" name="InputEje">
+                                    <option value="Delantera">Delantera</option>  
+                                    <option value="Trasera" selected>Trasera</option>  
+                                    <option value="4X4">4X4</option>  
+                                </select>
+                            <?php
+                            break;
+                            case "4X4":
+                            ?>
+                                <select id="InputEje" class="form-select" aria-label="Default select example" name="InputEje">
+                                    <option value="Delantera">Delantera</option>  
+                                    <option value="Trasera">Trasera</option>  
+                                    <option value="4X4" selected>4X4</option>  
+                                </select>
+                        <?php
+                            break;
+                        }
+                        ?>
                     </div>
 
                     <!-- Input pasajeros ------------------------------------------------------------------->
