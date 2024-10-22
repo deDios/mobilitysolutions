@@ -332,7 +332,8 @@ $inc = include "db/Conexion.php";
                             $('#InputNombre').val(<?php echo $vehiculo_update;?>);
                             $('#InputModelo').val(<?php echo $modelo_update;?>);
 
-                            $('#InputColor').val(<?php echo "$color_get";?>);
+                            let element = document.getElementById(InputColor);
+                            element.value = <?php echo $color_get;?>;
 
                             $('#InputMarca').change(function(){
                                 get_marca();
