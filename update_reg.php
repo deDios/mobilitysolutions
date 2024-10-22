@@ -688,10 +688,13 @@ $inc = include "db/Conexion.php";
                     <div class="row mt-3">
                         <div class="col-4 py-2">
                             <label for="" class="form-label">Imagen de portada</label>
-                            <img src="Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img01.jpg" alt="Auto 1">
-                            <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
+                            <img src="Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img01.jpg" alt="Auto 1" id="Img01">
+                            <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple" id="Change_Img01">
                             <button type="submit" class="btn btn-success">Actualizar</button>
                             <div class="col-4 mt-3"></div>
+                            <script>
+                                Img01.addEventListener('click',Change_Img01.click())
+                            </script>
                         </div>
                         <div class="col-4 py-2">
                             <label for="" class="form-label mt-2">Imagen de perfil</label>
