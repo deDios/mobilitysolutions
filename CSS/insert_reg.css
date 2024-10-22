@@ -8,8 +8,8 @@ body {
     background-color: #f7f7f7;
 }
 img {
-        width: 100px;
-        height: 100px;
+        width: 400px;
+        height: 400px;
         border-radius: 5%; /* Hace que la imagen sea circular */
         overflow: hidden;
         object-fit: scale-down; /* Asegura que la imagen se ajuste correctamente */
