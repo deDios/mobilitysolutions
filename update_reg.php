@@ -680,48 +680,48 @@ $inc = include "db/Conexion.php";
             </form>
 
                     <div class="col-12 mt-5">
-                        <p><small>Actualización de imagenes</small></p> <hr class="mt-2 mb-3"/>
+                        <h1>Actualizar Imagenes</h1>
+                        <hr class="mt-2 mb-3"/>
                     </div>
 
                     <!-- Input Img ------------------------------------------------------------------->
                     <div class="row mt-3">
-                        <div class="col-4">
-                            <label for="" class="form-label">Actualiza imagenes</label>
+                        <div class="col-4 py-2">
                             <label for="" class="form-label">Imagen de portada</label>
                             <img src="Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img01.jpg" alt="Auto 1">
                             <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
                         </div>
-                        <div class="col-4">
+                        <div class="col-4 py-2">
                             <label for="" class="form-label mt-2">Imagen de perfil</label>
                             <img src="Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img02.jpg" alt="Auto 1">
                             <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
                         </div>
-                        <div class="col-4">
+                        <div class="col-4 py-2">
                             <label for="" class="form-label mt-2">Imagen de llanta</label>
                             <img src="Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img03.jpg" alt="Auto 1">
                             <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
                         </div>
-                        <div class="col-4">
+                        <div class="col-4 py-2">
                             <label for="" class="form-label mt-2">Asientos traseros</label>
                             <img src="Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img04.jpg" alt="Auto 1">
                             <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
                         </div>
-                        <div class="col-4">
+                        <div class="col-4 py-2">
                             <label for="" class="form-label mt-2">Asientos delanteros</label>
                             <img src="Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img05.jpg" alt="Auto 1">
                             <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
                         </div>
-                        <div class="col-4">
+                        <div class="col-4 py-2">
                             <label for="" class="form-label mt-2">Imagen de motor</label>
                             <img src="Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img06.jpg" alt="Auto 1">
                             <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
                         </div>
-                        <div class="col-4">
+                        <div class="col-4 py-2">
                             <label for="" class="form-label mt-2">Imagen de tablero</label>
                             <img src="Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img07.jpg" alt="Auto 1">
                             <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
                         </div>
-                        <div class="col-4">
+                        <div class="col-4 py-2">
                             <label for="" class="form-label mt-2">Imagen de cajuela</label>
                             <img src="Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img08.jpg" alt="Auto 1">
                             <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
