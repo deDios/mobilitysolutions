@@ -14,3 +14,7 @@ img {
         overflow: hidden;
         object-fit: scale-down; /* Asegura que la imagen se ajuste correctamente */
 }
+
+#Change_Img01 {
+    display: none;
+}
