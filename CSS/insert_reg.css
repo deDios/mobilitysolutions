@@ -15,6 +15,10 @@ img {
         object-fit: scale-down; /* Asegura que la imagen se ajuste correctamente */
 }
 
+#Img01 {
+    cursor: pointer;
+}
 #Change_Img01 {
     display: none;
 }
+
