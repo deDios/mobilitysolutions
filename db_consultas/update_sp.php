@@ -1,4 +1,5 @@
 <?php
+$id = $_POST['InputId'];
 $sucursal = $_POST['InputSucursal'];
 $marca = $_POST['InputMarca'];
 $auto = $_POST['InputNombre'];
@@ -37,9 +38,9 @@ kilometraje = '.$kilometraje.',
 combustible = '.$combustible_valor.', 
 cilindros = '.$cilindros.', 
 eje = '.$eje_valor.' 
-updated_at = , 
+updated_at = NOW(), 
 pasajeros = '.$pasajeros.', 
-propietarios = '.$propietarios.' where id = ;';
+propietarios = '.$propietarios.' where id = '.$id.';';
         
 $result = mysqli_query($con,$query); 
 if ($result){ 
