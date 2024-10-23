@@ -126,7 +126,7 @@ $inc = include "../db/Conexion.php";
                     </div>
             
                     <div class="col-3 mt-5">
-                        <label for="InputMarca" class="form-label">Marca  <small> / Actual: <?php echo $marca_get;?></small></label>
+                        <label for="InputMarca" class="form-label">Marca<small> / Actual: <?php echo $marca_get;?></small></label>
                         <select id="InputMarca" class="form-select" aria-label="Default select example" name="InputMarca">
                             <option value="0">Selecciona una Marca</option>                      
                             <?php 
@@ -155,7 +155,7 @@ $inc = include "../db/Conexion.php";
                     </div>
                     <div class="row mt-3">
                     <!-- Input Auto ------------------------------------------------------------------->
-                    <small> / Actual: <?php echo $nombre_get;?></small>
+                    <small class="col-1">Actual: <?php echo $nombre_get;?></small>
                         <div id="div_auto" class="col-3">
                             <label for='InputNombre' class='form-label'>Vehiculo </label>
                             <select id="InputNombre" class="form-select" aria-label="Default select example" name="InputNombre">
@@ -164,7 +164,7 @@ $inc = include "../db/Conexion.php";
                         </div>
 
                     <!-- Input Modelo ------------------------------------------------------------------->
-                    <small> Actual: <?php echo $modelo_get;?></small>
+                    <small class="col-1">Actual: <?php echo $modelo_get;?></small>
                         <div id="div_modelo" class="col-3">
                             <label for='InputModelo' class='form-label'>Modelo</label>
                             <select id="InputModelo" class="form-select" aria-label="Default select example" name="InputModelo">
