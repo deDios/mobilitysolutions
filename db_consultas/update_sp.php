@@ -44,7 +44,7 @@ propietarios = '.$propietarios.' where id = '.$id.';';
         
 $result = mysqli_query($con,$query); 
 if ($result){ 
-    echo "El auto se actualizo correctamente con ID: ".$con->insert_id;
+    echo "El auto se actualizo correctamente con ID: ".$id;
 }
 else{
     echo "Falla en conexión";
@@ -58,8 +58,8 @@ else{
 <head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Resultado de carga</title>
-    <link rel="stylesheet" href="CSS/detalles.css">
+    <title>Resultado de edicion</title>
+    <link rel="stylesheet" href="../CSS/detalles.css">
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>

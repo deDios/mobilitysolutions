@@ -149,7 +149,7 @@ $cod=$_REQUEST['id'];
                                     auto.pasajeros, 
                                     auto.propietarios,
                                     DATE_SUB(auto.created_at, INTERVAL 6 HOUR) as created_at, 
-                                    auto.updated_at 
+                                    DATE_SUB(auto.updated_at, INTERVAL 6 HOUR) as updated_at
                                 FROM mobility_solutions.tmx_auto as auto
                                 left join mobility_solutions.tmx_sucursal as sucursal on auto.sucursal = sucursal.id 
                                 left join mobility_solutions.tmx_estatus as estatus on auto.estatus = estatus.id
