@@ -10,7 +10,7 @@
     <div class="login-container">
         <form class="login-form">
             <img src="../Imagenes/logo_MSC.png" alt="Logo de la Empresa" class="logo">
-            <h2>Login</h2>
+            <h2>Acceso</h2>
             <div class="input-group">
                 <label for="username">Usuario/Email</label>
                 <input type="text" id="username" required>
