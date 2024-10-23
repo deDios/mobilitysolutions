@@ -387,7 +387,7 @@ $inc = include "../db/Conexion.php";
 
                     <!-- Input Transmision ------------------------------------------------------------------->
                     <div class="col-2 mt-2">
-                        <label for='InputTransmision' class='form-label'>Tipo de transmision <small> Actual: <?php echo $transmision_get;?></small></label>
+                        <label for='InputTransmision' class='form-label'>Tipo de transmision <small> / Actual: <?php echo $transmision_get;?></small></label>
                         <div class="col mb-3 form-check"> 
                             <?php
                             switch ($transmision_get) {
@@ -422,7 +422,7 @@ $inc = include "../db/Conexion.php";
 
                     <!-- Input Interior ------------------------------------------------------------------->
                     <div class="col-2 mt-2">
-                        <label for='InputInterior' class='form-label'>Interior</label>
+                        <label for='InputInterior' class='form-label'>Interior <small> / Actual: <?php echo $interior_get;?></small></label>
                         <div class="col mb-3 form-check"> 
                         <?php
                         switch ($interior_get) {
@@ -457,7 +457,7 @@ $inc = include "../db/Conexion.php";
 
                     <!-- Input kilometraje ------------------------------------------------------------------->
                     <div class="col-2 mt-2">
-                        <label for='InputKilometraje' class='form-label'>Kilometraje</label>
+                        <label for='InputKilometraje' class='form-label'>Kilometraje <small> / Actual: <?php echo $kilometraje_get;?></small></label>
                         <div class="input-group mb-3 ">
                                 <input id="InputKilometraje" type="text" class="form-control" name="InputKilometraje"  aria-label="Amount (to the nearest dollar)" value="<?php echo $kilometraje_get;?>">
                             <span class="input-group-text">km</span>
@@ -466,7 +466,7 @@ $inc = include "../db/Conexion.php";
 
                     <!-- Input Combustible ------------------------------------------------------------------->
                     <div class="col-3 mt-2">
-                        <label for='InputCombustible' class='form-label'>Combustible</label>
+                        <label for='InputCombustible' class='form-label'>Combustible <small> / Actual: <?php echo $combustible_get;?></small></label>
                         <div class="col mb-3 form-check"> 
                         <?php
                         switch ($combustible_get) {
@@ -525,7 +525,7 @@ $inc = include "../db/Conexion.php";
 
                     <!-- Input Cilindros ------------------------------------------------------------------->
                     <div class="col-6 mt-2">
-                    <label for='InputCilindros' class='form-label'>Cilindros</label>
+                    <label for='InputCilindros' class='form-label'>Cilindros <small> / Actual: <?php echo $cilindros_get;?></small></label>
                         <div class="p-3 m-0 border-0 bd-example m-0 border-0">
                         <?php
                         switch ($cilindros_get) {
@@ -606,7 +606,7 @@ $inc = include "../db/Conexion.php";
 
                     <!-- Input eje ------------------------------------------------------------------->
                     <div class="col-2 mt-2">
-                        <label for="InputEje" class="form-label">Eje</label>
+                        <label for="InputEje" class="form-label">Eje <small> / Actual: <?php echo $eje_get;?></small></label>
                         <?php
                         switch ($eje_get) {
                             case "Delantera":
@@ -642,7 +642,7 @@ $inc = include "../db/Conexion.php";
 
                     <!-- Input pasajeros ------------------------------------------------------------------->
                     <div class="col-2 mt-2">
-                        <label for='InputPasajeros' class='form-label'>Capacidad de pasajeros</label>
+                        <label for='InputPasajeros' class='form-label'>Capacidad de pasajeros <small> / Actual: <?php echo $pasajeros_get;?></small></label>
                         <div class="input-group mb-3 ">
                                 <input id="InputPasajeros" type="text" class="form-control" name="InputPasajeros" aria-label="Amount (to the nearest dollar)" value="<?php echo $pasajeros_get;?>">
                             <span class="input-group-text">Pasajeros</span>
@@ -651,9 +651,9 @@ $inc = include "../db/Conexion.php";
 
                     <!-- Input Propietarios ------------------------------------------------------------------->
                     <div class="col-2 mt-2">
-                        <label for="InputPropietarios" class="form-label">Propietarios</label>
+                        <label for="InputPropietarios" class="form-label">Propietarios <small> / Actual: <?php echo $propietarios_get;?></small></label>
                         <?php
-                        switch ($eje_get) {
+                        switch ($propietarios_get) {
                             case "1":
                             ?>
                             <select id="InputPropietarios" class="form-select" aria-label="Default select example" name="InputPropietarios">
