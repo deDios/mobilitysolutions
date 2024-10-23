@@ -387,36 +387,36 @@ $inc = include "../db/Conexion.php";
 
                     <!-- Input Transmision ------------------------------------------------------------------->
                     <div class="col-2 mt-2">
-                        <label for='InputTransmision' class='form-label'>Tipo de transmision</label>
+                        <label for='InputTransmision' class='form-label'>Tipo de transmision <?php echo $transmision_get;?></label>
                         <div class="col mb-3 form-check"> 
-                        <?php
-                        switch ($transmision_get) {
-                            case "Manual":
-                            ?>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="InputTransmision" id="InputTransmision" value="Manual" checked="">
-                                    <label class="form-check-label" for="InputTransmision">TM (Manual)</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="InputTransmision" id="InputTransmision" value="Automatico">
-                                    <label class="form-check-label" for="InputTransmision">TA (Automatico)</label>
-                                </div>
                             <?php
-                            break;
-                            case "Automatico":
+                            switch ($transmision_get) {
+                                case "Manual":
+                                ?>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="InputTransmision" id="InputTransmision" value="Manual" checked="">
+                                        <label class="form-check-label" for="InputTransmision">TM (Manual)</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="InputTransmision" id="InputTransmision" value="Automatico">
+                                        <label class="form-check-label" for="InputTransmision">TA (Automatico)</label>
+                                    </div>
+                                <?php
+                                break;
+                                case "Automatico":
+                                ?>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="InputTransmision" id="InputTransmision" value="Manual">
+                                        <label class="form-check-label" for="InputTransmision">TM (Manual)</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="InputTransmision" id="InputTransmision" value="Automatico" checked="">
+                                        <label class="form-check-label" for="InputTransmision">TA (Automatico)</label>
+                                    </div>
+                            <?php
+                                break;
+                            }
                             ?>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="InputTransmision" id="InputTransmision" value="Manual">
-                                    <label class="form-check-label" for="InputTransmision">TM (Manual)</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="InputTransmision" id="InputTransmision" value="Automatico" checked="">
-                                    <label class="form-check-label" for="InputTransmision">TA (Automatico)</label>
-                                </div>
-                        <?php
-                            break;
-                        }
-                        ?>
                         </div>
                     </div>
 
