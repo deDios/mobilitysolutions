@@ -1,6 +1,6 @@
 <?php
 
-$inc = include "db/Conexion.php"; 
+$inc = include "../db/Conexion.php"; 
     $id_update = $_GET['i'];
     $sucursal_update = $_GET['s'];
     $marca_update = $_GET['m'];
@@ -79,7 +79,7 @@ $inc = include "db/Conexion.php";
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <title>Insertar cat</title>
-    <link rel="stylesheet" href="CSS/insert_reg.css">
+    <link rel="stylesheet" href="../CSS/insert_reg.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -93,14 +93,14 @@ $inc = include "db/Conexion.php";
     <div class="container">
         <h1>Actualizar auto</h1>
         <div class="row mt-5">
-            <form action="db_consultas/update_sp.php" method="POST" enctype="multipart/form-data">
+            <form action="../db_consultas/update_sp.php" method="POST" enctype="multipart/form-data">
                     
                     <div class="col-2 mt-5">
                         <label for="InputSucursal" class="form-label">Sucursal</label>
                         <select id="InputSucursal" class="form-select" aria-label="Default select example" name="InputSucursal">
                             <option value="0">Selecciona una sucursal</option>                      
                             <?php 
-                            $inc = include "db/Conexion.php";    
+                            $inc = include "../db/Conexion.php";    
                                 if ($inc){
                                     $query = 'select 
                                                 id,
@@ -129,7 +129,7 @@ $inc = include "db/Conexion.php";
                         <select id="InputMarca" class="form-select" aria-label="Default select example" name="InputMarca">
                             <option value="0">Selecciona una Marca</option>                      
                             <?php 
-                            $inc = include "db/Conexion.php";    
+                            $inc = include "../db/Conexion.php";    
                                 if ($inc){
                                     $query = 'select 
                                                 id,
@@ -688,7 +688,7 @@ $inc = include "db/Conexion.php";
                     <div class="row mt-3">
                         <div class="col-4 py-2">
                             <label for="" class="form-label">Imagen de portada</label>
-                            <img src="Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img01.jpg" alt="Auto 1" id="Img01">
+                            <img src="../Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img01.jpg" alt="Auto 1" id="Img01">
                             <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple" id="Change_Img01">
                             <button type="submit" class="btn btn-success">Actualizar</button>
                             <div class="col-4 mt-3"></div>
@@ -705,49 +705,51 @@ $inc = include "db/Conexion.php";
                         </div>
                         <div class="col-4 py-2">
                             <label for="" class="form-label mt-2">Imagen de perfil</label>
-                            <img src="Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img02.jpg" alt="Auto 1">
-                            <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
-                            <button type="submit" class="btn btn-success">Actualizar</button>
-                            <div class="col-4 mt-3"></div>
+                            <form action="upload_i.php" method="post" enctype="multipart/form-data">
+                                <img src="../Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img02.jpg" alt="Auto 1">
+                                <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
+                                <button type="submit" class="btn btn-success">Actualizar</button>
+                                <div class="col-4 mt-3"></div>
+                            </form>
                         </div>
                         <div class="col-4 py-2">
                             <label for="" class="form-label mt-2">Imagen de llanta</label>
-                            <img src="Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img03.jpg" alt="Auto 1">
+                            <img src="../Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img03.jpg" alt="Auto 1">
                             <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
                             <button type="submit" class="btn btn-success">Actualizar</button>
                             <div class="col-4 mt-3"></div>
                         </div>
                         <div class="col-4 py-2">
                             <label for="" class="form-label mt-2">Asientos traseros</label>
-                            <img src="Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img04.jpg" alt="Auto 1">
+                            <img src="../Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img04.jpg" alt="Auto 1">
                             <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
                             <button type="submit" class="btn btn-success">Actualizar</button>
                             <div class="col-4 mt-3"></div>
                         </div>
                         <div class="col-4 py-2">
                             <label for="" class="form-label mt-2">Asientos delanteros</label>
-                            <img src="Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img05.jpg" alt="Auto 1">
+                            <img src="../Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img05.jpg" alt="Auto 1">
                             <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
                             <button type="submit" class="btn btn-success">Actualizar</button>
                             <div class="col-4 mt-3"></div>
                         </div>
                         <div class="col-4 py-2">
                             <label for="" class="form-label mt-2">Imagen de motor</label>
-                            <img src="Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img06.jpg" alt="Auto 1">
+                            <img src="../Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img06.jpg" alt="Auto 1">
                             <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
                             <button type="submit" class="btn btn-success">Actualizar</button>
                             <div class="col-4 mt-3"></div>
                         </div>
                         <div class="col-4 py-2">
                             <label for="" class="form-label mt-2">Imagen de tablero</label>
-                            <img src="Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img07.jpg" alt="Auto 1">
+                            <img src="../Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img07.jpg" alt="Auto 1">
                             <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
                             <button type="submit" class="btn btn-success">Actualizar</button>
                             <div class="col-4 mt-3"></div>
                         </div>
                         <div class="col-4 py-2">
                             <label for="" class="form-label mt-2">Imagen de cajuela</label>
-                            <img src="Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img08.jpg" alt="Auto 1">
+                            <img src="../Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img08.jpg" alt="Auto 1">
                             <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
                             <button type="submit" class="btn btn-success">Actualizar</button>
                             <div class="col-4 mt-3"></div>
@@ -778,7 +780,7 @@ $inc = include "db/Conexion.php";
                         function get_marca(){
                             $.ajax({
                                 type:   "POST" ,
-                                url:    "get_marca.php",
+                                url:    "../get_marca.php",
                                 data:   "Marca=" + $('#InputMarca').val(),
                                 success: function(r){
                                     $('#div_auto').html(r);
@@ -788,7 +790,7 @@ $inc = include "db/Conexion.php";
                         function get_modelo(){
                             $.ajax({
                                 type:   "POST" ,
-                                url:    "get_modelo.php",
+                                url:    "../get_modelo.php",
                                 data:   "Auto=" + $('#InputNombre').val(),
                                 success: function(a){
                                     $('#div_modelo').html(a);
