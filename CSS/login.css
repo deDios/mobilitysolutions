@@ -34,9 +34,18 @@ body {
 }
 
 .login-form h1 {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     color: #333;
     text-align: center;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto 20px;
+    width: 80px; /* Ajusta el tamaño según tus necesidades */
+    height: 80px; /* Asegura que sea cuadrada */
+    border-radius: 50%; /* Hace que sea circular */
+    object-fit: cover; /* Ajusta la imagen dentro del contenedor */
 }
 
 .input-group {
