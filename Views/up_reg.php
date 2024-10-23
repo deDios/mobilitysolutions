@@ -48,6 +48,7 @@ $inc = include "../db/Conexion.php";
                         $nombre_get = $row['nombre'];
                         $modelo_get = $row['modelo'];
                         $marca_get = $row['marca'];
+                        $sucursal_get = $row['sucursal'];
                         $mensualidad_get = $row['mensualidad'];
                         $costo_get = $row['costo'];
                         $color_get = $row['color'];
@@ -96,7 +97,7 @@ $inc = include "../db/Conexion.php";
             <form action="../db_consultas/update_sp.php" method="POST" enctype="multipart/form-data">
                     
                     <div class="col-2 mt-5">
-                        <label for="InputSucursal" class="form-label">Sucursal</label>
+                        <label for="InputSucursal" class="form-label">Sucursal  <small> / Actual: <?php echo $sucursal_get;?></small></label>
                         <select id="InputSucursal" class="form-select" aria-label="Default select example" name="InputSucursal">
                             <option value="0">Selecciona una sucursal</option>                      
                             <?php 
@@ -125,7 +126,7 @@ $inc = include "../db/Conexion.php";
                     </div>
             
                     <div class="col-3 mt-5">
-                        <label for="InputMarca" class="form-label">Marca</label>
+                        <label for="InputMarca" class="form-label">Marca  <small> / Actual: <?php echo $marca_get;?></small></label>
                         <select id="InputMarca" class="form-select" aria-label="Default select example" name="InputMarca">
                             <option value="0">Selecciona una Marca</option>                      
                             <?php 
@@ -155,7 +156,7 @@ $inc = include "../db/Conexion.php";
                     <div class="row mt-3">
                     <!-- Input Auto ------------------------------------------------------------------->
                         <div id="div_auto" class="col-3">
-                            <label for='InputNombre' class='form-label'>Vehiculo</label>
+                            <label for='InputNombre' class='form-label'>Vehiculo  <small> / Actual: <?php echo $nombre_get;?></small></label>
                             <select id="InputNombre" class="form-select" aria-label="Default select example" name="InputNombre">
                                 <option value="0">Selecciona un Vehiculo</option> 
                             </select>
@@ -163,7 +164,7 @@ $inc = include "../db/Conexion.php";
 
                     <!-- Input Modelo ------------------------------------------------------------------->
                         <div id="div_modelo" class="col-3">
-                            <label for='InputModelo' class='form-label'>Modelo</label>
+                            <label for='InputModelo' class='form-label'>Modelo  <small> / Actual: <?php echo $modelo_get;?></small></label>
                             <select id="InputModelo" class="form-select" aria-label="Default select example" name="InputModelo">
                                 <option value="0">Selecciona un Modelo</option> 
                             </select>
@@ -189,7 +190,7 @@ $inc = include "../db/Conexion.php";
 
                     <!-- Input Color ------------------------------------------------------------------->
                     <div class="col-2 mt-5">
-                        <label for="InputColor" class="form-label">Color</label>
+                        <label for="InputColor" class="form-label">Color  <small> / Actual: <?php echo $color_get;?></small></label>
                         
                         <?php
                         switch ($color_get) {
