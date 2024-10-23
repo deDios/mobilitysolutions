@@ -155,7 +155,7 @@ $inc = include "../db/Conexion.php";
                     </div>
                     <div class="row mt-3">
                     <!-- Input Auto ------------------------------------------------------------------->
-                    <small class="col-12">Vehiculo actual: <?php echo $nombre_get;?></small>
+                    <small class="col-12 mt-5">Vehiculo actual: <?php echo $nombre_get;?></small>
                         <div id="div_auto" class="col-3">
                             <label for='InputNombre' class='form-label'>Vehiculo </label>
                             <select id="InputNombre" class="form-select" aria-label="Default select example" name="InputNombre">
@@ -165,7 +165,7 @@ $inc = include "../db/Conexion.php";
                         
 
                     <!-- Input Modelo ------------------------------------------------------------------->
-                    <small class="col-12">Modelo actual: <?php echo $modelo_get;?></small>
+                    <small class="col-12 mt-5">Modelo actual: <?php echo $modelo_get;?></small>
                         <div id="div_modelo" class="col-3">
                             <label for='InputModelo' class='form-label'>Modelo</label>
                             <select id="InputModelo" class="form-select" aria-label="Default select example" name="InputModelo">
