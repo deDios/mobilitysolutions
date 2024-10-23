@@ -685,11 +685,13 @@ $inc = include "../db/Conexion.php";
                         <hr class="mt-2 mb-3"/>
                     </div>
 
+                    <div class="col-3 mt-5">
                     <form action="../db_consultas/upload_i.php?i=<?php echo $id_get;?>" method="post" enctype="multipart/form-data">
                                 <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
                                 <button type="submit" class="btn btn-success">Actualizar</button>
                                 <div class="col-4 mt-3"></div>
                     </form>
+                    </div>
                     <!-- Input Img ------------------------------------------------------------------->
                     <div class="row mt-3">
                         <div class="col-4 py-2">
