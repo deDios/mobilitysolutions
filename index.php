@@ -218,12 +218,12 @@
               <div class="titulo_carta">
                   <div class="Imagenes">
                     <img src="Imagenes/Perfil_resena/Img<?php echo $id;?>.jpg" alt="Imagen perfil" class="imagen-circular">
-                    <img src="logo_google.jpg" alt="Imagen google" class="imagen-pequeña">
+                    <img src="Imagenes/logo_google.jpg" alt="Imagen google" class="imagen-pequeña">
                   </div>
                   <div class="Descripcion">
                       <div class="T_L">
                         <h5 class="card-title">  <?php echo $Nombre;?> </h5>
-                        <img src="ver.jpg" alt="logo 1">
+                        <img src="Imagenes/ver.jpg" alt="logo 1">
                       </div>
                       <h6 class="card-subtitle mb-2 text-muted"> <?php echo $Dias;?> days ago</h6>
                   </div>
