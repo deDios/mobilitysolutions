@@ -685,75 +685,45 @@ $inc = include "../db/Conexion.php";
                         <hr class="mt-2 mb-3"/>
                     </div>
 
+                    <form action="../db_consultas/upload_i.php?i=<?php echo $id_get;?>" method="post" enctype="multipart/form-data">
+                                <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
+                                <button type="submit" class="btn btn-success">Actualizar</button>
+                                <div class="col-4 mt-3"></div>
+                    </form>
                     <!-- Input Img ------------------------------------------------------------------->
                     <div class="row mt-3">
                         <div class="col-4 py-2">
                             <label for="" class="form-label">Imagen de portada</label>
                             <img src="../Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img01.jpg" alt="Auto 1" id="Img01">
-                            <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple" id="Change_Img01">
-                            <button type="submit" class="btn btn-success">Actualizar</button>
-                            <div class="col-4 mt-3"></div>
-                            <script>
-                                Img01.addEventListener('click',() => Change_Img01.click())
-
-                                Change_Img01.addEventListener('change',(files) => { 
-                                    console. log(files)
-                                    const fileUpload = files.target.files[0]
-                                    const form = new FormData()
-                                    form.append("file", fileUpload)
-                                })
-                            </script>
+                            
                         </div>
                         <div class="col-4 py-2">
                             <label for="" class="form-label mt-2">Imagen de perfil</label>
-                            <form action="../db_consultas/upload_i.php?i=<?php echo $id_get;?>" method="post" enctype="multipart/form-data">
-                                <img src="../Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img02.jpg" alt="Auto 1">
-                                <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
-                                <button type="submit" class="btn btn-success">Actualizar</button>
-                                <div class="col-4 mt-3"></div>
-                            </form>
+                            <img src="../Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img02.jpg" alt="Auto 1">
                         </div>
                         <div class="col-4 py-2">
                             <label for="" class="form-label mt-2">Imagen de llanta</label>
                             <img src="../Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img03.jpg" alt="Auto 1">
-                            <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
-                            <button type="submit" class="btn btn-success">Actualizar</button>
-                            <div class="col-4 mt-3"></div>
                         </div>
                         <div class="col-4 py-2">
                             <label for="" class="form-label mt-2">Asientos traseros</label>
                             <img src="../Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img04.jpg" alt="Auto 1">
-                            <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
-                            <button type="submit" class="btn btn-success">Actualizar</button>
-                            <div class="col-4 mt-3"></div>
                         </div>
                         <div class="col-4 py-2">
                             <label for="" class="form-label mt-2">Asientos delanteros</label>
                             <img src="../Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img05.jpg" alt="Auto 1">
-                            <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
-                            <button type="submit" class="btn btn-success">Actualizar</button>
-                            <div class="col-4 mt-3"></div>
                         </div>
                         <div class="col-4 py-2">
                             <label for="" class="form-label mt-2">Imagen de motor</label>
                             <img src="../Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img06.jpg" alt="Auto 1">
-                            <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
-                            <button type="submit" class="btn btn-success">Actualizar</button>
-                            <div class="col-4 mt-3"></div>
                         </div>
                         <div class="col-4 py-2">
                             <label for="" class="form-label mt-2">Imagen de tablero</label>
                             <img src="../Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img07.jpg" alt="Auto 1">
-                            <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
-                            <button type="submit" class="btn btn-success">Actualizar</button>
-                            <div class="col-4 mt-3"></div>
                         </div>
                         <div class="col-4 py-2">
                             <label for="" class="form-label mt-2">Imagen de cajuela</label>
                             <img src="../Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img08.jpg" alt="Auto 1">
-                            <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
-                            <button type="submit" class="btn btn-success">Actualizar</button>
-                            <div class="col-4 mt-3"></div>
                         </div>
                     </div>
         </div>
