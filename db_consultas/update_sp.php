@@ -25,11 +25,11 @@ $eje_valor = '"' . $eje . '"';
 
 $inc = include "../db/Conexion.php"; 
 $query = 'update mobility_solutions.tmx_auto SET 
-nombre =    '.$auto.', 
-modelo =    '.$modelo.', 
-marca =     '.$marca.', 
+nombre = '.$auto.', 
+modelo = '.$modelo.', 
+marca = '.$marca.', 
 mensualidad = '.$mensualidad.', 
-costo =     '.$costo.', 
+costo = '.$costo.', 
 sucursal = '.$sucursal.',  
 color = '.$color_valor.', 
 transmision = '.$transmision_valor.', 
@@ -37,7 +37,7 @@ interior = '.$interior_valor.',
 kilometraje = '.$kilometraje.', 
 combustible = '.$combustible_valor.', 
 cilindros = '.$cilindros.', 
-eje = '.$eje_valor.' 
+eje = '.$eje_valor.', 
 updated_at = NOW(), 
 pasajeros = '.$pasajeros.', 
 propietarios = '.$propietarios.' where id = '.$id.';';
