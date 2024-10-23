@@ -39,21 +39,12 @@ body {
     text-align: center;
 }
 
-.logo-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #dcdcdc; /* Fondo gris */
-    width: 80px; /* Tamaño del fondo */
-    height: 80px; /* Tamaño del fondo */
-    border-radius: 50%; /* Hace que el fondo sea circular */
-    margin: 0 auto 20px; /* Centra el contenedor */
-}
-
 .logo {
-    width: 70%; /* Ajusta el tamaño de la imagen */
-    height: 70%; /* Ajusta el tamaño de la imagen */
-    border-radius: 50%; /* Asegura que la imagen siga siendo circular */
+    display: block;
+    margin: 0 auto 20px;
+    width: 80px; /* Ajusta el tamaño según tus necesidades */
+    height: 80px; /* Asegura que sea cuadrada */
+    border-radius: 50%; /* Hace que sea circular */
     object-fit: cover; /* Ajusta la imagen dentro del contenedor */
 }
 
