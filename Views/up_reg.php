@@ -706,7 +706,7 @@ $inc = include "../db/Conexion.php";
                         </div>
                         <div class="col-4 py-2">
                             <label for="" class="form-label mt-2">Imagen de perfil</label>
-                            <form action="upload_i.php" method="post" enctype="multipart/form-data">
+                            <form action="../db_consultas/upload_i.php?i=<?php echo $id_get;?>" method="post" enctype="multipart/form-data">
                                 <img src="../Imagenes/Catalogo/Auto <?php echo $id_get;?>/Img02.jpg" alt="Auto 1">
                                 <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
                                 <button type="submit" class="btn btn-success">Actualizar</button>
