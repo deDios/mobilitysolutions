@@ -690,8 +690,7 @@ $inc = include "../db/Conexion.php";
                     <div class="col-3 mt-5">
                     <form action="../db_consultas/upload_i.php?i=<?php echo $id_get;?>" method="post" enctype="multipart/form-data">
                                 <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
-                                <button type="submit" class="btn btn-success">Actualizar</button>
-                                <div class="col-4 mt-3"></div>
+                                <button type="submit" class="btn btn-success mt-3">Actualizar</button>
                     </form>
                     </div>
                     <!-- Input Img ------------------------------------------------------------------->
