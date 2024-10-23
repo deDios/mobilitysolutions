@@ -9,7 +9,7 @@
 <body>
     <div class="login-container">
         <form class="login-form">
-            <h1>Iniciar Sesión</h1>
+            <h1>Login</h1>
             <div class="input-group">
                 <label for="username">Usuario</label>
                 <input type="text" id="username" required>
