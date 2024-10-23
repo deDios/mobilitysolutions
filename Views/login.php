@@ -11,7 +11,7 @@
         <form class="login-form">
             <h1>Login</h1>
             <div class="input-group">
-                <label for="username">Usuario</label>
+                <label for="username">Usuario/Email</label>
                 <input type="text" id="username" required>
             </div>
             <div class="input-group">
