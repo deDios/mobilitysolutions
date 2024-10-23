@@ -96,6 +96,8 @@ $inc = include "../db/Conexion.php";
         <div class="row mt-5">
             <form action="../db_consultas/update_sp.php" method="POST" enctype="multipart/form-data">
                     
+            <input id="InputId" type="text" class="form-control" name="InputId" value="<?php echo $id_get;?>" required>
+
                     <div class="col-2 mt-5">
                         <label for="InputSucursal" class="form-label">Sucursal  <small> / Actual: <?php echo $sucursal_get;?></small></label>
                         <select id="InputSucursal" class="form-select" aria-label="Default select example" name="InputSucursal">
