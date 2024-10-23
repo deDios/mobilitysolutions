@@ -155,16 +155,18 @@ $inc = include "../db/Conexion.php";
                     </div>
                     <div class="row mt-3">
                     <!-- Input Auto ------------------------------------------------------------------->
+                    <small> / Actual: <?php echo $nombre_get;?></small>
                         <div id="div_auto" class="col-3">
-                            <label for='InputNombre' class='form-label'>Vehiculo  <small> / Actual: <?php echo $nombre_get;?></small></label>
+                            <label for='InputNombre' class='form-label'>Vehiculo </label>
                             <select id="InputNombre" class="form-select" aria-label="Default select example" name="InputNombre">
                                 <option value="0">Selecciona un Vehiculo</option> 
                             </select>
                         </div>
 
                     <!-- Input Modelo ------------------------------------------------------------------->
+                    <small> Actual: <?php echo $modelo_get;?></small>
                         <div id="div_modelo" class="col-3">
-                            <label for='InputModelo' class='form-label'>Modelo  <small> / Actual: <?php echo $modelo_get;?></small></label>
+                            <label for='InputModelo' class='form-label'>Modelo</label>
                             <select id="InputModelo" class="form-select" aria-label="Default select example" name="InputModelo">
                                 <option value="0">Selecciona un Modelo</option> 
                             </select>
