@@ -387,7 +387,7 @@ $inc = include "../db/Conexion.php";
 
                     <!-- Input Transmision ------------------------------------------------------------------->
                     <div class="col-2 mt-2">
-                        <label for='InputTransmision' class='form-label'>Tipo de transmision <?php echo $transmision_get;?></label>
+                        <label for='InputTransmision' class='form-label'>Tipo de transmision <small> Actual: <?php echo $transmision_get;?></small></label>
                         <div class="col mb-3 form-check"> 
                             <?php
                             switch ($transmision_get) {
