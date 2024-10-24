@@ -33,7 +33,7 @@ $pdf_file = "/DOCS/AP.pdf"; // C
     </main>
 
     <footer>
-        <p>&copy; <?php echo date("Y"); ?> Tu Empresa. Todos los derechos reservados.</p>
+        <p>&copy; <?php echo date("Y"); ?> Mobility Solutions Corporation . Todos los derechos reservados.</p>
     </footer>
 </body>
 </html>
