@@ -82,12 +82,14 @@ $pdf_file = "/DOCS/AP.pdf";
             MSC únicamente solicita los datos personales que sean necesarios para llevar a cabo las finalidades descritas en el
             presente Aviso de Privacidad, el cual se hace del conocimiento de los clientes o prospectos antes de que éstos los
             proporcionan. Los datos personales que MSC solicita u obtiene de sus clientes o prospectos son los siguientes:
-            • Datos Personales de Identificación
-            • Datos Personales de Contacto
-            • Datos Personales Laborales
-            • Datos Personales Financieros
-            • Datos Personales Sensibles, consistentes en datos biométricos
-            • Datos electrónicos, y en particular datos de geolocalización
+            <ul class="list-unstyled">
+                <li> • Datos Personales de Identificación </li>
+                <li> • Datos Personales de Contacto </li>
+                <li> • Datos Personales Laborales </li>
+                <li> • Datos Personales Financieros </li>
+                <li> • Datos Personales Sensibles, consistentes en datos biométricos </li>
+                <li> • Datos electrónicos, y en particular datos de geolocalización </li>
+            </ul>
             Asimismo, se le informa que MSC puede obtener los datos personales mediante cualquiera de los siguientes mecanismos:
             A. Obtenerlos directamente del cliente o prospecto, o bien, a través de terceros proveedores de servicios que actúan
             a nombre de MSC.
