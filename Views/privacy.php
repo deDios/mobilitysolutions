@@ -77,12 +77,12 @@ $pdf_file = "/DOCS/AP.pdf";
 
         <main>
             <section>
-                <div class="embed-responsive embed-responsive-16by9">
+                <div class="embed-responsive embed-responsive-16by9 mt-5">
                     <iframe class="embed-responsive-item" src="<?php echo $pdf_file; ?>" allowfullscreen></iframe>
                 </div>
             </section>
         </main>
-        
+
     <footer>
         <p>&copy; <?php echo date("Y"); ?> Mobility Solutions Corporation. Todos los derechos reservados.</p>
     </footer>
