@@ -262,7 +262,7 @@
         <a href="#">Regresa al inicio</a>
       </p>
       <p class="mb-1">DERECHOS DE AUTOR &COPY; 2014 - 2024 MOBILITY SOLUTIONTS CORPORATIONS</p>
-      <a title="Descargar Archivo" rel="nofollow" target="_blank" href="/DOCS/AP.pdf" style="color: blue; font-size:18px;"> Consulta nuestro aviso de privacidad 
+      <iframe src="/DOCS/AP.pdf"></iframe>
       <span class="glyphicon glyphicon-download-alt" aria-hidden="true">
       </span> 
       </a>
