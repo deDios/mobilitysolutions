@@ -311,10 +311,11 @@ p.clasificacion label {
   color: gold;
 }
 iframe {
-  width: 100%;
-  height: 800px;
+  width: 90%;
+  height: auto;
   border: none;
 }
+
 @keyframes scroll{
   0% {
     -webkit-transform: translate(0);
