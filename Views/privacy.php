@@ -10,7 +10,7 @@ $pdf_file = "/DOCS/AP.pdf";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title; ?></title>
-    <link rel="stylesheet" href="CSS/estilos.css">
+    <link rel="stylesheet" href="../CSS/estilos.css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -75,7 +75,12 @@ $pdf_file = "/DOCS/AP.pdf";
 </div>
     
 
-
+        <main>
+        <section>
+            <h2>Aviso de Privacidad</h2>
+            <iframe src="<?php echo $pdf_file; ?>"></iframe>
+        </section>
+    </main>
     <footer>
         <p>&copy; <?php echo date("Y"); ?> Mobility Solutions Corporation. Todos los derechos reservados.</p>
     </footer>
