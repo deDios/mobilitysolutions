@@ -75,7 +75,7 @@ $pdf_file = "/DOCS/AP.pdf";
 </div>
     
 
-    <div class="col-lg-8 col-md-8 mx-auto mt-5">
+    <div class="col-lg-8 col-md-8 mt-5 mx-auto">
         <h1 class="fw-light mt-5">Aviso de Privacidad</h1>
         <p class="lead text-muted">
         <h6> I.- FINALIDAD DEL TRATAMIENTO Y DATOS PERSONALES RECABADOS POR EL RESPONSABLE. </h6>
@@ -159,7 +159,7 @@ $pdf_file = "/DOCS/AP.pdf";
             de acceso, rectificación, cancelación y oposición (ARCO), mismo que se define más adelante. La negativa para el uso de
             sus datos personales para estas finalidades no serán un motivo para que se le niegue los servicios y productos que solicita
             o contrata con MSC.
-        <br>
+        <br><br>
         <h6>II.- TRANSFERENCIA Y REMISIÓN DE DATOS PERSONALES</h6>
             MSC puede transferir y/o remitir sus datos personales a terceros con los que MSC tenga una relación jurídica tales como
             proveedores de servicios, aseguradoras, procesadores de tarjetas de crédito, proveedores de administración de bases de
@@ -177,14 +177,14 @@ $pdf_file = "/DOCS/AP.pdf";
             II. Empresas de Seguros.
             Los destinatarios de datos personales trataran esta información conforme a las finalidades descritas en el capítulo que
             antecede “FINALIDADES DEL TRATAMIENTO DE LOS DATOS PERSONALES”.
-        <br>
+        <br><br>
         <h6>III.- SEGURIDAD DE LOS DATOS PERSONALES: </h6>
             MSC está comprometido a salvaguardar la seguridad de los datos personales de sus clientes y prospectos, por lo que, ha
             implementado diversos mecanismos de seguridad físicos, administrativos y tecnológicos para protegerlos contra cualquier
             daño, pérdida, alteración, destrucción o el tratamiento no autorizado. En el mismo sentido, MSC tiene políticas y
             procedimientos para la seguridad de la información y sus terceros proveedores de servicio están comprometidos a
             respetarlas.
-        <br>
+        <br><br>
         <h6>IV.- EJERCICIO DE DERECHOS ARCO:</h6>
             Todos los clientes o prospectos de MSC tienen derecho a:
             a. Conocer qué datos personales tiene MSC de ellos, para qué los utiliza y las condiciones del tratamiento (derecho
@@ -222,7 +222,7 @@ $pdf_file = "/DOCS/AP.pdf";
             de sus datos personales, conforme al procedimiento antes descrito. Sin embargo, es importante que tenga en cuenta que
             no en todos los casos MSC podrá atender su solicitud o concluir el uso de forma inmediata, ya que es posible que por
             alguna obligación legal requiera seguir tratando sus datos personales.
-        <br>
+        <br><br>
         <h6>V.- USO DE COOKIES:</h6>
             MSC le informa que durante la navegación en este sitio web se utilizan cookies. Las cookies son asientos de memoria que
             pueden quedar almacenadas dentro de la computadora del usuario y de la cual MSC obtiene automáticamente la siguiente
@@ -245,13 +245,13 @@ $pdf_file = "/DOCS/AP.pdf";
             puede consultar el soporte de Microsoft o la Ayuda del navegador.
             • Safari: Preferencias -> Seguridad. Para más información, puede consultar el soporte de Apple o la Ayuda del
             navegado.
-        <br>
+        <br><br>
         <h6>VI.- CAMBIOS AL AVISO DE PRIVACIDAD:</h6>
             MSC se reserva el derecho a modificar el presente Aviso de Privacidad, para adaptarlo a novedades legislativas o
             jurisprudenciales, cambios o actualizaciones en las propias del tratamiento de los datos personales. En dichos supuestos,
             MSC se compromete a mantenerlo informado sobre dichos cambios, anunciando la versión más reciente del presente
             Aviso de Privacidad, en el sitio web de MSC.
-        <br>
+        <br><br>
         <h6>VII.- DEPARTAMENTO DE PROTECCIÓN DE DATOS PERSONALES:</h6>
             MSC le informa que cuenta con un órgano interno enfocado a la protección de datos personales y garantizar el debido
             tratamiento de los datos personales. Para tal efecto, dicho órgano interno verifica la implementación de las medidas de
