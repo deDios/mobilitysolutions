@@ -95,7 +95,7 @@ $pdf_file = "/DOCS/AP.pdf";
         <p class="fs-6 lh-sm text-muted text-justify">
             Asimismo, se le informa que MSC puede obtener los datos personales mediante cualquiera de los siguientes mecanismos:
         </p>
-            <ul class="mx-5 text-muted list-upper-alpha text-justify">
+            <ol class="mx-5 text-muted list-upper-alpha text-justify">
                 <li> A. Obtenerlos directamente del cliente o prospecto, o bien, a través de terceros proveedores de servicios que actúan
                 a nombre de MSC. </li>
                 <li> B. Por medio de la red de agencias de vehículos autorizadas de todas las marcas (en lo sucesivo el "Proveedor de
@@ -108,7 +108,7 @@ $pdf_file = "/DOCS/AP.pdf";
                 clientes o prospectos, es importante señalar son personas morales distintas e independientes a MSC. Por lo
                 anterior, MSC no es responsable del tratamiento que dichos fabricantes de los vehículos den a los datos personales
                 que recaban para sus propias finalidades, diferentes las informadas en el presente Aviso de Privacidad.</li>
-            </ul>
+            </ol>
             Los clientes o prospectos pueden acceder a los sitios web de MSC sin necesidad de proporcionar datos personales. Sin
             embargo, para poder utilizar ciertas funciones de los sitios web de MSC como cotizaciones de productos y/o servicios, será
             necesario que los interesados se registren en el sitio web o proporcionen sus datos personales. Como parte de este registro
