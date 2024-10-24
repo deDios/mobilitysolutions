@@ -96,7 +96,7 @@ $pdf_file = "/DOCS/AP.pdf";
             Asimismo, se le informa que MSC puede obtener los datos personales mediante cualquiera de los siguientes mecanismos:
         </p>
             <ol class="mx-5 text-muted text-justify">
-                <li> A. Obtenerlos directamente del cliente o prospecto, o bien, a través de terceros proveedores de servicios que actúan
+                <li value="A"> A. Obtenerlos directamente del cliente o prospecto, o bien, a través de terceros proveedores de servicios que actúan
                 a nombre de MSC. </li>
                 <li> B. Por medio de la red de agencias de vehículos autorizadas de todas las marcas (en lo sucesivo el "Proveedor de
                 los Vehículos"). Toda vez que, MSC trabaja con los proveedores de los vehículos para recabar información de los
