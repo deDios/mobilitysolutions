@@ -92,7 +92,9 @@ $pdf_file = "/DOCS/AP.pdf";
                 <li> • Datos Personales Sensibles, consistentes en datos biométricos </li>
                 <li> • Datos electrónicos, y en particular datos de geolocalización </li>
             </ul>
+        <p class="fs-6 lh-sm text-muted text-justify">
             Asimismo, se le informa que MSC puede obtener los datos personales mediante cualquiera de los siguientes mecanismos:
+        </p>
             A. Obtenerlos directamente del cliente o prospecto, o bien, a través de terceros proveedores de servicios que actúan
             a nombre de MSC.
             B. Por medio de la red de agencias de vehículos autorizadas de todas las marcas (en lo sucesivo el "Proveedor de
