@@ -310,7 +310,11 @@ p.clasificacion label {
   float: right;
   color: gold;
 }
-
+iframe {
+  width: 100%;
+  height: 800px;
+  border: none;
+}
 @keyframes scroll{
   0% {
     -webkit-transform: translate(0);
