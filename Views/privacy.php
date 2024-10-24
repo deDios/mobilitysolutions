@@ -74,12 +74,7 @@ $pdf_file = "/DOCS/AP.pdf";
   </nav>
 </div>
     
-    <main>
-        <section>
-            <h2>Aviso de Privacidad</h2>
-            <iframe src="<?php echo $pdf_file; ?>"></iframe>
-        </section>
-    </main>
+
 
     <footer>
         <p>&copy; <?php echo date("Y"); ?> Mobility Solutions Corporation. Todos los derechos reservados.</p>
