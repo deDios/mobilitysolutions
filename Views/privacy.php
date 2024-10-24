@@ -77,11 +77,13 @@ $pdf_file = "/DOCS/AP.pdf";
 
     <div class="col-lg-8 col-md-8 mt-5 mx-auto">
         <h1 class="fw-light mt-5 text-center">Aviso de Privacidad</h1>
-        <p class="lead text-muted">
+        
         <h6> I.- FINALIDAD DEL TRATAMIENTO Y DATOS PERSONALES RECABADOS POR EL RESPONSABLE. </h6>
+        <p class="lead text-muted text-justify">
             MSC únicamente solicita los datos personales que sean necesarios para llevar a cabo las finalidades descritas en el
             presente Aviso de Privacidad, el cual se hace del conocimiento de los clientes o prospectos antes de que éstos los
             proporcionan. Los datos personales que MSC solicita u obtiene de sus clientes o prospectos son los siguientes:
+        </p>
             <ul class="list-unstyled">
                 <li> • Datos Personales de Identificación </li>
                 <li> • Datos Personales de Contacto </li>
@@ -263,7 +265,7 @@ $pdf_file = "/DOCS/AP.pdf";
             solicitud, aclaración o comentario relacionado con el presente Aviso de Privacidad sírvase contactar a dicho departamento
             de NRFM, vía correo electrónico atcliente@mobilitysolutionscorp.com
             Última Actualización en la Ciudad de México al 17 de MAYO de 2019.
-        </p>
+        
         
     </div>
 
