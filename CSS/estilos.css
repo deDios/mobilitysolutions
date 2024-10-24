@@ -316,6 +316,11 @@ iframe {
   border: none;
 }
 
+ol {
+  list-style-type: upper-alpha;
+}
+
+
 @keyframes scroll{
   0% {
     -webkit-transform: translate(0);
