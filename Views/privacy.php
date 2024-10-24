@@ -76,7 +76,7 @@ $pdf_file = "/DOCS/AP.pdf";
     
 
     <div class="col-lg-8 col-md-8 mt-5 mx-auto">
-        <h1 class="fw-light mt-5">Aviso de Privacidad</h1>
+        <h1 class="fw-light mt-5 text-center">Aviso de Privacidad</h1>
         <p class="lead text-muted">
         <h6> I.- FINALIDAD DEL TRATAMIENTO Y DATOS PERSONALES RECABADOS POR EL RESPONSABLE. </h6>
             MSC únicamente solicita los datos personales que sean necesarios para llevar a cabo las finalidades descritas en el
