@@ -84,7 +84,7 @@ $pdf_file = "/DOCS/AP.pdf";
             presente Aviso de Privacidad, el cual se hace del conocimiento de los clientes o prospectos antes de que éstos los
             proporcionan. Los datos personales que MSC solicita u obtiene de sus clientes o prospectos son los siguientes:
         </p>
-            <ul class="list-unstyled">
+            <ul class="pr-3 list-unstyled">
                 <li> • Datos Personales de Identificación </li>
                 <li> • Datos Personales de Contacto </li>
                 <li> • Datos Personales Laborales </li>
