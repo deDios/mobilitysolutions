@@ -79,7 +79,7 @@ $pdf_file = "/DOCS/AP.pdf";
         <h1 class="fw-light mt-5 text-center">Aviso de Privacidad</h1>
         
         <h6> I.- FINALIDAD DEL TRATAMIENTO Y DATOS PERSONALES RECABADOS POR EL RESPONSABLE. </h6>
-        <p class="lead lh-sm text-muted text-justify">
+        <p class="lh-sm text-muted text-justify">
             MSC únicamente solicita los datos personales que sean necesarios para llevar a cabo las finalidades descritas en el
             presente Aviso de Privacidad, el cual se hace del conocimiento de los clientes o prospectos antes de que éstos los
             proporcionan. Los datos personales que MSC solicita u obtiene de sus clientes o prospectos son los siguientes:
