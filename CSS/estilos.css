@@ -343,6 +343,12 @@ iframe {
   background: linear-gradient(45deg, #FFC00A 70%, #1b1e21 26%);
 }
 
+iframe {
+  width: 90%;
+  height: auto;
+  border: none;
+}
+
 }
 
 
