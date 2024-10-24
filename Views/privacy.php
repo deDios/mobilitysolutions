@@ -1,7 +1,7 @@
 <?php
 // Configuración básica de la página
 $title = "Aviso de Privacidad";
-$pdf_file = "/DOCS/AP.pdf"; // Cambia la ruta según corresponda
+$pdf_file = "/DOCS/AP.pdf"; // C
 ?>
 
 <!DOCTYPE html>
@@ -10,6 +10,7 @@ $pdf_file = "/DOCS/AP.pdf"; // Cambia la ruta según corresponda
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title; ?></title>
+    <link rel="stylesheet" href="styles.css"> <!-- Opcional: tu CSS -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -17,25 +18,22 @@ $pdf_file = "/DOCS/AP.pdf"; // Cambia la ruta según corresponda
         }
         iframe {
             width: 100%;
-            height: 600px;
+            height: 800px;
             border: none;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1><?php echo $title; ?></h1>
-    </header>
     
     <main>
         <section>
             <h2>Aviso de Privacidad</h2>
-            <iframe src="<?php echo $pdf_file; ?>"></iframe>
+            <iframe src="<?php echo $pdf_file; ?>" sandbox="allow-same-origin allow-scripts"></iframe>
         </section>
     </main>
 
     <footer>
-        <p>&copy; <?php echo date("Y"); ?> Mobility Solutions Corporation. Todos los derechos reservados.</p>
+        <p>&copy; <?php echo date("Y"); ?> Tu Empresa. Todos los derechos reservados.</p>
     </footer>
 </body>
 </html>
