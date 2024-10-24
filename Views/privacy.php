@@ -109,6 +109,7 @@ $pdf_file = "/DOCS/AP.pdf";
                 anterior, MSC no es responsable del tratamiento que dichos fabricantes de los vehículos den a los datos personales
                 que recaban para sus propias finalidades, diferentes las informadas en el presente Aviso de Privacidad.</li>
             </ul>
+        <p class="fs-6 lh-sm text-muted text-justify">
             Los clientes o prospectos pueden acceder a los sitios web de MSC sin necesidad de proporcionar datos personales. Sin
             embargo, para poder utilizar ciertas funciones de los sitios web de MSC como cotizaciones de productos y/o servicios, será
             necesario que los interesados se registren en el sitio web o proporcionen sus datos personales. Como parte de este registro
@@ -117,7 +118,10 @@ $pdf_file = "/DOCS/AP.pdf";
             promociones. En caso de que los clientes o prospectos compartan datos personales en áreas públicas de los sitios web de
             MSC y/o redes sociales, estos datos personales podrán ser vistos y utilizados por otros, sin responsabilidad alguna para
             MSC.
+        </p>
+        <p class="fs-6 lh-sm text-muted text-justify">
             MSC trata los datos personales de clientes para las siguientes finalidades primarias:
+        </p>
             i. Acreditar y verificar la identidad de nuestros clientes o prospectos, de acuerdo con los procedimientos y políticas
             de MSC.
             ii. Autenticarlo a través de la información que proporcione para el cumplimiento con las disposiciones legales
