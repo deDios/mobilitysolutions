@@ -75,10 +75,10 @@ $pdf_file = "/DOCS/AP.pdf";
 </div>
     
 
-    <div class="col-lg-6 col-md-8">
+    <div class="col-lg-6 col-md-8 mt-5">
         <h1 class="fw-light mx-auto">Aviso de Privacidad</h1>
-        <p class="lead text-muted">
-        <h2> I.- FINALIDAD DEL TRATAMIENTO Y DATOS PERSONALES RECABADOS POR EL RESPONSABLE. </h2>
+        <p class="lead text-muted mx-auto">
+        <h4> I.- FINALIDAD DEL TRATAMIENTO Y DATOS PERSONALES RECABADOS POR EL RESPONSABLE. </h4>
             MSC únicamente solicita los datos personales que sean necesarios para llevar a cabo las finalidades descritas en el
             presente Aviso de Privacidad, el cual se hace del conocimiento de los clientes o prospectos antes de que éstos los
             proporcionan. Los datos personales que MSC solicita u obtiene de sus clientes o prospectos son los siguientes:
@@ -159,7 +159,7 @@ $pdf_file = "/DOCS/AP.pdf";
             de acceso, rectificación, cancelación y oposición (ARCO), mismo que se define más adelante. La negativa para el uso de
             sus datos personales para estas finalidades no serán un motivo para que se le niegue los servicios y productos que solicita
             o contrata con MSC.
-            <h2>II.- TRANSFERENCIA Y REMISIÓN DE DATOS PERSONALES</h2>
+            <h4>II.- TRANSFERENCIA Y REMISIÓN DE DATOS PERSONALES</h4>
             MSC puede transferir y/o remitir sus datos personales a terceros con los que MSC tenga una relación jurídica tales como
             proveedores de servicios, aseguradoras, procesadores de tarjetas de crédito, proveedores de administración de bases de
             datos, auditores, despachos de cobranza, consultores, Proveedor de vehículos donde el ACREDITADO haya adquirido el
@@ -176,13 +176,13 @@ $pdf_file = "/DOCS/AP.pdf";
             II. Empresas de Seguros.
             Los destinatarios de datos personales trataran esta información conforme a las finalidades descritas en el capítulo que
             antecede “FINALIDADES DEL TRATAMIENTO DE LOS DATOS PERSONALES”.
-            <h2>III.- SEGURIDAD DE LOS DATOS PERSONALES: </h2>
+            <h4>III.- SEGURIDAD DE LOS DATOS PERSONALES: </h4>
             MSC está comprometido a salvaguardar la seguridad de los datos personales de sus clientes y prospectos, por lo que, ha
             implementado diversos mecanismos de seguridad físicos, administrativos y tecnológicos para protegerlos contra cualquier
             daño, pérdida, alteración, destrucción o el tratamiento no autorizado. En el mismo sentido, MSC tiene políticas y
             procedimientos para la seguridad de la información y sus terceros proveedores de servicio están comprometidos a
             respetarlas.
-            <h2>IV.- EJERCICIO DE DERECHOS ARCO:</h2>
+            <h4>IV.- EJERCICIO DE DERECHOS ARCO:</h4>
             Todos los clientes o prospectos de MSC tienen derecho a:
             a. Conocer qué datos personales tiene MSC de ellos, para qué los utiliza y las condiciones del tratamiento (derecho
             de acceso);
@@ -241,12 +241,12 @@ $pdf_file = "/DOCS/AP.pdf";
             puede consultar el soporte de Microsoft o la Ayuda del navegador.
             • Safari: Preferencias -> Seguridad. Para más información, puede consultar el soporte de Apple o la Ayuda del
             navegado.
-            <h2>VI.- CAMBIOS AL AVISO DE PRIVACIDAD:</h2>
+            <h4>VI.- CAMBIOS AL AVISO DE PRIVACIDAD:</h4>
             MSC se reserva el derecho a modificar el presente Aviso de Privacidad, para adaptarlo a novedades legislativas o
             jurisprudenciales, cambios o actualizaciones en las propias del tratamiento de los datos personales. En dichos supuestos,
             MSC se compromete a mantenerlo informado sobre dichos cambios, anunciando la versión más reciente del presente
             Aviso de Privacidad, en el sitio web de MSC.
-            <h2>VII.- DEPARTAMENTO DE PROTECCIÓN DE DATOS PERSONALES:</h2>
+            <h4>VII.- DEPARTAMENTO DE PROTECCIÓN DE DATOS PERSONALES:</h4>
             MSC le informa que cuenta con un órgano interno enfocado a la protección de datos personales y garantizar el debido
             tratamiento de los datos personales. Para tal efecto, dicho órgano interno verifica la implementación de las medidas de
             seguridad físicas, administrativas y tecnológicas, que garanticen la seguridad de sus datos personales. Asimismo, dicho
