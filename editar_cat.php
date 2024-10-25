@@ -203,7 +203,7 @@ $cod=$_REQUEST['id'];
                         <td><a href="javascript:detalle(<?php echo $id;?>)" class="btn btn-primary">Ver</a></td>
                         <td>
                           <?php 
-                            if ($estatus == 6){
+                            if ($estatus == 2){
                           ?>
                             <a href="Views/up_reg.php?i=<?php echo $id;?>&s=<?php echo $id_sucursal;?>&m=<?php echo $id_marca;?>&v=<?php echo $id_vehiculo;?>&mm=<?php echo $id_modelo;?>" class="btn btn-warning">Editar</a>
                           <?php
