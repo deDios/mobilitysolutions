@@ -153,28 +153,40 @@ $pdf_file = "/DOCS/AP.pdf";
             De manera adicional, MSC tratará los datos personales de clientes para las siguientes finalidades secundarias, que
             permiten y facilitan a MSC brindarle una mejor atención:
         </p>
-            i. Comunicarle por medios físico y/o electrónicos, actividades promocionales y de prospección de MSC.
-            ii. Ofrecerle productos e información de las marcas, así como de nuestros socios de negocios.
-            iii. Realizar análisis estadísticos y de mercado.
+        <ul class="mx-5 text-muted list-unstyled">
+            <li>i. Comunicarle por medios físico y/o electrónicos, actividades promocionales y de prospección de MSC.</li>
+            <li>ii. Ofrecerle productos e información de las marcas, así como de nuestros socios de negocios.</li>
+            <li>iii. Realizar análisis estadísticos y de mercado.</li>
+        </ul>
+        <p class="fs-6 lh-sm text-muted text-justify">
             En caso de que cualquiera de los clientes no desee que sus datos personales sean tratados para los fines adicionales
             descritos en este párrafo, puede presentar desde este momento una solicitud manifestando lo anterior, conforme al proceso
             que para ejercitar su derecho de acceso, rectificación, cancelación y oposición (ARCO), mismo que se define más adelante.
             La negativa para el tratamiento de sus datos personales para estas finalidades no serán un motivo para que se le niegue
             los servicios y productos que solicita o contrata con MSC.
+        </p>
+        <p class="fs-6 lh-sm text-muted text-justify">
             MSC trata los datos personales de los prospectos para las siguientes finalidades primarias:
-            i. Bajo demanda del titular, atender las solicitudes sobre el posible otorgamiento de algún producto financiero y/o
-            arrendamiento de MSC.
-            ii. Comunicar por cualquier medio autorizado las cotizaciones de productos y servicios de MSC.
+        </p>
+        <ul class="mx-5 text-muted list-unstyled">
+            <li>i. Bajo demanda del titular, atender las solicitudes sobre el posible otorgamiento de algún producto financiero y/o
+            arrendamiento de MSC.</li>
+            <li>ii. Comunicar por cualquier medio autorizado las cotizaciones de productos y servicios de MSC.
             De manera adicional, MSC tratará los datos personales de prospectos para las siguientes finalidades secundarias, que
-            permiten y facilitan a MSC brindarle una mejor atención:
-            i. Comunicarle por medios físicos y/o electrónicos, actividades promocionales y de prospección de MSC.
-            ii. Ofrecerle productos e información de las marcas, así como de nuestros socios de negocios.
-            iii. Realizar análisis estadísticos y de mercado.
+            permiten y facilitan a MSC brindarle una mejor atención:</li>
+                <ul class="mx-5 text-muted list-unstyled">
+                    <li>i. Comunicarle por medios físicos y/o electrónicos, actividades promocionales y de prospección de MSC.</li>
+                    <li>ii. Ofrecerle productos e información de las marcas, así como de nuestros socios de negocios.</li>
+                </ul>
+            <li>iii. Realizar análisis estadísticos y de mercado.</li>
+        </ul>
+        <p class="fs-6 lh-sm text-muted text-justify">
             En caso de que cualquier prospecto, no desee que sus datos personales sean tratados para estos fines adicionales, puede
             presentar desde este momento una solicitud manifestando lo anterior, conforme al proceso que para ejercitar su derecho
             de acceso, rectificación, cancelación y oposición (ARCO), mismo que se define más adelante. La negativa para el uso de
             sus datos personales para estas finalidades no serán un motivo para que se le niegue los servicios y productos que solicita
             o contrata con MSC.
+        </p>
         <br><br>
         <h6>II.- TRANSFERENCIA Y REMISIÓN DE DATOS PERSONALES</h6>
             MSC puede transferir y/o remitir sus datos personales a terceros con los que MSC tenga una relación jurídica tales como
