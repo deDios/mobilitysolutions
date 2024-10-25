@@ -229,73 +229,96 @@ $pdf_file = "/DOCS/AP.pdf";
         </p>
         <br><br>
         <h6>IV.- EJERCICIO DE DERECHOS ARCO:</h6>
+        <p class="fs-6 lh-sm text-muted text-justify">    
             Todos los clientes o prospectos de MSC tienen derecho a:
-            a. Conocer qué datos personales tiene MSC de ellos, para qué los utiliza y las condiciones del tratamiento (derecho
-            de acceso);
-            b. Solicitar la corrección de su información personal, en caso de que esté desactualizada, sea inexacta o incompleta
-            (derecho de rectificación);
-            c. Solicitar que se elimine de los registros o bases de datos de MSC sus datos personales, cuando considere que la
+        </p>
+        <ul class="mx-5 text-muted list-unstyled">
+            <li> a. Conocer qué datos personales tiene MSC de ellos, para qué los utiliza y las condiciones del tratamiento (derecho
+            de acceso);</li>
+            <li> b. Solicitar la corrección de su información personal, en caso de que esté desactualizada, sea inexacta o incompleta
+            (derecho de rectificación); </li>
+            <li> c. Solicitar que se elimine de los registros o bases de datos de MSC sus datos personales, cuando considere que la
             misma no está siendo utilizada conforme a los principios, deberes y obligaciones previstas en la legislación
-            aplicable (derecho de cancelación);
-            d. Oponerse al uso de sus datos personales para fines específicos (derecho de oposición).
+            aplicable (derecho de cancelación);</li>
+            <li> d. Oponerse al uso de sus datos personales para fines específicos (derecho de oposición).</li>
+        </ul>
+        <p class="fs-6 lh-sm text-muted text-justify">
             Todos estos derechos de acceso, rectificación, cancelación y oposición se conocen como derechos ARCO; mismos que
             se pueden ejercer conforme al siguiente procedimiento:
-            1. Conforme lo previsto en el artículo 29 de la LFPDPPP, para ejercer algún derecho ARCO deberá elaborar una
+        </p>
+        <ul class="mx-5 text-muted list-unstyled">
+            <li> 1. Conforme lo previsto en el artículo 29 de la LFPDPPP, para ejercer algún derecho ARCO deberá elaborar una
             solicitud, dirigida a MSC y enviarla vía correo electrónico a atcliente@mobilitysolutionscorp.com. Dicha solicitud
-            deberá contener todos los siguientes puntos:
-            o Nombre completo del titular del derecho reclamado y domicilio u otro medio para comunicarle la r
-            o Respuesta a su solicitud.
-            o Documentos que acrediten la identidad o, en su caso, la representación legal del titular del derecho
-            reclamado.
-            o Descripción clara y precisa de los datos personales respecto de los que se busca ejercer alguno de los
-            derechos que marca la LFPDPPP.
-            o Cualquier otro elemento o documento que facilite la localización de los datos personales.
-            2. Dentro de los cinco días hábiles siguientes a la recepción de su solicitud, MSC podrá solicitarle que aporte
+            deberá contener todos los siguientes puntos:</li>
+            <ul class="mx-5 text-muted list-unstyled">
+                <li> o Nombre completo del titular del derecho reclamado y domicilio u otro medio para comunicarle la r</li>
+                <li> o Respuesta a su solicitud. </li>
+                <li> o Documentos que acrediten la identidad o, en su caso, la representación legal del titular del derecho
+                reclamado. </li>
+                <li> o Descripción clara y precisa de los datos personales respecto de los que se busca ejercer alguno de los
+                derechos que marca la LFPDPPP.</li>
+                <li> o Cualquier otro elemento o documento que facilite la localización de los datos personales.</li>
+            </ul>
+            <li> 2. Dentro de los cinco días hábiles siguientes a la recepción de su solicitud, MSC podrá solicitarle que aporte
             información adicional en caso de que su solicitud este incompleta, errónea o no contenga todos los puntos que
-            refiere el artículo 29 de LFPDPPP.
-            3. En el supuesto del punto anterior, el cliente o prospecto tendrá un lapso de diez días hábiles contados a partir del
+            refiere el artículo 29 de LFPDPPP. </li>
+            <li> 3. En el supuesto del punto anterior, el cliente o prospecto tendrá un lapso de diez días hábiles contados a partir del
             día siguiente en que lo haya recibido correo por parte de MSC, para atender al requerimiento de información
-            adicional.
-            4. Posteriormente, conforme a lo dispuesto en los artículos del 28 al 35 de la LFPDPPP, MSC le comunicará la
+            adicional.</li>
+            <li> 4. Posteriormente, conforme a lo dispuesto en los artículos del 28 al 35 de la LFPDPPP, MSC le comunicará la
             determinación adoptada en un plazo máximo de veinte días contados desde la recepción de su solicitud si resulta
             procedente, MSC tendrá un lapso de quince días para adoptar dicha determinación. MSC puede ampliar los plazos
             señalados en el presente punto por sola vez por un periodo igual, siempre y cuando así lo justifiquen las
-            circunstancias del caso.
+            circunstancias del caso. </li>
+        </ul>
+        <p class="fs-6 lh-sm text-muted text-justify">
             Los clientes y prospectos de MSC pueden, en todo momento, revocar el consentimiento otorgado a MSC para el tratamiento
             de sus datos personales, conforme al procedimiento antes descrito. Sin embargo, es importante que tenga en cuenta que
             no en todos los casos MSC podrá atender su solicitud o concluir el uso de forma inmediata, ya que es posible que por
             alguna obligación legal requiera seguir tratando sus datos personales.
+        </p>
         <br><br>
         <h6>V.- USO DE COOKIES:</h6>
+        <p class="fs-6 lh-sm text-muted text-justify">
             MSC le informa que durante la navegación en este sitio web se utilizan cookies. Las cookies son asientos de memoria que
             pueden quedar almacenadas dentro de la computadora del usuario y de la cual MSC obtiene automáticamente la siguiente
             información:
-            • La fecha y hora de acceso al sitio web de MSC.
-            • Tiempo de navegación en el sitio web de MSC.
-            • El número de visitas diarias en cada sección del sitio web de MSC.
-            • La fecha y hora de la última vez que el usuario visitó el sitio web de MSC.
-            • El diseño de contenidos que el usuario escogió en su primera visita al sitio web de MSC.
-            • Páginas de Internet accedidas previo a la visita al sitio web de MSC.
+        </p>
+        <ul class="mx-5 text-muted list-unstyled">
+            <li> • La fecha y hora de acceso al sitio web de MSC. </li>
+            <li> • Tiempo de navegación en el sitio web de MSC. </li>
+            <li> • El número de visitas diarias en cada sección del sitio web de MSC. </li>
+            <li> • La fecha y hora de la última vez que el usuario visitó el sitio web de MSC. </li>
+            <li> • El diseño de contenidos que el usuario escogió en su primera visita al sitio web de MSC. </li>
+            <li> • Páginas de Internet accedidas previo a la visita al sitio web de MSC. </li>
+        </ul>
+        <p class="fs-6 lh-sm text-muted text-justify">
             El uso de las cookies le permite a MSC adaptar y mejorar sus servicios a los intereses del usuario, para brindarle un mejor
             servicio y experiencia de usuario al navegar en este sitio web. Sin embargo, el usuario tiene la opción de impedir la
             generación de cookies, mediante la inhabilitación de dicha función desde su programa navegador. Para tal efecto, puede
             consultar el proceso de eliminación de cookies en los siguientes navegadores más comunes:
-            • Chrome: Configuración -> Mostrar opciones avanzadas -> Privacidad -> Configuración de contenido. Para más
-            información, puede consultar el soporte de Google o la Ayuda del navegador.
-            • Firefox: Herramientas -> Opciones -> Privacidad -> Historial -> Configuración Personalizada. Para más
-            información, puede consultar el soporte de Mozilla o la Ayuda del navegador.
-            • Internet Explorer: Herramientas -> Opciones de Internet -> Privacidad -> Configuración. Para más información,
-            puede consultar el soporte de Microsoft o la Ayuda del navegador.
-            • Safari: Preferencias -> Seguridad. Para más información, puede consultar el soporte de Apple o la Ayuda del
-            navegado.
+        </p>
+        <ul class="mx-5 text-muted list-unstyled">
+            <li> • Chrome: Configuración -> Mostrar opciones avanzadas -> Privacidad -> Configuración de contenido. Para más
+            información, puede consultar el soporte de Google o la Ayuda del navegador. </li>
+            <li> • Firefox: Herramientas -> Opciones -> Privacidad -> Historial -> Configuración Personalizada. Para más
+            información, puede consultar el soporte de Mozilla o la Ayuda del navegador. </li>
+            <li> • Internet Explorer: Herramientas -> Opciones de Internet -> Privacidad -> Configuración. Para más información,
+            puede consultar el soporte de Microsoft o la Ayuda del navegador. </li>
+            <li> • Safari: Preferencias -> Seguridad. Para más información, puede consultar el soporte de Apple o la Ayuda del
+            navegado. </li>
+        </ul>
         <br><br>
         <h6>VI.- CAMBIOS AL AVISO DE PRIVACIDAD:</h6>
+        <p class="fs-6 lh-sm text-muted text-justify">
             MSC se reserva el derecho a modificar el presente Aviso de Privacidad, para adaptarlo a novedades legislativas o
             jurisprudenciales, cambios o actualizaciones en las propias del tratamiento de los datos personales. En dichos supuestos,
             MSC se compromete a mantenerlo informado sobre dichos cambios, anunciando la versión más reciente del presente
             Aviso de Privacidad, en el sitio web de MSC.
+        </p>
         <br><br>
         <h6>VII.- DEPARTAMENTO DE PROTECCIÓN DE DATOS PERSONALES:</h6>
+        <p class="fs-6 lh-sm text-muted text-justify">
             MSC le informa que cuenta con un órgano interno enfocado a la protección de datos personales y garantizar el debido
             tratamiento de los datos personales. Para tal efecto, dicho órgano interno verifica la implementación de las medidas de
             seguridad físicas, administrativas y tecnológicas, que garanticen la seguridad de sus datos personales. Asimismo, dicho
@@ -303,7 +326,11 @@ $pdf_file = "/DOCS/AP.pdf";
             registro y atención de sus solicitudes de derechos ARCO, conforme al proceso antes descrito. Por lo que, para cualquier
             solicitud, aclaración o comentario relacionado con el presente Aviso de Privacidad sírvase contactar a dicho departamento
             de NRFM, vía correo electrónico atcliente@mobilitysolutionscorp.com
+        </p>
+        <p class="fs-6 lh-sm text-muted text-justify">
             Última Actualización en la Ciudad de México al 17 de MAYO de 2019.
+        </p>
+        
         
         
     </div>
