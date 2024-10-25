@@ -189,22 +189,33 @@ $pdf_file = "/DOCS/AP.pdf";
         </p>
         <br><br>
         <h6>II.- TRANSFERENCIA Y REMISIÓN DE DATOS PERSONALES</h6>
+        <p class="fs-6 lh-sm text-muted text-justify">
             MSC puede transferir y/o remitir sus datos personales a terceros con los que MSC tenga una relación jurídica tales como
             proveedores de servicios, aseguradoras, procesadores de tarjetas de crédito, proveedores de administración de bases de
             datos, auditores, despachos de cobranza, consultores, Proveedor de vehículos donde el ACREDITADO haya adquirido el
             vehículo objeto de la relación jurídica con el responsable, proveedor y/o el fabricante del/los vehículo(s), a efecto de llevar
             a cabo las finalidades previstas en este Aviso de Privacidad o hacer efectivo el cumplimiento de las obligaciones que
             emanen de la relación jurídica entre usted y MSC.
+        </p>
+        <p class="fs-6 lh-sm text-muted text-justify">
             Para aquellas transferencias que requieren de su consentimiento, a través del presente aviso de privacidad usted acepta
             y reconoce que nos otorga su consentimiento, en caso de que se oponga podrá manifestar su negativa a través del
             correo atcliente@mobilitysolutionscorp.com
+        </p>
+        <p class="fs-6 lh-sm text-muted text-justify">
             Asimismo, se le informa que conforme a lo previsto en el artículo 37 fracción III, IV y VII, de la Ley Federal de Protección
             de Datos Personales en Posesión de los Particulares, MSC podrá transferir sus datos personales a los siguientes terceros:
-            I. La red de agencias de vehículos autorizadas de todas las marcas ("Proveedor de los vehículos y/o distribuidor de
-            vehículos indistintamente”).
-            II. Empresas de Seguros.
+        </p>
+        <ul class="mx-5 text-muted list-unstyled">
+            <li>I. La red de agencias de vehículos autorizadas de todas las marcas ("Proveedor de los vehículos y/o distribuidor de
+            vehículos indistintamente”).</li>
+            <li>II. Empresas de Seguros.</li>
+        </ul>
+        <p class="fs-6 lh-sm text-muted text-justify">
             Los destinatarios de datos personales trataran esta información conforme a las finalidades descritas en el capítulo que
             antecede “FINALIDADES DEL TRATAMIENTO DE LOS DATOS PERSONALES”.
+        </p>
+        
         <br><br>
         <h6>III.- SEGURIDAD DE LOS DATOS PERSONALES: </h6>
             MSC está comprometido a salvaguardar la seguridad de los datos personales de sus clientes y prospectos, por lo que, ha
