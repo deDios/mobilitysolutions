@@ -96,7 +96,7 @@ $pdf_file = "/DOCS/AP.pdf";
             Asimismo, se le informa que MSC puede obtener los datos personales mediante cualquiera de los siguientes mecanismos:
         </p>
             <ul class="mx-5 text-muted list-unstyled">
-                <li value="A"> A. Obtenerlos directamente del cliente o prospecto, o bien, a través de terceros proveedores de servicios que actúan
+                <li> A. Obtenerlos directamente del cliente o prospecto, o bien, a través de terceros proveedores de servicios que actúan
                 a nombre de MSC. </li>
                 <li> B. Por medio de la red de agencias de vehículos autorizadas de todas las marcas (en lo sucesivo el "Proveedor de
                     los Vehículos"). Toda vez que, MSC trabaja con los proveedores de los vehículos para recabar información de los
@@ -122,33 +122,37 @@ $pdf_file = "/DOCS/AP.pdf";
         <p class="fs-6 lh-sm text-muted text-justify">
             MSC trata los datos personales de clientes para las siguientes finalidades primarias:
         </p>
-            i. Acreditar y verificar la identidad de nuestros clientes o prospectos, de acuerdo con los procedimientos y políticas
-            de MSC.
-            ii. Autenticarlo a través de la información que proporcione para el cumplimiento con las disposiciones legales
-            aplicables.
-            iii. En su caso, verificar los datos de su identificación oficial, incluidos aquellos datos considerados como biométricos,
-            a través de los mecanismos establecidos con el Instituto Nacional Electoral.
-            iv. Llevar a cabo evaluaciones de la información crediticia que la o las sociedades de información crediticia nos
-            proporcionen, previa autorización de su parte.
-            v. En su caso, celebrar el correspondiente contrato de apertura de crédito simple con garantía prendaria para la
-            adquisición de vehículos nuevos y/o seminuevos, así como los accesorios que deriven del mismo;
-            vi. En su caso, celebrar el correspondiente contrato de vehículos nuevos y/o seminuevos.
-            vii. Para la cotización y/o contratación de productos y/o servicios ofertados por terceros relacionados con nuestros
-            créditos.
-            viii. Para el procesamiento de las solicitudes de crédito.
-            ix. Para realizar gestiones de cobranza, buscando la recuperación de cartera vencida, así como para realizar acciones
+        <ul class="mx-5 text-muted list-unstyled">
+            <li>i. Acreditar y verificar la identidad de nuestros clientes o prospectos, de acuerdo con los procedimientos y políticas
+            de MSC. </li>
+            <li>ii. Autenticarlo a través de la información que proporcione para el cumplimiento con las disposiciones legales
+            aplicables.</li>
+            <li>iii. En su caso, verificar los datos de su identificación oficial, incluidos aquellos datos considerados como biométricos,
+            a través de los mecanismos establecidos con el Instituto Nacional Electoral.</li>
+            <li>iv. Llevar a cabo evaluaciones de la información crediticia que la o las sociedades de información crediticia nos
+            proporcionen, previa autorización de su parte.</li>
+            <li>v. En su caso, celebrar el correspondiente contrato de apertura de crédito simple con garantía prendaria para la
+            adquisición de vehículos nuevos y/o seminuevos, así como los accesorios que deriven del mismo;</li>
+            <li>vi. En su caso, celebrar el correspondiente contrato de vehículos nuevos y/o seminuevos.</li>
+            <li>vii. Para la cotización y/o contratación de productos y/o servicios ofertados por terceros relacionados con nuestros
+            créditos.</li>
+            <li>viii. Para el procesamiento de las solicitudes de crédito.</li>
+            <li>ix. Para realizar gestiones de cobranza, buscando la recuperación de cartera vencida, así como para realizar acciones
             preventivas o reactivas con esa finalidad, incluyendo la ubicación geográfica del vehículo que funge como garantía
-            prendaría en términos del contrato (“Contrato”).
-            x. Para dar cumplimiento a obligaciones contraídas con nuestros clientes, así como a requerimientos de autoridades
-            judiciales y/o administrativas.
-            xi. Mantener actualizados sus datos personales en los sistemas operados con la red de proveedores de los vehículos
-            de todas las marcas.
-            xii. Archivo y registro legal de contratos, pagos, requerimientos de pago y cualquier otra información relacionada con
-            la relación jurídica existente entre usted y MSC, incluyendo el uso de esa información
-            xiii. Las que resulten compatibles o análogas con las demás finalidades para las que MSC hubiese recabado sus datos
-            personales en primer lugar.
+            prendaría en términos del contrato (“Contrato”).</li>
+            <li>x. Para dar cumplimiento a obligaciones contraídas con nuestros clientes, así como a requerimientos de autoridades
+            judiciales y/o administrativas.</li>
+            <li>xi. Mantener actualizados sus datos personales en los sistemas operados con la red de proveedores de los vehículos
+            de todas las marcas.</li>
+            <li>xii. Archivo y registro legal de contratos, pagos, requerimientos de pago y cualquier otra información relacionada con
+            la relación jurídica existente entre usted y MSC, incluyendo el uso de esa información</li>
+            <li>xiii. Las que resulten compatibles o análogas con las demás finalidades para las que MSC hubiese recabado sus datos
+            personales en primer lugar.</li>
+        </ul>
+        <p class="fs-6 lh-sm text-muted text-justify">
             De manera adicional, MSC tratará los datos personales de clientes para las siguientes finalidades secundarias, que
             permiten y facilitan a MSC brindarle una mejor atención:
+        </p>
             i. Comunicarle por medios físico y/o electrónicos, actividades promocionales y de prospección de MSC.
             ii. Ofrecerle productos e información de las marcas, así como de nuestros socios de negocios.
             iii. Realizar análisis estadísticos y de mercado.
