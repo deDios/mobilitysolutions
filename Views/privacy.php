@@ -172,14 +172,16 @@ $pdf_file = "/DOCS/AP.pdf";
             <li>i. Bajo demanda del titular, atender las solicitudes sobre el posible otorgamiento de algún producto financiero y/o
             arrendamiento de MSC.</li>
             <li>ii. Comunicar por cualquier medio autorizado las cotizaciones de productos y servicios de MSC.
-            De manera adicional, MSC tratará los datos personales de prospectos para las siguientes finalidades secundarias, que
-            permiten y facilitan a MSC brindarle una mejor atención:</li>
-                <ul class="mx-5 text-muted list-unstyled">
-                    <li>i. Comunicarle por medios físicos y/o electrónicos, actividades promocionales y de prospección de MSC.</li>
-                    <li>ii. Ofrecerle productos e información de las marcas, así como de nuestros socios de negocios.</li>
-                </ul>
-            <li>iii. Realizar análisis estadísticos y de mercado.</li>
         </ul>
+        <p class="fs-6 lh-sm text-muted text-justify">
+            De manera adicional, MSC tratará los datos personales de prospectos para las siguientes finalidades secundarias, que
+            permiten y facilitan a MSC brindarle una mejor atención:
+        </p>
+            <ul class="mx-5 text-muted list-unstyled">
+                <li>i. Comunicarle por medios físicos y/o electrónicos, actividades promocionales y de prospección de MSC.</li>
+                <li>ii. Ofrecerle productos e información de las marcas, así como de nuestros socios de negocios.</li>
+                <li>iii. Realizar análisis estadísticos y de mercado.</li>
+            </ul>
         <p class="fs-6 lh-sm text-muted text-justify">
             En caso de que cualquier prospecto, no desee que sus datos personales sean tratados para estos fines adicionales, puede
             presentar desde este momento una solicitud manifestando lo anterior, conforme al proceso que para ejercitar su derecho
@@ -215,14 +217,16 @@ $pdf_file = "/DOCS/AP.pdf";
             Los destinatarios de datos personales trataran esta información conforme a las finalidades descritas en el capítulo que
             antecede “FINALIDADES DEL TRATAMIENTO DE LOS DATOS PERSONALES”.
         </p>
-        
+
         <br><br>
         <h6>III.- SEGURIDAD DE LOS DATOS PERSONALES: </h6>
+        <p class="fs-6 lh-sm text-muted text-justify">
             MSC está comprometido a salvaguardar la seguridad de los datos personales de sus clientes y prospectos, por lo que, ha
             implementado diversos mecanismos de seguridad físicos, administrativos y tecnológicos para protegerlos contra cualquier
             daño, pérdida, alteración, destrucción o el tratamiento no autorizado. En el mismo sentido, MSC tiene políticas y
             procedimientos para la seguridad de la información y sus terceros proveedores de servicio están comprometidos a
             respetarlas.
+        </p>
         <br><br>
         <h6>IV.- EJERCICIO DE DERECHOS ARCO:</h6>
             Todos los clientes o prospectos de MSC tienen derecho a:
