@@ -78,7 +78,7 @@ $pdf_file = "/DOCS/AP.pdf";
     <div class="col-lg-8 col-md-8 mt-5 mx-auto">
         <h1 class="fw-light mt-5 text-center">AVISO DE PRIVACIDAD PARA CLIENTES Y PROSPECTOS</h1>
         
-        <h6> I.- FINALIDAD DEL TRATAMIENTO Y DATOS PERSONALES RECABADOS POR EL RESPONSABLE. </h6>
+        <h6 class="mt-5"> I.- FINALIDAD DEL TRATAMIENTO Y DATOS PERSONALES RECABADOS POR EL RESPONSABLE. </h6>
         <p class="fs-6 lh-sm text-muted text-justify">
             MSC únicamente solicita los datos personales que sean necesarios para llevar a cabo las finalidades descritas en el
             presente Aviso de Privacidad, el cual se hace del conocimiento de los clientes o prospectos antes de que éstos los
@@ -98,13 +98,13 @@ $pdf_file = "/DOCS/AP.pdf";
             <ul class="mx-5 text-muted list-unstyled">
                 <li> A. Obtenerlos directamente del cliente o prospecto, o bien, a través de terceros proveedores de servicios que actúan
                 a nombre de MSC. </li>
-                <li> B. Por medio de la red de agencias de vehículos autorizadas de todas las marcas (en lo sucesivo el "Proveedor de
-                    los Vehículos"). Toda vez que, MSC trabaja con los proveedores de los vehículos para recabar información de los
+                <li> B. Por medio de la red de agencias de vehículos autorizadas de todas las marcas (en lo sucesivo el <b>"Proveedor de
+                    los Vehículos"</b>). Toda vez que, MSC trabaja con los proveedores de los vehículos para recabar información de los
                     clientes o prospectos, es importante señalar son personas morales distintas e independientes a MSC. Por lo
                     anterior, MSC no es responsable del tratamiento que dichos proveedores de los vehículos den a los datos
                     personales que recaban para sus propias finalidades, diferentes las informadas en el presente Aviso de Privacidad. </li>
-                <li> C. Por medio de los fabricantes de los vehículos de todas las marcas (en lo sucesivo el "Fabricante de los
-                Vehículos”). Toda vez que, MSC trabaja con los fabricantes de los vehículos para recabar información de los
+                <li> C. Por medio de los fabricantes de los vehículos de todas las marcas (en lo sucesivo el <b>"Fabricante de los
+                Vehículos”</b>). Toda vez que, MSC trabaja con los fabricantes de los vehículos para recabar información de los
                 clientes o prospectos, es importante señalar son personas morales distintas e independientes a MSC. Por lo
                 anterior, MSC no es responsable del tratamiento que dichos fabricantes de los vehículos den a los datos personales
                 que recaban para sus propias finalidades, diferentes las informadas en el presente Aviso de Privacidad.</li>
@@ -118,9 +118,7 @@ $pdf_file = "/DOCS/AP.pdf";
             promociones. En caso de que los clientes o prospectos compartan datos personales en áreas públicas de los sitios web de
             MSC y/o redes sociales, estos datos personales podrán ser vistos y utilizados por otros, sin responsabilidad alguna para
             MSC.
-        </p>
-        <p class="fs-6 lh-sm text-muted text-justify">
-            MSC trata los datos personales de clientes para las siguientes finalidades primarias:
+            MSC trata los datos personales de <b>clientes</b> para las siguientes <b>finalidades primarias</b>
         </p>
         <ul class="mx-5 text-muted list-unstyled">
             <li>i. Acreditar y verificar la identidad de nuestros clientes o prospectos, de acuerdo con los procedimientos y políticas
@@ -150,7 +148,7 @@ $pdf_file = "/DOCS/AP.pdf";
             personales en primer lugar.</li>
         </ul>
         <p class="fs-6 lh-sm text-muted text-justify">
-            De manera adicional, MSC tratará los datos personales de clientes para las siguientes finalidades secundarias, que
+            De manera adicional, MSC tratará los datos personales de <b>clientes</b> para las siguientes <b>finalidades secundarias</b>, que
             permiten y facilitan a MSC brindarle una mejor atención:
         </p>
         <ul class="mx-5 text-muted list-unstyled">
@@ -166,7 +164,7 @@ $pdf_file = "/DOCS/AP.pdf";
             los servicios y productos que solicita o contrata con MSC.
         </p>
         <p class="fs-6 lh-sm text-muted text-justify">
-            MSC trata los datos personales de los prospectos para las siguientes finalidades primarias:
+            MSC trata los datos personales de los <b>prospectos</b> para las siguientes finalidades primarias:
         </p>
         <ul class="mx-5 text-muted list-unstyled">
             <li>i. Bajo demanda del titular, atender las solicitudes sobre el posible otorgamiento de algún producto financiero y/o
@@ -174,7 +172,7 @@ $pdf_file = "/DOCS/AP.pdf";
             <li>ii. Comunicar por cualquier medio autorizado las cotizaciones de productos y servicios de MSC.
         </ul>
         <p class="fs-6 lh-sm text-muted text-justify">
-            De manera adicional, MSC tratará los datos personales de prospectos para las siguientes finalidades secundarias, que
+            De manera adicional, MSC tratará los datos personales de <b>prospectos</b> para las siguientes <b>finalidades secundarias</b>, que
             permiten y facilitan a MSC brindarle una mejor atención:
         </p>
             <ul class="mx-5 text-muted list-unstyled">
@@ -202,7 +200,7 @@ $pdf_file = "/DOCS/AP.pdf";
         <p class="fs-6 lh-sm text-muted text-justify">
             Para aquellas transferencias que requieren de su consentimiento, a través del presente aviso de privacidad usted acepta
             y reconoce que nos otorga su consentimiento, en caso de que se oponga podrá manifestar su negativa a través del
-            correo atcliente@mobilitysolutionscorp.com
+            correo <b>atcliente@mobilitysolutionscorp.com</b>.
         </p>
         <p class="fs-6 lh-sm text-muted text-justify">
             Asimismo, se le informa que conforme a lo previsto en el artículo 37 fracción III, IV y VII, de la Ley Federal de Protección
@@ -233,14 +231,14 @@ $pdf_file = "/DOCS/AP.pdf";
             Todos los clientes o prospectos de MSC tienen derecho a:
         </p>
         <ul class="mx-5 text-muted list-unstyled">
-            <li> a. Conocer qué datos personales tiene MSC de ellos, para qué los utiliza y las condiciones del tratamiento (derecho
-            de acceso);</li>
+            <li> a. Conocer qué datos personales tiene MSC de ellos, para qué los utiliza y las condiciones del tratamiento (<b>derecho
+            de acceso</b>);</li>
             <li> b. Solicitar la corrección de su información personal, en caso de que esté desactualizada, sea inexacta o incompleta
-            (derecho de rectificación); </li>
+            (<b>derecho de rectificación</b>); </li>
             <li> c. Solicitar que se elimine de los registros o bases de datos de MSC sus datos personales, cuando considere que la
             misma no está siendo utilizada conforme a los principios, deberes y obligaciones previstas en la legislación
-            aplicable (derecho de cancelación);</li>
-            <li> d. Oponerse al uso de sus datos personales para fines específicos (derecho de oposición).</li>
+            aplicable (<b>derecho de cancelación</b>);</li>
+            <li> d. Oponerse al uso de sus datos personales para fines específicos (<b>derecho de oposición</b>).</li>
         </ul>
         <p class="fs-6 lh-sm text-muted text-justify">
             Todos estos derechos de acceso, rectificación, cancelación y oposición se conocen como derechos ARCO; mismos que
@@ -248,7 +246,7 @@ $pdf_file = "/DOCS/AP.pdf";
         </p>
         <ul class="mx-5 text-muted list-unstyled">
             <li> 1. Conforme lo previsto en el artículo 29 de la LFPDPPP, para ejercer algún derecho ARCO deberá elaborar una
-            solicitud, dirigida a MSC y enviarla vía correo electrónico a atcliente@mobilitysolutionscorp.com. Dicha solicitud
+            solicitud, dirigida a MSC y enviarla vía correo electrónico a <b>atcliente@mobilitysolutionscorp.com</b>. Dicha solicitud
             deberá contener todos los siguientes puntos:</li>
             <ul class="mx-5 text-muted list-unstyled">
                 <li> o Nombre completo del titular del derecho reclamado y domicilio u otro medio para comunicarle la r</li>
@@ -259,7 +257,7 @@ $pdf_file = "/DOCS/AP.pdf";
                 derechos que marca la LFPDPPP.</li>
                 <li> o Cualquier otro elemento o documento que facilite la localización de los datos personales.</li>
             </ul>
-            <li> 2. Dentro de los cinco días hábiles siguientes a la recepción de su solicitud, MSC podrá solicitarle que aporte
+            <li> 2. Dentro de los <b>cinco días hábiles</b> siguientes a la recepción de su solicitud, MSC podrá solicitarle que aporte
             información adicional en caso de que su solicitud este incompleta, errónea o no contenga todos los puntos que
             refiere el artículo 29 de LFPDPPP. </li>
             <li> 3. En el supuesto del punto anterior, el cliente o prospecto tendrá un lapso de diez días hábiles contados a partir del
@@ -325,7 +323,7 @@ $pdf_file = "/DOCS/AP.pdf";
             órgano interno de MSC designó un departamento de protección de datos personales, que tiene a su cargo la recepción,
             registro y atención de sus solicitudes de derechos ARCO, conforme al proceso antes descrito. Por lo que, para cualquier
             solicitud, aclaración o comentario relacionado con el presente Aviso de Privacidad sírvase contactar a dicho departamento
-            de NRFM, vía correo electrónico atcliente@mobilitysolutionscorp.com
+            de NRFM, vía correo electrónico <b>atcliente@mobilitysolutionscorp.com</b>.
         </p>
         <p class="fs-6 lh-sm text-muted text-justify">
             Última Actualización en la Ciudad de México al 17 de MAYO de 2019.
