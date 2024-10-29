@@ -187,7 +187,6 @@ $pdf_file = "/DOCS/AP.pdf";
             sus datos personales para estas finalidades no serán un motivo para que se le niegue los servicios y productos que solicita
             o contrata con MSC.
         </p>
-        <br><br>
         <h6>II.- TRANSFERENCIA Y REMISIÓN DE DATOS PERSONALES</h6>
         <p class="fs-6 lh-sm text-muted text-justify">
             MSC puede transferir y/o remitir sus datos personales a terceros con los que MSC tenga una relación jurídica tales como
