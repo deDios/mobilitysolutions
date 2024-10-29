@@ -187,6 +187,7 @@ $pdf_file = "/DOCS/AP.pdf";
             sus datos personales para estas finalidades no serán un motivo para que se le niegue los servicios y productos que solicita
             o contrata con MSC.
         </p>
+        <br>
         <h6>II.- TRANSFERENCIA Y REMISIÓN DE DATOS PERSONALES</h6>
         <p class="fs-6 lh-sm text-muted text-justify">
             MSC puede transferir y/o remitir sus datos personales a terceros con los que MSC tenga una relación jurídica tales como
@@ -215,7 +216,7 @@ $pdf_file = "/DOCS/AP.pdf";
             antecede “FINALIDADES DEL TRATAMIENTO DE LOS DATOS PERSONALES”.
         </p>
 
-        <br><br>
+        <br>
         <h6>III.- SEGURIDAD DE LOS DATOS PERSONALES: </h6>
         <p class="fs-6 lh-sm text-muted text-justify">
             MSC está comprometido a salvaguardar la seguridad de los datos personales de sus clientes y prospectos, por lo que, ha
@@ -224,7 +225,7 @@ $pdf_file = "/DOCS/AP.pdf";
             procedimientos para la seguridad de la información y sus terceros proveedores de servicio están comprometidos a
             respetarlas.
         </p>
-        <br><br>
+        <br>
         <h6>IV.- EJERCICIO DE DERECHOS ARCO:</h6>
         <p class="fs-6 lh-sm text-muted text-justify">    
             Todos los clientes o prospectos de MSC tienen derecho a:
@@ -274,7 +275,7 @@ $pdf_file = "/DOCS/AP.pdf";
             no en todos los casos MSC podrá atender su solicitud o concluir el uso de forma inmediata, ya que es posible que por
             alguna obligación legal requiera seguir tratando sus datos personales.
         </p>
-        <br><br>
+        <br>
         <h6>V.- USO DE COOKIES:</h6>
         <p class="fs-6 lh-sm text-muted text-justify">
             MSC le informa que durante la navegación en este sitio web se utilizan cookies. Las cookies son asientos de memoria que
@@ -305,7 +306,7 @@ $pdf_file = "/DOCS/AP.pdf";
             <li> • Safari: Preferencias -> Seguridad. Para más información, puede consultar el soporte de Apple o la Ayuda del
             navegado. </li>
         </ul>
-        <br><br>
+        <br>
         <h6>VI.- CAMBIOS AL AVISO DE PRIVACIDAD:</h6>
         <p class="fs-6 lh-sm text-muted text-justify">
             MSC se reserva el derecho a modificar el presente Aviso de Privacidad, para adaptarlo a novedades legislativas o
@@ -313,7 +314,7 @@ $pdf_file = "/DOCS/AP.pdf";
             MSC se compromete a mantenerlo informado sobre dichos cambios, anunciando la versión más reciente del presente
             Aviso de Privacidad, en el sitio web de MSC.
         </p>
-        <br><br>
+        <br>
         <h6>VII.- DEPARTAMENTO DE PROTECCIÓN DE DATOS PERSONALES:</h6>
         <p class="fs-6 lh-sm text-muted text-justify">
             MSC le informa que cuenta con un órgano interno enfocado a la protección de datos personales y garantizar el debido
