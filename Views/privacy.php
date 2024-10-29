@@ -74,9 +74,9 @@ $pdf_file = "/DOCS/AP.pdf";
   </nav>
 </div>
     
-
+<div  class="col-lg-8 mt-5 text-center">&</div>
     <div class="col-lg-8 col-md-8 mt-5 mx-auto">
-        <h1 class="fw-light mt-5 text-center">Aviso de Privacidad</h1>
+        <h1 class="fw-light mt-5 text-center">AVISO DE PRIVACIDAD PARA CLIENTES Y PROSPECTOS</h1>
         
         <h6> I.- FINALIDAD DEL TRATAMIENTO Y DATOS PERSONALES RECABADOS POR EL RESPONSABLE. </h6>
         <p class="fs-6 lh-sm text-muted text-justify">
