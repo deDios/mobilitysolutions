@@ -95,7 +95,7 @@ $pdf_file = "/DOCS/AP.pdf";
         <p class="fs-6 lh-sm text-muted text-justify">
             Asimismo, se le informa que MSC puede obtener los datos personales mediante cualquiera de los siguientes mecanismos:
         </p>
-            <ul class="mx-5 text-muted list-unstyled">
+            <ul class="mx-5 text-muted text-justify list-unstyled">
                 <li> A. Obtenerlos directamente del cliente o prospecto, o bien, a través de terceros proveedores de servicios que actúan
                 a nombre de MSC. </li>
                 <li> B. Por medio de la red de agencias de vehículos autorizadas de todas las marcas (en lo sucesivo el <b>"Proveedor de
@@ -120,7 +120,7 @@ $pdf_file = "/DOCS/AP.pdf";
             MSC.
             MSC trata los datos personales de <b>clientes</b> para las siguientes <b>finalidades primarias</b>
         </p>
-        <ul class="mx-5 text-muted list-unstyled">
+        <ul class="mx-5 text-muted text-justify list-unstyled">
             <li>i. Acreditar y verificar la identidad de nuestros clientes o prospectos, de acuerdo con los procedimientos y políticas
             de MSC. </li>
             <li>ii. Autenticarlo a través de la información que proporcione para el cumplimiento con las disposiciones legales
@@ -151,7 +151,7 @@ $pdf_file = "/DOCS/AP.pdf";
             De manera adicional, MSC tratará los datos personales de <b>clientes</b> para las siguientes <b>finalidades secundarias</b>, que
             permiten y facilitan a MSC brindarle una mejor atención:
         </p>
-        <ul class="mx-5 text-muted list-unstyled">
+        <ul class="mx-5 text-muted text-justify list-unstyled">
             <li>i. Comunicarle por medios físico y/o electrónicos, actividades promocionales y de prospección de MSC.</li>
             <li>ii. Ofrecerle productos e información de las marcas, así como de nuestros socios de negocios.</li>
             <li>iii. Realizar análisis estadísticos y de mercado.</li>
@@ -166,7 +166,7 @@ $pdf_file = "/DOCS/AP.pdf";
         <p class="fs-6 lh-sm text-muted text-justify">
             MSC trata los datos personales de los <b>prospectos</b> para las siguientes finalidades primarias:
         </p>
-        <ul class="mx-5 text-muted list-unstyled">
+        <ul class="mx-5 text-muted text-justify list-unstyled">
             <li>i. Bajo demanda del titular, atender las solicitudes sobre el posible otorgamiento de algún producto financiero y/o
             arrendamiento de MSC.</li>
             <li>ii. Comunicar por cualquier medio autorizado las cotizaciones de productos y servicios de MSC.
@@ -175,7 +175,7 @@ $pdf_file = "/DOCS/AP.pdf";
             De manera adicional, MSC tratará los datos personales de <b>prospectos</b> para las siguientes <b>finalidades secundarias</b>, que
             permiten y facilitan a MSC brindarle una mejor atención:
         </p>
-            <ul class="mx-5 text-muted list-unstyled">
+            <ul class="mx-5 text-muted text-justify list-unstyled">
                 <li>i. Comunicarle por medios físicos y/o electrónicos, actividades promocionales y de prospección de MSC.</li>
                 <li>ii. Ofrecerle productos e información de las marcas, así como de nuestros socios de negocios.</li>
                 <li>iii. Realizar análisis estadísticos y de mercado.</li>
@@ -206,7 +206,7 @@ $pdf_file = "/DOCS/AP.pdf";
             Asimismo, se le informa que conforme a lo previsto en el artículo 37 fracción III, IV y VII, de la Ley Federal de Protección
             de Datos Personales en Posesión de los Particulares, MSC podrá transferir sus datos personales a los siguientes terceros:
         </p>
-        <ul class="mx-5 text-muted list-unstyled">
+        <ul class="mx-5 text-muted text-justify list-unstyled">
             <li>I. La red de agencias de vehículos autorizadas de todas las marcas ("Proveedor de los vehículos y/o distribuidor de
             vehículos indistintamente”).</li>
             <li>II. Empresas de Seguros.</li>
@@ -230,7 +230,7 @@ $pdf_file = "/DOCS/AP.pdf";
         <p class="fs-6 lh-sm text-muted text-justify">    
             Todos los clientes o prospectos de MSC tienen derecho a:
         </p>
-        <ul class="mx-5 text-muted list-unstyled">
+        <ul class="mx-5 text-muted text-justify list-unstyled">
             <li> a. Conocer qué datos personales tiene MSC de ellos, para qué los utiliza y las condiciones del tratamiento (<b>derecho
             de acceso</b>);</li>
             <li> b. Solicitar la corrección de su información personal, en caso de que esté desactualizada, sea inexacta o incompleta
@@ -244,11 +244,11 @@ $pdf_file = "/DOCS/AP.pdf";
             Todos estos derechos de acceso, rectificación, cancelación y oposición se conocen como derechos ARCO; mismos que
             se pueden ejercer conforme al siguiente procedimiento:
         </p>
-        <ul class="mx-5 text-muted list-unstyled">
+        <ul class="mx-5 text-muted text-justify list-unstyled">
             <li> 1. Conforme lo previsto en el artículo 29 de la LFPDPPP, para ejercer algún derecho ARCO deberá elaborar una
             solicitud, dirigida a MSC y enviarla vía correo electrónico a <b>atcliente@mobilitysolutionscorp.com</b>. Dicha solicitud
             deberá contener todos los siguientes puntos:</li>
-            <ul class="mx-5 text-muted list-unstyled">
+            <ul class="mx-5 text-muted text-justify list-unstyled">
                 <li> o Nombre completo del titular del derecho reclamado y domicilio u otro medio para comunicarle la r</li>
                 <li> o Respuesta a su solicitud. </li>
                 <li> o Documentos que acrediten la identidad o, en su caso, la representación legal del titular del derecho
@@ -282,7 +282,7 @@ $pdf_file = "/DOCS/AP.pdf";
             pueden quedar almacenadas dentro de la computadora del usuario y de la cual MSC obtiene automáticamente la siguiente
             información:
         </p>
-        <ul class="mx-5 text-muted list-unstyled">
+        <ul class="mx-5 text-muted text-justify list-unstyled">
             <li> • La fecha y hora de acceso al sitio web de MSC. </li>
             <li> • Tiempo de navegación en el sitio web de MSC. </li>
             <li> • El número de visitas diarias en cada sección del sitio web de MSC. </li>
@@ -296,7 +296,7 @@ $pdf_file = "/DOCS/AP.pdf";
             generación de cookies, mediante la inhabilitación de dicha función desde su programa navegador. Para tal efecto, puede
             consultar el proceso de eliminación de cookies en los siguientes navegadores más comunes:
         </p>
-        <ul class="mx-5 text-muted list-unstyled">
+        <ul class="mx-5 text-muted text-justify list-unstyled">
             <li> • Chrome: Configuración -> Mostrar opciones avanzadas -> Privacidad -> Configuración de contenido. Para más
             información, puede consultar el soporte de Google o la Ayuda del navegador. </li>
             <li> • Firefox: Herramientas -> Opciones -> Privacidad -> Historial -> Configuración Personalizada. Para más
