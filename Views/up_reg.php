@@ -491,6 +491,10 @@ $inc = include "../db/Conexion.php";
                                 <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible" value="Hibrido">
                                 <label class="form-check-label" for="InputCombustible">Hibrido</label>
                             </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible" value="Disel">
+                                <label class="form-check-label" for="InputCombustible">Disel</label>
+                            </div>
                             <?php
                             break;
                             case "Electrico":
@@ -507,6 +511,10 @@ $inc = include "../db/Conexion.php";
                                 <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible" value="Hibrido">
                                 <label class="form-check-label" for="InputCombustible">Hibrido</label>
                             </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible" value="Disel">
+                                <label class="form-check-label" for="InputCombustible">Disel</label>
+                            </div>
                             <?php
                             break;
                             case "Hibrido":
@@ -522,6 +530,30 @@ $inc = include "../db/Conexion.php";
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible" value="Hibrido" checked="">
                                 <label class="form-check-label" for="InputCombustible">Hibrido</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible" value="Disel">
+                                <label class="form-check-label" for="InputCombustible">Disel</label>
+                            </div>
+                            <?php
+                            break;
+                            case "Disel":
+                            ?>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible" value="Gasolina">
+                                <label class="form-check-label" for="InputCombustible">Gasolina</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible" value="Electrico">
+                                <label class="form-check-label" for="InputCombustible">Electrico</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible" value="Hibrido">
+                                <label class="form-check-label" for="InputCombustible">Hibrido</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible" value="Disel" checked="">
+                                <label class="form-check-label" for="InputCombustible">Disel</label>
                             </div>
                         <?php
                             break;

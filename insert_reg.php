@@ -190,6 +190,10 @@
                                 <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible" value="Hibrido">
                                 <label class="form-check-label" for="InputCombustible">Hibrido</label>
                             </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible" value="Disel">
+                                <label class="form-check-label" for="InputCombustible">Disel</label>
+                            </div>
                         </div>
                     </div>
 
