@@ -89,7 +89,7 @@
           <a class="btn btn-light" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
             <i class="fa fa-filter"></i>
           </a>
-          <div class="collapse" id="collapseExample">
+          <div class="collapse py-5" id="collapseExample">
 
           <div class="lay_ser"> 
             <h5 class="fw-light py-3">Filtros</h5>
