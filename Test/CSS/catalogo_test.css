@@ -372,6 +372,10 @@ li {
     nav{
         padding: 0px 0px ;
     }
+    .lay_ser {
+        padding-left: 10px;
+        width: 100%;
+    }    
     .container-items{
         display: grid;
         grid-template-columns: repeat(1,1fr);
