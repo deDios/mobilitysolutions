@@ -87,49 +87,20 @@
           </div>
 
           <div class="lay_ser"> 
-            <div class="accordion w-100" id="basicAccordion">
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="headingOne">
-                  <button data-mdb-button-init  data-mdb-collapse-init class="accordion-button collapsed" type="button"
-                    data-mdb-target="#basicAccordionCollapseOne" aria-expanded="false" aria-controls="collapseOne">
-                    Marca
-                  </button>
-                </h2>
-                <div id="basicAccordionCollapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                  data-mdb-parent="#basicAccordion">
-                  <div class="accordion-body">
-                    <p>Aqui se muestran las marcas</p>
+            <h1 class="fw-light text-center">Filtros</h1>
+            <div class="accordion accordion-flush mx-auto py-5" id="accordionFlushExample">
+                  <div class="accordion-item">
+                      <h2 class="accordion-header">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            Marca
+                          </button>
+                      </h2>
+                      <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                          <div class="accordion-body">
+                            <p>Aqui se muestran las marcas</p>
+                          </div>
+                      </div>
                   </div>
-                </div>
-              </div>
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="headingTwo">
-                  <button data-mdb-button-init  data-mdb-collapse-init class="accordion-button collapsed" type="button"
-                    data-mdb-target="#basicAccordionCollapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Caracteristicas
-                  </button>
-                </h2>
-                <div id="basicAccordionCollapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                  data-mdb-parent="#basicAccordion">
-                  <div class="accordion-body">
-                    <p>Aqui se muestran las caracteristicas</p>
-                  </div>
-                </div>
-              </div>
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="headingThree">
-                  <button data-mdb-button-init  data-mdb-collapse-init class="accordion-button collapsed" type="button"
-                    data-mdb-target="#basicAccordionCollapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    Precio
-                  </button>
-                </h2>
-                <div id="basicAccordionCollapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                  data-mdb-parent="#basicAccordion">
-                  <div class="accordion-body">
-                    <p>Aqui se muestra el filtro de precio</p>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
 
