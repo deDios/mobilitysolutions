@@ -86,11 +86,11 @@
 
           </div>
 
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        
-          <div class="collapse navbar-collapse" id="navbarResponsive">
+
+          <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Filtro
+          </a>
+          <div class="collapse" id="collapseExample">
 
           <div class="lay_ser"> 
             <h5 class="fw-light">Filtros</h5>
