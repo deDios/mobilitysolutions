@@ -89,10 +89,10 @@
           <a class="btn btn-light" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
             <i class="fa fa-filter"></i>
           </a>
-          <div class="collapse py-5" id="collapseExample">
+          <div class="collapse py-2" id="collapseExample">
 
           <div class="lay_ser"> 
-            <h5 class="fw-light py-3">Filtros</h5>
+            <h5 class="fw-light py-2">Filtros</h5>
             <div class="accordion" id="accordionPanelsStayOpenExample">
               <div class="accordion-item">
                 <h2 class="accordion-header" id="panelsStayOpen-headingOne">
