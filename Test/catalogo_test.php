@@ -86,7 +86,7 @@
               </form>
             </div>
 
-            <div class="accordion w-100" id="basicAccordion">
+            <div class="accordion w-90" id="basicAccordion">
               <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
                   <button data-mdb-button-init  data-mdb-collapse-init class="accordion-button collapsed" type="button"
@@ -97,7 +97,7 @@
                 <div id="basicAccordionCollapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
                   data-mdb-parent="#basicAccordion" style="">
                   <div class="accordion-body">
-                    
+                    Aqui se muestran las marcas
                   </div>
                 </div>
               </div>
@@ -111,7 +111,7 @@
                 <div id="basicAccordionCollapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                   data-mdb-parent="#basicAccordion" style="">
                   <div class="accordion-body">
-                    
+                    Aqui se muestran las caracteristicas
                   </div>
                 </div>
               </div>
@@ -125,7 +125,7 @@
                 <div id="basicAccordionCollapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
                   data-mdb-parent="#basicAccordion" style="">
                   <div class="accordion-body">
-                    
+                    Aqui se muestra el filtro de precio
                   </div>
                 </div>
               </div>
