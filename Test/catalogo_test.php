@@ -90,7 +90,8 @@
             <span class="navbar-toggler-icon"></span>
           </button>
         
-          <div class="collapse navbar-collapse" id="navbarResponsive2">
+          <div class="collapse" id="navbarResponsive2">
+
           <div class="lay_ser"> 
             <h5 class="fw-light">Filtros</h5>
             <div class="accordion" id="accordionPanelsStayOpenExample">
