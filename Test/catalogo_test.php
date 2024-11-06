@@ -88,7 +88,7 @@
 
 
           <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-            Filtro
+            <i class="fa fa-home"></i> Home
           </a>
           <div class="collapse" id="collapseExample">
 
