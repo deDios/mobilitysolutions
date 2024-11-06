@@ -86,6 +86,11 @@
 
           </div>
 
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive2" aria-controls="navbarResponsive2" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class="collapse navbar-collapse" id="navbarResponsive2">
           <div class="lay_ser"> 
             <h5 class="fw-light">Filtros</h5>
             <div class="accordion" id="accordionPanelsStayOpenExample">
@@ -126,6 +131,7 @@
                 </div>
               </div>
             </div>
+          </div>
           </div>
 
 
