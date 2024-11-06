@@ -92,7 +92,7 @@
           <div class="collapse" id="collapseExample">
 
           <div class="lay_ser"> 
-            <h5 class="fw-light">Filtros</h5>
+            <h5 class="fw-light py-3">Filtros</h5>
             <div class="accordion" id="accordionPanelsStayOpenExample">
               <div class="accordion-item">
                 <h2 class="accordion-header" id="panelsStayOpen-headingOne">
