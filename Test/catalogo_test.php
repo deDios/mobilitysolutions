@@ -87,7 +87,7 @@
           </div>
 
           <div class="lay_ser"> 
-            <h1 class="fw-light text-center">Filtros</h1>
+            <h3 class="fw-light">Filtros</h3>
             <div class="accordion accordion-flush mx-auto py-5" id="accordionFlushExample">
                   <div class="accordion-item">
                       <h2 class="accordion-header">
@@ -98,6 +98,30 @@
                       <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                           <div class="accordion-body">
                             <p>Aqui se muestran las marcas</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="accordion-item">
+                      <h2 class="accordion-header">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            Caracteristicas
+                          </button>
+                      </h2>
+                      <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                          <div class="accordion-body">
+                            <p>Aqui se muestran las caracteristicas del auto</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="accordion-item">
+                      <h2 class="accordion-header">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            Precio
+                          </button>
+                      </h2>
+                      <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                          <div class="accordion-body">
+                            <p>Aqui se muestra el rango de precio</p>
                           </div>
                       </div>
                   </div>
