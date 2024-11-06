@@ -86,6 +86,51 @@
               </form>
             </div>
 
+            <div class="accordion w-100" id="basicAccordion">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                  <button data-mdb-button-init  data-mdb-collapse-init class="accordion-button collapsed" type="button"
+                    data-mdb-target="#basicAccordionCollapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    Marca
+                  </button>
+                </h2>
+                <div id="basicAccordionCollapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                  data-mdb-parent="#basicAccordion" style="">
+                  <div class="accordion-body">
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                  <button data-mdb-button-init  data-mdb-collapse-init class="accordion-button collapsed" type="button"
+                    data-mdb-target="#basicAccordionCollapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Caracteristicas
+                  </button>
+                </h2>
+                <div id="basicAccordionCollapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                  data-mdb-parent="#basicAccordion" style="">
+                  <div class="accordion-body">
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                  <button data-mdb-button-init  data-mdb-collapse-init class="accordion-button collapsed" type="button"
+                    data-mdb-target="#basicAccordionCollapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Precio
+                  </button>
+                </h2>
+                <div id="basicAccordionCollapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                  data-mdb-parent="#basicAccordion" style="">
+                  <div class="accordion-body">
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
 
           <div class="anuncios">
