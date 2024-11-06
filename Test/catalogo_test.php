@@ -86,7 +86,6 @@
               </form>
             </div>
 
-          <div class="anuncios">
             <div class="accordion w-100" id="basicAccordion">
               <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
@@ -98,7 +97,7 @@
                 <div id="basicAccordionCollapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
                   data-mdb-parent="#basicAccordion">
                   <div class="accordion-body">
-                    Aqui se muestran las marcas
+                    <p>Aqui se muestran las marcas</p>
                   </div>
                 </div>
               </div>
@@ -112,7 +111,7 @@
                 <div id="basicAccordionCollapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                   data-mdb-parent="#basicAccordion">
                   <div class="accordion-body">
-                    Aqui se muestran las caracteristicas
+                    <p>Aqui se muestran las caracteristicas</p>
                   </div>
                 </div>
               </div>
@@ -126,12 +125,15 @@
                 <div id="basicAccordionCollapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
                   data-mdb-parent="#basicAccordion">
                   <div class="accordion-body">
-                    Aqui se muestra el filtro de precio
+                    <p>Aqui se muestra el filtro de precio</p>
                   </div>
                 </div>
               </div>
             </div>
-            
+
+          </div>
+
+          <div class="anuncios">
             <p class="titulo_r py-5"><small></small></p>
             <p><small>Anuncios</small></p> <hr class="mt-2 mb-3"/>
           </div>
