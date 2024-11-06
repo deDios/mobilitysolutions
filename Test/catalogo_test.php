@@ -87,7 +87,7 @@
           </div>
 
           <div class="lay_ser"> 
-            <h6 class="fw-light">Filtros</h6>
+            <h5 class="fw-light">Filtros</h5>
             <div class="accordion mx-auto py-2" id="accordionFlushExample">
                   <div class="accordion-item">
                       <h2 class="accordion-header">
