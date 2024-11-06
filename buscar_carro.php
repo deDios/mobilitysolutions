@@ -65,7 +65,7 @@
 <body>
     <h1>Buscador de Carros</h1>
 
-    <form method="GET" action="buscar.php">
+    <form method="GET" action="buscar_carro.php">
         <label for="marcas">Selecciona las marcas:</label>
         <select name="marcas[]" id="marcas" multiple onchange="filtrar()">
             <option value="Toyota">Toyota</option>
