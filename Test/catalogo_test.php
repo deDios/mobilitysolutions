@@ -86,6 +86,9 @@
               </form>
             </div>
 
+          </div>
+
+          <div class="lay_ser"> 
             <div class="accordion w-100" id="basicAccordion">
               <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
@@ -130,8 +133,8 @@
                 </div>
               </div>
             </div>
-
           </div>
+
 
           <div class="anuncios">
             <p class="titulo_r py-5"><small></small></p>
