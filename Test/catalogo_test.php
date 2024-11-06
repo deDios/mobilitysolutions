@@ -86,7 +86,8 @@
               </form>
             </div>
 
-            <div class="accordion w-90" id="basicAccordion">
+          <div class="anuncios">
+            <div class="accordion w-100" id="basicAccordion">
               <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
                   <button data-mdb-button-init  data-mdb-collapse-init class="accordion-button collapsed" type="button"
@@ -95,7 +96,7 @@
                   </button>
                 </h2>
                 <div id="basicAccordionCollapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                  data-mdb-parent="#basicAccordion" style="">
+                  data-mdb-parent="#basicAccordion">
                   <div class="accordion-body">
                     Aqui se muestran las marcas
                   </div>
@@ -109,7 +110,7 @@
                   </button>
                 </h2>
                 <div id="basicAccordionCollapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                  data-mdb-parent="#basicAccordion" style="">
+                  data-mdb-parent="#basicAccordion">
                   <div class="accordion-body">
                     Aqui se muestran las caracteristicas
                   </div>
@@ -123,17 +124,14 @@
                   </button>
                 </h2>
                 <div id="basicAccordionCollapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                  data-mdb-parent="#basicAccordion" style="">
+                  data-mdb-parent="#basicAccordion">
                   <div class="accordion-body">
                     Aqui se muestra el filtro de precio
                   </div>
                 </div>
               </div>
             </div>
-
-          </div>
-
-          <div class="anuncios">
+            
             <p class="titulo_r py-5"><small></small></p>
             <p><small>Anuncios</small></p> <hr class="mt-2 mb-3"/>
           </div>
