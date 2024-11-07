@@ -75,15 +75,14 @@
         <div class="menu_item py-3">
           
           <a class="btn btn-secondary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-            <i class="fa fa-filter"></i>
+            <i class="fa fa-filter">Filtros</i>
           </a>
           <div class="collapse py-2" id="collapseExample">
 
           <div class="lay_ser"> 
-            <h5 class="fw-light py-2">Filtros</h5>
             <div class="lay_btn">            
               <div class="demo">
-                <form class="form-search" action="" method="get">
+                <form class="form-search py-2" action="" method="get">
                   <div class="input-group">
                     <input class="form-control form-text" maxlength="128" placeholder="Buscar" size="15" type="text" name="buscar" />
                     <span class="input-group-btn"><button class="btn btn-secondary" type="submit" name="enviar"><i class="fa fa-search fa-lg">&nbsp;</i></button></span>
