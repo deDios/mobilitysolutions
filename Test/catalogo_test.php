@@ -71,7 +71,7 @@
     <div class="container-items">
     
   <!--------------------------------------- Menu lateral ----------------------------------------------->
-        <div class="menu_item py-3">
+        <div class="menu_item position-fixed py-3">
           
           <a class="btn btn-secondary btn-lg" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
             <i class="fa fa-filter"></i>
