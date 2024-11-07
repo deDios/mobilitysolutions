@@ -361,9 +361,10 @@ li {
     width: 100%;
 }
 .menu_item{
-    width: 20%;
+    width: 300px;
 }
 .menu_fix {
+    padding-top: 150px;
     width: 100%;
 }
 
