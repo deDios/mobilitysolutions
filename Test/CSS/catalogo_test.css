@@ -372,6 +372,7 @@ li {
     .menu_fix {
         padding-top: 100px;
         width: 90%;
+        background-color: gainsboro;
     }
 
     header{
