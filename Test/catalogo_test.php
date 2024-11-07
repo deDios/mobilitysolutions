@@ -151,7 +151,7 @@
                               function get_marca(){
                                   $.ajax({
                                       type:   "POST" ,
-                                      url:    "../get_marca.php",
+                                      url:    "get_marca.php",
                                       data:   "Marca=" + $('#InputMarca').val(),
                                       success: function(r){
                                           $('#div_auto').html(r);
