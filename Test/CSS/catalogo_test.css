@@ -371,8 +371,8 @@ li {
 @media (max-width:700px){
     .menu_fix {
         padding-top: 100px;
-        width: 90%;
-        background-color: gainsboro;
+        width: 100%;
+        background-color: white;
     }
 
     header{
