@@ -127,7 +127,9 @@
                   </div>
                 </div>
                 
-                <button class="btn btn-link" type="submit" name="enviar"> Aplicar filtros</button>
+                <div class="text-end">
+                  <button class="btn btn-link" type="submit" name="enviar"> Aplicar filtros</button>
+                </div>
                 </form>
             </div>
           </div>
