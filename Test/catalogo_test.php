@@ -97,7 +97,6 @@
                     </h2>
                     <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
                       <div class="accordion-body">
-                        <label for="InputMarca" class="form-label">Marca</label>
                         <select id="InputMarca" class="form-select" aria-label="Default select example" name="InputMarca">
                             <option value="0">Selecciona una Marca</option>                      
                             <?php 
