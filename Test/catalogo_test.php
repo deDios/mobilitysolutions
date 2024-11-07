@@ -123,13 +123,13 @@
                             ?>
                         </select>
                         <!-- Input Auto ------------------------------------------------------------------->
-                        <div id="div_auto" class="py-1">
+                        <div id="div_auto" class="pt-1">
                             <select id="InputNombre" class="form-select" aria-label="Default select example" name="InputNombre">
                                 <option value="0">Selecciona un Vehiculo</option> 
                             </select>
                         </div>
                       <!-- Input Modelo ------------------------------------------------------------------->
-                        <div id="div_modelo" class="py-1">
+                        <div id="div_modelo" class="pt-1">
                             <select id="InputModelo" class="form-select" aria-label="Default select example" name="InputModelo">
                                 <option value="0">Selecciona un Modelo</option> 
                             </select>
