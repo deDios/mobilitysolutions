@@ -198,6 +198,7 @@
                         </div>
                         <div class="pt-1">
                           <select id="InputTransmision" class="form-select" aria-label="Default select example" name="InputTransmision">
+                              <option value="Todos">Selecciona la transmisión</option> 
                               <option value="Manual">TM (Manual)</option>  
                               <option value="Automatico">TA (Automatico)</option>
                           </select>
