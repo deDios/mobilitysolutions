@@ -161,7 +161,7 @@
                               function get_modelo(){
                                   $.ajax({
                                       type:   "POST" ,
-                                      url:    "../get_modelo.php",
+                                      url:    "get_modelo.php",
                                       data:   "Auto=" + $('#InputNombre').val(),
                                       success: function(a){
                                           $('#div_modelo').html(a);
