@@ -360,11 +360,8 @@ li {
     padding-right: 10px;
     width: 100%;
 }
-.menu_item{
-    width: 250px;
-}
 .menu_fix {
-    width: 100%;
+    width: 20%;
 }
 
 /* --------------------------Termina boton ------------------------------ */
