@@ -97,7 +97,32 @@
                     </h2>
                     <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
                       <div class="accordion-body">
-                        <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        <label for="InputMarca" class="form-label">Marca</label>
+                        <select id="InputMarca" class="form-select" aria-label="Default select example" name="InputMarca">
+                            <option value="0">Selecciona una Marca</option>                      
+                            <?php 
+                            $inc = include "db/Conexion.php";    
+                                if ($inc){
+                                    $query = 'select 
+                                                id,
+                                                nombre
+                                            FROM mobility_solutions.tmx_marca;';
+                                    $result = mysqli_query($con,$query);  
+                                    if ($result){         
+                                        while($row = mysqli_fetch_assoc($result)){
+                                            $id = $row['id'];
+                                            $nombre = $row['nombre'];
+                            ?> 
+                                        <option value="<?php echo $id;?>"><?php echo $nombre;?></option>
+                            <?php
+                                        }
+                                    } else{
+                                            echo "Hubo un error en la consulta";
+                                    }
+                                        mysqli_free_result($result);                  
+                                }
+                            ?>
+                        </select>
                       </div>
                     </div>
                   </div>
@@ -138,7 +163,7 @@
             <p class="titulo_r py-5"><small></small></p>
             <p><small>Anuncios</small></p> <hr class="mt-2 mb-3"/>
           </div>
-          
+
           </div>
         </div>
 
