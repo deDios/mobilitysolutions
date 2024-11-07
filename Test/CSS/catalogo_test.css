@@ -172,8 +172,7 @@ li {
 
 /* Termina CSS para reseñas  ---------------------------------------------------------------------------------------*/
 .Menu-lateral{
-    width: 100%;
-    max-width: 250px;
+    width: 250px;
 }
 
 .container-items{
@@ -376,7 +375,7 @@ li {
         padding-right: 10px;
         width: 100%;
     }    
-
+    
     .container-items{
         display: grid;
         grid-template-columns: repeat(1,1fr);
@@ -385,6 +384,7 @@ li {
     .container-items .lista_item {
         display: grid;
         grid-template-columns: repeat(1,1fr);
+        grid-row-gap: 10px;
     }
     .lista_item .item {
         display: flex;
