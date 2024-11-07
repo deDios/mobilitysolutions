@@ -68,10 +68,9 @@
 </div>
 
 <!--------------------------------------- Termina Menu ----------------------------------------------->
-
-
     <div class="container-items">
     
+  <!--------------------------------------- Menu lateral ----------------------------------------------->
         <div class="menu_item py-3">
           
           <a class="btn btn-secondary btn-lg" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -143,6 +142,9 @@
 
         </div>
 
+
+<!--------------------------------------- Termina menu lateral ----------------------------------------------->
+
 <!--------------------------------------- Menu izquierda ----------------------------------------------->
 
         <div class="lista_item">
@@ -212,7 +214,7 @@
                                                 <div> <i class="bi bi-geo-alt-fill"></i> 
                                                   <?php echo " " . $sucursal;?> 
                                                 </div>
-                                                <?php if ($estatus == 9){?>
+                                                <?php if ($estatus == 3){?>
                                                   <img src="../Imagenes/Sellos/reservado.jpg" class="imagen-sello" alt="sello">
                                                 <?php
                                                   } else {
