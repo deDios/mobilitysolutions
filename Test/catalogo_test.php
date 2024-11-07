@@ -127,7 +127,7 @@
                   </div>
                 </div>
                 
-                <button class="btn btn-secondary" type="submit" name="enviar"><i class="fa fa-search fa-lg">&nbsp;</i></button>
+                <button class="btn btn-link" type="submit" name="enviar"> Aplicar filtros</button>
                 </form>
             </div>
           </div>
