@@ -179,7 +179,6 @@ li {
 .container-items{
     display: grid;
     grid-template-columns: 1fr 4fr;
-    padding-top: 150px;
 }
 
 .container-items .lista_item {
@@ -188,6 +187,7 @@ li {
     grid-column-gap: 10px;
     grid-row-gap: 10px;
     padding-right: 20px;
+    padding-top: 150px;
 }
 
 .lista_item .item {
