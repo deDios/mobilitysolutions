@@ -71,8 +71,9 @@
     <div class="container-items">
     
   <!--------------------------------------- Menu lateral ----------------------------------------------->
-        <div class="menu_item position-fixed py-3">
+        <div class="menu_item py-3">
           
+          <div class="menu_fix position-fixed">
           <a class="btn btn-secondary btn-lg" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
             <i class="fa fa-filter"></i>
           </a>
@@ -137,7 +138,8 @@
             <p class="titulo_r py-5"><small></small></p>
             <p><small>Anuncios</small></p> <hr class="mt-2 mb-3"/>
           </div>
-
+          
+          </div>
         </div>
 
 
