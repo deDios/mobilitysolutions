@@ -74,7 +74,7 @@
     
         <div class="menu_item py-3">
           
-          <a class="btn btn-light" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+          <a class="btn btn-secondary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
             <i class="fa fa-filter"></i>
           </a>
           <div class="collapse py-2" id="collapseExample">
@@ -139,6 +139,7 @@
             <p class="titulo_r py-5"><small></small></p>
             <p><small>Anuncios</small></p> <hr class="mt-2 mb-3"/>
           </div>
+
         </div>
 
 <!--------------------------------------- Menu izquierda ----------------------------------------------->
