@@ -80,7 +80,7 @@
           <div class="collapse py-2" id="collapseExample">
 
             <div class="lay_ser"> 
-              <h5 class="fw-light py-2">Filtros</h5>
+              <h5 class="fw-light py-2">Filtros </h5>
               <form class="form-search" action="" method="get">
                 <div class="input-group">
                   <input class="form-control form-text" maxlength="128" placeholder="Buscar" size="15" type="text" name="buscar" />
