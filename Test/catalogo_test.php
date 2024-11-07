@@ -180,7 +180,23 @@
                     </h2>
                     <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
                       <div class="accordion-body">
-                        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        <div class="pt-1">
+                          <label for="InputColor" class="form-label">Color</label>
+                          <select id="InputColor" class="form-select" aria-label="Default select example" name="InputColor">
+                              <option value="Todos">Selecciona un color</option> 
+                              <option value="Negro">Negro</option>  
+                              <option value="Rojo">Rojo</option>  
+                              <option value="Azul">Azul</option>  
+                              <option value="Blanco">Blanco</option>  
+                              <option value="Verde">Verde</option>
+                              <option value="Gris">Gris</option>
+                              <option value="Amarillo">Amarillo</option>
+                              <option value="Arena">Arena</option>
+                              <option value="Guinda">Guinda</option>
+                              <option value="Plata">Plata</option>
+                              <option value="Naranja">Naranja</option>  
+                          </select>
+                        </div>
                       </div>
                     </div>
                   </div>
