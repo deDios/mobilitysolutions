@@ -101,7 +101,7 @@
                         <select id="InputMarca" class="form-select" aria-label="Default select example" name="InputMarca">
                             <option value="0">Selecciona una Marca</option>                      
                             <?php 
-                            $inc = include "db/Conexion.php";    
+                            $inc = include "../db/Conexion.php";    
                                 if ($inc){
                                     $query = 'select 
                                                 id,
