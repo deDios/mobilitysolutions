@@ -181,7 +181,6 @@
                     <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
                       <div class="accordion-body">
                         <div class="pt-1">
-                          <label for="InputColor" class="form-label">Color</label>
                           <select id="InputColor" class="form-select" aria-label="Default select example" name="InputColor">
                               <option value="Todos">Selecciona un color</option> 
                               <option value="Negro">Negro</option>  
@@ -197,6 +196,17 @@
                               <option value="Naranja">Naranja</option>  
                           </select>
                         </div>
+                        <div class="pt-1">
+                          <select id="InputTransmision" class="form-select" aria-label="Default select example" name="InputTransmision">
+                              <option value="Manual">TM (Manual)</option>  
+                              <option value="Automatico">TA (Automatico)</option>
+                          </select>
+                        </div>
+                        <div class="pt-1">
+                        </div>
+                        <div class="pt-1">
+                        </div>
+
                       </div>
                     </div>
                   </div>
