@@ -204,6 +204,11 @@
                           </select>
                         </div>
                         <div class="pt-1">
+                          <select id="InputInterior" class="form-select" aria-label="Default select example" name="InputInterior">
+                              <option value="Todos">Selecciona el interior</option> 
+                              <option value="Tela">Tela</option>  
+                              <option value="Piel">Piel</option>
+                          </select>
                         </div>
                         <div class="pt-1">
                         </div>
