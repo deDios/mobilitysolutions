@@ -361,13 +361,18 @@ li {
     width: 100%;
 }
 .menu_fix {
-    padding-top: 100px;
+    padding-top: 150px;
     width: 300px;
 }
 
 /* --------------------------Termina boton ------------------------------ */
 
 @media (max-width:700px){
+    .menu_fix {
+        padding-top: 100px;
+        width: 300px;
+    }
+
     header{
         flex-direction: column;
     }
