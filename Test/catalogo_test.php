@@ -130,7 +130,6 @@
                             <select id="InputModelo" class="form-select" aria-label="Default select example" name="InputModelo">
                                 <option value="0">Selecciona un Modelo</option> 
                             </select>
-                    </div>
                       </div>
                     </div>
                   </div>
