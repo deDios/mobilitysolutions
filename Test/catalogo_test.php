@@ -74,7 +74,7 @@
     
         <div class="menu_item">
           
-          <a class="btn btn-light" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+          <a class="btn btn-light py-5" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
             <i class="fa fa-filter"></i>
           </a>
           <div class="collapse py-2" id="collapseExample">
