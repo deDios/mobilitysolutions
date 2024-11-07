@@ -130,6 +130,41 @@
                             <select id="InputModelo" class="form-select py-1" aria-label="Default select example" name="InputModelo">
                                 <option value="0">Selecciona un Modelo</option> 
                             </select>
+
+                            <script >
+                              $(document).ready(function(){
+                                  $('#InputMarca').val(0);
+                                  $('#InputMarca').change(function(){
+                                      get_marca();
+                                      get_modelo();
+                                  }); 
+                                  $('#div_auto').change(function(){
+                                      get_modelo();
+                                  });                       
+                              });
+                          </script>                        
+                          <script>
+                              function get_marca(){
+                                  $.ajax({
+                                      type:   "POST" ,
+                                      url:    "../get_marca.php",
+                                      data:   "Marca=" + $('#InputMarca').val(),
+                                      success: function(r){
+                                          $('#div_auto').html(r);
+                                      }
+                                  });
+                              }
+                              function get_modelo(){
+                                  $.ajax({
+                                      type:   "POST" ,
+                                      url:    "../get_modelo.php",
+                                      data:   "Auto=" + $('#InputNombre').val(),
+                                      success: function(a){
+                                          $('#div_modelo').html(a);
+                                      }
+                                  });
+                              }
+                          </script>
                       </div>
                     </div>
                   </div>
