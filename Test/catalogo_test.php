@@ -212,7 +212,7 @@
                                                 <div> <i class="bi bi-geo-alt-fill"></i> 
                                                   <?php echo " " . $sucursal;?> 
                                                 </div>
-                                                <?php if ($estatus == 3){?>
+                                                <?php if ($estatus == 9){?>
                                                   <img src="../Imagenes/Sellos/reservado.jpg" class="imagen-sello" alt="sello">
                                                 <?php
                                                   } else {
