@@ -240,7 +240,7 @@
                   $busqueda = $_GET['buscar'];
                     if(isset($_GET['InputColor'])){
                       $b_color = $_GET['InputColor'];
-                      $t_color = 'and '. $b_color;
+                      $t_color = ' and color='. $b_color;
                     }
                     else { $t_color = ''; }
                   $busqueda = trim($busqueda);
