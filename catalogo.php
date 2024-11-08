@@ -504,7 +504,8 @@
         }
     </script>
 
-<hr class="mt-2 mb-3"/> 
+<hr class="mt-5 mb-3"/> 
+
 <footer class="mt-5">  
   <div class="container">    
     <div class="row">      
