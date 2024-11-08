@@ -246,7 +246,7 @@
                         <span class="input-group-text">$ Mayor a:</span>
                             <input id="InputMensualidad_Mayor" type="text" class="form-control" name="InputMensualidad_Mayor" aria-label="Amount (to the nearest dollar)" required>
                        </div>
-                      <div class="pt-1">
+                      <div class="pt-3">
                         <span class="input-group-text">$ Menor a:</span>
                             <input id="InputMensualidad_Menor" type="text" class="form-control" name="InputMensualidad_Menor" aria-label="Amount (to the nearest dollar)" required>
                         </div>
