@@ -501,30 +501,30 @@
       <div class="col-lg-3">        
         <h6>Conoce más</h6>  
         <hr class="mt-2 mb-3"/>      
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link text-secondary" href="#">¿Quiénes Somos?</a>
+        <ul class="text-secondary list-unstyled">
+          <li>
+            <a class="text-secondary" href="#">¿Quiénes Somos?</a>
           </li>
         </ul>     
       </div>      
       <div class="col-lg-3">        
         <h6>Legales</h6>    
         <hr class="mt-2 mb-3"/>    
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link text-secondary" href="#">Aviso de privacidad</a>
+        <ul class="text-secondary list-unstyled">
+          <li>
+            <a class="text-secondary" href="#">Aviso de privacidad</a>
           </li>
         </ul>       
       </div>      
       <div class="col-lg-3">        
         <h6>Ayuda</h6>    
         <hr class="mt-2 mb-3"/>    
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link text-secondary" href="#">Contáctanos</a>
+        <ul class="text-secondary list-unstyled">
+          <li>
+            <a class="text-secondary" href="#">Contáctanos</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link text-secondary" href="#">Preguntas frecuentes</a>
+          <li>
+            <a class="text-secondary" href="#">Preguntas frecuentes</a>
           </li>
         </ul>     
       </div>  
