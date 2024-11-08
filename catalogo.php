@@ -83,8 +83,9 @@
               </div>
               <div class="div_icon pt-2">
                 <a class="btn btn-secondary btn-lg" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                  <i class="fa fa-filter"></i> <h6> Pablo </h6>
+                  <i class="fa fa-filter"></i> 
                 </a>
+                <h6> Pablo </h6>
               </div>
             
               <div class="collapse py-2" id="collapseExample">
