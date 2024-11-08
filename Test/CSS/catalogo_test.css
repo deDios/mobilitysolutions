@@ -369,7 +369,16 @@ li {
 }
 
 footer .hr1 {
+    height: 2px;
     border-color: #FFC00A;
+}
+footer .hr2 {
+    height: 2px;
+    border-color: black;
+}
+footer .hr3 {
+    height: 2px;
+    border-color: gray;
 }
 /* --------------------------Termina boton ------------------------------ */
 
