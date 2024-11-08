@@ -77,18 +77,18 @@
         <div class="menu_item py-3">
           
           <div class="menu_fix position-fixed">
-          <a class="btn btn-secondary btn-lg" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-            <i class="fa fa-filter"></i>
-          </a>
+          <form class="form-search" action="" method="get">
+            <div class="input-group">
+                  <a class="btn btn-secondary btn-lg" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    <i class="fa fa-filter"></i>
+                  </a>
+                  <input class="form-control form-text" maxlength="128" placeholder="Buscar" size="15" type="text" name="buscar" />
+            </div>
+          
           <div class="collapse py-2" id="collapseExample">
 
             <div class="lay_ser"> 
               <h5 class="fw-light py-2">Filtros </h5>
-              <form class="form-search" action="" method="get">
-                <div class="input-group">
-                  <input class="form-control form-text" maxlength="128" placeholder="Buscar" size="15" type="text" name="buscar" />
-                </div>
-              
                 <hr class="mt-2 mb-3"/>
 
                 <div class="accordion" id="accordionPanelsStayOpenExample">
