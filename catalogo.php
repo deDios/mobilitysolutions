@@ -15,9 +15,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
 
  </head>
@@ -79,17 +76,18 @@
     <div class="container-items">
     
 <!--------------------------------------- Menu lateral ----------------------------------------------->
-      <div class="menu_item py-3">
+<div class="menu_item py-3">
           
           <div class="menu_fix position-fixed">
             <form class="form-search" action="" method="get">
-                <div class="input-group input-group-lg">
-                  <input class="form-control form-text pl-3" maxlength="128" placeholder="Buscar" type="text" name="buscar" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"/>
-                </div>
-                <a class="btn btn-secondary py-2" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                  <i class="fa fa-filter"></i>
-                </a>        
-            <div class="collapse py-2" id="collapseExample">
+              <div class="input-group input-group-lg">
+                    <a class="btn btn-secondary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                      <i class="fa fa-filter"></i>
+                    </a>
+                    <input class="form-control form-text pl-3" maxlength="128" placeholder="Buscar" type="text" name="buscar" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"/>
+              </div>
+            
+              <div class="collapse py-2" id="collapseExample">
 
               <div class="lay_ser"> 
                 <h5 class="fw-light py-2">Filtros </h5>
@@ -229,15 +227,17 @@
                   <div class="text-end">
                     <button class="btn btn-link" type="submit" name="enviar">Aplicar filtros</button>
                   </div>
-            </form>
+                  </form>
+              </div>
+              </div>
+
+              <div class="anuncios">
+              <p class="titulo_r py-5"><small></small></p>
+              <p><small>Anuncios</small></p> <hr class="mt-2 mb-3"/>
+              </div>
 
           </div>
-          <div class="anuncios">
-            <p class="titulo_r py-5"><small></small></p>
-            <p><small>Anuncios</small></p> <hr class="mt-2 mb-3"/>
-          </div>
-
-      </div>
+        </div>
 <!--------------------------------------- Termina menu lateral ----------------------------------------------->
 
 <!--------------------------------------- Menu izquierda ----------------------------------------------->
@@ -466,6 +466,7 @@
         </div>
     </div>
 
+</div>
     <script>        
         function detalle (cod){
             location.href="detalles.php?cod="+cod;
