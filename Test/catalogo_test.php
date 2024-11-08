@@ -280,7 +280,7 @@
                           $query .=" AND interior = '".$_GET['InputInterior']."' ";
                         }
                         if ($_GET['InputAnio'] != 'Todos' ){
-                          $query .=" AND search_key like = '%".$_GET['InputAnio']."%' ";
+                          $query .=" AND nombre like '%".$_GET['InputAnio']."%' ";
                         }
                         if ($_GET['InputMensualidad_Mayor'] != '' ){
                           $query .=" AND mensualidad >= '".$_GET['InputMensualidad_Mayor']."' ";
