@@ -366,6 +366,12 @@ li {
     width: 300px;
     height: auto;
 }
+.div_icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
 
 /* --------------------------Termina boton ------------------------------ */
 
