@@ -79,7 +79,7 @@
     <div class="container-items">
     
 <!--------------------------------------- Menu lateral ----------------------------------------------->
-<div class="menu_item py-3">
+      <div class="menu_item py-3">
           
           <div class="menu_fix position-fixed">
             <form class="form-search" action="" method="get">
@@ -231,16 +231,13 @@
                   </div>
             </form>
 
-              </div>
-              </div>
-
-              <div class="anuncios">
-              <p class="titulo_r py-5"><small></small></p>
-              <p><small>Anuncios</small></p> <hr class="mt-2 mb-3"/>
-              </div>
-
           </div>
-        </div>
+          <div class="anuncios">
+            <p class="titulo_r py-5"><small></small></p>
+            <p><small>Anuncios</small></p> <hr class="mt-2 mb-3"/>
+          </div>
+
+      </div>
 <!--------------------------------------- Termina menu lateral ----------------------------------------------->
 
 <!--------------------------------------- Menu izquierda ----------------------------------------------->
@@ -469,7 +466,6 @@
         </div>
     </div>
 
-</div>
     <script>        
         function detalle (cod){
             location.href="detalles.php?cod="+cod;
