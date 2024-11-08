@@ -518,13 +518,15 @@
         <hr class="mt-2 mb-3"/>    
         <p>(c) 2023 Mi Sitio Web. Todos los derechos reservados.</p>      
       </div>  
-      <div class="col-lg-3">              
-      Procuraduría Federal del consumidor
-      (PROFECO)
-      <br>
-      Teléfono: 800 468 8722
-      <br>
-      www.profeco.gob.mx     
+      <div class="col-lg-3">     
+      <p class="fs-6 lh-sm text-muted text-justify">         
+        Procuraduría Federal del consumidor
+        (PROFECO)
+        <br>
+        Teléfono: 800 468 8722
+        <br>
+        www.profeco.gob.mx  
+      </p>   
       </div>    
     </div>  
   </div>
