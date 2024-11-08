@@ -244,11 +244,11 @@
 
                         <div class="pt-1">
                           <span class="input-group-text">$ Mayor a: MX/mensuales</span>
-                              <input id="InputMensualidad_Mayor" type="text" class="form-control" name="InputMensualidad_Mayor" aria-label="Amount (to the nearest dollar)">
+                              <input id="InputMensualidad_Mayor" type="text" pattern="[0-9]+" class="form-control" name="InputMensualidad_Mayor" aria-label="Amount (to the nearest dollar)">
                         </div>
                         <div class="pt-3">
                           <span class="input-group-text">$ Menor a: MX/mensuales</span>
-                              <input id="InputMensualidad_Menor" type="text" class="form-control" name="InputMensualidad_Menor" aria-label="Amount (to the nearest dollar)">
+                              <input id="InputMensualidad_Menor" type="text" pattern="[0-9]+" class="form-control" name="InputMensualidad_Menor" aria-label="Amount (to the nearest dollar)">
                           </div>
 
                         </div>
