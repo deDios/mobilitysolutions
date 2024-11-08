@@ -72,20 +72,18 @@
 
 <!--------------------------------------- Termina Menu ----------------------------------------------->
 
-
-    <div class="container-items">
+<div class="container-items">
     
 <!--------------------------------------- Menu lateral ----------------------------------------------->
 <div class="menu_item py-3">
-          
-          <div class="menu_fix position-fixed">
+  <div class="menu_fix position-fixed">
             <form class="form-search" action="" method="get">
               <div class="input-group input-group-lg">
-                    <a class="btn btn-secondary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                      <i class="fa fa-filter"></i>
-                    </a>
                     <input class="form-control form-text pl-3" maxlength="128" placeholder="Buscar" type="text" name="buscar" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"/>
               </div>
+              <a class="btn btn-secondary py-3" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                      <i class="fa fa-filter"></i>
+              </a>
             
               <div class="collapse py-2" id="collapseExample">
 
@@ -235,9 +233,8 @@
               <p class="titulo_r py-5"><small></small></p>
               <p><small>Anuncios</small></p> <hr class="mt-2 mb-3"/>
               </div>
-
-          </div>
-        </div>
+  </div>
+</div>
 <!--------------------------------------- Termina menu lateral ----------------------------------------------->
 
 <!--------------------------------------- Menu izquierda ----------------------------------------------->
