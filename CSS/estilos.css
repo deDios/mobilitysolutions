@@ -319,6 +319,21 @@ iframe {
 ol {
   list-style-type: upper-alpha;
 }
+footer{
+  padding-bottom: 20px;
+}
+footer .hr1 {
+  height: 3px;
+  border-color: #FFC00A;
+}
+footer .hr2 {
+  height: 3px;
+  border-color: black;
+}
+footer .hr3 {
+  height: 3px;
+  border-color: gray;
+}
 
 
 @keyframes scroll{
