@@ -110,7 +110,8 @@
                                       $query = 'select 
                                                   id,
                                                   nombre
-                                              FROM mobility_solutions.tmx_marca;';
+                                              FROM mobility_solutions.tmx_marca
+                                              order by nombre asc;';
                                       $result = mysqli_query($con,$query);  
                                       if ($result){         
                                           while($row = mysqli_fetch_assoc($result)){
