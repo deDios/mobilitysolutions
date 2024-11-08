@@ -273,6 +273,21 @@
                         if ($_GET['InputColor'] != '' ){
                           $query .=" AND color = '".$_GET['InputColor']."' ";
                         }
+                        if ($_GET['InputTransmision'] != '' ){
+                          $query .=" AND transmision = '".$_GET['InputTransmision']."' ";
+                        }
+                        if ($_GET['InputInterior'] != '' ){
+                          $query .=" AND interior = '".$_GET['InputInterior']."' ";
+                        }
+                        if ($_GET['InputAnio'] != '' ){
+                          $query .=" AND search_key like = '%".$_GET['InputAnio']."%' ";
+                        }
+                        if ($_GET['InputMensualidad_Mayor'] != '' ){
+                          $query .=" AND mensualidad >= '".$_GET['InputMensualidad_Mayor']."' ";
+                        }
+                        if ($_GET['InputMensualidad_Menor'] != '' ){
+                          $query .=" AND mensualidad <= '".$_GET['InputMensualidad_Menor']."' ";
+                        }
 
                         $result = mysqli_query($con,$query);  
                         if ($result){         
