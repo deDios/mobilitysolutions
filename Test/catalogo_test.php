@@ -493,12 +493,13 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
+<hr class="mt-2 mb-3"/> 
 
 <footer class="mt-5">  
   <div class="container">    
     <div class="row">      
       <div class="col-lg-3">        
-        <h5>Conoce más</h5>  
+        <h6>Conoce más</h6>  
         <hr class="mt-2 mb-3"/>      
         <ul>          
           <li><a href="#">Inicio</a></li>          
@@ -507,13 +508,13 @@
         </ul>      
       </div>      
       <div class="col-lg-3">        
-        <h5>Legales</h5>    
+        <h6>Legales</h6>    
         <hr class="mt-2 mb-3"/>    
         <p>Correo electrónico: info@example.com</p>        
         <p>Teléfono: 123-456-7890</p>      
       </div>      
       <div class="col-lg-3">        
-        <h5>Ayuda</h5>    
+        <h6>Ayuda</h6>    
         <hr class="mt-2 mb-3"/>    
         <p>(c) 2023 Mi Sitio Web. Todos los derechos reservados.</p>      
       </div>  
