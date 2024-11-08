@@ -112,7 +112,7 @@
                     $selec_filt .="/".$_GET['InputTipo']."";
                   }
                 ?>
-                <figcaption class="blockquote-footer pt-2"> <?php echo $selec_filt ;?> </figcaption>
+                <figcaption class="blockquote-footer pt-2 pr-2"> <?php echo $selec_filt ;?> </figcaption>
               </div>
             
               <div class="collapse py-2" id="collapseExample">
