@@ -359,13 +359,13 @@ li {
     padding-left: 10px;
     padding-right: 10px;
     width: 100%;
+    background-color: white;
 }
 .menu_fix {
     padding-top: 130px;
     padding-left: 10px;
     width: 300px;
     height: auto;
-    background-color: white;
 }
 .div_icon {
     display: flex;
