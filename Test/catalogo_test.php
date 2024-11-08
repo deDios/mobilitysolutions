@@ -368,7 +368,26 @@
                                 created_at, 
                                 updated_at, 
                                 search_key
-                              from mobility_solutions.v_catalogo_active";
+                              from mobility_solutions.v_catalogo_active
+                              where 1=1";
+                    if ($_GET['InputColor'] != 'Todos' ){
+                      $query .=" AND color = '".$_GET['InputColor']."' ";
+                    }
+                    if ($_GET['InputTransmision'] != 'Todos' ){
+                      $query .=" AND transmision = '".$_GET['InputTransmision']."' ";
+                    }
+                    if ($_GET['InputInterior'] != 'Todos' ){
+                      $query .=" AND interior = '".$_GET['InputInterior']."' ";
+                    }
+                    if ($_GET['InputAnio'] != 'Todos' ){
+                      $query .=" AND nombre like '%".$_GET['InputAnio']."%' ";
+                    }
+                    if ($_GET['InputMensualidad_Mayor'] != '' ){
+                      $query .=" AND mensualidad >= '".$_GET['InputMensualidad_Mayor']."' ";
+                    }
+                    if ($_GET['InputMensualidad_Menor'] != '' ){
+                      $query .=" AND mensualidad <= '".$_GET['InputMensualidad_Menor']."' ";
+                    }
                     $result = mysqli_query($con,$query);  
                     if ($result){         
                         while($row = mysqli_fetch_assoc($result)){
