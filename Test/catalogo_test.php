@@ -509,7 +509,7 @@
       </div>      
       <div class="col-lg-3">        
         <h6>Legales</h6>    
-        <hr class="hr2 mt-2 mb-3"/>    
+        <hr class="hr2 mt-2 mb-3 py-2"/>    
         <ul class="text-secondary list-unstyled">
           <li>
             <a class="text-secondary" href="#">Aviso de privacidad</a>
