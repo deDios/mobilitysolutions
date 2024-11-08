@@ -521,7 +521,7 @@
         <hr class="mt-2 mb-3"/>    
         <ul class="text-secondary list-unstyled">
           <li>
-            <a class="text-secondary" href="#">Contáctanos</a>
+            <a class="text-secondary" href="#">Contacto</a>
           </li>
           <li>
             <a class="text-secondary" href="#">Preguntas frecuentes</a>
