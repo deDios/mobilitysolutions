@@ -87,11 +87,14 @@
                 </a>
                 <?php
                   $selec_filt = $_GET['buscar'];
-                  if ($_GET['InputColor'] != 'Todos' ){
-                    $selec_filt .="/".$_GET['InputColor']."";
-                  }
                   if ($_GET['InputMarca'] != 'Todos' ){
                     $selec_filt .="/".$_GET['InputMarca']."";
+                  }
+                  if ($_GET['InputAnio'] != 'Todos' ){
+                    $selec_filt .="/".$_GET['InputAnio']."";
+                  }
+                  if ($_GET['InputColor'] != 'Todos' ){
+                    $selec_filt .="/".$_GET['InputColor']."";
                   }
                   if ($_GET['InputTransmision'] != 'Todos' ){
                     $selec_filt .="/".$_GET['InputTransmision']."";
@@ -99,8 +102,8 @@
                   if ($_GET['InputInterior'] != 'Todos' ){
                     $selec_filt .="/".$_GET['InputInterior']."";
                   }
-                  if ($_GET['InputAnio'] != 'Todos' ){
-                    $selec_filt .="/".$_GET['InputAnio']."";
+                  if ($_GET['InputTipo'] != 'Todos' ){
+                    $selec_filt .="/".$_GET['InputTipo']."";
                   }
                   if ($_GET['InputMensualidad_Mayor'] != '' ){
                     $selec_filt .="/Mayor a $".$_GET['InputMensualidad_Mayor']."";
@@ -108,9 +111,7 @@
                   if ($_GET['InputMensualidad_Menor'] != '' ){
                     $selec_filt .="/Menor a $".$_GET['InputMensualidad_Menor']."";
                   }
-                  if ($_GET['InputTipo'] != 'Todos' ){
-                    $selec_filt .="/".$_GET['InputTipo']."";
-                  }
+                  
                 ?>
                 <figcaption class="blockquote-footer pt-2"> <?php echo $selec_filt ;?> </figcaption>
               </div>
