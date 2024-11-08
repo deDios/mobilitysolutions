@@ -108,10 +108,13 @@
                               $inc = include "db/Conexion.php";    
                                   if ($inc){
                                       $query = 'select 
-                                                  id,
-                                                  nombre
-                                              FROM mobility_solutions.tmx_marca
-                                              order by nombre asc;';
+                                                  a.id,
+                                                  a.nombre
+                                                FROM mobility_solutions.tmx_marca as a
+                                                right join  mobility_solutions.v_catalogo_active as b
+                                                on a.nombre = b.marca
+                                                group by 1,2
+                                                order by nombre asc;';
                                       $result = mysqli_query($con,$query);  
                                       if ($result){         
                                           while($row = mysqli_fetch_assoc($result)){
