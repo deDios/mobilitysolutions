@@ -186,6 +186,15 @@
                               <option value="Piel">Piel</option>
                           </select>
                         </div>
+                        <div class="pt-1">
+                          <select id="InputTipo" class="form-select" aria-label="Default select example" name="InputTipo">
+                              <option value="Todos">Selecciona tipo</option> 
+                              <option value="HB">HB</option>
+                              <option value="Sedan">Sedan</option>
+                              <option value="SUV">SUV</option>  
+                              <option value="Pickup">Pickup</option>
+                          </select>
+                        </div>
 
                       </div>
                     </div>
@@ -294,6 +303,9 @@
                         if ($_GET['InputMensualidad_Menor'] != '' ){
                           $query .=" AND mensualidad <= '".$_GET['InputMensualidad_Menor']."' ";
                         }
+                        if ($_GET['InputTipo'] != '' ){
+                          $query .=" AND modelo like '%".$_GET['InputTipo']."%' ";
+                        }
 
                         $result = mysqli_query($con,$query);  
                         if ($result){         
@@ -393,6 +405,9 @@
                     }
                     if ($_GET['InputMensualidad_Menor'] != '' ){
                       $query .=" AND mensualidad <= '".$_GET['InputMensualidad_Menor']."' ";
+                    }
+                    if ($_GET['InputTipo'] != '' ){
+                      $query .=" AND modelo like '%".$_GET['InputTipo']."%' ";
                     }
                     $result = mysqli_query($con,$query);  
                     if ($result){         
