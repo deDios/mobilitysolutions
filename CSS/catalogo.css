@@ -365,6 +365,7 @@ li {
     padding-left: 10px;
     width: 300px;
     height: auto;
+    background-color: white;
 }
 .div_icon {
     display: flex;
