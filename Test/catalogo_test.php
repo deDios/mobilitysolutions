@@ -503,10 +503,7 @@
         <hr class="mt-2 mb-3"/>      
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Active</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-secondary" href="#">¿Quiénes Somos</a>
+            <a class="nav-link text-secondary" href="#">¿Quiénes Somos?</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
