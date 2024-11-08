@@ -116,7 +116,7 @@ $query = 'select
           </li>
 
           <li class="nav-item active">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/catalogo.php">Catálogo</a>
+            <a class="nav-link" href="https://mobilitysolutionscorp.com/catalogo.php?buscar=&InputMarca=Todos&InputAnio=Todos&InputColor=Todos&InputTransmision=Todos&InputInterior=Todos&InputTipo=Todos&InputMensualidad_Mayor=&InputMensualidad_Menor=&enviar=">Catálogo</a>
           </li>
 
          <li class="nav-item">
