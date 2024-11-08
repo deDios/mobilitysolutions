@@ -101,7 +101,7 @@
                     <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
                       <div class="accordion-body">
                         <select id="InputMarca" class="form-select" aria-label="Default select example" name="InputMarca">
-                            <option value="0">Selecciona una Marca</option>                      
+                            <option value="Todos">Selecciona una Marca</option>                      
                             <?php 
                             $inc = include "../db/Conexion.php";    
                                 if ($inc){
@@ -115,7 +115,7 @@
                                             $id = $row['id'];
                                             $nombre = $row['nombre'];
                             ?> 
-                                        <option value="<?php echo $id;?>"><?php echo $nombre;?></option>
+                                        <option value="<?php echo $nombre;?>"><?php echo $nombre;?></option>
                             <?php
                                         }
                                     } else{
@@ -273,6 +273,9 @@
                         if ($_GET['InputColor'] != '' ){
                           $query .=" AND search_key like '%".$busqueda."%' ";
                         }
+                        if ($_GET['InputMarca'] != 'Todos' ){
+                          $query .=" AND marca = '".$_GET['InputMarca']."' ";
+                        }
                         if ($_GET['InputColor'] != 'Todos' ){
                           $query .=" AND color = '".$_GET['InputColor']."' ";
                         }
@@ -372,6 +375,9 @@
                               where 1=1";
                     if ($_GET['InputColor'] != 'Todos' ){
                       $query .=" AND color = '".$_GET['InputColor']."' ";
+                    }
+                    if ($_GET['InputMarca'] != 'Todos' ){
+                      $query .=" AND marca = '".$_GET['InputMarca']."' ";
                     }
                     if ($_GET['InputTransmision'] != 'Todos' ){
                       $query .=" AND transmision = '".$_GET['InputTransmision']."' ";
