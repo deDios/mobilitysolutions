@@ -500,7 +500,7 @@
     <div class="row">      
       <div class="col-lg-3">        
         <h6>Conoce más</h6>  
-        <hr class="mt-2 mb-3"/>      
+        <hr class="hr1 mt-2 mb-3"/>      
         <ul class="text-secondary list-unstyled">
           <li>
             <a class="text-secondary" href="#">¿Quiénes Somos?</a>
@@ -509,7 +509,7 @@
       </div>      
       <div class="col-lg-3">        
         <h6>Legales</h6>    
-        <hr class="mt-2 mb-3"/>    
+        <hr class="hr2 mt-2 mb-3"/>    
         <ul class="text-secondary list-unstyled">
           <li>
             <a class="text-secondary" href="#">Aviso de privacidad</a>
@@ -518,7 +518,7 @@
       </div>      
       <div class="col-lg-3">        
         <h6>Ayuda</h6>    
-        <hr class="mt-2 mb-3"/>    
+        <hr class="hr3 mt-2 mb-3"/>    
         <ul class="text-secondary list-unstyled">
           <li>
             <a class="text-secondary" href="#">Contacto</a>

@@ -368,6 +368,9 @@ li {
     height: auto;
 }
 
+footer .hr1 {
+    border-color: #FFC00A;
+}
 /* --------------------------Termina boton ------------------------------ */
 
 @media (max-width:700px){
