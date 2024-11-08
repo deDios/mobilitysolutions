@@ -243,11 +243,11 @@
                       <div class="accordion-body">
 
                       <div class="pt-1">
-                        <span class="input-group-text">$ Mayor a:</span>
+                        <span class="input-group-text">$ Mayor a: MX/mensuales</span>
                             <input id="InputMensualidad_Mayor" type="text" class="form-control" name="InputMensualidad_Mayor" aria-label="Amount (to the nearest dollar)" required>
                        </div>
                       <div class="pt-3">
-                        <span class="input-group-text">$ Menor a:</span>
+                        <span class="input-group-text">$ Menor a: MX/mensuales</span>
                             <input id="InputMensualidad_Menor" type="text" class="form-control" name="InputMensualidad_Menor" aria-label="Amount (to the nearest dollar)" required>
                         </div>
 
