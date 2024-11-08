@@ -86,9 +86,9 @@
                   <i class="fa fa-filter"></i> 
                 </a>
                 <?php
-                  $selec_filt = '';
+                  $selec_filt = $_GET['buscar'];
                 ?>
-                <h6> <?php echo $selec_filt;?> </h6>
+                <h6> <?php echo $selec_filt ;?> </h6>
               </div>
             
               <div class="collapse py-2" id="collapseExample">
@@ -286,13 +286,11 @@
                                   from mobility_solutions.v_catalogo_active 
                                   where 1=1
                                   ";
-                        if ($_GET['enviar'] != '' ){
+                        if ($_GET['InputColor'] != '' ){
                           $query .=" AND search_key like '%".$busqueda."%' ";
-                          $selec_filt .= "/'".$busqueda."' ";
                         }
                         if ($_GET['InputMarca'] != 'Todos' ){
                           $query .=" AND marca = '".$_GET['InputMarca']."' ";
-                          $selec_filt .= "/'".$_GET['InputMarca']."' ";
                         }
                         if ($_GET['InputColor'] != 'Todos' ){
                           $query .=" AND color = '".$_GET['InputColor']."' ";
@@ -396,11 +394,9 @@
                               where 1=1";
                     if ($_GET['InputColor'] != 'Todos' ){
                       $query .=" AND color = '".$_GET['InputColor']."' ";
-                      $selec_filt .= "/'".$_GET['InputColor']."' ";
                     }
                     if ($_GET['InputMarca'] != 'Todos' ){
                       $query .=" AND marca = '".$_GET['InputMarca']."' ";
-                      $selec_filt .= "/'".$_GET['InputMarca']."' ";
                     }
                     if ($_GET['InputTransmision'] != 'Todos' ){
                       $query .=" AND transmision = '".$_GET['InputTransmision']."' ";
