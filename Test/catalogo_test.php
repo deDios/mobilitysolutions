@@ -303,7 +303,7 @@
                         if ($_GET['InputMensualidad_Menor'] != '' ){
                           $query .=" AND mensualidad <= '".$_GET['InputMensualidad_Menor']."' ";
                         }
-                        if ($_GET['InputTipo'] != '' ){
+                        if ($_GET['InputTipo'] != 'Todos' ){
                           $query .=" AND modelo like '%".$_GET['InputTipo']."%' ";
                         }
 
@@ -406,7 +406,7 @@
                     if ($_GET['InputMensualidad_Menor'] != '' ){
                       $query .=" AND mensualidad <= '".$_GET['InputMensualidad_Menor']."' ";
                     }
-                    if ($_GET['InputTipo'] != '' ){
+                    if ($_GET['InputTipo'] != 'Todos' ){
                       $query .=" AND modelo like '%".$_GET['InputTipo']."%' ";
                     }
                     $result = mysqli_query($con,$query);  
