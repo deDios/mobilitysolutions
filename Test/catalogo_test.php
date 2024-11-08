@@ -77,168 +77,171 @@
         <div class="menu_item py-3">
           
           <div class="menu_fix position-fixed">
-            <form class="form-search" action="" method="get">
-              <div class="input-group input-group-lg">
-                    <a class="btn btn-secondary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                      <i class="fa fa-filter"></i>
-                    </a>
-                    <input class="form-control form-text pl-3" maxlength="128" placeholder="Buscar" type="text" name="buscar" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"/>
-              </div>
-            
-              <div class="collapse py-2" id="collapseExample">
+          <form class="form-search" action="" method="get">
+            <div class="input-group input-group-lg">
+                  <a class="btn btn-secondary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    <i class="fa fa-filter"></i>
+                  </a>
+                  <input class="form-control form-text pl-3" maxlength="128" placeholder="Buscar" type="text" name="buscar" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"/>
+            </div>
+          
+            <div class="collapse py-2" id="collapseExample">
 
-              <div class="lay_ser"> 
-                <h5 class="fw-light py-2">Filtros </h5>
-                  <hr class="mt-2 mb-3"/>
+            <div class="lay_ser"> 
+              <h5 class="fw-light py-2">Filtros </h5>
+                <hr class="mt-2 mb-3"/>
 
-                  <div class="accordion" id="accordionPanelsStayOpenExample">
-                    <div class="accordion-item">
-                      <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
-                          Marca
-                        </button>
-                      </h2>
-                      <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
-                        <div class="accordion-body">
-                          <select id="InputMarca" class="form-select" aria-label="Default select example" name="InputMarca">
-                              <option value="Todos">Selecciona una Marca</option>                      
-                              <?php 
-                              $inc = include "../db/Conexion.php";    
-                                  if ($inc){
-                                      $query = 'select 
-                                                  id,
-                                                  nombre
-                                              FROM mobility_solutions.tmx_marca;';
-                                      $result = mysqli_query($con,$query);  
-                                      if ($result){         
-                                          while($row = mysqli_fetch_assoc($result)){
-                                              $id = $row['id'];
-                                              $nombre = $row['nombre'];
-                              ?> 
-                                          <option value="<?php echo $nombre;?>"><?php echo $nombre;?></option>
-                              <?php
-                                          }
-                                      } else{
-                                              echo "Hubo un error en la consulta";
-                                      }
-                                          mysqli_free_result($result);                  
-                                  }
-                              ?>
-                          </select>
-                          
-                        </div>
+                <div class="accordion" id="accordionPanelsStayOpenExample">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
+                        Marca
+                      </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
+                      <div class="accordion-body">
+                        <select id="InputMarca" class="form-select" aria-label="Default select example" name="InputMarca">
+                            <option value="Todos">Selecciona una Marca</option>                      
+                            <?php 
+                            $inc = include "../db/Conexion.php";    
+                                if ($inc){
+                                    $query = 'select 
+                                                id,
+                                                nombre
+                                            FROM mobility_solutions.tmx_marca;';
+                                    $result = mysqli_query($con,$query);  
+                                    if ($result){         
+                                        while($row = mysqli_fetch_assoc($result)){
+                                            $id = $row['id'];
+                                            $nombre = $row['nombre'];
+                            ?> 
+                                        <option value="<?php echo $nombre;?>"><?php echo $nombre;?></option>
+                            <?php
+                                        }
+                                    } else{
+                                            echo "Hubo un error en la consulta";
+                                    }
+                                        mysqli_free_result($result);                  
+                                }
+                            ?>
+                        </select>
+                        
                       </div>
                     </div>
-                    <div class="accordion-item">
-                      <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                          Caracteristicas
-                        </button>
-                      </h2>
-                      <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
-                        <div class="accordion-body">
-
-                          <div class="pt-1">
-                            <select id="InputAnio" class="form-select" aria-label="Default select example" name="InputAnio">
-                                <option value="Todos">Selecciona año</option> 
-                                <option value="2013">2013</option> 
-                                <option value="2014">2014</option> 
-                                <option value="2015">2015</option> 
-                                <option value="2016">2016</option> 
-                                <option value="2017">2017</option> 
-                                <option value="2018">2018</option> 
-                                <option value="2019">2019</option> 
-                                <option value="2020">2020</option> 
-                                <option value="2021">2021</option> 
-                                <option value="2022">2022</option> 
-                                <option value="2023">2023</option> 
-                                <option value="2024">2024</option> 
-                                <option value="2025">2025</option> 
-                            </select>
-                          </div>
-                          <div class="pt-1">
-                            <select id="InputColor" class="form-select" aria-label="Default select example" name="InputColor">
-                                <option value="Todos">Selecciona color</option> 
-                                <option value="Negro">Negro</option>  
-                                <option value="Rojo">Rojo</option>  
-                                <option value="Azul">Azul</option>  
-                                <option value="Blanco">Blanco</option>  
-                                <option value="Verde">Verde</option>
-                                <option value="Gris">Gris</option>
-                                <option value="Amarillo">Amarillo</option>
-                                <option value="Arena">Arena</option>
-                                <option value="Guinda">Guinda</option>
-                                <option value="Plata">Plata</option>
-                                <option value="Naranja">Naranja</option>  
-                            </select>
-                          </div>
-                          <div class="pt-1">
-                            <select id="InputTransmision" class="form-select" aria-label="Default select example" name="InputTransmision">
-                                <option value="Todos">Selecciona transmisión</option> 
-                                <option value="Manual">TM (Manual)</option>  
-                                <option value="Automatico">TA (Automatico)</option>
-                            </select>
-                          </div>
-                          <div class="pt-1">
-                            <select id="InputInterior" class="form-select" aria-label="Default select example" name="InputInterior">
-                                <option value="Todos">Selecciona interior</option> 
-                                <option value="Tela">Tela</option>  
-                                <option value="Piel">Piel</option>
-                            </select>
-                          </div>
-                          <div class="pt-1">
-                            <select id="InputTipo" class="form-select" aria-label="Default select example" name="InputTipo">
-                                <option value="Todos">Selecciona tipo</option> 
-                                <option value="HB">HB</option>
-                                <option value="Sedan">Sedan</option>
-                                <option value="SUV">SUV</option>  
-                                <option value="Pickup">Pickup</option>
-                            </select>
-                          </div>
-
-                        </div>
-                      </div>
-                    </div>
-                    <div class="accordion-item">
-                      <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                          Precio
-                        </button>
-                      </h2>
-                      <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
-                        <div class="accordion-body">
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                        Caracteristicas
+                      </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                      <div class="accordion-body">
 
                         <div class="pt-1">
-                          <span class="input-group-text">$ Mayor a: MX/mensuales</span>
-                              <input id="InputMensualidad_Mayor" type="text" class="form-control" name="InputMensualidad_Mayor" aria-label="Amount (to the nearest dollar)">
+                          <select id="InputAnio" class="form-select" aria-label="Default select example" name="InputAnio">
+                              <option value="Todos">Selecciona año</option> 
+                              <option value="2013">2013</option> 
+                              <option value="2014">2014</option> 
+                              <option value="2015">2015</option> 
+                              <option value="2016">2016</option> 
+                              <option value="2017">2017</option> 
+                              <option value="2018">2018</option> 
+                              <option value="2019">2019</option> 
+                              <option value="2020">2020</option> 
+                              <option value="2021">2021</option> 
+                              <option value="2022">2022</option> 
+                              <option value="2023">2023</option> 
+                              <option value="2024">2024</option> 
+                              <option value="2025">2025</option> 
+                          </select>
                         </div>
-                        <div class="pt-3">
-                          <span class="input-group-text">$ Menor a: MX/mensuales</span>
-                              <input id="InputMensualidad_Menor" type="text" class="form-control" name="InputMensualidad_Menor" aria-label="Amount (to the nearest dollar)">
-                          </div>
+                        <div class="pt-1">
+                          <select id="InputColor" class="form-select" aria-label="Default select example" name="InputColor">
+                              <option value="Todos">Selecciona color</option> 
+                              <option value="Negro">Negro</option>  
+                              <option value="Rojo">Rojo</option>  
+                              <option value="Azul">Azul</option>  
+                              <option value="Blanco">Blanco</option>  
+                              <option value="Verde">Verde</option>
+                              <option value="Gris">Gris</option>
+                              <option value="Amarillo">Amarillo</option>
+                              <option value="Arena">Arena</option>
+                              <option value="Guinda">Guinda</option>
+                              <option value="Plata">Plata</option>
+                              <option value="Naranja">Naranja</option>  
+                          </select>
+                        </div>
+                        <div class="pt-1">
+                          <select id="InputTransmision" class="form-select" aria-label="Default select example" name="InputTransmision">
+                              <option value="Todos">Selecciona transmisión</option> 
+                              <option value="Manual">TM (Manual)</option>  
+                              <option value="Automatico">TA (Automatico)</option>
+                          </select>
+                        </div>
+                        <div class="pt-1">
+                          <select id="InputInterior" class="form-select" aria-label="Default select example" name="InputInterior">
+                              <option value="Todos">Selecciona interior</option> 
+                              <option value="Tela">Tela</option>  
+                              <option value="Piel">Piel</option>
+                          </select>
+                        </div>
+                        <div class="pt-1">
+                          <select id="InputTipo" class="form-select" aria-label="Default select example" name="InputTipo">
+                              <option value="Todos">Selecciona tipo</option> 
+                              <option value="HB">HB</option>
+                              <option value="Sedan">Sedan</option>
+                              <option value="SUV">SUV</option>  
+                              <option value="Pickup">Pickup</option>
+                          </select>
+                        </div>
 
-                        </div>
                       </div>
                     </div>
                   </div>
-                  
-                  <div class="text-end">
-                    <button class="btn btn-link" type="submit" name="enviar">Aplicar filtros</button>
-                  </div>
-                  </form>
-              </div>
-              </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                        Precio
+                      </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                      <div class="accordion-body">
 
-              <div class="anuncios">
-              <p class="titulo_r py-5"><small></small></p>
-              <p><small>Anuncios</small></p> <hr class="mt-2 mb-3"/>
-              </div>
+                      <div class="pt-1">
+                        <span class="input-group-text">$ Mayor a: MX/mensuales</span>
+                            <input id="InputMensualidad_Mayor" type="text" class="form-control" name="InputMensualidad_Mayor" aria-label="Amount (to the nearest dollar)">
+                       </div>
+                      <div class="pt-3">
+                        <span class="input-group-text">$ Menor a: MX/mensuales</span>
+                            <input id="InputMensualidad_Menor" type="text" class="form-control" name="InputMensualidad_Menor" aria-label="Amount (to the nearest dollar)">
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="text-end">
+                  <button class="btn btn-link" type="submit" name="enviar">Aplicar filtros</button>
+                </div>
+                </form>
+            </div>
+          </div>
+
+          <div class="anuncios">
+            <p class="titulo_r py-5"><small></small></p>
+            <p><small>Anuncios</small></p> <hr class="mt-2 mb-3"/>
+          </div>
 
           </div>
         </div>
+
+
 <!--------------------------------------- Termina menu lateral ----------------------------------------------->
 
 <!--------------------------------------- Menu izquierda ----------------------------------------------->
+
         <div class="lista_item">
             <?php 
                 $inc = include "../db/Conexion.php";    
@@ -461,6 +464,7 @@
             ?>
         </div>
     </div>
+
 </div>
     <script>        
         function detalle (cod){
