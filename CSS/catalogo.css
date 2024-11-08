@@ -372,6 +372,9 @@ li {
     justify-content: space-between;
     align-items: center;
 }
+footer{
+    padding-bottom: 20px;
+}
 footer .hr1 {
     height: 3px;
     border-color: #FFC00A;
