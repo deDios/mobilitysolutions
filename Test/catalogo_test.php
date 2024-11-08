@@ -505,24 +505,28 @@
           <li class="nav-item">
             <a class="nav-link text-secondary" href="#">¿Quiénes Somos?</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled">Disabled</a>
-          </li>
         </ul>     
       </div>      
       <div class="col-lg-3">        
         <h6>Legales</h6>    
         <hr class="mt-2 mb-3"/>    
-        <p>Correo electrónico: info@example.com</p>        
-        <p>Teléfono: 123-456-7890</p>      
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="#">Aviso de privacidad</a>
+          </li>
+        </ul>       
       </div>      
       <div class="col-lg-3">        
         <h6>Ayuda</h6>    
         <hr class="mt-2 mb-3"/>    
-        <p>(c) 2023 Mi Sitio Web. Todos los derechos reservados.</p>      
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="#">Contáctanos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="#">Preguntas frecuentes</a>
+          </li>
+        </ul>     
       </div>  
       <div class="col-lg-3">     
       <p class="fs-6 lh-sm text-muted py-3">         
