@@ -493,5 +493,30 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
+<footer>  
+  <div class="container">    
+    <div class="row">      
+      <div class="col-lg-4">        
+        <h3>Enlaces</h3>        
+        <ul>          
+          <li><a href="#">Inicio</a></li>          
+          <li><a href="#">Acerca de</a></li>          
+          <li><a href="#">Contacto</a></li>        
+        </ul>      
+      </div>      
+      <div class="col-lg-4">        
+        <h3>Contacto</h3>        
+        <p>Correo electrónico: info@example.com</p>        
+        <p>Teléfono: 123-456-7890</p>      
+      </div>      
+      <div class="col-lg-4">        
+        <h3>Derechos de autor</h3>        
+        <p>(c) 2023 Mi Sitio Web. Todos los derechos reservados.</p>      
+      </div>    
+    </div>  
+  </div>
+</footer>
+
+
  </body>
  </html>

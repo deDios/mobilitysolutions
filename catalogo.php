@@ -110,8 +110,7 @@
                   }
                   if ($_GET['InputMensualidad_Menor'] != '' ){
                     $selec_filt .="/Menor a $".$_GET['InputMensualidad_Menor']."";
-                  }
-                  
+                  }                
                 ?>
                 <figcaption class="blockquote-footer pt-2"> <?php echo $selec_filt ;?> </figcaption>
               </div>
