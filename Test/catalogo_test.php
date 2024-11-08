@@ -496,22 +496,28 @@
 <footer>  
   <div class="container">    
     <div class="row">      
-      <div class="col-lg-4">        
-        <h5>Enlaces</h5>        
+      <div class="col-lg-3">        
+        <h5>Conoce más</h5>        
         <ul>          
           <li><a href="#">Inicio</a></li>          
           <li><a href="#">Acerca de</a></li>          
           <li><a href="#">Contacto</a></li>        
         </ul>      
       </div>      
-      <div class="col-lg-4">        
-        <h5>Contacto</h5>        
+      <div class="col-lg-3">        
+        <h5>Legales</h5>        
         <p>Correo electrónico: info@example.com</p>        
         <p>Teléfono: 123-456-7890</p>      
       </div>      
-      <div class="col-lg-4">        
-        <h5>Derechos de autor</h5>        
+      <div class="col-lg-3">        
+        <h5>Ayuda</h5>        
         <p>(c) 2023 Mi Sitio Web. Todos los derechos reservados.</p>      
+      </div>  
+      <div class="col-lg-3">              
+      Procuraduría Federal del consumidor
+      (PROFECO)
+      Teléfono: 800 468 8722
+      www.profeco.gob.mx     
       </div>    
     </div>  
   </div>
