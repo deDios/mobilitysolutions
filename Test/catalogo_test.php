@@ -270,16 +270,16 @@
                                   from mobility_solutions.v_catalogo_active 
                                   where search_key like '%$busqueda%'
                                   ";
-                        if ($_GET['InputColor'] != '' ){
+                        if ($_GET['InputColor'] != 'Todos' ){
                           $query .=" AND color = '".$_GET['InputColor']."' ";
                         }
-                        if ($_GET['InputTransmision'] != '' ){
+                        if ($_GET['InputTransmision'] != 'Todos' ){
                           $query .=" AND transmision = '".$_GET['InputTransmision']."' ";
                         }
-                        if ($_GET['InputInterior'] != '' ){
+                        if ($_GET['InputInterior'] != 'Todos' ){
                           $query .=" AND interior = '".$_GET['InputInterior']."' ";
                         }
-                        if ($_GET['InputAnio'] != '' ){
+                        if ($_GET['InputAnio'] != 'Todos' ){
                           $query .=" AND search_key like = '%".$_GET['InputAnio']."%' ";
                         }
                         if ($_GET['InputMensualidad_Mayor'] != '' ){
