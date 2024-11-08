@@ -281,6 +281,7 @@
                 $inc = include "../db/Conexion.php";    
                 if(isset($_GET['enviar'])) {
                   $busqueda = $_GET['buscar'];
+                  $b_color = $_GET['InputColor'];
                   $busqueda = trim($busqueda);
                     if ($inc){
                         $query = "select 
@@ -311,7 +312,7 @@
                                     updated_at, 
                                     search_key
                                   from mobility_solutions.v_catalogo_active 
-                                  where search_key like '%$busqueda%'
+                                  where search_key like '%$busqueda%' or color = '$b_color'
                                   ;";
                         $result = mysqli_query($con,$query);  
                         if ($result){         
