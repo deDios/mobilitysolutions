@@ -268,8 +268,11 @@
                                     updated_at, 
                                     search_key
                                   from mobility_solutions.v_catalogo_active 
-                                  where search_key like '%$busqueda%'
+                                  where 1=1
                                   ";
+                        if ($_GET['InputColor'] != '' ){
+                          $query .=" AND search_key like '%".$busqueda."%' ";
+                        }
                         if ($_GET['InputColor'] != 'Todos' ){
                           $query .=" AND color = '".$_GET['InputColor']."' ";
                         }
