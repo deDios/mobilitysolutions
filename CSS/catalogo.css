@@ -179,7 +179,6 @@ li {
 .container-items{
     display: grid;
     grid-template-columns: 1fr 4fr;
-    padding-top: 150px;
 }
 
 .container-items .lista_item {
@@ -188,6 +187,7 @@ li {
     grid-column-gap: 10px;
     grid-row-gap: 10px;
     padding-right: 20px;
+    padding-top: 150px;
 }
 
 .lista_item .item {
@@ -361,6 +361,7 @@ li {
     width: 100%;
 }
 .menu_fix {
+    padding-top: 150px;
     padding-left: 10px;
     width: 300px;
     height: auto;
@@ -370,6 +371,7 @@ li {
 
 @media (max-width:700px){
     .menu_fix {
+        padding-top: 90px;
         width: 94%;
         background-color: white;
     }
