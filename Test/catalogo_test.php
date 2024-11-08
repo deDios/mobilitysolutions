@@ -312,7 +312,7 @@
                                     updated_at, 
                                     search_key
                                   from mobility_solutions.v_catalogo_active 
-                                  where search_key like '%$busqueda%' or color = '$b_color'
+                                  where search_key like '%$busqueda%' and color = '$b_color'
                                   ;";
                         $result = mysqli_query($con,$query);  
                         if ($result){         
@@ -390,7 +390,7 @@
                                 created_at, 
                                 updated_at, 
                                 search_key
-                              from mobility_solutions.v_catalogo_active;";
+                              from mobility_solutions.v_catalogo_active";
                     $result = mysqli_query($con,$query);  
                     if ($result){         
                         while($row = mysqli_fetch_assoc($result)){
