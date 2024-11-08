@@ -78,11 +78,11 @@
           
           <div class="menu_fix position-fixed">
           <form class="form-search" action="" method="get">
-            <div class="input-group">
+            <div class="input-group input-group-lg">
                   <a class="btn btn-secondary btn-lg" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                     <i class="fa fa-filter"></i>
                   </a>
-                  <input class="form-control form-text" maxlength="128" placeholder="Buscar" size="15" type="text" name="buscar" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"/>
+                  <input class="form-control form-text" maxlength="128" placeholder="Buscar" type="text" name="buscar" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"/>
             </div>
           
           <div class="collapse py-2" id="collapseExample">
