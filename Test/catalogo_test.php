@@ -529,7 +529,9 @@
         </ul>     
       </div>  
       <div class="col-lg-3">     
-         
+        <p class="float-end mb-1">
+          <a href="#">Regresa al inicio</a>
+        </p>
       </div>    
     </div>  
   </div>
