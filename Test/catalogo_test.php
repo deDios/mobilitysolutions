@@ -501,11 +501,20 @@
       <div class="col-lg-3">        
         <h6>Conoce más</h6>  
         <hr class="mt-2 mb-3"/>      
-        <ul>          
-          <li><a href="#">Inicio</a></li>          
-          <li><a href="#">Acerca de</a></li>          
-          <li><a href="#">Contacto</a></li>        
-        </ul>      
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Active</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled">Disabled</a>
+          </li>
+        </ul>     
       </div>      
       <div class="col-lg-3">        
         <h6>Legales</h6>    
