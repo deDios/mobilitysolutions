@@ -519,7 +519,7 @@
         <p>(c) 2023 Mi Sitio Web. Todos los derechos reservados.</p>      
       </div>  
       <div class="col-lg-3">     
-      <p class="fs-6 lh-sm text-muted text-justify">         
+      <p class="fs-6 lh-sm text-muted py-3">         
         Procuraduría Federal del consumidor
         (PROFECO)
         <br>
