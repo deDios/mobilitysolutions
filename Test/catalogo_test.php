@@ -199,11 +199,9 @@
                               <option value="2025">2025</option> 
                           </select>
                         </div>
-
-
                         <div class="pt-1">
                           <select id="InputColor" class="form-select" aria-label="Default select example" name="InputColor">
-                              <option value="Todos">Selecciona un color</option> 
+                              <option value="Todos">Selecciona color</option> 
                               <option value="Negro">Negro</option>  
                               <option value="Rojo">Rojo</option>  
                               <option value="Azul">Azul</option>  
@@ -219,19 +217,17 @@
                         </div>
                         <div class="pt-1">
                           <select id="InputTransmision" class="form-select" aria-label="Default select example" name="InputTransmision">
-                              <option value="Todos">Selecciona la transmisión</option> 
+                              <option value="Todos">Selecciona transmisión</option> 
                               <option value="Manual">TM (Manual)</option>  
                               <option value="Automatico">TA (Automatico)</option>
                           </select>
                         </div>
                         <div class="pt-1">
                           <select id="InputInterior" class="form-select" aria-label="Default select example" name="InputInterior">
-                              <option value="Todos">Selecciona el interior</option> 
+                              <option value="Todos">Selecciona interior</option> 
                               <option value="Tela">Tela</option>  
                               <option value="Piel">Piel</option>
                           </select>
-                        </div>
-                        <div class="pt-1">
                         </div>
 
                       </div>
@@ -245,7 +241,18 @@
                     </h2>
                     <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
                       <div class="accordion-body">
-                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+
+                      <div class="pt-1">
+                        <span class="input-group-text">$</span>
+                            <input id="InputMensualidad_Mayor" type="text" class="form-control" name="InputMensualidad_Mayor" aria-label="Amount (to the nearest dollar)" required>
+                        <span class="input-group-text">MX/mensuales</span>
+                      </div>
+                      <div class="pt-1">
+                        <span class="input-group-text">$</span>
+                            <input id="InputMensualidad_Menor" type="text" class="form-control" name="InputMensualidad_Menor" aria-label="Amount (to the nearest dollar)" required>
+                        <span class="input-group-text">MX/mensuales</span>
+                      </div>
+
                       </div>
                     </div>
                   </div>
