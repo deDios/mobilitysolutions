@@ -355,10 +355,26 @@ li {
     padding-right: 20px;
     width: 100%;
 }
+.lay_ser{
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+}
+.menu_fix {
+    padding-top: 150px;
+    padding-left: 10px;
+    width: 300px;
+    height: auto;
+}
 
 /* --------------------------Termina boton ------------------------------ */
 
 @media (max-width:700px){
+    .menu_fix {
+        padding-top: 90px;
+        width: 94%;
+        background-color: white;
+    }
     header{
         flex-direction: column;
     }
