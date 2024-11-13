@@ -55,6 +55,7 @@ $query = 'select
                                 $eje = $row['eje'];
                                 $pasajeros = $row['pasajeros'];
                                 $propietarios = $row['propietarios'];
+                                $estatus = $row['estatus'];
             }
         }
         else{
@@ -199,7 +200,17 @@ $query = 'select
                     </button>
                 </div>
                 </div>
-                <img src="../Imagenes/reserved.jpg" alt="Imagen reserved" class="imagen-r">
+                <?php 
+                    if ($estatus == 3){
+                ?>
+                    <img src="../Imagenes/reserved.jpg" alt="Imagen reserved" class="imagen-r">
+                <?php
+                    } else {
+                ?>
+                <?php
+                    }
+                ?>
+                
             </div>
 
 <!-------------------------------------- Div detalle de auto ----------------------------------------------------------->
