@@ -241,7 +241,7 @@ li {
     position: absolute;
     top: 1px; /* Ajusta la posición vertical */
     left: 30px; /* Ajusta la posición horizontal */
-    width: 350px; /* Ajusta el tamaño de la imagen pequeña */
+    width: 300px; /* Ajusta el tamaño de la imagen pequeña */
     height: 230px; /* Ajusta el tamaño de la imagen pequeña */
 }
 
