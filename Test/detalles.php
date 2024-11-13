@@ -149,6 +149,7 @@ $query = 'select
 <!-------------------------------- Carrusel auto seleccionado -------------------------------------->
           
             <div class="carrusel_carr_auto">
+                <img src="../Imagenes/reserved.jpg" alt="Imagen reserved" class="imagen-r">
                 <div class="div_carrusel">
                 <div id="demo" class="py-1 carousel carousel-dark slide" data-bs-ride="carousel" py-1>
                     <!-- Indicators/dots -->
