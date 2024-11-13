@@ -239,7 +239,7 @@ li {
     bottom: 1px; /* Ajusta la posición vertical */
     left: 1px; /* Ajusta la posición horizontal */
     width: 350px; /* Ajusta el tamaño de la imagen pequeña */
-    height: 100px; /* Ajusta el tamaño de la imagen pequeña */
+    height: 200px; /* Ajusta el tamaño de la imagen pequeña */
 }
 
 @media (max-width:700px){
