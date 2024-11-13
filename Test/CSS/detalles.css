@@ -234,6 +234,14 @@ li {
     width: 100%;
 }
 
+.carrusel_carr_auto .imagen-r {
+    position: absolute;
+    bottom: 1px; /* Ajusta la posición vertical */
+    left: 1px; /* Ajusta la posición horizontal */
+    width: 100px; /* Ajusta el tamaño de la imagen pequeña */
+    height: 25px; /* Ajusta el tamaño de la imagen pequeña */
+}
+
 @media (max-width:700px){
     header{
         flex-direction: column;
