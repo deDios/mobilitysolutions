@@ -236,10 +236,10 @@ li {
 
 .carrusel_carr_auto .imagen-r {
     position: absolute;
-    bottom: 1px; /* Ajusta la posición vertical */
+    top: 90px; /* Ajusta la posición vertical */
     left: 1px; /* Ajusta la posición horizontal */
     width: 350px; /* Ajusta el tamaño de la imagen pequeña */
-    height: 200px; /* Ajusta el tamaño de la imagen pequeña */
+    height: 250px; /* Ajusta el tamaño de la imagen pequeña */
 }
 
 @media (max-width:700px){
