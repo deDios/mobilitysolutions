@@ -151,16 +151,6 @@ $query = 'select
                         <div class="texto2"> <?php echo "DESDE $" . number_format($mensualidad) ."/mes | " . "$" . number_format($costo);?> </div>
                         <div class="id_t"><?php echo " #".$id;?></div> 
                     </div>
-                    <?php 
-                    if ($estatus == 3){
-                    ?>
-                        <img src="../Imagenes/reserved.jpg" alt="Imagen reserved" class="imagen-r2">
-                    <?php
-                        } else {
-                    ?>
-                    <?php
-                        }
-                    ?>
                 </div>
             </div>
 <!-------------------------------- Carrusel auto seleccionado -------------------------------------->

@@ -241,11 +241,8 @@ li {
     justify-content: space-between;
     align-items: center;
 }
-.carrusel_carr_auto .imagen-r{
-    display: none;
-}
 
-.Descripcion .imagen-r2 {
+.Descripcion .imagen-r {
     position: absolute;
     left: 80%;
     top: 10%;
@@ -268,9 +265,6 @@ li {
         transform: translate(-50%, -50%);
         width: 300px; /* Ajusta el tamaño de la imagen pequeña */
         height: 250px; /* Ajusta el tamaño de la imagen pequeña */
-    }
-    .Descripcion .imagen-r2{
-        display: none;
     }
     nav{
         padding: 0px 0px ;
