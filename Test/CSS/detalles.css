@@ -244,7 +244,7 @@ li {
 .carrusel_carr_auto {
     position: relative;
   }
-.Descripcion .imagen-r {
+.carrusel_carr_auto .imagen-r {
     position: absolute;
     left: 50%;
     top: 50%;
