@@ -241,11 +241,13 @@ li {
     justify-content: space-between;
     align-items: center;
 }
-
+.carrusel_carr_auto {
+    position: relative;
+  }
 .Descripcion .imagen-r {
     position: absolute;
-    left: 80%;
-    top: 10%;
+    left: 50%;
+    top: 50%;
     transform: translate(-50%, -50%);
     width: 300px; /* Ajusta el tamaño de la imagen pequeña */
     height: 250px; /* Ajusta el tamaño de la imagen pequeña */
