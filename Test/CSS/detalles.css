@@ -235,6 +235,12 @@ li {
     padding-top: 25px;
     width: 100%;
 }
+.desc_costo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
 
 .carrusel_carr_auto {
     position: relative;
