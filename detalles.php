@@ -56,6 +56,7 @@ $query = 'select
                                 $eje = $row['eje'];
                                 $pasajeros = $row['pasajeros'];
                                 $propietarios = $row['propietarios'];
+                                $estatus = $row['estatus']
             }
         }
         else{
