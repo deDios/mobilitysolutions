@@ -248,7 +248,7 @@ li {
 .carrusel_carr_auto .imagen-r {
     position: absolute;
     top: 1px; /* Ajusta la posición vertical */
-    left: 30px; /* Ajusta la posición horizontal */
+    right: 1px; /* Ajusta la posición horizontal */
     width: 300px; /* Ajusta el tamaño de la imagen pequeña */
     height: 250px; /* Ajusta el tamaño de la imagen pequeña */
 }
@@ -256,6 +256,16 @@ li {
 @media (max-width:700px){
     header{
         flex-direction: column;
+    }
+    .carrusel_carr_auto {
+        position: relative;
+      }
+    .carrusel_carr_auto .imagen-r {
+        position: absolute;
+        top: 1px; /* Ajusta la posición vertical */
+        left: 30px; /* Ajusta la posición horizontal */
+        width: 300px; /* Ajusta el tamaño de la imagen pequeña */
+        height: 250px; /* Ajusta el tamaño de la imagen pequeña */
     }
     nav{
         padding: 0px 0px ;
