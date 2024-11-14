@@ -147,7 +147,7 @@ $query = 'select
                 <img src="../Imagenes/Marcas/logo_<?php echo $marca; ?>.jpg" alt="logo 1">
                 <div class="Descripcion">
                     <div class="texto">  <?php echo $marca . " " . $nombre . " " . $modelo;?> </div>
-                    <div class="texto2"> <?php echo "DESDE $" . number_format($mensualidad) ."/mes | " . "$" . number_format($costo) ;?> </div>
+                    <div class="texto2"> <?php echo "DESDE $" . number_format($mensualidad) ."/mes | " . "$" . number_format($costo);?> <p class="id_t"><?php echo " #".$id;?></p> </div>
                 </div>
             </div>
 <!-------------------------------- Carrusel auto seleccionado -------------------------------------->
