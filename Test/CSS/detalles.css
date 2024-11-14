@@ -267,8 +267,8 @@ li {
         top: 50%;
         transform: translate(-50%, -50%);
         -webkit-transform: translate(-50%, -50%);
-        width: 300px; /* Ajusta el tamaño de la imagen pequeña */
-        height: 250px; /* Ajusta el tamaño de la imagen pequeña */
+        width: 75%; /* Ajusta el tamaño de la imagen pequeña */
+        height: auto; /* Ajusta el tamaño de la imagen pequeña */
     }
     nav{
         padding: 0px 0px ;
