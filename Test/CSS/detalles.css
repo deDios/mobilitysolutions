@@ -241,11 +241,15 @@ li {
     justify-content: space-between;
     align-items: center;
 }
+.carrusel_carr_auto {
+    position: relative;
+  }
 
 .carrusel_carr_auto .imagen-r {
     position: absolute;
-    top: 1px; /* Ajusta la posición vertical */
-    right: 1px; /* Ajusta la posición horizontal */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     width: 300px; /* Ajusta el tamaño de la imagen pequeña */
     height: 250px; /* Ajusta el tamaño de la imagen pequeña */
 }
