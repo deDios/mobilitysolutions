@@ -1,8 +1,10 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&display=swap');
+.montserrat-body {
     margin: 0;
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-    font-size: 1rem;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
     font-weight: 400;
+    font-style: normal;
     line-height: 1.5;
     color: #212529;
     background-color: #f7f7f7;
@@ -207,6 +209,7 @@ li {
     grid-template-rows: 1fr 1fr;
     padding-left: 10px;
     padding-right: 10px;
+    width: 100%;
 }
 .Descripcion .texto{
     color: black;
@@ -218,6 +221,11 @@ li {
     font-size: 15px;
     font-weight:lighter;
     padding-top: 5px;
+}
+.Descripcion .id_t {
+    color: #FFC00A;
+    font-size: 15px;
+    font-weight: bold;
 }
 /* ----------------------------- Cierre para estilo para titulo de detalle auto  -----------------------------*/
 /* ----------------------------- Inicio carrusel detalle auto  -----------------------------*/
@@ -233,10 +241,40 @@ li {
     padding-top: 25px;
     width: 100%;
 }
+.desc_costo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.carrusel_carr_auto {
+    position: relative;
+  }
+.carrusel_carr_auto .imagen-r {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    width: 75%; /* Ajusta el tamaño de la imagen pequeña */
+    height: auto; /* Ajusta el tamaño de la imagen pequeña */
+}
 
 @media (max-width:700px){
     header{
         flex-direction: column;
+    }
+    .carrusel_carr_auto {
+        position: relative;
+      }
+    .carrusel_carr_auto .imagen-r {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        width: 75%; /* Ajusta el tamaño de la imagen pequeña */
+        height: auto; /* Ajusta el tamaño de la imagen pequeña */
     }
     nav{
         padding: 0px 0px ;

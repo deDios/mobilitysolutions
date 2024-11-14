@@ -145,6 +145,7 @@ $query = 'select
                 <div class="Descripcion">
                     <div class="texto">  <?php echo $marca . " " . $nombre . " " . $modelo;?> </div>
                     <div class="texto2"> <?php echo "DESDE $" . number_format($mensualidad) ."/mes | " . "$" . number_format($costo) ;?> </div>
+                    <div class="id_t"><?php echo " #".$id;?></div> 
                 </div>
             </div>
 <!-------------------------------- Carrusel auto seleccionado -------------------------------------->
@@ -199,6 +200,16 @@ $query = 'select
                     </button>
                 </div>
                 </div>
+                <?php 
+                    if ($estatus == 3){
+                ?>
+                    <img src="Imagenes/reserved.jpg" alt="Imagen reserved" class="imagen-r">
+                <?php
+                    } else {
+                ?>
+                <?php
+                    }
+                ?>
             </div>
 
 <!-------------------------------------- Div detalle de auto ----------------------------------------------------------->
