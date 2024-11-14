@@ -242,9 +242,6 @@ li {
     align-items: center;
 }
 
-.carrusel_carr_auto {
-    position: relative;
-  }
 .carrusel_carr_auto .imagen-r {
     position: absolute;
     top: 1px; /* Ajusta la posición vertical */
