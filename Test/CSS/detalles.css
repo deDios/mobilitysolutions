@@ -244,8 +244,8 @@ li {
 
 .carrusel_carr_auto .imagen-r {
     position: absolute;
-    left: 50%;
-    top: 1%;
+    left: 40%;
+    top: 10%;
     transform: translate(-50%, -50%);
     width: 300px; /* Ajusta el tamaño de la imagen pequeña */
     height: 250px; /* Ajusta el tamaño de la imagen pequeña */
