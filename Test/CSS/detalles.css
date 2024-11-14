@@ -209,6 +209,7 @@ li {
     grid-template-rows: 1fr 1fr;
     padding-left: 10px;
     padding-right: 10px;
+    width: 100%;
 }
 .Descripcion .texto{
     color: black;
