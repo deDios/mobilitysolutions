@@ -302,6 +302,7 @@
                                     propietarios, 
                                     created_at, 
                                     updated_at, 
+                                    c_type,
                                     search_key
                                   from mobility_solutions.v_catalogo_active 
                                   where 1=1
@@ -331,7 +332,7 @@
                           $query .=" AND mensualidad <= '".$_GET['InputMensualidad_Menor']."' ";
                         }
                         if ($_GET['InputTipo'] != 'Todos' ){
-                          $query .=" AND modelo like '%".$_GET['InputTipo']."%' ";
+                          $query .=" AND c_type like '%".$_GET['InputTipo']."%' ";
                         }
                         $query .=" order by RAND()";
                         $result = mysqli_query($con,$query);  
@@ -409,6 +410,7 @@
                                 propietarios, 
                                 created_at, 
                                 updated_at, 
+                                c_type,
                                 search_key
                               from mobility_solutions.v_catalogo_active
                               where 1=1";
@@ -434,7 +436,7 @@
                       $query .=" AND mensualidad <= '".$_GET['InputMensualidad_Menor']."' ";
                     }
                     if ($_GET['InputTipo'] != 'Todos' ){
-                      $query .=" AND modelo like '%".$_GET['InputTipo']."%' ";
+                      $query .=" AND c_type like '%".$_GET['InputTipo']."%' ";
                     }
                     $query .=" order by RAND()";
                     $result = mysqli_query($con,$query);  
