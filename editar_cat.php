@@ -148,7 +148,7 @@ $cod=$_REQUEST['id'];
                                     auto.estatus, 
                                     auto.pasajeros, 
                                     auto.propietarios,
-                                    auto.c_type
+                                    auto.c_type,
                                     DATE_SUB(auto.created_at, INTERVAL 6 HOUR) as created_at, 
                                     DATE_SUB(auto.updated_at, INTERVAL 6 HOUR) as updated_at
                                 FROM mobility_solutions.tmx_auto as auto
