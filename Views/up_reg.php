@@ -32,7 +32,7 @@ $inc = include "../db/Conexion.php";
         auto.pasajeros, 
         auto.propietarios,
         auto.created_at, 
-        auto.updated_at 
+        auto.updated_at, 
         auto.c_type
     FROM mobility_solutions.tmx_auto as auto
     left join mobility_solutions.tmx_sucursal as sucursal on auto.sucursal = sucursal.id 
