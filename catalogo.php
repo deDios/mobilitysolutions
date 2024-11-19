@@ -277,59 +277,34 @@
                   $busqueda = trim($busqueda);
                     if ($inc){
                         $query = "select 
-                                      auto.id AS id,
-                                      m_auto.auto AS nombre,
-                                      modelo.nombre AS modelo,
-                                      marca.nombre AS marca,
-                                      auto.mensualidad AS mensualidad,
-                                      auto.costo AS costo,
-                                      sucursal.nombre AS sucursal,
-                                      auto.img1 AS img1,
-                                      auto.img2 AS img2,
-                                      auto.img3 AS img3,
-                                      auto.img4 AS img4,
-                                      auto.img5 AS img5,
-                                      auto.img6 AS img6,
-                                      auto.color AS color,
-                                      auto.transmision AS transmision,
-                                      auto.interior AS interior,
-                                      auto.kilometraje AS kilometraje,
-                                      auto.combustible AS combustible,
-                                      auto.cilindros AS cilindros,
-                                      auto.eje AS eje,
-                                      auto.estatus AS estatus,
-                                      auto.pasajeros AS pasajeros,
-                                      auto.propietarios AS propietarios,
-                                      auto.created_at AS created_at,
-                                      auto.updated_at AS updated_at,
-                                      auto.c_type AS c_type,
-                                      CONCAT(auto.id,
-                                              '&',
-                                              m_auto.auto,
-                                              '&',
-                                              modelo.nombre,
-                                              '&',
-                                              marca.nombre,
-                                              '&',
-                                              sucursal.nombre,
-                                              '&',
-                                              auto.color,
-                                              '&',
-                                              auto.transmision,
-                                              '&',
-                                              auto.interior,
-                                              '&',
-                                              auto.c_type,
-                                              '&',
-                                              auto.combustible) AS search_key
-                                  FROM mobility_solutions.tmx_auto auto
-                                      LEFT JOIN mobility_solutions.tmx_sucursal sucursal ON auto.sucursal = sucursal.id
-                                      LEFT JOIN mobility_solutions.tmx_estatus estatus ON auto.estatus = estatus.id
-                                      LEFT JOIN mobility_solutions.tmx_modelo modelo ON auto.modelo = modelo.id
-                                      LEFT JOIN mobility_solutions.tmx_marca marca ON auto.marca = marca.id
-                                      LEFT JOIN mobility_solutions.tmx_marca_auto m_auto ON auto.nombre = m_auto.id
-                                  WHERE
-                                      auto.estatus IN (1 , 3)
+                                    id, 
+                                    nombre, 
+                                    modelo, 
+                                    marca, 
+                                    mensualidad, 
+                                    costo, 
+                                    sucursal, 
+                                    img1, 
+                                    img2, 
+                                    img3, 
+                                    img4, 
+                                    img5, 
+                                    img6, 
+                                    color, 
+                                    transmision, 
+                                    interior, 
+                                    kilometraje, 
+                                    combustible, 
+                                    cilindros, 
+                                    eje, 
+                                    estatus, 
+                                    pasajeros, 
+                                    propietarios, 
+                                    created_at, 
+                                    updated_at, 
+                                    search_key
+                                  from mobility_solutions.v_catalogo_active 
+                                  where 1=1
                                   ";
                         if ($_GET['InputColor'] != '' ){
                           $query .=" AND search_key like '%".$busqueda."%' ";
@@ -409,59 +384,34 @@
                 else{
                   if ($inc){
                     $query = "select 
-                                      auto.id AS id,
-                                      m_auto.auto AS nombre,
-                                      modelo.nombre AS modelo,
-                                      marca.nombre AS marca,
-                                      auto.mensualidad AS mensualidad,
-                                      auto.costo AS costo,
-                                      sucursal.nombre AS sucursal,
-                                      auto.img1 AS img1,
-                                      auto.img2 AS img2,
-                                      auto.img3 AS img3,
-                                      auto.img4 AS img4,
-                                      auto.img5 AS img5,
-                                      auto.img6 AS img6,
-                                      auto.color AS color,
-                                      auto.transmision AS transmision,
-                                      auto.interior AS interior,
-                                      auto.kilometraje AS kilometraje,
-                                      auto.combustible AS combustible,
-                                      auto.cilindros AS cilindros,
-                                      auto.eje AS eje,
-                                      auto.estatus AS estatus,
-                                      auto.pasajeros AS pasajeros,
-                                      auto.propietarios AS propietarios,
-                                      auto.created_at AS created_at,
-                                      auto.updated_at AS updated_at,
-                                      auto.c_type AS c_type,
-                                      CONCAT(auto.id,
-                                              '&',
-                                              m_auto.auto,
-                                              '&',
-                                              modelo.nombre,
-                                              '&',
-                                              marca.nombre,
-                                              '&',
-                                              sucursal.nombre,
-                                              '&',
-                                              auto.color,
-                                              '&',
-                                              auto.transmision,
-                                              '&',
-                                              auto.interior,
-                                              '&',
-                                              auto.c_type,
-                                              '&',
-                                              auto.combustible) AS search_key
-                                  FROM mobility_solutions.tmx_auto auto
-                                      LEFT JOIN mobility_solutions.tmx_sucursal sucursal ON auto.sucursal = sucursal.id
-                                      LEFT JOIN mobility_solutions.tmx_estatus estatus ON auto.estatus = estatus.id
-                                      LEFT JOIN mobility_solutions.tmx_modelo modelo ON auto.modelo = modelo.id
-                                      LEFT JOIN mobility_solutions.tmx_marca marca ON auto.marca = marca.id
-                                      LEFT JOIN mobility_solutions.tmx_marca_auto m_auto ON auto.nombre = m_auto.id
-                                  WHERE
-                                      auto.estatus IN (1 , 3)";
+                                id, 
+                                nombre, 
+                                modelo, 
+                                marca, 
+                                mensualidad, 
+                                costo, 
+                                sucursal, 
+                                img1, 
+                                img2, 
+                                img3, 
+                                img4, 
+                                img5, 
+                                img6, 
+                                color, 
+                                transmision, 
+                                interior, 
+                                kilometraje, 
+                                combustible, 
+                                cilindros, 
+                                eje, 
+                                estatus, 
+                                pasajeros, 
+                                propietarios, 
+                                created_at, 
+                                updated_at, 
+                                search_key
+                              from mobility_solutions.v_catalogo_active
+                              where 1=1";
                     if ($_GET['InputColor'] != 'Todos' ){
                       $query .=" AND color = '".$_GET['InputColor']."' ";
                     }
