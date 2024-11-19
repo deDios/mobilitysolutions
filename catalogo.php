@@ -332,7 +332,7 @@
                           $query .=" AND mensualidad <= '".$_GET['InputMensualidad_Menor']."' ";
                         }
                         if ($_GET['InputTipo'] != 'Todos' ){
-                          $query .=" AND c_type like '%".$_GET['InputTipo']."%' ";
+                          $query .=" AND c_type = '".$_GET['InputTipo']."' ";
                         }
                         $query .=" order by RAND()";
                         $result = mysqli_query($con,$query);  
@@ -436,7 +436,7 @@
                       $query .=" AND mensualidad <= '".$_GET['InputMensualidad_Menor']."' ";
                     }
                     if ($_GET['InputTipo'] != 'Todos' ){
-                      $query .=" AND c_type like '%".$_GET['InputTipo']."%' ";
+                      $query .=" AND c_type = '".$_GET['InputTipo']."' ";
                     }
                     $query .=" order by RAND()";
                     $result = mysqli_query($con,$query);  
