@@ -179,7 +179,8 @@ $inc = include "../db/Conexion.php";
                         
                     </div>
 
-                    <!-- Input Color ------------------------------------------------------------------->
+                    <!-- Input Type ------------------------------------------------------------------->
+                    
                     <div class="col-2 mt-5">
                         <label for="InputType" class="form-label">Tipo de auto  <small> / Actual: <?php echo $c_type;?></small></label>
                         
@@ -239,6 +240,7 @@ $inc = include "../db/Conexion.php";
                         }
                         ?>
                     
+                    </div>
                     <!-- Input Mensualidad ------------------------------------------------------------------->
                     <div class="input-group mb-3 col-6 mt-5">
                         <span class="input-group-text">$</span>
