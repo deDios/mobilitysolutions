@@ -219,7 +219,7 @@
                           <div class="pt-1">
                             <select id="InputTipo" class="form-select" aria-label="Default select example" name="InputTipo">
                                 <option value="Todos">Selecciona tipo</option> 
-                                <option value="HB">HB</option>
+                                <option value="Hatchback">Hatchback</option>
                                 <option value="Sedan">Sedan</option>
                                 <option value="SUV">SUV</option>  
                                 <option value="Pickup">Pickup</option>
