@@ -33,6 +33,7 @@ $inc = include "../db/Conexion.php";
         auto.propietarios,
         auto.created_at, 
         auto.updated_at 
+        auto.c_type
     FROM mobility_solutions.tmx_auto as auto
     left join mobility_solutions.tmx_sucursal as sucursal on auto.sucursal = sucursal.id 
     left join mobility_solutions.tmx_estatus as estatus on auto.estatus = estatus.id
@@ -60,6 +61,7 @@ $inc = include "../db/Conexion.php";
                         $eje_get = $row['eje'];
                         $pasajeros_get = $row['pasajeros'];
                         $propietarios_get = $row['propietarios'];
+                        $c_type = $row['c_type'];
     }
     }
     else{
@@ -176,6 +178,66 @@ $inc = include "../db/Conexion.php";
                         </div>
                         
                     </div>
+
+                    <!-- Input Color ------------------------------------------------------------------->
+                    <div class="col-2 mt-5">
+                        <label for="InputType" class="form-label">Tipo de auto  <small> / Actual: <?php echo $c_type;?></small></label>
+                        
+                        <?php
+                        switch ($c_type) {
+                            case "Hatchback":
+                                ?>
+                                    <select id="InputType" class="form-select" aria-label="Default select example" name="InputType"> 
+                                        <option value="Hatchback" selected>Hatchback</option>  
+                                        <option value="Sedan">Sedan</option>  
+                                        <option value="SUV">SUV</option>
+                                        <option value="Pickup">Pickup</option>  
+                                    </select>
+                                <?php
+                                break;
+                            case "Sedan":
+                                ?>
+                                    <select id="InputType" class="form-select" aria-label="Default select example" name="InputType">
+                                        <option value="Hatchback">Hatchback</option>  
+                                        <option value="Sedan" selected>Sedan</option>  
+                                        <option value="SUV">SUV</option>
+                                        <option value="Pickup">Pickup</option> 
+                                    </select>
+                                <?php
+                                break;
+                            case "SUV":
+                                ?>
+                                    <select id="InputType" class="form-select" aria-label="Default select example" name="InputType">
+                                        <option value="Hatchback">Hatchback</option>  
+                                        <option value="Sedan">Sedan</option>  
+                                        <option value="SUV" selected>SUV</option>
+                                        <option value="Pickup">Pickup</option> 
+                                    </select>
+                                <?php
+                                break;
+                            case "Pickup":
+                                ?>
+                                    <select id="InputType" class="form-select" aria-label="Default select example" name="InputType">
+                                        <option value="Hatchback">Hatchback</option>  
+                                        <option value="Sedan">Sedan</option>  
+                                        <option value="SUV">SUV</option>
+                                        <option value="Pickup" selected>Pickup</option>  
+                                    </select>
+                                <?php
+                                break;
+                            case "Sin info":
+                                ?>
+                                    <select id="InputType" class="form-select" aria-label="Default select example" name="InputType">
+                                        <option value="Hatchback">Hatchback</option>  
+                                        <option value="Sedan">Sedan</option>  
+                                        <option value="SUV">SUV</option>
+                                        <option value="Pickup">Pickup</option> 
+                                        <option value="Sin info" selected>Sin info</option>   
+                                    </select>
+                                <?php
+                                break;
+                        }
+                        ?>
                     
                     <!-- Input Mensualidad ------------------------------------------------------------------->
                     <div class="input-group mb-3 col-6 mt-5">

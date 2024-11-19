@@ -16,12 +16,14 @@ $cilindros = $_POST['InputCilindros'];
 $eje = $_POST['InputEje'];
 $pasajeros = $_POST['InputPasajeros'];
 $propietarios = $_POST['InputPropietarios'];
+$c_type = $_POST['InputType'];
 
 $color_valor = '"' . $color . '"';
 $transmision_valor = '"' . $transmision . '"';
 $interior_valor = '"' . $interior . '"';
 $combustible_valor = '"' . $combustible . '"';
 $eje_valor = '"' . $eje . '"';
+$c_type_valor = '"' . $c_type . '"';
 
 $inc = include "../db/Conexion.php"; 
 $query = 'update mobility_solutions.tmx_auto SET 
@@ -40,7 +42,8 @@ cilindros = '.$cilindros.',
 eje = '.$eje_valor.', 
 updated_at = NOW(), 
 pasajeros = '.$pasajeros.', 
-propietarios = '.$propietarios.' where id = '.$id.';';
+propietarios = '.$propietarios.',
+c_type = '.$c_type_valor.' where id = '.$id.';';
         
 $result = mysqli_query($con,$query); 
 if ($result){ 
