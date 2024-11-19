@@ -100,6 +100,17 @@
                         </div>
                     </div>
                     
+                    <!-- Tipo auto ------------------------------------------------------------------->
+                    <div class="col-2 mt-2">
+                        <label for="InputType" class="form-label">Tipo de automovil</label>
+                        <select id="InputType" class="form-select" aria-label="Default select example" name="InputType">
+                            <option value="Hatchback">Hatchback</option>  
+                            <option value="Sedan">Sedan</option>  
+                            <option value="SUV">SUV</option>
+                            <option value="Pickup">Pickup</option>  
+                        </select>
+                    </div>
+
                     <!-- Input Mensualidad ------------------------------------------------------------------->
                     <div class="input-group mb-3 col-6 mt-5">
                         <span class="input-group-text">$</span>

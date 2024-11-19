@@ -15,12 +15,14 @@ $cilindros = $_POST['InputCilindros'];
 $eje = $_POST['InputEje'];
 $pasajeros = $_POST['InputPasajeros'];
 $propietarios = $_POST['InputPropietarios'];
+$c_type = $_POST['InputType'];
 
 $color_valor = '"' . $color . '"';
 $transmision_valor = '"' . $transmision . '"';
 $interior_valor = '"' . $interior . '"';
 $combustible_valor = '"' . $combustible . '"';
 $eje_valor = '"' . $eje . '"';
+$ctype_valor = '"' . $c_type . '"';
 
 $img1 = '"' . 'img01' . '"';
 $img2 = '"' . 'img02' . '"';
@@ -30,8 +32,8 @@ $img5 = '"' . 'img05' . '"';
 $img6 = '"' . 'img06' . '"';
 
 $inc = include "../db/Conexion.php"; 
-$query = 'insert into mobility_solutions.tmx_auto (nombre, modelo, marca, mensualidad, costo, sucursal, img1, img2, img3, img4, img5, img6, color, transmision, interior, kilometraje, combustible, cilindros, eje, estatus, updated_at, pasajeros, propietarios) values
-('.$auto.','.$modelo.','.$marca.','.$mensualidad.','.$costo.','.$sucursal.','.$img1.', '.$img2.', '.$img3.', '.$img4.', '.$img5.', '.$img6.','.$color_valor.', '.$transmision_valor.','.$interior_valor.','.$kilometraje.','.$combustible_valor.','.$cilindros.','.$eje_valor.',2,NULL,'.$pasajeros.','.$propietarios.');';
+$query = 'insert into mobility_solutions.tmx_auto (nombre, modelo, marca, mensualidad, costo, sucursal, img1, img2, img3, img4, img5, img6, color, transmision, interior, kilometraje, combustible, cilindros, eje, estatus, updated_at, pasajeros, propietarios, c_type) values
+('.$auto.','.$modelo.','.$marca.','.$mensualidad.','.$costo.','.$sucursal.','.$img1.', '.$img2.', '.$img3.', '.$img4.', '.$img5.', '.$img6.','.$color_valor.', '.$transmision_valor.','.$interior_valor.','.$kilometraje.','.$combustible_valor.','.$cilindros.','.$eje_valor.',2,NULL,'.$pasajeros.','.$propietarios.', '.$ctype_valor.');';
         
 $result = mysqli_query($con,$query); 
 if ($result){ 

@@ -148,6 +148,7 @@ $cod=$_REQUEST['id'];
                                     auto.estatus, 
                                     auto.pasajeros, 
                                     auto.propietarios,
+                                    auto.c_type
                                     DATE_SUB(auto.created_at, INTERVAL 6 HOUR) as created_at, 
                                     DATE_SUB(auto.updated_at, INTERVAL 6 HOUR) as updated_at
                                 FROM mobility_solutions.tmx_auto as auto
@@ -181,6 +182,7 @@ $cod=$_REQUEST['id'];
                                 $estatus = $row['estatus'];
                                 $created_at = $row['created_at'];
                                 $updated_at = $row['updated_at'];
+                                $c_type = $row['c_type']
                 ?> 
                     <tr>
                         <th class=""><?php echo $id;?></th>
@@ -200,6 +202,7 @@ $cod=$_REQUEST['id'];
                         <td><?php echo $estatus;?></td>
                         <td><?php echo $created_at;?></td>
                         <td><?php echo $updated_at;?></td>
+                        <td><?php echo $c_type;?></td>
                         <td><a href="javascript:detalle(<?php echo $id;?>)" class="btn btn-primary">Ver</a></td>
                         <td>
                           <?php 
