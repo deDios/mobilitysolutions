@@ -73,7 +73,7 @@
 
 <!--------------------------------------- Termina Menu ----------------------------------------------->
 
-<div class="container">
+<div class="container2">
 <div class="stepwizard">
     <div class="stepwizard-row setup-panel">
         <div class="stepwizard-step">
