@@ -69,7 +69,7 @@
 
 <!--------------------------------------- Termina Menu ----------------------------------------------->
 
-<div class="container2">
+<div class="container2 py-5">
 <div class="stepwizard">
     <div class="stepwizard-row setup-panel">
         <div class="stepwizard-step">
