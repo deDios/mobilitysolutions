@@ -186,9 +186,7 @@ li {
 .preguntas_f .div_f3 {
   width: 100%;
 }
-
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
-
 .count-up-wrapper {
   text-align: center;
   font-size: 42px;
@@ -214,7 +212,6 @@ li {
   }
 
 }
-
 .slider {
   width: 75vw; 
   height: auto; 
@@ -235,7 +232,6 @@ li {
   border-radius: 10px 10px 10px 10px;
   padding-left: 10px;
 }
-
 .cartas .titulo_carta { 
   display: flex;
   flex-direction: row;
@@ -243,40 +239,7 @@ li {
   height: auto;
   align-items:center;
 }
-
 /*-------------------*/
-.titulo_carta .Imagenes{
-  position: relative;
-  width: 60px;
-  height: 60px;
-}
-
-.Imagenes .imagen-circular {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%; /* Hace que la imagen sea circular */
-    overflow: hidden;
-    object-fit: scale-down; /* Asegura que la imagen se ajuste correctamente */
-}
-
-.Imagenes .imagen-pequeña {
-    position: absolute;
-    bottom: 1px; /* Ajusta la posición vertical */
-    right: 1px; /* Ajusta la posición horizontal */
-    width: 25px; /* Ajusta el tamaño de la imagen pequeña */
-    height: 25px; /* Ajusta el tamaño de la imagen pequeña */
-    border-radius: 50%; /* Opcional, hace que la imagen pequeña también sea circular */
-}
-/*----------------------*/
-
-/*
-.titulo_carta img {
-  width: 45px;
-  height: 45px;
-  overflow: hidden;
-  object-fit: scale-down;
-}
-*/
 .titulo_carta .Descripcion {
   display: grid;
   grid-template-rows: 1fr 1fr;
@@ -300,7 +263,6 @@ li {
   object-fit: scale-down;
   padding-left: 5px;
 }
-
 p.clasificacion {
   position: relative;
   overflow: hidden;
@@ -315,7 +277,6 @@ iframe {
   height: auto;
   border: none;
 }
-
 ol {
   list-style-type: upper-alpha;
 }
@@ -335,6 +296,47 @@ footer .hr3 {
   border-color: gray;
 }
 
+.stepwizard-step p {
+    margin-top: 10px;
+}
+.stepwizard-row {
+    display: table-row;
+}
+.stepwizard {
+    display: table;
+    width: 100%;
+    position: relative;
+}
+.stepwizard-step button[disabled] {
+    opacity: 1 !important;
+    filter: alpha(opacity=100) !important;
+}
+.stepwizard-row:before {
+    top: 14px;
+    bottom: 0;
+    position: absolute;
+    content: " ";
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+}
+.stepwizard-step {
+    display: table-cell;
+    text-align: center;
+    position: relative;
+}
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+
+
+
 @keyframes scroll{
   0% {
     -webkit-transform: translate(0);
@@ -346,22 +348,18 @@ footer .hr3 {
   }
 }
 
-
 @media (max-width:700px){
-
   .preguntas_f{
     display: grid;
     grid-template-columns: repeat(1,1fr);
     padding-left: 10px;
     padding-right: 10px;
 }
-
 .mx-background-top-linear {
   background: -webkit-linear-gradient(45deg, #FFC00A 70%, #1b1e21 26%);
   background: -webkit-linear-gradient(left, #FFC00A 70%, #1b1e21 26%);
   background: linear-gradient(45deg, #FFC00A 70%, #1b1e21 26%);
 }
-
 iframe {
   width: 90%;
   height: auto;
