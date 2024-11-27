@@ -74,9 +74,9 @@
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-light">Descrube lo facil que es vender tu auto</h1>
         <p class="lead text-muted">
-        Mobility Solutions Corporation es un equipo especializado en brindar soluciones integrales para la adquisición de vehículos nuevos y seminuevos. 
-        <br><br>Nuestra misión es facilitar el acceso a la movilidad mediante soluciones de financiamiento personalizadas que se adaptan a las necesidades de cada cliente. 
-        <br><br>Gracias a nuestro sistema de aportaciones periódicas, nuestros clientes pueden ahorrar para el enganche y, en el momento adecuado, elegir el vehículo que mejor se adapte a sus gustos y necesidades de nuestro amplio catálogo de autos nuevos y seminuevos.
+        Vende tu auto con nuestra Red de Distribuidores Autorizados, de forma sencilla, segura e inmediata.
+        <br>
+        Dejanos tus datos, te mostraremos las cotizaciones disponibles para tu auto.
         </p>
         <p>
           Compartenos tu información
