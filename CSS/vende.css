@@ -335,7 +335,9 @@ footer .hr3 {
   border-radius: 15px;
 }
 
-
+.div_about {
+  padding-top: 50px;
+}
 
 @keyframes scroll{
   0% {

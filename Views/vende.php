@@ -68,6 +68,24 @@
 </div>
 
 <!--------------------------------------- Termina Menu ----------------------------------------------->
+<div class="div_about">
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Sobre nosotros</h1>
+        <p class="lead text-muted">
+        Mobility Solutions Corporation es un equipo especializado en brindar soluciones integrales para la adquisición de vehículos nuevos y seminuevos. 
+        <br><br>Nuestra misión es facilitar el acceso a la movilidad mediante soluciones de financiamiento personalizadas que se adaptan a las necesidades de cada cliente. 
+        <br><br>Gracias a nuestro sistema de aportaciones periódicas, nuestros clientes pueden ahorrar para el enganche y, en el momento adecuado, elegir el vehículo que mejor se adapte a sus gustos y necesidades de nuestro amplio catálogo de autos nuevos y seminuevos.
+        </p>
+        <p>
+          <a href="https://mobilitysolutionscorp.com/catalogo.php" class="btn btn-primary my-2">Ir al catálogo</a>
+          <a href="https://mobilitysolutionscorp.com/contact.php" class="btn btn-secondary my-2">Contáctanos</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
 
 <div class="container py-5">
 <div class="stepwizard">
