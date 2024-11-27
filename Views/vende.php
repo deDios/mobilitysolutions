@@ -204,6 +204,51 @@ Envia tu información
 </form>
 </div>
 
+
+<hr class="mt-5 mb-3"/> 
+
+<footer class="mt-5">  
+  <div class="container">    
+    <div class="row">      
+      <div class="col-lg-3">        
+        <h6>Conoce más</h6>  
+        <hr class="hr1 mt-2 mb-3"/>      
+        <ul class="text-secondary list-unstyled">
+          <li>
+            <a class="text-secondary" href="https://mobilitysolutionscorp.com/about_us.php">¿Quiénes Somos?</a>
+          </li>
+        </ul>     
+      </div>      
+      <div class="col-lg-3">        
+        <h6>Legales</h6>    
+        <hr class="hr2 mt-2 mb-3"/>    
+        <ul class="text-secondary list-unstyled">
+          <li>
+            <a class="text-secondary" href="/Views/privacy.php">Aviso de privacidad</a>
+          </li>
+        </ul>       
+      </div>      
+      <div class="col-lg-3">        
+        <h6>Ayuda</h6>    
+        <hr class="hr3 mt-2 mb-3"/>    
+        <ul class="text-secondary list-unstyled">
+          <li>
+            <a class="text-secondary" href="https://mobilitysolutionscorp.com/contact.php">Contacto</a>
+          </li>
+          <li>
+            <a class="text-secondary" href="https://mobilitysolutionscorp.com/about_us.php">Preguntas frecuentes</a>
+          </li>
+        </ul>     
+      </div>  
+      <div class="col-lg-3">     
+        <p class="float-end mb-1">
+          <a href="#">Regresa al inicio</a>
+        </p>
+      </div>    
+    </div>  
+  </div>
+</footer>
+
 <script>
     $(document).ready(function () {
 
