@@ -150,26 +150,26 @@ Envia tu información
 </div>
 <form role="form">
     <div class="row setup-content" id="step-1">
-        <div class="col-xs-12">
-            <div class="col-md-12">
+        <div class="col-xs-6">
+            <div class="col-md-4">
                 <h3>Datos de contacto</h3>
-                <div class="form-group col-4">
+                <div class="form-group">
                     <label class="control-label">Nombre</label>
                     <input  maxlength="100" type="text" required="required" class="form-control" placeholder="Nombre"  />
                 </div>
-                <div class="form-group col-4">
+                <div class="form-group">
                     <label class="control-label">Apellido paterno</label>
                     <input maxlength="100" type="text" required="required" class="form-control" placeholder="Apellido paterno" />
                 </div>
-                <div class="form-group col-4">
+                <div class="form-group">
                     <label class="control-label">Apellido materno</label>
                     <input maxlength="100" type="text" required="required" class="form-control" placeholder="Apellido materno" />
                 </div>
-                <div class="form-group col-2">
+                <div class="form-group">
                     <label for="inputTel">Telefono de contacto</label>
                     <input type="text" class="form-control" id="inputTel" placeholder="33 31337865">
                 </div>
-                <div class="form-group col-4">
+                <div class="form-group">
                     <label for="inputEmail">Correo electronico</label>
                     <input type="text" class="form-control" id="inputEmail" placeholder="1234@gmail.com">
                 </div>
