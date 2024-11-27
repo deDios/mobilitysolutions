@@ -72,7 +72,7 @@
   <section class="py-5 text-center container">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">Sobre nosotros</h1>
+        <h1 class="fw-light">Descrube lo facil que es vender tu auto</h1>
         <p class="lead text-muted">
         Mobility Solutions Corporation es un equipo especializado en brindar soluciones integrales para la adquisición de vehículos nuevos y seminuevos. 
         <br><br>Nuestra misión es facilitar el acceso a la movilidad mediante soluciones de financiamiento personalizadas que se adaptan a las necesidades de cada cliente. 
@@ -91,15 +91,15 @@
     <div class="stepwizard-row setup-panel">
         <div class="stepwizard-step">
             <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
-            <p>Step 1</p>
+            <p>Datos de contacto</p>
         </div>
         <div class="stepwizard-step">
             <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
-            <p>Step 2</p>
+            <p>Datos de tu auto</p>
         </div>
         <div class="stepwizard-step">
             <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
-            <p>Step 3</p>
+            <p>Enviado</p>
         </div>
     </div>
 </div>
