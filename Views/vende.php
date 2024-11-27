@@ -152,12 +152,12 @@ Envia tu información
     <div class="row setup-content" id="step-1">
         <div class="col-xs-12">
             <div class="col-md-12">
-                <h3> Step 1</h3>
-                <div class="form-group">
+                <h3>Datos de contacto</h3>
+                <div class="form-group col-3">
                     <label class="control-label">First Name</label>
                     <input  maxlength="100" type="text" required="required" class="form-control" placeholder="Enter First Name"  />
                 </div>
-                <div class="form-group">
+                <div class="form-group col-3">
                     <label class="control-label">Last Name</label>
                     <input maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Last Name" />
                 </div>
