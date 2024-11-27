@@ -76,7 +76,7 @@
         <p class="lead text-muted">
         Vende tu auto con nuestra red de distribuidores autorizados, de forma sencilla, segura e inmediata.
         <br>
-        Ingresa tus datos y las de tu vehiculo, te mostraremos las cotizaciones disponibles y te contactaremos para que agendes la inspeccion de tu vehiculo en sucursal.
+        Ingresa tus datos y las de tu vehiculo, te mostraremos las cotizaciones disponibles y te contactaremos para que agendes la inspección de tu vehiculo en sucursal.
         <br><br>
         Vender tu auto nunca fue tan sencillo, solo debes seguir estos tres pasos.
         </p>
@@ -153,13 +153,13 @@ Envia tu información
         <div class="col-xs-12">
             <div class="col-md-12">
                 <h3>Datos de contacto</h3>
-                <div class="form-group col-3">
-                    <label class="control-label">First Name</label>
-                    <input  maxlength="100" type="text" required="required" class="form-control" placeholder="Enter First Name"  />
+                <div class="form-group col-4">
+                    <label class="control-label">Nombre</label>
+                    <input  maxlength="100" type="text" required="required" class="form-control" placeholder="Ingrese el nombre"  />
                 </div>
-                <div class="form-group col-3">
-                    <label class="control-label">Last Name</label>
-                    <input maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Last Name" />
+                <div class="form-group col-4">
+                    <label class="control-label">Apellidos</label>
+                    <input maxlength="100" type="text" required="required" class="form-control" placeholder="Ingrese el apellido" />
                 </div>
                 <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
             </div>
