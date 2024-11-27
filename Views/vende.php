@@ -144,7 +144,7 @@ Envia tu información
         </div>
         <div class="stepwizard-step">
             <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
-            <p>Solicitado</p>
+            <p>Envio</p>
         </div>
     </div>
 </div>
@@ -177,9 +177,9 @@ Envia tu información
             </div>
         </div>
     </div>
-    <div class="row setup-content" id="step-2">
+    <div class="row mx-auto setup-content" id="step-2">
         <div class="col-xs-12">
-            <div class="col-md-12">
+            <div class="col-md-6 mx-auto">
                 <h3>Datos del auto que quieres vender</h3>
                 <div class="form-group">
                     <label class="control-label">Marca</label>
@@ -214,11 +214,11 @@ Envia tu información
             </div>
         </div>
     </div>
-    <div class="row setup-content" id="step-3">
+    <div class="row mx-auto setup-content" id="step-3">
         <div class="col-xs-12">
-            <div class="col-md-12">
-                <h3> Step 3</h3>
-                <button class="btn btn-success btn-lg pull-right" type="submit">Finish!</button>
+            <div class="col-md-6 mx-auto">
+                <h3>Enviar información</h3>
+                <button class="btn btn-success btn-lg pull-right" type="submit">Enviar!</button>
             </div>
         </div>
     </div>
