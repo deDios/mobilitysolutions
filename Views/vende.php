@@ -150,8 +150,8 @@ Envia tu información
 </div>
 <form role="form">
     <div class="row setup-content" id="step-1">
-        <div class="col-xs-6">
-            <div class="col-md-4">
+        <div class="col-xs-12">
+            <div class="col-md-6">
                 <h3>Datos de contacto</h3>
                 <div class="form-group">
                     <label class="control-label">Nombre</label>
