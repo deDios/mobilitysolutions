@@ -145,7 +145,7 @@
     </div>
   </div>
 
-<p>
+<p class="tit_carr text-center py-2">
 Compartenos tu información
 </p>
 
