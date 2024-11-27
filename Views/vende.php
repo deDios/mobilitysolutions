@@ -76,7 +76,9 @@
         <p class="lead text-muted">
         Vende tu auto con nuestra Red de Distribuidores Autorizados, de forma sencilla, segura e inmediata.
         <br>
-        Dejanos tus datos, te mostraremos las cotizaciones disponibles para tu auto.
+        Ingresa tus datos y las de tu vehiculo, te mostraremos las cotizaciones disponibles y te contactaremos para que agendes la inspeccion de tu vehiculo en sucursal.
+        <br><br>
+        Vender tu auto es tan sencillo, solo debes seguir estos tres pasos.
         </p>
         <p>
           Compartenos tu información
