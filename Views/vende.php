@@ -94,7 +94,7 @@
           <div class="card shadow-sm">
           <img class="bd-placeholder-img card-img-top" width="100%" height="150" src="/Imagenes/About_us/about_01.jpg">
             <div class="card-body">
-              <p class="card-text">Ingresa tus datos, las de tu vehiculo y recibe una oferta por nuestro grupo de Mobility Solutions.</p>
+              <p class="card-text">Ingresa tus datos, las de tu vehiculo y recibe una oferta por nuestro grupo de Mobility Solutions.</p><br>
             </div>
           </div>
         </div>
