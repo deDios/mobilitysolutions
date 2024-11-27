@@ -139,11 +139,11 @@ Envia tu información
             <p>Contacto</p>
         </div>
         <div class="stepwizard-step">
-            <a href="#step-2" type="button" class="btn btn-warning btn-circle" disabled="disabled">2</a>
+            <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
             <p>Auto</p>
         </div>
         <div class="stepwizard-step">
-            <a href="#step-3" type="button" class="btn btn-warning btn-circle" disabled="disabled">3</a>
+            <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
             <p>Solicitado</p>
         </div>
     </div>
@@ -285,8 +285,8 @@ Envia tu información
                 $item = $(this);
 
         if (!$item.hasClass('disabled')) {
-            navListItems.removeClass('btn-primary').addClass('btn-default');
-            $item.addClass('btn-primary');
+            navListItems.removeClass('btn-warning').addClass('btn-default');
+            $item.addClass('btn-warning');
             allWells.hide();
             $target.show();
             $target.find('input:eq(0)').focus();
