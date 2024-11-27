@@ -69,7 +69,7 @@
 
 <!--------------------------------------- Termina Menu ----------------------------------------------->
 <div class="div_about">
-  <section class="py-5 text-center container">
+  <section class="py-3 text-center container">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-light">Descrube lo facil que es vender tu auto</h1>
@@ -131,7 +131,7 @@
 Envia tu información
 </p>
 
-<div class="container py-5">
+<div class="container py-3">
 <div class="stepwizard">
     <div class="stepwizard-row setup-panel">
         <div class="stepwizard-step">
