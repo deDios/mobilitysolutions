@@ -161,8 +161,8 @@ Envia tu información
                     <label class="control-label">Apellidos</label>
                     <input maxlength="100" type="text" required="required" class="form-control" placeholder="Ingrese el apellido" />
                 </div>
-                <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
             </div>
+            <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
         </div>
     </div>
     <div class="row setup-content" id="step-2">
