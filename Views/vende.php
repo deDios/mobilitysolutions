@@ -165,11 +165,11 @@ Envia tu información
                     <label class="control-label">Apellido materno</label>
                     <input maxlength="100" type="text" required="required" class="form-control" placeholder="Apellido materno" />
                 </div>
-                <div class="form-group col-4">
+                <div class="form-group col-3">
                     <label for="inputTel">Telefono de contacto</label>
                     <input type="text" class="form-control" id="inputTel" placeholder="33 31337865">
                 </div>
-                <div class="form-group col-7">
+                <div class="form-group col-6">
                     <label for="inputEmail">Correo electronico</label>
                     <input type="text" class="form-control" id="inputEmail" placeholder="1234@gmail.com">
                 </div>
