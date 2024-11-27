@@ -155,11 +155,19 @@ Envia tu información
                 <h3>Datos de contacto</h3>
                 <div class="form-group col-4">
                     <label class="control-label">Nombre</label>
-                    <input  maxlength="100" type="text" required="required" class="form-control" placeholder="Ingrese el nombre"  />
+                    <input  maxlength="100" type="text" required="required" class="form-control" placeholder="Nombre"  />
                 </div>
                 <div class="form-group col-4">
-                    <label class="control-label">Apellidos</label>
-                    <input maxlength="100" type="text" required="required" class="form-control" placeholder="Ingrese el apellido" />
+                    <label class="control-label">Apellido paterno</label>
+                    <input maxlength="100" type="text" required="required" class="form-control" placeholder="Apellido paterno" />
+                </div>
+                <div class="form-group col-4">
+                    <label class="control-label">Apellido materno</label>
+                    <input maxlength="100" type="text" required="required" class="form-control" placeholder="Apellido materno" />
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail">Correo electronico</label>
+                    <input type="text" class="form-control" id="inputEmail" placeholder="1234@gmail.com">
                 </div>
             </div>
             <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
