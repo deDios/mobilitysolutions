@@ -183,32 +183,32 @@ Envia tu información
                 <h3 class="tit1 mt-2">Datos del auto que quieres vender</h3>
                 <div class="form-group">
                     <label class="control-label">Marca</label>
-                    <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name" />
+                    <input maxlength="200" type="text" required="required" class="form-control" placeholder="Ingresa marca de tu auto" />
                 </div>
                 <div class="form-group">
                     <label class="control-label">Modelo</label>
-                    <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address"  />
+                    <input maxlength="200" type="text" required="required" class="form-control" placeholder="Ingresa modelo de tu auto"  />
                 </div>
                 <div class="form-group">
-                    <label class="control-label">Version</label>
-                    <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address"  />
+                    <label class="control-label">Versión</label>
+                    <input maxlength="200" type="text" required="required" class="form-control" placeholder="Ingresa versión de tu auto"  />
                 </div>
                 <div class="form-group">
                     <label class="control-label">Año</label>
-                    <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address"  />
+                    <input maxlength="200" type="text" required="required" class="form-control" placeholder="Ingresa Año"  />
                 </div>
                 <div class="form-group">
                     <label class="control-label">Kilometraje</label>
-                    <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address"  />
+                    <input maxlength="200" type="text" required="required" class="form-control" placeholder=""  />
                 </div>
                 <h5>¿Donde se encuentra tu auto?</h5>
                 <div class="form-group">
                     <label class="control-label">Estado</label>
-                    <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address"  />
+                    <input maxlength="200" type="text" required="required" class="form-control" placeholder="Ingresa estado"  />
                 </div>
                 <div class="form-group">
                     <label class="control-label">Municipio</label>
-                    <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address"  />
+                    <input maxlength="200" type="text" required="required" class="form-control" placeholder="Ingresa municipio"  />
                 </div>
                 <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
             </div>
