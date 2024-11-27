@@ -144,7 +144,7 @@ Envia tu información
         </div>
         <div class="stepwizard-step">
             <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
-            <p>Envio</p>
+            <p>Solicitado</p>
         </div>
     </div>
 </div>
