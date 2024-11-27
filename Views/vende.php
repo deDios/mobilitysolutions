@@ -151,7 +151,7 @@ Envia tu información
 <form role="form">
     <div class="row setup-content" id="step-1">
         <div class="col-xs-12">
-            <div class="col-md-12">
+            <div class="row mt-2">
                 <h3>Datos de contacto</h3>
                 <div class="form-group col-4">
                     <label class="control-label">Nombre</label>
