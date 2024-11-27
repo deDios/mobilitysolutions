@@ -152,7 +152,7 @@ Envia tu información
     <div class="row mx-auto setup-content" id="step-1">
         <div class="col-xs-12">
             <div class="col-md-6 mx-auto">
-                <h3>Datos de contacto</h3>
+                <h3 class="tit1 mt-2">Datos de contacto</h3>
                 <div class="form-group">
                     <label class="control-label">Nombre</label>
                     <input  maxlength="100" type="text" required="required" class="form-control" placeholder="Nombre"  />
@@ -180,7 +180,7 @@ Envia tu información
     <div class="row mx-auto setup-content" id="step-2">
         <div class="col-xs-12">
             <div class="col-md-6 mx-auto">
-                <h3>Datos del auto que quieres vender</h3>
+                <h3 class="tit1 mt-2">Datos del auto que quieres vender</h3>
                 <div class="form-group">
                     <label class="control-label">Marca</label>
                     <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name" />
@@ -217,7 +217,7 @@ Envia tu información
     <div class="row mx-auto setup-content" id="step-3">
         <div class="col-xs-12">
             <div class="col-md-6 mx-auto">
-                <h3>Enviar información</h3>
+                <h3 class="tit1 mt-2">Enviar información</h3>
                 <button class="btn btn-success btn-lg pull-right" type="submit">Enviar!</button>
             </div>
         </div>
