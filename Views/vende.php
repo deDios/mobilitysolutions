@@ -135,7 +135,7 @@ Envia tu información
 <div class="stepwizard">
     <div class="stepwizard-row setup-panel">
         <div class="stepwizard-step">
-            <a href="#step-1" type="button" class="btn btn-warning btn-circle">1</a>
+            <a href="#step-1" type="button" class="btn btn-warning btn-circle" disabled="">1</a>
             <p>Contacto</p>
         </div>
         <div class="stepwizard-step">
