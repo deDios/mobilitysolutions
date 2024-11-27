@@ -135,7 +135,7 @@ Envia tu información
 <div class="stepwizard">
     <div class="stepwizard-row setup-panel">
         <div class="stepwizard-step">
-            <a href="#step-1" type="button" class="btn btn-warning btn-circle" disabled="">1</a>
+            <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
             <p>Contacto</p>
         </div>
         <div class="stepwizard-step">
@@ -285,8 +285,8 @@ Envia tu información
                 $item = $(this);
 
         if (!$item.hasClass('disabled')) {
-            navListItems.removeClass('btn-warning').addClass('btn-default');
-            $item.addClass('btn-warning');
+            navListItems.removeClass('btn-primary').addClass('btn-default');
+            $item.addClass('btn-primary');
             allWells.hide();
             $target.show();
             $target.find('input:eq(0)').focus();
