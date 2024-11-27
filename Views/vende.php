@@ -153,7 +153,7 @@ Envia tu información
         <div class="col-xs-12">
             <div class="row mt-2">
                 <h3>Datos de contacto</h3>
-                <div class="form-group col-4">
+                <div class="form-group col-4 mt-2">
                     <label class="control-label">Nombre</label>
                     <input  maxlength="100" type="text" required="required" class="form-control" placeholder="Nombre"  />
                 </div>
@@ -174,7 +174,7 @@ Envia tu información
                     <input type="text" class="form-control" id="inputEmail" placeholder="1234@gmail.com">
                 </div>
             </div>
-            <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
+            <button class="btn btn-primary nextBtn btn-lg pull-right mt-2" type="button" >Next</button>
         </div>
     </div>
     <div class="row setup-content" id="step-2">
