@@ -74,11 +74,11 @@
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-light">Descrube lo facil que es vender tu auto</h1>
         <p class="lead text-muted">
-        Vende tu auto con nuestra Red de Distribuidores Autorizados, de forma sencilla, segura e inmediata.
+        Vende tu auto con nuestra red de distribuidores autorizados, de forma sencilla, segura e inmediata.
         <br>
         Ingresa tus datos y las de tu vehiculo, te mostraremos las cotizaciones disponibles y te contactaremos para que agendes la inspeccion de tu vehiculo en sucursal.
         <br><br>
-        Vender tu auto es tan sencillo, solo debes seguir estos tres pasos.
+        Vender nunca fue tan sencillo, solo debes seguir estos tres pasos.
         </p>
         <p>
           Compartenos tu información
