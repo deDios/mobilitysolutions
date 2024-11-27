@@ -85,7 +85,7 @@
   </section>
 </div>
 
-<div class="album py-2">
+<div class="album">
     <div class="container">
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -93,16 +93,8 @@
       <div class="col">
           <div class="card shadow-sm">
           <img class="bd-placeholder-img card-img-top" width="100%" height="150" src="/Imagenes/About_us/about_01.jpg">
-
             <div class="card-body">
               <p class="card-text">Con más de 10 años de experiencia en el mercado, hemos establecido alianzas estratégicas que nos permiten ofrecer las mejores soluciones de financiamiento.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary"></button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary"></button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
             </div>
           </div>
         </div>
@@ -114,11 +106,6 @@
             <div class="card-body">
               <p class="card-text">En Mobility Solutions Corporation, nos enorgullecemos de fomentar una filosofía de colaboración y pertenencia.</p><br>
               <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary"></button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary"></button>
-                </div>
-                <small class="text-muted">9 mins</small>
               </div>
             </div>
           </div>
@@ -131,11 +118,6 @@
             <div class="card-body">
               <p class="card-text">Mobility Solutions Corporation es la elección inteligente para aquellos que buscan una solución de movilidad eficiente, accesible y personalizada.</p><br>
               <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary"></button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary"></button>
-                </div>
-                <small class="text-muted">9 mins</small>
               </div>
             </div>
 
