@@ -94,7 +94,7 @@
           <div class="card shadow-sm">
           <img class="bd-placeholder-img card-img-top" width="100%" height="150" src="/Imagenes/About_us/about_01.jpg">
             <div class="card-body">
-              <p class="card-text">Con más de 10 años de experiencia en el mercado, hemos establecido alianzas estratégicas que nos permiten ofrecer las mejores soluciones de financiamiento.</p>
+              <p class="card-text">Ingresa tus datos, las de tu vehiculo y recibe una oferta por nuestro grupo de Mobility Solutions.</p>
             </div>
           </div>
         </div>
@@ -104,7 +104,7 @@
             <img class="bd-placeholder-img card-img-top" width="100%" height="150" src="/Imagenes/About_us/about_03.jpg">
 
             <div class="card-body">
-              <p class="card-text">En Mobility Solutions Corporation, nos enorgullecemos de fomentar una filosofía de colaboración y pertenencia.</p><br>
+              <p class="card-text">Programa la hora que mas te convenga para la inspeccion de tu vehiculo en nuestras sucursales.</p><br>
               <div class="d-flex justify-content-between align-items-center">
               </div>
             </div>
@@ -116,7 +116,7 @@
             <img class="bd-placeholder-img card-img-top" width="100%" height="150" src="/Imagenes/About_us/about_02.jpg">
 
             <div class="card-body">
-              <p class="card-text">Mobility Solutions Corporation es la elección inteligente para aquellos que buscan una solución de movilidad eficiente, accesible y personalizada.</p><br>
+              <p class="card-text">Obten tu pago y recibe el valor de tu auto de forma facil, rapida y segura.</p><br>
               <div class="d-flex justify-content-between align-items-center">
               </div>
             </div>
@@ -201,7 +201,7 @@ Envia tu información
                     <label class="control-label">Kilometraje</label>
                     <input maxlength="200" type="text" required="required" class="form-control" placeholder=""  />
                 </div>
-                <h5>¿Donde se encuentra tu auto?</h5>
+                <h5 class="tit1 mt-2">¿Donde se encuentra tu auto?</h5>
                 <div class="form-group">
                     <label class="control-label">Estado</label>
                     <input maxlength="200" type="text" required="required" class="form-control" placeholder="Ingresa estado"  />
