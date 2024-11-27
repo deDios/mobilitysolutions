@@ -127,9 +127,9 @@
     </div>
   </div>
 
-<p class="tit_carr text-center py-5">
+<h4 class="tit_carr text-center py-5">
 Envia tu información
-</p>
+</h4>
 
 <div class="container py-3">
 <div class="stepwizard">
