@@ -285,13 +285,13 @@ Envia tu información
             <div class="col-md-6 mx-auto">
                 <h3 class="tit1 mt-2">Ultimos detalles</h3>
                 <p>Haz finalizado el registro, el equipo de Mobility Solutions se pondrá en contacto contigo para continuar con el proceso de compra de tu vehiculo, ten listo lo siguiente:</p><br>
-                <p>1. Foto de frente de tu vehiculo. </p><br>
-                <p>2. Foto de perfil. </p><br>
-                <p>3. Foto de llanta. </p><br>
-                <p>4. Foto de asientos traseros. </p><br>
-                <p>5. Foto de asientos delanteros. </p><br>
-                <p>6. Foto de motor. </p><br>
-                <p>7. Foto de tablero. </p><br>
+                <p>1. Foto de frente de tu vehiculo. </p>
+                <p>2. Foto de perfil. </p>
+                <p>3. Foto de llanta. </p>
+                <p>4. Foto de asientos traseros. </p>
+                <p>5. Foto de asientos delanteros. </p>
+                <p>6. Foto de motor. </p>
+                <p>7. Foto de tablero. </p>
                 <p>8. Foto de cajuela. </p><br>
                 <button class="btn btn-success btn-lg pull-right" type="submit">Enviar!</button>
             </div>
