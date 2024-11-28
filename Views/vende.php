@@ -227,7 +227,7 @@ Envia tu información
                 </div>
                 <div class="form-group">
                     <label class="required-field">Imperfecciones</label>
-                    <textarea type="text" class="form-control" rows="4" placeholder="Descripcion detallada" required> </textarea>
+                    <textarea class="form-control" id="message" name="message" rows="4" placeholder="Hola, me gustaria saber....." required></textarea>
                 </div>
 
                 <h5 class="tit1 py-2">¿Donde se encuentra tu auto?</h5>
