@@ -210,8 +210,10 @@ Envia tu información
                 </div>
                 <div class="form-group">
                     <label class="control-label">Kilometraje</label>
-                    <input maxlength="200" type="text" required="required" class="form-control" placeholder=""  />
-                    <span class="input-group-text">km</span>
+                    <div class="input-group">
+                            <input id="InputKilometraje" type="text" class="form-control" name="InputKilometraje"  aria-label="Amount (to the nearest dollar)">
+                            <span class="input-group-text">km</span>
+                        </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Refrendo vehicular</label>
