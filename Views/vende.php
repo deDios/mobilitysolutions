@@ -203,7 +203,16 @@ Envia tu información
                 </div>
                 <div class="form-group">
                     <label class="control-label">Refrendo vehicular</label>
-                    <input maxlength="200" type="text" required="required" class="form-control" placeholder=""  />
+                    <div class="col mb-3 form-check"> 
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="InputRefrendo" id="InputRefrendo" value="No" checked="">
+                                <label class="form-check-label" for="InputRefrendo">No (Sin adeudo)</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="InputRefrendo" id="InputRefrendo" value="Si">
+                                <label class="form-check-label" for="InputRefrendo">Si (Con adeudo)</label>
+                            </div>
+                    </div>
                 </div>
                 <h5 class="tit1 mt-2">¿Donde se encuentra tu auto?</h5>
                 <div class="form-group">
