@@ -211,6 +211,7 @@ Envia tu información
                 <div class="form-group">
                     <label class="control-label">Kilometraje</label>
                     <input maxlength="200" type="text" required="required" class="form-control" placeholder=""  />
+                    <span class="input-group-text">km</span>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Refrendo vehicular</label>
