@@ -167,11 +167,11 @@ Envia tu información
                 </div>
                 <div class="form-group">
                     <label for="inputTel">Telefono de contacto</label>
-                    <input type="text" class="form-control" id="inputTel" placeholder="33 31337865">
+                    <input type="text" class="form-control" id="inputTel" required="required"  placeholder="33 31337865">
                 </div>
                 <div class="form-group">
                     <label for="inputEmail">Correo electronico</label>
-                    <input type="text" class="form-control" id="inputEmail" placeholder="1234@gmail.com">
+                    <input type="text" class="form-control" id="inputEmail" required="required" placeholder="1234@gmail.com">
                 </div>
                 <button class="btn btn-primary nextBtn btn-lg pull-right mt-2" type="button" >Next</button>
             </div>
