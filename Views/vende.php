@@ -195,7 +195,18 @@ Envia tu información
                 </div>
                 <div class="form-group">
                     <label class="control-label">Año</label>
-                    <input maxlength="200" type="text" required="required" class="form-control" placeholder="Ingresa Año"  />
+                    <select id="InputAnio" class="form-select" aria-label="Default select example" name="InputAnio">
+                        <option value="Todos">Selecciona año</option>  
+                        <option value="2016">2016</option> 
+                        <option value="2017">2017</option> 
+                        <option value="2018">2018</option> 
+                        <option value="2019">2019</option> 
+                        <option value="2020">2020</option> 
+                        <option value="2021">2021</option> 
+                        <option value="2022">2022</option> 
+                        <option value="2023">2023</option> 
+                        <option value="2024">2024</option> 
+                    </select>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Kilometraje</label>
