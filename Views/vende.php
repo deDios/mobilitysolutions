@@ -216,7 +216,7 @@ Envia tu información
                 </div>
                 <div class="form-group">
                     <label class="control-label">Imperfecciones</label>
-                    <textarea type="text" required="required" class="form-control" placeholder="Descripcion detallada de imperfecciones en exterior e interior de la unidad" />
+                    <textarea type="text" required="required" class="form-control" placeholder="Descripcion detallada de imperfecciones en exterior e interior de la unidad"> </textarea>
                 </div>
 
                 <h5 class="tit1 py-2">¿Donde se encuentra tu auto?</h5>
