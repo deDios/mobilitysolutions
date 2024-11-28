@@ -201,6 +201,10 @@ Envia tu información
                     <label class="control-label">Kilometraje</label>
                     <input maxlength="200" type="text" required="required" class="form-control" placeholder=""  />
                 </div>
+                <div class="form-group">
+                    <label class="control-label">Refrendo vehicular</label>
+                    <input maxlength="200" type="text" required="required" class="form-control" placeholder=""  />
+                </div>
                 <h5 class="tit1 mt-2">¿Donde se encuentra tu auto?</h5>
                 <div class="form-group">
                     <label class="control-label">Estado</label>
