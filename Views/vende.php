@@ -144,7 +144,7 @@ Envia tu información
         </div>
         <div class="stepwizard-step">
             <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
-            <p>Solicitado</p>
+            <p>Imagenes</p>
         </div>
     </div>
 </div>
@@ -217,7 +217,7 @@ Envia tu información
     <div class="row mx-auto setup-content" id="step-3">
         <div class="col-xs-12">
             <div class="col-md-6 mx-auto">
-                <h3 class="tit1 mt-2">Enviar información</h3>
+                <h3 class="tit1 mt-2">Carga de imagenes</h3>
                 <button class="btn btn-success btn-lg pull-right" type="submit">Enviar!</button>
             </div>
         </div>
