@@ -214,7 +214,12 @@ Envia tu información
                             </div>
                     </div>
                 </div>
-                <h5 class="tit1 mt-2">¿Donde se encuentra tu auto?</h5>
+                <div class="form-group">
+                    <label class="control-label">Imperfecciones</label>
+                    <textarea type="text" required="required" class="form-control" placeholder="Descripcion detallada de imperfecciones en exterior e interior de la unidad" />
+                </div>
+
+                <h5 class="tit1 py-2">¿Donde se encuentra tu auto?</h5>
                 <div class="form-group">
                     <label class="control-label">Estado</label>
                     <input maxlength="200" type="text" required="required" class="form-control" placeholder="Ingresa estado"  />
