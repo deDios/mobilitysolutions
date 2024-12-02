@@ -224,12 +224,12 @@ Envia tu información
                     <label for='InputRefrendo' class='form-label'>Refrendo vehicular</label>
                         <div class="col mb-3 form-check"> 
                             <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="InputRefrendo" id="InputRefrendo2" value="No" checked="">
                                 <label class="form-check-label" for="InputInterior">Al corriente</label>
-                                <input type="radio" id="InputRefrendo2">
                             </div>
                             <div class="form-check form-check-inline">
-                                <label class="form-check-label" for="InputInterior">Adeudos anuales (¿Cuantos?)</label>
-                                <input type="radio" id="InputRefrendo">
+                                <input class="form-check-input" type="radio" name="InputRefrendo" id="InputRefrendo" value="Si" checked="">
+                                <label class="form-check-label" for="InputInterior">Adeudo anuales (¿Cuantos?)</label>
                             </div>
                         </div>
                 </div>
