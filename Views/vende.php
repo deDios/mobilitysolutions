@@ -237,9 +237,9 @@ Envia tu información
                       var valor = $(this).val();
                     
                       if(valor == 'No'){
-                          $("#anios").css("display", "none");
-                      }else{
                           $("#anios").css("display", "block");
+                      }else{
+                          $("#anios").css("display", "none");
                       }
                   });
                 });
