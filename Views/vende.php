@@ -232,7 +232,7 @@ Envia tu información
                       });
                   });
                 </script>
-                <div id="anios" class="form-group" style="display:none">
+                <div id="anios" class="anios form-group">
                     <label class="control-label">Años de adeudo</label>
                     <select id="InputAdeudo" class="form-select" aria-label="Default select example" name="InputAdeudo">
                         <option value="1">Año actual</option>  
