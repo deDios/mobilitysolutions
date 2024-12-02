@@ -229,14 +229,16 @@ Envia tu información
                             </div>
                     </div>
                 </div>
-                <script type="text/javascript">
-                        function toggle(elemento) {
-                          if(elemento.value=="No") {
-                              document.getElementById("anios").style.display = "none";
-                          }else{
-                              document.getElementById("anios").style.display = "block";
-                            }
-                          }
+                <script>
+                  $(document).ready(function () {
+                      $("#InputRefrendo").change(function () {
+                        if(elemento.value=="No") {
+                          document.getElementById("anios").style.display = "none";
+                        }else{
+                          document.getElementById("anios").style.display = "block";
+                        }
+                      });
+                  });
                 </script>
                 <div id="anios" class="form-group" style="display:none">
                     <label class="control-label">Años de adeudo</label>
