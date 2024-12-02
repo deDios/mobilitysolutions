@@ -217,25 +217,17 @@ Envia tu información
                         </div>
                 </div>
                 <div class="form-group">
+                    <input type="checkbox" id="InputRefrendo">
                     <label class="control-label">Refrendo vehicular</label>
-                    <div class="col mb-3 form-check"> 
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="InputRefrendo" id="InputRefrendo" value="No" checked="">
-                                <label class="form-check-label" for="InputRefrendo">No (Sin adeudo)</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="InputRefrendo" id="InputRefrendo" value="Si">
-                                <label class="form-check-label" for="InputRefrendo">Si (Con adeudo)</label>
-                            </div>
-                    </div>
                 </div>
                 <script>
                   $(document).ready(function () {
+                    let campoInput = $('.anios');
                       $("#InputRefrendo").change(function () {
-                        if(document.getElementById("InputRefrendo").value('No')) {
-                          document.getElementById("anios").style.display = "none";
-                        }else{
-                          document.getElementById("anios").style.display = "block";
+                        if($(this).is(':checked')) {
+                            campoInput.hide();
+                        } else {
+                            campoInput.show();
                         }
                       });
                   });
