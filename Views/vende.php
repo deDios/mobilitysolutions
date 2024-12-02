@@ -229,6 +229,31 @@ Envia tu información
                             </div>
                     </div>
                 </div>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+                <script>
+                  $(document).ready(function(){
+                  $(".InputRefrendo").click(function(evento){
+                    
+                      var valor = $(this).val();
+                    
+                      if(valor == 'No'){
+                          $("#anios").css("display", "none");
+                      }else{
+                          $("#anios").css("display", "block");
+                      }
+                  });
+                });
+                </script>
+                <div id="anios" class="form-group">
+                    <label class="control-label">Años de adeudo</label>
+                    <select id="InputAdeudo" class="form-select" aria-label="Default select example" name="InputAdeudo">
+                        <option value="1">Año actual</option>  
+                        <option value="2">2</option> 
+                        <option value="3">3</option> 
+                        <option value="4">4</option> 
+                        <option value="5">+4</option> 
+                    </select>
+                </div>
                 <div class="form-group">
                     <label class="required-field">Imperfecciones</label>
                     <textarea class="form-control" id="message" name="message" rows="4" placeholder="Descripcion detallada de imperfecciones en exterior e interior de la unidad." required></textarea>
