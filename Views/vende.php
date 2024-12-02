@@ -237,10 +237,17 @@ Envia tu información
                   $(document).ready(function () {
                     let campoInput = $('.anios');
                       $("#InputRefrendo").change(function () {
-                        if(document.getElementById('InputRefrendo').checked) {
-                          campoInput.show();
-                        }else if(document.getElementById('InputRefrendo2').checked) {
-                          campoInput.hide();
+                        if($(this).is(':checked')) {
+                            campoInput.show();
+                        } else {
+                            campoInput.hide();
+                        }
+                      });
+                      $("#InputRefrendo2").change(function () {
+                        if($(this).is(':checked')) {
+                            campoInput.hide();
+                        } else {
+                            campoInput.show();
                         }
                       });
                   });
