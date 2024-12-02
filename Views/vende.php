@@ -255,7 +255,7 @@ Envia tu información
                 <div id="anios" class="anios form-group" style="display:none">
                     <label class="control-label">Años de adeudo</label>
                     <select id="InputAdeudo" class="form-select" aria-label="Default select example" name="InputAdeudo">
-                        <option value="1">Año actual</option>  
+                        <option value="1">1</option>  
                         <option value="2">2</option> 
                         <option value="3">3</option> 
                         <option value="4">+3</option> 
