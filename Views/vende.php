@@ -229,22 +229,16 @@ Envia tu información
                             </div>
                     </div>
                 </div>
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-                <script>
-                  $(document).ready(function(){
-                  $(".InputRefrendo").click(function(evento){
-                    
-                      var valor = $(this).val();
-                    
-                      if(valor == 'No'){
-                          $("#anios").css("display", "block");
-                      }else{
-                          $("#anios").css("display", "none");
-                      }
-                  });
-                });
+                <script type="text/javascript">
+                        function toggle(elemento) {
+                          if(elemento.value=="No") {
+                              document.getElementById("anios").style.display = "none";
+                          }else{
+                              document.getElementById("anios").style.display = "block";
+                            }
+                          }
                 </script>
-                <div id="anios" class="anios form-group">
+                <div id="anios" class="form-group" style="display:none">
                     <label class="control-label">Años de adeudo</label>
                     <select id="InputAdeudo" class="form-select" aria-label="Default select example" name="InputAdeudo">
                         <option value="1">Año actual</option>  
