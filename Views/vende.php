@@ -218,16 +218,16 @@ Envia tu información
                 </div>
                 <div class="form-group">
                     <input type="checkbox" id="InputRefrendo">
-                    <label class="control-label">Tiene adeudo en refrendos vehiculares</label>
+                    <label class="control-label">¿Tiene adeudo en refrendos vehiculares?</label>
                 </div>
                 <script>
                   $(document).ready(function () {
                     let campoInput = $('.anios');
                       $("#InputRefrendo").change(function () {
                         if($(this).is(':checked')) {
-                            campoInput.hide();
-                        } else {
                             campoInput.show();
+                        } else {
+                            campoInput.hide();
                         }
                       });
                   });
