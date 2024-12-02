@@ -77,11 +77,11 @@
   <section class="py-3 text-center container">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">Descrube lo facil que es vender tu auto</h1>
+        <h1 class="fw-light">Descubre lo fácil que es vender tu auto</h1>
         <p class="lead text-muted">
         Vende tu auto con nuestra red de distribuidores autorizados, de forma sencilla, segura e inmediata.
         <br>
-        Ingresa tus datos y las de tu vehiculo, te mostraremos las cotizaciones disponibles y te contactaremos para que agendes la inspección de tu vehiculo en sucursal.
+        Ingresa tus datos y las de tu vehículo, te mostraremos las cotizaciones disponibles y te contactaremos para que agendes la inspección de tu vehículo en sucursal.
         <br><br>
         Vender tu auto nunca fue tan sencillo, solo debes seguir estos tres pasos.
         </p>
@@ -99,7 +99,7 @@
           <div class="card shadow-sm">
           <img class="bd-placeholder-img card-img-top" width="100%" height="150" src="/Imagenes/Vende/registro.jpg">
             <div class="card-body">
-              <p class="card-text">Ingresa tus datos, las de tu vehiculo y recibe una oferta por nuestro grupo de Mobility Solutions.</p><br>
+              <p class="card-text">Ingresa tus datos, las de tu vehículo y recibe una oferta por nuestro grupo de Mobility Solutions.</p><br>
             </div>
           </div>
         </div>
@@ -109,7 +109,7 @@
             <img class="bd-placeholder-img card-img-top" width="100%" height="150" src="/Imagenes/Vende/agenda.jpg">
 
             <div class="card-body">
-              <p class="card-text">Programa la hora que mas te convenga para la inspeccion de tu vehiculo en nuestras sucursales.</p><br>
+              <p class="card-text">Programa la hora que más te convenga para la inspección de tu vehículo en nuestras sucursales.</p><br>
               <div class="d-flex justify-content-between align-items-center">
               </div>
             </div>
@@ -121,7 +121,7 @@
             <img class="bd-placeholder-img card-img-top" width="100%" height="150" src="/Imagenes/Vende/registro.jpg">
 
             <div class="card-body">
-              <p class="card-text">Obten tu pago y recibe el valor de tu auto de forma facil, rapida y segura.</p><br>
+              <p class="card-text">Obtén tu pago y recibe el valor de tu auto de forma fácil, rápida y segura.</p><br>
               <div class="d-flex justify-content-between align-items-center">
               </div>
             </div>
@@ -133,7 +133,7 @@
   </div>
 
 <h4 class="tit_carr text-center py-5">
-Envia tu información
+Envía tu información
 </h4>
 
 <div class="container py-3">
@@ -171,11 +171,11 @@ Envia tu información
                     <input maxlength="100" type="text" required="required" class="form-control" placeholder="Apellido materno" />
                 </div>
                 <div class="form-group">
-                    <label for="inputTel">Telefono de contacto</label>
+                    <label for="inputTel">Teléfono de contacto</label>
                     <input type="text" class="form-control" id="inputTel" required="required"  placeholder="33 31337865">
                 </div>
                 <div class="form-group">
-                    <label for="inputEmail">Correo electronico</label>
+                    <label for="inputEmail">Correo electrónico</label>
                     <input type="text" class="form-control" id="inputEmail" required="required" placeholder="1234@gmail.com">
                 </div>
                 <button class="btn btn-primary nextBtn btn-lg pull-right mt-2" type="button" >Next</button>
@@ -263,7 +263,7 @@ Envia tu información
                 </div>
                 <div class="form-group">
                     <label class="required-field">Imperfecciones</label>
-                    <textarea class="form-control" id="message" name="message" rows="4" placeholder="Descripcion detallada de imperfecciones en exterior e interior de la unidad." required></textarea>
+                    <textarea class="form-control" id="message" name="message" rows="4" placeholder="Descripción detallada de imperfecciones en exterior e interior de la unidad." required></textarea>
                 </div>
 
                 <h5 class="tit1 py-2">¿Donde se encuentra tu auto?</h5>
@@ -316,8 +316,8 @@ Envia tu información
     <div class="row mx-auto setup-content" id="step-3">
         <div class="col-xs-12">
             <div class="col-md-6 mx-auto">
-                <h3 class="tit1 mt-2">Ultimos detalles</h3>
-                <p>Haz finalizado el registro, el equipo de Mobility Solutions se pondrá en contacto contigo para continuar con el proceso de compra de tu vehiculo, ten listo lo siguiente:</p><br>
+                <h3 class="tit1 mt-2">Últimos detalles</h3>
+                <p>Haz finalizado el registro, el equipo de Mobility Solutions se pondrá en contacto contigo para continuar con el proceso de compra de tu vehículo, ten listo lo siguiente:</p><br>
                 <p>1. Foto de frente de tu vehiculo. </p>
                 <p>2. Foto de perfil. </p>
                 <p>3. Foto de llanta. </p>
@@ -326,7 +326,7 @@ Envia tu información
                 <p>6. Foto de motor. </p>
                 <p>7. Foto de tablero. </p>
                 <p>8. Foto de cajuela. </p><br>
-                <p>Al enviar tu registro, confirmas que haz leído y acepto los términos y condiciones generales de uso, incluyendo la política de privacidad según la cual tus datos personales pueden ser utilizados por Mobility Solutions y sus socios. </p>
+                <p>Al enviar tu registro, confirmas que has leído y acepto los términos y condiciones generales de uso, incluyendo la política de privacidad según la cual tus datos personales pueden ser utilizados por Mobility Solutions y sus socios. </p>
                 <button class="btn btn-success btn-lg pull-right" type="submit">Enviar!</button>
             </div>
         </div>
