@@ -224,7 +224,7 @@ Envia tu información
                                 <label class="form-check-label" for="InputRefrendo">No (Sin adeudo)</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="InputRefrendo" id="InputRefrendo" value="Si">
+                                <input class="form-check-input" type="radio" name="InputRefrendo" id="InputRefrendo2" value="Si">
                                 <label class="form-check-label" for="InputRefrendo">Si (Con adeudo)</label>
                             </div>
                     </div>
@@ -232,7 +232,7 @@ Envia tu información
                 <script>
                   $(document).ready(function () {
                       $("#InputRefrendo").change(function () {
-                        if(elemento.value=="No") {
+                        if($(this).is(':checked')) {
                           document.getElementById("anios").style.display = "none";
                         }else{
                           document.getElementById("anios").style.display = "block";
