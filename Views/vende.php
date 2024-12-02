@@ -136,7 +136,7 @@ Envia tu información
 <div class="stepwizard">
     <div class="stepwizard-row setup-panel">
         <div class="stepwizard-step">
-            <a href="#step-1" type="button" class="btn btn-primary btn-circle mx-auto">1</a>
+            <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
             <p>Contacto</p>
         </div>
         <div class="stepwizard-step">
@@ -232,7 +232,7 @@ Envia tu información
                       });
                   });
                 </script>
-                <div id="anios" class="anios form-group">
+                <div id="anios" class="anios form-group" style="display:none">
                     <label class="control-label">Años de adeudo</label>
                     <select id="InputAdeudo" class="form-select" aria-label="Default select example" name="InputAdeudo">
                         <option value="1">Año actual</option>  
