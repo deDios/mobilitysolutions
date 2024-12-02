@@ -218,7 +218,7 @@ Envia tu información
                 </div>
                 <div class="form-group">
                     <input type="checkbox" id="InputRefrendo">
-                    <label class="control-label">Refrendo vehicular</label>
+                    <label class="control-label">Tiene adeudo en refrendos vehiculares</label>
                 </div>
                 <script>
                   $(document).ready(function () {
