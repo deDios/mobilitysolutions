@@ -10,6 +10,7 @@ $pdf_file = "/DOCS/AP.pdf";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title; ?></title>
+    <link rel="shortcut icon" href="../Imagenes/movility.ico" />
     <link rel="stylesheet" href="../CSS/estilos.css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
