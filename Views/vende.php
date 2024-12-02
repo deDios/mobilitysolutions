@@ -233,9 +233,9 @@ Envia tu información
                   $(document).ready(function () {
                       $("#InputRefrendo").change(function () {
                         if($(this).is(':checked')) {
-                          document.getElementById("anios").style.display = "none";
-                        }else{
                           document.getElementById("anios").style.display = "block";
+                        }else{
+                          document.getElementById("anios").style.display = "none";
                         }
                       });
                   });
