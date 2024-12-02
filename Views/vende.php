@@ -220,9 +220,18 @@ Envia tu información
                             <span class="input-group-text">km</span>
                         </div>
                 </div>
-                <div class="form-group">
-                    <input type="checkbox" id="InputRefrendo">
-                    <label class="control-label" checked="checked">¿Tiene adeudo en refrendos vehiculares?</label>
+                <div class="form-group">             
+                    <label for='InputRefrendo' class='form-label'>Refrendo vehicular</label>
+                        <div class="col mb-3 form-check"> 
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label" for="InputInterior">Al corriente</label>
+                                <input type="radio" id="InputRefrendo2">
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label" for="InputInterior">Adeudos anuales (¿Cuantos?)</label>
+                                <input type="radio" id="InputRefrendo">
+                            </div>
+                        </div>
                 </div>
                 <script>
                   $(document).ready(function () {
