@@ -204,7 +204,7 @@
                                     Nombre, 
                                     Dias, 
                                     Descripcion
-                                  FROM mobility_solutions.tmx_resenas;";
+                                  FROM mobility_solutions.tmx_resenas order by RAND();";
                         $result = mysqli_query($con,$query);  
                         if ($result){         
                             while($row = mysqli_fetch_assoc($result)){
