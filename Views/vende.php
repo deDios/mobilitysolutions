@@ -326,7 +326,7 @@ Envía tu información
                 <p>6. Foto de motor. </p>
                 <p>7. Foto de tablero. </p>
                 <p>8. Foto de cajuela. </p><br>
-                <p>Al enviar tu registro, confirmas que has leído y acepto los términos y condiciones generales de uso, incluyendo la política de privacidad según la cual tus datos personales pueden ser utilizados por Mobility Solutions y sus socios. </p>
+                <p>Al enviar tu registro, confirmas que has leído y aceptado los términos y condiciones generales de uso, incluyendo los avisos de privacidad y que tus datos personales serán únicamente utilizados por Mobility Solutions Corporation para la informacion que estas solicitando.</p>
                 <button class="btn btn-success btn-lg pull-right" type="submit">Enviar!</button>
             </div>
         </div>
