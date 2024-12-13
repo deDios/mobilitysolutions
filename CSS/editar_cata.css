@@ -177,3 +177,9 @@ li {
     padding-top: 130px;
     padding-bottom: 50px;
 }
+.apartado_tabla th{
+    font-size: 12px;
+}
+.apartado_tabla td{
+    font-size: 10px;
+}
