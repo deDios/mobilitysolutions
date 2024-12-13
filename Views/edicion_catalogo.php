@@ -104,7 +104,7 @@
             <th>Estatus</th>
             <th>DT Registro</th>
             <th>DT Update</th>
-            <th></th>
+            <th>Acciones</th>
         </tr>
     </thead>
 
@@ -205,11 +205,26 @@
                         <td><?php echo $estatus;?></td>
                         <td><?php echo $created_at;?></td>
                         <td><?php echo $updated_at;?></td>
-                        <td><a href="javascript:detalle(<?php echo $id;?>)">
-                            <span style="font-size: .5em; color: Tomato;">
-                                <i class="fas fa-thumbs-up"></i>
-                            </span>
+                        <td>
+                            <a href="javascript:detalle(<?php echo $id;?>)">
+                                <span style="font-size: .5em; color: Tomato;">
+                                    <i class="fas fa-thumbs-up"></i>
+                                </span>
                             </a>
+                            <?php 
+                                if ($estatus !== 3){
+                            ?>
+                                <a href="../Views/up_reg.php?i=<?php echo $id;?>&s=<?php echo $id_sucursal;?>&m=<?php echo $id_marca;?>&v=<?php echo $id_vehiculo;?>&mm=<?php echo $id_modelo;?>">
+                                    <span style="font-size: .5em; color: Tomato;">
+                                        <i class="fas fa-thumbs-up"></i>
+                                    </span>
+                                </a>
+                            <?php
+                                } else {
+                            ?>
+                            <?php
+                              }
+                            ?>  
                         </td>
                     </tr>
                 <?php
@@ -232,6 +247,11 @@
     new DataTable('#example', {
         responsive: true
     });
+</script>
+<script>        
+        function detalle (cod){
+            location.href="../detalles.php?cod="+cod;
+        }
 </script>
 
                                                 
