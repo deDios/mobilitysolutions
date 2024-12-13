@@ -95,9 +95,15 @@
             <th>#</th>
             <th>Marca</th>
             <th>Auto / Modelo</th>
-            <th>Modelo</th>
+            <th>Color</th>
+            <th>Transmisión</th>
+            <th>Interior</th>
+            <th>Tipo</th>
             <th>$ Mensual</th>
             <th>$ Contado</th>
+            <th>Estatus</th>
+            <th>DT Registro</th>
+            <th>DT Actualización</th>
         </tr>
     </thead>
 
@@ -109,15 +115,15 @@
             <td>61</td>
             <td>2011/04/25</td>
             <td>$320,800</td>
+            <td>$320,800</td>
+            <td>$320,800</td>
+            <td>$320,800</td>
+            <td>$320,800</td>
+            <td>$320,800</td>
+            <td>$320,800</td>
+            <td>$320,800</td>
         </tr>
-        <tr>
-            <td>Garrett Winters</td>
-            <td>Accountant</td>
-            <td>Tokyo</td>
-            <td>63</td>
-            <td>2011/07/25</td>
-            <td>$170,750</td>
-        </tr>
+        
         <?php 
                 $inc = include "../db/Conexion.php";    
                     if ($inc){
@@ -189,9 +195,15 @@
                         <th class=""><?php echo $id;?></th>
                         <td><?php echo $marca;?></td>
                         <td><?php echo $nombre . ' / ' . $modelo;?></td>
-                        <td><?php echo $modelo;?></td>
+                        <td><?php echo $color;?></td>
+                        <td><?php echo $transmision;?></td>
+                        <td><?php echo $interior;?></td>
+                        <td><?php echo $c_type;?></td>
                         <td><?php echo "$" . number_format($mensualidad);?></td>
                         <td><?php echo "$" . number_format($costo);?></td>
+                        <td><?php echo $estatus;?></td>
+                        <td><?php echo $created_at;?></td>
+                        <td><?php echo $updated_at;?></td>
                     </tr>
                 <?php
                             }
