@@ -207,13 +207,13 @@
                         <td><?php echo $updated_at;?></td>
                         <td>
                             <a href="javascript:detalle(<?php echo $id;?>)">
-                                <i class="fa fa-eye" style="font-size:24px"></i>
+                                <i class="fa fa-eye" style="font-size:20px; color:black;"></i>
                             </a>
                             <?php 
                                 if ($estatus !== 3){
                             ?>
                                 <a href="../Views/up_reg.php?i=<?php echo $id;?>&s=<?php echo $id_sucursal;?>&m=<?php echo $id_marca;?>&v=<?php echo $id_vehiculo;?>&mm=<?php echo $id_modelo;?>">
-                                    <i class="fa fa-edit" style="font-size:24px"></i>
+                                    <i class="fa fa-edit" style="font-size:20px; color:black; padding-left: 5px;"></i>
                                 </a>
                             <?php
                                 } else {
@@ -222,9 +222,7 @@
                               }
                             ?>
                             <a href="#">
-                                <span style="font-size: 1.5em; color: Tomato; padding-left: 5px;">
-                                    <i class="fa fa-map-marker"></i>
-                                </span>
+                                <i class="fa fa-trash" style="font-size:20px; color:black; padding-left: 5px;"></i>
                             </a>  
                         </td>
                     </tr>
