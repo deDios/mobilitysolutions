@@ -222,7 +222,7 @@
                               }
                             ?>
                             <a href="#">
-                                <i class="fa fa-trash" style="font-size:20px; color:black; padding-left: 5px;"></i>
+                                <i class="fa fa-trash" style="font-size:20px; color:red; padding-left: 5px;"></i>
                             </a>  
                         </td>
                     </tr>
