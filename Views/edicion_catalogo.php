@@ -103,7 +103,8 @@
             <th>$ Contado</th>
             <th>Estatus</th>
             <th>DT Registro</th>
-            <th>DT Actualización</th>
+            <th>DT Update</th>
+            <th></th>
         </tr>
     </thead>
 
@@ -114,6 +115,7 @@
             <td>Edinburgh</td>
             <td>61</td>
             <td>2011/04/25</td>
+            <td>$320,800</td>
             <td>$320,800</td>
             <td>$320,800</td>
             <td>$320,800</td>
@@ -203,6 +205,7 @@
                         <td><?php echo $estatus;?></td>
                         <td><?php echo $created_at;?></td>
                         <td><?php echo $updated_at;?></td>
+                        <td><a href="javascript:detalle(<?php echo $id;?>)" class="btn btn-primary">Ver</a></td>
                     </tr>
                 <?php
                             }
