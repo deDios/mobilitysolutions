@@ -80,6 +80,9 @@
 
 
 <!--------------------------------------- Termina Menu ----------------------------------------------->
+<h1> tabla </h1>
+<h1> de carros </h1>
+<h1> ahora </h1>
 
 <table id="basic-datatable" class="table dt-responsive nowrap w-100">
     <thead>
