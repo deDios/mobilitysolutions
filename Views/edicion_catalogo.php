@@ -205,7 +205,12 @@
                         <td><?php echo $estatus;?></td>
                         <td><?php echo $created_at;?></td>
                         <td><?php echo $updated_at;?></td>
-                        <td><a href="javascript:detalle(<?php echo $id;?>)"><i class="fas fa-thumbs-up"></i></a></td>
+                        <td><a href="javascript:detalle(<?php echo $id;?>)">
+                            <span style="font-size: .5em; color: Tomato;">
+                                <i class="fas fa-thumbs-up"></i>
+                            </span>
+                            </a>
+                        </td>
                     </tr>
                 <?php
                             }
