@@ -118,6 +118,89 @@
             <td>2011/07/25</td>
             <td>$170,750</td>
         </tr>
+        <?php 
+                $inc = include "db/Conexion.php";    
+                    if ($inc){
+                        $query = 'select 
+                                    auto.id,
+                                    m_auto.auto as nombre, 
+                                    auto.nombre as id_vehiculo,
+                                    modelo.nombre as modelo, 
+                                    auto.modelo as id_modelo,
+                                    marca.nombre as marca, 
+                                    auto.marca as id_marca,
+                                    auto.mensualidad, 
+                                    auto.costo, 
+                                    sucursal.nombre as sucursal, 
+                                    auto.sucursal as id_sucursal,
+                                    auto.img1, 
+                                    auto.img2, 
+                                    auto.img3, 
+                                    auto.img4, 
+                                    auto.img5, 
+                                    auto.img6, 
+                                    auto.color, 
+                                    auto.transmision, 
+                                    auto.interior, 
+                                    auto.kilometraje, 
+                                    auto.combustible, 
+                                    auto.cilindros, 
+                                    auto.eje, 
+                                    auto.estatus, 
+                                    auto.pasajeros, 
+                                    auto.propietarios,
+                                    auto.c_type,
+                                    DATE_SUB(auto.created_at, INTERVAL 6 HOUR) as created_at, 
+                                    DATE_SUB(auto.updated_at, INTERVAL 6 HOUR) as updated_at
+                                FROM mobility_solutions.tmx_auto as auto
+                                left join mobility_solutions.tmx_sucursal as sucursal on auto.sucursal = sucursal.id 
+                                left join mobility_solutions.tmx_estatus as estatus on auto.estatus = estatus.id
+                                left join mobility_solutions.tmx_modelo as modelo on auto.modelo = modelo.id 
+                                left join mobility_solutions.tmx_marca as marca on auto.marca = marca.id
+                                left join mobility_solutions.tmx_marca_auto as m_auto on auto.nombre = m_auto.id
+                                order by auto.id desc;';
+                        $result = mysqli_query($con,$query);  
+                        if ($result){         
+                            while($row = mysqli_fetch_assoc($result)){
+                                $id = $row['id'];
+                                $nombre = $row['nombre'];
+                                $id_vehiculo = $row['id_vehiculo'];
+                                $modelo = $row['modelo'];
+                                $id_modelo = $row['id_modelo'];
+                                $marca = $row['marca'];
+                                $id_marca = $row['id_marca'];
+                                $mensualidad = $row['mensualidad'];
+                                $costo = $row['costo'];
+                                $sucursal = $row['sucursal'];
+                                $id_sucursal = $row['id_sucursal'];
+                                $color = $row['color'];
+                                $interior = $row['interior'];
+                                $combustible = $row['combustible'];
+                                $cilindros = $row['cilindros'];
+                                $transmision = $row['transmision'];
+                                $kilometraje = $row['kilometraje'];
+                                $eje = $row['eje'];
+                                $estatus = $row['estatus'];
+                                $created_at = $row['created_at'];
+                                $updated_at = $row['updated_at'];
+                                $c_type = $row['c_type']
+                ?> 
+                    <tr>
+                        <th class=""><?php echo $id;?></th>
+                        <th><?php echo $marca;?></th>
+                        <th><?php echo $nombre;?></th>
+                        <th><?php echo $modelo;?></th>
+                        <th><?php echo "$" . number_format($mensualidad);?></th>
+                        <th><?php echo "$" . number_format($costo);?></th>
+                    </tr>
+                <?php
+                            }
+                        } else{
+                            echo "Hubo un error en la consulta";
+                        }
+                        mysqli_free_result($result);                  
+                    }
+                ?>
     </tbody>
 </table>
 </div>
