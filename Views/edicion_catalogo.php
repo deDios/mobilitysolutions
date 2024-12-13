@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit</title>
     <link rel="shortcut icon" href="../Imagenes/movility.ico" />
-    <link rel="stylesheet" href="../CSS/editar_cat.css">
+    <link rel="stylesheet" href="../CSS/editar_cata.css">
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -87,6 +87,11 @@
 <h1> de carros </h1>
 <h1> ahora </h1>
 
+<div class="apartado_tabla">
+<div class="apartado_izq">
+
+</div>
+<div>
 <table id="example" class="table table-striped nowrap" style="width:100%">
     <thead>
         <tr>
@@ -118,6 +123,11 @@
         </tr>
     </tbody>
 </table>
+</div>
+<div class="apartado_der">  
+</div>
+
+</div>
 
 <script>
     new DataTable('#example', {
