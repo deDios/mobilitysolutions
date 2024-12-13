@@ -205,7 +205,7 @@
                         <td><?php echo $estatus;?></td>
                         <td><?php echo $created_at;?></td>
                         <td><?php echo $updated_at;?></td>
-                        <td><a href="javascript:detalle(<?php echo $id;?>)" class="btn btn-primary">Ver</a></td>
+                        <td><a href="javascript:detalle(<?php echo $id;?>)"><i class="fas fa-thumbs-up"></i></a></td>
                     </tr>
                 <?php
                             }
