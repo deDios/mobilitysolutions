@@ -215,9 +215,7 @@
                                 if ($estatus !== 3){
                             ?>
                                 <a href="../Views/up_reg.php?i=<?php echo $id;?>&s=<?php echo $id_sucursal;?>&m=<?php echo $id_marca;?>&v=<?php echo $id_vehiculo;?>&mm=<?php echo $id_modelo;?>">
-                                    <span style="font-size: 1.5em; color: Tomato; padding-left: 5px;">
-                                        <i class="fa fa-map-marker"></i>
-                                    </span>
+                                    <i class="fa fa-edit" style="font-size:24px"></i>
                                 </a>
                             <?php
                                 } else {
