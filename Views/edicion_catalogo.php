@@ -83,9 +83,6 @@
 
 
 <!--------------------------------------- Termina Menu ----------------------------------------------->
-<h1> tabla </h1>
-<h1> de carros </h1>
-<h1> ahora </h1>
 
 <div class="apartado_tabla">
 <div class="apartado_izq">
