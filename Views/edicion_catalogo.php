@@ -90,32 +90,142 @@
 <table id="example" class="table table-striped nowrap" style="width:100%">
     <thead>
         <tr>
-            <th>Name</th>
-            <th>Position</th>
-            <th>Office</th>
-            <th>Age</th>
-            <th>Start date</th>
-            <th>Salary</th>
+            <th>#</th>
+            <th>marca</th>
+            <th>nombre</th>
+            <th>modelo</th>
+            <th>mensualidad</th>
+            <th>costo</th>
+            <th>sucursal</th>
+            <th>color</th>
+            <th>transmision</th>
+            <th>interior</th>
+            <th>kilometraje</th>
+            <th>combustible</th>
+            <th>cilindros</th>
+            <th>eje</th>
+            <th>estatus</th>
+            <th>created_at</th>
+            <th>updated_at</th>
+            <th></th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
-
     <tbody>
-        <tr>
-            <td>Tiger Nixon</td>
-            <td>System Architect</td>
-            <td>Edinburgh</td>
-            <td>61</td>
-            <td>2011/04/25</td>
-            <td>$320,800</td>
-        </tr>
-        <tr>
-            <td>Garrett Winters</td>
-            <td>Accountant</td>
-            <td>Tokyo</td>
-            <td>63</td>
-            <td>2011/07/25</td>
-            <td>$170,750</td>
-        </tr>
+        <?php 
+                $inc = include "../db/Conexion.php";    
+                    if ($inc){
+                        $query = 'select 
+                                    auto.id,
+                                    m_auto.auto as nombre, 
+                                    auto.nombre as id_vehiculo,
+                                    modelo.nombre as modelo, 
+                                    auto.modelo as id_modelo,
+                                    marca.nombre as marca, 
+                                    auto.marca as id_marca,
+                                    auto.mensualidad, 
+                                    auto.costo, 
+                                    sucursal.nombre as sucursal, 
+                                    auto.sucursal as id_sucursal,
+                                    auto.img1, 
+                                    auto.img2, 
+                                    auto.img3, 
+                                    auto.img4, 
+                                    auto.img5, 
+                                    auto.img6, 
+                                    auto.color, 
+                                    auto.transmision, 
+                                    auto.interior, 
+                                    auto.kilometraje, 
+                                    auto.combustible, 
+                                    auto.cilindros, 
+                                    auto.eje, 
+                                    auto.estatus, 
+                                    auto.pasajeros, 
+                                    auto.propietarios,
+                                    auto.c_type,
+                                    DATE_SUB(auto.created_at, INTERVAL 6 HOUR) as created_at, 
+                                    DATE_SUB(auto.updated_at, INTERVAL 6 HOUR) as updated_at
+                                FROM mobility_solutions.tmx_auto as auto
+                                left join mobility_solutions.tmx_sucursal as sucursal on auto.sucursal = sucursal.id 
+                                left join mobility_solutions.tmx_estatus as estatus on auto.estatus = estatus.id
+                                left join mobility_solutions.tmx_modelo as modelo on auto.modelo = modelo.id 
+                                left join mobility_solutions.tmx_marca as marca on auto.marca = marca.id
+                                left join mobility_solutions.tmx_marca_auto as m_auto on auto.nombre = m_auto.id
+                                order by auto.id desc;';
+                        $result = mysqli_query($con,$query);  
+                        if ($result){         
+                            while($row = mysqli_fetch_assoc($result)){
+                                $id = $row['id'];
+                                $nombre = $row['nombre'];
+                                $id_vehiculo = $row['id_vehiculo'];
+                                $modelo = $row['modelo'];
+                                $id_modelo = $row['id_modelo'];
+                                $marca = $row['marca'];
+                                $id_marca = $row['id_marca'];
+                                $mensualidad = $row['mensualidad'];
+                                $costo = $row['costo'];
+                                $sucursal = $row['sucursal'];
+                                $id_sucursal = $row['id_sucursal'];
+                                $color = $row['color'];
+                                $interior = $row['interior'];
+                                $combustible = $row['combustible'];
+                                $cilindros = $row['cilindros'];
+                                $transmision = $row['transmision'];
+                                $kilometraje = $row['kilometraje'];
+                                $eje = $row['eje'];
+                                $estatus = $row['estatus'];
+                                $created_at = $row['created_at'];
+                                $updated_at = $row['updated_at'];
+                                $c_type = $row['c_type']
+                ?> 
+                    <tr>
+                        <th class=""><?php echo $id;?></th>
+                        <td><?php echo $marca;?></td>
+                        <td><?php echo $nombre;?></td>
+                        <td><?php echo $modelo;?></td>
+                        <td><?php echo "$" . number_format($mensualidad);?></td>
+                        <td><?php echo "$" . number_format($costo);?></td>
+                        <td><?php echo $sucursal;?></td>
+                        <td><?php echo $color;?></td>
+                        <td><?php echo $transmision;?></td>
+                        <td><?php echo $interior;?></td>
+                        <td><?php echo number_format($kilometraje) . " km";?></td>
+                        <td><?php echo $combustible;?></td>
+                        <td><?php echo $cilindros;?></td>
+                        <td><?php echo $eje;?></td>
+                        <td><?php echo $estatus;?></td>
+                        <td><?php echo $created_at;?></td>
+                        <td><?php echo $updated_at;?></td>
+                        <td><?php echo $c_type;?></td>
+                        <td><a href="javascript:detalle(<?php echo $id;?>)" class="btn btn-primary">Ver</a></td>
+                        <td>
+                          <?php 
+                            if ($estatus !== 3){
+                          ?>
+                            <a href="Views/up_reg.php?i=<?php echo $id;?>&s=<?php echo $id_sucursal;?>&m=<?php echo $id_marca;?>&v=<?php echo $id_vehiculo;?>&mm=<?php echo $id_modelo;?>" class="btn btn-warning">Editar</a>
+                          <?php
+                            } else {
+                          ?>
+                          <?php
+                              }
+                          ?>  
+                        </td>
+                        <td><!-- Button trigger modal -->
+                          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            Eliminar
+                          </button>
+                        </td>
+                    </tr>
+                <?php
+                            }
+                        } else{
+                            echo "Hubo un error en la consulta";
+                        }
+                        mysqli_free_result($result);                  
+                    }
+                ?>
     </tbody>
 </table>
 
@@ -124,9 +234,12 @@
         responsive: true
     });
 </script>
-
+<script>        
+        function detalle (cod){
+            location.href="../detalles.php?cod="+cod;
+        }
+</script>
                                                 
-
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
