@@ -94,7 +94,7 @@
         <tr>
             <th>#</th>
             <th>Marca</th>
-            <th>Auto</th>
+            <th>Auto / Modelo</th>
             <th>Modelo</th>
             <th>$ Mensual</th>
             <th>$ Contado</th>
@@ -188,7 +188,7 @@
                     <tr>
                         <th class=""><?php echo $id;?></th>
                         <td><?php echo $marca;?></td>
-                        <td><?php echo $nombre;?></td>
+                        <td><?php echo $nombre . ' / ' . $modelo;?></td>
                         <td><?php echo $modelo;?></td>
                         <td><?php echo "$" . number_format($mensualidad);?></td>
                         <td><?php echo "$" . number_format($costo);?></td>
