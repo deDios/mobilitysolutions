@@ -207,9 +207,7 @@
                         <td><?php echo $updated_at;?></td>
                         <td>
                             <a href="javascript:detalle(<?php echo $id;?>)">
-                                <span style="font-size: 1.5em; color: Tomato; padding-left: 10px;">
-                                    <i class="fa fa-map-marker"></i>
-                                </span>
+                                <i class="fa fa-eye" style="font-size:24px"></i>
                             </a>
                             <?php 
                                 if ($estatus !== 3){
