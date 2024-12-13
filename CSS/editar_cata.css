@@ -171,9 +171,7 @@ li {
 
 .apartado_tabla{
     display: grid;
-    grid-template-rows: 2fr 6fr 2fr;
-    height: 100%;
-    width: 100%;
+    grid-template-columns: 2fr 6fr 2fr;
     padding-right: 10px;
     padding-left: 10px;
 }
