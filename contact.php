@@ -212,8 +212,10 @@
         <h6>Conoce más</h6>  
         <hr class="hr1 mt-2 mb-3"/>      
         <ul class="text-secondary list-unstyled">
-          <li>
+        <li>
             <a class="text-secondary" href="https://mobilitysolutionscorp.com/about_us.php">¿Quiénes Somos?</a>
+          </li>
+          <li>
             <a class="text-secondary" href="https://mobilitysolutionscorp.com/Views/vende.php">Vende tu auto</a>
           </li>
         </ul>     
