@@ -187,11 +187,11 @@
                 ?> 
                     <tr>
                         <th class=""><?php echo $id;?></th>
-                        <th><?php echo $marca;?></th>
-                        <th><?php echo $nombre;?></th>
-                        <th><?php echo $modelo;?></th>
-                        <th><?php echo "$" . number_format($mensualidad);?></th>
-                        <th><?php echo "$" . number_format($costo);?></th>
+                        <td><?php echo $marca;?></td>
+                        <td><?php echo $nombre;?></td>
+                        <td><?php echo $modelo;?></td>
+                        <td><?php echo "$" . number_format($mensualidad);?></td>
+                        <td><?php echo "$" . number_format($costo);?></td>
                     </tr>
                 <?php
                             }
