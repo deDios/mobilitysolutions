@@ -15,8 +15,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="assets/vendor/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/vendor/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- DataTable JS -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 </head>
 
 <body>
@@ -84,7 +87,7 @@
 <h1> de carros </h1>
 <h1> ahora </h1>
 
-<table id="basic-datatable" class="table dt-responsive nowrap w-100">
+<table id="example" class="table table-striped nowrap" style="width:100%">
     <thead>
         <tr>
             <th>Name</th>
@@ -95,7 +98,6 @@
             <th>Salary</th>
         </tr>
     </thead>
-
 
     <tbody>
         <tr>
@@ -116,12 +118,14 @@
         </tr>
     </tbody>
 </table>
-                                                
 
-<script src="assets/vendor/datatables.net/js/dataTables.min.js"></script>
-<script src="assets/vendor/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
-<script src="assets/vendor/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-<script src="assets/vendor/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js"></script>
+<script>
+    new DataTable('#example', {
+        responsive: true
+    });
+</script>
+
+                                                
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
