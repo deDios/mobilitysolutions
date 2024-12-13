@@ -208,7 +208,7 @@
                         <td>
                             <a href="javascript:detalle(<?php echo $id;?>)">
                                 <span style="font-size: .5em; color: Tomato;">
-                                    <i class="fas fa-thumbs-up"></i>
+                                    <i class="fa fa-map-marker"></i>
                                 </span>
                             </a>
                             <?php 
@@ -216,7 +216,7 @@
                             ?>
                                 <a href="../Views/up_reg.php?i=<?php echo $id;?>&s=<?php echo $id_sucursal;?>&m=<?php echo $id_marca;?>&v=<?php echo $id_vehiculo;?>&mm=<?php echo $id_modelo;?>">
                                     <span style="font-size: .5em; color: Tomato;">
-                                        <i class="fas fa-thumbs-up"></i>
+                                        <i class="fa fa-map-marker"></i>
                                     </span>
                                 </a>
                             <?php
@@ -224,7 +224,12 @@
                             ?>
                             <?php
                               }
-                            ?>  
+                            ?>
+                            <a href="#">
+                                <span style="font-size: .5em; color: Tomato;">
+                                    <i class="fa fa-map-marker"></i>
+                                </span>
+                            </a>  
                         </td>
                     </tr>
                 <?php
