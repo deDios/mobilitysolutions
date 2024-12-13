@@ -119,7 +119,7 @@
             <td>$170,750</td>
         </tr>
         <?php 
-                $inc = include "db/Conexion.php";    
+                $inc = include "../db/Conexion.php";    
                     if ($inc){
                         $query = 'select 
                                     auto.id,
