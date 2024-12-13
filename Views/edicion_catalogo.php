@@ -93,11 +93,11 @@
     <thead>
         <tr>
             <th>#</th>
-            <th>marca</th>
-            <th>nombre</th>
-            <th>modelo</th>
-            <th>mensualidad</th>
-            <th>costo</th>
+            <th>Marca</th>
+            <th>Auto</th>
+            <th>Modelo</th>
+            <th>$ Mensual</th>
+            <th>$ Contado</th>
         </tr>
     </thead>
 
