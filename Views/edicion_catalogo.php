@@ -88,13 +88,33 @@
 
 </div>
 <div class="barra_totalizadores">
-        <div class="totalizador">
-            <div class="fig"><img src="../Imagenes/Catalogo/cat.png" alt="logo 1"></div>
-            <div class="fig2"><div class="Total_info">
-                1
-            </div> 
-            </div> 
-        </div>
+                <?php 
+                $inc = include "../db/Conexion.php";    
+                    if ($inc){
+                        $query = 'select 
+                                    count(*) as catalogo
+                                FROM mobility_solutions.tmx_auto;';
+                        $result = mysqli_query($con,$query);  
+                        if ($result){         
+                            while($row = mysqli_fetch_assoc($result)){
+                                $total_catalogo = $row['catalogo'];
+                ?>
+                <div class="totalizador">
+                        <div class="fig"><img src="../Imagenes/Catalogo/cat.png" alt="logo 1"></div>
+                        <div class="fig2"><div class="Total_info">
+                            <?php echo $total_catalogo;?>
+                        </div> 
+                        </div> 
+                </div>
+                <?php
+                            }
+                        } else{
+                            echo "Hubo un error en la consulta";
+                        }
+                        mysqli_free_result($result);                  
+                    }
+                ?>
+        
         <div class="totalizador">
             <div class="fig"><img src="../Imagenes/ver.jpg" alt="logo 1"></div>
             <div class="fig2"><div class="Total_info">
