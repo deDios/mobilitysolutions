@@ -102,9 +102,9 @@
                 <div class="totalizador">
                         <div class="fig"><img src="../Imagenes/Catalogo/cat.png" alt="logo 1"></div>
                         <div class="fig2"><div class="Total_info">
-                            <h6>Catalogo</h6>
-                            <h5><small class="text-muted"><?php echo $total_catalogo;?></small>
-                            </h5>
+                            <h6>Catálogo</h6>
+                            <h4><small class="text-muted"><?php echo $total_catalogo;?></small>
+                            </h4>
                         </div> 
                         </div> 
                 </div>
