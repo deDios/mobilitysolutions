@@ -116,14 +116,36 @@
                         mysqli_free_result($result);                  
                     }
                 ?>
+
+                <?php 
+                $inc = include "../db/Conexion.php";    
+                    if ($inc){
+                        $query = 'select 
+                                    count(*) as activos
+                                FROM mobility_solutions.tmx_auto where estatus = 1;';
+                        $result = mysqli_query($con,$query);  
+                        if ($result){         
+                            while($row = mysqli_fetch_assoc($result)){
+                                $total_activos = $row['activos'];
+                ?>
+                <div class="totalizador">
+                        <div class="fig"><img src="../Imagenes/Catalogo/ver.jpg" alt="logo 1"></div>
+                        <div class="fig2"><div class="Total_info">
+                            <h6>Activos</h6>
+                            <h4><small class="text-muted"><?php echo $total_activos;?></small>
+                            </h4>
+                        </div> 
+                        </div> 
+                </div>
+                <?php
+                            }
+                        } else{
+                            echo "Hubo un error en la consulta";
+                        }
+                        mysqli_free_result($result);                  
+                    }
+                ?>
         
-        <div class="totalizador">
-            <div class="fig"><img src="../Imagenes/ver.jpg" alt="logo 1"></div>
-            <div class="fig2"><div class="Total_info">
-                2
-            </div> 
-            </div> 
-        </div>
         <div class="totalizador">
             <div class="fig"><img src="../Imagenes/Catalogo/check.png" alt="logo 1"></div>
             <div class="fig2"><div class="Total_info">
