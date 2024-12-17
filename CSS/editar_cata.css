@@ -171,12 +171,23 @@ li {
 
 .barra_totalizadores {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(4,1fr);
+    grid-column-gap: 10px;
     grid-row-gap: 10px;
+    padding-right: 20px;
 }
+
 .barra_totalizadores .Totalizador {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: row;
+    height: 210px;
+    width: 100%;
+    border: 1px solid gainsboro;
+    border-top: 5px solid black;
+    border-radius: 0 0 10px 10px;
+    align-items: center;
+    padding: 5px;
+    grid-column-gap: 10px;
     grid-row-gap: 10px;
 }
 
