@@ -213,6 +213,7 @@ li {
 .totalizador img {
     width: 60px;
     height: 60px;
+    padding-left: 20px;
 }
 .totalizador .total_info {
     padding-right: 10px;
