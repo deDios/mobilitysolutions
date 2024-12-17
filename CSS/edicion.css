@@ -174,7 +174,7 @@ li {
     grid-template-columns: 2fr 6fr 2fr;
     padding-right: 10px;
     padding-left: 10px;
-    padding-top: 30px;
+    padding-top: 90px;
     padding-bottom: 50px;
 }
 .apartado_tabla th{
@@ -188,7 +188,7 @@ li {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding-top: 230px;
+    padding-top: 130px;
 }
 .barra_totalizadores .totalizador{
     display: flex;
@@ -196,7 +196,6 @@ li {
     height: 100px;
     width: 100%;
     border: 1px solid gainsboro;
-    border-top: 5px solid black;
     border-radius: 0 0 10px 10px;
     align-items: center;
     padding: 5px;
