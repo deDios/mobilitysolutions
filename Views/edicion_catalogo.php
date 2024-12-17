@@ -129,7 +129,7 @@
                                 $total_activos = $row['activos'];
                 ?>
                 <div class="totalizador">
-                        <div class="fig"><img src="../Imagenes/Catalogo/ver.jpg" alt="logo 1"></div>
+                        <div class="fig"><img src="../Imagenes/ver.jpg" alt="logo 1"></div>
                         <div class="fig2"><div class="Total_info">
                             <h6>Activos</h6>
                             <h4><small class="text-muted"><?php echo $total_activos;?></small>
