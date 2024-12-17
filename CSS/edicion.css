@@ -188,15 +188,14 @@ li {
     grid-template-columns: 2fr 6fr 2fr;
     padding-right: 10px;
     padding-left: 10px;
-    padding-top: 90px;
+    padding-top: 130px;
     padding-bottom: 50px;
 }
 .apartado_tabla2 .barra_totalizadores{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-    padding-top: 130px;
+    align-items: center;  
 }
 .barra_totalizadores .totalizador{
     display: flex;
