@@ -196,8 +196,9 @@ li {
     height: 100px;
     width: 100%;
     border: 1px solid gainsboro;
-    border-radius: 0 0 10px 10px;
+    border-radius: 10px 10px 10px 10px;
     align-items: center;
+    justify-content: space-between;
     padding: 5px;
     grid-column-gap: 10px;
     grid-row-gap: 10px;
