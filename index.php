@@ -87,7 +87,9 @@
                 <img src="Imagenes/Carrusel/carrusel 1.jpg" alt="Los Angeles" class="d-block w-100">
                 </div>
                 <div class="carousel-item">
-                <img src="Imagenes/Carrusel/carrusel 4.jpg" alt="New York" class="d-block w-100">
+                <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/vende.php">
+                  <img src="Imagenes/Carrusel/carrusel 4.jpg" alt="New York" class="d-block w-100">
+                </a>
                 </div>
                 <div class="carousel-item">
                 <img src="Imagenes/Carrusel/carrusel 2.jpg" alt="Chicago" class="d-block w-100">
