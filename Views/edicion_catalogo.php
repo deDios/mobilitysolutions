@@ -15,6 +15,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css" rel="stylesheet">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js" integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -212,8 +214,37 @@
 
 
 <canvas id="speedChart" width="400" height="400"></canvas>
-<script type="text/javascript" src="../js/jquery-3.7.1.js"></script>
-<script type="text/javascript" src="../js/canvasjs/canvasjs-chart-3.10.19/jquery.canvasjs.min.js"></script>
+<script>
+    var speedCanvas = document.getElementById("speedChart");
+
+    Chart.defaults.global.defaultFontFamily = "Lato";
+    Chart.defaults.global.defaultFontSize = 18;
+
+    var speedData = {
+    labels: ["0s", "10s", "20s", "30s", "40s", "50s", "60s"],
+    datasets: [{
+        label: "Car Speed (mph)",
+        data: [0, 59, 75, 20, 20, 55, 40],
+    }]
+    };
+
+    var chartOptions = {
+    legend: {
+        display: true,
+        position: 'top',
+        labels: {
+        boxWidth: 80,
+        fontColor: 'black'
+        }
+    }
+    };
+
+    var lineChart = new Chart(speedCanvas, {
+    type: 'line',
+    data: speedData,
+    options: chartOptions
+    });
+</script>
 
 <div class="apartado_tabla">
 <div class="apartado_izq">
