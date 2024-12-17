@@ -79,11 +79,15 @@
         <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
         <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
         <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+        <button type="button" data-bs-target="#demo" data-bs-slide-to="3"></button>
     </div>
     <!-- The slideshow/carousel -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
                 <img src="Imagenes/Carrusel/carrusel 1.jpg" alt="Los Angeles" class="d-block w-100">
+                </div>
+                <div class="carousel-item">
+                <img src="Imagenes/Carrusel/carrusel 4.jpg" alt="New York" class="d-block w-100">
                 </div>
                 <div class="carousel-item">
                 <img src="Imagenes/Carrusel/carrusel 2.jpg" alt="Chicago" class="d-block w-100">
