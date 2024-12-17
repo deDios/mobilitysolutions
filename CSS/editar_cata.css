@@ -169,7 +169,24 @@ li {
 
 /* CSS Tabla ---------------------------------------------------------------------------------------*/
 
-.barra_totalizadores {
+
+
+.apartado_tabla{
+    display: grid;
+    grid-template-columns: 2fr 6fr 2fr;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 130px;
+    padding-bottom: 50px;
+}
+.apartado_tabla th{
+    font-size: 12px;
+}
+.apartado_tabla td{
+    font-size: 10px;
+}
+
+.apartado_tabla .barra_totalizadores {
     display: grid;
     grid-template-columns: repeat(4,1fr);
     grid-column-gap: 10px;
@@ -199,19 +216,4 @@ li {
 .totalizador .total_info {
     padding-right: 10px;
     padding-left: 10px;
-}
-
-.apartado_tabla{
-    display: grid;
-    grid-template-columns: 2fr 6fr 2fr;
-    padding-right: 10px;
-    padding-left: 10px;
-    padding-top: 130px;
-    padding-bottom: 50px;
-}
-.apartado_tabla th{
-    font-size: 12px;
-}
-.apartado_tabla td{
-    font-size: 10px;
 }
