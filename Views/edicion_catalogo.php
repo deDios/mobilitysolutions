@@ -211,7 +211,7 @@
 </div>
 
 
-
+<script src="chart.js/Chart.js"></script>
 <canvas id="speedChart" width="600" height="400"></canvas>
 <script>
     var speedCanvas = document.getElementById("speedChart");
