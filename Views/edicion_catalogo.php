@@ -83,7 +83,10 @@
 
 
 <!--------------------------------------- Termina Menu ----------------------------------------------->
+<div class="apartado_tabla2">
+<div class="">
 
+</div>
 <div class="barra_totalizadores">
         <div class="totalizador">
             <img src="../Imagenes/ver.jpg" alt="logo 1">
@@ -110,6 +113,10 @@
             </div>    
         </div>
     </div>
+<div class="">
+
+</div>
+</div>
 
 <div class="apartado_tabla">
 <div class="apartado_izq">
