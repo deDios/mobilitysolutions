@@ -210,10 +210,13 @@ li {
     grid-column-gap: 10px;
     grid-row-gap: 10px;
 }
-.totalizador img {
+.totalizador .fig{
+    padding-left: 20px;
+}
+.fig img {
     width: 60px;
     height: 60px;
-    padding-left: 20px;
+    
 }
 .totalizador .total_info {
     padding-right: 10px;
