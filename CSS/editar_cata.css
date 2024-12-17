@@ -184,15 +184,15 @@ li {
     font-size: 10px;
 }
 
-.barra_totalizadores {
+.barra_totalizadores{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding-top: 130px;
+    padding-top: 230px;
 }
 
-.barra_totalizadores .totalizador {
+.barra_totalizadores .totalizador{
     display: flex;
     flex-direction: row;
     height: 100px;
