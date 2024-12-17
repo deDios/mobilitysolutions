@@ -145,21 +145,65 @@
                         mysqli_free_result($result);                  
                     }
                 ?>
+
+                <?php 
+                $inc = include "../db/Conexion.php";    
+                    if ($inc){
+                        $query = 'select 
+                                    count(*) as por_activar
+                                FROM mobility_solutions.tmx_auto where estatus = 2;';
+                        $result = mysqli_query($con,$query);  
+                        if ($result){         
+                            while($row = mysqli_fetch_assoc($result)){
+                                $total_no_activos = $row['por_activar'];
+                ?>
+                <div class="totalizador">
+                        <div class="fig"><img src="../Imagenes/Catalogo/check.png" alt="logo 1"></div>
+                        <div class="fig2"><div class="Total_info">
+                            <h6>Por activar</h6>
+                            <h4><small class="text-muted"><?php echo $total_no_activos;?></small>
+                            </h4>
+                        </div> 
+                        </div> 
+                </div>
+                <?php
+                            }
+                        } else{
+                            echo "Hubo un error en la consulta";
+                        }
+                        mysqli_free_result($result);                  
+                    }
+                ?>
+
+                <?php 
+                $inc = include "../db/Conexion.php";    
+                    if ($inc){
+                        $query = 'select 
+                                    count(*) as por_activar
+                                FROM mobility_solutions.tmx_auto where estatus = 3;';
+                        $result = mysqli_query($con,$query);  
+                        if ($result){         
+                            while($row = mysqli_fetch_assoc($result)){
+                                $total_no_activos = $row['por_activar'];
+                ?>
+                <div class="totalizador">
+                        <div class="fig"><img src="../Imagenes/Catalogo/reserve.png" alt="logo 1"></div>
+                        <div class="fig2"><div class="Total_info">
+                            <h6>Reservados</h6>
+                            <h4><small class="text-muted"><?php echo $total_no_activos;?></small>
+                            </h4>
+                        </div> 
+                        </div> 
+                </div>
+                <?php
+                            }
+                        } else{
+                            echo "Hubo un error en la consulta";
+                        }
+                        mysqli_free_result($result);                  
+                    }
+                ?>
         
-        <div class="totalizador">
-            <div class="fig"><img src="../Imagenes/Catalogo/check.png" alt="logo 1"></div>
-            <div class="fig2"><div class="Total_info">
-                3
-            </div> 
-            </div> 
-        </div>
-        <div class="totalizador">
-            <div class="fig"><img src="../Imagenes/Catalogo/reserve.png" alt="logo 1"></div>
-            <div class="fig2"><div class="Total_info">
-                4
-            </div> 
-            </div>   
-        </div>
     </div>
 <div class="">
 
