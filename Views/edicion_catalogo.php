@@ -211,7 +211,7 @@
 </div>
 
 
-<canvas id="speedChart" width="600" height="400"></canvas>
+<canvas id="speedChart" width="400" height="400"></canvas>
 <script type="text/javascript" src="../js/jquery-3.7.1.js"></script>
 <script type="text/javascript" src="../js/canvasjs/canvasjs-chart-3.10.19/jquery.canvasjs.min.js"></script>
 
