@@ -186,8 +186,6 @@ li {
 .apartado_tabla2{
     display: grid;
     grid-template-columns: 2fr 6fr 2fr;
-    padding-right: 10px;
-    padding-left: 10px;
     padding-top: 130px;
     padding-bottom: 50px;
 }
