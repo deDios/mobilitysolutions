@@ -91,10 +91,30 @@
 <div>
 
 <div class="barra_totalizadores">
-    <div class="Totalizador">1</div>
-    <div class="Totalizador">2</div>
-    <div class="Totalizador">3</div>
-    <div class="Totalizador">4</div>
+    <div class="Totalizador">
+        <img src="../Imagenes/ver.jpg" alt="logo 1">
+        <div class="Total_info">
+            1
+        </div>
+    </div>
+    <div class="Totalizador">
+        <img src="../Imagenes/ver.jpg" alt="logo 1">
+        <div class="Total_info">
+            2
+        </div>
+    </div>
+    <div class="Totalizador">
+        <img src="../Imagenes/ver.jpg" alt="logo 1">
+        <div class="Total_info">
+            3
+        </div>
+    </div>
+    <div class="Totalizador">
+        <img src="../Imagenes/ver.jpg" alt="logo 1">
+        <div class="Total_info">
+            4
+        </div>    
+    </div>
 </div>
 
 <table id="example" class="table table-striped nowrap" style="width:100%">

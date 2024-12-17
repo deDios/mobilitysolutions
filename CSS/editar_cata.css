@@ -180,7 +180,7 @@ li {
 .barra_totalizadores .Totalizador {
     display: flex;
     flex-direction: row;
-    height: 210px;
+    height: 100px;
     width: 100%;
     border: 1px solid gainsboro;
     border-top: 5px solid black;
@@ -189,6 +189,16 @@ li {
     padding: 5px;
     grid-column-gap: 10px;
     grid-row-gap: 10px;
+}
+
+.Totalizador img {
+    width: 100px;
+    height: 100px;
+    padding-top: 12px;
+}
+
+.Totalizador .total_info {
+
 }
 
 .apartado_tabla{
