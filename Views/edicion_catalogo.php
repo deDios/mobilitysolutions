@@ -84,13 +84,7 @@
 
 <!--------------------------------------- Termina Menu ----------------------------------------------->
 
-<div class="apartado_tabla">
-<div class="apartado_izq">
-
-</div>
-<div>
-
-    <div class="barra_totalizadores">
+<div class="barra_totalizadores">
         <div class="totalizador">
             <img src="../Imagenes/ver.jpg" alt="logo 1">
             <div class="Total_info">
@@ -116,6 +110,13 @@
             </div>    
         </div>
     </div>
+
+
+<div class="apartado_tabla">
+<div class="apartado_izq">
+
+</div>
+<div>
 
 <table id="example" class="table table-striped nowrap" style="width:100%">
     <thead>

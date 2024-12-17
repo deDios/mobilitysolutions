@@ -169,14 +169,12 @@ li {
 
 /* CSS Tabla ---------------------------------------------------------------------------------------*/
 
-
-
 .apartado_tabla{
     display: grid;
     grid-template-columns: 2fr 6fr 2fr;
     padding-right: 10px;
     padding-left: 10px;
-    padding-top: 130px;
+    padding-top: 30px;
     padding-bottom: 50px;
 }
 .apartado_tabla th{
@@ -186,11 +184,12 @@ li {
     font-size: 10px;
 }
 
-.apartado_tabla .barra_totalizadores {
+.barra_totalizadores {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding-top: 130px;
 }
 
 .barra_totalizadores .totalizador {
