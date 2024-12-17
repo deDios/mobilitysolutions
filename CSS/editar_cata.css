@@ -169,6 +169,12 @@ li {
 
 /* CSS Tabla ---------------------------------------------------------------------------------------*/
 
+.barra_totalizadores {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .apartado_tabla{
     display: grid;
     grid-template-columns: 2fr 6fr 2fr;

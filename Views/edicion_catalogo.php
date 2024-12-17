@@ -89,6 +89,14 @@
 
 </div>
 <div>
+
+<div class="barra_totalizadores">
+    <div class="Totalizador_1">1</div>
+    <div class="Totalizador_2">2</div>
+    <div class="Totalizador_3">3</div>
+    <div class="Totalizador_4">4</div>
+</div>
+
 <table id="example" class="table table-striped nowrap" style="width:100%">
     <thead>
         <tr>
