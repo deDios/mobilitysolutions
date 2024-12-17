@@ -90,27 +90,31 @@
 <div class="barra_totalizadores">
         <div class="totalizador">
             <div class="fig"><img src="../Imagenes/ver.jpg" alt="logo 1"></div>
-            <div class="Total_info">
+            <div class="fig2"><div class="Total_info">
                 1
-            </div>
+            </div> 
+            </div> 
         </div>
         <div class="totalizador">
             <div class="fig"><img src="../Imagenes/ver.jpg" alt="logo 1"></div>
-            <div class="Total_info">
+            <div class="fig2"><div class="Total_info">
                 2
-            </div>
+            </div> 
+            </div> 
         </div>
         <div class="totalizador">
             <div class="fig"><img src="../Imagenes/ver.jpg" alt="logo 1"></div>
-            <div class="Total_info">
+            <div class="fig2"><div class="Total_info">
                 3
-            </div>
+            </div> 
+            </div> 
         </div>
         <div class="totalizador">
             <div class="fig"><img src="../Imagenes/ver.jpg" alt="logo 1"></div>
-            <div class="Total_info">
+            <div class="fig2"><div class="Total_info">
                 4
-            </div>    
+            </div> 
+            </div>   
         </div>
     </div>
 <div class="">

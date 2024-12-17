@@ -218,7 +218,10 @@ li {
     height: 60px;
     
 }
-.totalizador .total_info {
+.totalizador .fig2{
     padding-right: 50px;
+}
+.totalizador .total_info {
+    padding-right: 10px;
     padding-left: 10px;
 }
