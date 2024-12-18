@@ -324,7 +324,7 @@
                                 $c_type = $row['c_type']
                 ?> 
                     <tr>
-                        <th class=""><?php echo $id;?></th>
+                        <th class=""><?php echo number_format($id);?></th>
                         <td><?php echo $marca;?></td>
                         <td><?php echo $nombre . ' / ' . $modelo;?></td>
                         <td><?php echo $color;?></td>
