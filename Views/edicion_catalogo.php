@@ -213,14 +213,12 @@
 </div>
 <hr class="mt-2 mb-3"/> 
 
-<a href="../insert_reg.php"  class="btn btn-success mt-2">+ Automovil</a>
-
 <div class="apartado_tabla">
 <div class="apartado_izq">
 
 </div>
 <div>
-
+<a href="../insert_reg.php"  class="btn btn-success mt-2">+ Auto</a>
 <table id="example" class="table table-striped nowrap" style="width:100%">
     <thead>
         <tr>
