@@ -241,8 +241,8 @@
                 });
             }
 </script>
-<script type="text/javascript" src="assets/script/canvasjs.min.js"></script>
-<script type="text/javascript" src="assets/script/jquery-2.2.3.min.js"></script>
+<script type="text/javascript" src="../js/jquery-3.7.1.js"></script>
+<script type="text/javascript" src="../js/canvasjs/canvasjs-chart-3.10.19/canvasjs.min.js"></script>
 
 <div class="apartado_tabla">
 <div class="apartado_izq">
