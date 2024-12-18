@@ -211,7 +211,10 @@
 
 </div>
 </div>
-<hr class="mt-5 mb-3"/> 
+<hr class="mt-2 mb-3"/> 
+
+<a href="../insert_reg.php"  class="btn btn-success mt-2">+ Automovil</a>
+
 <div class="apartado_tabla">
 <div class="apartado_izq">
 
