@@ -212,35 +212,43 @@
 </div>
 </div>
 
-<script type="text/javascript">
-            window.onload = function () {
-                var dataLength = 0;
-                var data = [];
-                $.getJSON("data.php", function (result) {
-                    dataLength = result.length;
-                    for (var i = 0; i < dataLength; i++) {
-                        data.push({
-                            x: parseInt(result[i].valorx),
-                            y: parseInt(result[i].valory)
-                        });
-                    }
-                    ;
-                    chart.render();
-                });
-                var chart = new CanvasJS.Chart("chart", {
-                    title: {
-                        text: "Valores X vs. Valores Y"
-                    },
-                    axisX: {
-                        title: "Valores X",
-                    },
-                    axisY: {
-                        title: "Valores Y",
-                    },
-                    data: [{type: "line", dataPoints: data}],
-                });
-            }
+
+
+<canvas id="speedChart" width="300" height="150">
+<script>
+    var speedCanvas = document.getElementById("speedChart");
+
+    Chart.defaults.global.defaultFontFamily = "Lato";
+    Chart.defaults.global.defaultFontSize = 18;
+
+    var speedData = {
+    labels: ["0s", "10s", "20s", "30s", "40s", "50s", "60s"],
+    datasets: [{
+        label: "Car Speed (mph)",
+        data: [0, 59, 75, 20, 20, 55, 40],
+    }]
+    };
+
+    var chartOptions = {
+    legend: {
+        display: true,
+        position: 'top',
+        labels: {
+        boxWidth: 80,
+        fontColor: 'black'
+        }
+    }
+    };
+
+    var lineChart = new Chart(speedCanvas, {
+    type: 'line',
+    data: speedData,
+    options: chartOptions
+    });
 </script>
+</canvas>
+
+
 <script src="https://cdn.canvasjs.com/ga/canvasjs.min.js"></script>
 <script src="https://cdn.canvasjs.com/ga/canvasjs.stock.min.js"></script>
 <script src="https://cdn.canvasjs.com/ga/jquery.canvasjs.min.js"></script>
