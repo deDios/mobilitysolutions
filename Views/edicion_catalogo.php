@@ -216,7 +216,7 @@
             window.onload = function () {
                 var dataLength = 0;
                 var data = [];
-                $.getJSON("../Views/data.php", function (result) {
+                $.getJSON("data.php", function (result) {
                     dataLength = result.length;
                     for (var i = 0; i < dataLength; i++) {
                         data.push({
