@@ -361,7 +361,8 @@
 
 <script>
     new DataTable('#example', {
-        responsive: true
+        responsive: true,
+        order: [[ 0, "desc" ]]
     });
 </script>
 <script>        
