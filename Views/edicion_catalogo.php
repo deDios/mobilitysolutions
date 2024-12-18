@@ -243,7 +243,9 @@
 </script>
 <script src="https://cdn.canvasjs.com/ga/canvasjs.min.js"></script>
 <script src="https://cdn.canvasjs.com/ga/canvasjs.stock.min.js"></script>
-<script type="text/javascript" src="../js/jquery-3.7.1.js"></script>
+<script src="https://cdn.canvasjs.com/ga/jquery.canvasjs.min.js"></script>
+<script src="https://cdn.canvasjs.com/ga/jquery.canvasjs.stock.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
 
 
 <div class="apartado_tabla">
