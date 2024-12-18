@@ -212,80 +212,37 @@
 </div>
 </div>
 
-<?php 
-                $inc = include "../db/Conexion.php";    
-                    if ($inc){
-                        $query = '
-                                select 
-                                    DATE(DATE_SUB(created_at, INTERVAL 6 HOUR)) as fecha, 
-                                    count(*) as numero_cargas
-                                from mobility_solutions.tmx_auto
-                                where DATE(DATE_SUB(created_at, INTERVAL 6 HOUR)) > DATE(DATE_SUB(current_date(), INTERVAL 10 DAY))
-                                group by DATE(DATE_SUB(created_at, INTERVAL 6 HOUR));';
-                        $result = mysqli_query($con,$query);  
-                        if ($result){    
-                            $data_points = array();     
-                            while($row = mysqli_fetch_assoc($result)){
-                                $point = array("valorx" => $row['fecha'], "valory" => $row['numero_cargas']);
-                                array_push($data_points, $point);
-                            }
-                            echo json_encode($data_points);
-                        } else{
-                            echo "Hubo un error en la consulta";
-                        }
-                        mysqli_free_result($result);                  
+<script type="text/javascript">
+            window.onload = function () {
+                var dataLength = 0;
+                var data = [];
+                $.getJSON("../Views/data.php", function (result) {
+                    dataLength = result.length;
+                    for (var i = 0; i < dataLength; i++) {
+                        data.push({
+                            x: parseInt(result[i].valorx),
+                            y: parseInt(result[i].valory)
+                        });
                     }
-    ?>
-
-<canvas id="speedChart" width="300" height="150"></canvas>
-<script>
-    var densityCanvas = document.getElementById("speedChart");
-
-    Chart.defaults.global.defaultFontFamily = "Lato";
-    Chart.defaults.global.defaultFontSize = 18;
-
-    var densityData = {
-    label: 'Density of Planet (kg/m3)',
-    data: [5427, 5243, 5514, 3933, 1326, 687, 1271, 1638],
-    backgroundColor: 'rgba(0, 99, 132, 0.6)',
-    borderColor: 'rgba(0, 99, 132, 1)',
-    yAxisID: "y-axis-density"
-    };
-    
-    var gravityData = {
-    label: 'Gravity of Planet (m/s2)',
-    data: [3.7, 8.9, 9.8, 3.7, 23.1, 9.0, 8.7, 11.0],
-    backgroundColor: 'rgba(99, 132, 0, 0.6)',
-    borderColor: 'rgba(99, 132, 0, 1)',
-    yAxisID: "y-axis-gravity"
-    };
-    
-    var planetData = {
-    labels: ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"],
-    datasets: [densityData, gravityData]
-    };
-    
-    var chartOptions = {
-    scales: {
-        xAxes: [{
-        barPercentage: 1,
-        categoryPercentage: 0.6
-        }],
-        yAxes: [{
-        id: "y-axis-density"
-        }, {
-        id: "y-axis-gravity"
-        }]
-    }
-    };
-    
-    var barChart = new Chart(densityCanvas, {
-    type: 'bar',
-    data: planetData,
-    options: chartOptions
-    });
-
+                    ;
+                    chart.render();
+                });
+                var chart = new CanvasJS.Chart("chart", {
+                    title: {
+                        text: "Valores X vs. Valores Y"
+                    },
+                    axisX: {
+                        title: "Valores X",
+                    },
+                    axisY: {
+                        title: "Valores Y",
+                    },
+                    data: [{type: "line", dataPoints: data}],
+                });
+            }
 </script>
+<script type="text/javascript" src="assets/script/canvasjs.min.js"></script>
+<script type="text/javascript" src="assets/script/jquery-2.2.3.min.js"></script>
 
 <div class="apartado_tabla">
 <div class="apartado_izq">
