@@ -211,7 +211,7 @@
 
 </div>
 </div>
-
+<hr class="mt-5 mb-3"/> 
 <div class="apartado_tabla">
 <div class="apartado_izq">
 
