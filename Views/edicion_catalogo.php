@@ -218,7 +218,7 @@
 
 </div>
 <div>
-<a href="../insert_reg.php"  class="btn btn-success mt-2">+</a>
+<a href="../insert_reg.php"  class="btn btn-success">+</a>
 
 <table id="example" class="table table-striped nowrap mt-2" style="width:100%">
     <thead>
