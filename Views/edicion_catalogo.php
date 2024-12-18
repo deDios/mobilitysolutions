@@ -133,7 +133,7 @@
                 <div class="totalizador">
                         <div class="fig"><img src="../Imagenes/ver.jpg" alt="logo 1"></div>
                         <div class="fig2"><div class="Total_info">
-                            <h6>Activos</h6>
+                            <h6>Activo</h6>
                             <h4><small class="text-muted"><?php echo $total_activos;?></small>
                             </h4>
                         </div> 
@@ -191,7 +191,7 @@
                 <div class="totalizador">
                         <div class="fig"><img src="../Imagenes/Catalogo/reserve.png" alt="logo 1"></div>
                         <div class="fig2"><div class="Total_info">
-                            <h6>Reservados</h6>
+                            <h6>Reservado</h6>
                             <h4><small class="text-muted"><?php echo $total_reservados;?></small>
                             </h4>
                         </div> 
