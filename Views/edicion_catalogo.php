@@ -284,7 +284,7 @@
                                     auto.combustible, 
                                     auto.cilindros, 
                                     auto.eje, 
-                                    auto.estatus, 
+                                    estatus.nombre as estatus, 
                                     auto.pasajeros, 
                                     auto.propietarios,
                                     auto.c_type,
