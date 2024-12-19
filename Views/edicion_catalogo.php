@@ -227,13 +227,259 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Agregar automovil</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Agregar automóvil</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+ <!-- Formulario ------------------------------------------------------------->                   
+    <form action="../db_consultas/insert_sp.php" method="POST" enctype="multipart/form-data">
+                    
+                    <div class="col-2 mt-5">
+                        <label for="InputSucursal" class="form-label">Sucursal</label>
+                        <select id="InputSucursal" class="form-select" aria-label="Default select example" name="InputSucursal">
+                            <option value="0">Selecciona una sucursal</option>                      
+                            <?php 
+                            $inc = include "db/Conexion.php";    
+                                if ($inc){
+                                    $query = 'select 
+                                                id,
+                                                nombre
+                                            FROM mobility_solutions.tmx_sucursal;';
+                                    $result = mysqli_query($con,$query);  
+                                    if ($result){         
+                                        while($row = mysqli_fetch_assoc($result)){
+                                            $id = $row['id'];
+                                            $nombre = $row['nombre'];
+                            ?> 
+                                        <option value="<?php echo $id;?>"><?php echo $nombre;?></option>
+                            <?php
+                                        }
+                                    } else{
+                                            echo "Hubo un error en la consulta";
+                                    }
+                                        mysqli_free_result($result);                  
+                                }
+                            ?>
+                        </select>
+                    </div>
+            
+                    <div class="col-3 mt-5">
+                        <label for="InputMarca" class="form-label">Marca</label>
+                        <select id="InputMarca" class="form-select" aria-label="Default select example" name="InputMarca">
+                            <option value="0">Selecciona una Marca</option>                      
+                            <?php 
+                            $inc = include "db/Conexion.php";    
+                                if ($inc){
+                                    $query = 'select 
+                                                id,
+                                                nombre
+                                            FROM mobility_solutions.tmx_marca;';
+                                    $result = mysqli_query($con,$query);  
+                                    if ($result){         
+                                        while($row = mysqli_fetch_assoc($result)){
+                                            $id = $row['id'];
+                                            $nombre = $row['nombre'];
+                            ?> 
+                                        <option value="<?php echo $id;?>"><?php echo $nombre;?></option>
+                            <?php
+                                        }
+                                    } else{
+                                            echo "Hubo un error en la consulta";
+                                    }
+                                        mysqli_free_result($result);                  
+                                }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="row mt-3">
+                    <!-- Input Auto ------------------------------------------------------------------->
+                        <div id="div_auto" class="col-3">
+                            <label for='InputNombre' class='form-label'>Vehiculo</label>
+                            <select id="InputNombre" class="form-select" aria-label="Default select example" name="InputNombre">
+                                <option value="0">Selecciona un Vehiculo</option> 
+                            </select>
+                        </div>
+
+                    <!-- Input Modelo ------------------------------------------------------------------->
+                        <div id="div_modelo" class="col-3">
+                            <label for='InputModelo' class='form-label'>Modelo</label>
+                            <select id="InputModelo" class="form-select" aria-label="Default select example" name="InputModelo">
+                                <option value="0">Selecciona un Modelo</option> 
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Tipo auto ------------------------------------------------------------------->
+                    <div class="col-2 mt-2">
+                        <label for="InputType" class="form-label">Tipo de automovil</label>
+                        <select id="InputType" class="form-select" aria-label="Default select example" name="InputType">
+                            <option value="Hatchback">Hatchback</option>  
+                            <option value="Sedan">Sedan</option>  
+                            <option value="SUV">SUV</option>
+                            <option value="Pickup">Pickup</option>  
+                        </select>
+                    </div>
+
+                    <!-- Input Mensualidad ------------------------------------------------------------------->
+                    <div class="input-group mb-3 col-6 mt-5">
+                        <span class="input-group-text">$</span>
+                            <input id="InputMensualidad" type="text" class="form-control" name="InputMensualidad" aria-label="Amount (to the nearest dollar)" required>
+                        <span class="input-group-text">MX/mensuales</span>
+                    </div>
+                    <div class="invalid-feedback">
+                        Porfavor llenar campo de mensualidad
+                    </div>
+
+                    <!-- Input Costo ------------------------------------------------------------------->
+                    <div class="input-group mb-3 col-6 mt-2">
+                        <span class="input-group-text">$</span>
+                            <input id="InputCosto" type="text" class="form-control" name="InputCosto" aria-label="Amount (to the nearest dollar)">
+                        <span class="input-group-text">MX/Contado</span>
+                    </div>
+
+                    <!-- Input Color ------------------------------------------------------------------->
+                    <div class="col-2 mt-5">
+                        <label for="InputColor" class="form-label">Color</label>
+                        <select id="InputColor" class="form-select" aria-label="Default select example" name="InputColor">
+                            <option value="Negro">Negro</option>  
+                            <option value="Rojo">Rojo</option>  
+                            <option value="Azul">Azul</option>  
+                            <option value="Blanco">Blanco</option>  
+                            <option value="Verde">Verde</option>
+                            <option value="Gris">Gris</option>
+                            <option value="Amarillo">Amarillo</option>
+                            <option value="Arena">Arena</option>
+                            <option value="Guinda">Guinda</option>
+                            <option value="Plata">Plata</option>
+                            <option value="Naranja">Naranja</option>  
+                        </select>
+                    </div>
+
+                    <!-- Input Transmision ------------------------------------------------------------------->
+                    <div class="col-2 mt-2">
+                        <label for='InputTransmision' class='form-label'>Tipo de transmision</label>
+                        <div class="col mb-3 form-check"> 
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="InputTransmision" id="InputTransmision" value="Manual" checked="">
+                                <label class="form-check-label" for="InputTransmision">TM (Manual)</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="InputTransmision" id="InputTransmision" value="Automatico">
+                                <label class="form-check-label" for="InputTransmision">TA (Automatico)</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Input Interior ------------------------------------------------------------------->
+                    <div class="col-2 mt-2">
+                        <label for='InputInterior' class='form-label'>Interior</label>
+                        <div class="col mb-3 form-check"> 
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="InputInterior" id="InputInterior" value="Tela" checked="">
+                                <label class="form-check-label" for="InputInterior">Tela</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="InputInterior" id="InputInterior" value="Piel">
+                                <label class="form-check-label" for="InputInterior">Piel</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Input kilometraje ------------------------------------------------------------------->
+                    <div class="col-2 mt-2">
+                        <label for='InputKilometraje' class='form-label'>Kilometraje</label>
+                        <div class="input-group mb-3 ">
+                                <input id="InputKilometraje" type="text" class="form-control" name="InputKilometraje"  aria-label="Amount (to the nearest dollar)">
+                            <span class="input-group-text">km</span>
+                        </div>
+                    </div>
+
+                    <!-- Input Combustible ------------------------------------------------------------------->
+                    <div class="col-3 mt-2">
+                        <label for='InputCombustible' class='form-label'>Combustible</label>
+                        <div class="col mb-3 form-check"> 
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible" value="Gasolina" checked="">
+                                <label class="form-check-label" for="InputCombustible">Gasolina</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible" value="Electrico">
+                                <label class="form-check-label" for="InputCombustible">Electrico</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible" value="Hibrido">
+                                <label class="form-check-label" for="InputCombustible">Hibrido</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible" value="Disel">
+                                <label class="form-check-label" for="InputCombustible">Disel</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Input Cilindros ------------------------------------------------------------------->
+                    <div class="col-6 mt-2">
+                    <label for='InputCilindros' class='form-label'>Cilindros</label>
+                        <div class="p-3 m-0 border-0 bd-example m-0 border-0">
+                            <input type="radio" class="btn-check" name="InputCilindros" value="4" id="InputCilindros1" autocomplete="off" checked="">
+                            <label class="btn" for="InputCilindros1">V4</label>
+                            
+                            <input type="radio" class="btn-check" name="InputCilindros" value="6" id="InputCilindros2" autocomplete="off">
+                            <label class="btn" for="InputCilindros2">V6</label>
+                            
+                            <input type="radio" class="btn-check" name="InputCilindros" value="8" id="InputCilindros3" autocomplete="off">
+                            <label class="btn" for="InputCilindros3">V8</label>
+                            
+                            <input type="radio" class="btn-check" name="InputCilindros" value="10" id="InputCilindros4" autocomplete="off">
+                            <label class="btn" for="InputCilindros4">V10</label>
+
+                            <input type="radio" class="btn-check" name="InputCilindros" value="12" id="InputCilindros5" autocomplete="off">
+                            <label class="btn" for="InputCilindros5">V12</label>
+                        </div>
+                    </div>
+
+                    <!-- Input eje ------------------------------------------------------------------->
+                    <div class="col-2 mt-2">
+                        <label for="InputEje" class="form-label">Eje</label>
+                        <select id="InputEje" class="form-select" aria-label="Default select example" name="InputEje">
+                            <option value="Delantera">Delantera</option>  
+                            <option value="Trasera">Trasera</option>  
+                            <option value="4X4">4X4</option>  
+                        </select>
+                    </div>
+
+                    <!-- Input pasajeros ------------------------------------------------------------------->
+                    <div class="col-2 mt-2">
+                        <label for='InputPasajeros' class='form-label'>Capacidad de pasajeros</label>
+                        <div class="input-group mb-3 ">
+                                <input id="InputPasajeros" type="text" class="form-control" name="InputPasajeros" aria-label="Amount (to the nearest dollar)">
+                            <span class="input-group-text">Pasajeros</span>
+                        </div>
+                    </div>
+
+                    <!-- Input Propietarios ------------------------------------------------------------------->
+                    <div class="col-2 mt-2">
+                        <label for="InputPropietarios" class="form-label">Propietarios</label>
+                        <select id="InputPropietarios" class="form-select" aria-label="Default select example" name="InputPropietarios">
+                            <option value="1">1</option>  
+                            <option value="2">2</option>  
+                        </select>
+                    </div>
+
+                    <!-- Input Img ------------------------------------------------------------------->
+                    <div class="col-2 mt-5">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Carga de imagenes</label>
+                            <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
+                        </div>
+                    </div>
+
+
+                    <button type="submit" class="btn btn-success mt-5">Guardar registro</button>
+            </form>
+ <!-- Fin de formulario ------------------------------------------------------------->
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
