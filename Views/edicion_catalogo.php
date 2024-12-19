@@ -321,8 +321,8 @@
                         </select>
                     </div>
 
-                    <hr class="mt-2 mb-3"/> 
-                    
+                    <hr class="mt-5 mb-3"/> 
+
                     <!-- Input Mensualidad ------------------------------------------------------------------->
                     <div class="input-group mb-3 col-12 mt-2">
                         <span class="input-group-text">$</span>
