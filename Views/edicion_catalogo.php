@@ -324,7 +324,7 @@
                     <hr class="mt-5 mb-3"/> 
 
                     <!-- Input Mensualidad ------------------------------------------------------------------->
-                    <div class="input-group mb-3 col-12 mt-2">
+                    <div class="input-group mb-3 col-12 mt-5">
                         <span class="input-group-text">$</span>
                             <input id="InputMensualidad" type="text" class="form-control" name="InputMensualidad" aria-label="Amount (to the nearest dollar)" required>
                         <span class="input-group-text">MX/mensuales</span>
