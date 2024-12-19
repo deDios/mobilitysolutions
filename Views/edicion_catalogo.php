@@ -236,7 +236,7 @@
  <!-- Formulario ------------------------------------------------------------->                   
     <form action="../db_consultas/insert_sp.php" method="POST" enctype="multipart/form-data">
                     
-                    <div class="col-12 mt-5">
+                    <div class="col-12 mt-2">
                         <label for="InputSucursal" class="form-label">Sucursal</label>
                         <select id="InputSucursal" class="form-select" aria-label="Default select example" name="InputSucursal">
                             <option value="0">Selecciona una sucursal</option>                      
@@ -265,7 +265,7 @@
                         </select>
                     </div>
             
-                    <div class="col-12 mt-5">
+                    <div class="col-12 mt-2">
                         <label for="InputMarca" class="form-label">Marca</label>
                         <select id="InputMarca" class="form-select" aria-label="Default select example" name="InputMarca">
                             <option value="0">Selecciona una Marca</option>                      
@@ -295,7 +295,7 @@
                     </div>
                     <div class="row mt-3">
                     <!-- Input Auto ------------------------------------------------------------------->
-                        <div id="div_auto" class="col-6">
+                        <div id="div_auto" class="col-5">
                             <label for='InputNombre' class='form-label'>Vehiculo</label>
                             <select id="InputNombre" class="form-select" aria-label="Default select example" name="InputNombre">
                                 <option value="0">Selecciona un Vehiculo</option> 
@@ -303,7 +303,7 @@
                         </div>
 
                     <!-- Input Modelo ------------------------------------------------------------------->
-                        <div id="div_modelo" class="col-6">
+                        <div id="div_modelo" class="col-5">
                             <label for='InputModelo' class='form-label'>Modelo</label>
                             <select id="InputModelo" class="form-select" aria-label="Default select example" name="InputModelo">
                                 <option value="0">Selecciona un Modelo</option> 
@@ -312,7 +312,7 @@
                     </div>
                     
                     <!-- Tipo auto ------------------------------------------------------------------->
-                    <div class="col-2 mt-2">
+                    <div class="col-12 mt-2">
                         <label for="InputType" class="form-label">Tipo de automovil</label>
                         <select id="InputType" class="form-select" aria-label="Default select example" name="InputType">
                             <option value="Hatchback">Hatchback</option>  
@@ -323,7 +323,7 @@
                     </div>
 
                     <!-- Input Mensualidad ------------------------------------------------------------------->
-                    <div class="input-group mb-3 col-6 mt-5">
+                    <div class="input-group mb-3 col-12 mt-2">
                         <span class="input-group-text">$</span>
                             <input id="InputMensualidad" type="text" class="form-control" name="InputMensualidad" aria-label="Amount (to the nearest dollar)" required>
                         <span class="input-group-text">MX/mensuales</span>
@@ -333,14 +333,14 @@
                     </div>
 
                     <!-- Input Costo ------------------------------------------------------------------->
-                    <div class="input-group mb-3 col-6 mt-2">
+                    <div class="input-group mb-3 col-12 mt-2">
                         <span class="input-group-text">$</span>
                             <input id="InputCosto" type="text" class="form-control" name="InputCosto" aria-label="Amount (to the nearest dollar)">
                         <span class="input-group-text">MX/Contado</span>
                     </div>
 
                     <!-- Input Color ------------------------------------------------------------------->
-                    <div class="col-2 mt-5">
+                    <div class="col-12 mt-2">
                         <label for="InputColor" class="form-label">Color</label>
                         <select id="InputColor" class="form-select" aria-label="Default select example" name="InputColor">
                             <option value="Negro">Negro</option>  
@@ -358,7 +358,7 @@
                     </div>
 
                     <!-- Input Transmision ------------------------------------------------------------------->
-                    <div class="col-2 mt-2">
+                    <div class="col-12 mt-2">
                         <label for='InputTransmision' class='form-label'>Tipo de transmision</label>
                         <div class="col mb-3 form-check"> 
                             <div class="form-check form-check-inline">
@@ -373,7 +373,7 @@
                     </div>
 
                     <!-- Input Interior ------------------------------------------------------------------->
-                    <div class="col-2 mt-2">
+                    <div class="col-12 mt-2">
                         <label for='InputInterior' class='form-label'>Interior</label>
                         <div class="col mb-3 form-check"> 
                             <div class="form-check form-check-inline">
@@ -388,7 +388,7 @@
                     </div>
 
                     <!-- Input kilometraje ------------------------------------------------------------------->
-                    <div class="col-2 mt-2">
+                    <div class="col-12 mt-2">
                         <label for='InputKilometraje' class='form-label'>Kilometraje</label>
                         <div class="input-group mb-3 ">
                                 <input id="InputKilometraje" type="text" class="form-control" name="InputKilometraje"  aria-label="Amount (to the nearest dollar)">
@@ -397,7 +397,7 @@
                     </div>
 
                     <!-- Input Combustible ------------------------------------------------------------------->
-                    <div class="col-3 mt-2">
+                    <div class="col-12 mt-2">
                         <label for='InputCombustible' class='form-label'>Combustible</label>
                         <div class="col mb-3 form-check"> 
                             <div class="form-check form-check-inline">
@@ -420,7 +420,7 @@
                     </div>
 
                     <!-- Input Cilindros ------------------------------------------------------------------->
-                    <div class="col-6 mt-2">
+                    <div class="col-12 mt-2">
                     <label for='InputCilindros' class='form-label'>Cilindros</label>
                         <div class="p-3 m-0 border-0 bd-example m-0 border-0">
                             <input type="radio" class="btn-check" name="InputCilindros" value="4" id="InputCilindros1" autocomplete="off" checked="">
@@ -441,7 +441,7 @@
                     </div>
 
                     <!-- Input eje ------------------------------------------------------------------->
-                    <div class="col-2 mt-2">
+                    <div class="col-12 mt-2">
                         <label for="InputEje" class="form-label">Eje</label>
                         <select id="InputEje" class="form-select" aria-label="Default select example" name="InputEje">
                             <option value="Delantera">Delantera</option>  
@@ -451,7 +451,7 @@
                     </div>
 
                     <!-- Input pasajeros ------------------------------------------------------------------->
-                    <div class="col-2 mt-2">
+                    <div class="col-12 mt-2">
                         <label for='InputPasajeros' class='form-label'>Capacidad de pasajeros</label>
                         <div class="input-group mb-3 ">
                                 <input id="InputPasajeros" type="text" class="form-control" name="InputPasajeros" aria-label="Amount (to the nearest dollar)">
@@ -460,7 +460,7 @@
                     </div>
 
                     <!-- Input Propietarios ------------------------------------------------------------------->
-                    <div class="col-2 mt-2">
+                    <div class="col-12 mt-2">
                         <label for="InputPropietarios" class="form-label">Propietarios</label>
                         <select id="InputPropietarios" class="form-select" aria-label="Default select example" name="InputPropietarios">
                             <option value="1">1</option>  
@@ -469,7 +469,7 @@
                     </div>
 
                     <!-- Input Img ------------------------------------------------------------------->
-                    <div class="col-2 mt-5">
+                    <div class="col-12 mt-5">
                         <div class="mb-3">
                             <label for="" class="form-label">Carga de imagenes</label>
                             <input class="form-control form-control-sm" type="file" name="archivo[]" multiple="multiple">
@@ -483,7 +483,6 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
