@@ -236,7 +236,7 @@
  <!-- Formulario ------------------------------------------------------------->                   
     <form action="../db_consultas/insert_sp.php" method="POST" enctype="multipart/form-data">
                     
-                    <div class="col-2 mt-5">
+                    <div class="col-12 mt-5">
                         <label for="InputSucursal" class="form-label">Sucursal</label>
                         <select id="InputSucursal" class="form-select" aria-label="Default select example" name="InputSucursal">
                             <option value="0">Selecciona una sucursal</option>                      
@@ -265,7 +265,7 @@
                         </select>
                     </div>
             
-                    <div class="col-3 mt-5">
+                    <div class="col-12 mt-5">
                         <label for="InputMarca" class="form-label">Marca</label>
                         <select id="InputMarca" class="form-select" aria-label="Default select example" name="InputMarca">
                             <option value="0">Selecciona una Marca</option>                      
@@ -295,7 +295,7 @@
                     </div>
                     <div class="row mt-3">
                     <!-- Input Auto ------------------------------------------------------------------->
-                        <div id="div_auto" class="col-3">
+                        <div id="div_auto" class="col-6">
                             <label for='InputNombre' class='form-label'>Vehiculo</label>
                             <select id="InputNombre" class="form-select" aria-label="Default select example" name="InputNombre">
                                 <option value="0">Selecciona un Vehiculo</option> 
@@ -303,7 +303,7 @@
                         </div>
 
                     <!-- Input Modelo ------------------------------------------------------------------->
-                        <div id="div_modelo" class="col-3">
+                        <div id="div_modelo" class="col-6">
                             <label for='InputModelo' class='form-label'>Modelo</label>
                             <select id="InputModelo" class="form-select" aria-label="Default select example" name="InputModelo">
                                 <option value="0">Selecciona un Modelo</option> 
