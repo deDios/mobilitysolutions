@@ -480,6 +480,40 @@
 
                     <button type="submit" class="btn btn-success mt-5">Guardar registro</button>
             </form>
+                    <script >
+                        $(document).ready(function(){
+                            $('#InputMarca').val(0);
+                            $('#InputMarca').change(function(){
+                                get_marca();
+                                get_modelo();
+                            }); 
+                            $('#div_auto').change(function(){
+                                get_modelo();
+                            });                       
+                        });
+                    </script>                        
+                    <script>
+                        function get_marca(){
+                            $.ajax({
+                                type:   "POST" ,
+                                url:    "../get_marca.php",
+                                data:   "Marca=" + $('#InputMarca').val(),
+                                success: function(r){
+                                    $('#div_auto').html(r);
+                                }
+                            });
+                        }
+                        function get_modelo(){
+                            $.ajax({
+                                type:   "POST" ,
+                                url:    "../get_modelo.php",
+                                data:   "Auto=" + $('#InputNombre').val(),
+                                success: function(a){
+                                    $('#div_modelo').html(a);
+                                }
+                            });
+                        }
+                    </script>
  <!-- Fin de formulario ------------------------------------------------------------->
       </div>
       <div class="modal-footer">
