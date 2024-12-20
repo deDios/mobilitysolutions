@@ -6,7 +6,7 @@ $Marca=$_POST['Marca'];
                 <option value='0'> Selecciona un Vehiculo </option>
                 ";
 
-$inc = include "db/Conexion.php"; 
+$inc = include "../db/Conexion.php"; 
     $query = "select 
                     id,
                     marca,
