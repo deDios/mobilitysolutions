@@ -2,7 +2,7 @@
 $Marca=$_POST['Marca'];
     
     $cadena = "<label for='InputNombre' class='form-label'>Vehiculo</label>
-                <a rel='nofollow' target='_blank' href='https://mobilitysolutionscorp.com/insert_reg_auto.php' class='btn btn-primary btn-sm'>+ Agregar vehículo</a>
+                <a rel='nofollow' target='_blank' href='https://mobilitysolutionscorp.com/insert_reg_auto.php' class='btn btn-primary btn-sm'>+</a>
                 <select id='InputNombre' class='form-select' aria-label='Default select example' name='InputNombre'>
                 <option value='0'> Selecciona un Vehiculo </option>
                 ";
