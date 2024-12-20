@@ -2,6 +2,7 @@
 $Auto=$_POST['Auto'];
  
     $cadena = "<label for='InputModelo' class='form-label'>Modelo</label>
+                <a rel='nofollow' target='_blank' href='https://mobilitysolutionscorp.com/insert_reg_mod.php' class='btn btn-primary btn-sm'>+ Agregar modelo</a>
                 <select id='InputModelo' class='form-select' aria-label='Default select example' name='InputModelo'>
                     <option value='0'> Selecciona un Modelo </option>
                     ";
