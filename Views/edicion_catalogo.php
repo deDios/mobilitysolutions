@@ -296,16 +296,16 @@
                         </select>
                     </div>
                     <!-- Input Auto ------------------------------------------------------------------->
-                        <div id="div_auto" class="col-12 mt-2">
+                        <div id="div_auto" class="col-12 mt-5">
                             <label for='InputNombre' class='form-label'>Vehiculo</label>
-                            <a rel="nofollow" target="_blank" href="https://mobilitysolutionscorp.com/insert_reg_auto.php" class="btn btn-primary btn-sm">+ Agregar vehiculo</a> 
+                            <a rel="nofollow" target="_blank" href="https://mobilitysolutionscorp.com/insert_reg_auto.php" class="btn btn-primary btn-sm">+ Agregar vehículo</a> 
                             <select id="InputNombre" class="form-select" aria-label="Default select example" name="InputNombre">
                                 <option value="0">Selecciona un Vehiculo</option> 
                             </select>
                         </div>
 
                     <!-- Input Modelo ------------------------------------------------------------------->
-                        <div id="div_modelo" class="col-12 mt-2">
+                        <div id="div_modelo" class="col-12 mt-3">
                             <label for='InputModelo' class='form-label'>Modelo</label>
                             <a rel="nofollow" target="_blank" href="https://mobilitysolutionscorp.com/insert_reg_mod.php" class="btn btn-primary btn-sm">+ Agregar modelo</a> 
                             <select id="InputModelo" class="form-select" aria-label="Default select example" name="InputModelo">
