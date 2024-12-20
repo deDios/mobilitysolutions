@@ -482,40 +482,7 @@
 
                     <button type="submit" class="btn btn-success mt-5">Guardar registro</button>
             </form>
-                    <script >
-                        $(document).ready(function(){
-                            $('#InputMarca').val(0);
-                            $('#InputMarca').change(function(){
-                                get_marca();
-                                get_modelo();
-                            }); 
-                            $('#div_auto').change(function(){
-                                get_modelo();
-                            });                       
-                        });
-                    </script>                        
-                    <script>
-                        function get_marca(){
-                            $.ajax({
-                                type:   "POST" ,
-                                url:    "get_marca.php",
-                                data:   "Marca=" + $('#InputMarca').val(),
-                                success: function(r){
-                                    $('#div_auto').html(r);
-                                }
-                            });
-                        }
-                        function get_modelo(){
-                            $.ajax({
-                                type:   "POST" ,
-                                url:    "get_modelo.php",
-                                data:   "Auto=" + $('#InputNombre').val(),
-                                success: function(a){
-                                    $('#div_modelo').html(a);
-                                }
-                            });
-                        }
-                    </script>
+                    
  <!-- Fin de formulario ------------------------------------------------------------->
       </div>
       <div class="modal-footer">
@@ -677,7 +644,42 @@
         }
 </script>
 
-                                                
+
+                    <script >
+                        $(document).ready(function(){
+                            $('#InputMarca').val(0);
+                            $('#InputMarca').change(function(){
+                                get_marca();
+                                get_modelo();
+                            }); 
+                            $('#div_auto').change(function(){
+                                get_modelo();
+                            });                       
+                        });
+                    </script>                        
+                    <script>
+                        function get_marca(){
+                            $.ajax({
+                                type:   "POST" ,
+                                url:    "get_marca.php",
+                                data:   "Marca=" + $('#InputMarca').val(),
+                                success: function(r){
+                                    $('#div_auto').html(r);
+                                }
+                            });
+                        }
+                        function get_modelo(){
+                            $.ajax({
+                                type:   "POST" ,
+                                url:    "get_modelo.php",
+                                data:   "Auto=" + $('#InputNombre').val(),
+                                success: function(a){
+                                    $('#div_modelo').html(a);
+                                }
+                            });
+                        }
+                    </script>
+
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
