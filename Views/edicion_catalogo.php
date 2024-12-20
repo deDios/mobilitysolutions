@@ -298,27 +298,7 @@
                     <!-- Input Auto ------------------------------------------------------------------->
                         <div id="div_auto" class="col-12 mt-2">
                             <label for='InputNombre' class='form-label'>Vehiculo</label>
-                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal_auto">
-                                +
-                            </button>
-                            <div class="modal fade" id="exampleModal_auto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Agregar vehiculo a marca</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        ...
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <a rel="nofollow" target="_blank" href="https://mobilitysolutionscorp.com/insert_reg_auto.php" class="btn btn-primary btn-sm">+ Agregar vehiculo</a> 
                             <select id="InputNombre" class="form-select" aria-label="Default select example" name="InputNombre">
                                 <option value="0">Selecciona un Vehiculo</option> 
                             </select>
@@ -327,6 +307,7 @@
                     <!-- Input Modelo ------------------------------------------------------------------->
                         <div id="div_modelo" class="col-12 mt-2">
                             <label for='InputModelo' class='form-label'>Modelo</label>
+                            <a rel="nofollow" target="_blank" href="https://mobilitysolutionscorp.com/insert_reg_mod.php" class="btn btn-primary btn-sm">+ Agregar modelo</a> 
                             <select id="InputModelo" class="form-select" aria-label="Default select example" name="InputModelo">
                                 <option value="0">Selecciona un Modelo</option> 
                             </select>
