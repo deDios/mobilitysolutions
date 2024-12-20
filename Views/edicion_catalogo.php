@@ -301,7 +301,7 @@
                             <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal_auto">
                                 +
                             </button>
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="exampleModal_auto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                     <div class="modal-header">
