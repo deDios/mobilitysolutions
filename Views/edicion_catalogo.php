@@ -298,7 +298,7 @@
                     <!-- Input Auto ------------------------------------------------------------------->
                         <div id="div_auto" class="col-12 mt-2">
                             <label for='InputNombre' class='form-label'>Vehiculo</label>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal_auto">
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal_auto">
                                 +
                             </button>
                             <select id="InputNombre" class="form-select" aria-label="Default select example" name="InputNombre">
