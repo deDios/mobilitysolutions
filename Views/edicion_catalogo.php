@@ -296,9 +296,9 @@
                         </select>
                     </div>
                     <!-- Input Auto ------------------------------------------------------------------->
-                        <div id="div_auto" class="col-12 mt-5">
+                        <div id="div_auto" class="col-12 mt-3">
                             <label for='InputNombre' class='form-label'>Vehiculo</label>
-                            <a rel="nofollow" target="_blank" href="https://mobilitysolutionscorp.com/insert_reg_auto.php" class="btn btn-primary btn-sm">+ Agregar vehículo</a> 
+                            <a rel="nofollow" target="_blank" href="https://mobilitysolutionscorp.com/insert_reg_auto.php" class="btn btn-primary btn-sm">+ Agregar</a> 
                             <select id="InputNombre" class="form-select" aria-label="Default select example" name="InputNombre">
                                 <option value="0">Selecciona un Vehiculo</option> 
                             </select>
@@ -307,7 +307,7 @@
                     <!-- Input Modelo ------------------------------------------------------------------->
                         <div id="div_modelo" class="col-12 mt-3">
                             <label for='InputModelo' class='form-label'>Modelo</label>
-                            <a rel="nofollow" target="_blank" href="https://mobilitysolutionscorp.com/insert_reg_mod.php" class="btn btn-primary btn-sm">+ Agregar modelo</a> 
+                            <a rel="nofollow" target="_blank" href="https://mobilitysolutionscorp.com/insert_reg_mod.php" class="btn btn-primary btn-sm">+ Agregar</a> 
                             <select id="InputModelo" class="form-select" aria-label="Default select example" name="InputModelo">
                                 <option value="0">Selecciona un Modelo</option> 
                             </select>
@@ -315,7 +315,7 @@
                     
                     
                     <!-- Tipo auto ------------------------------------------------------------------->
-                    <div class="col-12 mt-2">
+                    <div class="col-12 mt-5">
                         <label for="InputType" class="form-label">Tipo de automovil</label>
                         <select id="InputType" class="form-select" aria-label="Default select example" name="InputType">
                             <option value="Hatchback">Hatchback</option>  
