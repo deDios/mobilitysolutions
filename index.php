@@ -112,7 +112,7 @@
 
 <main>
   <div class="div_about">
-    <section class="py-5 text-center container">
+    <section class="py-3 text-center container">
       <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
           <h1 class="fw-light">🚘 Nuestro balance comercial en números. </h1>
@@ -126,7 +126,7 @@
     </section>
   </div>
 
-  <div class="album py-5 bg-warning bg-opacity-25">
+  <div class="album py-3 bg-warning bg-opacity-25">
     <div class="container">
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
