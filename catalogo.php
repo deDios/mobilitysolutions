@@ -80,7 +80,7 @@
   <div class="menu_fix position-fixed">
             <form class="form-search" action="" method="get">
               <div class="input-group input-group-lg">
-                    <input class="form-control form-text pl-3" maxlength="128" placeholder="Busca por marca, modelo, tipo..." type="text" name="buscar" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"/>
+                    <input class="form-control form-text pl-3" maxlength="128" placeholder="Busca por marca, modelo, tipo..." type="text" name="buscar" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-xs"/>
               </div>
               <div class="div_icon pt-2">
                 <a class="btn btn-secondary btn-lg" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
