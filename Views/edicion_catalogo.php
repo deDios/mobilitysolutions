@@ -36,7 +36,7 @@
             <ul class="social-network">
               <li><a class="waves-effect waves-dark" href="https://www.facebook.com/profile.php?id=61563909313215&mibextid=kFxxJD"><i class="fa fa-facebook"></i></a></li>
               
-              <li><a class="waves-effect waves-dark" data-toggle="modal" data-target="#exampleModal2"><i class="fa fa-map-marker"></i></a></li>       
+              <li><a class="waves-effect waves-dark" href="" data-toggle="modal" data-target="#exampleModal2"><i class="fa fa-map-marker"></i></a></li>       
 
               <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-user"></i></a></li>
             </ul>
@@ -45,28 +45,6 @@
         </div>
       </div>
   </header>
-
-                <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Sucursales</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                <!-- Formulario ------------------------------------------------------------->                   
-                    
-                                    
-                <!-- Fin de formulario ------------------------------------------------------------->
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                    </div>
-                </div>
-                </div>
 
   <nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear">
     <div class="container">
@@ -110,9 +88,31 @@
   </nav>
 </div>
 
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Sucursales</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                <!-- Formulario ------------------------------------------------------------->                   
+                    
+                                    
+                <!-- Fin de formulario ------------------------------------------------------------->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
 
 <!--------------------------------------- Termina Menu ----------------------------------------------->
 <div class="apartado_tabla2">
+
 <div class="">
 
 </div>
