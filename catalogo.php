@@ -79,7 +79,7 @@
 <div class="menu_item py-3">
   <div class="menu_fix position-fixed">
             <form class="form-search" action="" method="get">
-              <div class="input-group input-group-sm">
+              <div class="input-group input-group">
                     <input class="form-control form-text pl-3" maxlength="128" placeholder="Busca por marca, modelo, tipo..." type="text" name="buscar" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"/>
               </div>
               <div class="div_icon pt-2">
