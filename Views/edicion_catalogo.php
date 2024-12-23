@@ -141,7 +141,8 @@
                         </ol>
                         </div>
                         <div>
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3732.850779672739!2d-103.43474452349986!3d20.675648999810576!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428aebc35b5c8e9%3A0xe2e690a0c4ea9278!2sPl.%20Galer%C3%ADas%20Guadalajara%2C%20Zapopan%2C%20Jal.!5e0!3m2!1ses-419!2smx!4v1734990950024!5m2!1ses-419!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3732.850779672739!2d-103.43474452349986!3d20.675648999810576!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428aebc35b5c8e9%3A0xe2e690a0c4ea9278!2sPl.%20Galer%C3%ADas%20Guadalajara%2C%20Zapopan%2C%20Jal.!5e0!3m2!1ses-419!2smx!4v1734990950024!5m2!1ses-419!2smx" 
+                                width="350" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>                  
                 <!-- Fin de formulario ------------------------------------------------------------->
