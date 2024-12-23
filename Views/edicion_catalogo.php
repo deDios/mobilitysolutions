@@ -36,7 +36,7 @@
             <ul class="social-network">
               <li><a class="waves-effect waves-dark" href="https://www.facebook.com/profile.php?id=61563909313215&mibextid=kFxxJD"><i class="fa fa-facebook"></i></a></li>
               
-              <li><a class="waves-effect waves-dark" href="" data-toggle="modal" data-target="#exampleModal2"><i class="fa fa-map-marker"></i></a></li>       
+              <li><a class="waves-effect waves-dark" data-toggle="modal" data-target="#exampleModal2"><i class="fa fa-map-marker"></i></a></li>       
 
               <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-user"></i></a></li>
             </ul>
