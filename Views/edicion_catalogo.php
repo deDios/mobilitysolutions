@@ -37,7 +37,7 @@
             <ul class="social-network">
               <li><a class="waves-effect waves-dark" href="https://www.facebook.com/profile.php?id=61563909313215&mibextid=kFxxJD"><i class="fa fa-facebook"></i></a></li>
               
-              <li><a class="waves-effect waves-dark" href="" data-toggle="modal" data-target="#exampleModal2" data-lat='21.03' data-lng='105.85'><i class="fa fa-map-marker"></i></a></li>       
+              <li><a class="waves-effect waves-dark" href="" data-toggle="modal" data-target="#exampleModal2"><i class="fa fa-map-marker"></i></a></li>       
 
               <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-user"></i></a></li>
             </ul>
@@ -89,8 +89,8 @@
   </nav>
 </div>
 
-<div class="modal fade bd-example-modal-lg" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-                <div class="modal-dialog" role="document">
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel2">Sucursales</h5>
