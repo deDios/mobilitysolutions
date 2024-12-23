@@ -102,7 +102,43 @@
                 <!-- Formulario ------------------------------------------------------------->                   
                     <div class="div_sucursales">
                         <div>
-                            hola
+                        <ol class="list-group list-group-numbered">
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                <div class="fw-bold">Subheading</div>
+                                Cras justo odio
+                                </div>
+                                <span class="badge bg-light rounded-pill">Activa</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                <div class="fw-bold">Subheading</div>
+                                Cras justo odio
+                                </div>
+                                <span class="badge bg-light rounded-pill">Activa</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                <div class="fw-bold">Subheading</div>
+                                Cras justo odio
+                                </div>
+                                <span class="badge bg-light rounded-pill">Activa</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                <div class="fw-bold">Subheading</div>
+                                Cras justo odio
+                                </div>
+                                <span class="badge bg-light rounded-pill">Activa</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                <div class="fw-bold">Subheading</div>
+                                Cras justo odio
+                                </div>
+                                <span class="badge bg-light rounded-pill">Activa</span>
+                            </li>
+                        </ol>
                         </div>
                         <div>
                             como estas?
