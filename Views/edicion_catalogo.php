@@ -100,7 +100,14 @@
                     </div>
                     <div class="modal-body">
                 <!-- Formulario ------------------------------------------------------------->                   
-                                                 
+                    <div class="div_sucursales">
+                        <div>
+                            hola
+                        </div>
+                        <div>
+                            como estas?
+                        </div>
+                    </div>                  
                 <!-- Fin de formulario ------------------------------------------------------------->
                     </div>
                     <div class="modal-footer">

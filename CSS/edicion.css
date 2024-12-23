@@ -168,6 +168,12 @@ li {
 /*--------------------------------------------------------------------------------------------------*/
 
 /* CSS Tabla ---------------------------------------------------------------------------------------*/
+.div_sucursales {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-right: 10px;
+    padding-left: 10px;
+}
 
 .apartado_tabla{
     display: grid;
