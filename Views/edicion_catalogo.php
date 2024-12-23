@@ -108,35 +108,35 @@
                                 <div class="fw-bold">CDMX</div>
                                 Av P. de la Reforma 505 Piso 37, Col. Cuauhtémoc, C.P. 06500
                                 </div>
-                                <span class="badge bg-light rounded-pill">Activa</span>
+                                <span class="badge bg-dark rounded-pill">Activa</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
                                 <div class="fw-bold">Plaza Galerias Guadalajara</div>
                                 Av Rafael Sanzio 150, Camichines Vallarta, 45020 Zapopan, Jalisco
                                 </div>
-                                <span class="badge bg-light rounded-pill">Activa</span>
+                                <span class="badge bg-dark rounded-pill">Activa</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
                                 <div class="fw-bold">Plaza Mayor</div>
                                 Bivd. Juan Alonso de Torres Pte. 2002, Valle del Campestre, 37150 León de los Aldama, Gto.
                                 </div>
-                                <span class="badge bg-light rounded-pill">Activa</span>
+                                <span class="badge bg-dark rounded-pill">Activa</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
                                 <div class="fw-bold">Torre Mayor</div>
                                 Av. P.° de la Reforma 505, Cuauhtémoc, 06500 Ciudad de México, CDMX
                                 </div>
-                                <span class="badge bg-light rounded-pill">Activa</span>
+                                <span class="badge bg-dark rounded-pill">Activa</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
                                 <div class="fw-bold"></div>
                                 Cras justo odio
                                 </div>
-                                <span class="badge bg-light rounded-pill">Activa</span>
+                                <span class="badge bg-dark rounded-pill">Activa</span>
                             </li>
                         </ol>
                         </div>
