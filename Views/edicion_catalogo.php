@@ -24,7 +24,7 @@
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
 
 </head>
 
@@ -101,46 +101,13 @@
                     </div>
                     <div class="modal-body">
                 <!-- Formulario ------------------------------------------------------------->                   
-                    <div id="mapa_pr" style="height: 480px; width: 300px"></div>
-
-                    <script type="text/javascript">
-                        var sitios = [
-                        ['El Muelle', 36.523924, -6.1911, 9],
-                        ['Centro Administrativo', 36.5258, -6.1911, 8],
-                        ['Iglesia San Sebastián', 36.52894, -6.1899, 7],
-                        ['San José', 36.52893, -6.1906, 6],
-                        ['Ayuntamiento', 36.528676, -6.19234, 5],
-                        ['La Cachucha', 36.52569, -6.1841, 4],
-                        ['El Porvenir', 36.53056, -6.1863, 3],
-                        ['Las Canteras', 36.5372, -6.1851, 2],
-                        ['Polideportivo', 36.5268, -6.1936, 1]
-                        ];
-
-                        var map = new google.maps.Map(document.getElementById("mapa_pr"), {
-                        center: new google.maps.LatLng(36.531, -6.189),
-                        zoom: 15,
-                        mapTypeId: google.maps.MapTypeId.SATELLITE
-                        });
-
-                        var infowindow = new google.maps.InfoWindow();
-
-                        var marker, i;
-
-                        for (i = 0; i < sitios.length; i++) {  
-                            marker = new google.maps.Marker({
-                            position: new google.maps.LatLng(sitios[i][1], sitios[i][2]),
-                            map: map
-                        });
-
-                        google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                            return function() {
-                            infowindow.setContent(sitios[i][0]);
-                            infowindow.open(map, marker);
-                            }
-                        })(marker, i));
-                        }
-                    </script>
-                                    
+                <div class="row">
+                    <div class="col-md-12 modal_body_map">
+                    <div class="location-map" id="location-map">
+                        <div style="width: 600px; height: 400px;" id="map_canvas"></div>
+                    </div>
+                    </div>
+                </div>                                  
                 <!-- Fin de formulario ------------------------------------------------------------->
                     </div>
                     <div class="modal-footer">
@@ -150,6 +117,10 @@
                 </div>
                 </div>
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="//maps.googleapis.com/maps/api/js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="script.js"></script>
 <!--------------------------------------- Termina Menu ----------------------------------------------->
 <div class="apartado_tabla2">
 
