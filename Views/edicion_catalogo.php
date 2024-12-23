@@ -24,6 +24,8 @@
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+
 </head>
 
 <body>
@@ -88,18 +90,56 @@
   </nav>
 </div>
 
-<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Sucursales</h5>
+                        <h5 class="modal-title" id="exampleModalLabel2">Sucursales</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                 <!-- Formulario ------------------------------------------------------------->                   
-                    
+                    <div id="mapa_pr" style="height: 480px; width: 300px"></div>
+
+                    <script type="text/javascript">
+                        var sitios = [
+                        ['El Muelle', 36.523924, -6.1911, 9],
+                        ['Centro Administrativo', 36.5258, -6.1911, 8],
+                        ['Iglesia San Sebastián', 36.52894, -6.1899, 7],
+                        ['San José', 36.52893, -6.1906, 6],
+                        ['Ayuntamiento', 36.528676, -6.19234, 5],
+                        ['La Cachucha', 36.52569, -6.1841, 4],
+                        ['El Porvenir', 36.53056, -6.1863, 3],
+                        ['Las Canteras', 36.5372, -6.1851, 2],
+                        ['Polideportivo', 36.5268, -6.1936, 1]
+                        ];
+
+                        var map = new google.maps.Map(document.getElementById("mapa_pr"), {
+                        center: new google.maps.LatLng(36.531, -6.189),
+                        zoom: 15,
+                        mapTypeId: google.maps.MapTypeId.SATELLITE
+                        });
+
+                        var infowindow = new google.maps.InfoWindow();
+
+                        var marker, i;
+
+                        for (i = 0; i < sitios.length; i++) {  
+                            marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(sitios[i][1], sitios[i][2]),
+                            map: map
+                        });
+
+                        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                            return function() {
+                            infowindow.setContent(sitios[i][0]);
+                            infowindow.open(map, marker);
+                            }
+                        })(marker, i));
+                        }
+                    </script>
                                     
                 <!-- Fin de formulario ------------------------------------------------------------->
                     </div>
