@@ -105,8 +105,8 @@
                         <ol class="list-group">
                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
-                                <div class="fw-bold">CDMX</div>
-                                Av P. de la Reforma 505 Piso 37, Col. Cuauhtémoc, C.P. 06500
+                                <div class="fw-bold">Torre Mayor</div>
+                                Av. P.° de la Reforma 505, Cuauhtémoc, 06500 Ciudad de México, CDMX
                                 </div>
                                 <span class="badge bg-dark rounded-pill">Activa</span>
                             </li>
@@ -133,7 +133,7 @@
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
-                                <div class="fw-bold"></div>
+                                <div class="fw-bold">Puebla</div>
                                 Cras justo odio
                                 </div>
                                 <span class="badge bg-dark rounded-pill">Activa</span>
