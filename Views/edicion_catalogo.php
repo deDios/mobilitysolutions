@@ -36,7 +36,7 @@
             <ul class="social-network">
               <li><a class="waves-effect waves-dark" href="https://www.facebook.com/profile.php?id=61563909313215&mibextid=kFxxJD"><i class="fa fa-facebook"></i></a></li>
               
-              <li><a class=""><i class="fa fa-map-marker" data-toggle="modal" data-target="#exampleModal2"></i></a></li>       
+              <li><a class="waves-effect waves-dark"><i class="fa fa-map-marker" data-toggle="modal" data-target="#exampleModal2"></i></a></li>       
               <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
