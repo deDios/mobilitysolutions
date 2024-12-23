@@ -174,6 +174,11 @@ li {
     padding-right: 10px;
     padding-left: 10px;
 }
+#map {
+    width: 100%;
+    height: 400px;
+    background-color: grey;
+}
 
 .apartado_tabla{
     display: grid;
