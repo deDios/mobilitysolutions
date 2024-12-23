@@ -135,7 +135,7 @@
 
           <div class="count-up-wrapper top">
             <span id="count-up-container-top">0</span>
-            <span class="additional-info">Contratos Firmados</span>
+            <span class="additional-info">Entregas 📈</span>
           </div>
 
           <script type="module">
@@ -183,7 +183,7 @@
           <script type="module">
             import { CountUp } from '/js/countup.js/dist/countUP.min.js';
               const options3 = {
-                duration: 20,
+                duration: 60,
                 prefix: '+',
               };
               let demo3 = new CountUp('count-up-container-top3', 10, options3);
