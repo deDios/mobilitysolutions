@@ -24,8 +24,7 @@
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
-
+   
 </head>
 
 <body>
@@ -101,13 +100,7 @@
                     </div>
                     <div class="modal-body">
                 <!-- Formulario ------------------------------------------------------------->                   
-                <div class="row">
-                    <div class="col-md-12 modal_body_map">
-                    <div class="location-map" id="location-map">
-                        <div style="width: 600px; height: 400px;" id="map_canvas"></div>
-                    </div>
-                    </div>
-                </div>                                  
+                                                 
                 <!-- Fin de formulario ------------------------------------------------------------->
                     </div>
                     <div class="modal-footer">
@@ -117,10 +110,6 @@
                 </div>
                 </div>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="//maps.googleapis.com/maps/api/js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <script src="script.js"></script>
 <!--------------------------------------- Termina Menu ----------------------------------------------->
 <div class="apartado_tabla2">
 
