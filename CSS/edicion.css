@@ -170,7 +170,7 @@ li {
 /* CSS Tabla ---------------------------------------------------------------------------------------*/
 .div_sucursales {
     display: grid;
-    grid-template-columns: 2fr 2fr;
+    grid-template-columns: 1fr 2fr;
     padding-right: 10px;
     padding-left: 10px;
 }
@@ -229,4 +229,46 @@ li {
 .totalizador .total_info {
     padding-right: 10px;
     padding-left: 10px;
+}
+
+@media (max-width:700px){
+    .menu_fix {
+        padding-top: 85px;
+        padding-bottom: 20px;
+        width: 94%;
+        background-color: white;
+    }
+    header{
+        flex-direction: column;
+    }
+    nav{
+        padding: 0px 0px ;
+    }
+    .pie_pag{
+        background: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .anuncios {
+        display: none;
+    }
+
+    .mx-background-top-linear {
+        background: -webkit-linear-gradient(45deg, #FFC00A 70%, #1b1e21 26%);
+        background: -webkit-linear-gradient(left, #FFC00A 70%, #1b1e21 26%);
+        background: linear-gradient(45deg, #FFC00A 70%, #1b1e21 26%);
+      }
+
+      .div_sucursales {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        grid-row-gap: 10px;
+    }
+
 }
