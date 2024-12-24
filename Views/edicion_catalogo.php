@@ -141,7 +141,7 @@
                         </ol>
                         </div>
                         <div class="sucursal_map">
-                            <iframe src="https://www.google.com/maps/d/embed?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&ehbc=2E312F" width="500" height="800"></iframe>
+                            <iframe src="https://www.google.com/maps/d/embed?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&ehbc=2E312F" width="500" height="700"></iframe>
                         </div>
                     </div>                  
                 <!-- Fin de formulario ------------------------------------------------------------->
