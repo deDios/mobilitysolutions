@@ -105,35 +105,35 @@
                         <ol class="list-group">
                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
-                                <div class="fw-bold">CDMX</div>
+                                <div class="fw-bold">Matriz CDMX</div>
                                 Av. P.° de la Reforma 505, Cuauhtémoc, 06500 Ciudad de México, CDMX
                                 </div>
                                 <span class="badge bg-dark rounded-pill">Activa</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
-                                <div class="fw-bold">Plaza Galerias Guadalajara</div>
+                                <div class="fw-bold">Sucursal Guadalajara</div>
                                 Av Rafael Sanzio 150, Camichines Vallarta, 45020 Zapopan, Jalisco
                                 </div>
                                 <span class="badge bg-dark rounded-pill">Activa</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
-                                <div class="fw-bold">Plaza Mayor</div>
+                                <div class="fw-bold">Sucursal Leon</div>
                                 Bivd. Juan Alonso de Torres Pte. 2002, Valle del Campestre, 37150 León de los Aldama, Gto.
                                 </div>
                                 <span class="badge bg-dark rounded-pill">Activa</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
-                                <div class="fw-bold">Torre Mayor</div>
-                                Av. P.° de la Reforma 505, Cuauhtémoc, 06500 Ciudad de México, CDMX
+                                <div class="fw-bold">Sucursal Morelia</div>
+                                C. Vicente Sta. María 1516, Félix Ireta, 58070 Morelia, Mich.
                                 </div>
                                 <span class="badge bg-dark rounded-pill">Activa</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
-                                <div class="fw-bold">Explanada Puebla</div>
+                                <div class="fw-bold">Sucursal Puebla</div>
                                 Calle Ignacio Allende 512, Santiago Momoxpan, Alvaro Obregón, 72774 San Andrés Cholula, Pue.
                                 </div>
                                 <span class="badge bg-dark rounded-pill">Activa</span>
