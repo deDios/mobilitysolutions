@@ -103,15 +103,15 @@
                     <div class="div_sucursales">
                         <div class="sucursal_list">
                         <ol class="list-group">
+                        <a href="https://www.google.com/maps/d/u/0/viewer?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&femb=1&ll=20.11709728888821%2C-100.85436015&z=8">
                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
                                 <div class="fw-bold">Matriz CDMX</div>
                                 Av. P. de la Reforma 505 Piso 37, Cuauhtémoc, 06500.
                                 </div>
-                                <span class="badge bg-dark rounded-pill"><a href="https://www.google.com/maps/d/u/0/viewer?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&femb=1&ll=20.11709728888821%2C-100.85436015&z=8">Activa</a></span>
-                                <br>
-                                
+                                <span class="badge bg-dark rounded-pill">Activa</span>
                             </li>
+                        </a>
                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
                                 <div class="fw-bold">Sucursal GDL</div>
