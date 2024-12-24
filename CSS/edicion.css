@@ -170,15 +170,11 @@ li {
 /* CSS Tabla ---------------------------------------------------------------------------------------*/
 .div_sucursales {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 2fr 2fr;
     padding-right: 10px;
     padding-left: 10px;
 }
-#map {
-    width: 100%;
-    height: 400px;
-    background-color: grey;
-}
+
 
 .apartado_tabla{
     display: grid;
