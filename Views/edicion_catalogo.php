@@ -106,41 +106,41 @@
                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
                                 <div class="fw-bold">Matriz CDMX</div>
-                                Av. P.° de la Reforma 505, Cuauhtémoc, 06500 Ciudad de México, CDMX
+                                Av. P. de la Reforma 505 Piso 37, Cuauhtémoc, 06500.
                                 </div>
                                 <span class="badge bg-dark rounded-pill">Activa</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
                                 <div class="fw-bold">Sucursal GDL</div>
-                                Av Rafael Sanzio 150, Camichines Vallarta, 45020 Zapopan, Jalisco
+                                Av Rafael Sanzio 150, Camichines Vallarta, 45020.
                                 </div>
                                 <span class="badge bg-dark rounded-pill">Activa</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
                                 <div class="fw-bold">Sucursal León</div>
-                                Bivd. Juan Alonso de Torres Pte. 2002, Valle del Campestre, 37150 León de los Aldama, Gto.
+                                Blvd. Juan Alonso de Torres Pte. 2002, Valle del Campestre, 37150.
                                 </div>
                                 <span class="badge bg-dark rounded-pill">Activa</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
                                 <div class="fw-bold">Sucursal Morelia</div>
-                                C. Vicente Sta. María 1516, Félix Ireta, 58070 Morelia, Mich.
+                                C. Vicente Sta. María 1516, Félix Ireta, 58070.
                                 </div>
                                 <span class="badge bg-dark rounded-pill">Activa</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
                                 <div class="fw-bold">Sucursal Puebla</div>
-                                Calle Ignacio Allende 512, Santiago Momoxpan, Alvaro Obregón, 72774 San Andrés Cholula, Pue.
+                                Calle Ignacio Allende 512, Santiago Momoxpan, Alvaro Obregón, 72774.
                                 </div>
                                 <span class="badge bg-dark rounded-pill">Activa</span>
                             </li>
                         </ol>
                         </div>
-                        <div>
+                        <div class="sucursal_map">
                             <iframe src="https://www.google.com/maps/d/embed?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&ehbc=2E312F" width="500" height="800"></iframe>
                         </div>
                     </div>                  
