@@ -141,19 +141,7 @@
                         </ol>
                         </div>
                         <div>
-                            
-                            <script>
-                            function initMap() {
-                            var macc = {lat: 42.1382114, lng: -71.5212585};
-                            var map = new google.maps.Map(
-                                document.getElementById('map'), {zoom: 15, center: macc});
-                            var marker = new google.maps.Marker({position: macc, map: map});
-                            }
-                            </script>
-                            <script async defer
-                                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUgRqYhZ7F53TnhYR6Vs8Uv34Qt2QjRMI&callback=initMap">
-                            </script>
-            
+                        <iframe src="https://www.google.com/maps/d/embed?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&ehbc=2E312F" width="640" height="480"></iframe>
                         </div>
                     </div>                  
                 <!-- Fin de formulario ------------------------------------------------------------->
