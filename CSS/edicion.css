@@ -174,8 +174,9 @@ li {
     padding-right: 10px;
     padding-left: 10px;
 }
-
-
+.div_sucursales a {
+    text-decoration: none;
+}
 .apartado_tabla{
     display: grid;
     grid-template-columns: 2fr 6fr 2fr;
@@ -272,6 +273,9 @@ li {
     }
     .div_sucursales .sucursal_map{
         display: none;
+    }
+    .div_sucursales a {
+        text-decoration: none;
     }
 
 }
