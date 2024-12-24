@@ -270,5 +270,8 @@ li {
         width: 200px;
         height: 100%;
     }
+    .div_sucursales .sucursal_map{
+        display: none;
+    }
 
 }
