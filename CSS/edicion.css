@@ -267,7 +267,7 @@ li {
         grid-row-gap: 10px;
     }
     .div_sucursales .sucursal_list{
-        width: 200px;
+        width: auto;
         height: 100%;
     }
     .div_sucursales .sucursal_map{
