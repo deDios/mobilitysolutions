@@ -101,7 +101,7 @@
                     <div class="modal-body">
                 <!-- Formulario ------------------------------------------------------------->                   
                     <div class="div_sucursales">
-                        <div>
+                        <div class="sucursal_list">
                         <ol class="list-group">
                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
