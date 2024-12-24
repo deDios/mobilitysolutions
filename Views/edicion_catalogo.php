@@ -133,8 +133,8 @@
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
-                                <div class="fw-bold">Puebla</div>
-                                Cras justo odio
+                                <div class="fw-bold">Explanada Puebla</div>
+                                Calle Ignacio Allende 512, Santiago Momoxpan, Alvaro Obregón, 72774 San Andrés Cholula, Pue.
                                 </div>
                                 <span class="badge bg-dark rounded-pill">Activa</span>
                             </li>
