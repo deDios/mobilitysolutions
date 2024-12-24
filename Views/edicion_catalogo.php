@@ -112,14 +112,14 @@
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
-                                <div class="fw-bold">Sucursal Guadalajara</div>
+                                <div class="fw-bold">Sucursal GDL</div>
                                 Av Rafael Sanzio 150, Camichines Vallarta, 45020 Zapopan, Jalisco
                                 </div>
                                 <span class="badge bg-dark rounded-pill">Activa</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
-                                <div class="fw-bold">Sucursal Leon</div>
+                                <div class="fw-bold">Sucursal León</div>
                                 Bivd. Juan Alonso de Torres Pte. 2002, Valle del Campestre, 37150 León de los Aldama, Gto.
                                 </div>
                                 <span class="badge bg-dark rounded-pill">Activa</span>
