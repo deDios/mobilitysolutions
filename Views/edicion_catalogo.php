@@ -103,7 +103,7 @@
                     <div class="div_sucursales">
                         <div class="sucursal_list">
                         <ol class="list-group">
-                        <a href="https://www.google.com/maps/d/u/0/viewer?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&femb=1&ll=20.11709728888821%2C-100.85436015&z=8">
+                        <a href="https://www.google.com/maps/d/u/0/viewer?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&femb=1&ll=20.11709728888821%2C-100.85436015&z=6">
                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
                                 <div class="fw-bold">Matriz CDMX</div>
@@ -112,6 +112,7 @@
                                 <span class="badge bg-dark rounded-pill">Activa</span>
                             </li>
                         </a>
+                        <a href="https://www.google.com/maps/d/u/0/viewer?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&femb=1&ll=20.11709728888821%2C-100.85436015&z=6">
                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
                                 <div class="fw-bold">Sucursal GDL</div>
@@ -119,6 +120,8 @@
                                 </div>
                                 <span class="badge bg-dark rounded-pill">Activa</span>
                             </li>
+                        </a>
+                        <a href="https://www.google.com/maps/d/u/0/viewer?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&femb=1&ll=20.11709728888821%2C-100.85436015&z=6">
                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
                                 <div class="fw-bold">Sucursal León</div>
@@ -126,6 +129,8 @@
                                 </div>
                                 <span class="badge bg-dark rounded-pill">Activa</span>
                             </li>
+                        </a>
+                        <a href="https://www.google.com/maps/d/u/0/viewer?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&femb=1&ll=20.11709728888821%2C-100.85436015&z=6">
                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
                                 <div class="fw-bold">Sucursal Morelia</div>
@@ -133,6 +138,8 @@
                                 </div>
                                 <span class="badge bg-dark rounded-pill">Activa</span>
                             </li>
+                        </a>
+                        <a href="https://www.google.com/maps/d/u/0/viewer?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&femb=1&ll=20.11709728888821%2C-100.85436015&z=6">
                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
                                 <div class="fw-bold">Sucursal Puebla</div>
@@ -140,6 +147,7 @@
                                 </div>
                                 <span class="badge bg-dark rounded-pill">Activa</span>
                             </li>
+                        </a>
                         </ol>
                         </div>
                         <div class="sucursal_map">
