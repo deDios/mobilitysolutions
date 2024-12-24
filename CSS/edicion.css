@@ -256,9 +256,9 @@ li {
     }
 
     .mx-background-top-linear {
-        background: -webkit-linear-gradient(45deg, #FFC00A 70%, #1b1e21 26%);
-        background: -webkit-linear-gradient(left, #FFC00A 70%, #1b1e21 26%);
-        background: linear-gradient(45deg, #FFC00A 70%, #1b1e21 26%);
+        background: -webkit-linear-gradient(45deg, #e3e3e3 70%, #1b1e21 26%);
+        background: -webkit-linear-gradient(left, #e3e3e3 70%, #1b1e21 26%);
+        background: linear-gradient(45deg, #e3e3e3 70%, #1b1e21 26%);
       }
 
       .div_sucursales {
@@ -267,7 +267,7 @@ li {
         grid-row-gap: 10px;
     }
     .div_sucursales .sucursal_list{
-        width: 100%;
+        width: 200px;
         height: 100%;
     }
 
