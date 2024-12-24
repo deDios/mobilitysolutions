@@ -109,6 +109,7 @@
                                 Av. P. de la Reforma 505 Piso 37, Cuauhtémoc, 06500.
                                 </div>
                                 <span class="badge bg-dark rounded-pill">Activa</span>
+                                <a type="button" class="btn btn-link" href="https://www.google.com/maps/d/u/0/viewer?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&femb=1&ll=20.11709728888821%2C-100.85436015&z=8">Como ir</a>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
