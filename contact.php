@@ -76,6 +76,9 @@
 <div class="container">
     <div class="contact__wrapper shadow-lg mt-n9">
         <div class="row no-gutters">
+          <div class="col-lg-10">
+            <iframe src="https://www.google.com/maps/d/embed?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&ehbc=2E312F" height="400"></iframe>
+          </div>
             <div class="col-lg-5 contact-info__wrapper gradient-brand-color p-5 order-lg-2">
                 <h3 class="color--white mb-5">Contacta con nosotros</h3>
     
