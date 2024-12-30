@@ -74,6 +74,12 @@
 <main>
 <div class="div_contact">
 <div class="container">
+
+  <div class="sec_map">
+    <div class="mapa"><iframe src="https://www.google.com/maps/d/embed?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&ehbc=2E312F"></iframe></div>
+    <div class="ubic"></div>
+  </div>
+
     <div class="contact__wrapper shadow-lg mt-n9">
         <div class="row no-gutters">
           
@@ -196,8 +202,7 @@
                     </div>
                 </form>
             </div>
-            <!-- End Contact Form Wrapper -->
-    
+            <!-- End Contact Form Wrapper -->  
         </div>
     </div>
 </div>
