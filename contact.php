@@ -147,7 +147,7 @@
                       <p class="card-subtitle mb-2 text-muted">Activa</p>
                   </div>
               </div>
-              <p class="card-text">C. Vicente Sta. María 1516, Félix Ireta, 58070 </p> <br> <br>
+              <p class="card-text">C. Vicente Sta. María 1516, Félix Ireta, 58070 </p> <br> 
             </div>
           </div>
         </div>
