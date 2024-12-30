@@ -118,6 +118,60 @@
             </div>
           </div>
         </div>
+        <div class="cartas pl-3">
+          <div class="card" style="width: 15rem;">
+            <div class="card-body">
+              <div class="titulo_carta">
+                  <div class="Imagenes">
+                    <img src="Imagenes/mapa.jpg" alt="Imagen sucursal" class="imagen-circular">
+                  </div>
+                  <div class="Descripcion">
+                      <div class="T_L">
+                        <h6 class="card-title"> CDMX </h6>
+                      </div>
+                      <p class="card-subtitle mb-2 text-muted">Matriz</p>
+                  </div>
+              </div>
+              <p class="card-text">Av.</p>
+            </div>
+          </div>
+        </div>
+        <div class="cartas pl-3">
+          <div class="card" style="width: 15rem;">
+            <div class="card-body">
+              <div class="titulo_carta">
+                  <div class="Imagenes">
+                    <img src="Imagenes/mapa.jpg" alt="Imagen sucursal" class="imagen-circular">
+                  </div>
+                  <div class="Descripcion">
+                      <div class="T_L">
+                        <h6 class="card-title"> CDMX </h6>
+                      </div>
+                      <p class="card-subtitle mb-2 text-muted">Matriz</p>
+                  </div>
+              </div>
+              <p class="card-text">Av.</p>
+            </div>
+          </div>
+        </div>
+        <div class="cartas pl-3">
+          <div class="card" style="width: 15rem;">
+            <div class="card-body">
+              <div class="titulo_carta">
+                  <div class="Imagenes">
+                    <img src="Imagenes/mapa.jpg" alt="Imagen sucursal" class="imagen-circular">
+                  </div>
+                  <div class="Descripcion">
+                      <div class="T_L">
+                        <h6 class="card-title"> CDMX </h6>
+                      </div>
+                      <p class="card-subtitle mb-2 text-muted">Matriz</p>
+                  </div>
+              </div>
+              <p class="card-text">Av.</p>
+            </div>
+          </div>
+        </div>
   
       </div>
     </div>
