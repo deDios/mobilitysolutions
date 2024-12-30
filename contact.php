@@ -80,7 +80,6 @@
       <iframe class="mapa shadow-lg mt-n9" src="https://www.google.com/maps/d/embed?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&ehbc=2E312F" width="100%" height="400"></iframe>
     </div>
     <div class="ubic p-5 mx-auto">
-      <h1 class="fw-light">Sucursales</h1>
       <div class="ubic_logo">
 
         <div class="cartas pl-3">
@@ -104,6 +103,7 @@
   
       </div>
     </div>
+
   </div>
 
     <div class="contact__wrapper shadow-lg mt-n9">

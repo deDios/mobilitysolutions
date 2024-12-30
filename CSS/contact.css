@@ -192,6 +192,91 @@ li {
 .sec_map .mapa{
     border-radius: 10px 10px 10px 10px;
 }
+.slider {
+    width: 75vw; 
+    height: auto; 
+    margin: auto; 
+    overflow: hidden;
+    padding-top: 150px;
+    padding-bottom: 100px;
+  }
+  .slider .slide-track{
+    display: flex;
+    animation: scroll 1615s linear infinite;
+    -webkit-animation: scroll 1615s linear infinite; 
+    width: calc(200px * 646);
+  }
+  .slide-tracks .cartas {
+    width: 265px;
+    background-color: gainsboro;
+    border-radius: 10px 10px 10px 10px;
+    padding-left: 10px;
+  }
+  
+  .cartas .titulo_carta { 
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    align-items:center;
+  }
+  
+  /*-------------------*/
+  .titulo_carta .Imagenes{
+    position: relative;
+    width: 60px;
+    height: 60px;
+  }
+  
+  .Imagenes .imagen-circular {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%; /* Hace que la imagen sea circular */
+      overflow: hidden;
+      object-fit: scale-down; /* Asegura que la imagen se ajuste correctamente */
+  }
+  
+  .Imagenes .imagen-pequeña {
+      position: absolute;
+      bottom: 1px; /* Ajusta la posición vertical */
+      right: 1px; /* Ajusta la posición horizontal */
+      width: 25px; /* Ajusta el tamaño de la imagen pequeña */
+      height: 25px; /* Ajusta el tamaño de la imagen pequeña */
+      border-radius: 50%; /* Opcional, hace que la imagen pequeña también sea circular */
+  }
+  /*----------------------*/
+  
+  /*
+  .titulo_carta img {
+    width: 45px;
+    height: 45px;
+    overflow: hidden;
+    object-fit: scale-down;
+  }
+  */
+  .titulo_carta .Descripcion {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .Descripcion .T_L{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    align-items:center;
+  }
+  .T_L h5{
+    padding-top: 5px;
+  }
+  .T_L img {
+    width: 23px;
+    height: 23px;
+    overflow: hidden;
+    object-fit: scale-down;
+    padding-left: 5px;
+  }
 
 @media (max-width:700px){
   
