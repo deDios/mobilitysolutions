@@ -109,7 +109,7 @@
                   </div>
                   <div class="Descripcion">
                       <div class="T_L">
-                        <h6 class="card-title"> Sucursal GDL </h6>
+                        <h6 class="card-title"> Guadalajara </h6>
                       </div>
                       <p class="card-subtitle mb-2 text-muted">Activa</p>
                   </div>
@@ -127,7 +127,7 @@
                   </div>
                   <div class="Descripcion">
                       <div class="T_L">
-                        <h6 class="card-title"> Sucursal León </h6>
+                        <h6 class="card-title"> León </h6>
                       </div>
                       <p class="card-subtitle mb-2 text-muted">Activa</p>
                   </div>
@@ -145,7 +145,7 @@
                   </div>
                   <div class="Descripcion">
                       <div class="T_L">
-                        <h6 class="card-title"> Sucursal Morelia </h6>
+                        <h6 class="card-title"> Morelia </h6>
                       </div>
                       <p class="card-subtitle mb-2 text-muted">Activa</p>
                   </div>
@@ -163,7 +163,7 @@
                   </div>
                   <div class="Descripcion">
                       <div class="T_L">
-                        <h6 class="card-title"> Sucursal Puebla </h6>
+                        <h6 class="card-title"> Puebla </h6>
                       </div>
                       <p class="card-subtitle mb-2 text-muted">Activa</p>
                   </div>
