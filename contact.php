@@ -168,7 +168,7 @@
                       <p class="card-subtitle mb-2 text-muted">Activa</p>
                   </div>
               </div>
-              <p class="card-text">Ignacio Allende 512, Santiago Momoxpan, Alvaro Obregón, 72774</p> <br>
+              <p class="card-text">C. Ignacio Allende 512, Santiago Momoxpan, Alvaro Obregón, 72774</p> <br>
             </div>
           </div>
         </div>
