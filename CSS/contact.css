@@ -192,21 +192,8 @@ li {
 .sec_map .mapa{
     border-radius: 10px 10px 10px 10px;
 }
-.slider {
-    width: 75vw; 
-    height: auto; 
-    margin: auto; 
-    overflow: hidden;
-    padding-top: 150px;
-    padding-bottom: 100px;
-  }
-  .slider .slide-track{
-    display: flex;
-    animation: scroll 1615s linear infinite;
-    -webkit-animation: scroll 1615s linear infinite; 
-    width: calc(200px * 646);
-  }
-  .slide-tracks .cartas {
+
+  .cartas {
     width: 265px;
     background-color: gainsboro;
     border-radius: 10px 10px 10px 10px;
