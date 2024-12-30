@@ -132,7 +132,7 @@
                       <p class="card-subtitle mb-2 text-muted">Activa</p>
                   </div>
               </div>
-              <p class="card-text">Blvd. Juan Alonso de Torres Pte. 2002, Valle del Campestre, 37150</p> 
+              <p class="card-text">Blvd. Juan Alonso de Torres Pte. 2002, Valle del Campestre, 37150</p>  <br>
             </div>
           </div>
         </div>
@@ -168,7 +168,7 @@
                       <p class="card-subtitle mb-2 text-muted">Activa</p>
                   </div>
               </div>
-              <p class="card-text">Calle Ignacio Allende 512, Santiago Momoxpan, Alvaro Obregón, 72774</p> 
+              <p class="card-text">Calle Ignacio Allende 512, Santiago Momoxpan, Alvaro Obregón, 72774</p> <br>
             </div>
           </div>
         </div>
