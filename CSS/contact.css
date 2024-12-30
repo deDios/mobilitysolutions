@@ -226,8 +226,6 @@ li {
       height: 25px; /* Ajusta el tamaño de la imagen pequeña */
       border-radius: 50%; /* Opcional, hace que la imagen pequeña también sea circular */
   }
-  /*----------------------*/
-  
   /*
   .titulo_carta img {
     width: 45px;
@@ -261,11 +259,12 @@ li {
   }
   .ubic_logo {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(5,1fr);
+    grid-column-gap: 10px;
     padding-left: 10px;
     padding-right: 10px;
   }
-
+/*----------------------*/
 @media (max-width:700px){
   
   .mx-background-top-linear {
