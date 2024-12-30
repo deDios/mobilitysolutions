@@ -275,8 +275,8 @@ li {
 
   .ubic_logo {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
-    grid-column-gap: 10px;
+    grid-template-columns: repeat(1,1fr);
+    grid-row-gap: 10px;
     padding-left: 10px;
     padding-right: 10px;
   }
