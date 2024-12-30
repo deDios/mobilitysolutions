@@ -93,7 +93,7 @@
                       <div class="T_L">
                         <h5 class="card-title"> CDMX </h5>
                       </div>
-                      <h6 class="card-subtitle mb-2 text-muted"> <?php echo $Dias;?> days ago</h6>
+                      <h6 class="card-subtitle mb-2 text-muted">Matriz</h6>
                   </div>
               </div>
               <p class="card-text">Av.</p>
