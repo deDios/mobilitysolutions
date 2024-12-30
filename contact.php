@@ -79,11 +79,11 @@
     <div class="mapa_div">
       <iframe class="mapa shadow-lg mt-n9" src="https://www.google.com/maps/d/embed?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&ehbc=2E312F" width="100%" height="400"></iframe>
     </div>
-    <div class="ubic p-5">
+    <div class="ubic p-5 mx-auto">
       <div class="ubic_logo">
 
         <div class="cartas pl-3">
-          <div class="card" style="width: 12rem;">
+          <div class="card" style="width: 15rem;">
             <div class="card-body">
               <div class="titulo_carta">
                   <div class="Imagenes">
@@ -101,7 +101,7 @@
           </div>
         </div>
         <div class="cartas pl-3">
-          <div class="card" style="width: 12rem;">
+          <div class="card" style="width: 15rem;">
             <div class="card-body">
               <div class="titulo_carta">
                   <div class="Imagenes">
@@ -119,7 +119,7 @@
           </div>
         </div>
         <div class="cartas pl-3">
-          <div class="card" style="width: 12rem;">
+          <div class="card" style="width: 15rem;">
             <div class="card-body">
               <div class="titulo_carta">
                   <div class="Imagenes">
@@ -137,25 +137,7 @@
           </div>
         </div>
         <div class="cartas pl-3">
-          <div class="card" style="width: 12rem;">
-            <div class="card-body">
-              <div class="titulo_carta">
-                  <div class="Imagenes">
-                    <img src="Imagenes/mapa.jpg" alt="Imagen sucursal" class="imagen-circular">
-                  </div>
-                  <div class="Descripcion">
-                      <div class="T_L">
-                        <h6 class="card-title"> CDMX </h6>
-                      </div>
-                      <p class="card-subtitle mb-2 text-muted">Matriz</p>
-                  </div>
-              </div>
-              <p class="card-text">Av.</p>
-            </div>
-          </div>
-        </div>
-        <div class="cartas pl-3">
-          <div class="card" style="width: 12rem;">
+          <div class="card" style="width: 15rem;">
             <div class="card-body">
               <div class="titulo_carta">
                   <div class="Imagenes">
