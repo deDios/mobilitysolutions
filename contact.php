@@ -91,9 +91,9 @@
                   </div>
                   <div class="Descripcion">
                       <div class="T_L">
-                        <h5 class="card-title"> CDMX </h5>
+                        <h6 class="card-title"> CDMX </h6>
                       </div>
-                      <h6 class="card-subtitle mb-2 text-muted">Matriz</h6>
+                      <p class="card-subtitle mb-2 text-muted">Matriz</p>
                   </div>
               </div>
               <p class="card-text">Av.</p>
