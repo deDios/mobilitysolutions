@@ -259,6 +259,12 @@ li {
     object-fit: scale-down;
     padding-left: 5px;
   }
+  .ubic_logo {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 
 @media (max-width:700px){
   
