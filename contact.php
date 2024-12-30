@@ -76,7 +76,7 @@
 <div class="container">
 
   <div class="sec_map">
-    <div class="mapa_div"><iframe class="mapa shadow-lg mt-n9" src="https://www.google.com/maps/d/embed?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&ehbc=2E312F"></iframe></div>
+    <div class="mapa_div"><iframe class="mapa shadow-lg mt-n9" src="https://www.google.com/maps/d/embed?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&ehbc=2E312F" width="100%" height="400"></iframe></div>
     <div class="ubic"></div>
   </div>
 
