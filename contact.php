@@ -176,6 +176,7 @@
   </div>
 
 
+  <hr class="mt-2 mb-3"/> 
 
 <main>
 <div class="div_contact">
