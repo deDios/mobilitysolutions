@@ -96,7 +96,7 @@
                       <p class="card-subtitle mb-2 text-muted">Matriz</p>
                   </div>
               </div>
-              <p class="card-text">Av. P. de la Reforma 505 Piso 37, Cuauhtémoc, 06500 </p> <br> <br>
+              <p class="card-text">Av. P. de la Reforma 505 Piso 37, Cuauhtémoc, 06500 </p> <br> 
             </div>
           </div>
         </div>
