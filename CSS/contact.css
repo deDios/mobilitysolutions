@@ -187,14 +187,16 @@ li {
 .sec_map {
     width: 100%;
     height: 100%;
-    padding-left: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 50px;
 }
 .sec_map .mapa{
     border-radius: 10px 10px 10px 10px;
 }
 /*-------------------*/
   .cartas {
-    width: 230px;
+    width: 350px;
     background-color: gainsboro;
     border-radius: 10px 10px 10px 10px;
     padding-left: 5px;
