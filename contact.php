@@ -71,8 +71,8 @@
   </nav>
 </div>
 
-
-<div class="sec_map py-5">
+<div class="espacio">
+<div class="sec_map p-5">
     <div class="mapa_div">
       <iframe class="mapa shadow-lg mt-n9" src="https://www.google.com/maps/d/embed?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&ehbc=2E312F" width="100%" height="400"></iframe>
     </div>
@@ -174,9 +174,9 @@
     </div>
 
   </div>
+  </div>
 
-
-  <hr class="mt-2 mb-3"/> 
+  <hr class="mb-3"/> 
 
 <main>
 <div class="div_contact">
