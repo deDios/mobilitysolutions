@@ -77,7 +77,7 @@
         class="mapa shadow-lg mt-n9" 
         src="https://www.google.com/maps/d/embed?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&ehbc=2E312F" 
         width="100%" 
-        height="600"
+        height="500"
         >
     </iframe>
     </div>
