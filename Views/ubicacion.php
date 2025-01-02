@@ -73,7 +73,7 @@
 <div class="espacio">
 <div class="sec_map p-5">
     <div class="mapa_div">
-      <iframe class="mapa shadow-lg mt-n9" src="https://www.google.com/maps/d/embed?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&ehbc=2E312F" width="100%" height="400"></iframe>
+      <iframe class="mapa shadow-lg mt-n9" src="https://www.google.com/maps/d/embed?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&ehbc=2E312F" width="100%" height="600"></iframe>
     </div>
     <div class="ubic p-5 mx-auto">
       <div class="ubic_logo">
@@ -83,7 +83,7 @@
             <div class="card-body">
               <div class="titulo_carta">
                   <div class="Imagenes">
-                    <img src="Imagenes/mapa.jpg" alt="Imagen sucursal" class="imagen-circular">
+                    <img src="../Imagenes/mapa.jpg" alt="Imagen sucursal" class="imagen-circular">
                   </div>
                   <div class="Descripcion">
                       <div class="T_L">
@@ -101,7 +101,7 @@
             <div class="card-body">
               <div class="titulo_carta">
                   <div class="Imagenes">
-                    <img src="Imagenes/mapa.jpg" alt="Imagen sucursal" class="imagen-circular">
+                    <img src="../Imagenes/mapa.jpg" alt="Imagen sucursal" class="imagen-circular">
                   </div>
                   <div class="Descripcion">
                       <div class="T_L">
@@ -119,7 +119,7 @@
             <div class="card-body">
               <div class="titulo_carta">
                   <div class="Imagenes">
-                    <img src="Imagenes/mapa.jpg" alt="Imagen sucursal" class="imagen-circular">
+                    <img src="../Imagenes/mapa.jpg" alt="Imagen sucursal" class="imagen-circular">
                   </div>
                   <div class="Descripcion">
                       <div class="T_L">
@@ -137,7 +137,7 @@
             <div class="card-body">
               <div class="titulo_carta">
                   <div class="Imagenes">
-                    <img src="Imagenes/mapa.jpg" alt="Imagen sucursal" class="imagen-circular">
+                    <img src="../Imagenes/mapa.jpg" alt="Imagen sucursal" class="imagen-circular">
                   </div>
                   <div class="Descripcion">
                       <div class="T_L">
@@ -155,7 +155,7 @@
             <div class="card-body">
               <div class="titulo_carta">
                   <div class="Imagenes">
-                    <img src="Imagenes/mapa.jpg" alt="Imagen sucursal" class="imagen-circular">
+                    <img src="../Imagenes/mapa.jpg" alt="Imagen sucursal" class="imagen-circular">
                   </div>
                   <div class="Descripcion">
                       <div class="T_L">
