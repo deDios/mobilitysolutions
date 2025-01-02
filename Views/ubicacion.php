@@ -149,7 +149,7 @@
                   </div>
                   <div class="Descripcion">
                       <div class="T_L">
-                        <h6 class="card-title"> Morelia </h6>
+                        <h6 class="card-title"> MORELIA </h6>
                       </div>
                       <p class="card-subtitle mb-2 text-muted"></p>
                   </div>
@@ -167,7 +167,7 @@
                   </div>
                   <div class="Descripcion">
                       <div class="T_L">
-                        <h6 class="card-title"> PUEBLAS </h6>
+                        <h6 class="card-title"> PUEBLA </h6>
                       </div>
                       <p class="card-subtitle mb-2 text-muted"></p>
                   </div>
