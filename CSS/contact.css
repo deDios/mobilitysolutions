@@ -251,6 +251,9 @@ li {
     height: auto;
     align-items:center;
   }
+  .T_L h6{
+    color: #ffad00;
+  }
   .T_L h5{
     padding-top: 5px;
   }
