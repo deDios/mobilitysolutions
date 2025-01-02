@@ -77,7 +77,7 @@
         class="mapa shadow-lg mt-n9" 
         src="https://www.google.com/maps/d/embed?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&ehbc=2E312F" 
         width="100%" 
-        height="500"
+        height="470"
         allowfullscreen="false"
         scrolling ="No"
         >
@@ -91,7 +91,7 @@
             <div class="card-body">
               <div class="titulo_carta">
                   <div class="Imagenes">
-                    <img src="../Imagenes/mapa.jpg" alt="Imagen sucursal" class="imagen-circular">
+                    <img src="../Imagenes/ubicaciones/cdmx.jpg" alt="Imagen sucursal" class="imagen-circular">
                   </div>
                   <div class="Descripcion">
                       <div class="T_L">
@@ -109,7 +109,7 @@
             <div class="card-body">
               <div class="titulo_carta">
                   <div class="Imagenes">
-                    <img src="../Imagenes/mapa.jpg" alt="Imagen sucursal" class="imagen-circular">
+                    <img src="../Imagenes/ubicaciones/gdl.jpg" alt="Imagen sucursal" class="imagen-circular">
                   </div>
                   <div class="Descripcion">
                       <div class="T_L">
@@ -127,7 +127,7 @@
             <div class="card-body">
               <div class="titulo_carta">
                   <div class="Imagenes">
-                    <img src="../Imagenes/mapa.jpg" alt="Imagen sucursal" class="imagen-circular">
+                    <img src="../Imagenes/ubicaciones/leon.jpg" alt="Imagen sucursal" class="imagen-circular">
                   </div>
                   <div class="Descripcion">
                       <div class="T_L">
@@ -145,7 +145,7 @@
             <div class="card-body">
               <div class="titulo_carta">
                   <div class="Imagenes">
-                    <img src="../Imagenes/mapa.jpg" alt="Imagen sucursal" class="imagen-circular">
+                    <img src="../Imagenes/ubicaciones/morelia.jpg" alt="Imagen sucursal" class="imagen-circular">
                   </div>
                   <div class="Descripcion">
                       <div class="T_L">
@@ -163,7 +163,7 @@
             <div class="card-body">
               <div class="titulo_carta">
                   <div class="Imagenes">
-                    <img src="../Imagenes/mapa.jpg" alt="Imagen sucursal" class="imagen-circular">
+                    <img src="../Imagenes/ubicaciones/puebla.jpg" alt="Imagen sucursal" class="imagen-circular">
                   </div>
                   <div class="Descripcion">
                       <div class="T_L">
