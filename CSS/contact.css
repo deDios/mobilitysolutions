@@ -205,6 +205,7 @@ li {
   }
   .cartas p{
     color: #aaa;
+    font-weight: bold;
   }
   .cartas .titulo_carta { 
     display: flex;
