@@ -71,7 +71,7 @@
 </div>
 <!-- Navigation --------------------------------------------------------------------->
 <div class="espacio">
-<div class="sec_map p-5">
+<div class="sec_map p-2">
     <div class="mapa_div">
       <iframe 
         class="mapa shadow-lg mt-n9" 
@@ -83,7 +83,7 @@
         >
     </iframe>
     </div>
-    <div class="ubic mx-auto">
+    <div class="ubic p-2 mx-auto">
       <div class="ubic_logo">
 
         <div class="cartas pl-3">
