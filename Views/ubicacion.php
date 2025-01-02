@@ -83,7 +83,7 @@
         >
     </iframe>
     </div>
-    <div class="ubic p-5 mx-auto">
+    <div class="ubic mx-auto">
       <div class="ubic_logo">
 
         <div class="cartas pl-3">
