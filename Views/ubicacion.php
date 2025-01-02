@@ -97,7 +97,7 @@
                       <div class="T_L">
                         <h6 class="card-title"> CDMX </h6>
                       </div>
-                      <p class="card-subtitle mb-2 text-muted">Matriz</p>
+                      <p class="card-subtitle mb-2 text-muted"></p>
                   </div>
               </div>
               <p class="card-text">Av. P. de la Reforma 505 Piso 37, Cuauhtémoc, 06500 </p>  <br>
@@ -115,7 +115,7 @@
                       <div class="T_L">
                         <h6 class="card-title"> Guadalajara </h6>
                       </div>
-                      <p class="card-subtitle mb-2 text-muted">Activa</p>
+                      <p class="card-subtitle mb-2 text-muted"></p>
                   </div>
               </div>
               <p class="card-text">Av Rafael Sanzio 150, Camichines Vallarta, 45020 </p> <br>
@@ -133,7 +133,7 @@
                       <div class="T_L">
                         <h6 class="card-title"> León </h6>
                       </div>
-                      <p class="card-subtitle mb-2 text-muted">Activa</p>
+                      <p class="card-subtitle mb-2 text-muted"></p>
                   </div>
               </div>
               <p class="card-text">Blvd. Juan Alonso de Torres Pte. 2002, Valle del Campestre, 37150</p> <br>
@@ -151,7 +151,7 @@
                       <div class="T_L">
                         <h6 class="card-title"> Morelia </h6>
                       </div>
-                      <p class="card-subtitle mb-2 text-muted">Activa</p>
+                      <p class="card-subtitle mb-2 text-muted"></p>
                   </div>
               </div>
               <p class="card-text">C. Vicente Sta. María 1516, Félix Ireta, 58070 </p> <br> 
@@ -169,7 +169,7 @@
                       <div class="T_L">
                         <h6 class="card-title"> Puebla </h6>
                       </div>
-                      <p class="card-subtitle mb-2 text-muted">Activa</p>
+                      <p class="card-subtitle mb-2 text-muted"></p>
                   </div>
               </div>
               <p class="card-text">C. Ignacio Allende 512, Santiago Momoxpan, Alvaro Obregón, 72774</p> <br>
