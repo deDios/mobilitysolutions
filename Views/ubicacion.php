@@ -76,9 +76,6 @@
         <div class="titulo_suc">
             <h5>Sucursales</h5>
         </div>
-        <div class="titulo_suc2 mx-auto">
-            <h5>Encuentra la sucursal de tu preferencia</h5>
-        </div>
     <!--    <img class="mapa" src="../Imagenes/ubicaciones/mapa.jpg" width="100%" height="500"> -->
      <iframe 
         class="mapa shadow-lg mt-n9" 
@@ -89,6 +86,9 @@
         scrolling ="No"
         >
     </iframe> 
+    <div class="titulo_suc2 mx-auto">
+            <h5>Encuentra la sucursal de tu preferencia</h5>
+        </div>
     </div>
     <div class="ubic p-2 mx-auto">
       <div class="ubic_logo">
