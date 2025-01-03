@@ -197,10 +197,6 @@ li {
     border-radius: 10px 10px 10px 10px;
     pointer-events:none;
 }
-.mapa img {
-  object-fit: cover;
-  object-position: center center;
-}
 /*-------------------*/
   .cartas {
     width: 350px;
