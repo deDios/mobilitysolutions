@@ -190,7 +190,7 @@
   </div>
   </div>
 
-  <hr class="mb-3"/> 
+  <hr class="mb-5"/> 
 
 
 
