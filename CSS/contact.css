@@ -200,8 +200,9 @@ li {
     top: 50px;
     background:#000;
     border-radius: 10px 10px 0px 0px;
+    align-items: center;
 }
-.titulo_suc h4 {
+.titulo_suc h5 {
   color: #f1f6ff;
   padding-left: 20px;
 }
