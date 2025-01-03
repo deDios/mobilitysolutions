@@ -196,6 +196,10 @@ li {
 .sec_map .mapa{
     border-radius: 10px 10px 10px 10px;
 }
+.mapa img {
+  object-fit: cover;
+  object-position: center center;
+}
 /*-------------------*/
   .cartas {
     width: 350px;
