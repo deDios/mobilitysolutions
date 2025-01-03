@@ -193,9 +193,12 @@ li {
     padding-left: 20px;
     padding-right: 20px;
 }
+.sec_map .sucursales_titulo{
+  width: 100%;
+    height: 100px;
+}
 .sec_map .mapa{
     border-radius: 10px 10px 10px 10px;
-    pointer-events: none
 }
 .mapa img {
   object-fit: cover;
