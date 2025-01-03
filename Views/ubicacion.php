@@ -73,9 +73,8 @@
 <div class="espacio">
 <div class="sec_map p-2">
     <div class="mapa_div">
-        <img class="mapa" src="../Imagenes/ubicaciones/mapa.jpg" width="100%" 
-        height="500">
-   <!--   <iframe 
+    <!--    <img class="mapa" src="../Imagenes/ubicaciones/mapa.jpg" width="100%" height="500"> -->
+     <iframe 
         class="mapa shadow-lg mt-n9" 
         src="https://www.google.com/maps/d/embed?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&ehbc=2E312F" 
         width="100%" 
@@ -83,7 +82,7 @@
         allowfullscreen="false"
         scrolling ="No"
         >
-    </iframe> -->
+    </iframe> 
     </div>
     <div class="ubic p-2 mx-auto">
       <div class="ubic_logo">
