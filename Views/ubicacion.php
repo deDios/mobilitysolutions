@@ -87,7 +87,7 @@
         >
     </iframe> 
     <div class="titulo_suc2 mx-auto">
-            <h5>Encuentra la sucursal de tu preferencia</h5>
+        <h2 class="fw-light text-center">Encuentra la sucursal de tu preferencias</h2>
         </div>
     </div>
     <div class="ubic p-2 mx-auto">

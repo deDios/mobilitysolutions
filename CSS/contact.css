@@ -216,10 +216,8 @@ li {
   border-radius: 0px 0px 10px 10px;
   align-items: center;
 }
-.titulo_suc2 h5 {
+.titulo_suc2 h2 {
 color: black;
-padding-left: 40px;
-padding-top: 15px;
 }
 .sec_map .mapa{
     border-radius: 10px 10px 10px 10px;
