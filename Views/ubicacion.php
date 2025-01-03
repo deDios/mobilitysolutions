@@ -73,6 +73,9 @@
 <div class="espacio">
 <div class="sec_map p-2">
     <div class="mapa_div">
+        <div class="titulo_suc">
+            <h6>Sucursales</h6>
+        </div>
     <!--    <img class="mapa" src="../Imagenes/ubicaciones/mapa.jpg" width="100%" height="500"> -->
      <iframe 
         class="mapa shadow-lg mt-n9" 
