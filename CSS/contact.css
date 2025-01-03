@@ -185,7 +185,7 @@ li {
     padding-top: 150px;
 }
 .espacio{
-    padding-top: 100px;
+    padding-top: 50px;
 }
 .sec_map {
     width: 100%;
@@ -201,7 +201,7 @@ li {
     background:#000;
     border-radius: 10px 10px 0px 0px;
 }
-.titulo_suc h6 {
+.titulo_suc h4 {
   color: #f1f6ff;
   padding-left: 20px;
 }
