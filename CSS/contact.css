@@ -222,7 +222,8 @@ li {
 }
 .sec_map .mapa{
     border-radius: 10px 10px 10px 10px;
-    pointer-events:none;
+    /*pointer-events:none;
+    */
 }
 /*-------------------*/
   .cartas {
