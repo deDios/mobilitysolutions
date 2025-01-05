@@ -245,8 +245,8 @@ li {
   }
   .titulo_carta .Imagenes{
     position: relative;
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
   }
   .Imagenes .imagen-circular {
       width: 100%;
