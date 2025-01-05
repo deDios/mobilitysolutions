@@ -372,6 +372,9 @@ Envía tu información
           <li>
             <a class="text-secondary" href="https://mobilitysolutionscorp.com/Views/vende.php">Vende tu auto</a>
           </li>
+          <li>
+            <a class="text-secondary" href="https://mobilitysolutionscorp.com/views/ubicacion.php">Sucursales</a>
+          </li>
         </ul>     
       </div>      
       <div class="col-lg-3">        
