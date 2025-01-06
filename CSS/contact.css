@@ -219,6 +219,7 @@ li {
 .titulo_suc2 h3 {
   color:#aaa;
   padding-top: 25px;
+  font-weight: bold;
 }
 .sec_map .mapa{
     border-radius: 10px 10px 10px 10px;
