@@ -212,12 +212,12 @@ li {
   width: 100%;
   height: 90px;
   bottom: 90px;
-  background: white;
+  background: #1b1e21;
   border-radius: 0px 0px 10px 10px;
   align-items: center;
 }
 .titulo_suc2 h3 {
-  color:#FFC00A;
+  color:#aaa;
   padding-top: 25px;
 }
 .sec_map .mapa{
