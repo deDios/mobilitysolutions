@@ -197,7 +197,7 @@
     <div class="row">      
       <div class="col-lg-3">        
         <h6>Conoce más</h6>  
-        <hr class="hr1 mt-2 mb-3"/>      
+        <hr class="hr1 mt-2 mb-3" style="height:3px;border-width:0;color:gold;background-color:gold">    
         <ul class="text-secondary list-unstyled">
         <li>
             <a class="text-secondary" href="https://mobilitysolutionscorp.com/about_us.php">¿Quiénes Somos?</a>
