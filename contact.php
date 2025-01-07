@@ -90,7 +90,7 @@
                         <span class="position-absolute"><i class="fa fa-phone"></i></span> (443)-522-7213
                     </li>
                     <li class="mb-4 pl-4">
-                        <span class="position-absolute"><i class="fa fa-whatsapp"></i></span> (551)-095-4444
+                        <span class="position-absolute"><i class="fa-brands fa-whatsapp"></i></span> (551)-095-4444
                     </li>
                     <li class="mb-4 pl-4">
                         <span class="position-absolute"><i class="fa fa-map-marker"></i></span> Av. P. de la Reforma #505
