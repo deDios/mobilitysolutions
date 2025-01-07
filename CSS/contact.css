@@ -306,18 +306,18 @@ li {
     padding-right: 10px;
     padding-top: 30px;
   }
-  footer{
+  .foo{
     padding-bottom: 20px;
   }
-  footer .hr1 {
+  .foo .hr1 {
     height: 3px;
     border-color: #FFC00A;
   }
-  footer .hr2 {
+  .foo .hr2 {
     height: 3px;
     border-color: black;
   }
-  footer .hr3 {
+  .foo .hr3 {
     height: 3px;
     border-color: gray;
   }
