@@ -306,21 +306,7 @@ li {
     padding-right: 10px;
     padding-top: 30px;
   }
-  .foo{
-    padding-bottom: 20px;
-  }
-  .foo .hr1 {
-    height: 3px;
-    border-color: #FFC00A;
-  }
-  .foo .hr2 {
-    height: 3px;
-    border-color: black;
-  }
-  .foo .hr3 {
-    height: 3px;
-    border-color: gray;
-  }
+ 
 
 /*----------------------*/
 @media (max-width:700px){
