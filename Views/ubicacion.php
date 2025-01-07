@@ -197,7 +197,7 @@
     <div class="row">      
       <div class="col-lg-3">        
         <h6>Conoce más</h6>  
-        <hr class="hr1 mt-2 mb-3" style="height:10px;border-width:0;color:gold;background-color:gold">    
+        <hr class="hr1 mt-2 mb-3" style="height:5px;border-width:0;color:#FFC00A;background-color:#FFC00A">    
         <ul class="text-secondary list-unstyled">
         <li>
             <a class="text-secondary" href="https://mobilitysolutionscorp.com/about_us.php">¿Quiénes Somos?</a>
@@ -213,7 +213,7 @@
       </div>      
       <div class="col-lg-3">        
         <h6>Legales</h6>    
-        <hr class="hr2 mt-2 mb-3" style="height:10px;border-width:0;color:gainsboro;background-color:gainsboro">     
+        <hr class="hr2 mt-2 mb-3" style="height:5px;border-width:0;color:gainsboro;background-color:gainsboro">     
         <ul class="text-secondary list-unstyled">
           <li>
             <a class="text-secondary" href="/Views/privacy.php">Aviso de privacidad</a>
@@ -222,7 +222,7 @@
       </div>      
       <div class="col-lg-3">        
         <h6>Ayuda</h6>    
-        <hr class="hr3 mt-2 mb-3" style="height:10px;border-width:0;color:black;background-color:black">    
+        <hr class="hr3 mt-2 mb-3" style="height:5px;border-width:0;color:black;background-color:black">    
         <ul class="text-secondary list-unstyled">
           <li>
             <a class="text-secondary" href="https://mobilitysolutionscorp.com/contact.php">Contacto</a>
