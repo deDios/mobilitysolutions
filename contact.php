@@ -93,12 +93,12 @@
                         <span class="position-absolute"><i class="fa fa-whatsapp"></i></span> (551)-095-4444
                     </li>
                     <li class="mb-4 pl-4">
-                        <span class="position-absolute"><i class="fa fa-map-marker"></i></span> Vicente Santa Maria #1516
-                        <br> Col. Felix Ireta,
-                        <br> C.P: 58070 Morelia, Mich.
+                        <span class="position-absolute"><i class="fa fa-map-marker"></i></span> Av. P. de la Reforma #505
+                        <br> Piso 37, Cuauhtémoc,
+                        <br> C.P. 06500
     
                         <div class="mt-3">
-                            <a href="https://maps.app.goo.gl/G2WDrF97WDnzrQGr6" target="_blank" class="text-link link--right-icon text-white">Indicaciones Ir   <i class="fa fa-map"></i></a>
+                            <a href="https://mobilitysolutionscorp.com/views/ubicacion.php" target="_blank" class="text-link link--right-icon text-white">Indicaciones Ir   <i class="fa fa-map"></i></a>
                         </div>
                     </li>
                 </ul>
