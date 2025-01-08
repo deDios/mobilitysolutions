@@ -96,7 +96,7 @@
                     <li class="mb-4 pl-4">
                         <span class="position-absolute"><i class="fa fa-map-marker"></i></span> Av. P. de la Reforma #505
                         <br> Piso 37, Cuauhtémoc,
-                        <br> C.P. 06500
+                        <br> C.P. 06500 CDMX
     
                         <div class="mt-3">
                         </div>
