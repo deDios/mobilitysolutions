@@ -98,7 +98,6 @@
                         <br> C.P. 06500
     
                         <div class="mt-3">
-                            <a href="https://mobilitysolutionscorp.com/views/ubicacion.php" target="_blank" class="text-link link--right-icon text-white">Indicaciones Ir   <i class="fa fa-map"></i></a>
                         </div>
                     </li>
                 </ul>
