@@ -33,7 +33,7 @@
 
     $result = mysqli_query($con,$query); 
 
-    if ($result){
+    if (mysqli_num_rows($result) > 0 ){
         header("Location: https://mobilitysolutionscorp.com/views/edicion_catalogo.php", TRUE, 301);
         exit();
     } else{
