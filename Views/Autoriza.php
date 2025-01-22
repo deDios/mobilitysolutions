@@ -63,6 +63,7 @@
         echo ' 
         <script>
             alert("No tiene acceso para entrar al apartado de aprobaciones, favor de solicitarlo al departamento de sistemas") ;
+            window.location = "../views/Home.php";
         </script> ';
         exit();
     }
