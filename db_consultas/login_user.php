@@ -39,7 +39,7 @@
     } else{
         echo ' 
             <script>
-                alert("Usuario no existe, por favor verifique los datos introducidos") ;
+                alert("Usuario no existe, por favor verifique sus datos") ;
                 window.location = "../views/login.php";
             </script> ';
             exit();
