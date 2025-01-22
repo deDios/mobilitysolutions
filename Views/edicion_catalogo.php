@@ -88,7 +88,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="#">Aprobaciones</a>
+            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/Autoriza.php">Aprobaciones</a>
           </li>
 
           <li class="nav-item">
