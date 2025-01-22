@@ -33,6 +33,18 @@
 
     $result = mysqli_query($con,$query); 
 
-echo 'Hola mundo '.$username.' y '.$password.''
+    if ($result){
+        header("Location: https://mobilitysolutionscorp.com/views/edicion_catalogo.php", TRUE, 301);
+        exit();
+    } else{
+        echo ' 
+            <script>
+                alert("Usuario no existe, por favor verifique los datos introducidos") ;
+                window.location = "../views/login.php";
+            </script> ';
+            exit();
+        
+    }
+
 
 ?>
