@@ -3,6 +3,10 @@
     $username = $_POST['username'];
     $password = $_POST['password'];
 
+    $username_valor = '"' . $username . '"';
+    $password_valor = '"' . $password . '"';
+
+
     $inc = include "../db/Conexion.php";
 
     $query ='select 
@@ -23,11 +27,11 @@
             from mobility_solutions.tmx_acceso_usuario  as acc
             left join mobility_solutions.tmx_usuario as us
                 on acc.user_id = us.id
-            where acc.user_name = '.$username.'
-                or us.email = '.$username.'
-                and acc.user_password = '.$password.';';
+            where acc.user_name = '.$username_valor.'
+                or us.email = '.$username_valor.'
+                and acc.user_password = '.$password_valor.';';
 
-    //$result = mysqli_query($con,$query); 
+    $result = mysqli_query($con,$query); 
 
 echo 'Hola mundo '.$username.' y '.$password.''
 
