@@ -38,7 +38,7 @@
                 alert("Usuario no existe, por favor verifique los datos introducidos") ;
                 window.location = "../views/login.php";
             </script> ';
-            exit;
+            exit();
         
     }
 
