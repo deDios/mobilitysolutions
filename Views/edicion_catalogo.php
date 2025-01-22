@@ -74,13 +74,13 @@
         <ul class="navbar-nav ml-auto">
 
           <li class="nav-item">
-            <a class="nav-link" href="#">Inicio
+            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/Home.php">Inicio
               <span class="sr-only">(current)</span>
             </a>
           </li>
 
           <li class="nav-item active">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/editar_cat.php">Catálogo</a>
+            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/edicion_catalogo.php">Catálogo</a>
           </li>
 
          <li class="nav-item">
