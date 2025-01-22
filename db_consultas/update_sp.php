@@ -45,7 +45,7 @@ pasajeros = '.$pasajeros.',
 propietarios = '.$propietarios.',
 c_type = '.$c_type_valor.' where id = '.$id.';';
         
-$result = mysqli_query($con,$query); 
+$result = mysqli_query($con,$query);  
 if ($result){ 
    // echo "El auto se actualizo correctamente con ID: ".$id;
 }

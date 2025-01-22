@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="login-container">
-        <form class="login-form" action="login_usuario_be.php" method="POST">
+        <form class="login-form" action="../Views/login_usuario_be.php" method="POST">
             <img src="../Imagenes/logo_MSC.png" alt="Logo de la Empresa" class="logo">
             <h2>Acceso</h2>
             <div class="input-group">

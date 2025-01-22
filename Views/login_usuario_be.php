@@ -15,7 +15,7 @@
         echo'Hola';
         exit();
     } else{
-        echo '
+        echo ' 
             <script>
                 alert("Usuario no existe, por favor verifique los datos introducidos") ;
                 window.location = "login.php";
