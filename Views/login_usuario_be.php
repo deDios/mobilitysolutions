@@ -1,9 +1,9 @@
 <?php 
 
-    $inc = include "../db/Conexion.php";
-
     $username = $_POST['username'];
     $password = $_POST['password'];
+    
+    $inc = include "../db/Conexion.php";
 
     $query ='Select * from mobility_solutions.tmx_acceso_usuario 
     where user_name = '.$username.'
