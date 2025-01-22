@@ -1,4 +1,5 @@
-<?
+<?php
+    session_start();
 
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -34,6 +35,7 @@
     $result = mysqli_query($con,$query); 
 
     if (mysqli_num_rows($result) > 0 ){
+        $_SESSION['username'] = $username;
         header("Location: https://mobilitysolutionscorp.com/views/edicion_catalogo.php", TRUE, 301);
         exit();
     } else{

@@ -1,3 +1,13 @@
+<?php
+    session_start();
+
+    if (isset ($_SESSION['username'])){
+        header("Location: https://mobilitysolutionscorp.com/Views/Home.php", TRUE, 301);
+        exit();
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
