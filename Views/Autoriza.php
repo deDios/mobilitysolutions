@@ -59,7 +59,7 @@
         echo 'Falla en conexión.';
     }
 
-    if ($r_autorizador = 0){
+    if ($r_autorizador == 0){
         echo ' 
         <script>
             alert("No tiene acceso para entrar al apartado de aprobaciones, favor de solicitarlo al departamento de sistemas") ;
