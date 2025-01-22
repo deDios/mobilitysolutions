@@ -1,7 +1,7 @@
 <?php 
 
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $id_username = $_POST['username'];
+    $id_password = $_POST['password'];
 
     $inc = include "../db/Conexion.php";
 
@@ -23,9 +23,9 @@
             from mobility_solutions.tmx_acceso_usuario  as acc
             left join mobility_solutions.tmx_usuario as us
                 on acc.user_id = us.id
-            where acc.user_name = '.$username.'
-                or us.email = '.$username.'
-                and acc.user_password = '.$password.';';
+            where acc.user_name = '.$id_username.'
+                or us.email = '.$id_username.'
+                and acc.user_password = '.$id_password.';';
 
     $result = mysqli_query($con,$query); 
 
