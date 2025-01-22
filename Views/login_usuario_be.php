@@ -2,7 +2,7 @@
 
     $username = $_POST['username'];
     $password = $_POST['password'];
-    
+
     $inc = include "../db/Conexion.php";
 
     $query ='Select * from mobility_solutions.tmx_acceso_usuario 
@@ -11,7 +11,8 @@
 
     $result = mysqli_query($con,$query); 
     if ($result){
-        header("Location: https://mobilitysolutionscorp.com/views/edicion_catalogo.php", TRUE, 301);
+        //header("Location: https://mobilitysolutionscorp.com/views/edicion_catalogo.php", TRUE, 301);
+        echo'Hola';
         exit();
     } else{
         echo '
