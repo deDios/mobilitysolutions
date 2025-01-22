@@ -55,7 +55,7 @@
               
               <li><a class="waves-effect waves-dark" href="" data-toggle="modal" data-target="#exampleModal2"><i class="fa fa-map-marker"></i></a></li>       
 
-              <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-user"></i></a></li>
+              <li><a class="waves-effect waves-dark" href="https://mobilitysolutionscorp.com/db_consultas/cerrar_sesion.php"><i class="fa fa-user"></i></a></li>
             </ul>
           </div>
 
