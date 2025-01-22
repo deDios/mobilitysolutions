@@ -1,7 +1,7 @@
 <?php 
 
-    $id_username = $_POST['username'];
-    $id_password = $_POST['password'];
+    $id_username = $_POST['user_name'];
+    $id_password = $_POST['pass'];
 
     $inc = include "../db/Conexion.php";
 
