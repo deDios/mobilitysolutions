@@ -33,9 +33,6 @@ if ($result->num_rows > 0) {
         // Aseguramos que 'Precio' se mantenga como cadena
         $row['Precio'] = (string)$row['Precio']; // Convierte 'Precio' a cadena de texto
         
-        // Para depuración, veamos los valores de 'Precio' antes de la conversión
-        var_dump($row['Precio']);  // Esto imprimirá el tipo y valor de 'Precio'
-        
         $data[] = $row;
     }
 
