@@ -17,7 +17,7 @@ $query ='select
                 atrr_2, 
                 atrr_3
             from mobility_solutions.moon_product
-            where auto.id = '. $cod .';';
+            where Categoria = '. $cod .';';
 
 $result = mysqli_query($con,$query); 
 
