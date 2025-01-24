@@ -30,6 +30,10 @@ if ($result->num_rows > 0) {
         $row['Categoria'] = (int)$row['Categoria']; // Convierte 'Categoria' a entero
         $row['Status'] = (int)$row['Status']; // Convierte 'Status' a entero
         
+        // Aseguramos que 'Precio' se mantenga como cadena
+        $row['Precio'] = (string)$row['Precio']; // Convierte 'Precio' a cadena de texto
+
+        
         $data[] = $row;
     }
 
