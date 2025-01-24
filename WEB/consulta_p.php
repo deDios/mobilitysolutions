@@ -25,16 +25,16 @@ if ($result->num_rows > 0) {
     $data = array();
     
     while ($row = $result->fetch_assoc()) {
-        // Asegúrate de que los valores id, Categoria, y Status sean enteros
-        $row['id'] = (int) $row['id'];
-        $row['Categoria'] = (int) $row['Categoria'];
-        $row['Status'] = (int) $row['Status'];
+        // Aseguramos que 'id', 'Categoria', y 'Status' sean enteros.
+        $row['id'] = (int)$row['id']; // Convierte 'id' a entero
+        $row['Categoria'] = (int)$row['Categoria']; // Convierte 'Categoria' a entero
+        $row['Status'] = (int)$row['Status']; // Convierte 'Status' a entero
         
         $data[] = $row;
     }
 
     // Enviar los datos como JSON
-    echo json_encode($data);
+    echo json_encode($data, JSON_NUMERIC_CHECK);
 } else {
     echo json_encode(["mensaje" => "No se encontraron datos"]);
 }
