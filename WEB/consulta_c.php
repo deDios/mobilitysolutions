@@ -41,7 +41,7 @@ if ($result->num_rows > 0) {
 } else {
     // Si no se encuentra el cliente, enviar un objeto con valores predeterminados
     $clienteNoRegistrado = array(
-        "Id_Cliente" => "000",  // O el valor que indique no encontrado
+        "Id_Cliente" => "99999",  // O el valor que indique no encontrado
         "Nombre" => "No registrado",
         "Correo" => "N/A",
         "Telefono" => "N/A",
