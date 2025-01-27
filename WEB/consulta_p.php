@@ -32,12 +32,12 @@ if ($result->num_rows > 0) {
         
         // Aseguramos que 'Precio' se mantenga como cadena
         $row['Precio'] = (string)$row['Precio']; // Convierte 'Precio' a cadena de texto
-        
+   
         $data[] = $row;
     }
 
     // Enviar los datos como JSON
-    echo json_encode($data);
+    echo json_encode($data, JSON_NUMERIC_CHECK);
 } else {
     echo json_encode(["mensaje" => "No se encontraron datos"]);
 }
