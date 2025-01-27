@@ -28,7 +28,7 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         // Aseguramos que 'id', 'Categoria', y 'Status' sean enteros.
         $row['id'] = (int)$row['id']; // Convierte 'id' a entero
-        $row['Id_Cliente'] = (int)$row['Id_Cliente']; // Convierte 'id' a entero
+        $row['Id_Cliente'] = (string)$row['Id_Cliente']; // Convierte 'id' a string
         $row['Edad'] = (int)$row['Edad']; // Convierte 'Categoria' a entero
         $row['Status'] = (int)$row['Status']; // Convierte 'Status' a entero
         $row['En_Luna'] = (int)$row['En_Luna']; // Convierte 'Status' a entero
