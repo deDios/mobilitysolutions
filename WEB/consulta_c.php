@@ -26,12 +26,12 @@ if ($result->num_rows > 0) {
     $data = array();
     
     while ($row = $result->fetch_assoc()) {
-        // Aseguramos que 'id', 'Categoria', y 'Status' sean enteros.
+        // Aseguramos que los valores sean del tipo adecuado
         $row['id'] = (int)$row['id']; // Convierte 'id' a entero
-        $row['Id_Cliente'] = (string)$row['Id_Cliente']; // Convierte 'id' a string
-        $row['Edad'] = (int)$row['Edad']; // Convierte 'Categoria' a entero
+        $row['Id_Cliente'] = (string)$row['Id_Cliente']; // Convierte 'Id_Cliente' a string
+        $row['Edad'] = (int)$row['Edad']; // Convierte 'Edad' a entero
         $row['Status'] = (int)$row['Status']; // Convierte 'Status' a entero
-        $row['En_Luna'] = (int)$row['En_Luna']; // Convierte 'Status' a entero
+        $row['En_Luna'] = (int)$row['En_Luna']; // Convierte 'En_Luna' a entero
                
         $data[] = $row;
     }
@@ -39,9 +39,24 @@ if ($result->num_rows > 0) {
     // Enviar los datos como JSON
     echo json_encode($data);
 } else {
-    echo json_encode(["mensaje" => "No se encontraron datos"]);
+    // Si no se encuentra el cliente, enviar un objeto con valores predeterminados
+    $clienteNoRegistrado = array(
+        "Id_Cliente" => "000",  // O el valor que indique no encontrado
+        "Nombre" => "No registrado",
+        "Correo" => "N/A",
+        "Telefono" => "N/A",
+        "Edad" => 0,
+        "Fecha_cumpleaños" => "N/A",
+        "Genero" => "N/A",
+        "Imagen_cliente" => "N/A",
+        "Status" => 0,
+        "En_Luna" => 0
+    );
+
+    // Enviar el cliente no registrado como JSON
+    echo json_encode([$clienteNoRegistrado]);
 }
 
 $conn->close();
-
 ?>
+
