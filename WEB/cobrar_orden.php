@@ -1,23 +1,21 @@
 <?php
-
 // Incluir el archivo de conexión a la base de datos
 $inc = include "../db/Conexion.php";
 
 // Verificar que la conexión se haya realizado correctamente
 if (!$inc) {
+    header('Content-Type: application/json');
     echo json_encode(['status' => 'error', 'message' => 'No se pudo conectar a la base de datos']);
     exit;
 }
 
-// Establecer el encabezado de tipo de contenido a JSON
-header('Content-Type: application/json');
-
 // Obtener los datos recibidos en formato JSON
 $data = json_decode(file_get_contents("php://input"), true);
 
-// Verificar que los datos recibidos no sean nulos o mal formados
-if (!isset($data['total_cuenta']) || !isset($data['id_cliente']) || !isset($data['nombre_cliente']) || 
-    !isset($data['productos']) || !is_array($data['productos']) || count($data['productos']) == 0) {
+// Verificar que los datos no sean nulos y estén completos
+if (!isset($data['productos']) || !is_array($data['productos']) || count($data['productos']) == 0 || 
+    !isset($data['total_cuenta']) || !isset($data['id_cliente']) || !isset($data['nombre_cliente'])) {
+    header('Content-Type: application/json');
     echo json_encode(['status' => 'error', 'message' => 'Datos incompletos o malformados']);
     exit;
 }
@@ -28,20 +26,19 @@ $query = "INSERT INTO moon_ventas (folio, id_cliente, nombre_cliente, id_product
 
 // Iniciar una transacción para asegurar la consistencia de los datos
 try {
-    // Iniciar la transacción
     $inc->beginTransaction();
-
-    // Iterar sobre los productos y registrar cada uno en la base de datos
+    
+    // Insertar cada producto de la venta
     foreach ($data['productos'] as $producto) {
-        
-        // Verificar que todos los campos necesarios para el producto estén presentes
-        if (!isset($producto['folio']) || !isset($producto['producto']) || !isset($producto['cantidad']) ||
-            !isset($producto['precio_unitario']) || !isset($producto['total'])) {
-            echo json_encode(['status' => 'error', 'message' => 'Datos incompletos del producto']);
+        // Verificar que el producto tenga todos los campos necesarios
+        if (!isset($producto['folio'], $producto['id_cliente'], $producto['producto'], $producto['cantidad'], 
+                  $producto['precio_unitario'], $producto['total'], $producto['fecha'])) {
+            header('Content-Type: application/json');
+            echo json_encode(['status' => 'error', 'message' => 'Producto con datos incompletos']);
             exit;
         }
-        
-        // Asignar los parámetros a la sentencia preparada
+
+        // Asignar los parámetros a la sentencia
         $stmt = $inc->prepare($query);
         $stmt->bindParam(':folio', $producto['folio']);
         $stmt->bindParam(':id_cliente', $data['id_cliente']);
@@ -51,26 +48,27 @@ try {
         $stmt->bindParam(':cantidad', $producto['cantidad']);
         $stmt->bindParam(':precio_unitario', $producto['precio_unitario']);
         $stmt->bindParam(':total', $producto['total']);
-        $stmt->bindParam(':fecha', date('Y-m-d H:i:s')); // Fecha actual
-
+        $stmt->bindParam(':fecha', date('Y-m-d H:i:s', strtotime($producto['fecha']))); // Fecha actual
+        
         // Ejecutar la sentencia
         if (!$stmt->execute()) {
-            // Si hay un error en la ejecución, hacer un rollback
             $inc->rollBack();
-            echo json_encode(['status' => 'error', 'message' => 'Error al insertar el producto']);
+            header('Content-Type: application/json');
+            echo json_encode(['status' => 'error', 'message' => 'Error al insertar los productos']);
             exit;
         }
     }
 
-    // Si todos los productos fueron insertados correctamente, confirmar la transacción
+    // Confirmar la transacción si todo ha ido bien
     $inc->commit();
 
-    // Respuesta de éxito
-    echo json_encode(['status' => 'success', 'message' => 'Orden registrada correctamente']);
+    // Responder con éxito
+    header('Content-Type: application/json');
+    echo json_encode(['status' => 'success', 'message' => 'Orden insertada correctamente']);
 } catch (PDOException $e) {
-    // Si ocurre un error en la transacción, hacer un rollback y capturar el error
+    // Si ocurre un error en la transacción, revertir cambios
     $inc->rollBack();
+    header('Content-Type: application/json');
     echo json_encode(['status' => 'error', 'message' => 'Error en la transacción: ' . $e->getMessage()]);
 }
-
 ?>
