@@ -42,7 +42,7 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['total_cuenta'], $
         $sub_total = $producto['total'];  // sub_total es igual a cantidad * precio_unitario
 
         // Buscar el id_producto correspondiente en moon_product
-        $producto_id_stmt = $conn->prepare("select id FROM mobility_solutions.moon_product WHERE Nombre = ?");
+        $producto_id_stmt = $conn->prepare("select id from mobility_solutions.moon_product WHERE Nombre = ?");
         $producto_id_stmt->bind_param("s", $producto_nombre);
         $producto_id_stmt->execute();
         $producto_id_stmt->store_result();
@@ -51,22 +51,20 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['total_cuenta'], $
         if ($producto_id_stmt->num_rows > 0) {
             // Si existe el producto, obtenemos el id
             $producto_id_stmt->fetch();
-        } else {
-            // Si no se encuentra el producto, asignamos un valor por defecto a id_producto
-            $id_producto = 1;  // O cualquier valor predeterminado que consideres apropiado
-            // Puedes hacer un log aquí si deseas saber que producto no fue encontrado
-            // echo "Producto no encontrado: " . $producto_nombre;
-        }
 
-        // Ejecutar la inserción de la venta
-        // Aquí corregimos la cadena de tipos a "sissdd"
-        $stmt->bind_param("sissdd", $folio, $id_cliente, $nombre_cliente, $producto_nombre, $cantidad, $precio_unitario, $sub_total);
+            // Ahora, aseguramos que la consulta tenga la cantidad correcta de parámetros
+            $stmt->bind_param("sissidd", $folio, $id_cliente, $nombre_cliente, $producto_nombre, $cantidad, $precio_unitario, $sub_total);
 
-        if ($stmt->execute()) {
-            // Si al menos una venta se inserta, marcamos como exitosa
-            $orden_insertada = true;
+            if ($stmt->execute()) {
+                // Si la venta se inserta correctamente, marcamos como exitosa
+                $orden_insertada = true;
+            } else {
+                echo json_encode(["status" => "error", "message" => "Error al insertar el producto: " . $stmt->error]);
+                exit;
+            }
         } else {
-            echo json_encode(["status" => "error", "message" => "Error al insertar el producto: " . $stmt->error]);
+            // Si no se encuentra el producto en la tabla moon_product
+            echo json_encode(["status" => "error", "message" => "Producto no encontrado en la base de datos: $producto_nombre"]);
             exit;
         }
 
