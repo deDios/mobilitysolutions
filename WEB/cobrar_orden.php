@@ -6,8 +6,17 @@ include('../db/Conexion_p.php'); // Asegúrate de que la ruta de tu archivo de c
 $data = json_decode(file_get_contents('php://input'), true);  // Asumiendo que los datos se envían como JSON
 
 // Verifica si los datos son válidos
-if (isset($data['id_cliente'], $data['nombre_cliente'], $data['total_cuenta'], $data['productos']) && is_array($data['productos'])) {
+if (isset($data['id_cliente'], $data['nombre_cliente'], $data['total_cuenta'], $data['productos'], $data['certificado']) && is_array($data['productos'])) {
     
+    // Validar certificado
+    $certificado = $data['certificado'];
+    $certificado_valido = "mi-certificado-valido"; // El valor del certificado que esperas
+
+    if ($certificado !== $certificado_valido) {
+        echo json_encode(['status' => 'error', 'message' => 'Certificado no válido']);
+        exit;
+    }
+
     // Asignación de variables
     $id_cliente = (int)$data['id_cliente'];  // Asegurarse de que id_cliente es un número entero
     $nombre_cliente = $data['nombre_cliente'];
@@ -32,13 +41,13 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['total_cuenta'], $
         // Limpiar la fecha y convertirla a formato válido (eliminando "a.m." o "p.m." si es necesario)
         $producto['fecha'] = preg_replace('/\s?[a|p]\.m\./i', '', $producto['fecha']); // Eliminar "a.m." o "p.m." y posibles espacios
 
-        // Validar la fecha con el formato esperado: YYYY-MM-DD HH:MM:SS
+        // Validar la fecha con el formato esperado: YYYY-MM-DD
         $fecha = DateTime::createFromFormat('Y-m-d', $producto['fecha']);
         if (!$fecha) {
             echo json_encode(['status' => 'error', 'message' => 'La fecha no tiene un formato válido']);
             exit;
         }
-        
+
         // Si la fecha es válida, convertirla de nuevo al formato correcto
         $producto['fecha'] = $fecha->format('Y-m-d');
     }
