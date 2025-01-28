@@ -12,10 +12,8 @@ function getDBConnection() {
     return $con;
 }
 
-// Obtener los parámetros enviados en el cuerpo de la solicitud
 $data = json_decode(file_get_contents("php://input"), true);
 
-// Verificar si los parámetros necesarios están presentes
 if (isset($data['id_cliente'], $data['nombre_cliente'], $data['total_cuenta'], $data['folio'], $data['productos'])) {
     $id_cliente = $data['id_cliente'];
     $nombre_cliente = $data['nombre_cliente'];
@@ -40,7 +38,7 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['total_cuenta'], $
         $producto_id_stmt->store_result();
         $producto_id_stmt->bind_result($id_producto);
 
-        var_dump($id_producto); // Esto imprimirá el valor del id_producto para depurar
+        var_dump($id_producto); 
 
         if ($producto_id_stmt->num_rows > 0) {
             $producto_id_stmt->fetch();
