@@ -1,6 +1,6 @@
 <?php
 // Incluir el archivo de conexión a la base de datos
-$inc = include "../db/Conexion_p.php";
+$inc = include "../db/Conexion.php";
 
 // Verificar que la conexión se haya realizado correctamente
 if (!$inc) {
