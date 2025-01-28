@@ -3,7 +3,7 @@
 require_once "../db/Conexion.php"; // Usamos require_once para asegurar que se cargue la conexión una sola vez
 
 // Verificar que la conexión se haya realizado correctamente
-if (!$inc) {
+if (!$inc instanceof PDO) {
     header('Content-Type: application/json');
     echo json_encode(['status' => 'error', 'message' => 'No se pudo conectar a la base de datos']);
     exit;
@@ -31,6 +31,7 @@ try {
     $inc->beginTransaction(); // Esta línea ahora debería funcionar correctamente
     
     foreach ($data['productos'] as $producto) {
+        // Verificar que cada producto tenga todos los datos necesarios
         if (!isset($producto['folio'], $producto['id_cliente'], $producto['producto'], $producto['cantidad'], 
                   $producto['precio_unitario'], $producto['total'], $producto['fecha'])) {
             header('Content-Type: application/json');
@@ -38,6 +39,7 @@ try {
             exit;
         }
 
+        // Verificar si el producto existe en la base de datos
         $checkProductQuery = "select id from mobility_solutions.moon_product WHERE id = :id_producto";
         $stmt = $inc->prepare($checkProductQuery);
         $stmt->bindParam(':id_producto', $producto['id_producto']);
@@ -49,7 +51,7 @@ try {
             exit;
         }
 
-        // Asignar los parámetros a la sentencia
+        // Asignar los parámetros a la sentencia de inserción
         $stmt = $inc->prepare($query);
         $stmt->bindParam(':folio', $producto['folio']);
         $stmt->bindParam(':id_cliente', $data['id_cliente']);
@@ -59,9 +61,9 @@ try {
         $stmt->bindParam(':cantidad', $producto['cantidad']);
         $stmt->bindParam(':precio_unitario', $producto['precio_unitario']);
         $stmt->bindParam(':total', $producto['total']);
-        $stmt->bindParam(':fecha', date('Y-m-d H:i:s', strtotime($producto['fecha']))); // Fecha actual
+        $stmt->bindParam(':fecha', date('Y-m-d H:i:s', strtotime($producto['fecha']))); // Convertir la fecha al formato correcto
 
-        // Ejecutar la sentencia
+        // Ejecutar la sentencia de inserción
         if (!$stmt->execute()) {
             $inc->rollBack();
             header('Content-Type: application/json');
