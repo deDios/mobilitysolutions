@@ -24,8 +24,8 @@ if (!isset($data['productos']) || !is_array($data['productos']) || count($data['
 }
 
 // Preparar la sentencia SQL para insertar en la tabla `moon_ventas`
-$query = "insert into moon_ventas (folio, id_cliente, nombre_cliente, id_producto, producto, cantidad, precio_unitario, total, fecha) 
-          values (:folio, :id_cliente, :nombre_cliente, :id_producto, :producto, :cantidad, :precio_unitario, :total, :fecha)";
+$query = "INSERT INTO moon_ventas (folio, id_cliente, nombre_cliente, id_producto, producto, cantidad, precio_unitario, total, fecha) 
+          VALUES (:folio, :id_cliente, :nombre_cliente, :id_producto, :producto, :cantidad, :precio_unitario, :total, :fecha)";
 
 // Iniciar una transacción para asegurar la consistencia de los datos
 try {
@@ -42,7 +42,7 @@ try {
         }
 
         // Validar si id_producto existe en la base de datos (esto asumiendo que la tabla moon_product tiene los productos)
-        $checkProductQuery = "select id from moon_product WHERE id = :id_producto";
+        $checkProductQuery = "SELECT id FROM moon_product WHERE id = :id_producto";
         $stmt = $inc->prepare($checkProductQuery);
         $stmt->bindParam(':id_producto', $producto['id_producto']);
         $stmt->execute();
