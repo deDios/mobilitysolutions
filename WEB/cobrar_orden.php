@@ -12,6 +12,9 @@ if (!$inc) {
 // Obtener los datos recibidos en formato JSON
 $data = json_decode(file_get_contents("php://input"), true);
 
+// Depurar los datos recibidos (esto ayudará a identificar problemas con los datos)
+error_log(print_r($data, true));
+
 // Verificar que los datos no sean nulos y estén completos
 if (!isset($data['productos']) || !is_array($data['productos']) || count($data['productos']) == 0 || 
     !isset($data['total_cuenta']) || !isset($data['id_cliente']) || !isset($data['nombre_cliente'])) {
@@ -35,6 +38,18 @@ try {
                   $producto['precio_unitario'], $producto['total'], $producto['fecha'])) {
             header('Content-Type: application/json');
             echo json_encode(['status' => 'error', 'message' => 'Producto con datos incompletos']);
+            exit;
+        }
+
+        // Validar si id_producto existe en la base de datos (esto asumiendo que la tabla moon_product tiene los productos)
+        $checkProductQuery = "SELECT id FROM moon_product WHERE id = :id_producto";
+        $stmt = $inc->prepare($checkProductQuery);
+        $stmt->bindParam(':id_producto', $producto['id_producto']);
+        $stmt->execute();
+        
+        if ($stmt->rowCount() == 0) {
+            header('Content-Type: application/json');
+            echo json_encode(['status' => 'error', 'message' => 'El producto con ID ' . $producto['id_producto'] . ' no existe']);
             exit;
         }
 
