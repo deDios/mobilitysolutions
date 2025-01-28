@@ -7,13 +7,13 @@
 </head>
 <body>
     <form action="https://mobilitysolutionscorp.com/WEB/cobrar_orden.php" method="POST">
-        <input type="hidden" name="id_cliente" value="1">
+        <input type="hidden" name="id_cliente" value=1>
         <input type="hidden" name="nombre_cliente" value="Cristina Alejandra Arellano Luna">
         <input type="hidden" name="total_cuenta" value="100.0">
 
         <!-- Producto 1 -->
         <input type="hidden" name="productos[0][folio]" value="CE7ED8D0-9D2B-4450-AAAE-97BD67294B14">
-        <input type="hidden" name="productos[0][id_producto]" value="1">
+        <input type="hidden" name="productos[0][id_producto]" value=1>
         <input type="hidden" name="productos[0][producto]" value="Cappuccino / Latte ch">
         <input type="hidden" name="productos[0][cantidad]" value="1">
         <input type="hidden" name="productos[0][precio_unitario]" value="45.00">
@@ -22,7 +22,7 @@
 
         <!-- Producto 2 -->
         <input type="hidden" name="productos[1][folio]" value="CE7ED8D0-9D2B-4450-AAAE-97BD67294B14">
-        <input type="hidden" name="productos[1][id_producto]" value="2">
+        <input type="hidden" name="productos[1][id_producto]" value=2>
         <input type="hidden" name="productos[1][producto]" value="Postre - Chesse cake">
         <input type="hidden" name="productos[1][cantidad]" value="1">
         <input type="hidden" name="productos[1][precio_unitario]" value="55.00">
