@@ -39,19 +39,22 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['productos']) && i
     foreach ($productos as $producto) {
         // Verifica que todos los campos necesarios estén presentes
         if (isset($producto['id_producto'], $producto['producto'], $producto['cantidad'], $producto['precio_unitario'], $producto['total'])) {
-
+    
+            // Verifica el valor de id_producto
+            var_dump($producto['id_producto']);  // Debugging
+    
             // Si el folio no se envió, generar un folio único
             if (empty($producto['folio'])) {
                 $producto['folio'] = uniqid('FOLIO_');
             }
-
+    
             // Asegurarse de que id_producto esté bien asignado
             $id_producto = (int)$producto['id_producto'];  // Convertir a entero por seguridad
             $producto_nombre = $producto['producto'];
             $cantidad = (int)$producto['cantidad'];
             $precio_unitario = (float)$producto['precio_unitario'];
             $sub_total = (float)$producto['total'];
-
+    
             // Preparar la consulta de inserción de producto
             if ($stmt = mysqli_prepare($con, $query_producto)) {
                 // Vincular parámetros
@@ -67,7 +70,7 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['productos']) && i
                     $precio_unitario, // Precio unitario
                     $sub_total // Subtotal
                 );
-
+    
                 // Ejecutar la consulta
                 $result = mysqli_stmt_execute($stmt);
                 if (!$result) {
@@ -75,7 +78,7 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['productos']) && i
                     mysqli_rollback($con);
                     exit;
                 }
-
+    
                 // Cerrar la declaración
                 mysqli_stmt_close($stmt);
             } else {
