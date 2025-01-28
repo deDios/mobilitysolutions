@@ -40,7 +40,7 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['total_cuenta'], $
         }
         
         // Si la fecha es válida, convertirla de nuevo al formato correcto
-        $producto['fecha'] = $fecha->format('Y-m-d H:i:s');
+        $producto['fecha'] = $fecha->format('Y-m-d');
     }
 
     // Iniciar la conexión a la base de datos (ya debe estar incluida en Conexion_p.php)
