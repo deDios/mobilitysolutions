@@ -29,9 +29,9 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['total_cuenta'], $
             exit;
         }
 
-        // Limpiar la fecha y convertirla a formato válido
-        $producto['fecha'] = preg_replace('/\s[a|p]\.m\./i', '', $producto['fecha']); // Eliminar "a.m." o "p.m."
-        
+        // Limpiar la fecha y convertirla a formato válido (eliminando "a.m." o "p.m." si es necesario)
+        $producto['fecha'] = preg_replace('/\s?[a|p]\.m\./i', '', $producto['fecha']); // Eliminar "a.m." o "p.m." y posibles espacios
+
         // Validar la fecha con el formato esperado: YYYY-MM-DD HH:MM:SS
         $fecha = DateTime::createFromFormat('Y-m-d H:i:s', $producto['fecha']);
         if (!$fecha) {
@@ -54,8 +54,8 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['total_cuenta'], $
     // Comenzamos la transacción (si es necesario)
     mysqli_begin_transaction($conn);
 
-    // Insertar los productos en la base de datos
-    $query_insert = "insert into ordenes (id_cliente, nombre_cliente, total_cuenta) VALUES (?, ?, ?)";
+    // Insertar la orden en la base de datos
+    $query_insert = "INSERT INTO ordenes (id_cliente, nombre_cliente, total_cuenta) VALUES (?, ?, ?)";
     if ($stmt = mysqli_prepare($conn, $query_insert)) {
         mysqli_stmt_bind_param($stmt, "isd", $id_cliente, $nombre_cliente, $total_cuenta);
         $result = mysqli_stmt_execute($stmt);
@@ -68,8 +68,8 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['total_cuenta'], $
         mysqli_stmt_close($stmt);
     }
 
-    // Insertar los productos
-    $query_producto = "insert into productos_orden (orden_id, producto, precio_unitario, cantidad, total, folio, fecha) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    // Insertar los productos en la base de datos
+    $query_producto = "INSERT INTO productos_orden (orden_id, producto, precio_unitario, cantidad, total, folio, fecha) VALUES (?, ?, ?, ?, ?, ?, ?)";
     foreach ($productos as $producto) {
         if ($stmt = mysqli_prepare($conn, $query_producto)) {
             mysqli_stmt_bind_param($stmt, "isdiiss", $orden_id, $producto['producto'], $producto['precio_unitario'], $producto['cantidad'], $producto['total'], $producto['folio'], $producto['fecha']);
