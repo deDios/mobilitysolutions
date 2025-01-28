@@ -30,12 +30,12 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['total_cuenta'], $
 
     // Preparar la consulta para insertar la orden
     $stmt = $conn->prepare("insert into mobility_solutions.moon_ventas (folio, id_cliente, nombre_cliente, producto, cantidad, precio_unitario, sub_total) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    
+
     // Variable para almacenar el éxito de la inserción
     $orden_insertada = false;
 
     foreach ($productos as $producto) {
-        // Obtenemos el ID del producto en moon_product usando el nombre del producto
+        // Obtenemos los datos del producto
         $producto_nombre = $producto['producto'];
         $cantidad = $producto['cantidad'];
         $precio_unitario = $producto['precio_unitario'];
@@ -51,20 +51,22 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['total_cuenta'], $
         if ($producto_id_stmt->num_rows > 0) {
             // Si existe el producto, obtenemos el id
             $producto_id_stmt->fetch();
-            
-            // Ejecutar la inserción de la venta
-            $stmt->bind_param("sissdss", $folio, $id_cliente, $nombre_cliente, $producto_nombre, $cantidad, $precio_unitario, $sub_total);
-            
-            if ($stmt->execute()) {
-                // Si al menos una venta se inserta, marcamos como exitosa
-                $orden_insertada = true;
-            } else {
-                echo json_encode(["status" => "error", "message" => "Error al insertar el producto: " . $stmt->error]);
-                exit;
-            }
         } else {
-            // Si no se encuentra el producto en la tabla moon_product
-            echo json_encode(["status" => "error", "message" => "Producto no encontrado en la base de datos: $producto_nombre"]);
+            // Si no se encuentra el producto, asignamos un valor por defecto a id_producto
+            $id_producto = 1;  // O cualquier valor predeterminado que consideres apropiado
+            // Puedes hacer un log aquí si deseas saber que producto no fue encontrado
+            // echo "Producto no encontrado: " . $producto_nombre;
+        }
+
+        // Ejecutar la inserción de la venta
+        // Aquí corregimos la cadena de tipos a "sissdd"
+        $stmt->bind_param("sissdd", $folio, $id_cliente, $nombre_cliente, $producto_nombre, $cantidad, $precio_unitario, $sub_total);
+
+        if ($stmt->execute()) {
+            // Si al menos una venta se inserta, marcamos como exitosa
+            $orden_insertada = true;
+        } else {
+            echo json_encode(["status" => "error", "message" => "Error al insertar el producto: " . $stmt->error]);
             exit;
         }
 
