@@ -21,8 +21,8 @@ if (!isset($data['productos']) || !is_array($data['productos']) || count($data['
 }
 
 // Preparar la sentencia SQL para insertar en la tabla `moon_ventas`
-$query = "INSERT INTO moon_ventas (folio, id_cliente, nombre_cliente, id_producto, producto, cantidad, precio_unitario, total, fecha) 
-          VALUES (:folio, :id_cliente, :nombre_cliente, :id_producto, :producto, :cantidad, :precio_unitario, :total, :fecha)";
+$query = "insert into moon_ventas (folio, id_cliente, nombre_cliente, id_producto, producto, cantidad, precio_unitario, total, fecha) 
+          values (:folio, :id_cliente, :nombre_cliente, :id_producto, :producto, :cantidad, :precio_unitario, :total, :fecha)";
 
 // Iniciar una transacción para asegurar la consistencia de los datos
 try {
