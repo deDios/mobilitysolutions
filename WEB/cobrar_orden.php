@@ -40,13 +40,12 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['productos']) && i
 
     foreach ($productos as $producto) {
         if (isset($producto['producto'], $producto['id_producto'], $producto['cantidad'], $producto['precio_unitario'], $producto['total'])) {
-            
+
             // Si el folio no se envió, generar un folio único
             if (empty($producto['folio'])) {
                 $producto['folio'] = uniqid('FOLIO_');  // Genera un folio único si no se proporciona
             }
 
-            // Preparar la consulta para insertar el producto
             if ($stmt = mysqli_prepare($con, $query_producto)) {
                 // Vincular parámetros
                 mysqli_stmt_bind_param(
@@ -83,6 +82,7 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['productos']) && i
             exit;
         }
     }
+
 
     // Confirmar la transacción
     if (!mysqli_commit($con)) {
