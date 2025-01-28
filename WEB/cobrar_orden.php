@@ -55,7 +55,7 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['total_cuenta'], $
     mysqli_begin_transaction($conn);
 
     // Insertar la orden en la base de datos
-    $query_insert = "INSERT INTO ordenes (id_cliente, nombre_cliente, total_cuenta) VALUES (?, ?, ?)";
+    $query_insert = "insert into ordenes (id_cliente, nombre_cliente, total_cuenta) VALUES (?, ?, ?)";
     if ($stmt = mysqli_prepare($conn, $query_insert)) {
         mysqli_stmt_bind_param($stmt, "isd", $id_cliente, $nombre_cliente, $total_cuenta);
         $result = mysqli_stmt_execute($stmt);
@@ -69,7 +69,7 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['total_cuenta'], $
     }
 
     // Insertar los productos en la base de datos
-    $query_producto = "INSERT INTO productos_orden (orden_id, producto, precio_unitario, cantidad, total, folio, fecha) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $query_producto = "insert into productos_orden (orden_id, producto, precio_unitario, cantidad, total, folio, fecha) VALUES (?, ?, ?, ?, ?, ?, ?)";
     foreach ($productos as $producto) {
         if ($stmt = mysqli_prepare($conn, $query_producto)) {
             mysqli_stmt_bind_param($stmt, "isdiiss", $orden_id, $producto['producto'], $producto['precio_unitario'], $producto['cantidad'], $producto['total'], $producto['folio'], $producto['fecha']);
