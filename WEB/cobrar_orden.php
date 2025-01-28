@@ -37,8 +37,7 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['total_cuenta'], $
         $producto_id_stmt->store_result();
         $producto_id_stmt->bind_result($id_producto);
 
-        var_dump($id_producto); 
-
+        // Eliminar el var_dump() que imprimía valores no deseados en la respuesta
         if ($producto_id_stmt->num_rows > 0) {
             $producto_id_stmt->fetch();
         } else {
@@ -56,6 +55,7 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['total_cuenta'], $
         $producto_id_stmt->close();
     }
 
+    // Ahora solo enviamos el status y message según el resultado
     if ($orden_insertada) {
         echo json_encode(["status" => "success", "message" => "Orden registrada con éxito."]);
     } else {
