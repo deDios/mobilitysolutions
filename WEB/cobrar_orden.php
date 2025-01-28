@@ -1,6 +1,5 @@
 <?php
 
-// Conectar a la base de datos con tu conexión configurada
 function getDBConnection() {
     $con = mysqli_init();
     mysqli_ssl_set($con, NULL, NULL, "/home/site/wwwroot/db/DigiCertGlobalRootCA.crt.pem", NULL, NULL);
@@ -53,8 +52,7 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['total_cuenta'], $
         } else {
             echo json_encode(["status" => "error", "message" => "Error al insertar el producto: " . $stmt->error]);
             exit;
-        }
-        
+        }   
         $producto_id_stmt->close();
     }
 
