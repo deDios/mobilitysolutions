@@ -33,7 +33,7 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['total_cuenta'], $
         $producto['fecha'] = preg_replace('/\s?[a|p]\.m\./i', '', $producto['fecha']); // Eliminar "a.m." o "p.m." y posibles espacios
 
         // Validar la fecha con el formato esperado: YYYY-MM-DD HH:MM:SS
-        $fecha = DateTime::createFromFormat('Y-m-d H:i:s', $producto['fecha']);
+        $fecha = DateTime::createFromFormat('Y-m-d', $producto['fecha']);
         if (!$fecha) {
             echo json_encode(['status' => 'error', 'message' => 'La fecha no tiene un formato válido']);
             exit;
