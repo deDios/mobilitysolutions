@@ -34,44 +34,45 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['productos']) && i
     }
 
     // Insertar los productos en la tabla moon_ventas
-    $query_producto = "insert into moon_ventas (folio, id_cliente, nombre_cliente, id_producto, producto, cantidad, precio_unitario, sub_total) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $query_producto = "insert into mobility_solutions.moon_ventas (folio, id_cliente, nombre_cliente, id_producto, producto, cantidad, precio_unitario, sub_total) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
     foreach ($productos as $producto) {
-        // Verifica que todos los campos necesarios estén presentes
+        // Debugging para ver el valor de id_producto
+        var_dump($producto['id_producto']); // Verifica que no sea NULL ni vacío
+    
         if (isset($producto['id_producto'], $producto['producto'], $producto['cantidad'], $producto['precio_unitario'], $producto['total'])) {
-    
-            // Verifica el valor de id_producto
-            var_dump($producto['id_producto']);  // Debugging
-    
-            // Si el folio no se envió, generar un folio único
-            if (empty($producto['folio'])) {
-                $producto['folio'] = uniqid('FOLIO_');
-            }
-    
-            // Asegurarse de que id_producto esté bien asignado
-            $id_producto = (int)$producto['id_producto'];  // Convertir a entero por seguridad
+            // Aquí aseguramos que los valores no sean nulos o vacíos.
+            $id_producto = (int)$producto['id_producto'];  // Convertirlo a entero
             $producto_nombre = $producto['producto'];
             $cantidad = (int)$producto['cantidad'];
             $precio_unitario = (float)$producto['precio_unitario'];
             $sub_total = (float)$producto['total'];
     
-            // Preparar la consulta de inserción de producto
+            // Verificación de valores antes de la inserción
+            if ($id_producto <= 0) {
+                echo json_encode(['status' => 'error', 'message' => 'id_producto inválido']);
+                mysqli_rollback($con);
+                exit;
+            }
+    
+            // Ejecutar la consulta de inserción de producto
+            $query_producto = "insert into mobility_solutions.moon_ventas (folio, id_cliente, nombre_cliente, id_producto, producto, cantidad, precio_unitario, sub_total) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    
             if ($stmt = mysqli_prepare($con, $query_producto)) {
-                // Vincular parámetros
                 mysqli_stmt_bind_param(
                     $stmt,
                     "sisdiidd",
-                    $producto['folio'],  // Folio del producto
+                    $producto['folio'],
                     $id_cliente,
                     $nombre_cliente,
-                    $id_producto, // ID del producto
-                    $producto_nombre, // Nombre del producto
-                    $cantidad, // Cantidad
-                    $precio_unitario, // Precio unitario
-                    $sub_total // Subtotal
+                    $id_producto,
+                    $producto_nombre,
+                    $cantidad,
+                    $precio_unitario,
+                    $sub_total
                 );
     
-                // Ejecutar la consulta
+                // Ejecución de la consulta
                 $result = mysqli_stmt_execute($stmt);
                 if (!$result) {
                     echo json_encode(['status' => 'error', 'message' => 'Error al insertar el producto']);
@@ -79,10 +80,9 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['productos']) && i
                     exit;
                 }
     
-                // Cerrar la declaración
                 mysqli_stmt_close($stmt);
             } else {
-                echo json_encode(['status' => 'error', 'message' => 'Error al preparar la consulta de inserción de producto']);
+                echo json_encode(['status' => 'error', 'message' => 'Error al preparar la consulta']);
                 mysqli_rollback($con);
                 exit;
             }
@@ -91,7 +91,7 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['productos']) && i
             mysqli_rollback($con);
             exit;
         }
-    }
+    }    
 
     // Confirmar la transacción
     if (!mysqli_commit($con)) {
