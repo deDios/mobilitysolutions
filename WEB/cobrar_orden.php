@@ -16,20 +16,18 @@ function getDBConnection() {
 $data = json_decode(file_get_contents("php://input"), true);
 
 // Verificar si los parámetros necesarios están presentes
-if (isset($data['id_cliente'], $data['nombre_cliente'], $data['total_cuenta'], $data['productos'])) {
+if (isset($data['id_cliente'], $data['nombre_cliente'], $data['total_cuenta'], $data['folio'], $data['productos'])) {
     $id_cliente = $data['id_cliente'];
     $nombre_cliente = $data['nombre_cliente'];
     $total_cuenta = $data['total_cuenta'];
+    $folio = $data['folio'];  // Asegúrate de que el folio sea pasado
     $productos = $data['productos'];
 
     // Conectar a la base de datos
     $conn = getDBConnection();
 
-    // Generar un folio único para la orden
-    $folio = strtoupper(uniqid('ORD-'));
-
     // Preparar la consulta para insertar la orden
-    $stmt = $conn->prepare("insert into mobility_solutions.moon_ventas (folio, id_cliente, nombre_cliente, producto, cantidad, precio_unitario, sub_total) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("insert into mobility_solutions.moon_ventas (folio, id_cliente, nombre_cliente, producto, cantidad, precio_unitario, sub_total, id_producto) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
     // Variable para almacenar el éxito de la inserción
     $orden_insertada = false;
@@ -48,23 +46,25 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['total_cuenta'], $
         $producto_id_stmt->store_result();
         $producto_id_stmt->bind_result($id_producto);
 
+        // Depuración: Verificar que estamos obteniendo el id_producto correctamente
+        var_dump($id_producto); // Esto imprimirá el valor del id_producto para depurar
+
         if ($producto_id_stmt->num_rows > 0) {
             // Si existe el producto, obtenemos el id
             $producto_id_stmt->fetch();
-
-            // Ahora, aseguramos que la consulta tenga la cantidad correcta de parámetros
-            $stmt->bind_param("sissidd", $folio, $id_cliente, $nombre_cliente, $producto_nombre, $cantidad, $precio_unitario, $sub_total);
-
-            if ($stmt->execute()) {
-                // Si la venta se inserta correctamente, marcamos como exitosa
-                $orden_insertada = true;
-            } else {
-                echo json_encode(["status" => "error", "message" => "Error al insertar el producto: " . $stmt->error]);
-                exit;
-            }
         } else {
-            // Si no se encuentra el producto en la tabla moon_product
-            echo json_encode(["status" => "error", "message" => "Producto no encontrado en la base de datos: $producto_nombre"]);
+            // Si no se encuentra el producto, asignar NULL a id_producto
+            $id_producto = NULL;
+        }
+
+        // Ahora, aseguramos que la consulta tenga la cantidad correcta de parámetros
+        $stmt->bind_param("sissiddi", $folio, $id_cliente, $nombre_cliente, $producto_nombre, $cantidad, $precio_unitario, $sub_total, $id_producto);
+
+        if ($stmt->execute()) {
+            // Si la venta se inserta correctamente, marcamos como exitosa
+            $orden_insertada = true;
+        } else {
+            echo json_encode(["status" => "error", "message" => "Error al insertar el producto: " . $stmt->error]);
             exit;
         }
 
