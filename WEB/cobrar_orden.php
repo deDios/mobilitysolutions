@@ -14,7 +14,7 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['productos']) && i
     mysqli_begin_transaction($con);
 
     // Insertar la orden en la tabla moon_ventas
-    $query_insert = "INSERT INTO moon_ventas (id_cliente, nombre_cliente) VALUES (?, ?)";
+    $query_insert = "insert into mobility_solutions.moon_ventas (id_cliente, nombre_cliente) VALUES (?, ?)";
     if ($stmt = mysqli_prepare($con, $query_insert)) {
         mysqli_stmt_bind_param($stmt, "is", $id_cliente, $nombre_cliente);
         $result = mysqli_stmt_execute($stmt);
@@ -34,7 +34,7 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['productos']) && i
     }
 
     // Insertar los productos en la tabla moon_ventas
-    $query_producto = "INSERT INTO mobility_solutions.moon_ventas (folio, id_cliente, nombre_cliente, id_producto, producto, cantidad, precio_unitario, sub_total) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $query_producto = "insert into mobility_solutions.moon_ventas (folio, id_cliente, nombre_cliente, id_producto, producto, cantidad, precio_unitario, sub_total) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
     foreach ($productos as $producto) {
         // Depuración: Mostrar los valores que estamos intentando insertar
@@ -42,27 +42,28 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['productos']) && i
         
         // Verificar que el producto contiene los datos necesarios
         if (isset($producto['id_producto'], $producto['producto'], $producto['cantidad'], $producto['precio_unitario'], $producto['total'])) {
-            $id_producto = (int)$producto['id_producto'];  // Convertirlo a entero
+            
+            // Comprobamos si el id_producto es válido y mayor que 0
+            $id_producto = (int)$producto['id_producto'];
+            if ($id_producto <= 0) {
+                echo json_encode(['status' => 'error', 'message' => 'El id_producto no es válido o es menor que 1']);
+                mysqli_rollback($con);
+                exit;
+            }
+
+            // Verificamos que el producto y la cantidad sean correctos
             $producto_nombre = $producto['producto'];
             $cantidad = (int)$producto['cantidad'];
             $precio_unitario = (float)$producto['precio_unitario'];
             $sub_total = (float)$producto['total'];
 
-            // Verificación de valores antes de la inserción
-            if ($id_producto <= 0) {
-                echo json_encode(['status' => 'error', 'message' => 'id_producto inválido']);
-                mysqli_rollback($con);
-                exit;
-            }
-
-            // Verificar si el precio_unitario es válido
+            // Verificación de precios y subtotales
             if ($precio_unitario <= 0) {
                 echo json_encode(['status' => 'error', 'message' => 'El precio unitario debe ser mayor que 0']);
                 mysqli_rollback($con);
                 exit;
             }
 
-            // Verificar si el subtotal es válido
             if ($sub_total <= 0) {
                 echo json_encode(['status' => 'error', 'message' => 'El subtotal debe ser mayor que 0']);
                 mysqli_rollback($con);
