@@ -29,24 +29,18 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['total_cuenta'], $
             exit;
         }
 
-        // Validar que los valores numéricos son correctos
-        if (!is_numeric($producto['precio_unitario']) || !is_numeric($producto['total'])) {
-            echo json_encode(['status' => 'error', 'message' => 'El precio unitario o el total no son válidos']);
-            exit;
-        }
-
-        // Validar la cantidad como entero
-        if (!is_int($producto['cantidad'])) {
-            echo json_encode(['status' => 'error', 'message' => 'La cantidad debe ser un número entero']);
-            exit;
-        }
-
-        // Validar la fecha (formato: YYYY-MM-DD HH:MM:SS)
+        // Limpiar la fecha y convertirla a formato válido
+        $producto['fecha'] = preg_replace('/\s[a|p]\.m\./i', '', $producto['fecha']); // Eliminar "a.m." o "p.m."
+        
+        // Validar la fecha con el formato esperado: YYYY-MM-DD HH:MM:SS
         $fecha = DateTime::createFromFormat('Y-m-d H:i:s', $producto['fecha']);
         if (!$fecha) {
             echo json_encode(['status' => 'error', 'message' => 'La fecha no tiene un formato válido']);
             exit;
         }
+        
+        // Si la fecha es válida, convertirla de nuevo al formato correcto
+        $producto['fecha'] = $fecha->format('Y-m-d H:i:s');
     }
 
     // Iniciar la conexión a la base de datos (ya debe estar incluida en Conexion_p.php)
