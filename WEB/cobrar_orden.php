@@ -1,13 +1,12 @@
 <?php
 // Incluir el archivo de conexión a la base de datos
-try {
-    $inc = include "../db/Conexion.php";
-    if (!$inc) {
-        throw new Exception('No se pudo conectar a la base de datos');
-    }
-} catch (Exception $e) {
+$inc = include "../db/Conexion.php";
+
+// Verificar que la variable $inc sea un objeto PDO
+if (!$inc instanceof PDO) {
+    // Si no es un objeto PDO, enviar un mensaje de error
     header('Content-Type: application/json');
-    echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
+    echo json_encode(['status' => 'error', 'message' => 'No se pudo conectar a la base de datos']);
     exit;
 }
 
@@ -31,7 +30,14 @@ $query = "insert into mobility_solutions.moon_ventas (folio, id_cliente, nombre_
 
 // Iniciar una transacción para asegurar la consistencia de los datos
 try {
-    $inc->beginTransaction();
+    // Verificar si la conexión es un objeto PDO antes de llamar a beginTransaction
+    if ($inc instanceof PDO) {
+        $inc->beginTransaction();
+    } else {
+        header('Content-Type: application/json');
+        echo json_encode(['status' => 'error', 'message' => 'La conexión a la base de datos no es válida']);
+        exit;
+    }
 
     // Calcular el total de la cuenta sumando el total de cada producto
     $totalCuenta = 0;
@@ -58,9 +64,6 @@ try {
             exit;
         }
 
-        // Limpiar la fecha para evitar caracteres no alfanuméricos
-        $fecha = preg_replace('/[^\w\s]/', '', $producto['fecha']); 
-
         // Asignar los parámetros a la sentencia
         $stmt = $inc->prepare($query);
         $stmt->bindParam(':folio', $producto['folio']);
@@ -71,7 +74,7 @@ try {
         $stmt->bindParam(':cantidad', $producto['cantidad']);
         $stmt->bindParam(':precio_unitario', $producto['precio_unitario']);
         $stmt->bindParam(':total', $producto['total']);
-        $stmt->bindParam(':fecha', date('Y-m-d H:i:s', strtotime($fecha))); // Fecha actual
+        $stmt->bindParam(':fecha', date('Y-m-d H:i:s', strtotime($producto['fecha']))); // Fecha actual
 
         // Ejecutar la sentencia
         if (!$stmt->execute()) {
