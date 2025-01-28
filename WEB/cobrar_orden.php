@@ -61,7 +61,7 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['productos']) && i
             if ($stmt = mysqli_prepare($con, $query_producto)) {
                 mysqli_stmt_bind_param(
                     $stmt,
-                    "sisdiidd",
+                    "sisisidd",
                     $producto['folio'],
                     $id_cliente,
                     $nombre_cliente,
