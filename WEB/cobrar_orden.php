@@ -55,10 +55,14 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['total_cuenta'], $
         } else {
             // Si no se encuentra el producto, asignar NULL a id_producto
             $id_producto = NULL;
+
+            // Registrar un mensaje de error detallado para productos no encontrados
+            echo json_encode(["status" => "error", "message" => "Producto no encontrado en la base de datos: $producto_nombre"]);
+            exit;  // Terminamos la ejecución si algún producto no fue encontrado
         }
 
         // Ahora, aseguramos que la consulta tenga la cantidad correcta de parámetros
-        $stmt->bind_param("sissiddi", $folio, $id_cliente, $nombre_cliente, $producto_nombre, $cantidad, $precio_unitario, $sub_total, $id_producto);
+        $stmt->bind_param("sissdd", $folio, $id_cliente, $nombre_cliente, $producto_nombre, $cantidad, $precio_unitario, $sub_total, $id_producto);
 
         if ($stmt->execute()) {
             // Si la venta se inserta correctamente, marcamos como exitosa
