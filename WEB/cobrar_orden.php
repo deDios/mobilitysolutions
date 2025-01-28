@@ -1,10 +1,9 @@
 <?php
-// Incluir el archivo de conexión a la base de datos
-$inc = include "../db/Conexion.php";
+// Incluir el archivo de conexión
+$con = include "../db/Conexion_p.php";
 
-// Verificar que la variable $inc sea un objeto PDO
-if (!$inc instanceof PDO) {
-    // Si no es un objeto PDO, enviar un mensaje de error
+// Verificar que la conexión se haya realizado correctamente
+if (!$con) {
     header('Content-Type: application/json');
     echo json_encode(['status' => 'error', 'message' => 'No se pudo conectar a la base de datos']);
     exit;
@@ -25,19 +24,13 @@ if (!isset($data['productos']) || !is_array($data['productos']) || count($data['
 }
 
 // Preparar la sentencia SQL para insertar en la tabla `moon_ventas`
-$query = "insert into mobility_solutions.moon_ventas (folio, id_cliente, nombre_cliente, id_producto, producto, cantidad, precio_unitario, total, fecha) 
-          values (:folio, :id_cliente, :nombre_cliente, :id_producto, :producto, :cantidad, :precio_unitario, :total, :fecha)";
+$query = "INSERT INTO mobility_solutions.moon_ventas (folio, id_cliente, nombre_cliente, id_producto, producto, cantidad, precio_unitario, total, fecha) 
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 // Iniciar una transacción para asegurar la consistencia de los datos
 try {
-    // Verificar si la conexión es un objeto PDO antes de llamar a beginTransaction
-    if ($inc instanceof PDO) {
-        $inc->beginTransaction();
-    } else {
-        header('Content-Type: application/json');
-        echo json_encode(['status' => 'error', 'message' => 'La conexión a la base de datos no es válida']);
-        exit;
-    }
+    // Empezar la transacción
+    mysqli_begin_transaction($con);
 
     // Calcular el total de la cuenta sumando el total de cada producto
     $totalCuenta = 0;
@@ -53,32 +46,26 @@ try {
         }
 
         // Validar si id_producto existe en la base de datos
-        $checkProductQuery = "select id from mobility_solutions.moon_product WHERE id = :id_producto";
-        $stmt = $inc->prepare($checkProductQuery);
-        $stmt->bindParam(':id_producto', $producto['id_producto']);
-        $stmt->execute();
-        
-        if ($stmt->rowCount() == 0) {
+        $checkProductQuery = "SELECT id FROM mobility_solutions.moon_product WHERE id = ?";
+        $stmt = mysqli_prepare($con, $checkProductQuery);
+        mysqli_stmt_bind_param($stmt, "i", $producto['id_producto']);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+
+        if (mysqli_num_rows($result) == 0) {
             header('Content-Type: application/json');
             echo json_encode(['status' => 'error', 'message' => 'El producto con ID ' . $producto['id_producto'] . ' no existe']);
             exit;
         }
 
-        // Asignar los parámetros a la sentencia
-        $stmt = $inc->prepare($query);
-        $stmt->bindParam(':folio', $producto['folio']);
-        $stmt->bindParam(':id_cliente', $data['id_cliente']);
-        $stmt->bindParam(':nombre_cliente', $data['nombre_cliente']);
-        $stmt->bindParam(':id_producto', $producto['id_producto']);
-        $stmt->bindParam(':producto', $producto['producto']);
-        $stmt->bindParam(':cantidad', $producto['cantidad']);
-        $stmt->bindParam(':precio_unitario', $producto['precio_unitario']);
-        $stmt->bindParam(':total', $producto['total']);
-        $stmt->bindParam(':fecha', date('Y-m-d H:i:s', strtotime($producto['fecha']))); // Fecha actual
-
-        // Ejecutar la sentencia
-        if (!$stmt->execute()) {
-            $inc->rollBack();
+        // Insertar el producto en la tabla `moon_ventas`
+        $stmt = mysqli_prepare($con, $query);
+        $fecha = date('Y-m-d H:i:s', strtotime($producto['fecha'])); // Asegúrate de que la fecha esté en el formato correcto
+        mysqli_stmt_bind_param($stmt, "sisssdiss", $producto['folio'], $data['id_cliente'], $data['nombre_cliente'], 
+            $producto['id_producto'], $producto['producto'], $producto['cantidad'], $producto['precio_unitario'], $producto['total'], $fecha);
+        
+        if (!mysqli_stmt_execute($stmt)) {
+            mysqli_rollback($con);  // Rollback si ocurre un error
             header('Content-Type: application/json');
             echo json_encode(['status' => 'error', 'message' => 'Error al insertar los productos']);
             exit;
@@ -89,7 +76,7 @@ try {
     }
 
     // Confirmar la transacción si todo ha ido bien
-    $inc->commit();
+    mysqli_commit($con);
 
     // Responder con éxito, incluyendo el total de la cuenta calculado
     header('Content-Type: application/json');
@@ -98,9 +85,9 @@ try {
         'message' => 'Orden insertada correctamente',
         'total_cuenta' => $totalCuenta // Devolver el total de la cuenta
     ]);
-} catch (PDOException $e) {
+} catch (Exception $e) {
     // Si ocurre un error en la transacción, revertir cambios
-    $inc->rollBack();
+    mysqli_rollback($con);
     header('Content-Type: application/json');
     echo json_encode(['status' => 'error', 'message' => 'Error en la transacción: ' . $e->getMessage()]);
 }
