@@ -1,6 +1,11 @@
 <?php
-// Incluir el archivo de conexión
-$con = include "../db/Conexion_p.php";
+// Asegurarnos de que el archivo de conexión existe antes de incluirlo
+if (file_exists('../db/Conexion_p.php')) {
+    include '../db/Conexion_p.php';
+} else {
+    // Si el archivo no existe, muestra un error y termina la ejecución
+    die('Error: No se pudo encontrar el archivo de conexión');
+}
 
 // Verificar que la conexión se haya realizado correctamente
 if (!$con) {
@@ -24,13 +29,13 @@ if (!isset($data['productos']) || !is_array($data['productos']) || count($data['
 }
 
 // Preparar la sentencia SQL para insertar en la tabla `moon_ventas`
-$query = "INSERT INTO mobility_solutions.moon_ventas (folio, id_cliente, nombre_cliente, id_producto, producto, cantidad, precio_unitario, total, fecha) 
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+$query = "insert into mobility_solutions.moon_ventas (folio, id_cliente, nombre_cliente, id_producto, producto, cantidad, precio_unitario, total, fecha) 
+          values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 // Iniciar una transacción para asegurar la consistencia de los datos
 try {
-    // Empezar la transacción
-    mysqli_begin_transaction($con);
+    // Iniciar la transacción
+    $con->begin_transaction();
 
     // Calcular el total de la cuenta sumando el total de cada producto
     $totalCuenta = 0;
@@ -47,25 +52,34 @@ try {
 
         // Validar si id_producto existe en la base de datos
         $checkProductQuery = "SELECT id FROM mobility_solutions.moon_product WHERE id = ?";
-        $stmt = mysqli_prepare($con, $checkProductQuery);
-        mysqli_stmt_bind_param($stmt, "i", $producto['id_producto']);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
-
-        if (mysqli_num_rows($result) == 0) {
+        $stmt = $con->prepare($checkProductQuery);
+        $stmt->bind_param('i', $producto['id_producto']); // Usamos bind_param para el tipo 'i' (entero)
+        $stmt->execute();
+        
+        if ($stmt->get_result()->num_rows == 0) {
             header('Content-Type: application/json');
             echo json_encode(['status' => 'error', 'message' => 'El producto con ID ' . $producto['id_producto'] . ' no existe']);
             exit;
         }
 
-        // Insertar el producto en la tabla `moon_ventas`
-        $stmt = mysqli_prepare($con, $query);
-        $fecha = date('Y-m-d H:i:s', strtotime($producto['fecha'])); // Asegúrate de que la fecha esté en el formato correcto
-        mysqli_stmt_bind_param($stmt, "sisssdiss", $producto['folio'], $data['id_cliente'], $data['nombre_cliente'], 
-            $producto['id_producto'], $producto['producto'], $producto['cantidad'], $producto['precio_unitario'], $producto['total'], $fecha);
-        
-        if (!mysqli_stmt_execute($stmt)) {
-            mysqli_rollback($con);  // Rollback si ocurre un error
+        // Asignar los parámetros a la sentencia
+        $stmt = $con->prepare($query);
+        $stmt->bind_param(
+            'sissdssss', 
+            $producto['folio'], 
+            $data['id_cliente'], 
+            $data['nombre_cliente'], 
+            $producto['id_producto'], 
+            $producto['producto'], 
+            $producto['cantidad'], 
+            $producto['precio_unitario'], 
+            $producto['total'], 
+            date('Y-m-d H:i:s', strtotime($producto['fecha'])) // Fecha de la venta
+        );
+
+        // Ejecutar la sentencia
+        if (!$stmt->execute()) {
+            $con->rollback();
             header('Content-Type: application/json');
             echo json_encode(['status' => 'error', 'message' => 'Error al insertar los productos']);
             exit;
@@ -76,7 +90,7 @@ try {
     }
 
     // Confirmar la transacción si todo ha ido bien
-    mysqli_commit($con);
+    $con->commit();
 
     // Responder con éxito, incluyendo el total de la cuenta calculado
     header('Content-Type: application/json');
@@ -85,9 +99,9 @@ try {
         'message' => 'Orden insertada correctamente',
         'total_cuenta' => $totalCuenta // Devolver el total de la cuenta
     ]);
-} catch (Exception $e) {
+} catch (mysqli_sql_exception $e) {
     // Si ocurre un error en la transacción, revertir cambios
-    mysqli_rollback($con);
+    $con->rollback();
     header('Content-Type: application/json');
     echo json_encode(['status' => 'error', 'message' => 'Error en la transacción: ' . $e->getMessage()]);
 }
