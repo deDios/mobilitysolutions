@@ -33,7 +33,7 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['productos']) && i
     mysqli_begin_transaction($con);
 
     // Insertar una nueva orden en la tabla moon_ventas (sin la columna de total de cuenta)
-    $query_insert = "INSERT INTO moon_ventas (id_cliente, nombre_cliente) VALUES (?, ?)";
+    $query_insert = "insert into moon_ventas (id_cliente, nombre_cliente) VALUES (?, ?)";
     if ($stmt = mysqli_prepare($con, $query_insert)) {
         if (!mysqli_stmt_bind_param($stmt, "is", $id_cliente, $nombre_cliente)) {
             echo json_encode(['status' => 'error', 'message' => 'Error en los parámetros de la consulta']);
@@ -55,7 +55,7 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['productos']) && i
     }
 
     // Insertar los productos asociados con la orden
-    $query_producto = "INSERT INTO moon_ventas (folio, id_cliente, nombre_cliente, id_producto, producto, cantidad, precio_unitario, sub_total) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $query_producto = "insert into moon_ventas (folio, id_cliente, nombre_cliente, id_producto, producto, cantidad, precio_unitario, sub_total) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     foreach ($productos as $producto) {
         if (isset($producto['folio'], $producto['producto'], $producto['id_producto'], $producto['cantidad'], $producto['precio_unitario'], $producto['total'])) {
             if ($stmt = mysqli_prepare($con, $query_producto)) {
