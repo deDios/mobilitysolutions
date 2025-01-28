@@ -1,110 +1,106 @@
 <?php
-// Incluir el archivo de conexión
-if (file_exists('../db/Conexion.php')) {
-    include '../db/Conexion.php';
-} else {
-    // Si el archivo no existe, muestra un error y termina la ejecución
-    die('Error: No se pudo encontrar el archivo de conexión');
-}
+// Configuración de conexión a la base de datos
+include('../db/Conexion_p.php'); // Asegúrate de que la ruta de tu archivo de conexión sea la correcta
 
-// Verificar que la conexión se haya realizado correctamente
-if (!$con) {
-    header('Content-Type: application/json');
-    echo json_encode(['status' => 'error', 'message' => 'No se pudo conectar a la base de datos']);
-    exit;
-}
+// Obtener los datos recibidos (puedes usar $_POST o el método que prefieras)
+$data = json_decode(file_get_contents('php://input'), true);  // Asumiendo que los datos se envían como JSON
 
-// Obtener los datos recibidos en formato JSON
-$data = json_decode(file_get_contents("php://input"), true);
+// Verifica si los datos son válidos
+if (isset($data['id_cliente'], $data['nombre_cliente'], $data['total_cuenta'], $data['productos']) && is_array($data['productos'])) {
+    
+    // Asignación de variables
+    $id_cliente = (int)$data['id_cliente'];  // Asegurarse de que id_cliente es un número entero
+    $nombre_cliente = $data['nombre_cliente'];
+    $total_cuenta = (float)$data['total_cuenta'];  // Asegurarse de que total_cuenta es un número decimal
+    
+    // Validación de los productos
+    $productos = $data['productos'];
 
-// Depurar los datos recibidos
-error_log(print_r($data, true));
+    foreach ($productos as &$producto) {
+        // Asegurarse de que los campos sean válidos y convertirlos a los tipos correctos
+        $producto['total'] = (float)$producto['total'];
+        $producto['precio_unitario'] = (float)$producto['precio_unitario'];
+        $producto['cantidad'] = (int)$producto['cantidad'];  // Asegurarse de que la cantidad es un número entero
+        $producto['folio'] = trim($producto['folio']); // Limpiar posibles espacios en el folio
 
-// Verificar que los datos no sean nulos y estén completos
-if (!isset($data['productos']) || !is_array($data['productos']) || count($data['productos']) == 0 || 
-    !isset($data['id_cliente']) || !isset($data['nombre_cliente'])) {
-    header('Content-Type: application/json');
-    echo json_encode(['status' => 'error', 'message' => 'Datos incompletos o malformados']);
-    exit;
-}
-
-// Preparar la sentencia SQL para insertar en la tabla `moon_ventas`
-$query = "insert into mobility_solutions.moon_ventas (folio, id_cliente, nombre_cliente, id_producto, producto, cantidad, precio_unitario, total, fecha) 
-          values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-// Iniciar una transacción para asegurar la consistencia de los datos
-mysqli_autocommit($con, FALSE); // Desactivamos el auto-commit para manejar la transacción manualmente
-
-try {
-    // Calcular el total de la cuenta sumando el total de cada producto
-    $totalCuenta = 0;
-
-    // Insertar cada producto de la venta
-    foreach ($data['productos'] as $producto) {
-        // Verificar que el producto tenga todos los campos necesarios
-        if (!isset($producto['folio'], $producto['id_cliente'], $producto['producto'], $producto['cantidad'], 
-                  $producto['precio_unitario'], $producto['total'], $producto['fecha'])) {
-            header('Content-Type: application/json');
+        // Validar que todos los campos necesarios estén presentes
+        if (!isset($producto['producto'], $producto['total'], $producto['cantidad'], $producto['precio_unitario'], $producto['folio'], $producto['fecha'])) {
             echo json_encode(['status' => 'error', 'message' => 'Producto con datos incompletos']);
             exit;
         }
 
-        // Validar si id_producto existe en la base de datos
-        $checkProductQuery = "select id from mobility_solutions.moon_product WHERE id = ?";
-        $stmt = mysqli_prepare($con, $checkProductQuery);
-        mysqli_stmt_bind_param($stmt, 'i', $producto['id_producto']);
-        mysqli_stmt_execute($stmt);
-        
-        $result = mysqli_stmt_get_result($stmt);
-        if (mysqli_num_rows($result) == 0) {
-            header('Content-Type: application/json');
-            echo json_encode(['status' => 'error', 'message' => 'El producto con ID ' . $producto['id_producto'] . ' no existe']);
+        // Validar que los valores numéricos son correctos
+        if (!is_numeric($producto['precio_unitario']) || !is_numeric($producto['total'])) {
+            echo json_encode(['status' => 'error', 'message' => 'El precio unitario o el total no son válidos']);
             exit;
         }
 
-        // Preparar y ejecutar la inserción del producto
-        $stmt = mysqli_prepare($con, $query);
-        mysqli_stmt_bind_param(
-            $stmt,
-            'sissdssss', 
-            $producto['folio'], 
-            $data['id_cliente'], 
-            $data['nombre_cliente'], 
-            $producto['id_producto'], 
-            $producto['producto'], 
-            $producto['cantidad'], 
-            $producto['precio_unitario'], 
-            $producto['total'], 
-            date('Y-m-d H:i:s', strtotime($producto['fecha'])) // Fecha de la venta
-        );
-
-        // Ejecutar la sentencia
-        if (!mysqli_stmt_execute($stmt)) {
-            // Si hay un error, revertir la transacción
-            mysqli_rollback($con);
-            header('Content-Type: application/json');
-            echo json_encode(['status' => 'error', 'message' => 'Error al insertar los productos']);
+        // Validar la cantidad como entero
+        if (!is_int($producto['cantidad'])) {
+            echo json_encode(['status' => 'error', 'message' => 'La cantidad debe ser un número entero']);
             exit;
         }
 
-        // Sumar el total de cada producto para obtener el total de la cuenta
-        $totalCuenta += $producto['total'];
+        // Validar la fecha (formato: YYYY-MM-DD HH:MM:SS)
+        $fecha = DateTime::createFromFormat('Y-m-d H:i:s', $producto['fecha']);
+        if (!$fecha) {
+            echo json_encode(['status' => 'error', 'message' => 'La fecha no tiene un formato válido']);
+            exit;
+        }
     }
 
-    // Confirmar la transacción si todo ha ido bien
-    mysqli_commit($con);
+    // Iniciar la conexión a la base de datos (ya debe estar incluida en Conexion_p.php)
+    $conn = mysqli_connect($hostname, $username, $password, $database);  // Usar las variables de tu conexión
 
-    // Responder con éxito, incluyendo el total de la cuenta calculado
-    header('Content-Type: application/json');
-    echo json_encode([
-        'status' => 'success',
-        'message' => 'Orden insertada correctamente',
-        'total_cuenta' => $totalCuenta // Devolver el total de la cuenta
-    ]);
-} catch (Exception $e) {
-    // Si ocurre un error, revertir la transacción
-    mysqli_rollback($con);
-    header('Content-Type: application/json');
-    echo json_encode(['status' => 'error', 'message' => 'Error en la transacción: ' . $e->getMessage()]);
+    if (!$conn) {
+        echo json_encode(['status' => 'error', 'message' => 'Error de conexión a la base de datos']);
+        exit;
+    }
+
+    // Comenzamos la transacción (si es necesario)
+    mysqli_begin_transaction($conn);
+
+    // Insertar los productos en la base de datos
+    $query_insert = "insert into ordenes (id_cliente, nombre_cliente, total_cuenta) VALUES (?, ?, ?)";
+    if ($stmt = mysqli_prepare($conn, $query_insert)) {
+        mysqli_stmt_bind_param($stmt, "isd", $id_cliente, $nombre_cliente, $total_cuenta);
+        $result = mysqli_stmt_execute($stmt);
+        if (!$result) {
+            echo json_encode(['status' => 'error', 'message' => 'Error al insertar la orden']);
+            mysqli_rollback($conn);
+            exit;
+        }
+        $orden_id = mysqli_insert_id($conn);  // Obtener el ID de la orden insertada
+        mysqli_stmt_close($stmt);
+    }
+
+    // Insertar los productos
+    $query_producto = "insert into productos_orden (orden_id, producto, precio_unitario, cantidad, total, folio, fecha) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    foreach ($productos as $producto) {
+        if ($stmt = mysqli_prepare($conn, $query_producto)) {
+            mysqli_stmt_bind_param($stmt, "isdiiss", $orden_id, $producto['producto'], $producto['precio_unitario'], $producto['cantidad'], $producto['total'], $producto['folio'], $producto['fecha']);
+            $result = mysqli_stmt_execute($stmt);
+            if (!$result) {
+                echo json_encode(['status' => 'error', 'message' => 'Error al insertar los productos']);
+                mysqli_rollback($conn);
+                exit;
+            }
+            mysqli_stmt_close($stmt);
+        }
+    }
+
+    // Confirmar la transacción
+    if (!mysqli_commit($conn)) {
+        echo json_encode(['status' => 'error', 'message' => 'Error al confirmar la transacción']);
+        exit;
+    }
+
+    // Cerrar la conexión
+    mysqli_close($conn);
+
+    // Responder con éxito
+    echo json_encode(['status' => 'success', 'message' => 'Orden registrada correctamente']);
+} else {
+    echo json_encode(['status' => 'error', 'message' => 'Datos incompletos']);
 }
 ?>
