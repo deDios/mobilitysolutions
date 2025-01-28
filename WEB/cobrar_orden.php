@@ -1,5 +1,7 @@
 <?php
-// Incluye el archivo de conexión a la base de datos con SSL
+// Evitar cualquier salida antes de enviar encabezados
+ob_start();  // Inicia el buffer de salida, para evitar problemas con los encabezados
+
 include('../db/Conexion_p.php');  // Asegúrate de que la ruta al archivo de conexión sea correcta
 
 // Certificado SSL de la autoridad certificadora (CA)
@@ -31,9 +33,8 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['productos']) && i
     mysqli_begin_transaction($con);
 
     // Insertar una nueva orden en la tabla moon_ventas (sin la columna de total de cuenta)
-    $query_insert = "insert into mobility_solutions.moon_ventas (id_cliente, nombre_cliente) values (?, ?)";
+    $query_insert = "INSERT INTO moon_ventas (id_cliente, nombre_cliente) VALUES (?, ?)";
     if ($stmt = mysqli_prepare($con, $query_insert)) {
-        // Verificar si el bind de parámetros funciona correctamente
         if (!mysqli_stmt_bind_param($stmt, "is", $id_cliente, $nombre_cliente)) {
             echo json_encode(['status' => 'error', 'message' => 'Error en los parámetros de la consulta']);
             exit;
@@ -54,39 +55,38 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['productos']) && i
     }
 
     // Insertar los productos asociados con la orden
-    $query_producto = "insert into mobility_solutions.moon_ventas (folio, id_cliente, nombre_cliente, id_producto, producto, cantidad, precio_unitario, sub_total) values (?, ?, ?, ?, ?, ?, ?, ?)";
+    $query_producto = "INSERT INTO moon_ventas (folio, id_cliente, nombre_cliente, id_producto, producto, cantidad, precio_unitario, sub_total) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     foreach ($productos as $producto) {
-        // Verificar que todos los datos necesarios del producto estén presentes
         if (isset($producto['folio'], $producto['producto'], $producto['id_producto'], $producto['cantidad'], $producto['precio_unitario'], $producto['total'])) {
             if ($stmt = mysqli_prepare($con, $query_producto)) {
-                // Verificar si el bind de parámetros funciona correctamente
                 if (!mysqli_stmt_bind_param(
                     $stmt,
-                    "sisdiidd",  // Formato de los parámetros: (folio, id_cliente, nombre_cliente, id_producto, producto, cantidad, precio_unitario, sub_total)
-                    $producto['folio'],  // Folio del producto
+                    "sisdiidd",  // Parámetros: folio, id_cliente, nombre_cliente, id_producto, producto, cantidad, precio_unitario, sub_total
+                    $producto['folio'],
                     $id_cliente,
                     $nombre_cliente,
-                    $producto['id_producto'],  // ID del producto
-                    $producto['producto'],  // Nombre del producto
-                    $producto['cantidad'],  // Cantidad
-                    $producto['precio_unitario'],  // Precio unitario
-                    $producto['total']  // Subtotal
+                    $producto['id_producto'],
+                    $producto['producto'],
+                    $producto['cantidad'],
+                    $producto['precio_unitario'],
+                    $producto['total']
                 )) {
-                    echo json_encode(['status' => 'error', 'message' => 'Error al bindear parámetros para producto']);
+                    echo json_encode(['status' => 'error', 'message' => 'Error al bindear los parámetros']);
                     exit;
                 }
-
+            
                 $result = mysqli_stmt_execute($stmt);
                 if (!$result) {
-                    echo json_encode(['status' => 'error', 'message' => 'Error al insertar el producto: ' . mysqli_error($con)]);
+                    echo json_encode(['status' => 'error', 'message' => 'Error al ejecutar la consulta: ' . mysqli_error($con)]);
                     mysqli_rollback($con);
                     exit;
                 }
+            
                 mysqli_stmt_close($stmt);
             } else {
-                echo json_encode(['status' => 'error', 'message' => 'Error al preparar la consulta de inserción de producto']);
+                echo json_encode(['status' => 'error', 'message' => 'Error al preparar la consulta']);
                 exit;
-            }
+            }            
         } else {
             echo json_encode(['status' => 'error', 'message' => 'Producto con datos incompletos']);
             mysqli_rollback($con);
@@ -109,4 +109,7 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['productos']) && i
 } else {
     echo json_encode(['status' => 'error', 'message' => 'Datos incompletos']);
 }
+
+// Detener el buffer de salida y enviar los encabezados
+ob_end_flush();
 ?>
