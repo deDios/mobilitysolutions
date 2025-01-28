@@ -1,12 +1,9 @@
 <?php
 // Incluyendo el archivo de conexión con la base de datos (ajustar la ruta según corresponda)
-include('/home/site/wwwroot/db/Conexion_p.php');  // Cambia esta ruta si no es correcta
+include('/home/site/wwwroot/db/Conexion.php');  // Cambia esta ruta si no es correcta
 
-// Datos SSL
-$ssl_ca = '/home/site/wwwroot/db/DigiCertGlobalRootCA.crt.pem';  // El certificado de la autoridad certificadora (CA)
-
-// Aseguramos que los datos se envíen en formato JSON
-$data = json_decode(file_get_contents('php://input'), true);
+// Obtener los datos JSON de la solicitud
+$data = json_decode(file_get_contents('php://input'), true);  // Esta es la forma correcta de obtener el cuerpo de la solicitud
 
 if (isset($data['id_cliente'], $data['nombre_cliente'], $data['productos']) && is_array($data['productos'])) {
     
@@ -49,6 +46,7 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['productos']) && i
                 $producto['folio'] = uniqid('FOLIO_');  // Genera un folio único si no se proporciona
             }
 
+            // Preparar la consulta para insertar el producto
             if ($stmt = mysqli_prepare($con, $query_producto)) {
                 // Vincular parámetros
                 mysqli_stmt_bind_param(
