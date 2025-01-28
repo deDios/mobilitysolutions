@@ -1,14 +1,9 @@
 <?php
-// Asegurarnos de que el archivo de conexión existe antes de incluirlo
-if (file_exists('../db/Conexion_p.php')) {
-    include '../db/Conexion_p.php';
-} else {
-    // Si el archivo no existe, muestra un error y termina la ejecución
-    die('Error: No se pudo encontrar el archivo de conexión');
-}
+// Incluir el archivo de conexión a la base de datos
+$inc = include "../db/Conexion_p.php";
 
 // Verificar que la conexión se haya realizado correctamente
-if (!$con) {
+if (!$inc) {
     header('Content-Type: application/json');
     echo json_encode(['status' => 'error', 'message' => 'No se pudo conectar a la base de datos']);
     exit;
@@ -28,14 +23,13 @@ if (!isset($data['productos']) || !is_array($data['productos']) || count($data['
     exit;
 }
 
-// Preparar la sentencia SQL para insertar en la tabla `moon_ventas`
-$query = "insert into mobility_solutions.moon_ventas (folio, id_cliente, nombre_cliente, id_producto, producto, cantidad, precio_unitario, total, fecha) 
-          values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+// Preparar la sentencia SQL para insertar en la tabla moon_ventas
+$query = "INSERT INTO mobility_solutions.moon_ventas (folio, id_cliente, nombre_cliente, id_producto, producto, cantidad, precio_unitario, total, fecha) 
+          VALUES (:folio, :id_cliente, :nombre_cliente, :id_producto, :producto, :cantidad, :precio_unitario, :total, :fecha)";
 
 // Iniciar una transacción para asegurar la consistencia de los datos
 try {
-    // Iniciar la transacción
-    $con->begin_transaction();
+    $inc->beginTransaction();
 
     // Calcular el total de la cuenta sumando el total de cada producto
     $totalCuenta = 0;
@@ -51,35 +45,32 @@ try {
         }
 
         // Validar si id_producto existe en la base de datos
-        $checkProductQuery = "SELECT id FROM mobility_solutions.moon_product WHERE id = ?";
-        $stmt = $con->prepare($checkProductQuery);
-        $stmt->bind_param('i', $producto['id_producto']); // Usamos bind_param para el tipo 'i' (entero)
+        $checkProductQuery = "SELECT id FROM mobility_solutions.moon_product WHERE id = :id_producto";
+        $stmt = $inc->prepare($checkProductQuery);
+        $stmt->bindParam(':id_producto', $producto['id_producto']);
         $stmt->execute();
         
-        if ($stmt->get_result()->num_rows == 0) {
+        if ($stmt->rowCount() == 0) {
             header('Content-Type: application/json');
             echo json_encode(['status' => 'error', 'message' => 'El producto con ID ' . $producto['id_producto'] . ' no existe']);
             exit;
         }
 
         // Asignar los parámetros a la sentencia
-        $stmt = $con->prepare($query);
-        $stmt->bind_param(
-            'sissdssss', 
-            $producto['folio'], 
-            $data['id_cliente'], 
-            $data['nombre_cliente'], 
-            $producto['id_producto'], 
-            $producto['producto'], 
-            $producto['cantidad'], 
-            $producto['precio_unitario'], 
-            $producto['total'], 
-            date('Y-m-d H:i:s', strtotime($producto['fecha'])) // Fecha de la venta
-        );
+        $stmt = $inc->prepare($query);
+        $stmt->bindParam(':folio', $producto['folio']);
+        $stmt->bindParam(':id_cliente', $data['id_cliente']);
+        $stmt->bindParam(':nombre_cliente', $data['nombre_cliente']);
+        $stmt->bindParam(':id_producto', $producto['id_producto']);
+        $stmt->bindParam(':producto', $producto['producto']);
+        $stmt->bindParam(':cantidad', $producto['cantidad']);
+        $stmt->bindParam(':precio_unitario', $producto['precio_unitario']);
+        $stmt->bindParam(':total', $producto['total']);
+        $stmt->bindParam(':fecha', date('Y-m-d H:i:s', strtotime($producto['fecha']))); // Fecha actual
 
         // Ejecutar la sentencia
         if (!$stmt->execute()) {
-            $con->rollback();
+            $inc->rollBack();
             header('Content-Type: application/json');
             echo json_encode(['status' => 'error', 'message' => 'Error al insertar los productos']);
             exit;
@@ -90,7 +81,7 @@ try {
     }
 
     // Confirmar la transacción si todo ha ido bien
-    $con->commit();
+    $inc->commit();
 
     // Responder con éxito, incluyendo el total de la cuenta calculado
     header('Content-Type: application/json');
@@ -99,9 +90,9 @@ try {
         'message' => 'Orden insertada correctamente',
         'total_cuenta' => $totalCuenta // Devolver el total de la cuenta
     ]);
-} catch (mysqli_sql_exception $e) {
+} catch (PDOException $e) {
     // Si ocurre un error en la transacción, revertir cambios
-    $con->rollback();
+    $inc->rollBack();
     header('Content-Type: application/json');
     echo json_encode(['status' => 'error', 'message' => 'Error en la transacción: ' . $e->getMessage()]);
 }
