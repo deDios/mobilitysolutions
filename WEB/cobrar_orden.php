@@ -1,7 +1,7 @@
 <?php
 // Incluir el archivo de conexión
-if (file_exists('../db/Conexion_p.php')) {
-    include '../db/Conexion_p.php';
+if (file_exists('../db/Conexion.php')) {
+    include '../db/Conexion.php';
 } else {
     // Si el archivo no existe, muestra un error y termina la ejecución
     die('Error: No se pudo encontrar el archivo de conexión');
@@ -29,8 +29,8 @@ if (!isset($data['productos']) || !is_array($data['productos']) || count($data['
 }
 
 // Preparar la sentencia SQL para insertar en la tabla `moon_ventas`
-$query = "INSERT INTO mobility_solutions.moon_ventas (folio, id_cliente, nombre_cliente, id_producto, producto, cantidad, precio_unitario, total, fecha) 
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+$query = "insert into mobility_solutions.moon_ventas (folio, id_cliente, nombre_cliente, id_producto, producto, cantidad, precio_unitario, total, fecha) 
+          values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 // Iniciar una transacción para asegurar la consistencia de los datos
 mysqli_autocommit($con, FALSE); // Desactivamos el auto-commit para manejar la transacción manualmente
@@ -50,7 +50,7 @@ try {
         }
 
         // Validar si id_producto existe en la base de datos
-        $checkProductQuery = "SELECT id FROM mobility_solutions.moon_product WHERE id = ?";
+        $checkProductQuery = "select id from mobility_solutions.moon_product WHERE id = ?";
         $stmt = mysqli_prepare($con, $checkProductQuery);
         mysqli_stmt_bind_param($stmt, 'i', $producto['id_producto']);
         mysqli_stmt_execute($stmt);
