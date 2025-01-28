@@ -42,7 +42,7 @@ try {
         }
 
         // Validar si id_producto existe en la base de datos (esto asumiendo que la tabla moon_product tiene los productos)
-        $checkProductQuery = "SELECT id FROM moon_product WHERE id = :id_producto";
+        $checkProductQuery = "select id from moon_product WHERE id = :id_producto";
         $stmt = $inc->prepare($checkProductQuery);
         $stmt->bindParam(':id_producto', $producto['id_producto']);
         $stmt->execute();
