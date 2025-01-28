@@ -29,7 +29,7 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['total_cuenta'], $
     $folio = strtoupper(uniqid('ORD-'));
 
     // Preparar la consulta para insertar la orden
-    $stmt = $conn->prepare("insert into moon_ventas (folio, id_cliente, nombre_cliente, producto, cantidad, precio_unitario, sub_total) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("insert into mobility_solutions.moon_ventas (folio, id_cliente, nombre_cliente, producto, cantidad, precio_unitario, sub_total) VALUES (?, ?, ?, ?, ?, ?, ?)");
     
     // Variable para almacenar el éxito de la inserción
     $orden_insertada = false;
@@ -42,7 +42,7 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['total_cuenta'], $
         $sub_total = $producto['total'];  // sub_total es igual a cantidad * precio_unitario
 
         // Buscar el id_producto correspondiente en moon_product
-        $producto_id_stmt = $conn->prepare("select id FROM moon_product WHERE Nombre = ?");
+        $producto_id_stmt = $conn->prepare("select id FROM mobility_solutions.moon_product WHERE Nombre = ?");
         $producto_id_stmt->bind_param("s", $producto_nombre);
         $producto_id_stmt->execute();
         $producto_id_stmt->store_result();
