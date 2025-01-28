@@ -23,70 +23,50 @@ if (isset($data['id_cliente'], $data['nombre_cliente'], $data['total_cuenta'], $
     $folio = $data['folio'];  // Asegúrate de que el folio sea pasado
     $productos = $data['productos'];
 
-    // Conectar a la base de datos
     $conn = getDBConnection();
-
-    // Preparar la consulta para insertar la orden
     $stmt = $conn->prepare("insert into mobility_solutions.moon_ventas (folio, id_cliente, nombre_cliente, producto, cantidad, precio_unitario, sub_total, id_producto) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
-    // Variable para almacenar el éxito de la inserción
     $orden_insertada = false;
 
     foreach ($productos as $producto) {
-        // Obtenemos los datos del producto
         $producto_nombre = $producto['producto'];
         $cantidad = $producto['cantidad'];
         $precio_unitario = $producto['precio_unitario'];
         $sub_total = $producto['total'];  // sub_total es igual a cantidad * precio_unitario
 
-        // Buscar el id_producto correspondiente en moon_product
         $producto_id_stmt = $conn->prepare("select id from mobility_solutions.moon_product WHERE Nombre = ?");
         $producto_id_stmt->bind_param("s", $producto_nombre);
         $producto_id_stmt->execute();
         $producto_id_stmt->store_result();
         $producto_id_stmt->bind_result($id_producto);
 
-        // Depuración: Verificar que estamos obteniendo el id_producto correctamente
         var_dump($id_producto); // Esto imprimirá el valor del id_producto para depurar
 
         if ($producto_id_stmt->num_rows > 0) {
-            // Si existe el producto, obtenemos el id
             $producto_id_stmt->fetch();
         } else {
-            // Si no se encuentra el producto, asignar NULL a id_producto
             $id_producto = NULL;
-
-            // Registrar un mensaje de error detallado para productos no encontrados
-            echo json_encode(["status" => "error", "message" => "Producto no encontrado en la base de datos: $producto_nombre"]);
-            exit;  // Terminamos la ejecución si algún producto no fue encontrado
         }
 
-        // Ahora, aseguramos que la consulta tenga la cantidad correcta de parámetros
-        $stmt->bind_param("sissdd", $folio, $id_cliente, $nombre_cliente, $producto_nombre, $cantidad, $precio_unitario, $sub_total, $id_producto);
+        $stmt->bind_param("sissiddi", $folio, $id_cliente, $nombre_cliente, $producto_nombre, $cantidad, $precio_unitario, $sub_total, $id_producto);
 
         if ($stmt->execute()) {
-            // Si la venta se inserta correctamente, marcamos como exitosa
             $orden_insertada = true;
         } else {
             echo json_encode(["status" => "error", "message" => "Error al insertar el producto: " . $stmt->error]);
             exit;
         }
-
-        // Cerrar la consulta del producto
+        
         $producto_id_stmt->close();
     }
 
-    // Verificar si la inserción fue exitosa
     if ($orden_insertada) {
         echo json_encode(["status" => "success", "message" => "Orden registrada con éxito."]);
     } else {
         echo json_encode(["status" => "error", "message" => "Error al registrar la orden."]);
     }
 
-    // Cerrar la sentencia
     $stmt->close();
-
-    // Cerrar la conexión
     $conn->close();
 
 } else {
