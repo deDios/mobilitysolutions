@@ -4,6 +4,22 @@ header('Content-Type: application/json');
 
 $inc = include "../db/Conexion.php";
 
+
+if($cod == 9){
+    $query = 'select 
+    id,
+    Categoria, 
+    Nombre, 
+    Precio, 
+    Descripcion, 
+    Imagen_Producto, 
+    Status, 
+    atrr_1, 
+    atrr_2, 
+    atrr_3
+FROM mobility_solutions.moon_product;';
+}
+else{
 // Consulta a la base de datos
 $query = 'select 
                 id,
@@ -18,7 +34,7 @@ $query = 'select
                 atrr_3
             FROM mobility_solutions.moon_product
             WHERE Categoria = ' . $cod . ';';
-
+}
 $result = mysqli_query($con, $query);
 
 if ($result->num_rows > 0) {
