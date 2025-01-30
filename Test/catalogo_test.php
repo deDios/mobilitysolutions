@@ -112,7 +112,7 @@
                   if ($_GET['InputMensualidad_Menor'] != '' ){
                     $selec_filt .="/Menor a $".$_GET['InputMensualidad_Menor']."";
                   } 
-                  if ($_GET['InputPasajeros'] != '' ){
+                  if ($_GET['InputPasajeros'] != 'Todos' ){
                     $selec_filt .="/".$_GET['InputPasajeros']."";
                   }                
                 ?>
