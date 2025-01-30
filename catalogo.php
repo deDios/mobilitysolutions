@@ -54,7 +54,7 @@
           </li>
 
           <li class="nav-item active">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/catalogo.php?buscar=&InputMarca=Todos&InputAnio=Todos&InputColor=Todos&InputTransmision=Todos&InputInterior=Todos&InputTipo=Todos&InputMensualidad_Mayor=&InputMensualidad_Menor=&enviar=">Catálogo</a>
+            <a class="nav-link" href="https://mobilitysolutionscorp.com/catalogo.php?buscar=&InputMarca=Todos&InputAnio=Todos&InputColor=Todos&InputTransmision=Todos&InputInterior=Todos&InputTipo=Todos&InputPasajeros=Todos&InputMensualidad_Mayor=&InputMensualidad_Menor=&enviar=">Catálogo</a>
           </li>
 
          <li class="nav-item">
@@ -111,6 +111,9 @@
                   }
                   if ($_GET['InputMensualidad_Menor'] != '' ){
                     $selec_filt .="/Menor a $".$_GET['InputMensualidad_Menor']."";
+                  }  
+                  if ($_GET['InputPasajeros'] != 'Todos' ){
+                    $selec_filt .="/".$_GET['InputPasajeros']."";
                   }                
                 ?>
                 <figcaption class="blockquote-footer pt-2"> <?php echo $selec_filt ;?> </figcaption>
@@ -226,6 +229,29 @@
                                 <option value="Pickup">Pickup</option>
                             </select>
                           </div>
+                          <div class="pt-1">
+                            <select id="InputPasajeros" class="form-select" aria-label="Default select example" name="InputPasajeros">
+                                <option value="Todos">Selecciona pasajeros</option>                      
+                                <?php 
+                                $inc = include "db/Conexion.php";    
+                                    if ($inc){
+                                        $query = 'select pasajeros from mobility_solutions.v_catalogo_active group by pasajeros order by pasajeros ASC ;';
+                                        $result = mysqli_query($con,$query);  
+                                        if ($result){         
+                                            while($row = mysqli_fetch_assoc($result)){
+                                                $pasajeros = $row['pasajeros'];
+                                ?> 
+                                            <option value="<?php echo $pasajeros;?>"><?php echo $pasajeros;?></option>
+                                <?php
+                                            }
+                                        } else{
+                                                echo "Hubo un error en la consulta";
+                                        }
+                                            mysqli_free_result($result);                  
+                                    }
+                                ?>
+                            </select>
+                          </div>
 
                         </div>
                       </div>
@@ -335,6 +361,9 @@
                         if ($_GET['InputTipo'] != 'Todos' ){
                           $query .=" AND c_type = '".$_GET['InputTipo']."' ";
                         }
+                        if ($_GET['InputPasajeros'] != 'Todos' ){
+                          $query .=" AND pasajeros = '".$_GET['InputPasajeros']."' ";
+                        }
                         $query .=" order by RAND()";
                         $result = mysqli_query($con,$query);  
                         if ($result){         
@@ -438,6 +467,9 @@
                     }
                     if ($_GET['InputTipo'] != 'Todos' ){
                       $query .=" AND c_type = '".$_GET['InputTipo']."' ";
+                    }
+                    if ($_GET['InputPasajeros'] != 'Todos' ){
+                      $query .=" AND pasajeros = '".$_GET['InputPasajeros']."' ";
                     }
                     $query .=" order by RAND()";
                     $result = mysqli_query($con,$query);  

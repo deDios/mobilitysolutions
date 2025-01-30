@@ -56,9 +56,9 @@ $pdf_file = "/DOCS/AP.pdf";
             </a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/catalogo.php?buscar=&InputMarca=Todos&InputAnio=Todos&InputColor=Todos&InputTransmision=Todos&InputInterior=Todos&InputTipo=Todos&InputMensualidad_Mayor=&InputMensualidad_Menor=&enviar=">Catálogo</a>
-          </li>
+        <li class="nav-item">
+            <a class="nav-link" href="https://mobilitysolutionscorp.com/catalogo.php?buscar=&InputMarca=Todos&InputAnio=Todos&InputColor=Todos&InputTransmision=Todos&InputInterior=Todos&InputTipo=Todos&InputPasajeros=Todos&InputMensualidad_Mayor=&InputMensualidad_Menor=&enviar=">Catálogo</a>
+        </li>
 
          <li class="nav-item">
             <a class="nav-link" href="https://mobilitysolutionscorp.com/about_us.php">Nosotros</a>
