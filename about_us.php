@@ -78,7 +78,7 @@
         <br><br>Gracias a nuestro sistema de aportaciones periódicas, nuestros clientes pueden ahorrar para el enganche y, en el momento adecuado, elegir el vehículo que mejor se adapte a sus gustos y necesidades de nuestro amplio catálogo de autos nuevos y seminuevos.
         </p>
         <p>
-          <a href="https://mobilitysolutionscorp.com/catalogo.php" class="btn btn-primary my-2">Ir al catálogo</a>
+          <a href="https://mobilitysolutionscorp.com/catalogo.php?buscar=&InputMarca=Todos&InputAnio=Todos&InputColor=Todos&InputTransmision=Todos&InputInterior=Todos&InputTipo=Todos&InputPasajeros=Todos&InputMensualidad_Mayor=&InputMensualidad_Menor=&enviar=" class="btn btn-primary my-2">Ir al catálogo</a>
           <a href="https://mobilitysolutionscorp.com/contact.php" class="btn btn-secondary my-2">Contáctanos</a>
         </p>
       </div>
