@@ -1,20 +1,21 @@
 
- <!DOCTYPE html>
+<!DOCTYPE html>
  <html lang="en">
  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test de Catálogo</title>
-    <link rel="stylesheet" href="CSS/catalogo_test.css">
+    <title>Catálogo</title>
+    <link rel="shortcut icon" href="../Imagenes/movility.ico" />
+    <link rel="stylesheet" href="../Test/CSS/catalogo_test.css">
+
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 
  </head>
@@ -28,8 +29,8 @@
           <div class="col-sm-12">
             <ul class="social-network">
               <li><a class="waves-effect waves-dark" href="https://www.facebook.com/profile.php?id=61563909313215&mibextid=kFxxJD"><i class="fa fa-facebook"></i></a></li>
-              <li><a class="waves-effect waves-dark" href="https://maps.app.goo.gl/G2WDrF97WDnzrQGr6"><i class="fa fa-map-marker"></i></a></li>
-              <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-user"></i></a></li>
+              <li><a class="waves-effect waves-dark" href="https://mobilitysolutionscorp.com/views/ubicacion.php"><i class="fa fa-map-marker"></i></a></li>
+              <li><a class="waves-effect waves-dark" href="https://mobilitysolutionscorp.com/views/login.php"><i class="fa fa-user"></i></a></li>
             </ul>
           </div>
 
@@ -53,7 +54,7 @@
           </li>
 
           <li class="nav-item active">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/catalogo.php">Catálogo</a>
+            <a class="nav-link" href="https://mobilitysolutionscorp.com/catalogo.php?buscar=&InputMarca=Todos&InputAnio=Todos&InputColor=Todos&InputTransmision=Todos&InputInterior=Todos&InputTipo=Todos&InputMensualidad_Mayor=&InputMensualidad_Menor=&enviar=">Catálogo</a>
           </li>
 
          <li class="nav-item">
@@ -71,173 +72,227 @@
 </div>
 
 <!--------------------------------------- Termina Menu ----------------------------------------------->
-    <div class="container-items">
+
+<div class="container-items">
     
-  <!--------------------------------------- Menu lateral ----------------------------------------------->
-        <div class="menu_item py-3">
-          
-          <div class="menu_fix position-fixed">
-          <form class="form-search" action="" method="get">
-            <div class="input-group input-group-lg">
-                  <a class="btn btn-secondary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                    <i class="fa fa-filter"></i>
-                  </a>
-                  <input class="form-control form-text pl-3" maxlength="128" placeholder="Buscar" type="text" name="buscar" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"/>
-            </div>
-          
-            <div class="collapse py-2" id="collapseExample">
+<!--------------------------------------- Menu lateral ----------------------------------------------->
+<div class="menu_item py-3">
+  <div class="menu_fix position-fixed">
+            <form class="form-search" action="" method="get">
+              <div class="input-group input-group">
+                    <input class="form-control form-text pl-3" maxlength="128" placeholder="Busca por marca, modelo, tipo..." type="text" name="buscar" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"/>
+              </div>
+              <div class="div_icon pt-2">
+                <a class="btn btn-secondary btn-lg" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  <i class="fa fa-filter"></i> 
+                </a>
+                <?php
+                  $selec_filt = $_GET['buscar'];
+                  if ($_GET['InputMarca'] != 'Todos' ){
+                    $selec_filt .="/".$_GET['InputMarca']."";
+                  }
+                  if ($_GET['InputAnio'] != 'Todos' ){
+                    $selec_filt .="/".$_GET['InputAnio']."";
+                  }
+                  if ($_GET['InputColor'] != 'Todos' ){
+                    $selec_filt .="/".$_GET['InputColor']."";
+                  }
+                  if ($_GET['InputTransmision'] != 'Todos' ){
+                    $selec_filt .="/".$_GET['InputTransmision']."";
+                  }
+                  if ($_GET['InputInterior'] != 'Todos' ){
+                    $selec_filt .="/".$_GET['InputInterior']."";
+                  }
+                  if ($_GET['InputTipo'] != 'Todos' ){
+                    $selec_filt .="/".$_GET['InputTipo']."";
+                  }
+                  if ($_GET['InputMensualidad_Mayor'] != '' ){
+                    $selec_filt .="/Mayor a $".$_GET['InputMensualidad_Mayor']."";
+                  }
+                  if ($_GET['InputMensualidad_Menor'] != '' ){
+                    $selec_filt .="/Menor a $".$_GET['InputMensualidad_Menor']."";
+                  } 
+                  if ($_GET['InputPasajeros'] != '' ){
+                    $selec_filt .="/".$_GET['InputPasajeros']."";
+                  }                
+                ?>
+                <figcaption class="blockquote-footer pt-2"> <?php echo $selec_filt ;?> </figcaption>
+              </div>
+            
+              <div class="collapse py-2" id="collapseExample">
 
-            <div class="lay_ser"> 
-              <h5 class="fw-light py-2">Filtros </h5>
-                <hr class="mt-2 mb-3"/>
+              <div class="lay_ser"> 
+                <h5 class="fw-light py-2">Filtros </h5>
+                  <hr class="mt-2 mb-3"/>
 
-                <div class="accordion" id="accordionPanelsStayOpenExample">
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
-                        Marca
-                      </button>
-                    </h2>
-                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
-                      <div class="accordion-body">
-                        <select id="InputMarca" class="form-select" aria-label="Default select example" name="InputMarca">
-                            <option value="Todos">Selecciona una Marca</option>                      
-                            <?php 
-                            $inc = include "../db/Conexion.php";    
-                                if ($inc){
-                                    $query = 'select 
-                                                id,
-                                                nombre
-                                            FROM mobility_solutions.tmx_marca;';
-                                    $result = mysqli_query($con,$query);  
-                                    if ($result){         
-                                        while($row = mysqli_fetch_assoc($result)){
-                                            $id = $row['id'];
-                                            $nombre = $row['nombre'];
-                            ?> 
-                                        <option value="<?php echo $nombre;?>"><?php echo $nombre;?></option>
-                            <?php
+                  <div class="accordion" id="accordionPanelsStayOpenExample">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
+                          Marca
+                        </button>
+                      </h2>
+                      <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
+                        <div class="accordion-body">
+                          <select id="InputMarca" class="form-select" aria-label="Default select example" name="InputMarca">
+                              <option value="Todos">Selecciona una Marca</option>                      
+                              <?php 
+                              $inc = include "../db/Conexion.php";    
+                                  if ($inc){
+                                      $query = 'select 
+                                                  a.id,
+                                                  a.nombre
+                                                FROM mobility_solutions.tmx_marca as a
+                                                right join  mobility_solutions.v_catalogo_active as b
+                                                on a.nombre = b.marca
+                                                group by 1,2
+                                                order by nombre asc;';
+                                      $result = mysqli_query($con,$query);  
+                                      if ($result){         
+                                          while($row = mysqli_fetch_assoc($result)){
+                                              $id = $row['id'];
+                                              $nombre = $row['nombre'];
+                              ?> 
+                                          <option value="<?php echo $nombre;?>"><?php echo $nombre;?></option>
+                              <?php
+                                          }
+                                      } else{
+                                              echo "Hubo un error en la consulta";
+                                      }
+                                          mysqli_free_result($result);                  
+                                  }
+                              ?>
+                          </select>
+                          
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                          Caracteristicas
+                        </button>
+                      </h2>
+                      <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                        <div class="accordion-body">
+
+                          <div class="pt-1">
+                            <select id="InputAnio" class="form-select" aria-label="Default select example" name="InputAnio">
+                                <option value="Todos">Selecciona año</option>  
+                                <option value="2016">2016</option> 
+                                <option value="2017">2017</option> 
+                                <option value="2018">2018</option> 
+                                <option value="2019">2019</option> 
+                                <option value="2020">2020</option> 
+                                <option value="2021">2021</option> 
+                                <option value="2022">2022</option> 
+                                <option value="2023">2023</option> 
+                                <option value="2024">2024</option> 
+                            </select>
+                          </div>
+                          <div class="pt-1">
+                            <select id="InputColor" class="form-select" aria-label="Default select example" name="InputColor">
+                                <option value="Todos">Selecciona color</option> 
+                                <option value="Negro">Negro</option>  
+                                <option value="Rojo">Rojo</option>  
+                                <option value="Azul">Azul</option>  
+                                <option value="Blanco">Blanco</option>  
+                                <option value="Verde">Verde</option>
+                                <option value="Gris">Gris</option>
+                                <option value="Amarillo">Amarillo</option>
+                                <option value="Arena">Arena</option>
+                                <option value="Guinda">Guinda</option>
+                                <option value="Plata">Plata</option>
+                                <option value="Naranja">Naranja</option>  
+                            </select>
+                          </div>
+                          <div class="pt-1">
+                            <select id="InputTransmision" class="form-select" aria-label="Default select example" name="InputTransmision">
+                                <option value="Todos">Selecciona transmisión</option> 
+                                <option value="Manual">TM (Manual)</option>  
+                                <option value="Automatico">TA (Automatico)</option>
+                            </select>
+                          </div>
+                          <div class="pt-1">
+                            <select id="InputInterior" class="form-select" aria-label="Default select example" name="InputInterior">
+                                <option value="Todos">Selecciona interior</option> 
+                                <option value="Tela">Tela</option>  
+                                <option value="Piel">Piel</option>
+                            </select>
+                          </div>
+                          <div class="pt-1">
+                            <select id="InputTipo" class="form-select" aria-label="Default select example" name="InputTipo">
+                                <option value="Todos">Selecciona tipo</option> 
+                                <option value="Hatchback">Hatchback</option>
+                                <option value="Sedan">Sedan</option>
+                                <option value="SUV">SUV</option>  
+                                <option value="Pickup">Pickup</option>
+                            </select>
+                          </div>
+
+                          <div class="pt-1">
+                            <select id="InputPasajeros" class="form-select" aria-label="Default select example" name="InputPasajeros">
+                                <option value="Todos">Numero de pasajeros</option>                      
+                                <?php 
+                                $inc = include "../db/Conexion.php";    
+                                    if ($inc){
+                                        $query = 'select pasajeros from mobility_solutions.v_catalogo_active group by pasajeros;';
+                                        $result = mysqli_query($con,$query);  
+                                        if ($result){         
+                                            while($row = mysqli_fetch_assoc($result)){
+                                                $pasajeros = $row['pasajeros'];
+                                ?> 
+                                            <option value="<?php echo $pasajeros;?>"><?php echo $pasajeros;?></option>
+                                <?php
+                                            }
+                                        } else{
+                                                echo "Hubo un error en la consulta";
                                         }
-                                    } else{
-                                            echo "Hubo un error en la consulta";
+                                            mysqli_free_result($result);                  
                                     }
-                                        mysqli_free_result($result);                  
-                                }
-                            ?>
-                        </select>
-                        
+                                ?>
+                            </select>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                          Precio
+                        </button>
+                      </h2>
+                      <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                        <div class="accordion-body">
+
+                        <div class="pt-1">
+                          <span class="input-group-text">$ Mayor a: MX/mensuales</span>
+                              <input id="InputMensualidad_Mayor" type="text" pattern="[0-9]+" class="form-control" name="InputMensualidad_Mayor" aria-label="Amount (to the nearest dollar)">
+                        </div>
+                        <div class="pt-3">
+                          <span class="input-group-text">$ Menor a: MX/mensuales</span>
+                              <input id="InputMensualidad_Menor" type="text" pattern="[0-9]+" class="form-control" name="InputMensualidad_Menor" aria-label="Amount (to the nearest dollar)">
+                          </div>
+
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                        Caracteristicas
-                      </button>
-                    </h2>
-                    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
-                      <div class="accordion-body">
-
-                        <div class="pt-1">
-                          <select id="InputAnio" class="form-select" aria-label="Default select example" name="InputAnio">
-                              <option value="Todos">Selecciona año</option> 
-                              <option value="2013">2013</option> 
-                              <option value="2014">2014</option> 
-                              <option value="2015">2015</option> 
-                              <option value="2016">2016</option> 
-                              <option value="2017">2017</option> 
-                              <option value="2018">2018</option> 
-                              <option value="2019">2019</option> 
-                              <option value="2020">2020</option> 
-                              <option value="2021">2021</option> 
-                              <option value="2022">2022</option> 
-                              <option value="2023">2023</option> 
-                              <option value="2024">2024</option> 
-                              <option value="2025">2025</option> 
-                          </select>
-                        </div>
-                        <div class="pt-1">
-                          <select id="InputColor" class="form-select" aria-label="Default select example" name="InputColor">
-                              <option value="Todos">Selecciona color</option> 
-                              <option value="Negro">Negro</option>  
-                              <option value="Rojo">Rojo</option>  
-                              <option value="Azul">Azul</option>  
-                              <option value="Blanco">Blanco</option>  
-                              <option value="Verde">Verde</option>
-                              <option value="Gris">Gris</option>
-                              <option value="Amarillo">Amarillo</option>
-                              <option value="Arena">Arena</option>
-                              <option value="Guinda">Guinda</option>
-                              <option value="Plata">Plata</option>
-                              <option value="Naranja">Naranja</option>  
-                          </select>
-                        </div>
-                        <div class="pt-1">
-                          <select id="InputTransmision" class="form-select" aria-label="Default select example" name="InputTransmision">
-                              <option value="Todos">Selecciona transmisión</option> 
-                              <option value="Manual">TM (Manual)</option>  
-                              <option value="Automatico">TA (Automatico)</option>
-                          </select>
-                        </div>
-                        <div class="pt-1">
-                          <select id="InputInterior" class="form-select" aria-label="Default select example" name="InputInterior">
-                              <option value="Todos">Selecciona interior</option> 
-                              <option value="Tela">Tela</option>  
-                              <option value="Piel">Piel</option>
-                          </select>
-                        </div>
-                        <div class="pt-1">
-                          <select id="InputTipo" class="form-select" aria-label="Default select example" name="InputTipo">
-                              <option value="Todos">Selecciona tipo</option> 
-                              <option value="HB">HB</option>
-                              <option value="Sedan">Sedan</option>
-                              <option value="SUV">SUV</option>  
-                              <option value="Pickup">Pickup</option>
-                          </select>
-                        </div>
-
-                      </div>
-                    </div>
+                  
+                  <div class="text-end">
+                    <button class="btn btn-link" type="submit" name="enviar">Aplicar filtros</button>
                   </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                        Precio
-                      </button>
-                    </h2>
-                    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
-                      <div class="accordion-body">
+                  </form>
+              </div>
+              </div>
 
-                      <div class="pt-1">
-                        <span class="input-group-text">$ Mayor a: MX/mensuales</span>
-                            <input id="InputMensualidad_Mayor" type="text" class="form-control" name="InputMensualidad_Mayor" aria-label="Amount (to the nearest dollar)">
-                       </div>
-                      <div class="pt-3">
-                        <span class="input-group-text">$ Menor a: MX/mensuales</span>
-                            <input id="InputMensualidad_Menor" type="text" class="form-control" name="InputMensualidad_Menor" aria-label="Amount (to the nearest dollar)">
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="text-end">
-                  <button class="btn btn-link" type="submit" name="enviar">Aplicar filtros</button>
-                </div>
-                </form>
-            </div>
-          </div>
-
-          <div class="anuncios">
-            <p class="titulo_r py-5"><small></small></p>
-            <p><small>Anuncios</small></p> <hr class="mt-2 mb-3"/>
-          </div>
-
-          </div>
-        </div>
-
-
+              <div class="anuncios">
+              <p class="titulo_r py-5"><small></small></p>
+              <p><small>Anuncios</small></p> <hr class="mt-2 mb-3"/>
+              </div>
+  </div>
+</div>
 <!--------------------------------------- Termina menu lateral ----------------------------------------------->
 
 <!--------------------------------------- Menu izquierda ----------------------------------------------->
@@ -275,6 +330,7 @@
                                     propietarios, 
                                     created_at, 
                                     updated_at, 
+                                    c_type,
                                     search_key
                                   from mobility_solutions.v_catalogo_active 
                                   where 1=1
@@ -304,9 +360,12 @@
                           $query .=" AND mensualidad <= '".$_GET['InputMensualidad_Menor']."' ";
                         }
                         if ($_GET['InputTipo'] != 'Todos' ){
-                          $query .=" AND modelo like '%".$_GET['InputTipo']."%' ";
+                          $query .=" AND c_type = '".$_GET['InputTipo']."' ";
                         }
-
+                        if ($_GET['InputPasajeros'] != 'Todos' ){
+                          $query .=" AND pasajeros = '".$_GET['InputPasajeros']."' ";
+                        }
+                        $query .=" order by RAND()";
                         $result = mysqli_query($con,$query);  
                         if ($result){         
                             while($row = mysqli_fetch_assoc($result)){
@@ -322,12 +381,12 @@
                                     <a href="javascript:detalle(<?php echo $id;?>)">
                                         <div class="item">
                                             <figure>
-                                                <img src="../Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="Auto 1">
+                                                <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="Auto 1">
                                             </figure>
                                             <div class="info-producto">
                                                 <div class="titulo_marca">
                                                     <div class="titulo_carro">  <?php echo $marca . " " . $nombre; ?>  </div>
-                                                    <img src="../Imagenes/Marcas/logo_<?php echo $marca; ?>.jpg" alt="logo 1">
+                                                    <img src="Imagenes/Marcas/logo_<?php echo $marca; ?>.jpg" alt="logo 1">
                                                 </div>
                                                 <div class="version_unidad"><?php echo "N°25000A/" .  $id . " - " . $modelo; ?></div>
                                                 <div class="titulo_desde">Mensualidad DESDE</div>
@@ -338,7 +397,7 @@
                                                   <?php echo " " . $sucursal;?> 
                                                 </div>
                                                 <?php if ($estatus == 3){?>
-                                                  <img src="../Imagenes/Sellos/reservado.jpg" class="imagen-sello" alt="sello">
+                                                  <img src="Imagenes/Sellos/reservado.jpg" class="imagen-sello" alt="sello">
                                                 <?php
                                                   } else {
                                                 ?> <?php } ?>
@@ -382,6 +441,7 @@
                                 propietarios, 
                                 created_at, 
                                 updated_at, 
+                                c_type,
                                 search_key
                               from mobility_solutions.v_catalogo_active
                               where 1=1";
@@ -407,8 +467,12 @@
                       $query .=" AND mensualidad <= '".$_GET['InputMensualidad_Menor']."' ";
                     }
                     if ($_GET['InputTipo'] != 'Todos' ){
-                      $query .=" AND modelo like '%".$_GET['InputTipo']."%' ";
+                      $query .=" AND c_type = '".$_GET['InputTipo']."' ";
                     }
+                    if ($_GET['InputPasajeros'] != 'Todos' ){
+                      $query .=" AND pasajeros = '".$_GET['InputPasajeros']."' ";
+                    }
+                    $query .=" order by RAND()";
                     $result = mysqli_query($con,$query);  
                     if ($result){         
                         while($row = mysqli_fetch_assoc($result)){
@@ -424,12 +488,12 @@
                                 <a href="javascript:detalle(<?php echo $id;?>)">
                                     <div class="item">
                                         <figure>
-                                            <img src="../Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="Auto 1">
+                                            <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="Auto 1">
                                         </figure>
                                         <div class="info-producto">
                                             <div class="titulo_marca">
                                                 <div class="titulo_carro">  <?php echo $marca . " " . $nombre; ?>  </div>
-                                                <img src="../Imagenes/Marcas/logo_<?php echo $marca; ?>.jpg" alt="logo 1">
+                                                <img src="Imagenes/Marcas/logo_<?php echo $marca; ?>.jpg" alt="logo 1">
                                             </div>
                                             <div class="version_unidad"><?php echo "N°25000A/" .  $id . " - " . $modelo; ?></div>
                                             <div class="titulo_desde">Mensualidad DESDE</div>
@@ -437,12 +501,12 @@
                                             <div class="Precio"><?php echo "$" . number_format($costo); ?> </div>
                                             <div class="Localidad"> 
                                               <div>
-                                                <i class="fas fa-location-arrow" ></i> <?php echo " " . $sucursal;?>  
+                                                <i class="bi bi-geo-alt-fill"></i>  <?php echo " " . $sucursal;?>  
                                               </div>
                                               <?php 
                                                 if ($estatus == 3){
                                               ?>
-                                                <img src="../Imagenes/Sellos/reservado.jpg" alt="sello">
+                                                <img src="Imagenes/Sellos/reservado.jpg" alt="sello">
                                               <?php
                                                 } else {
                                               ?>
@@ -468,63 +532,49 @@
 </div>
     <script>        
         function detalle (cod){
-            location.href="detalles.php?cod="+cod;
+            location.href="../detalles.php?cod="+cod;
         }
     </script>
 
-  <footer class="text-muted py-5">
-    <div class="container">
-      <p class="float-end mb-1">
-        <a href="#">Regresa al inicio</a>
-      </p>
-      <p class="mb-1">DERECHOS DE AUTOR &COPY; 2014 - 2024 MOBILITY SOLUTIONTS CORPORATIONS</p>
-      <a title="Descargar Archivo" rel="nofollow" target="_blank" href="/DOCS/AP.pdf" style="color: blue; font-size:18px;"> Consulta nuestro aviso de privacidad 
-      <span class="glyphicon glyphicon-download-alt" aria-hidden="true">
-      </span> 
-      </a>
-      <p class="mb-0">Contactanos: contacto@mobilitysolutionscorp.com</p>
-    </div>
-  </footer>
+<hr class="mt-5 mb-3"/> 
 
-
-
-<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
-<hr class="mt-2 mb-3"/> 
-
-<footer class="mt-5">  
+<footer class="foo mt-5">  
   <div class="container">    
     <div class="row">      
       <div class="col-lg-3">        
         <h6>Conoce más</h6>  
-        <hr class="hr1 mt-2 mb-3"/>      
+        <hr class="hr1 mt-2 mb-3" style="height:5px;border-width:0;color:#FFC00A;background-color:#FFC00A">    
         <ul class="text-secondary list-unstyled">
-          <li>
-            <a class="text-secondary" href="#">¿Quiénes Somos?</a>
+        <li>
+            <a class="text-secondary" href="https://mobilitysolutionscorp.com/about_us.php">¿Quiénes Somos?</a>
           </li>
+          <li>
+            <a class="text-secondary" href="https://mobilitysolutionscorp.com/Views/vende.php">Vende tu auto</a>
+          </li>
+          <li>
+            <a class="text-secondary" href="https://mobilitysolutionscorp.com/views/ubicacion.php">Sucursales</a>
+          </li>
+          
         </ul>     
       </div>      
       <div class="col-lg-3">        
         <h6>Legales</h6>    
-        <hr class="hr2 mt-2 mb-3"/>    
+        <hr class="hr2 mt-2 mb-3" style="height:5px;border-width:0;color:gainsboro;background-color:gainsboro">     
         <ul class="text-secondary list-unstyled">
           <li>
-            <a class="text-secondary" href="#">Aviso de privacidad</a>
+            <a class="text-secondary" href="/Views/privacy.php">Aviso de privacidad</a>
           </li>
         </ul>       
       </div>      
       <div class="col-lg-3">        
         <h6>Ayuda</h6>    
-        <hr class="hr3 mt-2 mb-3"/>    
+        <hr class="hr3 mt-2 mb-3" style="height:5px;border-width:0;color:black;background-color:black">    
         <ul class="text-secondary list-unstyled">
           <li>
-            <a class="text-secondary" href="#">Contacto</a>
+            <a class="text-secondary" href="https://mobilitysolutionscorp.com/contact.php">Contacto</a>
           </li>
           <li>
-            <a class="text-secondary" href="#">Preguntas frecuentes</a>
+            <a class="text-secondary" href="https://mobilitysolutionscorp.com/about_us.php">Preguntas frecuentes</a>
           </li>
         </ul>     
       </div>  
@@ -536,6 +586,12 @@
     </div>  
   </div>
 </footer>
+
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 
  </body>
