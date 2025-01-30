@@ -232,11 +232,11 @@
 
                           <div class="pt-1">
                             <select id="InputPasajeros" class="form-select" aria-label="Default select example" name="InputPasajeros">
-                                <option value="Todos">Numero de pasajeros</option>                      
+                                <option value="Todos">Selecciona pasajeros</option>                      
                                 <?php 
                                 $inc = include "../db/Conexion.php";    
                                     if ($inc){
-                                        $query = 'select pasajeros from mobility_solutions.v_catalogo_active group by pasajeros;';
+                                        $query = 'select pasajeros from mobility_solutions.v_catalogo_active group by pasajeros order by pasajeros ASC ;';
                                         $result = mysqli_query($con,$query);  
                                         if ($result){         
                                             while($row = mysqli_fetch_assoc($result)){
