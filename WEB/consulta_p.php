@@ -17,7 +17,7 @@ if($cod == 9){
     atrr_1, 
     atrr_2, 
     atrr_3
-FROM mobility_solutions.moon_product;';
+FROM mobility_solutions.moon_product order by Nombre ASC;';
 }
 else{
 // Consulta a la base de datos
@@ -33,7 +33,7 @@ $query = 'select
                 atrr_2, 
                 atrr_3
             FROM mobility_solutions.moon_product
-            WHERE Categoria = ' . $cod . ';';
+            WHERE Categoria = ' . $cod . ' order by Nombre ASC ;';
 }
 $result = mysqli_query($con, $query);
 
