@@ -1,10 +1,10 @@
 <?php
 header('Content-Type: application/json');
 
-// Verifica si los parámetros 'cod' y 'pas' fueron enviados
-$user = isset($_REQUEST['cod']) ? $_REQUEST['cod'] : '';
+// Verifica si el parámetro 'cod' fue enviado
+$cod = isset($_REQUEST['cod']) ? $_REQUEST['cod'] : '';
 
-if (empty($user) || empty($pass)) {
+if (empty($cod)) {
     echo json_encode(['success' => false, 'message' => 'Datos incompletos']);
     exit;
 }
@@ -21,13 +21,16 @@ $query = 'select
           FROM mobility_solutions.moon_gasto AS a
           LEFT JOIN mobility_solutions.moon_proveedores AS b
           ON a.id_proveedor = b.id
-          WHERE b.tipo_proveedor = ' . $cod . ';';
+          WHERE b.tipo_proveedor = ?';
 
 $stmt = $con->prepare($query);
 if ($stmt === false) {
     echo json_encode(['success' => false, 'message' => 'Error en la consulta']);
     exit;
 }
+
+// Vincula el parámetro para evitar inyección SQL
+$stmt->bind_param('s', $cod);  // 's' indica que el parámetro es una cadena
 
 $stmt->execute();
 $result = $stmt->get_result();
