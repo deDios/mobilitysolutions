@@ -16,8 +16,7 @@ include "../db/Conexion.php";
 $query = 'select 
             b.nombre AS proveedor,
             a.objeto AS articulo,
-            a.costo,
-            a.created_at
+            a.costo
           FROM mobility_solutions.moon_gasto AS a
           LEFT JOIN mobility_solutions.moon_proveedores AS b
           ON a.id_proveedor = b.id
