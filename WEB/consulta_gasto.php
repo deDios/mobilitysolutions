@@ -21,7 +21,7 @@ $query = 'select
           LEFT JOIN mobility_solutions.moon_proveedores AS b
           ON a.id_proveedor = b.id
           WHERE b.tipo_proveedor = ?
-          and  DATE(a.created_at) = CURDATE()
+          and  DATE(DATE_SUB(a.created_at, INTERVAL 6 HOUR)) = CURDATE()
           order by a.id DESC;';
 
 $stmt = $con->prepare($query);
