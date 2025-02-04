@@ -21,7 +21,8 @@ $query = 'select
           FROM mobility_solutions.moon_gasto AS a
           LEFT JOIN mobility_solutions.moon_proveedores AS b
           ON a.id_proveedor = b.id
-          WHERE b.tipo_proveedor = ?';
+          WHERE b.tipo_proveedor = ?
+          and  DATE(a.created_at) = CURDATE();';
 
 $stmt = $con->prepare($query);
 if ($stmt === false) {
