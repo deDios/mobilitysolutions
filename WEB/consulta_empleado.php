@@ -18,8 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             from mobility_solutions.moon_cliente as a
             left join mobility_solutions.moon_empleado as b
             on a.id = b.id_empleado
-            where b.status = ?
-            and b.id_empleado = 4
+            where b.status = 1
+            and b.id_empleado = ?
             ;';
 
     $stmt = $con->prepare($query);
