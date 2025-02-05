@@ -56,17 +56,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 // Verificar si es una solicitud POST (para registrar la asistencia)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Recibimos los parámetros del POST
-    $id_empleado = isset($_POST['id_empleado']) ? intval($_POST['id_empleado']) : 0;
+    // Obtener los datos JSON enviados desde el cliente
+    $data = json_decode(file_get_contents("php://input"), true);
 
     // Validar que el ID del empleado esté presente
-    if ($id_empleado == 0) {
+    if (isset($data['id_empleado'])) {
+        $id_empleado = intval($data['id_empleado']);
+    } else {
         echo json_encode(["error" => "ID de empleado no proporcionado"]);
         exit;
     }
 
     // Insertar un registro en la tabla moon_empleado_asistencia
-    $query = "insert INTO mobility_solutions.moon_empleado_asistencia (id_empleado) VALUES (?)";
+    $query = "insert into mobility_solutions.moon_empleado_asistencia (id_empleado) VALUES (?)";
 
     $stmt = $con->prepare($query);
     if (!$stmt) {
@@ -85,6 +87,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $stmt->close();
 }
+
+// Cerrar la conexión
+$con->close();
 
 // Cerrar la conexión
 $con->close();
