@@ -234,21 +234,22 @@ li {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80%;
+    width: 80%; /* Ajusta el tamaño del carrusel según el contenedor */
     margin: 0 auto;
 }
 
 .imagen-grande img {
-    width: 80%;
-    max-width: 800px;
-    margin-bottom: 20px;
-    transition: transform 0.3s ease;
+    width: 100%; /* La imagen tomará todo el ancho del contenedor */
+    height: auto; /* Mantendrá la proporción de la imagen */
+    object-fit: contain; /* Asegura que la imagen se ajuste dentro del contenedor sin perder calidad */
+    transition: transform 0.3s ease; /* Efecto suave al cambiar la imagen */
 }
 
 .miniaturas {
     display: flex;
     justify-content: center;
     gap: 15px;
+    margin-top: 10px;
 }
 
 .miniatura {
