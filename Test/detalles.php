@@ -167,30 +167,33 @@ $imagenes = [
 ];
 ?>          
 
-            <div class="carrusel">
-                <div class="imagen-grande">
-                    <img src="<?php echo $imagenes[0]; ?>" id="imagenGrande" alt="Imagen seleccionada">
-                </div>
-                
-                <div class="miniaturas">
-                    <?php foreach ($imagenes as $index => $imagen): ?>
-                        <img src="<?php echo $imagen; ?>" alt="Miniatura <?php echo $index + 1; ?>" 
-                            class="miniatura" data-index="<?php echo $index; ?>" />
-                    <?php endforeach; ?>
-                </div>
-            </div>
+<div class="carrusel">
+    <div class="imagen-grande">
+        <img src="<?php echo $imagenes[0]; ?>" id="imagenGrande" alt="Imagen seleccionada">
+    </div>
+    
+    <div class="miniaturas">
+        <?php foreach ($imagenes as $index => $imagen): ?>
+            <img src="<?php echo $imagen; ?>" alt="Miniatura <?php echo $index + 1; ?>" 
+                 class="miniatura" data-index="<?php echo $index; ?>" />
+        <?php endforeach; ?>
+    </div>
+</div>
 
-            <script>
-                const miniaturas = document.querySelectorAll('.miniatura');
-                const imagenGrande = document.getElementById('imagenGrande');
-                
-                miniaturas.forEach(miniatura => {
-                    miniatura.addEventListener('click', () => {
-                        const index = miniatura.getAttribute('data-index');
-                        imagenGrande.src = "<?php echo $imagenes[" + index + "]; ?>";
-                    });
-                });
-            </script>
+<script>
+    const miniaturas = document.querySelectorAll('.miniatura');
+    const imagenGrande = document.getElementById('imagenGrande');
+
+    // Almacenar las rutas de las imágenes en un arreglo de JavaScript
+    const imagenes = <?php echo json_encode($imagenes); ?>;
+
+    miniaturas.forEach(miniatura => {
+        miniatura.addEventListener('click', () => {
+            const index = miniatura.getAttribute('data-index');
+            imagenGrande.src = imagenes[index]; // Cambiar la imagen grande al seleccionar una miniatura
+        });
+    });
+</script>
 
 
 <!-------------------------------------- Div detalle de auto ----------------------------------------------------------->
