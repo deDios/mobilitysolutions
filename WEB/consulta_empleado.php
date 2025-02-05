@@ -76,6 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
+    // Vincular el parámetro a la consulta
     $stmt->bind_param("i", $id_empleado);
     $resultado = $stmt->execute();
 
@@ -87,9 +88,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $stmt->close();
 }
-
-// Cerrar la conexión
-$con->close();
 
 // Cerrar la conexión
 $con->close();
