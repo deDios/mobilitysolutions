@@ -168,10 +168,16 @@ $imagenes = [
 ?>          
 
 <div class="carrusel">
+    <!-- Botón izquierdo -->
+    <div class="flecha izquierda" id="flechaIzquierda">&#9664;</div>
+
     <div class="imagen-grande">
         <img src="<?php echo $imagenes[0]; ?>" id="imagenGrande" alt="Imagen seleccionada">
     </div>
-    
+
+    <!-- Botón derecho -->
+    <div class="flecha derecha" id="flechaDerecha">&#9654;</div>
+
     <div class="miniaturas">
         <?php foreach ($imagenes as $index => $imagen): ?>
             <img src="<?php echo $imagen; ?>" alt="Miniatura <?php echo $index + 1; ?>" 
@@ -183,17 +189,35 @@ $imagenes = [
 <script>
     const miniaturas = document.querySelectorAll('.miniatura');
     const imagenGrande = document.getElementById('imagenGrande');
+    const flechaIzquierda = document.getElementById('flechaIzquierda');
+    const flechaDerecha = document.getElementById('flechaDerecha');
 
-    // Almacenar las rutas de las imágenes en un arreglo de JavaScript
+    let indiceActual = 0;
+
     const imagenes = <?php echo json_encode($imagenes); ?>;
+
+    const mostrarImagen = (indice) => {
+        imagenGrande.src = imagenes[indice];
+    };
+
+    flechaIzquierda.addEventListener('click', () => {
+        indiceActual = (indiceActual > 0) ? indiceActual - 1 : imagenes.length - 1;
+        mostrarImagen(indiceActual);
+    });
+
+    flechaDerecha.addEventListener('click', () => {
+        indiceActual = (indiceActual < imagenes.length - 1) ? indiceActual + 1 : 0;
+        mostrarImagen(indiceActual);
+    });
 
     miniaturas.forEach(miniatura => {
         miniatura.addEventListener('click', () => {
-            const index = miniatura.getAttribute('data-index');
-            imagenGrande.src = imagenes[index]; // Cambiar la imagen grande al seleccionar una miniatura
+            indiceActual = parseInt(miniatura.getAttribute('data-index'));
+            mostrarImagen(indiceActual);
         });
     });
 </script>
+
 
 
 <!-------------------------------------- Div detalle de auto ----------------------------------------------------------->
