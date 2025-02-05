@@ -335,10 +335,10 @@ li {
 
     .carrusel_carr_auto .imagen-grande img {
         width: 100%; /* Se ajusta al ancho del contenedor */
-        height: 350px; /* Altura fija */
-        object-fit: contain; /* Ajusta la imagen sin recortar y mantiene la proporción */
-        transition: transform 0.3s ease; /* Efecto suave al cambiar la imagen */
-    }
+        height: 100%; /* Se ajusta a la altura del contenedor */
+        object-fit: contain; /* Ajusta la imagen sin recortar, pero manteniendo la proporción */
+        transition: transform 0.3s ease;
+    }    
 
     .carrusel_carr_auto .miniaturas {
         display: flex;
