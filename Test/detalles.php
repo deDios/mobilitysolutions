@@ -155,48 +155,7 @@ $query = 'select
             </div>
 <!-------------------------------- Carrusel auto seleccionado -------------------------------------->
           
-            <div class="carrusel_carr_auto">
-                <div class="div_carrusel">
-                    <div id="demo" class="py-1 carousel carousel-dark slide" data-bs-ride="carousel" py-1>
-                        <!-- Indicators/dots -->
-                        <div class="carousel-indicators">
-                            <?php
-                                $imagenes = 8; 
-                                for ($i = 0; $i < $imagenes; $i++) {
-                                    $activeClass = ($i == 0) ? 'active' : ''; // La primera imagen será la activa por defecto
-                                    echo '<button type="button" data-bs-target="#demo" data-bs-slide-to="' . $i . '" class="' . $activeClass . '"></button>';
-                                }
-                            ?>
-                        </div>
-                        <!-- The slideshow/carousel -->
-                        <div class="carousel-inner">
-                            <?php
-                                for ($i = 1; $i <= $imagenes; $i++) {
-                                    $activeClass = ($i == 1) ? 'active' : '';
-                                    echo '<div class="carousel-item ' . $activeClass . '">
-                                            <img src="../Imagenes/Catalogo/Auto ' . $id . '/Img' . sprintf('%02d', $i) . '.jpg" class="d-block w-100" alt="Imagen ' . $i . '">
-                                          </div>';
-                                }
-                            ?>
-                        </div>
-                        <!-- Left and right controls/icons -->
-                        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon"></span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-                            <span class="carousel-control-next-icon"></span>
-                        </button>
-                    </div>
-                </div>
-                <?php 
-                    if ($estatus == 3){
-                ?>
-                    <img src="../Imagenes/reserved.jpg" alt="Imagen reserved" class="imagen-r">
-                <?php
-                    } 
-                ?>
-            </div>
-
+            
 
 
 <!-------------------------------------- Div detalle de auto ----------------------------------------------------------->
