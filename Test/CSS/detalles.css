@@ -312,8 +312,9 @@ li {
     /* Imagen principal en el carrusel */
     .carrusel_carr_auto .imagen-grande img {
         width: 100%; /* Se ajusta al ancho del contenedor */
-        height: 450px; /* Altura fija */
-        object-fit: cover; /* Mantiene la proporción de la imagen */
+        height: 350px; /* Reducimos el alto fijo */
+        object-fit: contain; /* Ajusta la imagen sin recortar y mantiene la proporción */
+        transition: transform 0.3s ease; /* Efecto suave al cambiar la imagen */
     }
 
     /* Miniaturas en el carrusel */
@@ -431,4 +432,3 @@ li {
         background: linear-gradient(45deg, #FFC00A 70%, #1b1e21 26%);
     }
 }
-
