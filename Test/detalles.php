@@ -324,6 +324,8 @@ $imagenes = [
 
         // Llama a la función para que se actualice al cargar la página
         window.onload = function() {
+            const enganchePorcentaje = document.getElementById('enganche').value;
+            document.getElementById('engancheValor').textContent = enganchePorcentaje + '%'; // Actualiza el valor del porcentaje al cargar
             actualizarEngancheTotal();
         };
 
@@ -365,7 +367,6 @@ $imagenes = [
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
       </div>
-
 
     </div>
 
