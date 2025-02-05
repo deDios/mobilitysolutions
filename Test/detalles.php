@@ -311,7 +311,7 @@ $imagenes = [
 
           <div class="mt-3">
               <p class="text-muted" style="font-size: 0.8rem; font-style: italic;">
-                Cotización de carácter informativo. Precios/tarifas sujetos a cambios. La mensualidad puede variar. Consulte términos y condiciones.
+                Cotización de carácter informativo los Precios/tarifas estan sujetos a cambios sin previo aviso, la mensualidad puede variar. Consulte términos y condiciones.
               </p>
           </div>
 
