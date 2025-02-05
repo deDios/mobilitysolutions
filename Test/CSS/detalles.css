@@ -234,14 +234,14 @@ li {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80%; /* Ajusta el tamaño del carrusel según el contenedor */
+    width: 90%; /* Ajusta el tamaño del carrusel según el contenedor */
     margin: 0 auto;
 }
 
 .imagen-grande img {
     width: 100%; /* La imagen tomará todo el ancho del contenedor */
-    height: auto; /* Mantendrá la proporción de la imagen */
-    object-fit: contain; /* Asegura que la imagen se ajuste dentro del contenedor sin perder calidad */
+    height: 450px; /* Alto fijo de 450px */
+    object-fit: cover; /* Ajusta la imagen manteniendo su proporción y cubriendo el área sin distorsionar */
     transition: transform 0.3s ease; /* Efecto suave al cambiar la imagen */
 }
 
@@ -268,6 +268,7 @@ li {
 .miniatura:active {
     border-color: #007bff;
 }
+
 
 
 /* ----------------------------- Cierre carrusel  detalle auto  -----------------------------*/
