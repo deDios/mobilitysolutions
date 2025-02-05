@@ -275,7 +275,7 @@ $imagenes = [
                   <label for="enganche" class="form-label">Porcentaje de Enganche</label>
                   <input type="range" class="form-range" id="enganche" min="5" max="100" step="5" value="20">
                   <p>Enganche seleccionado: <span id="engancheValor">20%</span></p>
-                  <p>Total Enganche: <span id="engancheTotal">$0.00</span></p> <!-- Aquí agregamos la etiqueta para el total -->
+                  <p>Total Enganche: <span id="engancheTotal">$0.00</span></p>
               </div>
               <div class="col-md-4">
                   <label for="interes" class="form-label">Interés Anual (%)</label>
@@ -293,18 +293,20 @@ $imagenes = [
 
           <div class="mt-4">
               <h4>Tabla de Amortización</h4>
-              <table class="table table-bordered">
-                  <thead>
-                      <tr>
-                          <th>Mes</th>
-                          <th>Pago Mensual</th>
-                          <th>Interés</th>
-                          <th>Capital</th>
-                          <th>Saldo Restante</th>
-                      </tr>
-                  </thead>
-                  <tbody id="tablaAmortizacion"></tbody>
-              </table>
+              <div style="max-height: 300px; overflow-y: auto;"> <!-- Aquí agregamos el scroll -->
+                  <table class="table table-bordered">
+                      <thead>
+                          <tr>
+                              <th>Mes</th>
+                              <th>Pago Mensual</th>
+                              <th>Interés</th>
+                              <th>Capital</th>
+                              <th>Saldo Restante</th>
+                          </tr>
+                      </thead>
+                      <tbody id="tablaAmortizacion"></tbody>
+                  </table>
+              </div>
           </div>
       </div>
 
@@ -371,7 +373,6 @@ $imagenes = [
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
       </div>
-
 
     </div>
 
