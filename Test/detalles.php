@@ -218,8 +218,6 @@ $imagenes = [
     });
 </script>
 
-
-
 <!-------------------------------------- Div detalle de auto ----------------------------------------------------------->
             <div class="detalle_carr">
                 <ul class="list-group">
@@ -268,6 +266,90 @@ $imagenes = [
 
         </div>
         <div class="cotizador">
+
+            <div class="container mt-5">
+            <h3>Cotizador de Amortización</h3>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="enganche" class="form-label">Porcentaje de Enganche</label>
+                    <input type="range" class="form-range" id="enganche" min="5" max="100" step="5" value="20">
+                    <p>Enganche seleccionado: <span id="engancheValor">20%</span></p>
+                </div>
+                <div class="col-md-4">
+                    <label for="interes" class="form-label">Interés Anual (%)</label>
+                    <input type="number" id="interes" class="form-control" value="12">
+                </div>
+                <div class="col-md-4">
+                    <label for="plazo" class="form-label">Plazo (Meses)</label>
+                    <input type="number" id="plazo" class="form-control" value="36">
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <button class="btn btn-primary" id="calcular">Calcular</button>
+            </div>
+
+            <div class="mt-4">
+                <h4>Tabla de Amortización</h4>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Mes</th>
+                            <th>Pago Mensual</th>
+                            <th>Interés</th>
+                            <th>Capital</th>
+                            <th>Saldo Restante</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaAmortizacion"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <script>
+            const costoAuto = <?php echo $costo; ?>;
+
+            document.getElementById('enganche').addEventListener('input', function () {
+                document.getElementById('engancheValor').textContent = this.value + '%';
+            });
+
+            document.getElementById('calcular').addEventListener('click', function () {
+                const enganchePorcentaje = parseFloat(document.getElementById('enganche').value);
+                const interesAnual = parseFloat(document.getElementById('interes').value) / 100;
+                const plazoMeses = parseInt(document.getElementById('plazo').value);
+
+                const engancheMonto = (enganchePorcentaje / 100) * costoAuto;
+                const montoFinanciar = costoAuto - engancheMonto;
+                const interesMensual = interesAnual / 12;
+
+                // Cálculo del pago mensual
+                const pagoMensual = montoFinanciar * (interesMensual * Math.pow(1 + interesMensual, plazoMeses)) / (Math.pow(1 + interesMensual, plazoMeses) - 1);
+
+                let saldoRestante = montoFinanciar;
+                const tabla = document.getElementById('tablaAmortizacion');
+                tabla.innerHTML = '';
+
+                for (let mes = 1; mes <= plazoMeses; mes++) {
+                    const interesMes = saldoRestante * interesMensual;
+                    const capitalMes = pagoMensual - interesMes;
+                    saldoRestante -= capitalMes;
+
+                    const fila = `
+                        <tr>
+                            <td>${mes}</td>
+                            <td>${pagoMensual.toFixed(2)}</td>
+                            <td>${interesMes.toFixed(2)}</td>
+                            <td>${capitalMes.toFixed(2)}</td>
+                            <td>${saldoRestante > 0 ? saldoRestante.toFixed(2) : '0.00'}</td>
+                        </tr>
+                    `;
+                    tabla.insertAdjacentHTML('beforeend', fila);
+                }
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
         </div>
     </div>
