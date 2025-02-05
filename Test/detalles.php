@@ -308,6 +308,13 @@ $imagenes = [
                   </table>
               </div>
           </div>
+
+          <div class="mt-3">
+              <p class="text-muted" style="font-size: 0.8rem; font-style: italic;">
+                  El cotizador no es un documento oficial y tanto el interés como el plazo a meses serán autorizados por un ejecutivo en la sucursal para el desarrollo del contrato celebrado en sucursal.
+              </p>
+          </div>
+
       </div>
 
       <script>
