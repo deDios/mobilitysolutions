@@ -329,6 +329,11 @@ li {
     width: 75%; /* Ajusta el tamaño de la imagen pequeña */
     height: auto; /* Ajusta el tamaño de la imagen pequeña */
 }
+.cotizador {
+    padding-top: 150px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
 
 @media (max-width:700px){
     header{
@@ -358,6 +363,9 @@ li {
         border-radius: 10px 10px 10px 10px;    
     }
 
+    .cotizador {
+        display: none;
+    }
     /*---------------- */
     
     .carrusel {
