@@ -327,8 +327,6 @@ $imagenes = [
             document.getElementById('engancheValor').textContent = this.value + '%';
             actualizarEngancheTotal();
         });
-
-        // Llama a la función para que se actualice al cargar la página
         window.onload = function() {
             const enganchePorcentaje = document.getElementById('enganche').value;
             document.getElementById('engancheValor').textContent = enganchePorcentaje + '%'; // Actualiza el valor del porcentaje al cargar
