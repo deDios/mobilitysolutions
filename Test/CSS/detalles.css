@@ -234,7 +234,7 @@ li {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80%; /* Ajusta el tamaño del carrusel según el contenedor */
+    width: 95%; /* Ajusta el tamaño del carrusel según el contenedor */
     margin: 0 auto;
 }
 
@@ -334,9 +334,9 @@ li {
     }
 
     .carrusel_carr_auto .imagen-grande img {
-        width: 100%; /* Se ajusta al ancho del contenedor */
-        height: 100%; /* Se ajusta a la altura del contenedor */
-        object-fit: contain; /* Ajusta la imagen sin recortar, pero manteniendo la proporción */
+        width: 100%; 
+        height: 100%; 
+        object-fit: contain; 
         transition: transform 0.3s ease;
     }    
 
