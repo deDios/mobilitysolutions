@@ -331,6 +331,9 @@ li {
     
     .carrusel_carr_auto {
         position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
     }
 
     .carrusel_carr_auto .imagen-grande img {
@@ -343,10 +346,12 @@ li {
     .carrusel_carr_auto .miniaturas {
         display: flex;
         justify-content: center;
-        gap: 10px;
-        margin-top: 10px;
+        gap: 5px; /* Reduce la separación entre miniaturas */
+        margin-top: 0; /* Elimina el espacio superior */
         flex-wrap: wrap;
-    }
+        width: 100%; 
+        overflow: hidden;
+    }    
 
     .carrusel_carr_auto .miniatura {
         width: 60px;
@@ -360,6 +365,9 @@ li {
     .miniaturas img {
         width: 30px;
         height: 30px;
+    }
+    .carrusel_carr_auto .imagen-grande {
+        margin-bottom: 0; /* Asegura que no haya margen inferior */
     }
 
     .contenedor_carr .carrusel_carr_auto {
