@@ -299,125 +299,64 @@ li {
     height: auto; /* Ajusta el tamaño de la imagen pequeña */
 }
 
-@media (max-width: 700px) {
-    header {
+@media (max-width:700px){
+    header{
         flex-direction: column;
     }
-
-    /* Carrusel general */
-    .carrusel_carr_auto {
-        position: relative;
+    nav{
+        padding: 0px 0px ;
     }
-
-    /* Imagen principal en el carrusel */
-    .carrusel_carr_auto .imagen-grande img {
-        width: 100%; /* Se ajusta al ancho del contenedor */
-        height: 250px; /* Reducimos el alto fijo */
-        object-fit: contain; /* Ajusta la imagen sin recortar y mantiene la proporción */
-        transition: transform 0.3s ease; /* Efecto suave al cambiar la imagen */
-    }
-
-    /* Miniaturas en el carrusel */
-    .carrusel_carr_auto .miniaturas {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 10px;
-        flex-wrap: wrap;
-    }
-
-    .carrusel_carr_auto .miniatura {
-        width: 60px;
-        height: 60px;
-        object-fit: cover;
-        border: 2px solid #ccc;
-        cursor: pointer;
-        transition: transform 0.3s ease;
-    }
-
-    /* Ajustes de flexibilidad para las miniaturas */
-    .miniaturas img {
-        width: 50px;
-        height: 50px;
-    }
-
-    /* Contenedor principal */
-    .contenedor {
+    .contenedor{
         display: grid;
         grid-template-columns: 1fr;
         height: 100%;
     }
-
-    /* Ajustes de la descripción y texto */
-    .Descripcion .texto2 {
+    .Descripcion .texto2{
         color: black;
         font-size: 12px;
-        font-weight: lighter;
+        font-weight:lighter;
         padding-top: 5px;
     }
 
     .contenedor .contenedor_carr {
         display: flex;
-        flex-direction: column;
+        flex-direction:column ;
         padding-left: 10px;
-        padding-right: 10px;
-        padding-bottom: 10px;
-        border-radius: 10px;
+        padding-right: 10px; 
+        padding-bottom: 10px;  
+        border-radius: 10px 10px 10px 10px;    
     }
-
-    .contenedor_carr .carrusel_carr_auto {
-        width: 100%;
-        max-height: 320px;
-        padding-top: 10px;
-    }
-
-    /* Ajustes en el estilo de las imágenes del carrusel */
-    .carousel-inner > .item > img,
-    .carousel-inner > .item > a > img {
-        width: 100%;
-        min-height: 300px;
-        max-height: 300px;
-        object-fit: cover;
-        margin: auto;
-    }
-
-    /* Detalle del carrusel */
     .contenedor_carr .detalle_carr {
         display: grid;
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: repeat(1,1fr);
         width: 100%;
     }
 
-    /* Título del carrusel */
-    .contenedor_carr .titulo_carr {
+    .contenedor_carr .titulo_carr { 
         display: flex;
         flex-direction: row;
         color: black;
         border: 1px solid gainsboro;
         border-top: 5px solid black;
-        border-radius: 10px;
+        border-radius: 10px 10px 10px 10px;
         width: 100%;
         height: 100%;
-        align-items: center;
+        align-items:center;
         padding-left: 10px;
         padding-right: 10px;
     }
-
-    .Descripcion .texto {
+    .Descripcion .texto{
         color: black;
         font-size: 15px;
         padding-top: 10px;
         font-weight: bold;
     }
-
-    .Descripcion .texto2 {
+    .Descripcion .texto2{
         color: black;
         font-size: 12px;
-        font-weight: lighter;
+        font-weight:lighter;
         padding-top: 5px;
     }
-
-    /* Estilo del título y la descripción */
     .titulo_carr .Descripcion {
         display: grid;
         grid-template-rows: 1fr 1fr;
@@ -425,10 +364,10 @@ li {
         padding-right: 10px;
     }
 
-    /* Estilo de fondo */
     .mx-background-top-linear {
         background: -webkit-linear-gradient(45deg, #FFC00A 70%, #1b1e21 26%);
         background: -webkit-linear-gradient(left, #FFC00A 70%, #1b1e21 26%);
         background: linear-gradient(45deg, #FFC00A 70%, #1b1e21 26%);
-    }
+      }
+
 }
