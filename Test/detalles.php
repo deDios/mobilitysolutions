@@ -308,46 +308,47 @@ $imagenes = [
         </div>
 
         <script>
-            const costoAuto = <?php echo $costo; ?>;
+          const costoAuto = <?php echo $costo; ?>;
 
-            document.getElementById('enganche').addEventListener('input', function () {
-                document.getElementById('engancheValor').textContent = this.value + '%';
-            });
+          document.getElementById('enganche').addEventListener('input', function () {
+              document.getElementById('engancheValor').textContent = this.value + '%';
+          });
 
-            document.getElementById('calcular').addEventListener('click', function () {
-                const enganchePorcentaje = parseFloat(document.getElementById('enganche').value);
-                const interesAnual = parseFloat(document.getElementById('interes').value) / 100;
-                const plazoMeses = parseInt(document.getElementById('plazo').value);
+          document.getElementById('calcular').addEventListener('click', function () {
+              const enganchePorcentaje = parseFloat(document.getElementById('enganche').value);
+              const interesAnual = parseFloat(document.getElementById('interes').value) / 100;
+              const plazoMeses = parseInt(document.getElementById('plazo').value);
 
-                const engancheMonto = (enganchePorcentaje / 100) * costoAuto;
-                const montoFinanciar = costoAuto - engancheMonto;
-                const interesMensual = interesAnual / 12;
+              const engancheMonto = (enganchePorcentaje / 100) * costoAuto;
+              const montoFinanciar = costoAuto - engancheMonto;
+              const interesMensual = interesAnual / 12;
 
-                // Cálculo del pago mensual
-                const pagoMensual = montoFinanciar * (interesMensual * Math.pow(1 + interesMensual, plazoMeses)) / (Math.pow(1 + interesMensual, plazoMeses) - 1);
+              // Cálculo del pago mensual
+              const pagoMensual = montoFinanciar * (interesMensual * Math.pow(1 + interesMensual, plazoMeses)) / (Math.pow(1 + interesMensual, plazoMeses) - 1);
 
-                let saldoRestante = montoFinanciar;
-                const tabla = document.getElementById('tablaAmortizacion');
-                tabla.innerHTML = '';
+              let saldoRestante = montoFinanciar;
+              const tabla = document.getElementById('tablaAmortizacion');
+              tabla.innerHTML = '';
 
-                for (let mes = 1; mes <= plazoMeses; mes++) {
-                    const interesMes = saldoRestante * interesMensual;
-                    const capitalMes = pagoMensual - interesMes;
-                    saldoRestante -= capitalMes;
+              for (let mes = 1; mes <= plazoMeses; mes++) {
+                  const interesMes = saldoRestante * interesMensual;
+                  const capitalMes = pagoMensual - interesMes;
+                  saldoRestante -= capitalMes;
 
-                    const fila = `
-                        <tr>
-                            <td>${mes}</td>
-                            <td>${pagoMensual.toFixed(2)}</td>
-                            <td>${interesMes.toFixed(2)}</td>
-                            <td>${capitalMes.toFixed(2)}</td>
-                            <td>${saldoRestante > 0 ? saldoRestante.toFixed(2) : '0.00'}</td>
-                        </tr>
-                    `;
-                    tabla.insertAdjacentHTML('beforeend', fila);
-                }
-            });
-        </script>
+                  const fila = `
+                      <tr>
+                          <td>${mes}</td>
+                          <td>$${pagoMensual.toLocaleString('en-US', { minimumFractionDigits: 2 })}</td>
+                          <td>$${interesMes.toLocaleString('en-US', { minimumFractionDigits: 2 })}</td>
+                          <td>$${capitalMes.toLocaleString('en-US', { minimumFractionDigits: 2 })}</td>
+                          <td>$${saldoRestante > 0 ? saldoRestante.toLocaleString('en-US', { minimumFractionDigits: 2 }) : '0.00'}</td>
+                      </tr>
+                  `;
+                  tabla.insertAdjacentHTML('beforeend', fila);
+              }
+          });
+      </script>
+
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
