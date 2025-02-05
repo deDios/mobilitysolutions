@@ -293,7 +293,7 @@ $imagenes = [
 
           <div class="mt-4">
               <h4>Tabla de Amortización</h4>
-              <div style="max-height: 300px; overflow-y: auto;"> <!-- Aquí agregamos el scroll -->
+              <div style="max-height: 500px; overflow-y: auto;"> <!-- Aquí agregamos el scroll -->
                   <table class="table table-bordered">
                       <thead>
                           <tr>
