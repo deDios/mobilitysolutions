@@ -270,7 +270,7 @@ li {
     color: #fff;
     border: none;
     background: transparent;
-    font-size: 30px;
+    font-size: 40px;  /* Aumentado para mayor visibilidad */
     padding: 0;
 }
 
@@ -331,7 +331,7 @@ li {
 }
 .carrusel_carr_auto {
     position: relative;
-  }
+}
 .carrusel_carr_auto .imagen-r {
     position: absolute;
     left: 50%;
@@ -348,7 +348,7 @@ li {
     }
     .carrusel_carr_auto {
         position: relative;
-      }
+    }
     .carrusel_carr_auto .imagen-r {
         position: absolute;
         left: 50%;
@@ -388,7 +388,7 @@ li {
     }
     .carousel-inner > .item > img,
         .carousel-inner > .item > a > img {
-      width: 80%;
+      width: 100%;
       min-height: 300px;
       max-height: 300px;
       object-fit: cover;
@@ -436,6 +436,5 @@ li {
         background: -webkit-linear-gradient(45deg, #FFC00A 70%, #1b1e21 26%);
         background: -webkit-linear-gradient(left, #FFC00A 70%, #1b1e21 26%);
         background: linear-gradient(45deg, #FFC00A 70%, #1b1e21 26%);
-      }
-
+    }
 }
