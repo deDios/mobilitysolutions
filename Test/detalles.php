@@ -268,7 +268,7 @@ $imagenes = [
         <div class="cotizador">
 
             <div class="container mt-5">
-            <h3>Cotizador de Amortización</h3>
+            <h3>Cotizador</h3>
 
             <div class="row">
                 <div class="col-md-4">
