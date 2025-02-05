@@ -326,6 +326,50 @@ li {
         padding-bottom: 10px;  
         border-radius: 10px 10px 10px 10px;    
     }
+
+    /*---------------- */
+    
+    .carrusel_carr_auto {
+        position: relative;
+    }
+
+    .carrusel_carr_auto .imagen-grande img {
+        width: 100%; /* Se ajusta al ancho del contenedor */
+        height: 350px; /* Altura fija */
+        object-fit: contain; /* Ajusta la imagen sin recortar y mantiene la proporción */
+        transition: transform 0.3s ease; /* Efecto suave al cambiar la imagen */
+    }
+
+    .carrusel_carr_auto .miniaturas {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 10px;
+        flex-wrap: wrap;
+    }
+
+    .carrusel_carr_auto .miniatura {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border: 2px solid #ccc;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+
+    .miniaturas img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .contenedor_carr .carrusel_carr_auto {
+        width: 100%;
+        max-height: 320px;
+        padding-top: 10px;
+    }
+    
+    /*--------------------------------------*/
+
     .contenedor_carr .detalle_carr {
         display: grid;
         grid-template-columns: repeat(1,1fr);
