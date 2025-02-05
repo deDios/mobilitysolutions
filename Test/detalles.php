@@ -311,11 +311,21 @@ $imagenes = [
       <script>
         const costoAuto = <?php echo $costo; ?>;
 
+        function actualizarEngancheTotal() {
+            const enganchePorcentaje = parseFloat(document.getElementById('enganche').value);
+            const engancheMonto = (enganchePorcentaje / 100) * costoAuto;
+            document.getElementById('engancheTotal').textContent = `$${engancheMonto.toFixed(2)}`; // Inicializa y actualiza el total del enganche
+        }
+
         document.getElementById('enganche').addEventListener('input', function () {
             document.getElementById('engancheValor').textContent = this.value + '%';
-            const engancheMonto = (parseFloat(this.value) / 100) * costoAuto;
-            document.getElementById('engancheTotal').textContent = `$${engancheMonto.toLocaleString('en-US', { minimumFractionDigits: 2 })}`; // Actualiza el total del enganche
+            actualizarEngancheTotal();
         });
+
+        // Llama a la función para que se actualice al cargar la página
+        window.onload = function() {
+            actualizarEngancheTotal();
+        };
 
         document.getElementById('calcular').addEventListener('click', function () {
             const enganchePorcentaje = parseFloat(document.getElementById('enganche').value);
@@ -341,10 +351,10 @@ $imagenes = [
                 const fila = `
                     <tr>
                         <td>${mes}</td>
-                        <td>$${pagoMensual.toLocaleString('en-US', { minimumFractionDigits: 2 })}</td>
-                        <td>$${interesMes.toLocaleString('en-US', { minimumFractionDigits: 2 })}</td>
-                        <td>$${capitalMes.toLocaleString('en-US', { minimumFractionDigits: 2 })}</td>
-                        <td>$${saldoRestante > 0 ? saldoRestante.toLocaleString('en-US', { minimumFractionDigits: 2 }) : '0.00'}</td>
+                        <td>$${pagoMensual.toFixed(2)}</td> <!-- Limita a 2 decimales -->
+                        <td>$${interesMes.toFixed(2)}</td> <!-- Limita a 2 decimales -->
+                        <td>$${capitalMes.toFixed(2)}</td> <!-- Limita a 2 decimales -->
+                        <td>$${saldoRestante > 0 ? saldoRestante.toFixed(2) : '0.00'}</td> <!-- Limita a 2 decimales -->
                     </tr>
                 `;
                 tabla.insertAdjacentHTML('beforeend', fila);
@@ -355,6 +365,7 @@ $imagenes = [
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
       </div>
+
 
     </div>
 
