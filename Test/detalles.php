@@ -156,68 +156,48 @@ $query = 'select
 <!-------------------------------- Carrusel auto seleccionado -------------------------------------->
           
             <div class="carrusel_carr_auto">
-                
                 <div class="div_carrusel">
-                <div id="demo" class="py-1 carousel carousel-dark slide" data-bs-ride="carousel" py-1>
-                    <!-- Indicators/dots -->
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-                        <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-                        <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-                        <button type="button" data-bs-target="#demo" data-bs-slide-to="3"></button>
-                        <button type="button" data-bs-target="#demo" data-bs-slide-to="4"></button>
-                        <button type="button" data-bs-target="#demo" data-bs-slide-to="5"></button>
-                        <button type="button" data-bs-target="#demo" data-bs-slide-to="6"></button>
-                        <button type="button" data-bs-target="#demo" data-bs-slide-to="7"></button>
+                    <div id="demo" class="py-1 carousel carousel-dark slide" data-bs-ride="carousel" py-1>
+                        <!-- Indicators/dots -->
+                        <div class="carousel-indicators">
+                            <?php
+                                $imagenes = 8; 
+                                for ($i = 0; $i < $imagenes; $i++) {
+                                    $activeClass = ($i == 0) ? 'active' : ''; // La primera imagen será la activa por defecto
+                                    echo '<button type="button" data-bs-target="#demo" data-bs-slide-to="' . $i . '" class="' . $activeClass . '"></button>';
+                                }
+                            ?>
+                        </div>
+                        <!-- The slideshow/carousel -->
+                        <div class="carousel-inner">
+                            <?php
+                                for ($i = 1; $i <= $imagenes; $i++) {
+                                    $activeClass = ($i == 1) ? 'active' : '';
+                                    echo '<div class="carousel-item ' . $activeClass . '">
+                                            <img src="../Imagenes/Catalogo/Auto ' . $id . '/Img' . sprintf('%02d', $i) . '.jpg" class="d-block w-100" alt="Imagen ' . $i . '">
+                                          </div>';
+                                }
+                            ?>
+                        </div>
+                        <!-- Left and right controls/icons -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </button>
                     </div>
-                    <!-- The slideshow/carousel -->
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                <img src="../Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="Los Angeles" class="d-block w-100">
-                                </div>
-                                <div class="carousel-item">
-                                <img src="../Imagenes/Catalogo/Auto <?php echo $id;?>/Img02.jpg" class="d-block w-100">
-                                </div>
-                                <div class="carousel-item">
-                                <img src="../Imagenes/Catalogo/Auto <?php echo $id;?>/Img03.jpg" class="d-block w-100">
-                                </div>
-                                <div class="carousel-item">
-                                <img src="../Imagenes/Catalogo/Auto <?php echo $id;?>/Img04.jpg" class="d-block w-100">
-                                </div>
-                                <div class="carousel-item">
-                                <img src="../Imagenes/Catalogo/Auto <?php echo $id;?>/Img05.jpg" class="d-block w-100">
-                                </div>
-                                <div class="carousel-item">
-                                <img src="../Imagenes/Catalogo/Auto <?php echo $id;?>/Img06.jpg" class="d-block w-100">
-                                </div>
-                                <div class="carousel-item">
-                                <img src="../Imagenes/Catalogo/Auto <?php echo $id;?>/Img07.jpg" class="d-block w-100">
-                                </div>
-                                <div class="carousel-item">
-                                <img src="../Imagenes/Catalogo/Auto <?php echo $id;?>/Img08.jpg" class="d-block w-100">
-                                </div>
-                            </div>
-                    <!-- Left and right controls/icons -->
-                    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon"></span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-                        <span class="carousel-control-next-icon"></span>
-                    </button>
-                </div>
                 </div>
                 <?php 
                     if ($estatus == 3){
                 ?>
                     <img src="../Imagenes/reserved.jpg" alt="Imagen reserved" class="imagen-r">
                 <?php
-                    } else {
+                    } 
                 ?>
-                <?php
-                    }
-                ?>
-                
             </div>
+
+
 
 <!-------------------------------------- Div detalle de auto ----------------------------------------------------------->
             <div class="detalle_carr">

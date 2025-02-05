@@ -230,6 +230,88 @@ li {
 /* ----------------------------- Cierre para estilo para titulo de detalle auto  -----------------------------*/
 /* ----------------------------- Inicio carrusel detalle auto  -----------------------------*/
 
+.carrusel_carr_auto {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+}
+
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.carousel-item {
+    display: none;
+    position: relative;
+    width: 100%;
+}
+
+.carousel-item.active {
+    display: block;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+.carousel-control-prev, 
+.carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    color: #fff;
+    border: none;
+    background: transparent;
+    font-size: 30px;
+    padding: 0;
+}
+
+.carousel-control-prev-icon, 
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+}
+
+.carousel-control-prev:hover, 
+.carousel-control-next:hover {
+    color: #FFC00A;
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.carousel-indicators button {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-indicators .active {
+    background-color: #FFC00A;
+}
+
+.carousel-indicators button:hover {
+    background-color: rgba(255, 255, 255, 0.75);
+}
 
 
 /* ----------------------------- Cierre carrusel  detalle auto  -----------------------------*/
