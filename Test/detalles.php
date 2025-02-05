@@ -311,10 +311,14 @@ $imagenes = [
       <script>
         const costoAuto = <?php echo $costo; ?>;
 
+        function formatCurrency(amount) {
+            return '$' + amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+
         function actualizarEngancheTotal() {
             const enganchePorcentaje = parseFloat(document.getElementById('enganche').value);
             const engancheMonto = (enganchePorcentaje / 100) * costoAuto;
-            document.getElementById('engancheTotal').textContent = `$${engancheMonto.toFixed(2)}`; // Inicializa y actualiza el total del enganche
+            document.getElementById('engancheTotal').textContent = formatCurrency(engancheMonto); // Formatear el total del enganche
         }
 
         document.getElementById('enganche').addEventListener('input', function () {
@@ -353,10 +357,10 @@ $imagenes = [
                 const fila = `
                     <tr>
                         <td>${mes}</td>
-                        <td>$${pagoMensual.toFixed(2)}</td> <!-- Limita a 2 decimales -->
-                        <td>$${interesMes.toFixed(2)}</td> <!-- Limita a 2 decimales -->
-                        <td>$${capitalMes.toFixed(2)}</td> <!-- Limita a 2 decimales -->
-                        <td>$${saldoRestante > 0 ? saldoRestante.toFixed(2) : '0.00'}</td> <!-- Limita a 2 decimales -->
+                        <td>${formatCurrency(pagoMensual)}</td> <!-- Limita a 2 decimales y agrega el símbolo $ -->
+                        <td>${formatCurrency(interesMes)}</td> <!-- Limita a 2 decimales y agrega el símbolo $ -->
+                        <td>${formatCurrency(capitalMes)}</td> <!-- Limita a 2 decimales y agrega el símbolo $ -->
+                        <td>${formatCurrency(saldoRestante > 0 ? saldoRestante : 0)}</td> <!-- Limita a 2 decimales y agrega el símbolo $ -->
                     </tr>
                 `;
                 tabla.insertAdjacentHTML('beforeend', fila);
@@ -367,6 +371,7 @@ $imagenes = [
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
       </div>
+
 
     </div>
 
