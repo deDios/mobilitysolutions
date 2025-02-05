@@ -265,98 +265,96 @@ $imagenes = [
             </div>
 
         </div>
+
+
         <div class="cotizador">
-    <h3>Cotizador Financiero</h3>
-    <form id="cotizadorForm">
-        <div class="form-group">
-            <label for="enganche">Enganche (%):</label>
-            <input type="range" id="enganche" name="enganche" min="5" max="100" step="5" value="20">
-            <span id="engancheValor">20%</span>
-        </div>
-        <div class="form-group">
-            <label for="interes">Tasa de Interés (% anual):</label>
-            <input type="number" id="interes" name="interes" step="0.1" value="10">
-        </div>
-        <div class="form-group">
-            <label for="plazo">Plazo (meses):</label>
-            <select id="plazo" name="plazo">
-                <option value="12">12 meses</option>
-                <option value="24">24 meses</option>
-                <option value="36">36 meses</option>
-                <option value="48">48 meses</option>
-                <option value="60">60 meses</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Total Enganche: <span id="totalEnganche">$0.00</span></label>
-        </div>
-        <button type="button" class="btn btn-primary" onclick="calcularFinanciamiento()">Calcular</button>
-    </form>
+          <h3>Cotizador</h3>
+          
+          <label for="enganche">Selecciona el porcentaje de enganche:</label>
+          <input type="range" id="enganche" min="5" max="50" step="5" value="5" oninput="actualizarEnganche(this.value)">
+          <span id="porcentajeEnganche">5%</span> 
+          <span id="totalEnganche">$<?php echo number_format(($costo * 0.05), 2); ?></span>
 
-    <h4>Tabla de Amortización</h4>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Mes</th>
-                <th>Pago Mensual</th>
-                <th>Capital</th>
-                <th>Intereses</th>
-                <th>Saldo</th>
-            </tr>
-        </thead>
-        <tbody id="tablaAmortizacion"></tbody>
-    </table>
-</div>
+          <br><br>
 
-<script>
-    const costoVehiculo = <?php echo $costo; ?>;
+          <label for="interes">Interés Anual:</label>
+          <input type="number" id="interes" placeholder="Ingresa interés" min="0" max="100" step="0.1"> %
 
-    document.getElementById('enganche').addEventListener('input', function () {
-        const porcentaje = this.value;
-        document.getElementById('engancheValor').textContent = porcentaje + '%';
-        actualizarTotalEnganche(porcentaje);
-    });
+          <br><br>
 
-    function actualizarTotalEnganche(porcentaje) {
-        const totalEnganche = (costoVehiculo * porcentaje) / 100;
-        document.getElementById('totalEnganche').textContent = '$' + totalEnganche.toLocaleString();
-    }
+          <label for="plazo">Plazo en meses:</label>
+          <select id="plazo">
+              <option value="12">12 meses</option>
+              <option value="24">24 meses</option>
+              <option value="36">36 meses</option>
+              <option value="48">48 meses</option>
+              <option value="60">60 meses</option>
+          </select>
 
-    function calcularFinanciamiento() {
-        const enganche = parseFloat(document.getElementById('enganche').value);
-        const interesAnual = parseFloat(document.getElementById('interes').value) / 100;
-        const plazo = parseInt(document.getElementById('plazo').value);
+          <br><br>
 
-        const montoFinanciar = costoVehiculo - (costoVehiculo * enganche / 100);
-        const interesMensual = interesAnual / 12;
+          <button onclick="calcularAmortizacion()">Calcular</button>
 
-        const pagoMensual = (montoFinanciar * interesMensual) / (1 - Math.pow(1 + interesMensual, -plazo));
+          <h4>Tabla de Amortización</h4>
+          <table id="tablaAmortizacion" class="table table-striped">
+              <thead>
+                  <tr>
+                      <th>Mes</th>
+                      <th>Pago Mensual</th>
+                      <th>Capital</th>
+                      <th>Intereses</th>
+                      <th>Saldo</th>
+                  </tr>
+              </thead>
+              <tbody></tbody>
+          </table>
+      </div>
 
-        let saldoRestante = montoFinanciar;
+      <script>
+          const costo = <?php echo $costo; ?>;
 
-        const tabla = document.getElementById('tablaAmortizacion');
-        tabla.innerHTML = '';
+          function actualizarEnganche(porcentaje) {
+              document.getElementById('porcentajeEnganche').textContent = porcentaje + '%';
+              const totalEnganche = (costo * porcentaje) / 100;
+              document.getElementById('totalEnganche').textContent = `$${totalEnganche.toLocaleString('en-US', { minimumFractionDigits: 2 })}`;
+          }
 
-        for (let mes = 1; mes <= plazo; mes++) {
-            const interesMes = saldoRestante * interesMensual;
-            const capitalMes = pagoMensual - interesMes;
-            saldoRestante -= capitalMes;
+          function calcularAmortizacion() {
+              const enganche = parseFloat(document.getElementById('enganche').value);
+              const interesAnual = parseFloat(document.getElementById('interes').value);
+              const plazo = parseInt(document.getElementById('plazo').value);
 
-            const fila = document.createElement('tr');
-            fila.innerHTML = `
-                <td>${mes}</td>
-                <td>$${pagoMensual.toFixed(2)}</td>
-                <td>$${capitalMes.toFixed(2)}</td>
-                <td>$${interesMes.toFixed(2)}</td>
-                <td>$${saldoRestante.toFixed(2)}</td>
-            `;
-            tabla.appendChild(fila);
-        }
-    }
+              if (isNaN(interesAnual) || interesAnual < 0) {
+                  alert("Por favor, introduce un interés válido.");
+                  return;
+              }
 
-    // Inicializar enganche
-    actualizarTotalEnganche(20);
-</script>
+              const montoCredito = costo - (costo * enganche / 100);
+              const interesMensual = interesAnual / 12 / 100;
+              const pagoMensual = (montoCredito * interesMensual) / (1 - Math.pow(1 + interesMensual, -plazo));
+
+              const tabla = document.getElementById('tablaAmortizacion').getElementsByTagName('tbody')[0];
+              tabla.innerHTML = ''; 
+
+              let saldo = montoCredito;
+
+              for (let i = 1; i <= plazo; i++) {
+                  const interesMes = saldo * interesMensual;
+                  const capitalMes = pagoMensual - interesMes;
+                  saldo -= capitalMes;
+
+                  const fila = tabla.insertRow();
+                  fila.innerHTML = `
+                      <td>${i}</td>
+                      <td>$${pagoMensual.toLocaleString('en-US', { minimumFractionDigits: 2 })}</td>
+                      <td>$${capitalMes.toLocaleString('en-US', { minimumFractionDigits: 2 })}</td>
+                      <td>$${interesMes.toLocaleString('en-US', { minimumFractionDigits: 2 })}</td>
+                      <td>$${Math.max(saldo, 0).toLocaleString('en-US', { minimumFractionDigits: 2 })}</td>
+                  `;
+              }
+          }
+      </script>
+
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
