@@ -154,8 +154,43 @@ $query = 'select
                 </div>
             </div>
 <!-------------------------------- Carrusel auto seleccionado -------------------------------------->
-          
-            
+<?php
+$imagenes = [
+    'Imagenes/Catalogo/Auto '.$id.' ;?>/Img01.jpg',
+    'Imagenes/Catalogo/Auto '.$id.' ;?>/Img02.jpg',
+    'Imagenes/Catalogo/Auto '.$id.' ;?>/Img03.jpg',
+    'Imagenes/Catalogo/Auto '.$id.' ;?>/Img04.jpg',
+    'Imagenes/Catalogo/Auto '.$id.' ;?>/Img05.jpg',
+    'Imagenes/Catalogo/Auto '.$id.' ;?>/Img06.jpg',
+    'Imagenes/Catalogo/Auto '.$id.' ;?>/Img07.jpg',
+    'Imagenes/Catalogo/Auto '.$id.' ;?>/Img08.jpg',
+];
+?>          
+
+            <div class="carrusel">
+                <div class="imagen-grande">
+                    <img src="<?php echo $imagenes[0]; ?>" id="imagenGrande" alt="Imagen seleccionada">
+                </div>
+                
+                <div class="miniaturas">
+                    <?php foreach ($imagenes as $index => $imagen): ?>
+                        <img src="<?php echo $imagen; ?>" alt="Miniatura <?php echo $index + 1; ?>" 
+                            class="miniatura" data-index="<?php echo $index; ?>" />
+                    <?php endforeach; ?>
+                </div>
+            </div>
+
+            <script>
+                const miniaturas = document.querySelectorAll('.miniatura');
+                const imagenGrande = document.getElementById('imagenGrande');
+                
+                miniaturas.forEach(miniatura => {
+                    miniatura.addEventListener('click', () => {
+                        const index = miniatura.getAttribute('data-index');
+                        imagenGrande.src = "<?php echo $imagenes[" + index + "]; ?>";
+                    });
+                });
+            </script>
 
 
 <!-------------------------------------- Div detalle de auto ----------------------------------------------------------->

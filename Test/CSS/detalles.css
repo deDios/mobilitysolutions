@@ -230,7 +230,43 @@ li {
 /* ----------------------------- Cierre para estilo para titulo de detalle auto  -----------------------------*/
 /* ----------------------------- Inicio carrusel detalle auto  -----------------------------*/
 
+.carrusel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+}
 
+.imagen-grande img {
+    width: 80%;
+    max-width: 800px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.miniaturas {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.miniatura {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border: 2px solid #ccc;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.miniatura:hover {
+    transform: scale(1.1);
+}
+
+.miniatura:active {
+    border-color: #007bff;
+}
 
 
 /* ----------------------------- Cierre carrusel  detalle auto  -----------------------------*/
