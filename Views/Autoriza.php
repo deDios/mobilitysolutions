@@ -195,6 +195,18 @@ $requerimientos = [];
 
 if ($result) {
     while ($row = mysqli_fetch_assoc($result)) {
+        // Definir el arreglo de imágenes
+        $imagenes = [
+            '../Imagenes/Catalogo/Auto ' . $row['id'] . '/Img01.jpg',
+            '../Imagenes/Catalogo/Auto ' . $row['id'] . '/Img02.jpg',
+            '../Imagenes/Catalogo/Auto ' . $row['id'] . '/Img03.jpg',
+            '../Imagenes/Catalogo/Auto ' . $row['id'] . '/Img04.jpg',
+            '../Imagenes/Catalogo/Auto ' . $row['id'] . '/Img05.jpg',
+            '../Imagenes/Catalogo/Auto ' . $row['id'] . '/Img06.jpg',
+            '../Imagenes/Catalogo/Auto ' . $row['id'] . '/Img07.jpg',
+            '../Imagenes/Catalogo/Auto ' . $row['id'] . '/Img08.jpg',
+        ];
+
         $requerimientos[] = [
             "id" => $row['id'],
             "titulo" => $row['nombre'] . ' (' . $row['modelo'] . ' - ' . $row['marca'] . ')',
@@ -215,23 +227,13 @@ if ($result) {
                 "<strong>Pasajeros:</strong> " . $row['pasajeros'] . "<br>" .
                 "<strong>Propietarios Previos:</strong> " . $row['propietarios'] . "<br>" .
                 "<strong>Creado:</strong> " . $row['created_at'] . "<br>" .
-                "<strong>Última Actualización:</strong> " . $row['updated_at']
+                "<strong>Última Actualización:</strong> " . $row['updated_at'],
+            "imagenes" => $imagenes // Añadir el arreglo de imágenes aquí
         ];
     }
 } else {
     echo "Falla en conexión";
 }
-
-$imagenes = [
-    '../Imagenes/Catalogo/Auto '.$id.'/Img01.jpg',
-    '../Imagenes/Catalogo/Auto '.$id.'/Img02.jpg',
-    '../Imagenes/Catalogo/Auto '.$id.'/Img03.jpg',
-    '../Imagenes/Catalogo/Auto '.$id.'/Img04.jpg',
-    '../Imagenes/Catalogo/Auto '.$id.'/Img05.jpg',
-    '../Imagenes/Catalogo/Auto '.$id.'/Img06.jpg',
-    '../Imagenes/Catalogo/Auto '.$id.'/Img07.jpg',
-    '../Imagenes/Catalogo/Auto '.$id.'/Img08.jpg',
-];
 ?>
 
 <div class="contenedor">
@@ -241,7 +243,8 @@ $imagenes = [
             <?php foreach ($requerimientos as $req) : ?>
                 <li class="list-group-item requerimiento-item" 
                     data-detalle="<?php echo htmlspecialchars($req['detalle']); ?>" 
-                    data-titulo="<?php echo "{$req['id']} - {$req['nombre']} / (Req. de catálogo)"; ?>">
+                    data-titulo="<?php echo "{$req['id']} - {$req['nombre']} / (Req. de catálogo)"; ?>"
+                    data-imagenes="<?php echo htmlspecialchars(json_encode($req['imagenes'])); ?>">
                     <?php echo "{$req['id']} - {$req['nombre']} / (Req. de catálogo)"; ?>
                 </li>
             <?php endforeach; ?>
@@ -267,17 +270,14 @@ $imagenes = [
                 <div class="flecha izquierda" id="flechaIzquierda">&#9664;</div>
 
                 <div class="imagen-grande">
-                    <img src="<?php echo $imagenes[0]; ?>" id="imagenGrande" alt="Imagen seleccionada">
+                    <img src="" id="imagenGrande" alt="Imagen seleccionada">
                 </div>
 
                 <!-- Botón derecho -->
                 <div class="flecha derecha" id="flechaDerecha">&#9654;</div>
 
                 <div class="miniaturas">
-                    <?php foreach ($imagenes as $index => $imagen): ?>
-                        <img src="<?php echo $imagen; ?>" alt="Miniatura <?php echo $index + 1; ?>" 
-                             class="miniatura" data-index="<?php echo $index; ?>" />
-                    <?php endforeach; ?>
+                    <!-- Las miniaturas se cargarán dinámicamente con JavaScript -->
                 </div>
             </div>
         </div>
@@ -290,13 +290,54 @@ $imagenes = [
         item.addEventListener('click', function () {
             const detalle = this.getAttribute('data-detalle');
             const titulo = this.getAttribute('data-titulo');
-            
+            const imagenes = JSON.parse(this.getAttribute('data-imagenes'));
+
             // Actualiza el título y el contenido del detalle
             document.getElementById('detalleTitulo').textContent = titulo;
             document.getElementById('detalleTexto').innerHTML = detalle;
 
             // Mostrar botones de acción
             document.getElementById('botonesAccion').style.display = 'block';
+
+            // Configurar el carrusel con las imágenes
+            const imagenGrande = document.getElementById('imagenGrande');
+            imagenGrande.src = imagenes[0];
+
+            const miniaturasContainer = document.querySelector('.miniaturas');
+            miniaturasContainer.innerHTML = ''; // Limpiar miniaturas anteriores
+            imagenes.forEach((imagen, index) => {
+                const miniatura = document.createElement('img');
+                miniatura.src = imagen;
+                miniatura.classList.add('miniatura');
+                miniatura.setAttribute('data-index', index);
+                miniaturasContainer.appendChild(miniatura);
+            });
+
+            let indiceActual = 0;
+
+            // Función para mostrar la imagen grande
+            const mostrarImagen = (indice) => {
+                imagenGrande.src = imagenes[indice];
+            };
+
+            // Flechas para cambiar las imágenes
+            document.getElementById('flechaIzquierda').addEventListener('click', () => {
+                indiceActual = (indiceActual > 0) ? indiceActual - 1 : imagenes.length - 1;
+                mostrarImagen(indiceActual);
+            });
+
+            document.getElementById('flechaDerecha').addEventListener('click', () => {
+                indiceActual = (indiceActual < imagenes.length - 1) ? indiceActual + 1 : 0;
+                mostrarImagen(indiceActual);
+            });
+
+            // Miniaturas
+            miniaturasContainer.querySelectorAll('.miniatura').forEach(miniatura => {
+                miniatura.addEventListener('click', () => {
+                    indiceActual = parseInt(miniatura.getAttribute('data-index'));
+                    mostrarImagen(indiceActual);
+                });
+            });
         });
     });
 
@@ -307,37 +348,6 @@ $imagenes = [
 
     document.getElementById('aprobarBtn').addEventListener('click', function () {
         alert('Requerimiento aprobado');
-    });
-
-    // Carrusel de imágenes
-    const miniaturas = document.querySelectorAll('.miniatura');
-    const imagenGrande = document.getElementById('imagenGrande');
-    const flechaIzquierda = document.getElementById('flechaIzquierda');
-    const flechaDerecha = document.getElementById('flechaDerecha');
-
-    let indiceActual = 0;
-
-    const imagenes = <?php echo json_encode($imagenes); ?>;
-
-    const mostrarImagen = (indice) => {
-        imagenGrande.src = imagenes[indice];
-    };
-
-    flechaIzquierda.addEventListener('click', () => {
-        indiceActual = (indiceActual > 0) ? indiceActual - 1 : imagenes.length - 1;
-        mostrarImagen(indiceActual);
-    });
-
-    flechaDerecha.addEventListener('click', () => {
-        indiceActual = (indiceActual < imagenes.length - 1) ? indiceActual + 1 : 0;
-        mostrarImagen(indiceActual);
-    });
-
-    miniaturas.forEach(miniatura => {
-        miniatura.addEventListener('click', () => {
-            indiceActual = parseInt(miniatura.getAttribute('data-index'));
-            mostrarImagen(indiceActual);
-        });
     });
 </script>
 
