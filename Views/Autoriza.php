@@ -267,7 +267,7 @@ if ($result) {
             <p id="detalleTexto" class="mt-4">El contenido aparecerá aquí.</p>
         </div>
         
-        <!-- Carrusel (a la derecha) -->
+        <!-- Carrusel (a la derecha de los detalles) -->
         <div id="carrusel" class="carrusel" style="display:none;">
             <h5>Imágenes del vehículo</h5>
             <div class="flecha izquierda" id="flechaIzquierda">&#9664;</div>
@@ -282,6 +282,7 @@ if ($result) {
         </div>
     </div>
 </div>
+
 
 <script>
     // Manejar clics en los elementos de la lista
@@ -347,7 +348,7 @@ if ($result) {
             document.getElementById('aprobarBtn').addEventListener('click', function () {
                 // Enviar solicitud AJAX para actualizar el estatus
                 const xhr = new XMLHttpRequest();
-                xhr.open('POST', 'actualizar_estatus.php', true);
+                xhr.open('POST', '../db_consultas/actualizar_estatus.php', true);
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === 4 && xhr.status === 200) {

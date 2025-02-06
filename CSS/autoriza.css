@@ -247,15 +247,14 @@ li {
 
 .detalle-requerimiento {
     display: flex;
-    flex-direction: column;
     width: 70%;
     padding: 100px;
     gap: 20px;
 }
 
 .detalle-texto {
+    width: 20%; /* Ajustado para que ocupe el 60% del espacio */
     padding-right: 20px;
-    padding-top: 50px;
 }
 
 .botones-accion {
@@ -265,11 +264,11 @@ li {
 }
 
 .carrusel {
+    width: 80%; /* El carrusel ocupa el 35% del ancho */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 30px;
 }
 
 .miniaturas img {
@@ -300,6 +299,7 @@ li {
 .flecha.derecha {
     right: 10px;
 }
+
 
 
 @media (max-width:700px){
