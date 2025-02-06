@@ -17,7 +17,9 @@ if($cod == 9){
     atrr_1, 
     atrr_2, 
     atrr_3
-FROM mobility_solutions.moon_product order by Nombre ASC;';
+FROM mobility_solutions.moon_product 
+where Status = 1
+order by Nombre ASC;';
 }
 else{
 // Consulta a la base de datos
