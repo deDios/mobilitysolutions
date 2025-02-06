@@ -361,13 +361,13 @@ document.getElementById('calcular').addEventListener('click', function () {
     let montoProrratear, pagoMensual;
 
     if (plazoMeses === 72) {
-        montoProrratear = costoAuto * 1.8; // 1.8% del costo del auto para 72 meses
+        montoProrratear = costoAuto * .018 * plazoMeses; // 1.8% del costo del auto para 72 meses
         pagoMensual = montoProrratear / plazoMeses;
     } else if (plazoMeses === 60) {
-        montoProrratear = costoAuto * 1.6; // 1.6% del costo del auto para 60 meses
+        montoProrratear = costoAuto * .016 * plazoMeses; // 1.6% del costo del auto para 60 meses
         pagoMensual = montoProrratear / plazoMeses;
     } else if (plazoMeses === 48) {
-        montoProrratear = costoAuto * 1.3; // 1.3% del costo del auto para 48 meses
+        montoProrratear = costoAuto * .013 * plazoMeses; // 1.3% del costo del auto para 48 meses
         pagoMensual = montoProrratear / plazoMeses;
     }
 
