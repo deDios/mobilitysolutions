@@ -223,61 +223,114 @@ if ($result) {
 }
 ?>
 
-    <div class="contenedor">
-        <!-- Lista de requerimientos -->
-        <div class="lista-requerimientos bg-light">
-            <ul class="list-group">
-                <?php foreach ($requerimientos as $req) : ?>
-                    <li class="list-group-item requerimiento-item" 
-                        data-detalle="<?php echo htmlspecialchars($req['detalle']); ?>" 
-                        data-titulo="<?php echo "{$req['id']} - {$req['nombre']} / (Req. de catálogo)"; ?>">
-                        <?php echo "{$req['id']} - {$req['nombre']} / (Req. de catálogo)"; ?>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-        </div>
-
-        <!-- Detalle del requerimiento -->
-        <div class="detalle-requerimiento">
-            <h4 id="detalleTitulo">Seleccione un requerimiento</h4>
-            
-            <!-- Botones de acción (ocultos inicialmente) -->
-            <div id="botonesAccion" class="botones-accion">
-                <button class="btn btn-danger me-2" id="rechazarBtn">Rechazar</button>
-                <button class="btn btn-success" id="aprobarBtn">Aprobar</button>
-            </div>
-
-            <p id="detalleTexto" class="mt-4">El contenido aparecerá aquí.</p>
-        </div>
+<div class="contenedor">
+    <!-- Lista de requerimientos -->
+    <div class="lista-requerimientos bg-light">
+        <ul class="list-group">
+            <?php foreach ($requerimientos as $req) : ?>
+                <li class="list-group-item requerimiento-item" 
+                    data-detalle="<?php echo htmlspecialchars($req['detalle']); ?>" 
+                    data-titulo="<?php echo "{$req['id']} - {$req['nombre']} / (Req. de catálogo)"; ?>">
+                    <?php echo "{$req['id']} - {$req['nombre']} / (Req. de catálogo)"; ?>
+                </li>
+            <?php endforeach; ?>
+        </ul>
     </div>
 
-    <script>
-        // Manejar clics en los elementos de la lista
-        document.querySelectorAll('.requerimiento-item').forEach(item => {
-            item.addEventListener('click', function () {
-                const detalle = this.getAttribute('data-detalle');
-                const titulo = this.getAttribute('data-titulo');
-                
-                // Actualiza el título y el contenido del detalle
-                document.getElementById('detalleTitulo').textContent = titulo;
-                document.getElementById('detalleTexto').innerHTML = detalle;
+    <!-- Detalle del requerimiento y Carrusel -->
+    <div class="detalle-requerimiento">
+        <h4 id="detalleTitulo">Seleccione un requerimiento</h4>
+        
+        <!-- Botones de acción (ocultos inicialmente) -->
+        <div id="botonesAccion" class="botones-accion">
+            <button class="btn btn-danger me-2" id="rechazarBtn">Rechazar</button>
+            <button class="btn btn-success" id="aprobarBtn">Aprobar</button>
+        </div>
 
-                // Mostrar botones de acción
-                document.getElementById('botonesAccion').style.display = 'block';
-            });
+        <p id="detalleTexto" class="mt-4">El contenido aparecerá aquí.</p>
+        
+        <!-- Carrusel de imágenes -->
+        <div class="carrusel-container">
+            <div class="carrusel">
+                <!-- Botón izquierdo -->
+                <div class="flecha izquierda" id="flechaIzquierda">&#9664;</div>
+
+                <div class="imagen-grande">
+                    <img src="<?php echo $imagenes[0]; ?>" id="imagenGrande" alt="Imagen seleccionada">
+                </div>
+
+                <!-- Botón derecho -->
+                <div class="flecha derecha" id="flechaDerecha">&#9654;</div>
+
+                <div class="miniaturas">
+                    <?php foreach ($imagenes as $index => $imagen): ?>
+                        <img src="<?php echo $imagen; ?>" alt="Miniatura <?php echo $index + 1; ?>" 
+                             class="miniatura" data-index="<?php echo $index; ?>" />
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Manejar clics en los elementos de la lista
+    document.querySelectorAll('.requerimiento-item').forEach(item => {
+        item.addEventListener('click', function () {
+            const detalle = this.getAttribute('data-detalle');
+            const titulo = this.getAttribute('data-titulo');
+            
+            // Actualiza el título y el contenido del detalle
+            document.getElementById('detalleTitulo').textContent = titulo;
+            document.getElementById('detalleTexto').innerHTML = detalle;
+
+            // Mostrar botones de acción
+            document.getElementById('botonesAccion').style.display = 'block';
         });
+    });
 
-        // Eventos de prueba para botones
-        document.getElementById('rechazarBtn').addEventListener('click', function () {
-            alert('Requerimiento rechazado');
+    // Eventos de prueba para botones
+    document.getElementById('rechazarBtn').addEventListener('click', function () {
+        alert('Requerimiento rechazado');
+    });
+
+    document.getElementById('aprobarBtn').addEventListener('click', function () {
+        alert('Requerimiento aprobado');
+    });
+
+    // Carrusel de imágenes
+    const miniaturas = document.querySelectorAll('.miniatura');
+    const imagenGrande = document.getElementById('imagenGrande');
+    const flechaIzquierda = document.getElementById('flechaIzquierda');
+    const flechaDerecha = document.getElementById('flechaDerecha');
+
+    let indiceActual = 0;
+
+    const imagenes = <?php echo json_encode($imagenes); ?>;
+
+    const mostrarImagen = (indice) => {
+        imagenGrande.src = imagenes[indice];
+    };
+
+    flechaIzquierda.addEventListener('click', () => {
+        indiceActual = (indiceActual > 0) ? indiceActual - 1 : imagenes.length - 1;
+        mostrarImagen(indiceActual);
+    });
+
+    flechaDerecha.addEventListener('click', () => {
+        indiceActual = (indiceActual < imagenes.length - 1) ? indiceActual + 1 : 0;
+        mostrarImagen(indiceActual);
+    });
+
+    miniaturas.forEach(miniatura => {
+        miniatura.addEventListener('click', () => {
+            indiceActual = parseInt(miniatura.getAttribute('data-index'));
+            mostrarImagen(indiceActual);
         });
+    });
+</script>
 
-        document.getElementById('aprobarBtn').addEventListener('click', function () {
-            alert('Requerimiento aprobado');
-        });
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

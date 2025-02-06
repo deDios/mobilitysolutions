@@ -237,23 +237,75 @@ li {
     height: 100vh;
     overflow: hidden;
 }
+
 .lista-requerimientos {
     width: 30%;
     border-right: 1px solid #ccc;
     padding-top: 100px;
     overflow-y: auto;
 }
+
 .detalle-requerimiento {
-    width: 70%;
+    display: flex;
+    justify-content: space-between; /* Espacio entre el texto y el carrusel */
     padding: 20px;
     padding-top: 100px;
 }
-.requerimiento-item {
-    cursor: pointer;
+
+#detalleTexto {
+    flex: 1; /* El texto ocupa el espacio restante */
+    margin-right: 20px; /* Separación entre el texto y el carrusel */
 }
-.botones-accion {
-    display: none; /* Ocultar botones por defecto */
+
+.carrusel-container {
+    width: 300px; /* Ajusta el tamaño del carrusel */
+    margin-left: 20px; /* Separación entre el texto y el carrusel */
+}
+
+.carrusel {
+    position: relative;
+}
+
+.flecha {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.flecha.izquierda {
+    left: 0;
+}
+
+.flecha.derecha {
+    right: 0;
+}
+
+.imagen-grande img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.miniaturas {
+    display: flex;
+    justify-content: space-between;
     margin-top: 10px;
+}
+
+.miniatura {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.miniatura:hover {
+    opacity: 0.7;
 }
 
 @media (max-width:700px){
