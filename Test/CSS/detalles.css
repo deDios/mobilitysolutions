@@ -336,19 +336,26 @@ li {
 }
 
 .btn-primary {
-    background-color: #FFC00A;
-    border-color: #FFC00A;
-    color: #000;
+    background-color: #FFC00A !important;
+    border-color: #FFC00A !important;
+    color: #000 !important;
 }
 
 .btn-primary:hover {
-    background-color: #e6ae09;
-    border-color: #e6ae09;
+    background-color: #e6ae09 !important;
+    border-color: #e6ae09 !important;
 }
 
-/* Cambiar color del círculo de la barra */
+/* Cabeceras de tabla */
+table thead th {
+    background-color: #FFC00A !important;
+    color: #000 !important;
+    text-align: center;
+}
+
+/* Barra de rango (círculo) */
 input[type="range"]::-webkit-slider-thumb {
-    background-color: #FFC00A;
+    background-color: #FFC00A !important;
     border: 2px solid #000;
     width: 15px;
     height: 15px;
@@ -357,7 +364,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 input[type="range"]::-moz-range-thumb {
-    background-color: #FFC00A;
+    background-color: #FFC00A !important;
     border: 2px solid #000;
     width: 15px;
     height: 15px;
@@ -365,12 +372,6 @@ input[type="range"]::-moz-range-thumb {
     cursor: pointer;
 }
 
-/* Cambiar color de las cabeceras de la tabla */
-table thead th {
-    background-color: #FFC00A;
-    color: #000;
-    text-align: center;
-}
 
 @media (max-width:700px){
     header{
