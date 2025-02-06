@@ -223,12 +223,14 @@ if ($result) {
 }
 ?>
 
-<div class="contenedor">
+    <div class="contenedor">
         <!-- Lista de requerimientos -->
         <div class="lista-requerimientos bg-light">
             <ul class="list-group">
                 <?php foreach ($requerimientos as $req) : ?>
-                    <li class="list-group-item requerimiento-item" data-detalle="<?php echo htmlspecialchars($req['detalle']); ?>">
+                    <li class="list-group-item requerimiento-item" 
+                        data-detalle="<?php echo htmlspecialchars($req['detalle']); ?>" 
+                        data-titulo="<?php echo htmlspecialchars($req['titulo']); ?>">
                         <?php echo $req['titulo']; ?>
                     </li>
                 <?php endforeach; ?>
@@ -237,7 +239,7 @@ if ($result) {
 
         <!-- Detalle del requerimiento -->
         <div class="detalle-requerimiento">
-            <h4>Seleccione un requerimiento</h4>
+            <h4 id="detalleTitulo">Seleccione un requerimiento</h4>
             <p id="detalleTexto">El contenido aparecerá aquí.</p>
         </div>
     </div>
@@ -247,6 +249,10 @@ if ($result) {
         document.querySelectorAll('.requerimiento-item').forEach(item => {
             item.addEventListener('click', function () {
                 const detalle = this.getAttribute('data-detalle');
+                const titulo = this.getAttribute('data-titulo');
+                
+                // Actualiza el título y el contenido del detalle
+                document.getElementById('detalleTitulo').textContent = titulo;
                 document.getElementById('detalleTexto').innerHTML = detalle;
             });
         });
