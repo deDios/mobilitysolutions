@@ -240,7 +240,14 @@ if ($result) {
         <!-- Detalle del requerimiento -->
         <div class="detalle-requerimiento">
             <h4 id="detalleTitulo">Seleccione un requerimiento</h4>
-            <p id="detalleTexto">El contenido aparecerá aquí.</p>
+            
+            <!-- Botones de acción -->
+            <div class="mt-3">
+                <button class="btn btn-danger boton-accion" id="rechazarBtn">Rechazar</button>
+                <button class="btn btn-success boton-accion" id="aprobarBtn">Aprobar</button>
+            </div>
+
+            <p id="detalleTexto" class="mt-4">El contenido aparecerá aquí.</p>
         </div>
     </div>
 
@@ -255,6 +262,15 @@ if ($result) {
                 document.getElementById('detalleTitulo').textContent = titulo;
                 document.getElementById('detalleTexto').innerHTML = detalle;
             });
+        });
+
+        // Eventos de ejemplo para los botones
+        document.getElementById('rechazarBtn').addEventListener('click', function () {
+            alert('Requerimiento rechazado');
+        });
+
+        document.getElementById('aprobarBtn').addEventListener('click', function () {
+            alert('Requerimiento aprobado');
         });
     </script>
 
