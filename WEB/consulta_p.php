@@ -33,7 +33,7 @@ $query = 'select
                 atrr_2, 
                 atrr_3
             FROM mobility_solutions.moon_product
-            WHERE Categoria = ' . $cod . ' order by Nombre ASC ;';
+            WHERE Categoria = ' . $cod . ' and Status = 1 order by Nombre ASC ;';
 }
 $result = mysqli_query($con, $query);
 
