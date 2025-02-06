@@ -251,7 +251,10 @@ li {
 .requerimiento-item {
     cursor: pointer;
 }
-
+.botones-accion {
+    display: none; /* Ocultar botones por defecto */
+    margin-top: 10px;
+}
 
 @media (max-width:700px){
     .menu_fix {

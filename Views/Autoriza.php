@@ -241,10 +241,10 @@ if ($result) {
         <div class="detalle-requerimiento">
             <h4 id="detalleTitulo">Seleccione un requerimiento</h4>
             
-            <!-- Botones de acción -->
-            <div class="mt-3">
-                <button class="btn btn-danger boton-accion" id="rechazarBtn">Rechazar</button>
-                <button class="btn btn-success boton-accion" id="aprobarBtn">Aprobar</button>
+            <!-- Botones de acción (ocultos inicialmente) -->
+            <div id="botonesAccion" class="botones-accion">
+                <button class="btn btn-danger me-2" id="rechazarBtn">Rechazar</button>
+                <button class="btn btn-success" id="aprobarBtn">Aprobar</button>
             </div>
 
             <p id="detalleTexto" class="mt-4">El contenido aparecerá aquí.</p>
@@ -261,10 +261,13 @@ if ($result) {
                 // Actualiza el título y el contenido del detalle
                 document.getElementById('detalleTitulo').textContent = titulo;
                 document.getElementById('detalleTexto').innerHTML = detalle;
+
+                // Mostrar botones de acción
+                document.getElementById('botonesAccion').style.display = 'block';
             });
         });
 
-        // Eventos de ejemplo para los botones
+        // Eventos de prueba para botones
         document.getElementById('rechazarBtn').addEventListener('click', function () {
             alert('Requerimiento rechazado');
         });
