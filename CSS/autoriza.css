@@ -237,76 +237,60 @@ li {
     height: 100vh;
     overflow: hidden;
 }
-
 .lista-requerimientos {
     width: 30%;
     border-right: 1px solid #ccc;
-    padding-top: 100px;
+    padding-top: 20px;
     overflow-y: auto;
 }
-
 .detalle-requerimiento {
-    display: flex;
-    justify-content: space-between; /* Espacio entre el texto y el carrusel */
+    width: 70%;
     padding: 20px;
-    padding-top: 100px;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
 }
-
-#detalleTexto {
-    flex: 1; /* El texto ocupa el espacio restante */
-    margin-right: 20px; /* Separación entre el texto y el carrusel */
+.requerimiento-item {
+    cursor: pointer;
 }
-
+.botones-accion {
+    display: none; /* Ocultar botones por defecto */
+    margin-top: 10px;
+}
 .carrusel-container {
-    width: 300px; /* Ajusta el tamaño del carrusel */
-    margin-left: 20px; /* Separación entre el texto y el carrusel */
+    flex-grow: 1; /* El carrusel toma el espacio restante */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-
 .carrusel {
-    position: relative;
+    flex-grow: 1; /* El carrusel ocupa el espacio restante */
 }
-
+.miniaturas img {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    cursor: pointer;
+}
+.imagen-grande img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+}
 .flecha {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 24px;
-    color: #333;
+    font-size: 2rem;
     cursor: pointer;
-    z-index: 10;
 }
-
 .flecha.izquierda {
-    left: 0;
+    left: 10px;
 }
-
 .flecha.derecha {
-    right: 0;
+    right: 10px;
 }
 
-.imagen-grande img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.miniaturas {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-}
-
-.miniatura {
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-    cursor: pointer;
-    transition: opacity 0.3s;
-}
-
-.miniatura:hover {
-    opacity: 0.7;
-}
 
 @media (max-width:700px){
     .menu_fix {

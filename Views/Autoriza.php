@@ -251,8 +251,9 @@ if ($result) {
         </ul>
     </div>
 
-    <!-- Detalle del requerimiento y Carrusel -->
+    <!-- Detalle del requerimiento -->
     <div class="detalle-requerimiento">
+        <!-- Título -->
         <h4 id="detalleTitulo">Seleccione un requerimiento</h4>
         
         <!-- Botones de acción (ocultos inicialmente) -->
@@ -261,8 +262,9 @@ if ($result) {
             <button class="btn btn-success" id="aprobarBtn">Aprobar</button>
         </div>
 
+        <!-- Detalles del requerimiento -->
         <p id="detalleTexto" class="mt-4">El contenido aparecerá aquí.</p>
-        
+
         <!-- Carrusel de imágenes -->
         <div class="carrusel-container">
             <div class="carrusel">
