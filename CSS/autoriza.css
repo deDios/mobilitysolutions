@@ -240,6 +240,7 @@ li {
 .lista-requerimientos {
     width: 30%;
     border-right: 1px solid #ccc;
+    padding-top: 100px;
     overflow-y: auto;
 }
 .detalle-requerimiento {
