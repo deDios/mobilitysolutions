@@ -372,6 +372,11 @@ input[type="range"]::-moz-range-thumb {
     cursor: pointer;
 }
 
+.list-group-item .badge {
+    background-color: #FFC00A !important;
+    color: #000 !important;
+}
+
 
 @media (max-width:700px){
     header{
