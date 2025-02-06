@@ -240,13 +240,13 @@ li {
 .lista-requerimientos {
     width: 30%;
     border-right: 1px solid #ccc;
-    padding-top: 20px;
+    padding-top: 100px;
     overflow-y: auto;
 }
 .detalle-requerimiento {
     width: 70%;
     padding: 20px;
-    padding-top: 20px;
+    padding-top: 100px;
     display: flex;
     flex-direction: column;
 }
