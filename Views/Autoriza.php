@@ -161,6 +161,16 @@
   </nav>
 </div>
 
+
+<?php
+// Simulación de datos de requerimientos pendientes
+$requerimientos = [
+    ["id" => 1, "titulo" => "Requerimiento 1", "detalle" => "Descripción completa del requerimiento 1."],
+    ["id" => 2, "titulo" => "Requerimiento 2", "detalle" => "Descripción completa del requerimiento 2."],
+    ["id" => 3, "titulo" => "Requerimiento 3", "detalle" => "Descripción completa del requerimiento 3."],
+];
+?>
+
 <div class="contenedor">
         <!-- Lista de requerimientos -->
         <div class="lista-requerimientos bg-light">
