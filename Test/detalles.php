@@ -267,122 +267,133 @@ $imagenes = [
         </div>
         <div class="cotizador">
 
-          <div class="container mt-5">
-          <h3>Cotizador</h3>
+<div class="container mt-5">
+<h3>Cotizador</h3>
 
-          <div class="row">
-              <div class="col-md-4">
-                  <label for="enganche" class="form-label">Porcentaje de Enganche</label>
-                  <input type="range" class="form-range" id="enganche" min="5" max="100" step="1" value="20">
-                  <p>Enganche seleccionado: <span id="engancheValor">20%</span></p>
-                  <p>Total Enganche: <span id="engancheTotal">$0.00</span></p>
-              </div>
-              <div class="col-md-4">
-                  <label for="plazo" class="form-label">Plazo (Meses)</label>
-                  <input type="text" id="plazo" class="form-control" value="60" readonly>
-              </div>
-          </div>
+<div class="row">
+    <div class="col-md-4">
+        <label for="enganche" class="form-label">Porcentaje de Enganche</label>
+        <input type="range" class="form-range" id="enganche" min="5" max="100" step="5" value="20">
+        <p>Enganche seleccionado: <span id="engancheValor">20%</span></p>
+        <p>Total Enganche: <span id="engancheTotal">$0.00</span></p>
+    </div>
+    <div class="col-md-4">
+        <label for="plazo" class="form-label">Plazo (Meses)</label>
+        <input type="text" id="plazo" class="form-control" value="60" readonly>
+    </div>
+</div>
 
-          <div class="mt-4">
-              <button class="btn btn-primary" id="calcular">Calcular</button>
-          </div>
+<div class="mt-4">
+    <button class="btn btn-primary" id="calcular">Calcular</button>
+</div>
 
-          <div class="mt-4">
-              <h4>Tabla de Amortización</h4>
-              <div style="max-height: 500px; overflow-y: auto;"> <!-- Aquí agregamos el scroll -->
-                  <table class="table table-bordered">
-                      <thead>
-                          <tr>
-                              <th>Mes</th>
-                              <th>Pago Mensual</th>
-                              <th>Saldo Restante</th>
-                          </tr>
-                      </thead>
-                      <tbody id="tablaAmortizacion"></tbody>
-                  </table>
-              </div>
-          </div>
+<div class="mt-4">
+    <h4>Tabla de Amortización</h4>
+    <div style="max-height: 500px; overflow-y: auto;"> <!-- Aquí agregamos el scroll -->
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Mes</th>
+                    <th>Pago Mensual</th>
+                    <th>Saldo Restante</th>
+                </tr>
+            </thead>
+            <tbody id="tablaAmortizacion"></tbody>
+        </table>
+    </div>
+</div>
 
-          <div class="mt-3">
-              <p class="text-muted" style="font-size: 0.8rem; font-style: italic;">
-                Cotización de carácter informativo los Precios/tarifas están sujetos a cambios sin previo aviso, la mensualidad puede variar. Consulte términos y condiciones.
-              </p>
-          </div>
+<div class="mt-3">
+    <p class="text-muted" style="font-size: 0.8rem; font-style: italic;">
+      Cotización de carácter informativo los Precios/tarifas están sujetos a cambios sin previo aviso, la mensualidad puede variar. Consulte términos y condiciones.
+    </p>
+</div>
 
-      </div>
+</div>
 
-      <script>
-          const costoAuto = <?php echo $costo; ?>;
+<script>
+const costoAuto = <?php echo $costo; ?>;
 
-          function formatCurrency(amount) {
-              return '$' + amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-          }
+function formatCurrency(amount) {
+    return '$' + amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
 
-          function actualizarEngancheTotal() {
-              const enganchePorcentaje = parseFloat(document.getElementById('enganche').value);
-              const engancheMonto = (enganchePorcentaje / 100) * costoAuto;
-              document.getElementById('engancheTotal').textContent = formatCurrency(engancheMonto); // Formatear el total del enganche
-          }
+function actualizarEngancheTotal() {
+    const enganchePorcentaje = parseFloat(document.getElementById('enganche').value);
+    const engancheMonto = (enganchePorcentaje / 100) * costoAuto;
+    document.getElementById('engancheTotal').textContent = formatCurrency(engancheMonto); // Formatear el total del enganche
+}
 
-          function calcularPlazo(enganchePorcentaje) {
-              if (enganchePorcentaje <= 19) {
-                  return 72;
-              } else if (enganchePorcentaje <= 50) {
-                  return 60;
-              } else if (enganchePorcentaje >= 51) {
-                  return 48;
-              } else {
-                  return 60; // Default caso, si no se encuentra en los rangos específicos
-              }
-          }
+function calcularPlazo(enganchePorcentaje) {
+    if (enganchePorcentaje <= 19) {
+        return 72;
+    } else if (enganchePorcentaje <= 50) {
+        return 60;
+    } else if (enganchePorcentaje >= 51) {
+        return 48;
+    } else {
+        return 60; // Default caso, si no se encuentra en los rangos específicos
+    }
+}
 
-          document.getElementById('enganche').addEventListener('input', function () {
-              document.getElementById('engancheValor').textContent = this.value + '%';
-              actualizarEngancheTotal();
-              
-              const plazo = calcularPlazo(parseFloat(this.value));
-              document.getElementById('plazo').value = plazo; // Actualiza el plazo basado en el enganche
-          });
+document.getElementById('enganche').addEventListener('input', function () {
+    document.getElementById('engancheValor').textContent = this.value + '%';
+    actualizarEngancheTotal();
+    
+    const plazo = calcularPlazo(parseFloat(this.value));
+    document.getElementById('plazo').value = plazo; // Actualiza el plazo basado en el enganche
+});
 
-          window.onload = function() {
-              const enganchePorcentaje = document.getElementById('enganche').value;
-              document.getElementById('engancheValor').textContent = enganchePorcentaje + '%'; // Actualiza el valor del porcentaje al cargar
-              actualizarEngancheTotal();
-              
-              const plazo = calcularPlazo(parseFloat(enganchePorcentaje));
-              document.getElementById('plazo').value = plazo; // Establece el valor del plazo basado en el enganche
-          };
+window.onload = function() {
+    const enganchePorcentaje = document.getElementById('enganche').value;
+    document.getElementById('engancheValor').textContent = enganchePorcentaje + '%'; // Actualiza el valor del porcentaje al cargar
+    actualizarEngancheTotal();
+    
+    const plazo = calcularPlazo(parseFloat(enganchePorcentaje));
+    document.getElementById('plazo').value = plazo; // Establece el valor del plazo basado en el enganche
+};
 
-          document.getElementById('calcular').addEventListener('click', function () {
-              const enganchePorcentaje = parseFloat(document.getElementById('enganche').value);
-              const plazoMeses = parseInt(document.getElementById('plazo').value);
+document.getElementById('calcular').addEventListener('click', function () {
+    const enganchePorcentaje = parseFloat(document.getElementById('enganche').value);
+    const plazoMeses = parseInt(document.getElementById('plazo').value);
 
-              const engancheMonto = (enganchePorcentaje / 100) * costoAuto;
-              const montoProrratear = costoAuto + (enganchePorcentaje <= 10 ? 0.80 : enganchePorcentaje <= 20 ? 0.60 : 0.30) * costoAuto;
-              const pagoMensual = montoProrratear / plazoMeses;
+    const engancheMonto = (enganchePorcentaje / 100) * costoAuto;
+    let montoProrratear, pagoMensual;
 
-              let saldoRestante = montoProrratear;
-              const tabla = document.getElementById('tablaAmortizacion');
-              tabla.innerHTML = '';
+    if (plazoMeses === 72) {
+        montoProrratear = costoAuto * 1.8; // 1.8% del costo del auto para 72 meses
+        pagoMensual = montoProrratear / plazoMeses;
+    } else if (plazoMeses === 60) {
+        montoProrratear = costoAuto * 1.6; // 1.6% del costo del auto para 60 meses
+        pagoMensual = montoProrratear / plazoMeses;
+    } else if (plazoMeses === 48) {
+        montoProrratear = costoAuto * 1.3; // 1.3% del costo del auto para 48 meses
+        pagoMensual = montoProrratear / plazoMeses;
+    }
 
-              for (let mes = 1; mes <= plazoMeses; mes++) {
-                  saldoRestante -= pagoMensual;
+    let saldoRestante = montoProrratear;
+    const tabla = document.getElementById('tablaAmortizacion');
+    tabla.innerHTML = '';
 
-                  const fila = `
-                      <tr>
-                          <td>${mes}</td>
-                          <td>${formatCurrency(pagoMensual)}</td> <!-- Limita a 2 decimales y agrega el símbolo $ -->
-                          <td>${formatCurrency(saldoRestante > 0 ? saldoRestante : 0)}</td> <!-- Limita a 2 decimales y agrega el símbolo $ -->
-                      </tr>
-                  `;
-                  tabla.insertAdjacentHTML('beforeend', fila);
-              }
-          });
-      </script>
+    for (let mes = 1; mes <= plazoMeses; mes++) {
+        saldoRestante -= pagoMensual;
 
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        const fila = `
+            <tr>
+                <td>${mes}</td>
+                <td>${formatCurrency(pagoMensual)}</td> <!-- Limita a 2 decimales y agrega el símbolo $ -->
+                <td>${formatCurrency(saldoRestante > 0 ? saldoRestante : 0)}</td> <!-- Limita a 2 decimales y agrega el símbolo $ -->
+            </tr>
+        `;
+        tabla.insertAdjacentHTML('beforeend', fila);
+    }
+});
+</script>
 
-      </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</div>
+
 
     </div>
 
