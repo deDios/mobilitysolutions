@@ -351,6 +351,13 @@ table thead th {
     background-color: #FFC00A !important;
     color: #000 !important;
     text-align: center;
+    vertical-align: middle;
+}
+
+/* Centrar valores de celdas */
+table td {
+    text-align: center;
+    vertical-align: middle;
 }
 
 /* Barra de rango (círculo) */
