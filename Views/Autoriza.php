@@ -161,6 +161,36 @@
   </nav>
 </div>
 
+<div class="contenedor">
+        <!-- Lista de requerimientos -->
+        <div class="lista-requerimientos bg-light">
+            <ul class="list-group">
+                <?php foreach ($requerimientos as $req) : ?>
+                    <li class="list-group-item requerimiento-item" data-detalle="<?php echo htmlspecialchars($req['detalle']); ?>">
+                        <?php echo $req['titulo']; ?>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+
+        <!-- Detalle del requerimiento -->
+        <div class="detalle-requerimiento">
+            <h4>Seleccione un requerimiento</h4>
+            <p id="detalleTexto">El contenido aparecerá aquí.</p>
+        </div>
+    </div>
+
+    <script>
+        // Manejar clics en los elementos de la lista
+        document.querySelectorAll('.requerimiento-item').forEach(item => {
+            item.addEventListener('click', function () {
+                const detalle = this.getAttribute('data-detalle');
+                document.getElementById('detalleTexto').textContent = detalle;
+            });
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 
 

@@ -232,6 +232,25 @@ li {
     padding-left: 10px;
 }
 
+.contenedor {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+.lista-requerimientos {
+    width: 30%;
+    border-right: 1px solid #ccc;
+    overflow-y: auto;
+}
+.detalle-requerimiento {
+    width: 70%;
+    padding: 20px;
+}
+.requerimiento-item {
+    cursor: pointer;
+}
+
+
 @media (max-width:700px){
     .menu_fix {
         padding-top: 85px;
