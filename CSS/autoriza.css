@@ -249,12 +249,12 @@ li {
     display: flex;
     width: 70%;
     padding: 150px;
-    gap: 20px; /* Separación entre el texto y el carrusel */
+    gap: 10px; /* Separación entre el texto y el carrusel */
 }
 
 .detalle-texto {
     width: 20%; /* 20% para los detalles */
-    padding-right: 20px; /* Espacio extra en el lado derecho */
+    padding-right: 10px; /* Espacio extra en el lado derecho */
 }
 
 .carrusel-container {
