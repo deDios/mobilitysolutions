@@ -246,6 +246,7 @@ li {
 .detalle-requerimiento {
     width: 70%;
     padding: 20px;
+    padding-top: 100px;
 }
 .requerimiento-item {
     cursor: pointer;
