@@ -241,7 +241,7 @@ li {
 .lista-requerimientos {
     width: 30%;
     border-right: 1px solid #ccc;
-    padding-top: 100px;
+    padding-top: 120px;
     overflow-y: auto;
 }
 
@@ -254,12 +254,14 @@ li {
 
 .detalle-texto {
     width: 20%; /* 20% para los detalles */
-    padding-right: 20px; /* Espacio extra en el lado derecho */
+    padding-right: 20px;
+    padding-top: 50px; /* Espacio extra en el lado derecho */
 }
 
 .carrusel-container {
     width: 80%; /* 80% para el carrusel */
     position: relative;
+    padding-top: 50px;
 }
 
 .carrusel {
