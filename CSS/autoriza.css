@@ -241,14 +241,14 @@ li {
 .lista-requerimientos {
     width: 30%;
     border-right: 1px solid #ccc;
-    padding-top: 100px;
+    padding-top: 120px;
     overflow-y: auto;
 }
 
 .detalle-requerimiento {
     display: flex;
     width: 70%;
-    padding: 100px;
+    padding: 150px;
     gap: 20px; /* Separación entre el texto y el carrusel */
 }
 
