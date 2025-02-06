@@ -304,7 +304,7 @@ $imagenes = [
           </div>
 
           <div class="mt-3">
-              <p class="text-muted" style="font-size: 0.8rem; font-style: italic; font-style: italic; color:red;">
+              <p class="" style="font-size: 0.8rem; font-style: italic; font-style: italic; color:red;">
                 Cotización de carácter informativo los Precios/tarifas están sujetos a cambios sin previo aviso, la mensualidad puede variar. Consulte términos y condiciones.
               </p>
           </div>
