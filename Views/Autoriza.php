@@ -239,7 +239,7 @@ if ($result) {
 
 <div class="contenedor">
     <!-- Lista de requerimientos -->
-    <div class="lista-requerimientos bg-light">
+    <div class="lista-requerimientos bg-light" style="float: left; width: 25%; padding: 10px;">
         <ul class="list-group">
             <?php foreach ($requerimientos as $req) : ?>
                 <li class="list-group-item requerimiento-item" 
@@ -254,11 +254,11 @@ if ($result) {
     </div>
 
     <!-- Detalle del requerimiento -->
-    <div class="detalle-requerimiento">
+    <div class="detalle-requerimiento" style="float: left; width: 75%; padding: 10px;">
         <h4 id="detalleTitulo">Seleccione un requerimiento</h4>
 
         <!-- Botones de acción (ocultos inicialmente) -->
-        <div id="botonesAccion" class="botones-accion">
+        <div id="botonesAccion" class="botones-accion" style="display: none;">
             <button class="btn btn-danger me-2" id="rechazarBtn">Rechazar</button>
             <button class="btn btn-success" id="aprobarBtn">Aprobar</button>
         </div>
@@ -266,7 +266,7 @@ if ($result) {
         <p id="detalleTexto" class="mt-4">El contenido aparecerá aquí.</p>
 
         <!-- Carrusel de imágenes -->
-        <div id="carrusel" class="carrusel" style="display:none;">
+        <div id="carrusel" class="carrusel" style="display:none; margin-top: 20px;">
             <h5>Imágenes del vehículo</h5>
             <div class="flecha izquierda" id="flechaIzquierda">&#9664;</div>
             <div class="imagen-grande">
@@ -345,7 +345,7 @@ if ($result) {
             document.getElementById('aprobarBtn').addEventListener('click', function () {
                 // Enviar solicitud AJAX para actualizar el estatus
                 const xhr = new XMLHttpRequest();
-                xhr.open('POST', '../db_consultas/actualizar_estatus.php', true);
+                xhr.open('POST', 'actualizar_estatus.php', true);
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === 4 && xhr.status === 200) {
