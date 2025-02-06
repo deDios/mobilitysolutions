@@ -253,7 +253,7 @@ li {
 }
 
 .detalle-texto {
-    width: 20%; /* Ajustado para que ocupe el 60% del espacio */
+    width: 30%; /* Ajustado para que ocupe el 60% del espacio */
     padding-right: 20px;
 }
 
@@ -264,7 +264,7 @@ li {
 }
 
 .carrusel {
-    width: 80%; /* El carrusel ocupa el 35% del ancho */
+    width: 65%; /* El carrusel ocupa el 35% del ancho */
     display: flex;
     flex-direction: column;
     align-items: center;
