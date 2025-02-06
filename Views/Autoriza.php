@@ -238,7 +238,7 @@ if ($result) {
 ?>
 
 <div class="contenedor">
-    <!-- Lista de requerimientos -->
+    <!-- Lista de requerimientos (a la izquierda) -->
     <div class="lista-requerimientos bg-light">
         <ul class="list-group">
             <?php foreach ($requerimientos as $req) : ?>
@@ -253,19 +253,21 @@ if ($result) {
         </ul>
     </div>
 
-    <!-- Detalle del requerimiento -->
+    <!-- Detalle del requerimiento (a la izquierda) -->
     <div class="detalle-requerimiento">
-        <h4 id="detalleTitulo">Seleccione un requerimiento</h4>
+        <div class="detalle-texto">
+            <h4 id="detalleTitulo">Seleccione un requerimiento</h4>
 
-        <!-- Botones de acción (ocultos inicialmente) -->
-        <div id="botonesAccion" class="botones-accion">
-            <button class="btn btn-danger me-2" id="rechazarBtn">Rechazar</button>
-            <button class="btn btn-success" id="aprobarBtn">Aprobar</button>
+            <!-- Botones de acción (aquí abajo del título) -->
+            <div id="botonesAccion" class="botones-accion">
+                <button class="btn btn-danger me-2" id="rechazarBtn">Rechazar</button>
+                <button class="btn btn-success" id="aprobarBtn">Aprobar</button>
+            </div>
+
+            <p id="detalleTexto" class="mt-4">El contenido aparecerá aquí.</p>
         </div>
-
-        <p id="detalleTexto" class="mt-4">El contenido aparecerá aquí.</p>
-
-        <!-- Carrusel de imágenes -->
+        
+        <!-- Carrusel (a la derecha) -->
         <div id="carrusel" class="carrusel" style="display:none;">
             <h5>Imágenes del vehículo</h5>
             <div class="flecha izquierda" id="flechaIzquierda">&#9664;</div>
