@@ -258,7 +258,7 @@ if ($result) {
             <h4 id="detalleTitulo">Seleccione un requerimiento</h4>
             
             <!-- Botones de acción (ocultos inicialmente) -->
-            <div id="botonesAccion" class="botones-accion">
+            <div id="botonesAccion" class="botones-accion"> 
                 <button class="btn btn-danger me-2" id="rechazarBtn">Rechazar</button>
                 <button class="btn btn-success" id="aprobarBtn">Aprobar</button>
             </div>
