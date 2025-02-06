@@ -258,7 +258,7 @@ if ($result) {
             <h4 id="detalleTitulo">Seleccione un requerimiento</h4>
             
             <!-- Botones de acción (ocultos inicialmente) -->
-            <div id="botonesAccion" class="botones-accion"> 
+            <div id="botonesAccion" class="botones-accion">
                 <button class="btn btn-danger me-2" id="rechazarBtn">Rechazar</button>
                 <button class="btn btn-success" id="aprobarBtn">Aprobar</button>
             </div>
@@ -267,8 +267,9 @@ if ($result) {
             <p id="detalleTexto" class="mt-4">El contenido aparecerá aquí.</p>
         </div>
 
-        <!-- Carrusel -->
-        <div class="carrusel-container">
+        <!-- Carrusel (invisible por defecto) -->
+        <div class="carrusel-container" id="carruselContainer" style="display: none;">
+            <h5>Imágenes del vehículo</h5>
             <div class="carrusel">
                 <!-- Botón izquierdo -->
                 <div class="flecha izquierda" id="flechaIzquierda">&#9664;</div>
@@ -307,6 +308,9 @@ if ($result) {
             document.getElementById('botonesAccion').style.display = 'block';
 
             // Mostrar el carrusel con las miniaturas
+            const carruselContainer = document.getElementById('carruselContainer');
+            carruselContainer.style.display = 'block';  // Hacer visible el carrusel
+
             const miniaturasContainer = document.querySelector('.miniaturas');
             miniaturasContainer.innerHTML = ''; // Limpiar miniaturas anteriores
             imagenes.forEach((imagen, index) => {
