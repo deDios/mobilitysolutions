@@ -273,7 +273,7 @@ $imagenes = [
           <div class="row">
               <div class="col-md-4">
                   <label for="enganche" class="form-label">Porcentaje de Enganche</label>
-                  <input type="range" class="form-range" id="enganche" min="5" max="100" step="5" value="20">
+                  <input type="range" class="form-range" id="enganche" min="5" max="100" step="1" value="20">
                   <p>Enganche seleccionado: <span id="engancheValor">20%</span></p>
                   <p>Total Enganche: <span id="engancheTotal">$0.00</span></p>
               </div>
