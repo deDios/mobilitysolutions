@@ -270,11 +270,14 @@ if ($result) {
         <!-- Carrusel (a la derecha de los detalles) -->
         <div id="carrusel" class="carrusel" style="display:none;">
             <h5>Imágenes del vehículo</h5>
-            <div class="flecha izquierda" id="flechaIzquierda">&#9664;</div>
+            <div class="flechas">
+                <div class="flecha izquierda" id="flechaIzquierda">&#9664;</div>
+                <div class="flecha derecha" id="flechaDerecha">&#9654;</div>
+            </div>
+
             <div class="imagen-grande">
                 <img src="" id="imagenGrande" alt="Imagen seleccionada">
             </div>
-            <div class="flecha derecha" id="flechaDerecha">&#9654;</div>
 
             <div class="miniaturas">
                 <!-- Las miniaturas se agregarán dinámicamente con JavaScript -->
@@ -282,6 +285,7 @@ if ($result) {
         </div>
     </div>
 </div>
+
 
 
 <script>
