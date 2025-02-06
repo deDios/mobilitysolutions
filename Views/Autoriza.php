@@ -164,11 +164,51 @@
 
 <?php
 // Simulación de datos de requerimientos pendientes
-$requerimientos = [
-    ["id" => 1, "titulo" => "Requerimiento 1", "detalle" => "Descripción completa del requerimiento 1."],
-    ["id" => 2, "titulo" => "Requerimiento 2", "detalle" => "Descripción completa del requerimiento 2."],
-    ["id" => 3, "titulo" => "Requerimiento 3", "detalle" => "Descripción completa del requerimiento 3."],
-];
+$inc = include "../db/Conexion.php";
+$query = 'select 
+                auto.id,
+                m_auto.auto AS nombre, 
+                modelo.nombre AS modelo, 
+                marca.nombre AS marca, 
+                auto.mensualidad, 
+                auto.costo, 
+                sucursal.nombre AS sucursal, 
+                auto.color, 
+                auto.transmision, 
+                auto.kilometraje, 
+                auto.combustible, 
+                auto.cilindros, 
+                auto.pasajeros, 
+                auto.propietarios 
+          FROM mobility_solutions.tmx_auto AS auto
+          LEFT JOIN mobility_solutions.tmx_sucursal AS sucursal ON auto.sucursal = sucursal.id 
+          LEFT JOIN mobility_solutions.tmx_modelo AS modelo ON auto.modelo = modelo.id 
+          LEFT JOIN mobility_solutions.tmx_marca AS marca ON auto.marca = marca.id
+          LEFT JOIN mobility_solutions.tmx_marca_auto AS m_auto ON auto.nombre = m_auto.id
+          WHERE auto.estatus = 2';
+
+$result = mysqli_query($con, $query);
+$requerimientos = [];
+
+if ($result) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $requerimientos[] = [
+            "id" => $row['id'],
+            "titulo" => $row['nombre'] . ' (' . $row['modelo'] . ' - ' . $row['marca'] . ')',
+            "detalle" => "Costo: $" . number_format($row['costo'], 2) . "<br>" .
+                         "Sucursal: " . $row['sucursal'] . "<br>" .
+                         "Color: " . $row['color'] . "<br>" .
+                         "Transmisión: " . $row['transmision'] . "<br>" .
+                         "Kilometraje: " . number_format($row['kilometraje']) . " km<br>" .
+                         "Combustible: " . $row['combustible'] . "<br>" .
+                         "Cilindros: " . $row['cilindros'] . "<br>" .
+                         "Pasajeros: " . $row['pasajeros'] . "<br>" .
+                         "Propietarios previos: " . $row['propietarios']
+        ];
+    }
+} else {
+    echo "Falla en conexión";
+}
 ?>
 
 <div class="contenedor">
@@ -195,16 +235,12 @@ $requerimientos = [
         document.querySelectorAll('.requerimiento-item').forEach(item => {
             item.addEventListener('click', function () {
                 const detalle = this.getAttribute('data-detalle');
-                document.getElementById('detalleTexto').textContent = detalle;
+                document.getElementById('detalleTexto').innerHTML = detalle;
             });
         });
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-
-
-
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
