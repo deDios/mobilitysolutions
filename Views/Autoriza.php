@@ -243,9 +243,10 @@ if ($result) {
         <ul class="list-group">
             <?php foreach ($requerimientos as $req) : ?>
                 <li class="list-group-item requerimiento-item" 
+                    data-id="<?php echo $req['id']; ?>"
                     data-detalle="<?php echo htmlspecialchars($req['detalle']); ?>" 
                     data-titulo="<?php echo "{$req['id']} - {$req['nombre']} / (Req. de catálogo)"; ?>"
-                    data-imagenes="<?php echo htmlspecialchars(json_encode($req['imagenes'])); ?>">
+                    data-imagenes='<?php echo json_encode($req['imagenes']); ?>'>
                     <?php echo "{$req['id']} - {$req['nombre']} / (Req. de catálogo)"; ?>
                 </li>
             <?php endforeach; ?>
@@ -254,52 +255,40 @@ if ($result) {
 
     <!-- Detalle del requerimiento -->
     <div class="detalle-requerimiento">
-        <!-- Detalles del requerimiento -->
-        <div class="detalle-texto">
-            <h4 id="detalleTitulo">Seleccione un requerimiento</h4>
-            
-            <!-- Botones de acción (ocultos inicialmente) -->
-            <div id="botonesAccion" class="botones-accion">
-                <button class="btn btn-danger me-2" id="rechazarBtn">Rechazar</button>
-                <button class="btn btn-success" id="aprobarBtn">Aprobar</button>
-            </div>
+        <h4 id="detalleTitulo">Seleccione un requerimiento</h4>
 
-            <!-- Detalles del requerimiento -->
-            <p id="detalleTexto" class="mt-4">El contenido aparecerá aquí.</p>
+        <!-- Botones de acción (ocultos inicialmente) -->
+        <div id="botonesAccion" class="botones-accion">
+            <button class="btn btn-danger me-2" id="rechazarBtn">Rechazar</button>
+            <button class="btn btn-success" id="aprobarBtn">Aprobar</button>
         </div>
 
-        <!-- Carrusel (invisible por defecto) -->
-        <div class="carrusel-container" id="carruselContainer" style="display: none;">
+        <p id="detalleTexto" class="mt-4">El contenido aparecerá aquí.</p>
+
+        <!-- Carrusel de imágenes -->
+        <div id="carrusel" class="carrusel" style="display:none;">
             <h5>Imágenes del vehículo</h5>
-            <div class="carrusel">
-                <!-- Botón izquierdo -->
-                <div class="flecha izquierda" id="flechaIzquierda">&#9664;</div>
+            <div class="flecha izquierda" id="flechaIzquierda">&#9664;</div>
+            <div class="imagen-grande">
+                <img src="" id="imagenGrande" alt="Imagen seleccionada">
+            </div>
+            <div class="flecha derecha" id="flechaDerecha">&#9654;</div>
 
-                <div class="imagen-grande">
-                    <img src="" id="imagenGrande" alt="Imagen seleccionada">
-                </div>
-
-                <!-- Botón derecho -->
-                <div class="flecha derecha" id="flechaDerecha">&#9654;</div>
-
-                <div class="miniaturas">
-                    <!-- Las miniaturas se cargarán dinámicamente con JavaScript -->
-                </div>
+            <div class="miniaturas">
+                <!-- Las miniaturas se agregarán dinámicamente con JavaScript -->
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    let imagenes = [];
-    let indiceActual = 0;
-
     // Manejar clics en los elementos de la lista
     document.querySelectorAll('.requerimiento-item').forEach(item => {
         item.addEventListener('click', function () {
             const detalle = this.getAttribute('data-detalle');
             const titulo = this.getAttribute('data-titulo');
-            imagenes = JSON.parse(this.getAttribute('data-imagenes'));
+            const idRequerimiento = this.getAttribute('data-id');
+            const imagenes = JSON.parse(this.getAttribute('data-imagenes'));
 
             // Actualiza el título y el contenido del detalle
             document.getElementById('detalleTitulo').textContent = titulo;
@@ -308,46 +297,68 @@ if ($result) {
             // Mostrar botones de acción
             document.getElementById('botonesAccion').style.display = 'block';
 
-            // Mostrar el carrusel con las miniaturas
-            const carruselContainer = document.getElementById('carruselContainer');
-            carruselContainer.style.display = 'block';  // Hacer visible el carrusel
+            // Mostrar el carrusel
+            document.getElementById('carrusel').style.display = 'block';
 
+            // Inicializa el carrusel
+            let indiceActual = 0;
+            const imagenGrande = document.getElementById('imagenGrande');
             const miniaturasContainer = document.querySelector('.miniaturas');
-            miniaturasContainer.innerHTML = ''; // Limpiar miniaturas anteriores
+            imagenGrande.src = imagenes[indiceActual];
+
+            // Agregar miniaturas al carrusel
+            miniaturasContainer.innerHTML = '';
             imagenes.forEach((imagen, index) => {
-                const imgElement = document.createElement('img');
-                imgElement.src = imagen;
-                imgElement.alt = `Miniatura ${index + 1}`;
-                imgElement.classList.add('miniatura');
-                imgElement.dataset.index = index;
-                miniaturasContainer.appendChild(imgElement);
+                const img = document.createElement('img');
+                img.src = imagen;
+                img.alt = 'Miniatura ' + (index + 1);
+                img.classList.add('miniatura');
+                img.dataset.index = index;
+                miniaturasContainer.appendChild(img);
             });
 
-            // Mostrar la primera imagen
-            mostrarImagen(0);
-        });
-    });
+            // Función para mostrar la imagen grande
+            const mostrarImagen = (indice) => {
+                imagenGrande.src = imagenes[indice];
+            };
 
-    const mostrarImagen = (indice) => {
-        document.getElementById('imagenGrande').src = imagenes[indice];
-    };
+            // Manejar clic en miniaturas
+            miniaturasContainer.querySelectorAll('.miniatura').forEach(miniatura => {
+                miniatura.addEventListener('click', () => {
+                    indiceActual = parseInt(miniatura.getAttribute('data-index'));
+                    mostrarImagen(indiceActual);
+                });
+            });
 
-    // Eventos para las flechas de navegación
-    document.getElementById('flechaIzquierda').addEventListener('click', () => {
-        indiceActual = (indiceActual > 0) ? indiceActual - 1 : imagenes.length - 1;
-        mostrarImagen(indiceActual);
-    });
+            // Manejar clic en las flechas
+            document.getElementById('flechaIzquierda').addEventListener('click', () => {
+                indiceActual = (indiceActual > 0) ? indiceActual - 1 : imagenes.length - 1;
+                mostrarImagen(indiceActual);
+            });
 
-    document.getElementById('flechaDerecha').addEventListener('click', () => {
-        indiceActual = (indiceActual < imagenes.length - 1) ? indiceActual + 1 : 0;
-        mostrarImagen(indiceActual);
-    });
+            document.getElementById('flechaDerecha').addEventListener('click', () => {
+                indiceActual = (indiceActual < imagenes.length - 1) ? indiceActual + 1 : 0;
+                mostrarImagen(indiceActual);
+            });
 
-    // Eventos para las miniaturas
-    document.querySelectorAll('.miniatura').forEach(miniatura => {
-        miniatura.addEventListener('click', function () {
-            indiceActual = parseInt(this.getAttribute('data-index'));
-            mostrarImagen(indiceActual);
+            // Manejar clic en el botón "Aprobar"
+            document.getElementById('aprobarBtn').addEventListener('click', function () {
+                // Enviar solicitud AJAX para actualizar el estatus
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', '../db_consultas/actualizar_estatus.php', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        const response = JSON.parse(xhr.responseText);
+                        if (response.success) {
+                            alert(response.message); // Mostrar éxito
+                        } else {
+                            alert(response.message); // Mostrar error
+                        }
+                    }
+                };
+                xhr.send('id=' + idRequerimiento);
+            });
         });
     });
 </script>
