@@ -253,19 +253,21 @@ if ($result) {
 
     <!-- Detalle del requerimiento -->
     <div class="detalle-requerimiento">
-        <!-- Título -->
-        <h4 id="detalleTitulo">Seleccione un requerimiento</h4>
-        
-        <!-- Botones de acción (ocultos inicialmente) -->
-        <div id="botonesAccion" class="botones-accion">
-            <button class="btn btn-danger me-2" id="rechazarBtn">Rechazar</button>
-            <button class="btn btn-success" id="aprobarBtn">Aprobar</button>
+        <!-- Detalles del requerimiento -->
+        <div class="detalle-texto">
+            <h4 id="detalleTitulo">Seleccione un requerimiento</h4>
+            
+            <!-- Botones de acción (ocultos inicialmente) -->
+            <div id="botonesAccion" class="botones-accion">
+                <button class="btn btn-danger me-2" id="rechazarBtn">Rechazar</button>
+                <button class="btn btn-success" id="aprobarBtn">Aprobar</button>
+            </div>
+
+            <!-- Detalles del requerimiento -->
+            <p id="detalleTexto" class="mt-4">El contenido aparecerá aquí.</p>
         </div>
 
-        <!-- Detalles del requerimiento -->
-        <p id="detalleTexto" class="mt-4">El contenido aparecerá aquí.</p>
-
-        <!-- Carrusel de imágenes -->
+        <!-- Carrusel -->
         <div class="carrusel-container">
             <div class="carrusel">
                 <!-- Botón izquierdo -->
@@ -301,55 +303,49 @@ if ($result) {
             // Mostrar botones de acción
             document.getElementById('botonesAccion').style.display = 'block';
 
-            // Configurar el carrusel con las imágenes
-            const imagenGrande = document.getElementById('imagenGrande');
-            imagenGrande.src = imagenes[0];
-
+            // Mostrar el carrusel con las miniaturas
             const miniaturasContainer = document.querySelector('.miniaturas');
             miniaturasContainer.innerHTML = ''; // Limpiar miniaturas anteriores
             imagenes.forEach((imagen, index) => {
-                const miniatura = document.createElement('img');
-                miniatura.src = imagen;
-                miniatura.classList.add('miniatura');
-                miniatura.setAttribute('data-index', index);
-                miniaturasContainer.appendChild(miniatura);
+                const imgElement = document.createElement('img');
+                imgElement.src = imagen;
+                imgElement.alt = `Miniatura ${index + 1}`;
+                imgElement.classList.add('miniatura');
+                imgElement.dataset.index = index;
+                miniaturasContainer.appendChild(imgElement);
             });
 
-            let indiceActual = 0;
-
-            // Función para mostrar la imagen grande
-            const mostrarImagen = (indice) => {
-                imagenGrande.src = imagenes[indice];
-            };
-
-            // Flechas para cambiar las imágenes
-            document.getElementById('flechaIzquierda').addEventListener('click', () => {
-                indiceActual = (indiceActual > 0) ? indiceActual - 1 : imagenes.length - 1;
-                mostrarImagen(indiceActual);
-            });
-
-            document.getElementById('flechaDerecha').addEventListener('click', () => {
-                indiceActual = (indiceActual < imagenes.length - 1) ? indiceActual + 1 : 0;
-                mostrarImagen(indiceActual);
-            });
-
-            // Miniaturas
-            miniaturasContainer.querySelectorAll('.miniatura').forEach(miniatura => {
-                miniatura.addEventListener('click', () => {
-                    indiceActual = parseInt(miniatura.getAttribute('data-index'));
-                    mostrarImagen(indiceActual);
-                });
-            });
+            // Mostrar la primera imagen
+            mostrarImagen(0, imagenes);
         });
     });
 
-    // Eventos de prueba para botones
-    document.getElementById('rechazarBtn').addEventListener('click', function () {
-        alert('Requerimiento rechazado');
+    const miniaturas = document.querySelectorAll('.miniatura');
+    const imagenGrande = document.getElementById('imagenGrande');
+    const flechaIzquierda = document.getElementById('flechaIzquierda');
+    const flechaDerecha = document.getElementById('flechaDerecha');
+
+    let indiceActual = 0;
+
+    const mostrarImagen = (indice, imagenes) => {
+        imagenGrande.src = imagenes[indice];
+    };
+
+    flechaIzquierda.addEventListener('click', () => {
+        indiceActual = (indiceActual > 0) ? indiceActual - 1 : imagenes.length - 1;
+        mostrarImagen(indiceActual, imagenes);
     });
 
-    document.getElementById('aprobarBtn').addEventListener('click', function () {
-        alert('Requerimiento aprobado');
+    flechaDerecha.addEventListener('click', () => {
+        indiceActual = (indiceActual < imagenes.length - 1) ? indiceActual + 1 : 0;
+        mostrarImagen(indiceActual, imagenes);
+    });
+
+    miniaturas.forEach(miniatura => {
+        miniatura.addEventListener('click', () => {
+            indiceActual = parseInt(miniatura.getAttribute('data-index'));
+            mostrarImagen(indiceActual, imagenes);
+        });
     });
 </script>
 
