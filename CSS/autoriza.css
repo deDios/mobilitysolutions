@@ -303,6 +303,7 @@ li {
 .botones-accion {
     display: none; /* Ocultar botones por defecto */
     margin-top: 10px;
+    padding-top: 15px;
 }
 
 
