@@ -278,12 +278,8 @@ $imagenes = [
                   <p>Total Enganche: <span id="engancheTotal">$0.00</span></p>
               </div>
               <div class="col-md-4">
-                  <label for="interes" class="form-label">Interés Anual (%)</label>
-                  <input type="number" id="interes" class="form-control" value="12">
-              </div>
-              <div class="col-md-4">
                   <label for="plazo" class="form-label">Plazo (Meses)</label>
-                  <input type="number" id="plazo" class="form-control" value="36">
+                  <input type="text" id="plazo" class="form-control" value="60" readonly>
               </div>
           </div>
 
@@ -299,8 +295,6 @@ $imagenes = [
                           <tr>
                               <th>Mes</th>
                               <th>Pago Mensual</th>
-                              <th>Interés</th>
-                              <th>Capital</th>
                               <th>Saldo Restante</th>
                           </tr>
                       </thead>
@@ -311,68 +305,79 @@ $imagenes = [
 
           <div class="mt-3">
               <p class="text-muted" style="font-size: 0.8rem; font-style: italic;">
-                Cotización de carácter informativo los Precios/tarifas estan sujetos a cambios sin previo aviso, la mensualidad puede variar. Consulte términos y condiciones.
+                Cotización de carácter informativo los Precios/tarifas están sujetos a cambios sin previo aviso, la mensualidad puede variar. Consulte términos y condiciones.
               </p>
           </div>
 
       </div>
 
       <script>
-        const costoAuto = <?php echo $costo; ?>;
+          const costoAuto = <?php echo $costo; ?>;
 
-        function formatCurrency(amount) {
-            return '$' + amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-        }
+          function formatCurrency(amount) {
+              return '$' + amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+          }
 
-        function actualizarEngancheTotal() {
-            const enganchePorcentaje = parseFloat(document.getElementById('enganche').value);
-            const engancheMonto = (enganchePorcentaje / 100) * costoAuto;
-            document.getElementById('engancheTotal').textContent = formatCurrency(engancheMonto); // Formatear el total del enganche
-        }
+          function actualizarEngancheTotal() {
+              const enganchePorcentaje = parseFloat(document.getElementById('enganche').value);
+              const engancheMonto = (enganchePorcentaje / 100) * costoAuto;
+              document.getElementById('engancheTotal').textContent = formatCurrency(engancheMonto); // Formatear el total del enganche
+          }
 
-        document.getElementById('enganche').addEventListener('input', function () {
-            document.getElementById('engancheValor').textContent = this.value + '%';
-            actualizarEngancheTotal();
-        });
-        window.onload = function() {
-            const enganchePorcentaje = document.getElementById('enganche').value;
-            document.getElementById('engancheValor').textContent = enganchePorcentaje + '%'; // Actualiza el valor del porcentaje al cargar
-            actualizarEngancheTotal();
-        };
+          function calcularPlazo(enganchePorcentaje) {
+              if (enganchePorcentaje <= 10) {
+                  return 72;
+              } else if (enganchePorcentaje <= 20) {
+                  return 60;
+              } else if (enganchePorcentaje >= 51) {
+                  return 48;
+              } else {
+                  return 60; // Default caso, si no se encuentra en los rangos específicos
+              }
+          }
 
-        document.getElementById('calcular').addEventListener('click', function () {
-            const enganchePorcentaje = parseFloat(document.getElementById('enganche').value);
-            const interesAnual = parseFloat(document.getElementById('interes').value) / 100;
-            const plazoMeses = parseInt(document.getElementById('plazo').value);
+          document.getElementById('enganche').addEventListener('input', function () {
+              document.getElementById('engancheValor').textContent = this.value + '%';
+              actualizarEngancheTotal();
+              
+              const plazo = calcularPlazo(parseFloat(this.value));
+              document.getElementById('plazo').value = plazo; // Actualiza el plazo basado en el enganche
+          });
 
-            const engancheMonto = (enganchePorcentaje / 100) * costoAuto;
-            const montoFinanciar = costoAuto - engancheMonto;
-            const interesMensual = interesAnual / 12;
+          window.onload = function() {
+              const enganchePorcentaje = document.getElementById('enganche').value;
+              document.getElementById('engancheValor').textContent = enganchePorcentaje + '%'; // Actualiza el valor del porcentaje al cargar
+              actualizarEngancheTotal();
+              
+              const plazo = calcularPlazo(parseFloat(enganchePorcentaje));
+              document.getElementById('plazo').value = plazo; // Establece el valor del plazo basado en el enganche
+          };
 
-            // Cálculo del pago mensual
-            const pagoMensual = montoFinanciar * (interesMensual * Math.pow(1 + interesMensual, plazoMeses)) / (Math.pow(1 + interesMensual, plazoMeses) - 1);
+          document.getElementById('calcular').addEventListener('click', function () {
+              const enganchePorcentaje = parseFloat(document.getElementById('enganche').value);
+              const plazoMeses = parseInt(document.getElementById('plazo').value);
 
-            let saldoRestante = montoFinanciar;
-            const tabla = document.getElementById('tablaAmortizacion');
-            tabla.innerHTML = '';
+              const engancheMonto = (enganchePorcentaje / 100) * costoAuto;
+              const montoProrratear = costoAuto + (enganchePorcentaje <= 10 ? 0.80 : enganchePorcentaje <= 20 ? 0.60 : 0.30) * costoAuto;
+              const pagoMensual = montoProrratear / plazoMeses;
 
-            for (let mes = 1; mes <= plazoMeses; mes++) {
-                const interesMes = saldoRestante * interesMensual;
-                const capitalMes = pagoMensual - interesMes;
-                saldoRestante -= capitalMes;
+              let saldoRestante = montoProrratear;
+              const tabla = document.getElementById('tablaAmortizacion');
+              tabla.innerHTML = '';
 
-                const fila = `
-                    <tr>
-                        <td>${mes}</td>
-                        <td>${formatCurrency(pagoMensual)}</td> <!-- Limita a 2 decimales y agrega el símbolo $ -->
-                        <td>${formatCurrency(interesMes)}</td> <!-- Limita a 2 decimales y agrega el símbolo $ -->
-                        <td>${formatCurrency(capitalMes)}</td> <!-- Limita a 2 decimales y agrega el símbolo $ -->
-                        <td>${formatCurrency(saldoRestante > 0 ? saldoRestante : 0)}</td> <!-- Limita a 2 decimales y agrega el símbolo $ -->
-                    </tr>
-                `;
-                tabla.insertAdjacentHTML('beforeend', fila);
-            }
-        });
+              for (let mes = 1; mes <= plazoMeses; mes++) {
+                  saldoRestante -= pagoMensual;
+
+                  const fila = `
+                      <tr>
+                          <td>${mes}</td>
+                          <td>${formatCurrency(pagoMensual)}</td> <!-- Limita a 2 decimales y agrega el símbolo $ -->
+                          <td>${formatCurrency(saldoRestante > 0 ? saldoRestante : 0)}</td> <!-- Limita a 2 decimales y agrega el símbolo $ -->
+                      </tr>
+                  `;
+                  tabla.insertAdjacentHTML('beforeend', fila);
+              }
+          });
       </script>
 
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
