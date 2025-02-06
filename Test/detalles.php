@@ -325,9 +325,9 @@ $imagenes = [
           }
 
           function calcularPlazo(enganchePorcentaje) {
-              if (enganchePorcentaje <= 10) {
+              if (enganchePorcentaje <= 19) {
                   return 72;
-              } else if (enganchePorcentaje <= 20) {
+              } else if (enganchePorcentaje <= 50) {
                   return 60;
               } else if (enganchePorcentaje >= 51) {
                   return 48;
