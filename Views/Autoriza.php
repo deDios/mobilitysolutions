@@ -209,6 +209,7 @@ if ($result) {
 
         $requerimientos[] = [
             "id" => $row['id'],
+            "nombre" => $row['nombre'],
             "titulo" => $row['nombre'] . ' (' . $row['modelo'] . ' - ' . $row['marca'] . ')',
             "detalle" => 
                 "<strong>Nombre:</strong> " . $row['nombre'] . "<br>" .
