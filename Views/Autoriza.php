@@ -163,7 +163,6 @@
 
 
 <?php
-// Simulación de datos de requerimientos pendientes
 $inc = include "../db/Conexion.php";
 $query = 'select 
                 auto.id,
@@ -175,11 +174,15 @@ $query = 'select
                 sucursal.nombre AS sucursal, 
                 auto.color, 
                 auto.transmision, 
+                auto.interior, 
                 auto.kilometraje, 
                 auto.combustible, 
                 auto.cilindros, 
+                auto.eje, 
                 auto.pasajeros, 
-                auto.propietarios 
+                auto.propietarios,
+                auto.created_at, 
+                auto.updated_at 
           FROM mobility_solutions.tmx_auto AS auto
           LEFT JOIN mobility_solutions.tmx_sucursal AS sucursal ON auto.sucursal = sucursal.id 
           LEFT JOIN mobility_solutions.tmx_modelo AS modelo ON auto.modelo = modelo.id 
@@ -195,15 +198,24 @@ if ($result) {
         $requerimientos[] = [
             "id" => $row['id'],
             "titulo" => $row['nombre'] . ' (' . $row['modelo'] . ' - ' . $row['marca'] . ')',
-            "detalle" => "Costo: $" . number_format($row['costo'], 2) . "<br>" .
-                         "Sucursal: " . $row['sucursal'] . "<br>" .
-                         "Color: " . $row['color'] . "<br>" .
-                         "Transmisión: " . $row['transmision'] . "<br>" .
-                         "Kilometraje: " . number_format($row['kilometraje']) . " km<br>" .
-                         "Combustible: " . $row['combustible'] . "<br>" .
-                         "Cilindros: " . $row['cilindros'] . "<br>" .
-                         "Pasajeros: " . $row['pasajeros'] . "<br>" .
-                         "Propietarios previos: " . $row['propietarios']
+            "detalle" => 
+                "<strong>Nombre:</strong> " . $row['nombre'] . "<br>" .
+                "<strong>Modelo:</strong> " . $row['modelo'] . "<br>" .
+                "<strong>Marca:</strong> " . $row['marca'] . "<br>" .
+                "<strong>Mensualidad:</strong> $" . number_format($row['mensualidad'], 2) . "<br>" .
+                "<strong>Costo:</strong> $" . number_format($row['costo'], 2) . "<br>" .
+                "<strong>Sucursal:</strong> " . $row['sucursal'] . "<br>" .
+                "<strong>Color:</strong> " . $row['color'] . "<br>" .
+                "<strong>Transmisión:</strong> " . $row['transmision'] . "<br>" .
+                "<strong>Interior:</strong> " . $row['interior'] . "<br>" .
+                "<strong>Kilometraje:</strong> " . number_format($row['kilometraje']) . " km<br>" .
+                "<strong>Combustible:</strong> " . $row['combustible'] . "<br>" .
+                "<strong>Cilindros:</strong> " . $row['cilindros'] . "<br>" .
+                "<strong>Eje:</strong> " . $row['eje'] . "<br>" .
+                "<strong>Pasajeros:</strong> " . $row['pasajeros'] . "<br>" .
+                "<strong>Propietarios Previos:</strong> " . $row['propietarios'] . "<br>" .
+                "<strong>Creado:</strong> " . $row['created_at'] . "<br>" .
+                "<strong>Última Actualización:</strong> " . $row['updated_at']
         ];
     }
 } else {
