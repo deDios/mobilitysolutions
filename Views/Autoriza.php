@@ -289,12 +289,15 @@ if ($result) {
 </div>
 
 <script>
+    let imagenes = [];
+    let indiceActual = 0;
+
     // Manejar clics en los elementos de la lista
     document.querySelectorAll('.requerimiento-item').forEach(item => {
         item.addEventListener('click', function () {
             const detalle = this.getAttribute('data-detalle');
             const titulo = this.getAttribute('data-titulo');
-            const imagenes = JSON.parse(this.getAttribute('data-imagenes'));
+            imagenes = JSON.parse(this.getAttribute('data-imagenes'));
 
             // Actualiza el título y el contenido del detalle
             document.getElementById('detalleTitulo').textContent = titulo;
@@ -316,35 +319,30 @@ if ($result) {
             });
 
             // Mostrar la primera imagen
-            mostrarImagen(0, imagenes);
+            mostrarImagen(0);
         });
     });
 
-    const miniaturas = document.querySelectorAll('.miniatura');
-    const imagenGrande = document.getElementById('imagenGrande');
-    const flechaIzquierda = document.getElementById('flechaIzquierda');
-    const flechaDerecha = document.getElementById('flechaDerecha');
-
-    let indiceActual = 0;
-
-    const mostrarImagen = (indice, imagenes) => {
-        imagenGrande.src = imagenes[indice];
+    const mostrarImagen = (indice) => {
+        document.getElementById('imagenGrande').src = imagenes[indice];
     };
 
-    flechaIzquierda.addEventListener('click', () => {
+    // Eventos para las flechas de navegación
+    document.getElementById('flechaIzquierda').addEventListener('click', () => {
         indiceActual = (indiceActual > 0) ? indiceActual - 1 : imagenes.length - 1;
-        mostrarImagen(indiceActual, imagenes);
+        mostrarImagen(indiceActual);
     });
 
-    flechaDerecha.addEventListener('click', () => {
+    document.getElementById('flechaDerecha').addEventListener('click', () => {
         indiceActual = (indiceActual < imagenes.length - 1) ? indiceActual + 1 : 0;
-        mostrarImagen(indiceActual, imagenes);
+        mostrarImagen(indiceActual);
     });
 
-    miniaturas.forEach(miniatura => {
-        miniatura.addEventListener('click', () => {
-            indiceActual = parseInt(miniatura.getAttribute('data-index'));
-            mostrarImagen(indiceActual, imagenes);
+    // Eventos para las miniaturas
+    document.querySelectorAll('.miniatura').forEach(miniatura => {
+        miniatura.addEventListener('click', function () {
+            indiceActual = parseInt(this.getAttribute('data-index'));
+            mostrarImagen(indiceActual);
         });
     });
 </script>
