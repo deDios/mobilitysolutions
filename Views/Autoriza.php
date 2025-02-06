@@ -230,8 +230,8 @@ if ($result) {
                 <?php foreach ($requerimientos as $req) : ?>
                     <li class="list-group-item requerimiento-item" 
                         data-detalle="<?php echo htmlspecialchars($req['detalle']); ?>" 
-                        data-titulo="<?php echo htmlspecialchars($req['titulo']); ?>">
-                        <?php echo $req['titulo']; ?>
+                        data-titulo="<?php echo "{$req['id']} - {$req['nombre']} / (Req. de catálogo)"; ?>">
+                        <?php echo "{$req['id']} - {$req['nombre']} / (Req. de catálogo)"; ?>
                     </li>
                 <?php endforeach; ?>
             </ul>
