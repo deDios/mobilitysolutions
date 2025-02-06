@@ -335,6 +335,43 @@ li {
     padding-right: 10px;
 }
 
+.btn-primary {
+    background-color: #FFC00A;
+    border-color: #FFC00A;
+    color: #000;
+}
+
+.btn-primary:hover {
+    background-color: #e6ae09;
+    border-color: #e6ae09;
+}
+
+/* Cambiar color del círculo de la barra */
+input[type="range"]::-webkit-slider-thumb {
+    background-color: #FFC00A;
+    border: 2px solid #000;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+    background-color: #FFC00A;
+    border: 2px solid #000;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Cambiar color de las cabeceras de la tabla */
+table thead th {
+    background-color: #FFC00A;
+    color: #000;
+    text-align: center;
+}
+
 @media (max-width:700px){
     header{
         flex-direction: column;
@@ -434,6 +471,8 @@ li {
         background-color: rgba(0, 0, 0, 0.7);
     }
         
+    
+
     /*--------------------------------------*/
 
     .contenedor_carr .detalle_carr {
