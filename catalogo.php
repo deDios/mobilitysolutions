@@ -231,25 +231,10 @@
                           </div>
                           <div class="pt-1">
                             <select id="InputPasajeros" class="form-select" aria-label="Default select example" name="InputPasajeros">
-                                <option value="Todos">Selecciona pasajeros</option>                      
-                                <?php 
-                                $inc = include "db/Conexion.php";    
-                                    if ($inc){
-                                        $query = 'select pasajeros from mobility_solutions.v_catalogo_active group by pasajeros order by pasajeros ASC ;';
-                                        $result = mysqli_query($con,$query);  
-                                        if ($result){         
-                                            while($row = mysqli_fetch_assoc($result)){
-                                                $pasajeros = $row['pasajeros'];
-                                ?> 
-                                            <option value="<?php echo $pasajeros;?>"><?php echo $pasajeros;?></option>
-                                <?php
-                                            }
-                                        } else{
-                                                echo "Hubo un error en la consulta";
-                                        }
-                                            mysqli_free_result($result);                  
-                                    }
-                                ?>
+                                <option value="Todos">Selecciona pasajeros</option>                       
+                                <option value="2">2</option> 
+                                <option value="5">5</option> 
+                                <option value="6">7+</option> 
                             </select>
                           </div>
 
@@ -362,7 +347,11 @@
                           $query .=" AND c_type = '".$_GET['InputTipo']."' ";
                         }
                         if ($_GET['InputPasajeros'] != 'Todos' ){
-                          $query .=" AND pasajeros = '".$_GET['InputPasajeros']."' ";
+                          if ($_GET['InputPasajeros'] != '6' ){
+                            $query .=" AND pasajeros = '".$_GET['InputPasajeros']."' ";
+                          }else {
+                            $query .=" AND pasajeros > '".$_GET['InputPasajeros']."' ";
+                          }
                         }
                         $query .=" order by RAND()";
                         $result = mysqli_query($con,$query);  
@@ -469,7 +458,11 @@
                       $query .=" AND c_type = '".$_GET['InputTipo']."' ";
                     }
                     if ($_GET['InputPasajeros'] != 'Todos' ){
-                      $query .=" AND pasajeros = '".$_GET['InputPasajeros']."' ";
+                      if ($_GET['InputPasajeros'] != '6' ){
+                        $query .=" AND pasajeros = '".$_GET['InputPasajeros']."' ";
+                      }else {
+                        $query .=" AND pasajeros > '".$_GET['InputPasajeros']."' ";
+                      }
                     }
                     $query .=" order by RAND()";
                     $result = mysqli_query($con,$query);  
