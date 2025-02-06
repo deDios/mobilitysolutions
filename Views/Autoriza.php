@@ -221,6 +221,17 @@ if ($result) {
 } else {
     echo "Falla en conexión";
 }
+
+$imagenes = [
+    '../Imagenes/Catalogo/Auto '.$id.'/Img01.jpg',
+    '../Imagenes/Catalogo/Auto '.$id.'/Img02.jpg',
+    '../Imagenes/Catalogo/Auto '.$id.'/Img03.jpg',
+    '../Imagenes/Catalogo/Auto '.$id.'/Img04.jpg',
+    '../Imagenes/Catalogo/Auto '.$id.'/Img05.jpg',
+    '../Imagenes/Catalogo/Auto '.$id.'/Img06.jpg',
+    '../Imagenes/Catalogo/Auto '.$id.'/Img07.jpg',
+    '../Imagenes/Catalogo/Auto '.$id.'/Img08.jpg',
+];
 ?>
 
 <div class="contenedor">
