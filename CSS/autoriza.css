@@ -248,7 +248,8 @@ li {
 .detalle-requerimiento {
     display: flex;
     width: 70%;
-    padding: 100px;
+    padding: 10px;
+    padding-top: 140px;
     gap: 20px;
 }
 
