@@ -266,12 +266,6 @@ li {
     border: 2px solid #ccc;
 }
 
-.detalle-texto {
-    flex: 2; /* Asigna más espacio al texto */
-    padding-left: 20px;
-    position: relative;
-}
-
 #botonesAccion {
     display: flex;
     position: absolute;
@@ -286,6 +280,12 @@ li {
 .datalle_carrusel{
         display: grid;
         grid-template-columns: 2fr 4fr;
+}
+
+.detalle-texto {
+    flex: 2; /* Asigna más espacio al texto */
+    padding-left: 20px;
+    position: relative;
 }
 
 .carrusel {

@@ -270,10 +270,10 @@ if ($result) {
     <!-- Imagen y título alineados -->
     <div class="detalle-texto">
         <div class="detalle-imagen">
-            <img id="imagenDetalle" src="ruta-default.jpg" alt="Imagen de requerimiento" style="border-radius: 50px; width: 100px; height: 100px;">
+            <img id="imagenDetalle" src="../Imagenes/ver.jpg" alt="Imagen de requerimiento" style="border-radius: 50px; width: 100px; height: 100px;">
         </div>
 
-        <h4 id="detalleTitulo" class="mt-3">Seleccione un requerimiento</h4>
+        <h6 id="detalleTitulo" class="mt-3">Seleccione un requerimiento</h6>
 
         <!-- Botones alineados horizontalmente -->
         <div id="botonesAccion" class="botones-accion" style="display: none;">
