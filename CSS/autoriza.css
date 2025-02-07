@@ -254,7 +254,8 @@ li {
     align-items: flex-start;
 }
 .detalle-texto{
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
 }
 
 .detalle-imagen {
