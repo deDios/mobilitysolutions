@@ -43,7 +43,7 @@ if ($result){
         die("Error: No se obtuvo el ID del auto.");
     }
 
-    $insert_requerimiento = "INSERT INTO mobility_solutions.tmx_requerimiento (
+    $insert_requerimiento = "insert into mobility_solutions.tmx_requerimiento (
         tipo_req, status_req, id_auto, nombre, modelo, marca, mensualidad, costo, sucursal, color, transmision, 
         interior, kilometraje, combustible, cilindros, eje, estatus, pasajeros, propietarios, c_type, created_by, created_at
     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
