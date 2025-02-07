@@ -230,6 +230,76 @@ li {
 /* ----------------------------- Cierre para estilo para titulo de detalle auto  -----------------------------*/
 /* ----------------------------- Inicio carrusel detalle auto  -----------------------------*/
 
+.carrusel {
+    position: relative;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.imagen-grande img {
+    width: 100%; 
+    height: 600px;
+    object-fit: scale-down;
+    transition: transform 0.3s ease;
+}
+
+.miniaturas {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.miniatura {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border: 2px solid #ccc;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.miniatura:hover {
+    transform: scale(1.1);
+}
+
+.miniatura:active {
+    border-color: #007bff;
+}
+
+/* Flechas de navegación */
+.carrusel .flecha {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+    user-select: none;
+}
+
+.carrusel .flecha.izquierda {
+    left: 10px;
+}
+
+.carrusel .flecha.derecha {
+    right: 10px;
+}
+
+.carrusel .flecha:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
 
 
 /* ----------------------------- Cierre carrusel  detalle auto  -----------------------------*/
@@ -249,7 +319,7 @@ li {
 }
 .carrusel_carr_auto {
     position: relative;
-  }
+}
 .carrusel_carr_auto .imagen-r {
     position: absolute;
     left: 50%;
@@ -259,22 +329,65 @@ li {
     width: 75%; /* Ajusta el tamaño de la imagen pequeña */
     height: auto; /* Ajusta el tamaño de la imagen pequeña */
 }
+.cotizador {
+    padding-top: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.btn-primary {
+    background-color: #FFC00A !important;
+    border-color: #FFC00A !important;
+    color: #000 !important;
+}
+
+.btn-primary:hover {
+    background-color: #e6ae09 !important;
+    border-color: #e6ae09 !important;
+}
+
+/* Cabeceras de tabla */
+table thead th {
+    background-color: #FFC00A !important;
+    color: #000 !important;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Centrar valores de celdas */
+table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Barra de rango (círculo) */
+input[type="range"]::-webkit-slider-thumb {
+    background-color: #FFC00A !important;
+    border: 2px solid #000;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+    background-color: #FFC00A !important;
+    border: 2px solid #000;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.list-group-item .badge {
+    background-color: #FFC00A !important;
+    color: #000 !important;
+}
+
 
 @media (max-width:700px){
     header{
         flex-direction: column;
-    }
-    .carrusel_carr_auto {
-        position: relative;
-      }
-    .carrusel_carr_auto .imagen-r {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        -webkit-transform: translate(-50%, -50%);
-        width: 75%; /* Ajusta el tamaño de la imagen pequeña */
-        height: auto; /* Ajusta el tamaño de la imagen pequeña */
     }
     nav{
         padding: 0px 0px ;
@@ -299,19 +412,82 @@ li {
         padding-bottom: 10px;  
         border-radius: 10px 10px 10px 10px;    
     }
-    .contenedor_carr .carrusel_carr_auto {
-        width: 100%;
-        max-height: 320px;
-        padding-top: 10px;
+
+    .cotizador {
+        display: none;
     }
-    .carousel-inner > .item > img,
-        .carousel-inner > .item > a > img {
-      width: 80%;
-      min-height: 300px;
-      max-height: 300px;
-      object-fit: cover;
-      margin: auto;
-  }
+    /*---------------- */
+    
+    .carrusel {
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    } 
+    .carrusel .imagen-grande img {
+        width: 100%; 
+        height: 100%; 
+        object-fit: scale-down; 
+        transition: transform 0.3s ease;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }    
+    .carrusel .miniaturas {
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        margin-top: 0;
+        flex-wrap: wrap;
+        width: 100%;
+        overflow: hidden;
+    }    
+    .carrusel .miniatura {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border: 2px solid #ccc;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+    .miniaturas img {
+        width: 30px;
+        height: 30px;
+    }
+    .carrusel .imagen-grande {
+        margin-bottom: 0;
+    }
+    /* Estilo para las flechas */
+    .carrusel .flecha {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        font-size: 1.5rem;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 10;
+        user-select: none;
+    }
+    .carrusel .flecha.izquierda {
+        left: 10px;
+    }
+    .carrusel .flecha.derecha {
+        right: 10px;
+    }
+    .carrusel .flecha:hover {
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+        
+    
+
+    /*--------------------------------------*/
+
     .contenedor_carr .detalle_carr {
         display: grid;
         grid-template-columns: repeat(1,1fr);

@@ -153,68 +153,69 @@ $query = 'select
                 </div>
             </div>
 <!-------------------------------- Carrusel auto seleccionado -------------------------------------->
-          
-            <div class="carrusel_carr_auto">
-                <div class="div_carrusel">
-                <div id="demo" class="py-1 carousel carousel-dark slide" data-bs-ride="carousel" py-1>
-                    <!-- Indicators/dots -->
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-                        <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-                        <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-                        <button type="button" data-bs-target="#demo" data-bs-slide-to="3"></button>
-                        <button type="button" data-bs-target="#demo" data-bs-slide-to="4"></button>
-                        <button type="button" data-bs-target="#demo" data-bs-slide-to="5"></button>
-                        <button type="button" data-bs-target="#demo" data-bs-slide-to="6"></button>
-                        <button type="button" data-bs-target="#demo" data-bs-slide-to="7"></button>
-                    </div>
-                    <!-- The slideshow/carousel -->
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="Los Angeles" class="d-block w-100">
-                                </div>
-                                <div class="carousel-item">
-                                <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img02.jpg" class="d-block w-100">
-                                </div>
-                                <div class="carousel-item">
-                                <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img03.jpg" class="d-block w-100">
-                                </div>
-                                <div class="carousel-item">
-                                <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img04.jpg" class="d-block w-100">
-                                </div>
-                                <div class="carousel-item">
-                                <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img05.jpg" class="d-block w-100">
-                                </div>
-                                <div class="carousel-item">
-                                <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img06.jpg" class="d-block w-100">
-                                </div>
-                                <div class="carousel-item">
-                                <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img07.jpg" class="d-block w-100">
-                                </div>
-                                <div class="carousel-item">
-                                <img src="Imagenes/Catalogo/Auto <?php echo $id;?>/Img08.jpg" class="d-block w-100">
-                                </div>
-                            </div>
-                    <!-- Left and right controls/icons -->
-                    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon"></span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-                        <span class="carousel-control-next-icon"></span>
-                    </button>
-                </div>
-                </div>
-                <?php 
-                    if ($estatus == 3){
-                ?>
-                    <img src="Imagenes/reserved.jpg" alt="Imagen reserved" class="imagen-r">
-                <?php
-                    } else {
-                ?>
-                <?php
-                    }
-                ?>
-            </div>
+<?php
+$imagenes = [
+    '../Imagenes/Catalogo/Auto '.$id.'/Img01.jpg',
+    '../Imagenes/Catalogo/Auto '.$id.'/Img02.jpg',
+    '../Imagenes/Catalogo/Auto '.$id.'/Img03.jpg',
+    '../Imagenes/Catalogo/Auto '.$id.'/Img04.jpg',
+    '../Imagenes/Catalogo/Auto '.$id.'/Img05.jpg',
+    '../Imagenes/Catalogo/Auto '.$id.'/Img06.jpg',
+    '../Imagenes/Catalogo/Auto '.$id.'/Img07.jpg',
+    '../Imagenes/Catalogo/Auto '.$id.'/Img08.jpg',
+];
+?>          
+
+<div class="carrusel">
+    <!-- Botón izquierdo -->
+    <div class="flecha izquierda" id="flechaIzquierda">&#9664;</div>
+
+    <div class="imagen-grande">
+        <img src="<?php echo $imagenes[0]; ?>" id="imagenGrande" alt="Imagen seleccionada">
+    </div>
+
+    <!-- Botón derecho -->
+    <div class="flecha derecha" id="flechaDerecha">&#9654;</div>
+
+    <div class="miniaturas">
+        <?php foreach ($imagenes as $index => $imagen): ?>
+            <img src="<?php echo $imagen; ?>" alt="Miniatura <?php echo $index + 1; ?>" 
+                 class="miniatura" data-index="<?php echo $index; ?>" />
+        <?php endforeach; ?>
+    </div>
+</div>
+
+<script>
+    const miniaturas = document.querySelectorAll('.miniatura');
+    const imagenGrande = document.getElementById('imagenGrande');
+    const flechaIzquierda = document.getElementById('flechaIzquierda');
+    const flechaDerecha = document.getElementById('flechaDerecha');
+
+    let indiceActual = 0;
+
+    const imagenes = <?php echo json_encode($imagenes); ?>;
+
+    const mostrarImagen = (indice) => {
+        imagenGrande.src = imagenes[indice];
+    };
+
+    flechaIzquierda.addEventListener('click', () => {
+        indiceActual = (indiceActual > 0) ? indiceActual - 1 : imagenes.length - 1;
+        mostrarImagen(indiceActual);
+    });
+
+    flechaDerecha.addEventListener('click', () => {
+        indiceActual = (indiceActual < imagenes.length - 1) ? indiceActual + 1 : 0;
+        mostrarImagen(indiceActual);
+    });
+
+    miniaturas.forEach(miniatura => {
+        miniatura.addEventListener('click', () => {
+            indiceActual = parseInt(miniatura.getAttribute('data-index'));
+            mostrarImagen(indiceActual);
+        });
+    });
+</script>
 
 <!-------------------------------------- Div detalle de auto ----------------------------------------------------------->
             <div class="detalle_carr">
@@ -265,7 +266,132 @@ $query = 'select
         </div>
         <div class="cotizador">
 
-        </div>
+          <div class="container mt-5">
+          <h3>Cotizador</h3>
+
+          <div class="row">
+              <div class="col-md-4">
+                  <label for="enganche" class="form-label">Porcentaje de Enganche</label>
+                  <input type="range" class="form-range" id="enganche" min="5" max="100" step="1" value="20">
+                  <p>Enganche seleccionado: <span id="engancheValor">20%</span></p>
+                  <p>Total Enganche: <span id="engancheTotal">$0.00</span></p>
+              </div>
+              <div class="col-md-4">
+                  <label for="plazo" class="form-label">Plazo (Meses)</label>
+                  <input type="text" id="plazo" class="form-control" value="60" readonly>
+              </div>
+          </div>
+
+          <div class="mt-4">
+              <button class="btn btn-primary" id="calcular">Calcular</button>
+          </div>
+
+          <div class="mt-4">
+              <h4>Tabla informativa</h4>
+              <div style="max-height: 500px; overflow-y: auto;"> <!-- Aquí agregamos el scroll -->
+                  <table class="table table-bordered">
+                      <thead>
+                          <tr>
+                              <th>Mes</th>
+                              <th>Pago Mensual</th>
+                              <th>Saldo Restante</th>
+                          </tr>
+                      </thead>
+                      <tbody id="tablaAmortizacion"></tbody>
+                  </table>
+              </div>
+          </div>
+
+          <div class="mt-3">
+              <p class="" style="font-size: 0.8rem; font-style: italic; font-style: italic; color:red;">
+                Cotización de carácter informativo los Precios/tarifas están sujetos a cambios sin previo aviso, la mensualidad puede variar. Consulte términos y condiciones.
+              </p>
+          </div>
+
+          </div>
+
+          <script>
+          const costoAuto = <?php echo $costo; ?>;
+
+          function formatCurrency(amount) {
+              return '$' + amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+          }
+
+          function actualizarEngancheTotal() {
+              const enganchePorcentaje = parseFloat(document.getElementById('enganche').value);
+              const engancheMonto = (enganchePorcentaje / 100) * costoAuto;
+              document.getElementById('engancheTotal').textContent = formatCurrency(engancheMonto); // Formatear el total del enganche
+          }
+
+          function calcularPlazo(enganchePorcentaje) {
+              if (enganchePorcentaje <= 19) {
+                  return 72;
+              } else if (enganchePorcentaje <= 50) {
+                  return 60;
+              } else if (enganchePorcentaje >= 51) {
+                  return 48;
+              } else {
+                  return 60; // Default caso, si no se encuentra en los rangos específicos
+              }
+          }
+
+          document.getElementById('enganche').addEventListener('input', function () {
+              document.getElementById('engancheValor').textContent = this.value + '%';
+              actualizarEngancheTotal();
+              
+              const plazo = calcularPlazo(parseFloat(this.value));
+              document.getElementById('plazo').value = plazo; // Actualiza el plazo basado en el enganche
+          });
+
+          window.onload = function() {
+              const enganchePorcentaje = document.getElementById('enganche').value;
+              document.getElementById('engancheValor').textContent = enganchePorcentaje + '%'; // Actualiza el valor del porcentaje al cargar
+              actualizarEngancheTotal();
+              
+              const plazo = calcularPlazo(parseFloat(enganchePorcentaje));
+              document.getElementById('plazo').value = plazo; // Establece el valor del plazo basado en el enganche
+          };
+
+          document.getElementById('calcular').addEventListener('click', function () {
+              const enganchePorcentaje = parseFloat(document.getElementById('enganche').value);
+              const plazoMeses = parseInt(document.getElementById('plazo').value);
+
+              const engancheMonto = (enganchePorcentaje / 100) * costoAuto;
+              let montoProrratear, pagoMensual;
+
+              if (plazoMeses === 72) {
+                  montoProrratear = costoAuto * .018 * plazoMeses; // 1.8% del costo del auto para 72 meses
+                  pagoMensual = montoProrratear / plazoMeses;
+              } else if (plazoMeses === 60) {
+                  montoProrratear = costoAuto * .016 * plazoMeses; // 1.6% del costo del auto para 60 meses
+                  pagoMensual = montoProrratear / plazoMeses;
+              } else if (plazoMeses === 48) {
+                  montoProrratear = costoAuto * .013 * plazoMeses; // 1.3% del costo del auto para 48 meses
+                  pagoMensual = montoProrratear / plazoMeses;
+              }
+
+              let saldoRestante = montoProrratear;
+              const tabla = document.getElementById('tablaAmortizacion');
+              tabla.innerHTML = '';
+
+              for (let mes = 1; mes <= plazoMeses; mes++) {
+                  saldoRestante -= pagoMensual;
+
+                  const fila = `
+                      <tr>
+                          <td>${mes}</td>
+                          <td>${formatCurrency(pagoMensual)}</td> <!-- Limita a 2 decimales y agrega el símbolo $ -->
+                          <td>${formatCurrency(saldoRestante > 0 ? saldoRestante : 0)}</td> <!-- Limita a 2 decimales y agrega el símbolo $ -->
+                      </tr>
+                  `;
+                  tabla.insertAdjacentHTML('beforeend', fila);
+              }
+          });
+          </script>
+
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+          </div>
     </div>
 
 
