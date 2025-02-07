@@ -39,24 +39,32 @@ $query = 'insert into mobility_solutions.tmx_auto (nombre, modelo, marca, mensua
 $result = mysqli_query($con,$query); 
 if ($result){ 
     $id_auto = $con->insert_id;
+    if (!$id_auto) {
+        die("Error: No se obtuvo el ID del auto.");
+    }
 
-    $insert_requerimiento = "insert INTO mobility_solutions.tmx_requerimiento (
+    $insert_requerimiento = "INSERT INTO mobility_solutions.tmx_requerimiento (
         tipo_req, status_req, id_auto, nombre, modelo, marca, mensualidad, costo, sucursal, color, transmision, 
-        interior, kilometraje, combustible, cilindros, eje, estatus, pasajeros, propietarios, c_type, created_by
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        interior, kilometraje, combustible, cilindros, eje, estatus, pasajeros, propietarios, c_type, created_by, created_at
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
 
     $stmt = $con->prepare($insert_requerimiento);
+
     $tipo_req = 'Nuevo en catálogo';
     $status_req = 1;
     $estatus = 2;
 
-    $stmt->bind_param('siiiiiddisssdsisiiiis', $tipo_req, $status_req, $id_auto, $auto, $modelo, $marca, 
-        $mensualidad, $costo, $sucursal, $color, $transmision, $interior, $kilometraje, $combustible, $cilindros, 
-        $eje, $estatus, $pasajeros, $propietarios, $c_type, $id_user);
-    
+    $stmt->bind_param(
+        'siiiiiddisssdsisiiisi',
+        $tipo_req, $status_req, $id_auto, $auto, $modelo, $marca, $mensualidad, $costo, $sucursal,
+        $color, $transmision, $interior, $kilometraje, $combustible, $cilindros,
+        $eje, $estatus, $pasajeros, $propietarios, $c_type, $id_user
+    );
+
     if (!$stmt->execute()) {
-        error_log("Error al insertar en tmx_requerimiento: " . $stmt->error);
+        die("Error en consulta tmx_requerimiento: " . $stmt->error);
     }
+
     $stmt->close();
 }
 else{
