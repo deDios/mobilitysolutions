@@ -283,19 +283,21 @@ if ($result) {
 
         <hr class="mt-5 mb-3"/>
 
-        <p id="detalleTexto">El contenido aparecerá aquí.</p>
+        <div class="datalle_carrusel">
+            <p id="detalleTexto">El contenido aparecerá aquí.</p>
 
-        <!-- Carrusel debajo del contenido -->
-        <div id="carrusel" class="carrusel" style="display: none;">
-            <h5>Imágenes del vehículo</h5>
-            <div class="flechas">
-                <div class="flecha izquierda" id="flechaIzquierda">&#9664;</div>
-                <div class="flecha derecha" id="flechaDerecha">&#9654;</div>
+            <!-- Carrusel debajo del contenido -->
+            <div id="carrusel" class="carrusel" style="display: none;">
+                <h5>Imágenes del vehículo</h5>
+                <div class="flechas">
+                    <div class="flecha izquierda" id="flechaIzquierda">&#9664;</div>
+                    <div class="flecha derecha" id="flechaDerecha">&#9654;</div>
+                </div>
+                <div class="imagen-grande">
+                    <img src="" id="imagenGrande" alt="Imagen seleccionada">
+                </div>
+                <div class="miniaturas"></div>
             </div>
-            <div class="imagen-grande">
-                <img src="" id="imagenGrande" alt="Imagen seleccionada">
-            </div>
-            <div class="miniaturas"></div>
         </div>
     </div>
 </div>

@@ -267,7 +267,7 @@ li {
 }
 
 .detalle-texto {
-    width: 30%; /* Asigna el 30% de ancho al detalle */
+    flex: 2; /* Asigna más espacio al texto */
     padding-left: 20px;
     position: relative;
 }
@@ -283,8 +283,13 @@ li {
     margin-left: 5px;
 }
 
+.datalle_carrusel{
+        display: grid;
+        grid-template-columns: 2fr 4fr;
+}
+
 .carrusel {
-    width: 65%; /* Asigna el 70% de ancho al carrusel */
+    flex: 1; /* Hace que el carrusel ocupe el espacio restante */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -315,7 +320,6 @@ li {
     margin: 5px;
     cursor: pointer;
 }
-
 
 
 @media (max-width:700px){
