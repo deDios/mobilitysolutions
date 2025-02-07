@@ -253,6 +253,10 @@ li {
     gap: 20px;
     align-items: flex-start;
 }
+.deta_texto{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
 
 .detalle-imagen {
     flex: 0 0 100px; /* Hace que la imagen no se expanda */
