@@ -268,7 +268,7 @@ li {
 }
 
 .detalle-texto {
-    flex: 3;
+    flex: 2; /* Reducción para dar más espacio al carrusel */
     padding-left: 20px;
     position: relative;
 }
@@ -285,7 +285,7 @@ li {
 }
 
 .carrusel {
-    width: 65%;
+    width: 40%; /* Asignar espacio para el carrusel */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -315,7 +315,6 @@ li {
     margin: 5px;
     cursor: pointer;
 }
-
 
 
 
