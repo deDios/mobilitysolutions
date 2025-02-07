@@ -257,7 +257,7 @@ if ($result) {
                 <li class="list-group-item requerimiento-item" 
                     data-id="<?php echo $req['id']; ?>"
                     data-detalle="<?php echo htmlspecialchars($req['detalle']); ?>" 
-                    data-titulo="<?php echo "{$req['id']} - {$req['nombre']} / (Req. de catálogo)"; ?>"
+                    data-titulo="<?php echo "{$req['id']} - {$req['nombre']} / (Req: {$req['tipo_req']} )"; ?>"
                     data-imagenes='<?php echo json_encode($req['imagenes']); ?>'>
                     <?php echo "{$req['id']} - {$req['nombre']} / (Req. de catálogo)"; ?>
                 </li>
