@@ -379,6 +379,8 @@
  <!-- Formulario ------------------------------------------------------------->                   
     <form action="../db_consultas/insert_sp.php" method="POST" enctype="multipart/form-data">
                     
+    <input id="Inputuser" type="text" class="form-control" name="Inputuser" value="<?php echo $user_id;?>" required>
+
                     <div class="col-12 mt-2">
                         <label for="InputSucursal" class="form-label">Sucursal</label>
                         <select id="InputSucursal" class="form-select" aria-label="Default select example" name="InputSucursal">
