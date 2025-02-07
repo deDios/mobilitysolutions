@@ -253,6 +253,9 @@ li {
     gap: 20px;
     align-items: flex-start;
 }
+.detalle-texto{
+    flex-direction: row;
+}
 
 .detalle-imagen {
     flex: 0 0 100px; /* Hace que la imagen no se expanda */

@@ -269,12 +269,12 @@ if ($result) {
     <div class="detalle-requerimiento">
     <!-- Imagen y título alineados -->
     <div class="detalle-texto">
-        <div class="detalle-imagen">
-            <img id="imagenDetalle" src="../Imagenes/ver.jpg" alt="Imagen de requerimiento" style="border-radius: 50px; width: 100px; height: 100px;">
+        <div class="img_detalle">
+            <div class="detalle-imagen">
+                <img id="imagenDetalle" src="../Imagenes/ver.jpg" alt="Imagen de requerimiento" style="border-radius: 50px; width: 100px; height: 100px;">
+            </div>
+            <h6 id="detalleTitulo" class="mt-3">Seleccione un requerimiento</h6>
         </div>
-
-        <h6 id="detalleTitulo" class="mt-3">Seleccione un requerimiento</h6>
-
         <!-- Botones alineados horizontalmente -->
         <div id="botonesAccion" class="botones-accion" style="display: none;">
             <button class="btn btn-danger me-2" id="rechazarBtn">Rechazar</button>
