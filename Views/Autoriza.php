@@ -166,6 +166,12 @@
 $inc = include "../db/Conexion.php";
 $query = 'select 
                 auto.id,
+                auto.id_auto,
+                auto.tipo_req,
+                auto.comentarios,
+                auto.req_created_at,
+                auto.c_type,
+                auto.created_by,
                 m_auto.auto AS nombre, 
                 modelo.nombre AS modelo, 
                 marca.nombre AS marca, 
@@ -183,12 +189,12 @@ $query = 'select
                 auto.propietarios,
                 auto.created_at, 
                 auto.updated_at 
-          FROM mobility_solutions.tmx_auto AS auto
+          FROM mobility_solutions.tmx_requerimiento AS auto
           LEFT JOIN mobility_solutions.tmx_sucursal AS sucursal ON auto.sucursal = sucursal.id 
           LEFT JOIN mobility_solutions.tmx_modelo AS modelo ON auto.modelo = modelo.id 
           LEFT JOIN mobility_solutions.tmx_marca AS marca ON auto.marca = marca.id
           LEFT JOIN mobility_solutions.tmx_marca_auto AS m_auto ON auto.nombre = m_auto.id
-          WHERE auto.estatus = 2';
+          WHERE auto.status_req = 1;';
 
 $result = mysqli_query($con, $query);
 $requerimientos = [];
@@ -209,8 +215,14 @@ if ($result) {
 
         $requerimientos[] = [
             "id" => $row['id'],
+            "id_auto" => $row['id_auto'],
+            "tipo_req" => $row['tipo_req'],
+            "comentarios" => $row['comentarios'],
+            "req_created_at" => $row['req_created_at'],
+            "c_type" => $row['c_type'],
+            "created_by" => $row['created_by'],
             "nombre" => $row['nombre'],
-            "titulo" => $row['nombre'] . ' (' . $row['modelo'] . ' - ' . $row['marca'] . ')',
+            "titulo" => $row['id'] . ' (' . $row['tipo_req'] . ')',
             "detalle" => 
                 "<strong>Nombre:</strong> " . $row['nombre'] . "<br>" .
                 "<strong>Modelo:</strong> " . $row['modelo'] . "<br>" .
