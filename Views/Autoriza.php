@@ -265,21 +265,28 @@ if ($result) {
         </ul>
     </div>
 
-    <!-- Detalle del requerimiento (a la izquierda) -->
+    <!-- Detalle del requerimiento -->
     <div class="detalle-requerimiento">
+        <!-- Imagen circular -->
+        <div class="detalle-imagen">
+            <img id="imagenCircular" src="" alt="Imagen del requerimiento" />
+        </div>
+
+        <!-- Texto del detalle -->
         <div class="detalle-texto">
             <h4 id="detalleTitulo">Seleccione un requerimiento</h4>
 
-            <!-- Botones de acción (aquí abajo del título) -->
             <div id="botonesAccion" class="botones-accion">
                 <button class="btn btn-danger me-2" id="rechazarBtn">Rechazar</button>
                 <button class="btn btn-success" id="aprobarBtn">Aprobar</button>
             </div>
 
+            <hr class="mt-5 mb-3" />
+
             <p id="detalleTexto" class="mt-4">El contenido aparecerá aquí.</p>
         </div>
-        
-        <!-- Carrusel (a la derecha de los detalles) -->
+
+        <!-- Carrusel de imágenes -->
         <div id="carrusel" class="carrusel" style="display:none;">
             <h5>Imágenes del vehículo</h5>
             <div class="flechas">
@@ -291,9 +298,7 @@ if ($result) {
                 <img src="" id="imagenGrande" alt="Imagen seleccionada">
             </div>
 
-            <div class="miniaturas">
-                <!-- Las miniaturas se agregarán dinámicamente con JavaScript -->
-            </div>
+            <div class="miniaturas"></div>
         </div>
     </div>
 </div>
@@ -360,7 +365,7 @@ if ($result) {
                 mostrarImagen(indiceActual);
             });
 
-            // Manejar clic en el botón "Aprobar"
+            // Manejar clic en el botón "Aprobar" 
             document.getElementById('aprobarBtn').addEventListener('click', function () {
                 // Enviar solicitud AJAX para actualizar el estatus
                 const xhr = new XMLHttpRequest();
