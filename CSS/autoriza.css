@@ -254,12 +254,10 @@ li {
     align-items: flex-start;
 }
 .detalle-requerimiento .img_detalle{
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 8fr;
 }
 
-.detalle-imagen {
-    flex: 0 0 100px; /* Hace que la imagen no se expanda */
-}
 
 .detalle-imagen img {
     width: 100px;
