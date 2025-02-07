@@ -252,6 +252,7 @@ li {
     padding-top: 140px;
     gap: 20px;
     align-items: flex-start;
+    flex-wrap: nowrap; /* Asegura que no se acomoden en fila */
 }
 
 .detalle-imagen {
@@ -268,7 +269,7 @@ li {
 }
 
 .detalle-texto {
-    flex: 2; /* Reducción para dar más espacio al carrusel */
+    flex: 2; /* Da más espacio al texto */
     padding-left: 20px;
     position: relative;
 }
@@ -285,11 +286,12 @@ li {
 }
 
 .carrusel {
-    width: 40%; /* Asignar espacio para el carrusel */
+    width: 40%; /* Ancho del carrusel */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    overflow: hidden; /* Asegura que las imágenes del carrusel no se desborden */
 }
 
 .flechas {
@@ -315,6 +317,7 @@ li {
     margin: 5px;
     cursor: pointer;
 }
+
 
 
 
