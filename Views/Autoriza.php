@@ -306,6 +306,16 @@ if ($result) {
 
 
 <script>
+    // Variables para el manejo del carrusel
+    let indiceActual = 0;
+
+    // Función para limpiar los event listeners previos de las flechas y miniaturas
+    const limpiarEventos = (elemento) => {
+        const nuevoElemento = elemento.cloneNode(true);
+        elemento.parentNode.replaceChild(nuevoElemento, elemento);
+        return nuevoElemento;
+    };
+
     // Manejar clics en los elementos de la lista
     document.querySelectorAll('.requerimiento-item').forEach(item => {
         item.addEventListener('click', function () {
@@ -319,18 +329,18 @@ if ($result) {
             document.getElementById('detalleTexto').innerHTML = detalle;
 
             // Mostrar botones de acción
-            document.getElementById('botonesAccion').style.display = 'block';
+            document.getElementById('botonesAccion').style.display = 'flex';
 
-            // Mostrar el carrusel
-            document.getElementById('carrusel').style.display = 'block';
+            // Mostrar el carrusel si hay imágenes
+            const carrusel = document.getElementById('carrusel');
+            carrusel.style.display = imagenes.length ? 'block' : 'none';
 
-            // Inicializa el carrusel
-            let indiceActual = 0;
             const imagenGrande = document.getElementById('imagenGrande');
             const miniaturasContainer = document.querySelector('.miniaturas');
-            imagenGrande.src = imagenes[indiceActual];
+            indiceActual = 0;
+            imagenGrande.src = imagenes[indiceActual] || '';
 
-            // Agregar miniaturas al carrusel
+            // Limpiar miniaturas y agregar las nuevas
             miniaturasContainer.innerHTML = '';
             imagenes.forEach((imagen, index) => {
                 const img = document.createElement('img');
@@ -341,12 +351,13 @@ if ($result) {
                 miniaturasContainer.appendChild(img);
             });
 
-            // Función para mostrar la imagen grande
+            // Mostrar la imagen grande según el índice
             const mostrarImagen = (indice) => {
                 imagenGrande.src = imagenes[indice];
             };
 
-            // Manejar clic en miniaturas
+            // Limpiar y manejar clic en miniaturas
+            miniaturasContainer = limpiarEventos(miniaturasContainer);
             miniaturasContainer.querySelectorAll('.miniatura').forEach(miniatura => {
                 miniatura.addEventListener('click', () => {
                     indiceActual = parseInt(miniatura.getAttribute('data-index'));
@@ -354,19 +365,23 @@ if ($result) {
                 });
             });
 
-            // Manejar clic en las flechas
-            document.getElementById('flechaIzquierda').addEventListener('click', () => {
+            // Limpiar flechas y asignar eventos
+            const flechaIzquierda = limpiarEventos(document.getElementById('flechaIzquierda'));
+            const flechaDerecha = limpiarEventos(document.getElementById('flechaDerecha'));
+
+            flechaIzquierda.addEventListener('click', () => {
                 indiceActual = (indiceActual > 0) ? indiceActual - 1 : imagenes.length - 1;
                 mostrarImagen(indiceActual);
             });
 
-            document.getElementById('flechaDerecha').addEventListener('click', () => {
+            flechaDerecha.addEventListener('click', () => {
                 indiceActual = (indiceActual < imagenes.length - 1) ? indiceActual + 1 : 0;
                 mostrarImagen(indiceActual);
             });
 
-            // Manejar clic en el botón "Aprobar" 
-            document.getElementById('aprobarBtn').addEventListener('click', function () {
+            // Manejar clic en el botón "Aprobar"
+            const aprobarBtn = limpiarEventos(document.getElementById('aprobarBtn'));
+            aprobarBtn.addEventListener('click', function () {
                 // Enviar solicitud AJAX para actualizar el estatus
                 const xhr = new XMLHttpRequest();
                 xhr.open('POST', '../db_consultas/actualizar_estatus.php', true);
@@ -375,9 +390,9 @@ if ($result) {
                     if (xhr.readyState === 4 && xhr.status === 200) {
                         const response = JSON.parse(xhr.responseText);
                         if (response.success) {
-                            alert(response.message); // Mostrar éxito
+                            alert(response.message);
                         } else {
-                            alert(response.message); // Mostrar error
+                            alert(response.message);
                         }
                     }
                 };
@@ -388,6 +403,7 @@ if ($result) {
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
