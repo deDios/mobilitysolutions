@@ -267,7 +267,7 @@ li {
 }
 
 .detalle-texto {
-    flex: 2; /* Asigna más espacio al texto */
+    width: 30%; /* Asigna el 30% de ancho al detalle */
     padding-left: 20px;
     position: relative;
 }
@@ -284,7 +284,7 @@ li {
 }
 
 .carrusel {
-    flex: 1; /* Hace que el carrusel ocupe el espacio restante */
+    width: 65%; /* Asigna el 70% de ancho al carrusel */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -315,6 +315,7 @@ li {
     margin: 5px;
     cursor: pointer;
 }
+
 
 
 @media (max-width:700px){
