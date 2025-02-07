@@ -267,56 +267,41 @@ if ($result) {
 
     <!-- Detalle del requerimiento -->
     <div class="detalle-requerimiento">
-        <!-- Imagen circular -->
+    <!-- Imagen y título alineados -->
+    <div class="detalle-texto">
         <div class="detalle-imagen">
-            <img id="imagenCircular" src="" alt="Imagen del requerimiento" />
+            <img id="imagenDetalle" src="ruta-default.jpg" alt="Imagen de requerimiento" style="border-radius: 50px; width: 100px; height: 100px;">
         </div>
 
-        <!-- Texto del detalle -->
-        <div class="detalle-texto">
-            <h4 id="detalleTitulo">Seleccione un requerimiento</h4>
+        <h4 id="detalleTitulo" class="mt-3">Seleccione un requerimiento</h4>
 
-            <div id="botonesAccion" class="botones-accion">
-                <button class="btn btn-danger me-2" id="rechazarBtn">Rechazar</button>
-                <button class="btn btn-success" id="aprobarBtn">Aprobar</button>
-            </div>
-
-            <hr class="mt-5 mb-3" />
-
-            <p id="detalleTexto" class="mt-4">El contenido aparecerá aquí.</p>
+        <!-- Botones alineados horizontalmente -->
+        <div id="botonesAccion" class="botones-accion" style="display: none;">
+            <button class="btn btn-danger me-2" id="rechazarBtn">Rechazar</button>
+            <button class="btn btn-success" id="aprobarBtn">Aprobar</button>
         </div>
 
-        <!-- Carrusel de imágenes -->
-        <div id="carrusel" class="carrusel" style="display:none;">
+        <hr class="mt-5 mb-3"/>
+
+        <p id="detalleTexto">El contenido aparecerá aquí.</p>
+
+        <!-- Carrusel debajo del contenido -->
+        <div id="carrusel" class="carrusel" style="display: none;">
             <h5>Imágenes del vehículo</h5>
             <div class="flechas">
                 <div class="flecha izquierda" id="flechaIzquierda">&#9664;</div>
                 <div class="flecha derecha" id="flechaDerecha">&#9654;</div>
             </div>
-
             <div class="imagen-grande">
                 <img src="" id="imagenGrande" alt="Imagen seleccionada">
             </div>
-
             <div class="miniaturas"></div>
         </div>
     </div>
 </div>
-
-
+</div>
 
 <script>
-    // Variables para el manejo del carrusel
-    let indiceActual = 0;
-
-    // Función para limpiar los event listeners previos de las flechas y miniaturas
-    const limpiarEventos = (elemento) => {
-        const nuevoElemento = elemento.cloneNode(true);
-        elemento.parentNode.replaceChild(nuevoElemento, elemento);
-        return nuevoElemento;
-    };
-
-    // Manejar clics en los elementos de la lista
     document.querySelectorAll('.requerimiento-item').forEach(item => {
         item.addEventListener('click', function () {
             const detalle = this.getAttribute('data-detalle');
@@ -324,40 +309,39 @@ if ($result) {
             const idRequerimiento = this.getAttribute('data-id');
             const imagenes = JSON.parse(this.getAttribute('data-imagenes'));
 
-            // Actualiza el título y el contenido del detalle
+            // Mostrar título y detalle
             document.getElementById('detalleTitulo').textContent = titulo;
             document.getElementById('detalleTexto').innerHTML = detalle;
 
             // Mostrar botones de acción
             document.getElementById('botonesAccion').style.display = 'flex';
 
-            // Mostrar el carrusel si hay imágenes
+            // Mostrar el carrusel solo si hay imágenes
             const carrusel = document.getElementById('carrusel');
             carrusel.style.display = imagenes.length ? 'block' : 'none';
 
             const imagenGrande = document.getElementById('imagenGrande');
             const miniaturasContainer = document.querySelector('.miniaturas');
-            indiceActual = 0;
+            let indiceActual = 0;
             imagenGrande.src = imagenes[indiceActual] || '';
 
-            // Limpiar miniaturas y agregar las nuevas
+            // Limpiar miniaturas
             miniaturasContainer.innerHTML = '';
             imagenes.forEach((imagen, index) => {
                 const img = document.createElement('img');
                 img.src = imagen;
-                img.alt = 'Miniatura ' + (index + 1);
+                img.alt = `Miniatura ${index + 1}`;
                 img.classList.add('miniatura');
                 img.dataset.index = index;
                 miniaturasContainer.appendChild(img);
             });
 
-            // Mostrar la imagen grande según el índice
+            // Mostrar imagen grande
             const mostrarImagen = (indice) => {
                 imagenGrande.src = imagenes[indice];
             };
 
-            // Limpiar y manejar clic en miniaturas
-            miniaturasContainer = limpiarEventos(miniaturasContainer);
+            // Manejar clics en miniaturas
             miniaturasContainer.querySelectorAll('.miniatura').forEach(miniatura => {
                 miniatura.addEventListener('click', () => {
                     indiceActual = parseInt(miniatura.getAttribute('data-index'));
@@ -365,42 +349,20 @@ if ($result) {
                 });
             });
 
-            // Limpiar flechas y asignar eventos
-            const flechaIzquierda = limpiarEventos(document.getElementById('flechaIzquierda'));
-            const flechaDerecha = limpiarEventos(document.getElementById('flechaDerecha'));
-
-            flechaIzquierda.addEventListener('click', () => {
+            // Flechas del carrusel
+            document.getElementById('flechaIzquierda').onclick = () => {
                 indiceActual = (indiceActual > 0) ? indiceActual - 1 : imagenes.length - 1;
                 mostrarImagen(indiceActual);
-            });
+            };
 
-            flechaDerecha.addEventListener('click', () => {
+            document.getElementById('flechaDerecha').onclick = () => {
                 indiceActual = (indiceActual < imagenes.length - 1) ? indiceActual + 1 : 0;
                 mostrarImagen(indiceActual);
-            });
-
-            // Manejar clic en el botón "Aprobar"
-            const aprobarBtn = limpiarEventos(document.getElementById('aprobarBtn'));
-            aprobarBtn.addEventListener('click', function () {
-                // Enviar solicitud AJAX para actualizar el estatus
-                const xhr = new XMLHttpRequest();
-                xhr.open('POST', '../db_consultas/actualizar_estatus.php', true);
-                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState === 4 && xhr.status === 200) {
-                        const response = JSON.parse(xhr.responseText);
-                        if (response.success) {
-                            alert(response.message);
-                        } else {
-                            alert(response.message);
-                        }
-                    }
-                };
-                xhr.send('id=' + idRequerimiento);
-            });
+            };
         });
     });
 </script>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
