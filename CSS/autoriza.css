@@ -253,7 +253,7 @@ li {
     gap: 20px;
     align-items: flex-start;
 }
-.deta_texto{
+.detalle-requerimiento  .img_detalle{
     display: grid;
     grid-template-columns: 1fr 3fr;
 }

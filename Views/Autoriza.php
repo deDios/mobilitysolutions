@@ -268,7 +268,8 @@ if ($result) {
     <!-- Detalle del requerimiento -->
     <div class="detalle-requerimiento">
     <!-- Imagen y título alineados -->
-    <div class="deta_texto">
+    <div class="detalle-texto">
+        
         <div class="img_detalle">
             <div class="detalle-imagen">
                 <img id="imagenDetalle" src="../Imagenes/ver.jpg" alt="Imagen de requerimiento" style="border-radius: 50px; width: 100px; height: 100px;">
