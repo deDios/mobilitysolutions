@@ -253,9 +253,8 @@ li {
     gap: 20px;
     align-items: flex-start;
 }
-.detalle-requerimiento  .img_detalle{
-    display: grid;
-    grid-template-columns: 1fr 3fr;
+.detalle-requerimiento .img_detalle{
+    flex-direction: row;
 }
 
 .detalle-imagen {
