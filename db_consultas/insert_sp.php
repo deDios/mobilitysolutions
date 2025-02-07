@@ -43,13 +43,21 @@ if ($result){
     $insert_requerimiento = "insert INTO mobility_solutions.tmx_requerimiento (
         tipo_req, status_req, id_auto, nombre, modelo, marca, mensualidad, costo, sucursal, color, transmision, 
         interior, kilometraje, combustible, cilindros, eje, estatus, pasajeros, propietarios, c_type, created_by
-    ) VALUES (
-        'Nuevo en catálogo', 1, $id_auto, $auto, $modelo, $marca, $mensualidad, $costo, $sucursal, 
-        $color_valor, $transmision_valor, $interior_valor, $kilometraje, $combustible_valor, $cilindros, 
-        $eje_valor, 2, $pasajeros, $propietarios, $ctype_valor, $id_user
-    )";
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    mysqli_query($con, $insert_requerimiento);
+    $stmt = $con->prepare($insert_requerimiento);
+    $tipo_req = 'Nuevo en catálogo';
+    $status_req = 1;
+    $estatus = 2;
+
+    $stmt->bind_param('siiiiiddisssdsisiiiis', $tipo_req, $status_req, $id_auto, $auto, $modelo, $marca, 
+        $mensualidad, $costo, $sucursal, $color, $transmision, $interior, $kilometraje, $combustible, $cilindros, 
+        $eje, $estatus, $pasajeros, $propietarios, $c_type, $id_user);
+    
+    if (!$stmt->execute()) {
+        error_log("Error al insertar en tmx_requerimiento: " . $stmt->error);
+    }
+    $stmt->close();
 }
 else{
     // echo "Falla en conexión";
