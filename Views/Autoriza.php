@@ -169,7 +169,7 @@ $query = 'select
                 auto.id_auto,
                 auto.tipo_req,
                 auto.comentarios,
-                auto.req_created_at,
+                DATE_SUB(auto.req_created_at, INTERVAL 6 HOUR) as req_created_at, 
                 auto.c_type,
                 auto.created_by,
                 m_auto.auto AS nombre, 
@@ -260,6 +260,7 @@ if ($result) {
                     data-titulo="<?php echo "{$req['id']} / (Req: {$req['tipo_req']} )"; ?>"
                     data-imagenes='<?php echo json_encode($req['imagenes']); ?>'>
                     <?php echo "{$req['id']} - {$req['nombre']} / (Req. de catálogo)"; ?>
+                    <br>
                     <?php echo "Date: {$req['req_created_at']}"; ?>
                 </li>
             <?php endforeach; ?>
