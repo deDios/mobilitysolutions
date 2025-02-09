@@ -260,6 +260,7 @@ if ($result) {
                     data-titulo="<?php echo "{$req['id']} / (Req: {$req['tipo_req']} )"; ?>"
                     data-imagenes='<?php echo json_encode($req['imagenes']); ?>'>
                     <?php echo "{$req['id']} - {$req['nombre']} / (Req. de catálogo)"; ?>
+                    <?php echo "Date: {$req['req_created_at']}"; ?>
                 </li>
             <?php endforeach; ?>
         </ul>
