@@ -282,7 +282,7 @@ if ($result) {
             <button class="btn btn-success" id="aprobarBtn">Aprobar</button>
         </div>
 
-        <hr class="mt-5 mb-3"/>
+        <hr class="mt-2 mb-3"/>
 
         <div class="datalle_carrusel">
             <p id="detalleTexto">El contenido aparecerá aquí.</p>
