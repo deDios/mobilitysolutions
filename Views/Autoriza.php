@@ -259,7 +259,7 @@ if ($result) {
                     data-detalle="<?php echo htmlspecialchars($req['detalle']); ?>" 
                     data-titulo="<?php echo "{$req['id']} / (Req: {$req['tipo_req']} )"; ?>"
                     data-imagenes='<?php echo json_encode($req['imagenes']); ?>'>
-                    <?php echo "{$req['id']} - {$req['nombre']} / (Req. de catálogo)"; ?>
+                    <?php echo "{$req['id']} - {$req['nombre']} / (Catálogo)"; ?>
                     <br>
                     <p class="" style="font-size: 0.8rem;"> <?php echo "Date: {$req['req_created_at']}"; ?> </p>
                 </li>
