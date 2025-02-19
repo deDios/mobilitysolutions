@@ -257,6 +257,7 @@ if ($result) {
             <?php foreach ($requerimientos as $req) : ?>
                 <li class="list-group-item requerimiento-item" 
                     data-id="<?php echo $req['id']; ?>"
+                    data-id_auto="<?php echo $req['id_auto']; ?>"
                     data-detalle="<?php echo htmlspecialchars($req['detalle']); ?>" 
                     data-titulo="<?php echo "{$req['id']} / (Req: {$req['tipo_req']} )"; ?>"
                     data-imagenes='<?php echo json_encode($req['imagenes']); ?>'>
@@ -319,6 +320,10 @@ if ($result) {
             document.getElementById('detalleTitulo').textContent = titulo;
             document.getElementById('detalleTexto').innerHTML = detalle;
 
+            // Marcar el requerimiento como seleccionado
+            document.querySelectorAll('.requerimiento-item').forEach(i => i.classList.remove('active'));
+            this.classList.add('active');
+
             // Mostrar botones de acción
             document.getElementById('botonesAccion').style.display = 'flex';
 
@@ -367,8 +372,37 @@ if ($result) {
             };
         });
     });
-</script>
 
+    // Evento para el botón de "Aprobar"
+    document.getElementById('aprobarBtn').addEventListener('click', function () {
+        const seleccionado = document.querySelector('.requerimiento-item.active');
+
+        if (!seleccionado) {
+            alert("Por favor, seleccione un requerimiento antes de aprobar.");
+            return;
+        }
+
+        const idRequerimiento = seleccionado.getAttribute('data-id_auto');
+
+        fetch('../db_consultas/actualizar_requerimiento.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `id=${idRequerimiento}`
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert(data.message);
+                seleccionado.classList.add('aprobado'); // Opcional: cambiar estilo del aprobado
+            } else {
+                alert("Error: " + data.message);
+            }
+        })
+        .catch(error => console.error("Error en la solicitud:", error));
+    });
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
