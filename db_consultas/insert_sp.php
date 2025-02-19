@@ -72,7 +72,7 @@ else{
 }
 
 $carpeta = '/home/site/wwwroot/Imagenes/Catalogo';
-$carpeta_id = '/home/site/wwwroot/Imagenes/Catalogo/Auto '.$con->insert_id.'';
+$carpeta_id = '/home/site/wwwroot/Imagenes/Catalogo/Auto '.$id_auto.'';
             
     if (file_exists($carpeta_id)){
         echo "Ya existe la carpeta";
