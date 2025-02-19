@@ -203,14 +203,14 @@ if ($result) {
     while ($row = mysqli_fetch_assoc($result)) {
         // Definir el arreglo de imágenes
         $imagenes = [
-            '../Imagenes/Catalogo/Auto ' . $row['id_auto'] . '/Img01.jpg',
-            '../Imagenes/Catalogo/Auto ' . $row['id_auto'] . '/Img02.jpg',
-            '../Imagenes/Catalogo/Auto ' . $row['id_auto'] . '/Img03.jpg',
-            '../Imagenes/Catalogo/Auto ' . $row['id_auto'] . '/Img04.jpg',
-            '../Imagenes/Catalogo/Auto ' . $row['id_auto'] . '/Img05.jpg',
-            '../Imagenes/Catalogo/Auto ' . $row['id_auto'] . '/Img06.jpg',
-            '../Imagenes/Catalogo/Auto ' . $row['id_auto'] . '/Img07.jpg',
-            '../Imagenes/Catalogo/Auto ' . $row['id_auto'] . '/Img08.jpg',
+            '../Imagenes/Catalogo/Auto '.$row['id_auto'].'/Img01.jpg',
+            '../Imagenes/Catalogo/Auto '.$row['id_auto'].'/Img02.jpg',
+            '../Imagenes/Catalogo/Auto '.$row['id_auto'].'/Img03.jpg',
+            '../Imagenes/Catalogo/Auto '.$row['id_auto'].'/Img04.jpg',
+            '../Imagenes/Catalogo/Auto '.$row['id_auto'].'/Img05.jpg',
+            '../Imagenes/Catalogo/Auto '.$row['id_auto'].'/Img06.jpg',
+            '../Imagenes/Catalogo/Auto '.$row['id_auto'].'/Img07.jpg',
+            '../Imagenes/Catalogo/Auto '.$row['id_auto'].'/Img08.jpg',
         ];
 
         $requerimientos[] = [
