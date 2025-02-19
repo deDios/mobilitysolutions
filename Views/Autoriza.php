@@ -203,7 +203,7 @@ if ($result) {
     while ($row = mysqli_fetch_assoc($result)) {
         // Definir el arreglo de imágenes
         $imagenes = [
-            '../Imagenes/Catalogo/Auto ' . $row['id_auto'] . '/Img01.jpg',
+            '../Imagenes/Catalogo/Auto ' . $row['id'] . '/Img01.jpg',
             '../Imagenes/Catalogo/Auto ' . $row['id'] . '/Img02.jpg',
             '../Imagenes/Catalogo/Auto ' . $row['id'] . '/Img03.jpg',
             '../Imagenes/Catalogo/Auto ' . $row['id'] . '/Img04.jpg',
@@ -224,6 +224,7 @@ if ($result) {
             "nombre" => $row['nombre'],
             "titulo" => $row['id'] . ' (' . $row['tipo_req'] . ')',
             "detalle" => 
+                "<strong>ID auto:</strong> " . $row['id_auto'] . "<br>" .
                 "<strong>Nombre:</strong> " . $row['nombre'] . "<br>" .
                 "<strong>Modelo:</strong> " . $row['modelo'] . "<br>" .
                 "<strong>Marca:</strong> " . $row['marca'] . "<br>" .
