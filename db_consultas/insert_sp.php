@@ -75,10 +75,10 @@ $carpeta = '/home/site/wwwroot/Imagenes/Catalogo';
 $carpeta_id = '/home/site/wwwroot/Imagenes/Catalogo/Auto '.$con->insert_id.'';
             
     if (file_exists($carpeta_id)){
-       // echo "Ya existe la carpeta";
+        echo "Ya existe la carpeta";
     }
     else{
-       // echo "La carpeta no existe y se creara" . $carpeta_id;
+        echo "La carpeta no existe y se creara" . $carpeta_id;
     }
             if (isset($_FILES["archivo"])){
                 //if (isset($_FILES["archivo"]) && $_FILES["archivo"]["name"][0]){
