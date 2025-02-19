@@ -385,7 +385,7 @@ document.getElementById('aprobarBtn').addEventListener('click', function () {
     const idRequerimiento = seleccionado.getAttribute('data-id');
     const idAuto = seleccionado.getAttribute('data-id_auto');
 
-    fetch('https://mobilitysolutionscorp.com/db_consultas/actualizar_requerimiento.php', {
+    fetch('../db_consultas/actualizar_requerimiento.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
