@@ -203,14 +203,14 @@ if ($result) {
     while ($row = mysqli_fetch_assoc($result)) {
         // Definir el arreglo de imágenes
         $imagenes = [
-            '../Imagenes/Catalogo/Auto ' . $row['id'] . '/Img01.jpg',
-            '../Imagenes/Catalogo/Auto ' . $row['id'] . '/Img02.jpg',
-            '../Imagenes/Catalogo/Auto ' . $row['id'] . '/Img03.jpg',
-            '../Imagenes/Catalogo/Auto ' . $row['id'] . '/Img04.jpg',
-            '../Imagenes/Catalogo/Auto ' . $row['id'] . '/Img05.jpg',
-            '../Imagenes/Catalogo/Auto ' . $row['id'] . '/Img06.jpg',
-            '../Imagenes/Catalogo/Auto ' . $row['id'] . '/Img07.jpg',
-            '../Imagenes/Catalogo/Auto ' . $row['id'] . '/Img08.jpg',
+            '../Imagenes/Catalogo/Auto ' . $row['id_auto'] . '/Img01.jpg',
+            '../Imagenes/Catalogo/Auto ' . $row['id_auto'] . '/Img02.jpg',
+            '../Imagenes/Catalogo/Auto ' . $row['id_auto'] . '/Img03.jpg',
+            '../Imagenes/Catalogo/Auto ' . $row['id_auto'] . '/Img04.jpg',
+            '../Imagenes/Catalogo/Auto ' . $row['id_auto'] . '/Img05.jpg',
+            '../Imagenes/Catalogo/Auto ' . $row['id_auto'] . '/Img06.jpg',
+            '../Imagenes/Catalogo/Auto ' . $row['id_auto'] . '/Img07.jpg',
+            '../Imagenes/Catalogo/Auto ' . $row['id_auto'] . '/Img08.jpg',
         ];
 
         $requerimientos[] = [
@@ -374,34 +374,35 @@ if ($result) {
     });
 
     // Evento para el botón de "Aprobar"
-    document.getElementById('aprobarBtn').addEventListener('click', function () {
-        const seleccionado = document.querySelector('.requerimiento-item.active');
+document.getElementById('aprobarBtn').addEventListener('click', function () {
+    const seleccionado = document.querySelector('.requerimiento-item.active');
 
-        if (!seleccionado) {
-            alert("Por favor, seleccione un requerimiento antes de aprobar.");
-            return;
+    if (!seleccionado) {
+        alert("Por favor, seleccione un requerimiento antes de aprobar.");
+        return;
+    }
+
+    const idRequerimiento = seleccionado.getAttribute('data-id');
+    const idAuto = seleccionado.getAttribute('data-id_auto');
+
+    fetch('../db_consultas/actualizar_requerimiento.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: `id=${idRequerimiento}&id_auto=${idAuto}`
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert(data.message);
+            seleccionado.classList.add('aprobado'); // Opcional: cambiar estilo del aprobado
+        } else {
+            alert("Error: " + data.message);
         }
-
-        const idRequerimiento = seleccionado.getAttribute('data-id_auto');
-
-        fetch('../db_consultas/actualizar_requerimiento.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: `id=${idRequerimiento}`
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert(data.message);
-                seleccionado.classList.add('aprobado'); // Opcional: cambiar estilo del aprobado
-            } else {
-                alert("Error: " + data.message);
-            }
-        })
-        .catch(error => console.error("Error en la solicitud:", error));
-    });
+    })
+    .catch(error => console.error("Error en la solicitud:", error));
+});
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
