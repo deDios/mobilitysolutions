@@ -174,7 +174,7 @@ $imagenes = [
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            opacity: 0.3;
+            opacity: 0.5;
             background: url('../Imagenes/reserved.jpg') no-repeat center center;
             background-size: contain;
             width: 80%;

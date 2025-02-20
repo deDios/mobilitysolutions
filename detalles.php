@@ -164,7 +164,21 @@ $imagenes = [
 ];
 ?>          
 
-<div class="carrusel">
+<div class="carrusel" style="<?php echo ($estatus == 3) ? 'position: relative;' : ''; ?>">
+    <?php if ($estatus == 3): ?>
+        <div class="marca-agua" style="
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.3;
+            background: url('ruta/a/tu/marca_de_agua.png') no-repeat center center;
+            background-size: contain;
+            width: 80%;
+            height: 80%;
+            pointer-events: none;
+        "></div>
+    <?php endif; ?>
     <!-- Botón izquierdo -->
     <div class="flecha izquierda" id="flechaIzquierda">&#9664;</div>
 
