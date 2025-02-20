@@ -276,7 +276,7 @@ if ($result) {
         
         <div class="img_detalle">
             <div class="detalle-imagen">
-                <img id="imagenDetalle" src="../Imagenes/Usuarios/<?php echo $row['created_by'];?>.jpg" alt="Imagen de requerimiento" style="border-radius: 50px; width: 100px; height: 100px;">
+                <img id="imagenDetalle" src="../Imagenes/Usuarios/4.jpg" alt="Imagen de requerimiento" style="border-radius: 50px; width: 100px; height: 100px;">
             </div>
             <h6 id="detalleTitulo" class="mt-3">Seleccione un requerimiento</h6>
         </div>
