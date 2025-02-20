@@ -136,8 +136,6 @@ $query = 'select
 </div>
 
 <!--------------------------------------- Termina Menu ----------------------------------------------->
-    
-
     <div class="contenedor">
         <div class="contenedor_carr">
 
