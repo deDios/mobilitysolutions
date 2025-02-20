@@ -172,7 +172,7 @@ $imagenes = [
             left: 50%;
             transform: translate(-50%, -50%);
             opacity: 0.5;
-            background: url('ruta/a/tu/marca_de_agua.png') no-repeat center center;
+            background: url('../Imagenes/reserved.jpg') no-repeat center center;
             background-size: contain;
             width: 80%;
             height: 80%;
