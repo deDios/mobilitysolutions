@@ -261,7 +261,8 @@ if ($result) {
                     data-id_auto="<?php echo $req['id_auto']; ?>"
                     data-detalle="<?php echo htmlspecialchars($req['detalle']); ?>" 
                     data-titulo="<?php echo "{$req['id']} / (Req: {$req['tipo_req']} )"; ?>"
-                    data-imagenes='<?php echo json_encode($req['imagenes']); ?>'>
+                    data-imagenes='<?php echo json_encode($req['imagenes']); ?>'
+                    data-img-user="<?php echo $req['created_by']; ?>">  <!-- Agregado aquí -->
                     <?php echo "{$req['id']} - {$req['nombre']} / (Catálogo)"; ?>
                     <br>
                     <p class="" style="font-size: 0.8rem;"> <?php echo "Date: {$req['req_created_at']}"; ?> </p>
@@ -310,69 +311,72 @@ if ($result) {
 </div>
 
 <script>
-    document.querySelectorAll('.requerimiento-item').forEach(item => {
-        item.addEventListener('click', function () {
-            const detalle = this.getAttribute('data-detalle');
-            const titulo = this.getAttribute('data-titulo');
-            const idRequerimiento = this.getAttribute('data-id');
-            const imagenes = JSON.parse(this.getAttribute('data-imagenes'));
+document.querySelectorAll('.requerimiento-item').forEach(item => {
+    item.addEventListener('click', function () {
+        const detalle = this.getAttribute('data-detalle');
+        const titulo = this.getAttribute('data-titulo');
+        const imgUser = this.getAttribute('data-img-user'); // Obtener el img_user
+        const imagenes = JSON.parse(this.getAttribute('data-imagenes'));
 
-            // Mostrar título y detalle
-            document.getElementById('detalleTitulo').textContent = titulo;
-            document.getElementById('detalleTexto').innerHTML = detalle;
+        // Actualizar título y detalle
+        document.getElementById('detalleTitulo').textContent = titulo;
+        document.getElementById('detalleTexto').innerHTML = detalle;
 
-            // Marcar el requerimiento como seleccionado
-            document.querySelectorAll('.requerimiento-item').forEach(i => i.classList.remove('active'));
-            this.classList.add('active');
+        // Actualizar la imagen del usuario
+        document.getElementById('imagenDetalle').src = `../Imagenes/Usuarios/${imgUser}.jpg`;
 
-            // Mostrar botones de acción
-            document.getElementById('botonesAccion').style.display = 'flex';
+        // Marcar el requerimiento como seleccionado
+        document.querySelectorAll('.requerimiento-item').forEach(i => i.classList.remove('active'));
+        this.classList.add('active');
 
-            // Mostrar el carrusel solo si hay imágenes
-            const carrusel = document.getElementById('carrusel');
-            carrusel.style.display = imagenes.length ? 'block' : 'none';
+        // Mostrar botones de acción
+        document.getElementById('botonesAccion').style.display = 'flex';
 
-            const imagenGrande = document.getElementById('imagenGrande');
-            const miniaturasContainer = document.querySelector('.miniaturas');
-            let indiceActual = 0;
-            imagenGrande.src = imagenes[indiceActual] || '';
+        // Mostrar el carrusel si hay imágenes
+        const carrusel = document.getElementById('carrusel');
+        carrusel.style.display = imagenes.length ? 'block' : 'none';
 
-            // Limpiar miniaturas
-            miniaturasContainer.innerHTML = '';
-            imagenes.forEach((imagen, index) => {
-                const img = document.createElement('img');
-                img.src = imagen;
-                img.alt = `Miniatura ${index + 1}`;
-                img.classList.add('miniatura');
-                img.dataset.index = index;
-                miniaturasContainer.appendChild(img);
-            });
+        const imagenGrande = document.getElementById('imagenGrande');
+        const miniaturasContainer = document.querySelector('.miniaturas');
+        let indiceActual = 0;
+        imagenGrande.src = imagenes[indiceActual] || '';
 
-            // Mostrar imagen grande
-            const mostrarImagen = (indice) => {
-                imagenGrande.src = imagenes[indice];
-            };
-
-            // Manejar clics en miniaturas
-            miniaturasContainer.querySelectorAll('.miniatura').forEach(miniatura => {
-                miniatura.addEventListener('click', () => {
-                    indiceActual = parseInt(miniatura.getAttribute('data-index'));
-                    mostrarImagen(indiceActual);
-                });
-            });
-
-            // Flechas del carrusel
-            document.getElementById('flechaIzquierda').onclick = () => {
-                indiceActual = (indiceActual > 0) ? indiceActual - 1 : imagenes.length - 1;
-                mostrarImagen(indiceActual);
-            };
-
-            document.getElementById('flechaDerecha').onclick = () => {
-                indiceActual = (indiceActual < imagenes.length - 1) ? indiceActual + 1 : 0;
-                mostrarImagen(indiceActual);
-            };
+        // Limpiar miniaturas
+        miniaturasContainer.innerHTML = '';
+        imagenes.forEach((imagen, index) => {
+            const img = document.createElement('img');
+            img.src = imagen;
+            img.alt = `Miniatura ${index + 1}`;
+            img.classList.add('miniatura');
+            img.dataset.index = index;
+            miniaturasContainer.appendChild(img);
         });
+
+        // Función para mostrar imagen grande
+        const mostrarImagen = (indice) => {
+            imagenGrande.src = imagenes[indice];
+        };
+
+        // Manejar clics en miniaturas
+        miniaturasContainer.querySelectorAll('.miniatura').forEach(miniatura => {
+            miniatura.addEventListener('click', () => {
+                indiceActual = parseInt(miniatura.getAttribute('data-index'));
+                mostrarImagen(indiceActual);
+            });
+        });
+
+        // Flechas del carrusel
+        document.getElementById('flechaIzquierda').onclick = () => {
+            indiceActual = (indiceActual > 0) ? indiceActual - 1 : imagenes.length - 1;
+            mostrarImagen(indiceActual);
+        };
+
+        document.getElementById('flechaDerecha').onclick = () => {
+            indiceActual = (indiceActual < imagenes.length - 1) ? indiceActual + 1 : 0;
+            mostrarImagen(indiceActual);
+        };
     });
+});
 
     // Evento para el botón de "Aprobar"
 document.getElementById('aprobarBtn').addEventListener('click', function () {
