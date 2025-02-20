@@ -402,6 +402,7 @@ document.getElementById('aprobarBtn').addEventListener('click', function () {
         if (data.success) {
             alert(data.message);
             seleccionado.classList.add('aprobado'); // Opcional: cambiar estilo del aprobado
+            window.location.href = "https://mobilitysolutionscorp.com/Views/Autoriza.php"; // Redirigir a la página
         } else {
             alert("Error: " + data.message);
         }
