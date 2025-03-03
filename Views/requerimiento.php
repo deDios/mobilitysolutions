@@ -158,9 +158,11 @@ $inc = include "../db/Conexion.php";
 $vehiculo = null;
 $mensaje = "";
 
+header('Content-Type: application/json'); // Aseguramos que la respuesta es JSON
+
 if (isset($_POST['verificar'])) {
     $cod = $_POST['id_vehiculo'];
-    $query = "select 
+    $query = "SELECT 
                 auto.id, 
                 m_auto.auto AS nombre, 
                 modelo.nombre AS modelo, 
@@ -203,11 +205,9 @@ if (isset($_POST['verificar'])) {
 
     if ($result && mysqli_num_rows($result) > 0) {
         $vehiculo = mysqli_fetch_assoc($result);
-        // Devuelve los datos como JSON
-        echo json_encode($vehiculo);
+        echo json_encode($vehiculo);  // Devuelve los datos del vehículo como JSON
     } else {
-        // Si no se encuentra el vehículo, muestra un error
-        echo json_encode(["error" => "ID no encontrado"]);
+        echo json_encode(["error" => "ID no encontrado"]);  // Respuesta JSON con error
     }
     exit;
 }
