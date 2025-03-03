@@ -162,7 +162,7 @@ $mensaje = "";
 
 if (isset($_POST['verificar'])) {
     $cod = $_POST['id_vehiculo'];
-    $query = "SELECT 
+    $query = "select 
                 auto.id, 
                 m_auto.auto AS nombre, 
                 modelo.nombre AS modelo, 
@@ -295,33 +295,43 @@ document.getElementById("consultarBtn").addEventListener("click", function() {
         method: "POST",
         body: formData
     })
-    .then(response => response.json())
+    .then(response => response.text())  // Primero obtenemos la respuesta como texto
     .then(data => {
-        console.log("Datos recibidos del servidor:", data); // Esto es útil para depurar
+        console.log("Respuesta del servidor:", data);  // Muestra lo que devuelve el servidor en la consola
 
-        if (data.error) {
-            alert(data.error);
-            document.getElementById("vehiculoInfo").style.display = "none"; // Ocultamos el formulario si no se encuentra el vehículo
-        } else {
-            // Mostramos el formulario con los datos del vehículo
-            document.getElementById("vehiculoInfo").style.display = "block";
+        try {
+            var jsonData = JSON.parse(data);  // Intentamos convertirla en JSON
+            if (jsonData.error) {
+                alert(jsonData.error);
+                document.getElementById("vehiculoInfo").style.display = "none"; // Ocultamos el formulario si no se encuentra el vehículo
+            } else {
+                // Mostramos el formulario con los datos del vehículo
+                document.getElementById("vehiculoInfo").style.display = "block";
 
-            // Asignar los valores a los campos del formulario
-            document.getElementById("vehiculoImg").src = '../Imagenes/Catalogo/Auto/' + data.id + '/Img01.jpg';
-            document.getElementById("vehiculoNombre").textContent = `${data.nombre} - ${data.modelo}`;
-            document.getElementById("vehiculoMarca").textContent = data.marca;
-            document.getElementById("vehiculoCosto").textContent = data.costo;
-            document.getElementById("vehiculoMensualidad").textContent = data.mensualidad;
-            document.getElementById("vehiculoSucursal").textContent = data.sucursal;
-            document.getElementById("vehiculoColor").textContent = data.color;
-            document.getElementById("vehiculoTransmision").textContent = data.transmision;
-            document.getElementById("vehiculoKilometraje").textContent = data.kilometraje;
-            document.getElementById("vehiculoCombustible").textContent = data.combustible;
-            document.getElementById("hiddenIdVehiculo").value = data.id;
+                // Asignar los valores a los campos del formulario
+                document.getElementById("vehiculoImg").src = '../Imagenes/Catalogo/Auto/' + jsonData.id + '/Img01.jpg';
+                document.getElementById("vehiculoNombre").textContent = `${jsonData.nombre} - ${jsonData.modelo}`;
+                document.getElementById("vehiculoMarca").textContent = jsonData.marca;
+                document.getElementById("vehiculoCosto").textContent = jsonData.costo;
+                document.getElementById("vehiculoMensualidad").textContent = jsonData.mensualidad;
+                document.getElementById("vehiculoSucursal").textContent = jsonData.sucursal;
+                document.getElementById("vehiculoColor").textContent = jsonData.color;
+                document.getElementById("vehiculoTransmision").textContent = jsonData.transmision;
+                document.getElementById("vehiculoKilometraje").textContent = jsonData.kilometraje;
+                document.getElementById("vehiculoCombustible").textContent = jsonData.combustible;
+                document.getElementById("hiddenIdVehiculo").value = jsonData.id;
+            }
+        } catch (e) {
+            console.error("Error al parsear JSON:", e);
+            alert("La respuesta del servidor no es un JSON válido.");
         }
     })
-    .catch(error => console.error("Error:", error));
+    .catch(error => {
+        console.error("Error:", error);
+        alert("Ocurrió un error al consultar el vehículo.");
+    });
 });
+
 </script>
 
 
