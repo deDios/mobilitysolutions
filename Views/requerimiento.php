@@ -1,4 +1,67 @@
 
+<?php
+
+    session_start();
+
+    if (!isset ($_SESSION['username'])){
+        echo ' 
+            <script>
+                alert("Es necesario hacer login, por favor ingrese sus credenciales") ;
+                window.location = "../views/login.php";
+            </script> ';
+            session_destroy();
+            die();
+    }
+
+    $inc = include "../db/Conexion.php";
+
+    $query ='select 
+                acc.user_id, 
+                acc.user_name, 
+                acc.user_password, 
+                acc.user_type, 
+                acc.r_ejecutivo, 
+                acc.r_editor, 
+                acc.r_autorizador, 
+                acc.r_analista, 
+                us.user_name as nombre, 
+                us.second_name as s_nombre, 
+                us.last_name, 
+                us.email, 
+                us.cumpleaños, 
+                us.telefono
+            from mobility_solutions.tmx_acceso_usuario  as acc
+            left join mobility_solutions.tmx_usuario as us
+                on acc.user_id = us.id
+            where acc.user_name = '.$_SESSION['username'].';';
+
+    $result = mysqli_query($con,$query); 
+
+    if ($result){ 
+        while($row = mysqli_fetch_assoc($result)){
+                            $user_id = $row['user_id'];
+                            $user_name = $row['user_name'];
+                            $user_password = $row['user_password'];
+                            $user_type = $row['user_type'];
+                            $r_ejecutivo = $row['r_ejecutivo'];
+                            $r_editor = $row['r_editor'];
+                            $r_autorizador = $row['r_autorizador'];
+                            $r_analista = $row['r_analista'];
+                            $nombre = $row['nombre'];
+                            $s_nombre = $row['s_nombre'];
+                            $last_name = $row['last_name'];
+                            $email = $row['email'];
+                            $cumpleaños = $row['cumpleaños'];
+                            $telefono = $row['telefono'];
+                           
+        }
+    }
+    else{
+        echo 'Falla en conexión.';
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -91,239 +154,118 @@
 </div>
 
 <?php
-    session_start();
-
-    if (!isset ($_SESSION['username'])){
-        echo ' 
-            <script>
-                alert("Es necesario hacer login, por favor ingrese sus credenciales") ;
-                window.location = "../views/login.php";
-            </script> ';
-            session_destroy();
-            die();
-    }
-    $inc = include "../db/Conexion.php";
-    $query ='select 
-                acc.user_id, 
-                acc.user_name, 
-                acc.user_password, 
-                acc.user_type, 
-                acc.r_ejecutivo, 
-                acc.r_editor, 
-                acc.r_autorizador, 
-                acc.r_analista, 
-                us.user_name as nombre, 
-                us.second_name as s_nombre, 
-                us.last_name, 
-                us.email, 
-                us.cumpleaños, 
-                us.telefono
-            from mobility_solutions.tmx_acceso_usuario  as acc
-            left join mobility_solutions.tmx_usuario as us
-                on acc.user_id = us.id
-            where acc.user_name = '.$_SESSION['username'].';';
-
-    $result = mysqli_query($con,$query); 
-
-    if ($result){ 
-        while($row = mysqli_fetch_assoc($result)){
-                            $user_id = $row['user_id'];
-                            $user_name = $row['user_name'];
-                            $user_password = $row['user_password'];
-                            $user_type = $row['user_type'];
-                            $r_ejecutivo = $row['r_ejecutivo'];
-                            $r_editor = $row['r_editor'];
-                            $r_autorizador = $row['r_autorizador'];
-                            $r_analista = $row['r_analista'];
-                            $nombre = $row['nombre'];
-                            $s_nombre = $row['s_nombre'];
-                            $last_name = $row['last_name'];
-                            $email = $row['email'];
-                            $cumpleaños = $row['cumpleaños'];
-                            $telefono = $row['telefono'];
-                           
-        }
-    }
-    else{
-        echo 'Falla en conexión.';
-    }
-
-header('Content-Type: application/json');  // Asegura que la respuesta será JSON
-
 $selected = isset($_GET['req']) ? $_GET['req'] : '1';
-$inc = include "../db/Conexion.php"; 
+$inc = include "db/Conexion.php"; 
 $vehiculo = null;
-$mensaje = "";
 
 if (isset($_POST['verificar'])) {
     $cod = $_POST['id_vehiculo'];
-    $query = "select 
-                auto.id, 
-                m_auto.auto AS nombre, 
-                modelo.nombre AS modelo, 
-                marca.nombre AS marca, 
-                auto.mensualidad, 
-                auto.costo, 
-                sucursal.nombre AS sucursal, 
-                auto.img1, 
-                auto.img2, 
-                auto.img3, 
-                auto.img4, 
-                auto.img5, 
-                auto.img6, 
-                auto.color, 
-                auto.transmision, 
-                auto.interior, 
-                auto.kilometraje, 
-                auto.combustible, 
-                auto.cilindros, 
-                auto.eje, 
-                auto.estatus, 
-                auto.pasajeros, 
-                auto.propietarios, 
-                auto.created_at, 
-                auto.updated_at 
-              FROM mobility_solutions.tmx_auto AS auto 
-              LEFT JOIN mobility_solutions.tmx_sucursal AS sucursal 
-                  ON auto.sucursal = sucursal.id 
-              LEFT JOIN mobility_solutions.tmx_estatus AS estatus 
-                  ON auto.estatus = estatus.id 
-              LEFT JOIN mobility_solutions.tmx_modelo AS modelo 
-                  ON auto.modelo = modelo.id 
-              LEFT JOIN mobility_solutions.tmx_marca AS marca 
-                  ON auto.marca = marca.id 
-              LEFT JOIN mobility_solutions.tmx_marca_auto AS m_auto 
-                  ON auto.nombre = m_auto.id 
-              WHERE auto.id = '$cod'";
-
-    $result = mysqli_query($con, $query);
-    if ($result && mysqli_num_rows($result) > 0) {
-        $vehiculo = mysqli_fetch_assoc($result);
-        // Depuración adicional: Imprime los datos antes de enviarlos
-        echo json_encode($vehiculo);  // Devuelve los datos como JSON
-    } else {
-        echo json_encode(["error" => "ID no encontrado"]);
-    }
-    exit;
+        $query = "select 
+                    auto.id, 
+                    m_auto.auto AS nombre, 
+                    modelo.nombre AS modelo, 
+                    marca.nombre AS marca, 
+                    auto.mensualidad, 
+                    auto.costo, 
+                    sucursal.nombre AS sucursal, 
+                    auto.img1, 
+                    auto.img2, 
+                    auto.img3, 
+                    auto.img4, 
+                    auto.img5, 
+                    auto.img6, 
+                    auto.color, 
+                    auto.transmision, 
+                    auto.interior, 
+                    auto.kilometraje, 
+                    auto.combustible, 
+                    auto.cilindros, 
+                    auto.eje, 
+                    auto.estatus, 
+                    auto.pasajeros, 
+                    auto.propietarios, 
+                    auto.created_at, 
+                    auto.updated_at 
+                FROM mobility_solutions.tmx_auto AS auto 
+                LEFT JOIN mobility_solutions.tmx_sucursal AS sucursal 
+                    ON auto.sucursal = sucursal.id 
+                LEFT JOIN mobility_solutions.tmx_estatus AS estatus 
+                    ON auto.estatus = estatus.id 
+                LEFT JOIN mobility_solutions.tmx_modelo AS modelo 
+                    ON auto.modelo = modelo.id 
+                LEFT JOIN mobility_solutions.tmx_marca AS marca 
+                    ON auto.marca = marca.id 
+                LEFT JOIN mobility_solutions.tmx_marca_auto AS m_auto 
+                    ON auto.nombre = m_auto.id 
+                WHERE auto.id = '$cod'";
 }
+    $result = mysqli_query($con,$query);
+    if ($result->num_rows > 0) {
+        $vehiculo = $result->fetch_assoc();
+        $disabled = "";
+    } else {
+        $mensaje = "ID no encontrado";
+    }
 ?>
 
 <div class="menu">
-    <a href="?req=1" class="menu-item"><span>📄</span> Reservar</a>
-    <a href="?req=2" class="menu-item"><span>⚙️</span> Req 2</a>
-    <a href="?req=3" class="menu-item"><span>📊</span> Req 3</a>
-    <a href="?req=4" class="menu-item"><span>🔍</span> Req 4</a>
-</div>
+        <a href="?req=1" class="menu-item"><span>📄</span> Reservar</a>
+        <a href="?req=2" class="menu-item"><span>⚙️</span> Req 2</a>
+        <a href="?req=3" class="menu-item"><span>📊</span> Req 3</a>
+        <a href="?req=4" class="menu-item"><span>🔍</span> Req 4</a>
+    </div>
 
-<div class="content">
-<!-- requerimiento numero 1 -->
-<?php if ($selected == '1'): ?>
-    <!-- Formulario de Consulta -->
-    <form id="consultaForm" method="POST">
-        <h2>Reserva de vehículo</h2>
-        <div class="input-group">
-            <label>ID: <input type="text" name="id_vehiculo" id="id_vehiculo" required></label>
-            <button type="button" id="consultarBtn">Consultar</button>
-        </div>
-        <p class="error-msg"><?php echo $mensaje; ?></p>
-    </form>
-
-    <!-- Formulario de Reserva (Se llena dinámicamente) -->
-    <form id="reservaForm" method="POST">
-        <div id="vehiculoInfo" style="display: none;">
-            <div class="vehiculo-card">
-                <img id="vehiculoImg" src="" alt="Vehículo" class="vehiculo-img">
-                <div class="vehiculo-info">
-                    <h3 id="vehiculoNombre"></h3>
-                    <p><strong>Marca:</strong> <span id="vehiculoMarca"></span></p>
-                    <p><strong>Costo:</strong> $<span id="vehiculoCosto"></span></p>
-                    <p><strong>Mensualidad:</strong> $<span id="vehiculoMensualidad"></span></p>
-                    <p><strong>Sucursal:</strong> <span id="vehiculoSucursal"></span></p>
-                    <p><strong>Color:</strong> <span id="vehiculoColor"></span></p>
-                    <p><strong>Transmisión:</strong> <span id="vehiculoTransmision"></span></p>
-                    <p><strong>Kilometraje:</strong> <span id="vehiculoKilometraje"></span> km</p>
-                    <p><strong>Combustible:</strong> <span id="vehiculoCombustible"></span></p>
+    <div class="content">
+    <?php if ($selected == '1'): ?>
+            <form method="POST">
+                <h2>Reserva de vehículo</h2>
+                <div class="input-group">
+                    <label>ID: <input type="text" name="id_vehiculo"></label>
+                    <button type="submit" name="verificar">
+                       Consultar 
+                    </button>
                 </div>
-            </div>
-            <input type="hidden" name="id_vehiculo" id="hiddenIdVehiculo">
-            <input type="hidden" name="id_usuario" value="<?php echo $_SESSION['user_id']; ?>">
-            <button class="btn btn-success" type="submit">Solicitar reserva</button>
-        </div>
-    </form>
-<!-- requerimiento numero 2 -->
-<?php elseif ($selected == '2'): ?>
-    <form>
-        <h2>Formulario de Requerimiento 2</h2>
-        <label>Descripción: <textarea name="descripcion"></textarea></label>
-        <button type="submit">Enviar</button>
-    </form>
-<?php elseif ($selected == '3'): ?>
-    <form>
-        <h2>Formulario de Requerimiento 3</h2>
-        <label>Archivo: <input type="file" name="archivo"></label>
-        <button type="submit">Subir</button>
-    </form>
-<?php else: ?>
-    <form>
-        <h2>Formulario de Requerimiento 4</h2>
-        <label>Fecha: <input type="date" name="fecha"></label>
-        <button type="submit">Confirmar</button>
-    </form>
-<?php endif; ?>
-</div>
+                <p class="error-msg"><?php echo $mensaje; ?></p>
+                <?php if ($vehiculo): ?>
+                <div class="vehiculo-card">
+                    <img src="../Imagenes/Catalogo/Auto <?php echo $vehiculo['id'];?>/Img01.jpg" alt="Vehículo" class="vehiculo-img">
+                    <div class="vehiculo-info">
+                        <h3><?php echo $vehiculo['nombre']; ?> - <?php echo $vehiculo['modelo']; ?></h3>
+                        <p><strong>Marca:</strong> <?php echo $vehiculo['marca']; ?></p>
+                        <p><strong>Costo:</strong> $<?php echo $vehiculo['costo']; ?></p>
+                        <p><strong>Mensualidad:</strong> $<?php echo $vehiculo['mensualidad']; ?></p>
+                        <p><strong>Sucursal:</strong> <?php echo $vehiculo['sucursal']; ?></p>
+                        <p><strong>Color:</strong> <?php echo $vehiculo['color']; ?></p>
+                        <p><strong>Transmisión:</strong> <?php echo $vehiculo['transmision']; ?></p>
+                        <p><strong>Kilometraje:</strong> <?php echo $vehiculo['kilometraje']; ?> km</p>
+                        <p><strong>Combustible:</strong> <?php echo $vehiculo['combustible']; ?></p>
+                    </div>
+                </div>
+                <?php endif; ?>
 
-<div id="resultado" style="background: #f4f4f4; padding: 10px; margin-top: 10px;"></div>
+                <button class="btn btn-success" type="submit" <?php echo $disabled; ?>>Solicitar reserva</button>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("miFormulario");
-    const resultadoDiv = document.getElementById("resultado"); // Un div para mostrar los datos
-
-    form.addEventListener("submit", function (event) {
-        event.preventDefault(); // Evitar recarga de la página
-        
-        const formData = new FormData(form);
-        
-        fetch("requerimiento.php", {
-            method: "POST",
-            body: formData
-        })
-        .then(response => response.json()) // Convertimos la respuesta en JSON
-        .then(data => {
-            console.log("Respuesta del servidor:", data); // Mostramos los datos en la consola
-
-            // Verificamos si la respuesta tiene un error
-            if (data.error) {
-                alert("Error: " + data.error);
-                return;
-            }
-
-            // Mostramos los datos en un div de prueba antes de usarlos en el formulario
-            resultadoDiv.innerHTML = `
-                <h3>Datos del Vehículo</h3>
-                <p><strong>Nombre:</strong> ${data.nombre}</p>
-                <p><strong>Modelo:</strong> ${data.modelo}</p>
-                <p><strong>Marca:</strong> ${data.marca}</p>
-                <p><strong>Mensualidad:</strong> ${data.mensualidad}</p>
-                <p><strong>Costo:</strong> ${data.costo}</p>
-                <p><strong>Sucursal:</strong> ${data.sucursal}</p>
-            `;
-
-            // Aquí iremos agregando los valores al segundo formulario
-            document.getElementById("nombreVehiculo").value = data.nombre;
-            document.getElementById("modeloVehiculo").value = data.modelo;
-            document.getElementById("marcaVehiculo").value = data.marca;
-            document.getElementById("mensualidadVehiculo").value = data.mensualidad;
-            document.getElementById("costoVehiculo").value = data.costo;
-            document.getElementById("sucursalVehiculo").value = data.sucursal;
-        })
-        .catch(error => {
-            console.error("Error al consultar el vehículo:", error);
-            alert("Ocurrió un error al consultar el vehículo. Revisa la consola para más detalles.");
-        });
-    });
-});
-</script>
+            </form>
+        <?php elseif ($selected == '2'): ?>
+            <form>
+                <h2>Formulario de Requerimiento 2</h2>
+                <label>Descripción: <textarea name="descripcion"></textarea></label>
+                <button type="submit">Enviar</button>
+            </form>
+        <?php elseif ($selected == '3'): ?>
+            <form>
+                <h2>Formulario de Requerimiento 3</h2>
+                <label>Archivo: <input type="file" name="archivo"></label>
+                <button type="submit">Subir</button>
+            </form>
+        <?php else: ?>
+            <form>
+                <h2>Formulario de Requerimiento 4</h2>
+                <label>Fecha: <input type="date" name="fecha"></label>
+                <button type="submit">Confirmar</button>
+            </form>
+        <?php endif; ?>
+    </div>
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
