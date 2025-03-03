@@ -288,51 +288,66 @@ if (isset($_POST['verificar'])) {
 
 <script>
     document.getElementById("consultarBtn").addEventListener("click", function() {
-        var idVehiculo = document.getElementById("id_vehiculo").value;
+    var idVehiculo = document.getElementById("id_vehiculo").value;
 
-        if (idVehiculo.trim() === "") {
-            alert("Por favor, ingresa un ID de vehículo.");
-            return;
-        }
+    if (idVehiculo.trim() === "") {
+        alert("Por favor, ingresa un ID de vehículo.");
+        return;
+    }
 
-        var formData = new FormData();
-        formData.append("id_vehiculo", idVehiculo);
-        formData.append("verificar", "1");
+    var formData = new FormData();
+    formData.append("id_vehiculo", idVehiculo);
+    formData.append("verificar", "1");
 
-        fetch("requerimiento.php", {
-            method: "POST",
-            body: formData
-        })
-        .then(response => response.json())  // Cambiar a .json() directamente
-        .then(data => {
-            console.log("Respuesta del servidor:", data);  // Ver la respuesta en consola
+    fetch("requerimiento.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => {
+        // Verifica el código de respuesta HTTP (debe ser 200 OK)
+        console.log("Código de respuesta:", response.status);  // Muestra el código de estado HTTP
+        return response.text();  // Cambia a text() para ver el contenido antes de convertirlo a JSON
+    })
+    .then(data => {
+        console.log("Respuesta cruda del servidor:", data);  // Muestra el contenido crudo recibido del servidor
 
-            if (data.error) {
-                alert(data.error);
-                document.getElementById("vehiculoInfo").style.display = "none"; // Ocultamos el formulario si no se encuentra el vehículo
+        // Intentar parsear la respuesta solo si es JSON
+        try {
+            var jsonData = JSON.parse(data);  // Intenta convertir la respuesta a JSON
+            console.log("Datos procesados del vehículo:", jsonData);
+
+            if (jsonData.error) {
+                alert(jsonData.error);  // Si hay un error, muestra un mensaje
+                document.getElementById("vehiculoInfo").style.display = "none"; // Oculta el formulario
             } else {
-                // Mostramos el formulario con los datos del vehículo
+                // Si se encuentran datos del vehículo, mostrar el formulario con la información
                 document.getElementById("vehiculoInfo").style.display = "block";
 
                 // Asignar los valores a los campos del formulario
-                document.getElementById("vehiculoImg").src = '../Imagenes/Catalogo/Auto/' + data.id + '/Img01.jpg';
-                document.getElementById("vehiculoNombre").textContent = `${data.nombre} - ${data.modelo}`;
-                document.getElementById("vehiculoMarca").textContent = data.marca;
-                document.getElementById("vehiculoCosto").textContent = data.costo;
-                document.getElementById("vehiculoMensualidad").textContent = data.mensualidad;
-                document.getElementById("vehiculoSucursal").textContent = data.sucursal;
-                document.getElementById("vehiculoColor").textContent = data.color;
-                document.getElementById("vehiculoTransmision").textContent = data.transmision;
-                document.getElementById("vehiculoKilometraje").textContent = data.kilometraje;
-                document.getElementById("vehiculoCombustible").textContent = data.combustible;
-                document.getElementById("hiddenIdVehiculo").value = data.id;
+                document.getElementById("vehiculoImg").src = '../Imagenes/Catalogo/Auto/' + jsonData.id + '/Img01.jpg';
+                document.getElementById("vehiculoNombre").textContent = `${jsonData.nombre} - ${jsonData.modelo}`;
+                document.getElementById("vehiculoMarca").textContent = jsonData.marca;
+                document.getElementById("vehiculoCosto").textContent = jsonData.costo;
+                document.getElementById("vehiculoMensualidad").textContent = jsonData.mensualidad;
+                document.getElementById("vehiculoSucursal").textContent = jsonData.sucursal;
+                document.getElementById("vehiculoColor").textContent = jsonData.color;
+                document.getElementById("vehiculoTransmision").textContent = jsonData.transmision;
+                document.getElementById("vehiculoKilometraje").textContent = jsonData.kilometraje;
+                document.getElementById("vehiculoCombustible").textContent = jsonData.combustible;
+                document.getElementById("hiddenIdVehiculo").value = jsonData.id;
             }
-        })
-        .catch(error => {
-            console.error("Error:", error);
-            alert("Ocurrió un error al consultar el vehículo.");
-        });
+        } catch (error) {
+            // Si ocurre un error al parsear JSON, mostrar el error en la consola y la alerta
+            console.error("Error al procesar la respuesta:", error);
+            alert("Ocurrió un error al consultar el vehículo. Respuesta no válida.");
+        }
+    })
+    .catch(error => {
+        // Si ocurre algún error en la solicitud o en el proceso de respuesta, mostrarlo
+        console.error("Error al realizar la solicitud:", error);
+        alert("Ocurrió un error al consultar el vehículo.");
     });
+});
 </script>
 
 
