@@ -157,7 +157,7 @@ $selected = isset($_GET['req']) ? $_GET['req'] : '1';
 ?>
 
 <div class="menu">
-        <a href="?req=1" class="menu-item"><span>📄</span> Req 1</a>
+        <a href="?req=1" class="menu-item"><span>📄</span> Reservar vehiculo</a>
         <a href="?req=2" class="menu-item"><span>⚙️</span> Req 2</a>
         <a href="?req=3" class="menu-item"><span>📊</span> Req 3</a>
         <a href="?req=4" class="menu-item"><span>🔍</span> Req 4</a>
