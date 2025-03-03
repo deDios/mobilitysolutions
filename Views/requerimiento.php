@@ -215,33 +215,34 @@ if (isset($_POST['verificar'])) {
     </div>
 
     <div class="content">
-            <?php if ($selected == '1'): ?>
-                <form method="POST">
-                    <h2>Reserva de vehículo</h2>
+    <?php if ($selected == '1'): ?>
+            <form method="POST">
+                <h2>Reserva de vehículo</h2>
+                <div class="input-group">
                     <label>ID: <input type="text" name="id_vehiculo"></label>
-                    <button type="submit" name="verificar">Verificar</button>
-                    <p class="error-msg"><?php echo $mensaje; ?></p>
-                    <label>Nombre: <input type="text" name="nombre" <?php echo $disabled; ?>></label>
-                    <label>Email: <input type="email" name="email" <?php echo $disabled; ?>></label>
-                    <button type="submit" <?php echo $disabled; ?>>Enviar</button>
-                </form>
-                
+                    <button type="submit" name="verificar" class="btn-icon">
+                        🔄
+                    </button>
+                </div>
+                <p class="error-msg"><?php echo $mensaje; ?></p>
                 <?php if ($vehiculo): ?>
-                    <div class="vehiculo-card">
-                        <img src="../Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="Vehículo" class="vehiculo-img">
-                        <div class="vehiculo-info">
-                            <h3><?php echo $vehiculo['nombre']; ?> - <?php echo $vehiculo['modelo']; ?></h3>
-                            <p><strong>Marca:</strong> <?php echo $vehiculo['marca']; ?></p>
-                            <p><strong>Costo:</strong> $<?php echo $vehiculo['costo']; ?></p>
-                            <p><strong>Mensualidad:</strong> $<?php echo $vehiculo['mensualidad']; ?></p>
-                            <p><strong>Sucursal:</strong> <?php echo $vehiculo['sucursal']; ?></p>
-                            <p><strong>Color:</strong> <?php echo $vehiculo['color']; ?></p>
-                            <p><strong>Transmisión:</strong> <?php echo $vehiculo['transmision']; ?></p>
-                            <p><strong>Kilometraje:</strong> <?php echo $vehiculo['kilometraje']; ?> km</p>
-                            <p><strong>Combustible:</strong> <?php echo $vehiculo['combustible']; ?></p>
-                        </div>
+                <div class="vehiculo-card">
+                    <img src="../Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="Vehículo" class="vehiculo-img">
+                    <div class="vehiculo-info">
+                        <h3><?php echo $vehiculo['nombre']; ?> - <?php echo $vehiculo['modelo']; ?></h3>
+                        <p><strong>Marca:</strong> <?php echo $vehiculo['marca']; ?></p>
+                        <p><strong>Costo:</strong> $<?php echo $vehiculo['costo']; ?></p>
+                        <p><strong>Mensualidad:</strong> $<?php echo $vehiculo['mensualidad']; ?></p>
+                        <p><strong>Sucursal:</strong> <?php echo $vehiculo['sucursal']; ?></p>
+                        <p><strong>Color:</strong> <?php echo $vehiculo['color']; ?></p>
+                        <p><strong>Transmisión:</strong> <?php echo $vehiculo['transmision']; ?></p>
+                        <p><strong>Kilometraje:</strong> <?php echo $vehiculo['kilometraje']; ?> km</p>
+                        <p><strong>Combustible:</strong> <?php echo $vehiculo['combustible']; ?></p>
                     </div>
-            <?php endif; ?>
+                </div>
+                <?php endif; ?>
+                <button type="submit" <?php echo $disabled; ?>>Enviar</button>
+            </form>
         <?php elseif ($selected == '2'): ?>
             <form>
                 <h2>Formulario de Requerimiento 2</h2>
