@@ -46,8 +46,7 @@
                             $last_name = $row['last_name'];
                             $email = $row['email'];
                             $cumpleaños = $row['cumpleaños'];
-                            $telefono = $row['telefono'];
-                           
+                            $telefono = $row['telefono'];                         
         }
     }
     else{
@@ -148,7 +147,7 @@
 
 <?php
 $selected = isset($_GET['req']) ? $_GET['req'] : '1';
-$inc = include "db/Conexion.php"; 
+$inc = include "../db/Conexion.php"; 
 $vehiculo = null;
 
 if (isset($_POST['verificar'])) {
