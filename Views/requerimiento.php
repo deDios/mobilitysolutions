@@ -112,7 +112,7 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear">
     <div class="container">
-      <a class="navbar-brand" rel="nofollow" target="_blank" href="#"> Aprobaciones </a>
+      <a class="navbar-brand" rel="nofollow" target="_blank" href="#"> Requerimientos </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -151,6 +151,46 @@
     </div>
   </nav>
 </div>
+
+<?php
+$selected = isset($_GET['req']) ? $_GET['req'] : '1';
+?>
+
+<div class="menu">
+        <a href="?req=1" class="menu-item"><span>📄</span> Req 1</a>
+        <a href="?req=2" class="menu-item"><span>⚙️</span> Req 2</a>
+        <a href="?req=3" class="menu-item"><span>📊</span> Req 3</a>
+        <a href="?req=4" class="menu-item"><span>🔍</span> Req 4</a>
+    </div>
+
+    <div class="content">
+        <?php if ($selected == '1'): ?>
+            <form>
+                <h2>Formulario de Requerimiento 1</h2>
+                <label>Nombre: <input type="text" name="nombre"></label>
+                <label>Email: <input type="email" name="email"></label>
+                <button type="submit">Enviar</button>
+            </form>
+        <?php elseif ($selected == '2'): ?>
+            <form>
+                <h2>Formulario de Requerimiento 2</h2>
+                <label>Descripción: <textarea name="descripcion"></textarea></label>
+                <button type="submit">Enviar</button>
+            </form>
+        <?php elseif ($selected == '3'): ?>
+            <form>
+                <h2>Formulario de Requerimiento 3</h2>
+                <label>Archivo: <input type="file" name="archivo"></label>
+                <button type="submit">Subir</button>
+            </form>
+        <?php else: ?>
+            <form>
+                <h2>Formulario de Requerimiento 4</h2>
+                <label>Fecha: <input type="date" name="fecha"></label>
+                <button type="submit">Confirmar</button>
+            </form>
+        <?php endif; ?>
+    </div>
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

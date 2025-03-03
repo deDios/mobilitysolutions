@@ -165,4 +165,58 @@ li {
     background: linear-gradient(45deg, #e3e3e3 48%, #1b1e21 48%);
 }
 
+body {
+    background-color: grey;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.menu-item {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    color: black;
+    font-size: 12px;
+    flex-direction: column;
+}
+
+.menu-item span {
+    font-size: 20px;
+}
+
+.content {
+    background-color: white;
+    width: 90%;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+button {
+    background-color: blue;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+
 /*--------------------------------------------------------------------------------------------------*/
