@@ -154,23 +154,94 @@
 
 <?php
 $selected = isset($_GET['req']) ? $_GET['req'] : '1';
+$inc = include "db/Conexion.php"; 
+$vehiculo = null;
+
+if (isset($_POST['verificar'])) {
+    $cod = $_POST['id_vehiculo'];
+        $query = "select 
+                    auto.id, 
+                    m_auto.auto AS nombre, 
+                    modelo.nombre AS modelo, 
+                    marca.nombre AS marca, 
+                    auto.mensualidad, 
+                    auto.costo, 
+                    sucursal.nombre AS sucursal, 
+                    auto.img1, 
+                    auto.img2, 
+                    auto.img3, 
+                    auto.img4, 
+                    auto.img5, 
+                    auto.img6, 
+                    auto.color, 
+                    auto.transmision, 
+                    auto.interior, 
+                    auto.kilometraje, 
+                    auto.combustible, 
+                    auto.cilindros, 
+                    auto.eje, 
+                    auto.estatus, 
+                    auto.pasajeros, 
+                    auto.propietarios, 
+                    auto.created_at, 
+                    auto.updated_at 
+                FROM mobility_solutions.tmx_auto AS auto 
+                LEFT JOIN mobility_solutions.tmx_sucursal AS sucursal 
+                    ON auto.sucursal = sucursal.id 
+                LEFT JOIN mobility_solutions.tmx_estatus AS estatus 
+                    ON auto.estatus = estatus.id 
+                LEFT JOIN mobility_solutions.tmx_modelo AS modelo 
+                    ON auto.modelo = modelo.id 
+                LEFT JOIN mobility_solutions.tmx_marca AS marca 
+                    ON auto.marca = marca.id 
+                LEFT JOIN mobility_solutions.tmx_marca_auto AS m_auto 
+                    ON auto.nombre = m_auto.id 
+                WHERE auto.id = '$cod'";
+}
+    $result = mysqli_query($con,$query);
+    if ($result->num_rows > 0) {
+        $vehiculo = $result->fetch_assoc();
+    }
 ?>
 
 <div class="menu">
-        <a href="?req=1" class="menu-item"><span>📄</span> Reservar vehiculo</a>
+        <a href="?req=1" class="menu-item"><span>📄</span> Reservar</a>
         <a href="?req=2" class="menu-item"><span>⚙️</span> Req 2</a>
         <a href="?req=3" class="menu-item"><span>📊</span> Req 3</a>
         <a href="?req=4" class="menu-item"><span>🔍</span> Req 4</a>
     </div>
 
     <div class="content">
-        <?php if ($selected == '1'): ?>
-            <form>
+    <?php if ($selected == '1'): ?>
+            <form method="POST">
                 <h2>Formulario de Requerimiento 1</h2>
+                <label>ID: <input type="text" name="id_vehiculo"></label>
+                <button type="submit" name="verificar">Verificar</button>
                 <label>Nombre: <input type="text" name="nombre"></label>
                 <label>Email: <input type="email" name="email"></label>
                 <button type="submit">Enviar</button>
             </form>
+            
+            <?php if ($vehiculo): ?>
+                <div class="vehiculo-card">
+                    <h3><?php echo $vehiculo['nombre']; ?> - <?php echo $vehiculo['modelo']; ?></h3>
+                    <p><strong>Marca:</strong> <?php echo $vehiculo['marca']; ?></p>
+                    <p><strong>Costo:</strong> $<?php echo $vehiculo['costo']; ?></p>
+                    <p><strong>Mensualidad:</strong> $<?php echo $vehiculo['mensualidad']; ?></p>
+                    <p><strong>Sucursal:</strong> <?php echo $vehiculo['sucursal']; ?></p>
+                    <p><strong>Color:</strong> <?php echo $vehiculo['color']; ?></p>
+                    <p><strong>Transmisión:</strong> <?php echo $vehiculo['transmision']; ?></p>
+                    <p><strong>Kilometraje:</strong> <?php echo $vehiculo['kilometraje']; ?> km</p>
+                    <p><strong>Combustible:</strong> <?php echo $vehiculo['combustible']; ?></p>
+                    <div class="imagenes">
+                        <?php for ($i = 1; $i <= 6; $i++): ?>
+                            <?php if (!empty($vehiculo['img'.$i])): ?>
+                                <img src="<?php echo $vehiculo['img'.$i]; ?>" alt="Imagen <?php echo $i; ?>">
+                            <?php endif; ?>
+                        <?php endfor; ?>
+                    </div>
+                </div>
+            <?php endif; ?>
         <?php elseif ($selected == '2'): ?>
             <form>
                 <h2>Formulario de Requerimiento 2</h2>
