@@ -189,7 +189,8 @@ if (isset($_POST['verificar'])) {
                     ON auto.marca = marca.id 
                 LEFT JOIN mobility_solutions.tmx_marca_auto AS m_auto 
                     ON auto.nombre = m_auto.id 
-                WHERE auto.id = '$cod'";
+                WHERE auto.estatus = 1
+                AND auto.id = '$cod'";
 }
     $result = mysqli_query($con,$query);
     if ($result->num_rows > 0) {
@@ -234,8 +235,10 @@ if (isset($_POST['verificar'])) {
                     </div>
                 </div>
                 <?php endif; ?>
-                <div class="py-5">
-                    <button class="btn btn-success" type="submit" <?php echo $disabled; ?>>Solicitar reserva</button>
+                <div class="boton_reserva py-3">
+                    <button class="btn btn-success" type="submit" id="boton_reserva" <?php echo $vehiculo ? '' : 'disabled'; ?>>
+                        Solicitar reserva
+                    </button>
                 </div>
             </form>
 
@@ -260,6 +263,18 @@ if (isset($_POST['verificar'])) {
         <?php endif; ?>
     </div>
 
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const botonReserva = document.getElementById("boton_reserva");
+            const vehiculoInfo = document.querySelector(".vehiculo-card");
+
+            // Verificar si el contenedor del vehículo existe y está visible
+            if (!vehiculoInfo) {
+                botonReserva.disabled = true;
+            }
+        });
+    </script>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
