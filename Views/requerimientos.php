@@ -236,7 +236,9 @@ if (isset($_POST['verificar'])) {
                 </div>
                 <?php endif; ?>
                 <div class="boton_reserva py-3">
-                    <button class="btn btn-success" type="submit" id="boton_reserva" <?php echo $vehiculo ? '' : 'disabled'; ?>>
+                    <button class="btn btn-success" type="submit" id="boton_reserva" 
+                        data-marca="<?php echo isset($vehiculo['marca']) ? $vehiculo['marca'] : ''; ?>"
+                        <?php echo isset($vehiculo['marca']) ? '' : 'disabled'; ?>>
                         Solicitar reserva
                     </button>
                 </div>
@@ -267,10 +269,10 @@ if (isset($_POST['verificar'])) {
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const botonReserva = document.getElementById("boton_reserva");
-            const vehiculoInfo = document.querySelector(".vehiculo-card");
+            const marca = botonReserva.getAttribute("data-marca");
 
-            // Verificar si el contenedor del vehículo existe y está visible
-            if (!vehiculoInfo) {
+            // Deshabilita el botón si marca está vacío
+            if (!marca.trim()) {
                 botonReserva.disabled = true;
             }
         });
