@@ -225,12 +225,12 @@ if (isset($_POST['verificar'])) {
                     <div class="vehiculo-info">
                         <h3><?php echo $vehiculo['nombre']; ?> - <?php echo $vehiculo['modelo']; ?></h3>
                         <p><strong>Marca:</strong> <?php echo $vehiculo['marca']; ?></p>
-                        <p><strong>Costo:</strong> $<?php echo $vehiculo['costo']; ?></p>
-                        <p><strong>Mensualidad:</strong> $<?php echo $vehiculo['mensualidad']; ?></p>
+                        <p><strong>Costo:</strong> $<?php echo number_format($vehiculo['costo']); ?></p>
+                        <p><strong>Mensualidad:</strong> $<?php echo number_format($vehiculo['mensualidad']); ?></p>
                         <p><strong>Sucursal:</strong> <?php echo $vehiculo['sucursal']; ?></p>
                         <p><strong>Color:</strong> <?php echo $vehiculo['color']; ?></p>
                         <p><strong>Transmisión:</strong> <?php echo $vehiculo['transmision']; ?></p>
-                        <p><strong>Kilometraje:</strong> <?php echo $vehiculo['kilometraje']; ?> km</p>
+                        <p><strong>Kilometraje:</strong> <?php echo number_format($vehiculo['kilometraje']); ?> km</p>
                         <p><strong>Combustible:</strong> <?php echo $vehiculo['combustible']; ?></p>
                     </div>
                 </div>
