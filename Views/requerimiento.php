@@ -242,10 +242,10 @@ if (isset($_POST['verificar'])) {
                     </div>
                 </div>
                 <?php endif; ?>
-
-                <button class="btn btn-success" type="submit" <?php echo $disabled; ?>>Solicitar reserva</button>
-
             </form>
+
+            <button class="btn btn-success" type="submit" <?php echo $disabled; ?>>Solicitar reserva</button>
+
         <?php elseif ($selected == '2'): ?>
             <form>
                 <h2>Formulario de Requerimiento 2</h2>
