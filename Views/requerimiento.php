@@ -242,7 +242,7 @@ if (isset($_POST['verificar'])) {
                 </div>
                 <?php endif; ?>
 
-                <button class="btn py-2 btn-success" type="submit" <?php echo $disabled; ?>>Enviar</button>
+                <button class="btn py-5 btn-success" type="submit" <?php echo $disabled; ?>>Solicitar reserva</button>
 
             </form>
         <?php elseif ($selected == '2'): ?>
