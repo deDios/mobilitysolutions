@@ -154,8 +154,9 @@
 
 <?php
 $selected = isset($_GET['req']) ? $_GET['req'] : '1';
-$inc = include "db/Conexion.php"; 
+$inc = include "../db/Conexion.php"; 
 $vehiculo = null;
+$mensaje = "";
 
 if (isset($_POST['verificar'])) {
     $cod = $_POST['id_vehiculo'];
@@ -215,36 +216,45 @@ if (isset($_POST['verificar'])) {
     </div>
 
     <div class="content">
+
+<!-- requerimiento numero 1 -->
+
     <?php if ($selected == '1'): ?>
-            <form method="POST">
+            <!-- Formulario de Consulta -->
+            <form id="consultaForm" method="POST">
                 <h2>Reserva de vehículo</h2>
                 <div class="input-group">
-                    <label>ID: <input type="text" name="id_vehiculo"></label>
-                    <button type="submit" name="verificar" class="btn-icon btn-sm">
-                       Check 
-                    </button>
+                    <label>ID: <input type="text" name="id_vehiculo" id="id_vehiculo" required></label>
+                    <button type="button" id="consultarBtn">Consultar</button>
                 </div>
                 <p class="error-msg"><?php echo $mensaje; ?></p>
-                <?php if ($vehiculo): ?>
-                <div class="vehiculo-card">
-                    <img src="../Imagenes/Catalogo/Auto <?php echo $vehiculo['id'];?>/Img01.jpg" alt="Vehículo" class="vehiculo-img">
-                    <div class="vehiculo-info">
-                        <h3><?php echo $vehiculo['nombre']; ?> - <?php echo $vehiculo['modelo']; ?></h3>
-                        <p><strong>Marca:</strong> <?php echo $vehiculo['marca']; ?></p>
-                        <p><strong>Costo:</strong> $<?php echo $vehiculo['costo']; ?></p>
-                        <p><strong>Mensualidad:</strong> $<?php echo $vehiculo['mensualidad']; ?></p>
-                        <p><strong>Sucursal:</strong> <?php echo $vehiculo['sucursal']; ?></p>
-                        <p><strong>Color:</strong> <?php echo $vehiculo['color']; ?></p>
-                        <p><strong>Transmisión:</strong> <?php echo $vehiculo['transmision']; ?></p>
-                        <p><strong>Kilometraje:</strong> <?php echo $vehiculo['kilometraje']; ?> km</p>
-                        <p><strong>Combustible:</strong> <?php echo $vehiculo['combustible']; ?></p>
-                    </div>
-                </div>
-                <?php endif; ?>
-
-                <button class="btn mb-3 btn-success" type="submit" <?php echo $disabled; ?>>Solicitar reserva</button>
-
             </form>
+
+            <!-- Formulario de Reserva (Se llena dinámicamente) -->
+            <form id="reservaForm" method="POST">
+                <div id="vehiculoInfo" style="display: none;">
+                    <div class="vehiculo-card">
+                        <img id="vehiculoImg" src="" alt="Vehículo" class="vehiculo-img">
+                        <div class="vehiculo-info">
+                            <h3 id="vehiculoNombre"></h3>
+                            <p><strong>Marca:</strong> <span id="vehiculoMarca"></span></p>
+                            <p><strong>Costo:</strong> $<span id="vehiculoCosto"></span></p>
+                            <p><strong>Mensualidad:</strong> $<span id="vehiculoMensualidad"></span></p>
+                            <p><strong>Sucursal:</strong> <span id="vehiculoSucursal"></span></p>
+                            <p><strong>Color:</strong> <span id="vehiculoColor"></span></p>
+                            <p><strong>Transmisión:</strong> <span id="vehiculoTransmision"></span></p>
+                            <p><strong>Kilometraje:</strong> <span id="vehiculoKilometraje"></span> km</p>
+                            <p><strong>Combustible:</strong> <span id="vehiculoCombustible"></span></p>
+                        </div>
+                    </div>
+                    <input type="hidden" name="id_vehiculo" id="hiddenIdVehiculo">
+                    <input type="hidden" name="id_usuario" value="<?php echo $_SESSION['user_id']; ?>">
+                    <button class="btn btn-success" type="submit">Solicitar reserva</button>
+                </div>
+            </form>
+
+<!-- requerimiento numero 2 -->
+
         <?php elseif ($selected == '2'): ?>
             <form>
                 <h2>Formulario de Requerimiento 2</h2>
@@ -265,6 +275,47 @@ if (isset($_POST['verificar'])) {
             </form>
         <?php endif; ?>
     </div>
+
+
+<script>
+document.getElementById("consultarBtn").addEventListener("click", function() {
+    var idVehiculo = document.getElementById("id_vehiculo").value;
+
+    if (idVehiculo.trim() === "") {
+        alert("Por favor, ingresa un ID de vehículo.");
+        return;
+    }
+
+    var formData = new FormData();
+    formData.append("id_vehiculo", idVehiculo);
+    formData.append("verificar", "1");
+
+    fetch("tu_archivo_php_actual.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+            alert(data.error);
+        } else {
+            document.getElementById("vehiculoInfo").style.display = "block";
+            document.getElementById("vehiculoImg").src = `../Imagenes/Catalogo/Auto ${data.id}/Img01.jpg`;
+            document.getElementById("vehiculoNombre").textContent = `${data.nombre} - ${data.modelo}`;
+            document.getElementById("vehiculoMarca").textContent = data.marca;
+            document.getElementById("vehiculoCosto").textContent = data.costo;
+            document.getElementById("vehiculoMensualidad").textContent = data.mensualidad;
+            document.getElementById("vehiculoSucursal").textContent = data.sucursal;
+            document.getElementById("vehiculoColor").textContent = data.color;
+            document.getElementById("vehiculoTransmision").textContent = data.transmision;
+            document.getElementById("vehiculoKilometraje").textContent = data.kilometraje;
+            document.getElementById("vehiculoCombustible").textContent = data.combustible;
+            document.getElementById("hiddenIdVehiculo").value = data.id;
+        }
+    })
+    .catch(error => console.error("Error:", error));
+});
+</script>
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
