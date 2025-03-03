@@ -221,7 +221,7 @@ if (isset($_POST['verificar'])) {
                 <div class="input-group">
                     <label>ID: <input type="text" name="id_vehiculo"></label>
                     <button type="submit" name="verificar" class="btn-icon">
-                        🔄
+                       Check 
                     </button>
                 </div>
                 <p class="error-msg"><?php echo $mensaje; ?></p>
@@ -241,7 +241,8 @@ if (isset($_POST['verificar'])) {
                     </div>
                 </div>
                 <?php endif; ?>
-                <button type="submit" <?php echo $disabled; ?>>Enviar</button>
+                <button class="btn btn-success" type="submit" <?php echo $disabled; ?>>Enviar</button>
+
             </form>
         <?php elseif ($selected == '2'): ?>
             <form>
