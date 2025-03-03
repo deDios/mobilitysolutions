@@ -227,7 +227,7 @@ if (isset($_POST['verificar'])) {
                 <p class="error-msg"><?php echo $mensaje; ?></p>
                 <?php if ($vehiculo): ?>
                 <div class="vehiculo-card">
-                    <img src="../Imagenes/Catalogo/Auto <?php echo $id;?>/Img01.jpg" alt="Vehículo" class="vehiculo-img">
+                    <img src="../Imagenes/Catalogo/Auto <?php echo $vehiculo['id'];?>/Img01.jpg" alt="Vehículo" class="vehiculo-img">
                     <div class="vehiculo-info">
                         <h3><?php echo $vehiculo['nombre']; ?> - <?php echo $vehiculo['modelo']; ?></h3>
                         <p><strong>Marca:</strong> <?php echo $vehiculo['marca']; ?></p>
