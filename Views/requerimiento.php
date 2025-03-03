@@ -160,7 +160,7 @@ $mensaje = "";
 
 if (isset($_POST['verificar'])) {
     $cod = $_POST['id_vehiculo'];
-    $query = "SELECT 
+    $query = "select 
                 auto.id, 
                 m_auto.auto AS nombre, 
                 modelo.nombre AS modelo, 
