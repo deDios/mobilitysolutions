@@ -220,7 +220,7 @@ if (isset($_POST['verificar'])) {
                 <h2>Reserva de vehículo</h2>
                 <div class="input-group">
                     <label>ID: <input type="text" name="id_vehiculo"></label>
-                    <button type="submit" name="verificar" class="btn-icon">
+                    <button type="submit" name="verificar" class="btn-icon btn-sm">
                        Check 
                     </button>
                 </div>
