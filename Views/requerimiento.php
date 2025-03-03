@@ -153,7 +153,7 @@
 </div>
 
 <?php
-header('Content-Type: application/json'); // Asegura que la respuesta es JSON
+header('Content-Type: application/json');  // Asegura que la respuesta será JSON
 
 $selected = isset($_GET['req']) ? $_GET['req'] : '1';
 $inc = include "../db/Conexion.php"; 
@@ -162,13 +162,6 @@ $mensaje = "";
 
 if (isset($_POST['verificar'])) {
     $cod = $_POST['id_vehiculo'];
-
-    // Validación básica del ID
-    if (empty($cod)) {
-        echo json_encode(["error" => "ID de vehículo no proporcionado"]);
-        exit;
-    }
-
     $query = "select 
                 auto.id, 
                 m_auto.auto AS nombre, 
@@ -209,18 +202,16 @@ if (isset($_POST['verificar'])) {
               WHERE auto.id = '$cod'";
 
     $result = mysqli_query($con, $query);
-
     if ($result && mysqli_num_rows($result) > 0) {
         $vehiculo = mysqli_fetch_assoc($result);
-        echo json_encode($vehiculo);  // Respuesta en formato JSON
+        // Depuración adicional: Imprime los datos antes de enviarlos
+        echo json_encode($vehiculo);  // Devuelve los datos como JSON
     } else {
-        echo json_encode(["error" => "ID no encontrado"]);  // Respuesta JSON con error
+        echo json_encode(["error" => "ID no encontrado"]);
     }
     exit;
 }
 ?>
-
-
 
 <div class="menu">
     <a href="?req=1" class="menu-item"><span>📄</span> Reservar</a>
