@@ -300,7 +300,7 @@ document.getElementById("consultarBtn").addEventListener("click", function() {
             alert(data.error);
         } else {
             document.getElementById("vehiculoInfo").style.display = "block";
-            document.getElementById("vehiculoImg").src = `../Imagenes/Catalogo/Auto ${data.id}/Img01.jpg`;
+            document.getElementById("vehiculoImg").src = '../Imagenes/Catalogo/Auto ${data.id}/Img01.jpg';
             document.getElementById("vehiculoNombre").textContent = `${data.nombre} - ${data.modelo}`;
             document.getElementById("vehiculoMarca").textContent = data.marca;
             document.getElementById("vehiculoCosto").textContent = data.costo;
