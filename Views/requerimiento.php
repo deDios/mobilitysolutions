@@ -160,122 +160,121 @@ $mensaje = "";
 
 if (isset($_POST['verificar'])) {
     $cod = $_POST['id_vehiculo'];
-        $query = "select 
-                    auto.id, 
-                    m_auto.auto AS nombre, 
-                    modelo.nombre AS modelo, 
-                    marca.nombre AS marca, 
-                    auto.mensualidad, 
-                    auto.costo, 
-                    sucursal.nombre AS sucursal, 
-                    auto.img1, 
-                    auto.img2, 
-                    auto.img3, 
-                    auto.img4, 
-                    auto.img5, 
-                    auto.img6, 
-                    auto.color, 
-                    auto.transmision, 
-                    auto.interior, 
-                    auto.kilometraje, 
-                    auto.combustible, 
-                    auto.cilindros, 
-                    auto.eje, 
-                    auto.estatus, 
-                    auto.pasajeros, 
-                    auto.propietarios, 
-                    auto.created_at, 
-                    auto.updated_at 
-                FROM mobility_solutions.tmx_auto AS auto 
-                LEFT JOIN mobility_solutions.tmx_sucursal AS sucursal 
-                    ON auto.sucursal = sucursal.id 
-                LEFT JOIN mobility_solutions.tmx_estatus AS estatus 
-                    ON auto.estatus = estatus.id 
-                LEFT JOIN mobility_solutions.tmx_modelo AS modelo 
-                    ON auto.modelo = modelo.id 
-                LEFT JOIN mobility_solutions.tmx_marca AS marca 
-                    ON auto.marca = marca.id 
-                LEFT JOIN mobility_solutions.tmx_marca_auto AS m_auto 
-                    ON auto.nombre = m_auto.id 
-                WHERE auto.id = '$cod'";
-}
-    $result = mysqli_query($con,$query);
-    if ($result->num_rows > 0) {
-        $vehiculo = $result->fetch_assoc();
-        $disabled = "";
+    $query = "SELECT 
+                auto.id, 
+                m_auto.auto AS nombre, 
+                modelo.nombre AS modelo, 
+                marca.nombre AS marca, 
+                auto.mensualidad, 
+                auto.costo, 
+                sucursal.nombre AS sucursal, 
+                auto.img1, 
+                auto.img2, 
+                auto.img3, 
+                auto.img4, 
+                auto.img5, 
+                auto.img6, 
+                auto.color, 
+                auto.transmision, 
+                auto.interior, 
+                auto.kilometraje, 
+                auto.combustible, 
+                auto.cilindros, 
+                auto.eje, 
+                auto.estatus, 
+                auto.pasajeros, 
+                auto.propietarios, 
+                auto.created_at, 
+                auto.updated_at 
+              FROM mobility_solutions.tmx_auto AS auto 
+              LEFT JOIN mobility_solutions.tmx_sucursal AS sucursal 
+                  ON auto.sucursal = sucursal.id 
+              LEFT JOIN mobility_solutions.tmx_estatus AS estatus 
+                  ON auto.estatus = estatus.id 
+              LEFT JOIN mobility_solutions.tmx_modelo AS modelo 
+                  ON auto.modelo = modelo.id 
+              LEFT JOIN mobility_solutions.tmx_marca AS marca 
+                  ON auto.marca = marca.id 
+              LEFT JOIN mobility_solutions.tmx_marca_auto AS m_auto 
+                  ON auto.nombre = m_auto.id 
+              WHERE auto.id = '$cod'";
+
+    $result = mysqli_query($con, $query);
+    if ($result && mysqli_num_rows($result) > 0) {
+        $vehiculo = mysqli_fetch_assoc($result);
+        // Devuelve los datos como JSON
+        echo json_encode($vehiculo);
     } else {
-        $mensaje = "ID no encontrado";
+        echo json_encode(["error" => "ID no encontrado"]);
     }
+    exit;
+}
 ?>
 
 <div class="menu">
-        <a href="?req=1" class="menu-item"><span>📄</span> Reservar</a>
-        <a href="?req=2" class="menu-item"><span>⚙️</span> Req 2</a>
-        <a href="?req=3" class="menu-item"><span>📊</span> Req 3</a>
-        <a href="?req=4" class="menu-item"><span>🔍</span> Req 4</a>
-    </div>
+    <a href="?req=1" class="menu-item"><span>📄</span> Reservar</a>
+    <a href="?req=2" class="menu-item"><span>⚙️</span> Req 2</a>
+    <a href="?req=3" class="menu-item"><span>📊</span> Req 3</a>
+    <a href="?req=4" class="menu-item"><span>🔍</span> Req 4</a>
+</div>
 
-    <div class="content">
+<div class="content">
 
 <!-- requerimiento numero 1 -->
+<?php if ($selected == '1'): ?>
+    <!-- Formulario de Consulta -->
+    <form id="consultaForm" method="POST">
+        <h2>Reserva de vehículo</h2>
+        <div class="input-group">
+            <label>ID: <input type="text" name="id_vehiculo" id="id_vehiculo" required></label>
+            <button type="button" id="consultarBtn">Consultar</button>
+        </div>
+        <p class="error-msg"><?php echo $mensaje; ?></p>
+    </form>
 
-    <?php if ($selected == '1'): ?>
-            <!-- Formulario de Consulta -->
-            <form id="consultaForm" method="POST">
-                <h2>Reserva de vehículo</h2>
-                <div class="input-group">
-                    <label>ID: <input type="text" name="id_vehiculo" id="id_vehiculo" required></label>
-                    <button type="button" id="consultarBtn">Consultar</button>
+    <!-- Formulario de Reserva (Se llena dinámicamente) -->
+    <form id="reservaForm" method="POST">
+        <div id="vehiculoInfo" style="display: none;">
+            <div class="vehiculo-card">
+                <img id="vehiculoImg" src="" alt="Vehículo" class="vehiculo-img">
+                <div class="vehiculo-info">
+                    <h3 id="vehiculoNombre"></h3>
+                    <p><strong>Marca:</strong> <span id="vehiculoMarca"></span></p>
+                    <p><strong>Costo:</strong> $<span id="vehiculoCosto"></span></p>
+                    <p><strong>Mensualidad:</strong> $<span id="vehiculoMensualidad"></span></p>
+                    <p><strong>Sucursal:</strong> <span id="vehiculoSucursal"></span></p>
+                    <p><strong>Color:</strong> <span id="vehiculoColor"></span></p>
+                    <p><strong>Transmisión:</strong> <span id="vehiculoTransmision"></span></p>
+                    <p><strong>Kilometraje:</strong> <span id="vehiculoKilometraje"></span> km</p>
+                    <p><strong>Combustible:</strong> <span id="vehiculoCombustible"></span></p>
                 </div>
-                <p class="error-msg"><?php echo $mensaje; ?></p>
-            </form>
-
-            <!-- Formulario de Reserva (Se llena dinámicamente) -->
-            <form id="reservaForm" method="POST">
-                <div id="vehiculoInfo" style="display: none;">
-                    <div class="vehiculo-card">
-                        <img id="vehiculoImg" src="" alt="Vehículo" class="vehiculo-img">
-                        <div class="vehiculo-info">
-                            <h3 id="vehiculoNombre"></h3>
-                            <p><strong>Marca:</strong> <span id="vehiculoMarca"></span></p>
-                            <p><strong>Costo:</strong> $<span id="vehiculoCosto"></span></p>
-                            <p><strong>Mensualidad:</strong> $<span id="vehiculoMensualidad"></span></p>
-                            <p><strong>Sucursal:</strong> <span id="vehiculoSucursal"></span></p>
-                            <p><strong>Color:</strong> <span id="vehiculoColor"></span></p>
-                            <p><strong>Transmisión:</strong> <span id="vehiculoTransmision"></span></p>
-                            <p><strong>Kilometraje:</strong> <span id="vehiculoKilometraje"></span> km</p>
-                            <p><strong>Combustible:</strong> <span id="vehiculoCombustible"></span></p>
-                        </div>
-                    </div>
-                    <input type="hidden" name="id_vehiculo" id="hiddenIdVehiculo">
-                    <input type="hidden" name="id_usuario" value="<?php echo $_SESSION['user_id']; ?>">
-                    <button class="btn btn-success" type="submit">Solicitar reserva</button>
-                </div>
-            </form>
-
+            </div>
+            <input type="hidden" name="id_vehiculo" id="hiddenIdVehiculo">
+            <input type="hidden" name="id_usuario" value="<?php echo $_SESSION['user_id']; ?>">
+            <button class="btn btn-success" type="submit">Solicitar reserva</button>
+        </div>
+    </form>
 <!-- requerimiento numero 2 -->
-
-        <?php elseif ($selected == '2'): ?>
-            <form>
-                <h2>Formulario de Requerimiento 2</h2>
-                <label>Descripción: <textarea name="descripcion"></textarea></label>
-                <button type="submit">Enviar</button>
-            </form>
-        <?php elseif ($selected == '3'): ?>
-            <form>
-                <h2>Formulario de Requerimiento 3</h2>
-                <label>Archivo: <input type="file" name="archivo"></label>
-                <button type="submit">Subir</button>
-            </form>
-        <?php else: ?>
-            <form>
-                <h2>Formulario de Requerimiento 4</h2>
-                <label>Fecha: <input type="date" name="fecha"></label>
-                <button type="submit">Confirmar</button>
-            </form>
-        <?php endif; ?>
-    </div>
-
+<?php elseif ($selected == '2'): ?>
+    <form>
+        <h2>Formulario de Requerimiento 2</h2>
+        <label>Descripción: <textarea name="descripcion"></textarea></label>
+        <button type="submit">Enviar</button>
+    </form>
+<?php elseif ($selected == '3'): ?>
+    <form>
+        <h2>Formulario de Requerimiento 3</h2>
+        <label>Archivo: <input type="file" name="archivo"></label>
+        <button type="submit">Subir</button>
+    </form>
+<?php else: ?>
+    <form>
+        <h2>Formulario de Requerimiento 4</h2>
+        <label>Fecha: <input type="date" name="fecha"></label>
+        <button type="submit">Confirmar</button>
+    </form>
+<?php endif; ?>
+</div>
 
 <script>
 document.getElementById("consultarBtn").addEventListener("click", function() {
@@ -290,7 +289,7 @@ document.getElementById("consultarBtn").addEventListener("click", function() {
     formData.append("id_vehiculo", idVehiculo);
     formData.append("verificar", "1");
 
-    fetch("tu_archivo_php_actual.php", {
+    fetch("requerimiento.php", {
         method: "POST",
         body: formData
     })
@@ -300,7 +299,7 @@ document.getElementById("consultarBtn").addEventListener("click", function() {
             alert(data.error);
         } else {
             document.getElementById("vehiculoInfo").style.display = "block";
-            document.getElementById("vehiculoImg").src = '../Imagenes/Catalogo/Auto ${data.id}/Img01.jpg';
+            document.getElementById("vehiculoImg").src = '../Imagenes/Catalogo/Auto/' + data.id + '/Img01.jpg';
             document.getElementById("vehiculoNombre").textContent = `${data.nombre} - ${data.modelo}`;
             document.getElementById("vehiculoMarca").textContent = data.marca;
             document.getElementById("vehiculoCosto").textContent = data.costo;
@@ -316,7 +315,6 @@ document.getElementById("consultarBtn").addEventListener("click", function() {
     .catch(error => console.error("Error:", error));
 });
 </script>
-
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
