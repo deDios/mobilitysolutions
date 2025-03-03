@@ -287,59 +287,52 @@ if (isset($_POST['verificar'])) {
 </div>
 
 <script>
-document.getElementById("consultarBtn").addEventListener("click", function() {
-    var idVehiculo = document.getElementById("id_vehiculo").value;
+    document.getElementById("consultarBtn").addEventListener("click", function() {
+        var idVehiculo = document.getElementById("id_vehiculo").value;
 
-    if (idVehiculo.trim() === "") {
-        alert("Por favor, ingresa un ID de vehículo.");
-        return;
-    }
+        if (idVehiculo.trim() === "") {
+            alert("Por favor, ingresa un ID de vehículo.");
+            return;
+        }
 
-    var formData = new FormData();
-    formData.append("id_vehiculo", idVehiculo);
-    formData.append("verificar", "1");
+        var formData = new FormData();
+        formData.append("id_vehiculo", idVehiculo);
+        formData.append("verificar", "1");
 
-    fetch("requerimiento.php", {
-        method: "POST",
-        body: formData
-    })
-    .then(response => response.text())  // Primero obtenemos la respuesta como texto
-    .then(data => {
-        console.log("Respuesta del servidor:", data);  // Muestra lo que devuelve el servidor en la consola
+        fetch("requerimiento.php", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.json())  // Cambiar a .json() directamente
+        .then(data => {
+            console.log("Respuesta del servidor:", data);  // Ver la respuesta en consola
 
-        try {
-            var jsonData = JSON.parse(data);  // Intentamos convertirla en JSON
-            if (jsonData.error) {
-                alert(jsonData.error);
+            if (data.error) {
+                alert(data.error);
                 document.getElementById("vehiculoInfo").style.display = "none"; // Ocultamos el formulario si no se encuentra el vehículo
             } else {
                 // Mostramos el formulario con los datos del vehículo
                 document.getElementById("vehiculoInfo").style.display = "block";
 
                 // Asignar los valores a los campos del formulario
-                document.getElementById("vehiculoImg").src = '../Imagenes/Catalogo/Auto/' + jsonData.id + '/Img01.jpg';
-                document.getElementById("vehiculoNombre").textContent = `${jsonData.nombre} - ${jsonData.modelo}`;
-                document.getElementById("vehiculoMarca").textContent = jsonData.marca;
-                document.getElementById("vehiculoCosto").textContent = jsonData.costo;
-                document.getElementById("vehiculoMensualidad").textContent = jsonData.mensualidad;
-                document.getElementById("vehiculoSucursal").textContent = jsonData.sucursal;
-                document.getElementById("vehiculoColor").textContent = jsonData.color;
-                document.getElementById("vehiculoTransmision").textContent = jsonData.transmision;
-                document.getElementById("vehiculoKilometraje").textContent = jsonData.kilometraje;
-                document.getElementById("vehiculoCombustible").textContent = jsonData.combustible;
-                document.getElementById("hiddenIdVehiculo").value = jsonData.id;
+                document.getElementById("vehiculoImg").src = '../Imagenes/Catalogo/Auto/' + data.id + '/Img01.jpg';
+                document.getElementById("vehiculoNombre").textContent = `${data.nombre} - ${data.modelo}`;
+                document.getElementById("vehiculoMarca").textContent = data.marca;
+                document.getElementById("vehiculoCosto").textContent = data.costo;
+                document.getElementById("vehiculoMensualidad").textContent = data.mensualidad;
+                document.getElementById("vehiculoSucursal").textContent = data.sucursal;
+                document.getElementById("vehiculoColor").textContent = data.color;
+                document.getElementById("vehiculoTransmision").textContent = data.transmision;
+                document.getElementById("vehiculoKilometraje").textContent = data.kilometraje;
+                document.getElementById("vehiculoCombustible").textContent = data.combustible;
+                document.getElementById("hiddenIdVehiculo").value = data.id;
             }
-        } catch (e) {
-            console.error("Error al parsear JSON:", e);
-            alert("La respuesta del servidor no es un JSON válido.");
-        }
-    })
-    .catch(error => {
-        console.error("Error:", error);
-        alert("Ocurrió un error al consultar el vehículo.");
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("Ocurrió un error al consultar el vehículo.");
+        });
     });
-});
-
 </script>
 
 
