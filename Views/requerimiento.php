@@ -153,16 +153,16 @@
 </div>
 
 <?php
+header('Content-Type: application/json'); // Asegura que la respuesta es JSON
+
 $selected = isset($_GET['req']) ? $_GET['req'] : '1';
 $inc = include "../db/Conexion.php"; 
 $vehiculo = null;
 $mensaje = "";
 
-header('Content-Type: application/json'); // Aseguramos que la respuesta es JSON
-
 if (isset($_POST['verificar'])) {
     $cod = $_POST['id_vehiculo'];
-    $query = "select 
+    $query = "SELECT 
                 auto.id, 
                 m_auto.auto AS nombre, 
                 modelo.nombre AS modelo, 
@@ -212,6 +212,7 @@ if (isset($_POST['verificar'])) {
     exit;
 }
 ?>
+
 
 <div class="menu">
     <a href="?req=1" class="menu-item"><span>📄</span> Reservar</a>
