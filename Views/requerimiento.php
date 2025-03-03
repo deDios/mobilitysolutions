@@ -160,7 +160,7 @@ $mensaje = "";
 
 if (isset($_POST['verificar'])) {
     $cod = $_POST['id_vehiculo'];
-    $query = "SELECT 
+    $query = "select 
                 auto.id, 
                 m_auto.auto AS nombre, 
                 modelo.nombre AS modelo, 
@@ -297,8 +297,12 @@ document.getElementById("consultarBtn").addEventListener("click", function() {
     .then(data => {
         if (data.error) {
             alert(data.error);
+            document.getElementById("vehiculoInfo").style.display = "none"; // Ocultamos el formulario si no se encuentra el vehículo
         } else {
+            // Mostramos el formulario con los datos del vehículo
             document.getElementById("vehiculoInfo").style.display = "block";
+
+            // Asignar los valores a los campos del formulario
             document.getElementById("vehiculoImg").src = '../Imagenes/Catalogo/Auto/' + data.id + '/Img01.jpg';
             document.getElementById("vehiculoNombre").textContent = `${data.nombre} - ${data.modelo}`;
             document.getElementById("vehiculoMarca").textContent = data.marca;
@@ -315,6 +319,7 @@ document.getElementById("consultarBtn").addEventListener("click", function() {
     .catch(error => console.error("Error:", error));
 });
 </script>
+
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
