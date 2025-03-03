@@ -280,8 +280,20 @@ form {
     margin: 5px 0;
 }
 
+/* Estilo para el formulario de vehículo (por defecto oculto) */
+#vehiculoInfo {
+    display: none;  /* Se mostrará cuando se obtengan datos */
+    margin-top: 20px;
+}
+
 /* Botón enviar deshabilitado */
 button:disabled {
     background: #ccc;
     cursor: not-allowed;
+}
+
+/* Estilo para hacer el botón visible si está oculto por CSS */
+#consultarBtn {
+    visibility: visible !important; /* Asegura que el botón sea visible */
+    z-index: 1000;  /* Asegura que el botón esté encima de otros elementos */
 }
