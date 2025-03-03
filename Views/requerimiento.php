@@ -160,7 +160,7 @@ $mensaje = "";
 
 if (isset($_POST['verificar'])) {
     $cod = $_POST['id_vehiculo'];
-    $query = "select 
+    $query = "SELECT 
                 auto.id, 
                 m_auto.auto AS nombre, 
                 modelo.nombre AS modelo, 
@@ -200,11 +200,13 @@ if (isset($_POST['verificar'])) {
               WHERE auto.id = '$cod'";
 
     $result = mysqli_query($con, $query);
+
     if ($result && mysqli_num_rows($result) > 0) {
         $vehiculo = mysqli_fetch_assoc($result);
         // Devuelve los datos como JSON
         echo json_encode($vehiculo);
     } else {
+        // Si no se encuentra el vehículo, muestra un error
         echo json_encode(["error" => "ID no encontrado"]);
     }
     exit;
@@ -219,7 +221,6 @@ if (isset($_POST['verificar'])) {
 </div>
 
 <div class="content">
-
 <!-- requerimiento numero 1 -->
 <?php if ($selected == '1'): ?>
     <!-- Formulario de Consulta -->
@@ -295,6 +296,8 @@ document.getElementById("consultarBtn").addEventListener("click", function() {
     })
     .then(response => response.json())
     .then(data => {
+        console.log("Datos recibidos del servidor:", data); // Esto es útil para depurar
+
         if (data.error) {
             alert(data.error);
             document.getElementById("vehiculoInfo").style.display = "none"; // Ocultamos el formulario si no se encuentra el vehículo
