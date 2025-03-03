@@ -241,7 +241,8 @@ if (isset($_POST['verificar'])) {
                     </div>
                 </div>
                 <?php endif; ?>
-                <button class="btn btn-success" type="submit" <?php echo $disabled; ?>>Enviar</button>
+
+                <button class="btn py-2 btn-success" type="submit" <?php echo $disabled; ?>>Enviar</button>
 
             </form>
         <?php elseif ($selected == '2'): ?>
