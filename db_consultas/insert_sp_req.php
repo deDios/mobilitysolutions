@@ -10,27 +10,58 @@ if (!$data || !isset($data['vehiculo']) || !isset($data['usuario'])) {
     exit;
 }
 
-// Imprimir los datos recibidos para pruebas
-echo json_encode([
-    "success" => true,
-    "datos_recibidos" => $data
-]);
+// Conectar a la base de datos
+require "../db/Conexion.php";
 
-// *** SE COMENTÓ LA PARTE DE LA BASE DE DATOS ***
-// require "../db/Conexion.php";
-// $vehiculo = $data['vehiculo'];
-// $usuario = $data['usuario'];
+$vehiculo = $data['vehiculo'];
+$usuario = $data['usuario'];
 
-// $query = "INSERT INTO reservas (id_usuario, id_vehiculo, fecha_reserva) VALUES (?, ?, NOW())";
-// $stmt = $con->prepare($query);
-// $stmt->bind_param("ii", $usuario['id'], $vehiculo['id']);
+$tipo_req = "Reserva de vehículo";
+$status_req = 1; // Estado inicial de la solicitud
+$estatus = 1; // Estatus del requerimiento
 
-// if ($stmt->execute()) {
-//     echo json_encode(["success" => true]);
-// } else {
-//     echo json_encode(["success" => false, "message" => "Error en la base de datos."]);
-// }
+// Consulta para insertar en tmx_requerimiento
+$insert_requerimiento = "INSERT INTO mobility_solutions.tmx_requerimiento (
+    tipo_req, status_req, id_auto, nombre, modelo, marca, mensualidad, costo, sucursal, color, 
+    transmision, interior, kilometraje, combustible, cilindros, eje, estatus, pasajeros, 
+    propietarios, c_type, created_by, created_at
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
 
-// $stmt->close();
-// $con->close();
+$stmt = $con->prepare($insert_requerimiento);
+
+// Asignar valores desde el array de vehículo y usuario
+$stmt->bind_param(
+    "siiiiiddisssdsisiiisi",
+    $tipo_req,
+    $status_req,
+    $vehiculo['id'],
+    $vehiculo['nombre'],
+    $vehiculo['modelo'],
+    $vehiculo['marca'],
+    $vehiculo['mensualidad'],
+    $vehiculo['costo'],
+    $vehiculo['sucursal'],
+    $vehiculo['color'],
+    $vehiculo['transmision'],
+    $vehiculo['interior'],
+    $vehiculo['kilometraje'],
+    $vehiculo['combustible'],
+    $vehiculo['cilindros'],
+    $vehiculo['eje'],
+    $estatus,
+    $vehiculo['pasajeros'],
+    $vehiculo['propietarios'],
+    $vehiculo['c_type'],
+    $usuario['id']
+);
+
+if ($stmt->execute()) {
+    echo json_encode(["success" => true, "message" => "Reserva registrada correctamente."]);
+} else {
+    echo json_encode(["success" => false, "message" => "Error en la base de datos: " . $stmt->error]);
+}
+
+$stmt->close();
+$con->close();
 ?>
+
