@@ -219,7 +219,7 @@ if (isset($_POST['verificar'])) {
                     </button>
                 </div>
                 <p class="error-msg"><?php echo $mensaje; ?></p>
-                <?php if ($vehiculo): ?>
+                <?php if (!empty($vehiculo['marca'])): ?>
                 <!-- Muestra el div solo si hay datos del vehículo -->
                 <div class="vehiculo-card">
                     <img src="../Imagenes/Catalogo/Auto <?php echo $vehiculo['id'];?>/Img01.jpg" alt="Vehículo" class="vehiculo-img">
