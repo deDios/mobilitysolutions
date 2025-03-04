@@ -201,7 +201,7 @@ if (isset($_POST['verificar'])) {
     }
 ?>
 
-<div class="menu">
+    <div class="menu">
         <a href="?req=1" class="menu-item"><span>📄</span> Reservar</a>
         <a href="?req=2" class="menu-item"><span>⚙️</span> Req 2</a>
         <a href="?req=3" class="menu-item"><span>📊</span> Req 3</a>

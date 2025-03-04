@@ -183,23 +183,32 @@ body {
 }
 
 .menu-item {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: white;
-    border-radius: 10px;
+    background: linear-gradient(135deg, #ff5e62, #ff9966);  /* Gradiente atractivo */
+    border-radius: 12px;
     text-decoration: none;
-    color: black;
-    font-size: 14px;
+    color: white;  /* Cambiar el color del texto para mayor contraste */
+    font-size: 16px;
     flex-direction: column;
-    border: 2px solid black;
+    border: 2px solid #ff9966;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* Sombra sutil */
+    transition: transform 0.3s, box-shadow 0.3s ease-in-out;  /* Transiciones suaves */
+}
+
+.menu-item:hover {
+    transform: translateY(-5px);  /* Efecto de hover para levantar el botón */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);  /* Sombra más grande al hacer hover */
 }
 
 .menu-item span {
-    font-size: 30px;
+    font-size: 40px;  /* Aumentar el tamaño del ícono */
+    margin-bottom: 8px;  /* Espacio entre el ícono y el texto */
 }
+
 
 .content {
     background-color: white;
