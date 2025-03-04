@@ -209,17 +209,18 @@ if (isset($_POST['verificar'])) {
     </div>
 
     <div class="content">
-    <?php if ($selected == '1'): ?>
+        <?php if ($selected == '1'): ?>
             <form method="POST">
                 <h2>Reserva de vehículo</h2>
                 <div class="input-group">
                     <label>ID: <input type="text" name="id_vehiculo"></label>
                     <button type="submit" name="verificar" class="btn-icon">
-                       Consultar 
+                    Consultar 
                     </button>
                 </div>
                 <p class="error-msg"><?php echo $mensaje; ?></p>
                 <?php if ($vehiculo): ?>
+                <!-- Muestra el div solo si hay datos del vehículo -->
                 <div class="vehiculo-card">
                     <img src="../Imagenes/Catalogo/Auto <?php echo $vehiculo['id'];?>/Img01.jpg" alt="Vehículo" class="vehiculo-img">
                     <div class="vehiculo-info">
@@ -245,7 +246,6 @@ if (isset($_POST['verificar'])) {
                     </button>
                 </div>
             </form>
-
         <?php elseif ($selected == '2'): ?>
             <form>
                 <h2>Formulario de Requerimiento 2</h2>
