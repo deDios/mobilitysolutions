@@ -288,16 +288,7 @@ if (isset($_POST['verificar'])) {
             }
 
             const vehiculo = JSON.parse(vehiculoData);
-            const usuarioId = Number(usuarioData.trim()); // Convierte el string a número
-
-            if (!usuarioId) {
-                alert("Error: ID de usuario inválido.");
-                return;
-            }
-
-            const usuario = { id: usuarioId };
-
-            console.log("Datos enviados:", JSON.stringify({ vehiculo, usuario })); // Verifica la estructura
+            const usuario = { id: usuarioData };  // Aquí agregamos la propiedad id
 
             fetch("../db_consultas/insert_sp_req.php", {
                 method: "POST",
