@@ -183,18 +183,18 @@ body {
 }
 
 .menu-item {
-    width: 120px;
+    width: 300px;
     height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #ff5e62, #ff9966);  /* Gradiente atractivo */
+    background: linear-gradient(135deg, #ffd700, #fffacd);  /* Gradiente dorado a blanco */
     border-radius: 12px;
     text-decoration: none;
-    color: white;  /* Cambiar el color del texto para mayor contraste */
+    color: black;  /* Color de texto en negro para buen contraste */
     font-size: 16px;
     flex-direction: column;
-    border: 2px solid #ff9966;
+    border: 2px solid #ffd700;  /* Borde dorado */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* Sombra sutil */
     transition: transform 0.3s, box-shadow 0.3s ease-in-out;  /* Transiciones suaves */
 }
