@@ -30,13 +30,13 @@ if ($result->num_rows === 0) {
 $vehiculo = $result->fetch_assoc();
 $stmt->close();
 
-//$id_usuario = intval($data['usuario']['id']);  // Usando intval()
-$id_usuario = filter_var($data['usuario']['id'], FILTER_VALIDATE_INT);  // Usando filter_var()
+$id_usuario = intval(trim($data['usuario']['id'], "\""));
 
 if ($id_usuario === 0) {
     echo json_encode(["success" => false, "message" => "Error: Usuario no válido"]);
     exit;
 }
+
 
 // Insertar requerimiento en la base de datos
 $insert_requerimiento = "INSERT INTO mobility_solutions.tmx_requerimiento (
