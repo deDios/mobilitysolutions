@@ -31,10 +31,8 @@ $vehiculo = $result->fetch_assoc();
 $stmt->close();
 
 // Convertir el id_usuario recibido en formato cadena a entero
-$id_usuario = intval($data['usuario']['id']);  // Usando intval()
-
-// O alternativamente
-// $id_usuario = filter_var($data['usuario']['id'], FILTER_VALIDATE_INT);  // Usando filter_var()
+//$id_usuario = intval($data['usuario']['id']);  // Usando intval()
+$id_usuario = filter_var($data['usuario']['id'], FILTER_VALIDATE_INT);  // Usando filter_var()
 
 if ($id_usuario === 0) {
     echo json_encode(["success" => false, "message" => "Error: Usuario no válido"]);
