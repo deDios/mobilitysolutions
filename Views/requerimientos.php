@@ -197,7 +197,7 @@ if (isset($_POST['verificar'])) {
         $vehiculo = $result->fetch_assoc();
         $disabled = "";
     } else {
-        $mensaje = "ID no encontrado o fuera del catálogo activo";
+        $mensaje = "ID no encontrado";
     }
 ?>
 
