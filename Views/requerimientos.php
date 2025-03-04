@@ -239,7 +239,7 @@ if (isset($_POST['verificar'])) {
                     <button class="btn btn-success" type="button" id="boton_reserva" 
                         data-marca="<?php echo isset($vehiculo['marca']) ? $vehiculo['marca'] : ''; ?>"
                         data-vehiculo='<?php echo json_encode($vehiculo); ?>'
-                        data-usuario='<?php echo json_encode($_SESSION['user_id']); ?>'
+                        data-usuario='<?php echo json_encode($user_id); ?>'
                         <?php echo isset($vehiculo['marca']) ? '' : 'disabled'; ?>>
                         Solicitar reserva
                     </button>
@@ -290,7 +290,7 @@ if (isset($_POST['verificar'])) {
             const vehiculo = JSON.parse(vehiculoData);
             const usuario = JSON.parse(usuarioData);
 
-            fetch("insert_sp_req.php", {
+            fetch("../db_consultas/insert_sp_req.php", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
