@@ -301,7 +301,7 @@ if (isset($_POST['verificar'])) {
             .then(data => {
                 if (data.success) {
                     alert("Reserva realizada con éxito.");
-                    location.reload();
+                    window.location.href = window.location.pathname;
                 } else {
                     alert("Error al realizar la reserva.");
                 }
