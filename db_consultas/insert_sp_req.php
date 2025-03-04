@@ -37,7 +37,6 @@ if ($id_usuario === 0) {
     exit;
 }
 
-
 // Insertar requerimiento en la base de datos
 $insert_requerimiento = "INSERT INTO mobility_solutions.tmx_requerimiento (
     tipo_req, status_req, id_auto, nombre, modelo, marca, mensualidad, 

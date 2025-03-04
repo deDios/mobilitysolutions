@@ -378,8 +378,8 @@ document.querySelectorAll('.requerimiento-item').forEach(item => {
     });
 });
 
-    // Evento para el botón de "Aprobar"
-document.getElementById('aprobarBtn').addEventListener('click', function () {
+// Evento para el botón de "Aprobar"
+    document.getElementById('aprobarBtn').addEventListener('click', function () {
     const seleccionado = document.querySelector('.requerimiento-item.active');
 
     if (!seleccionado) {
@@ -389,8 +389,20 @@ document.getElementById('aprobarBtn').addEventListener('click', function () {
 
     const idRequerimiento = seleccionado.getAttribute('data-id');
     const idAuto = seleccionado.getAttribute('data-id_auto');
+    const tipoReq = seleccionado.getAttribute('data-titulo').split("(Req: ")[1].split(" )")[0]; // Extraer el tipo_req
 
-    fetch('../db_consultas/actualizar_estatus.php', {
+    // Determinar la API según el tipo de requerimiento
+    let apiUrl = '';
+    if (tipoReq === "Nuevo en catálogo") {
+        apiUrl = '../db_consultas/actualizar_estatus.php';
+    } else if (tipoReq === "Reserva de vehículo") {
+        apiUrl = '../db_consultas/actualizar_reserva.php';
+    } else {
+        alert("Error: Tipo de requerimiento desconocido.");
+        return;
+    }
+
+    fetch(apiUrl, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -409,6 +421,7 @@ document.getElementById('aprobarBtn').addEventListener('click', function () {
     })
     .catch(error => console.error("Error en la solicitud:", error));
 });
+
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
