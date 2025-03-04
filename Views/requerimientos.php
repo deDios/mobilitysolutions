@@ -290,6 +290,8 @@ if (isset($_POST['verificar'])) {
             const vehiculo = JSON.parse(vehiculoData);
             const usuario = { id: usuarioData };  // Aquí agregamos la propiedad id
 
+            console.log("Usuario ID:", usuario.id);
+            
             fetch("../db_consultas/insert_sp_req.php", {
                 method: "POST",
                 headers: {

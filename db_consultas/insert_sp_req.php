@@ -37,6 +37,16 @@ if ($id_usuario === 0) {
     exit;
 }
 
+// Parsear y asegurarse de que el id_usuario sea un entero válido
+$id_usuario = isset($data['usuario']['id']) ? intval($data['usuario']['id']) : 0;
+
+// Si el id_usuario es 0, significa que no se proporcionó un valor válido
+if ($id_usuario === 0) {
+    echo json_encode(["success" => false, "message" => "Error: Usuario no válido"]);
+    exit;
+}
+
+
 // Insertar requerimiento en la base de datos
 $insert_requerimiento = "INSERT INTO mobility_solutions.tmx_requerimiento (
     tipo_req, status_req, id_auto, nombre, modelo, marca, mensualidad, 
