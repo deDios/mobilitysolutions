@@ -288,7 +288,9 @@ if (isset($_POST['verificar'])) {
             }
 
             const vehiculo = JSON.parse(vehiculoData);
-            const usuario = JSON.parse(usuarioData);  
+            const usuario = { id: parseInt(usuarioData, 10) }; // Convertimos el usuario a un objeto con clave 'id'
+
+            console.log("Datos enviados:", JSON.stringify({ vehiculo, usuario })); 
 
             fetch("../db_consultas/insert_sp_req.php", {
                 method: "POST",
