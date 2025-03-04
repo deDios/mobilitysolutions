@@ -188,16 +188,18 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #ffd700, #fffacd);  /* Gradiente dorado a blanco */
+    background: linear-gradient(135deg, #e3e3e3, #ffffff);  /* Gradiente de gris a blanco */
     border-radius: 12px;
     text-decoration: none;
     color: black;  /* Color de texto en negro para buen contraste */
     font-size: 16px;
     flex-direction: column;
-    border: 2px solid #ffd700;  /* Borde dorado */
+    border: 2px solid #e3e3e3;  /* Borde gris claro */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* Sombra sutil */
     transition: transform 0.3s, box-shadow 0.3s ease-in-out;  /* Transiciones suaves */
 }
+
+
 
 .menu-item:hover {
     transform: translateY(-5px);  /* Efecto de hover para levantar el botón */
