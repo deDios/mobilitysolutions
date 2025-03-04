@@ -56,16 +56,13 @@ $query ='select
             exit;
         }
     
-        // Agregar el ID del usuario logueado en la columna approved_by
         $query1 = "UPDATE mobility_solutions.tmx_auto SET estatus = 1 WHERE id = ?";
         $query2 = "UPDATE mobility_solutions.tmx_requerimiento SET status_req = 2, approved_by = ? WHERE id = ?";
     
-        // Actualizar la tabla tmx_auto
         $stmt1 = mysqli_prepare($con, $query1);
         mysqli_stmt_bind_param($stmt1, "i", $id_auto);
         $success1 = mysqli_stmt_execute($stmt1);
     
-        // Actualizar la tabla tmx_requerimiento con el user_id del aprobador
         $stmt2 = mysqli_prepare($con, $query2);
         mysqli_stmt_bind_param($stmt2, "ii", $user_id, $id);
         $success2 = mysqli_stmt_execute($stmt2);
