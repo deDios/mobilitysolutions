@@ -236,8 +236,10 @@ if (isset($_POST['verificar'])) {
                 </div>
                 <?php endif; ?>
                 <div class="boton_reserva py-3">
-                    <button class="btn btn-success" type="submit" id="boton_reserva" 
+                    <button class="btn btn-success" type="button" id="boton_reserva" 
                         data-marca="<?php echo isset($vehiculo['marca']) ? $vehiculo['marca'] : ''; ?>"
+                        data-vehiculo='<?php echo json_encode($vehiculo); ?>'
+                        data-usuario='<?php echo json_encode($_SESSION['user_id']); ?>'
                         <?php echo isset($vehiculo['marca']) ? '' : 'disabled'; ?>>
                         Solicitar reserva
                     </button>
@@ -268,14 +270,47 @@ if (isset($_POST['verificar'])) {
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            const botonReserva = document.getElementById("boton_reserva");
-            const marca = botonReserva.getAttribute("data-marca");
+        const botonReserva = document.getElementById("boton_reserva");
+        const marca = botonReserva.getAttribute("data-marca");
 
-            // Deshabilita el botón si marca está vacío
-            if (!marca.trim()) {
-                botonReserva.disabled = true;
+        // Deshabilita el botón si la marca está vacía
+        if (!marca.trim()) {
+            botonReserva.disabled = true;
+        }
+
+        botonReserva.addEventListener("click", function () {
+            const vehiculoData = botonReserva.getAttribute("data-vehiculo");
+            const usuarioData = botonReserva.getAttribute("data-usuario");
+
+            if (!vehiculoData || !usuarioData) {
+                alert("Faltan datos para la reserva.");
+                return;
             }
+
+            const vehiculo = JSON.parse(vehiculoData);
+            const usuario = JSON.parse(usuarioData);
+
+            fetch("insert_sp_req.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ vehiculo, usuario })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Reserva realizada con éxito.");
+                } else {
+                    alert("Error al realizar la reserva.");
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("Ocurrió un error inesperado.");
+            });
         });
+    });
     </script>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
