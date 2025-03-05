@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     // Agregar el ID del usuario logueado en la columna approved_by
-    $query2 = "UPDATE mobility_solutions.tmx_requerimiento SET status_req = 3, approved_by = ? WHERE id = ?";
+    $query2 = "UPDATE mobility_solutions.tmx_requerimiento SET status_req = 3, rechazo_by = ? WHERE id = ?";
 
     // Actualizar la tabla tmx_requerimiento con el user_id del aprobador
     $stmt2 = mysqli_prepare($con, $query2);
@@ -66,11 +66,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $success2 = mysqli_stmt_execute($stmt2);
 
     if ($success2) {
-        echo json_encode(["success" => true, "message" => "Requerimiento aprobado correctamente."]);
+        echo json_encode(["success" => true, "message" => "Requerimiento rechazado correctamente."]);
     } else {
         echo json_encode(["success" => false, "message" => "Error al actualizar los registros.", "error" => mysqli_error($con)]);
     }
-    
+
     mysqli_stmt_close($stmt2);
 } else {
     echo json_encode(["success" => false, "message" => "Método no permitido."]);
