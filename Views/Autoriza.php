@@ -457,6 +457,50 @@ document.querySelectorAll('.requerimiento-item').forEach(item => {
     .catch(error => console.error("Error en la solicitud:", error));
 });
 
+document.getElementById('rechazarBtn').addEventListener('click', function () {
+    const seleccionado = document.querySelector('.requerimiento-item.active');
+
+    if (!seleccionado) {
+        alert("Por favor, seleccione un requerimiento antes de rechazar.");
+        return;
+    }
+
+    const idRequerimiento = seleccionado.getAttribute('data-id');
+    const idAuto = seleccionado.getAttribute('data-id_auto');
+    const tipoReq = seleccionado.getAttribute('data-titulo').split("(Req: ")[1].split(" )")[0]; // Extraer el tipo_req
+
+    // Determinar la API de rechazo según el tipo de requerimiento
+    let apiUrl = '';
+    if (tipoReq === "Nuevo en catálogo") {
+        apiUrl = '../db_consultas/rechazar_reserva.php';
+    } else if (tipoReq === "Reserva de vehículo") {
+        apiUrl = '../db_consultas/rechazar_reserva.php';
+    } else {
+        alert("Error: Tipo de requerimiento desconocido.");
+        return;
+    }
+
+    fetch(apiUrl, { 
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: `id=${idRequerimiento}&id_auto=${idAuto}`
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert(data.message);
+            seleccionado.classList.add('rechazado'); // Opcional: cambiar estilo del rechazado
+            window.location.href = "https://mobilitysolutionscorp.com/Views/Autoriza.php"; // Redirigir a la página
+        } else {
+            alert("Error: " + data.message);
+        }
+    })
+    .catch(error => console.error("Error en la solicitud:", error));
+});
+
+
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
