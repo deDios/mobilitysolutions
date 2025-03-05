@@ -164,7 +164,7 @@
 
 <?php
 $inc = include "../db/Conexion.php";
-$query = 'select 
+$query = "select 
                 auto.id,
                 auto.id_auto,
                 auto.tipo_req,
@@ -194,7 +194,8 @@ $query = 'select
           LEFT JOIN mobility_solutions.tmx_modelo AS modelo ON auto.modelo = modelo.id 
           LEFT JOIN mobility_solutions.tmx_marca AS marca ON auto.marca = marca.id
           LEFT JOIN mobility_solutions.tmx_marca_auto AS m_auto ON auto.nombre = m_auto.id
-          WHERE auto.status_req = 1;';
+          WHERE auto.status_req = 1
+          AND auto.created_by != '$user_id';";
 
 $result = mysqli_query($con, $query);
 $requerimientos = [];
