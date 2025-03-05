@@ -51,22 +51,22 @@ $query ='select
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $id = isset($_POST['id']) ? $_POST['id'] : null;
     $id_auto = isset($_POST['id_auto']) ? $_POST['id_auto'] : null;
+    $rechazo_coment = isset($_POST['rechazo_coment']) ? trim($_POST['rechazo_coment']) : null;
 
-    if (!$id || !$id_auto) {
-        echo json_encode(["success" => false, "message" => "Faltan parámetros id o id_auto"]);
+    if (!$id || !$id_auto || !$rechazo_coment) {
+        echo json_encode(["success" => false, "message" => "Faltan parámetros id, id_auto o rechazo_coment"]);
         exit;
     }
 
-    // Agregar el ID del usuario logueado en la columna approved_by
-    $query2 = "UPDATE mobility_solutions.tmx_requerimiento SET status_req = 3, rechazo_by = ? WHERE id = ?";
+    // Agregar el ID del usuario logueado y el comentario de rechazo en la actualización
+    $query2 = "UPDATE mobility_solutions.tmx_requerimiento SET status_req = 3, rechazo_by = ?, rechazo_coment = ? WHERE id = ?";
 
-    // Actualizar la tabla tmx_requerimiento con el user_id del aprobador
     $stmt2 = mysqli_prepare($con, $query2);
-    mysqli_stmt_bind_param($stmt2, "ii", $user_id, $id);
+    mysqli_stmt_bind_param($stmt2, "isi", $user_id, $rechazo_coment, $id);
     $success2 = mysqli_stmt_execute($stmt2);
 
     if ($success2) {
-        echo json_encode(["success" => true, "message" => "Requerimiento rechazado correctamente."]);
+        echo json_encode(["success" => true, "message" => "Requerimiento rechazado correctamente con comentario."]);
     } else {
         echo json_encode(["success" => false, "message" => "Error al actualizar los registros.", "error" => mysqli_error($con)]);
     }
@@ -79,5 +79,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 header("Location: https://mobilitysolutionscorp.com/views/Autoriza.php", TRUE, 301);
 exit();
 ?>
+
 
 

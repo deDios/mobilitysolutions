@@ -457,6 +457,7 @@ document.querySelectorAll('.requerimiento-item').forEach(item => {
     .catch(error => console.error("Error en la solicitud:", error));
 });
 
+// Evento para el botón de "Rechazo"
 document.getElementById('rechazarBtn').addEventListener('click', function () {
     const seleccionado = document.querySelector('.requerimiento-item.active');
 
@@ -468,6 +469,14 @@ document.getElementById('rechazarBtn').addEventListener('click', function () {
     const idRequerimiento = seleccionado.getAttribute('data-id');
     const idAuto = seleccionado.getAttribute('data-id_auto');
     const tipoReq = seleccionado.getAttribute('data-titulo').split("(Req: ")[1].split(" )")[0]; // Extraer el tipo_req
+
+    // Solicitar el comentario de rechazo
+    const rechazoComentario = prompt("Ingrese la razón del rechazo:");
+
+    if (rechazoComentario === null || rechazoComentario.trim() === "") {
+        alert("Debe ingresar una razón para el rechazo.");
+        return;
+    }
 
     // Determinar la API de rechazo según el tipo de requerimiento
     let apiUrl = '';
@@ -485,7 +494,7 @@ document.getElementById('rechazarBtn').addEventListener('click', function () {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: `id=${idRequerimiento}&id_auto=${idAuto}`
+        body: `id=${idRequerimiento}&id_auto=${idAuto}&rechazo_coment=${encodeURIComponent(rechazoComentario)}`
     })
     .then(response => response.json())
     .then(data => {
@@ -499,7 +508,6 @@ document.getElementById('rechazarBtn').addEventListener('click', function () {
     })
     .catch(error => console.error("Error en la solicitud:", error));
 });
-
 
 </script>
 
