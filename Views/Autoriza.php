@@ -140,7 +140,7 @@
           </li>
 
          <li class="nav-item">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/requerimiento.php">Requerimientos</a>
+            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/requerimientos.php">Requerimientos</a>
           </li>
 
           <li class="nav-item active">
