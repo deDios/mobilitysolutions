@@ -12,11 +12,18 @@ if ($id_cliente <= 0) {
 
 $query = "SELECT 
             lp.id, 
-            p.nombre AS promo_nombre, 
+            lp.id_cliente, 
+            lp.id_producto, 
+            lp.id_compuesto, 
+            lp.id_promo, 
+            p.nombre,
             p.porcentaje, 
-            p.cantidad, 
-            p.promo_type, 
-            tp.nombre AS tipo_promo_name
+            p.cantidad as efectivo, 
+            p.promo_type_id,
+            tp.nombre as tipo_promo_name,
+            lp.cantidad, 
+            lp.start_date, 
+            lp.end_date
           FROM mobility_solutions.moon_lista_promo AS lp
           LEFT JOIN mobility_solutions.moon_promo AS p ON lp.id_promo = p.id
           LEFT JOIN mobility_solutions.moon_tipo_promo AS tp ON p.promo_type = tp.id
