@@ -32,7 +32,7 @@ $query = "SELECT
           FROM mobility_solutions.moon_lista_promo AS lp
           LEFT JOIN mobility_solutions.moon_promo AS p ON lp.id_promo = p.id
           LEFT JOIN mobility_solutions.moon_tipo_promo AS tp ON p.promo_type = tp.id
-          WHERE lp.id_company = ? AND lp.id_cliente = ? AND p.status = 1";
+          WHERE lp.id_company = ? AND lp.id_cliente = ? AND p.status = 1 AND lp.cantidad > 0";
 
 // Preparar y ejecutar la consulta con parámetros seguros
 if ($stmt = $con->prepare($query)) {
