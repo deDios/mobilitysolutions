@@ -26,7 +26,7 @@ if (isset($data['folio']) && isset($data['id_promo']) && isset($data['id_cliente
               VALUES (?, ?, ?, ?, ?)";
 
     if ($stmt = $con->prepare($query)) {
-        $stmt->bind_param("siidd", $folio, $id_promo, $id_cliente, $sub_total, $id_company);
+        $stmt->bind_param("siidi", $folio, $id_promo, $id_cliente, $sub_total, $id_company);
         if ($stmt->execute()) {
             echo json_encode(["status" => "success", "message" => "Descuento insertado exitosamente"]);
         } else {
