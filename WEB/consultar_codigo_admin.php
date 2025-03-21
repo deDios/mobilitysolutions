@@ -1,10 +1,18 @@
 <?php
 header('Content-Type: application/json');
 
-// Verifica si los parámetros fueron enviados
-$codigo_admin = isset($_REQUEST['codigo_admin']) ? intval($_REQUEST['codigo_admin']) : 0;
-$company_id = isset($_REQUEST['company_id']) ? intval($_REQUEST['company_id']) : 0;
+// Lee el cuerpo JSON de la solicitud
+$data = json_decode(file_get_contents('php://input'), true);
 
+// Verifica si los parámetros fueron enviados
+$codigo_admin = isset($data['codigo_admin']) ? intval($data['codigo_admin']) : 0;
+$company_id = isset($data['company_id']) ? intval($data['company_id']) : 0;
+
+// Depuración: Muestra los parámetros recibidos
+error_log("Codigo Admin: " . $codigo_admin);
+error_log("Company ID: " . $company_id);
+
+// Verifica que los datos no estén vacíos
 if ($codigo_admin === 0 || $company_id === 0) {
     echo json_encode(['success' => false, 'message' => 'Datos incompletos']);
     exit;
@@ -32,6 +40,7 @@ $stmt->bind_param('ii', $codigo_admin, $company_id); // 'ii' porque ambos son en
 $stmt->execute();
 $result = $stmt->get_result();
 
+// Verifica si se encontró un resultado
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     echo json_encode(['success' => true, 'data' => $row]);
