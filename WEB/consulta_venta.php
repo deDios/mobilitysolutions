@@ -6,10 +6,10 @@ $data = json_decode(file_get_contents('php://input'), true);
 
 // Verifica si los parámetros fueron enviados
 $company_id = isset($data['company_id']) ? intval($data['company_id']) : 0;
-$month = isset($data['month']) ? $data['month'] : date('Y-m'); // Establece el mes actual como predeterminado
+$month = isset($data['month']) ? $data['month'] : date('Y-m'); // Establece el mes actual como predeterminado (en formato 'YYYY-MM')
 
 // Verifica que los datos no estén vacíos
-if ($company_id === 0) {
+if ($company_id === 0 || !$month) {
     echo json_encode(['success' => false, 'message' => 'Datos incompletos']);
     exit;
 }
