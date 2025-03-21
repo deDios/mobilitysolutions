@@ -4,20 +4,18 @@ header('Content-Type: application/json');
 // Lee el cuerpo JSON de la solicitud
 $data = json_decode(file_get_contents('php://input'), true);
 
-// Verifica si los parámetros fueron enviados
+// Verifica si el company_id fue enviado
 $company_id = isset($data['company_id']) ? intval($data['company_id']) : 0;
-$month = isset($data['month']) ? $data['month'] : date('Y-m'); // Establece el mes actual como predeterminado (en formato 'YYYY-MM')
 
-// Verifica que los datos no estén vacíos
-if ($company_id === 0 || !$month) {
-    echo json_encode(['success' => false, 'message' => 'Datos incompletos']);
+if ($company_id === 0) {
+    echo json_encode(['success' => false, 'message' => 'Company ID requerido']);
     exit;
 }
 
 // Incluye la conexión a la base de datos
 include "../db/Conexion.php";
 
-// Consulta SQL
+// Consulta SQL sin filtrar por mes
 $query = "
 SELECT 
     DATE(DATE_SUB(v.created_at, INTERVAL 6 HOUR)) AS FechaVenta, 
@@ -46,9 +44,9 @@ LEFT JOIN
         Fechades
     ) AS gas 
 ON DATE(DATE_SUB(v.created_at, INTERVAL 6 HOUR)) = gas.Fechades
-WHERE DATE_FORMAT(v.created_at, '%Y-%m') = ?  -- Filtra por mes
 GROUP BY 
     FechaVenta
+ORDER BY FechaVenta DESC
 ";
 
 $stmt = $con->prepare($query);
@@ -57,13 +55,9 @@ if ($stmt === false) {
     exit;
 }
 
-// Vincula los parámetros para evitar inyección SQL
-$stmt->bind_param('s', $month); // 's' porque el mes es un string (formato Y-m)
-
 $stmt->execute();
 $result = $stmt->get_result();
 
-// Verifica si se encontró un resultado
 $ventasData = [];
 while ($row = $result->fetch_assoc()) {
     $ventasData[] = $row;
@@ -72,7 +66,6 @@ while ($row = $result->fetch_assoc()) {
 // Devuelve los resultados en formato JSON
 echo json_encode(['success' => true, 'data' => $ventasData]);
 
-// Cierra la conexión
 $stmt->close();
 $con->close();
 ?>
