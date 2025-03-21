@@ -6,13 +6,16 @@ $data = json_decode(file_get_contents('php://input'), true);
 
 // Verifica si los parámetros fueron enviados
 $company_id = isset($data['company_id']) ? intval($data['company_id']) : 0;
-$month = isset($data['month']) ? $data['month'] : date('Y-m'); // Establece el mes actual como predeterminado
+$date = isset($data['date']) ? $data['date'] : date('Y-m-d'); // Establece la fecha actual como predeterminada
 
 // Verifica que los datos no estén vacíos
-if ($company_id === 0) {
+if ($company_id === 0 || !$date) {
     echo json_encode(['success' => false, 'message' => 'Datos incompletos']);
     exit;
 }
+
+// Extrae el mes y año de la fecha (formato Y-m)
+$month = date('Y-m', strtotime($date));
 
 // Incluye la conexión a la base de datos
 include "../db/Conexion.php";
