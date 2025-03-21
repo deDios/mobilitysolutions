@@ -2,10 +2,10 @@
 header('Content-Type: application/json');
 
 // Verifica si los parámetros fueron enviados
-$codigo_admin = isset($_REQUEST['codigo_admin']) ? $_REQUEST['codigo_admin'] : '';
-$company_id = isset($_REQUEST['company_id']) ? $_REQUEST['company_id'] : '';
+$codigo_admin = isset($_REQUEST['codigo_admin']) ? intval($_REQUEST['codigo_admin']) : 0;
+$company_id = isset($_REQUEST['company_id']) ? intval($_REQUEST['company_id']) : 0;
 
-if (empty($codigo_admin) || empty($company_id)) {
+if ($codigo_admin === 0 || $company_id === 0) {
     echo json_encode(['success' => false, 'message' => 'Datos incompletos']);
     exit;
 }
@@ -27,7 +27,7 @@ if ($stmt === false) {
 }
 
 // Vincula los parámetros para evitar inyección SQL
-$stmt->bind_param('si', $codigo_admin, $company_id); // 's' para string, 'i' para integer
+$stmt->bind_param('ii', $codigo_admin, $company_id); // 'ii' porque ambos son enteros
 
 $stmt->execute();
 $result = $stmt->get_result();
