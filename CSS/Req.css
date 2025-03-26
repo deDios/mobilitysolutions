@@ -213,15 +213,12 @@ body {
 
 
 .containerr { 
-    display: flex; 
-    gap: 20px; 
-    align-items: flex-start; /* Alinea ambos elementos en la parte superior */
-    justify-content: center;
-    padding: 20px;
+    display: grid;
+    grid-template-columns: 2fr 4fr;
 }
 
 .requerimientos { 
-    width: 250px; /* Tamaño fijo para la lista de requerimientos */
+    width: 100%; /* Tamaño fijo para la lista de requerimientos */
     background: #f4f4f4; 
     padding: 20px;
     border-radius: 8px; 
@@ -229,8 +226,7 @@ body {
 }
 
 .content { 
-    flex: 1; /* Hace que ocupe el espacio restante */
-    max-width: 800px; /* Evita que se extienda demasiado */
+    max-width: 90%; /* Evita que se extienda demasiado */
     background: white; 
     padding: 20px; 
     border-radius: 10px; 
