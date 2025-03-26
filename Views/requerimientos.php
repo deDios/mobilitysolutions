@@ -208,6 +208,19 @@ if (isset($_POST['verificar'])) {
         <a href="?req=4" class="menu-item"><span>🔍</span> Req 4</a>
     </div>
 
+<div class="containerr">
+    <div class="requerimientos">
+        <div class="botones">
+            <button onclick="filtrarLista('curso')">En curso</button>
+            <button onclick="filtrarLista('aprobado')">Aprobados</button>
+            <button onclick="filtrarLista('declinado')">Declinados</button>
+        </div>
+        <ul id="listaRequerimientos">
+            <li class="curso">Requerimiento 1 (En curso)</li>
+            <li class="aprobado">Requerimiento 2 (Aprobado)</li>
+            <li class="declinado">Requerimiento 3 (Declinado)</li>
+        </ul>
+    </div>
     <div class="content">
         <?php if ($selected == '1'): ?>
             <form method="POST">
@@ -266,7 +279,16 @@ if (isset($_POST['verificar'])) {
             </form>
         <?php endif; ?>
     </div>
+</div>
 
+<script>
+    function filtrarLista(estado) {
+        const items = document.querySelectorAll('#listaRequerimientos li');
+        items.forEach(item => {
+            item.style.display = item.classList.contains(estado) ? 'block' : 'none';
+        });
+    }
+</script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
