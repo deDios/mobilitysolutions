@@ -215,41 +215,67 @@ body {
 .containerr { 
     display: flex; 
     gap: 20px; 
+    align-items: flex-start; /* Asegura que ambos elementos estén alineados arriba */
+    justify-content: center;
+    padding-top: 20px;
 }
+
 .requerimientos { 
     width: 30%; 
     background: #f4f4f4; 
-    padding: 10px; 
-    padding-top: 100px;
-    padding-left: 20px;
+    padding: 20px;
     border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 .content { 
-    width: 70%; 
+    width: 65%; /* Ajusté el ancho para que haya equilibrio */
     background: white; 
     padding: 20px; 
     border-radius: 10px; 
-    margin: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+/* Estilo para los botones de filtrado */
 .botones { 
     display: flex; 
-    justify-content: space-around; 
+    justify-content: space-between;
+    margin-bottom: 15px;
 }
-button { 
-    padding: 10px; 
-    margin: 5px; 
+
+.botones button { 
+    padding: 10px 15px; 
     cursor: pointer; 
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background 0.3s;
 }
+
+.botones button:nth-child(1) { background: #f0ad4e; color: white; } /* Naranja - En curso */
+.botones button:nth-child(2) { background: #5cb85c; color: white; } /* Verde - Aprobado */
+.botones button:nth-child(3) { background: #d9534f; color: white; } /* Rojo - Declinado */
+
+.botones button:hover {
+    opacity: 0.8;
+}
+
+/* Estilo de la lista */
 ul { 
     list-style: none; 
     padding: 0; 
+    margin: 0;
 }
+
 li { 
-    padding: 8px; 
-    margin: 5px; 
+    padding: 10px; 
+    margin: 5px 0; 
     background: white; 
-    border-radius: 5px; 
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
 }
+
 
 
 /* Estilos del formulario */
