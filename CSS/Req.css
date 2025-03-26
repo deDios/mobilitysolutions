@@ -221,6 +221,7 @@ body {
     width: 100%; /* Tamaño fijo para la lista de requerimientos */
     background: #f4f4f4; 
     padding: 20px;
+    padding-left: 100px;
     border-radius: 8px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
