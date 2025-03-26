@@ -208,7 +208,7 @@ if (isset($_POST['verificar'])) {
         <a href="?req=4" class="menu-item"><span>🔍</span> Req 4</a>
     </div>
 
-<div class="containerr">
+<div class="container_req">
     <div class="requerimientos">
         <div class="botones">
             <button onclick="filtrarLista('curso')">En curso</button>

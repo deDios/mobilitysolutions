@@ -212,12 +212,12 @@ body {
 }
 
 
-.containerr { 
+.container_req { 
     display: grid;
     grid-template-columns: 2fr 4fr;
 }
 
-.containerr .requerimientos { 
+.container_req .requerimientos { 
     width: 100%; /* Tamaño fijo para la lista de requerimientos */
     background: #f4f4f4; 
     padding: 20px;
