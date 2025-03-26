@@ -212,13 +212,44 @@ body {
 }
 
 
-.containerr { display: flex; gap: 20px; }
-.requerimientos { width: 30%; background: #f4f4f4; padding: 10px; border-radius: 8px; }
-.content { width: 70%; background: white; padding: 20px; border-radius: 10px; margin: auto;}
-.botones { display: flex; justify-content: space-around; }
-button { padding: 10px; margin: 5px; cursor: pointer; }
-ul { list-style: none; padding: 0; }
-li { padding: 8px; margin: 5px; background: white; border-radius: 5px; }
+.containerr { 
+    display: flex; 
+    gap: 20px; 
+}
+.requerimientos { 
+    width: 30%; 
+    background: #f4f4f4; 
+    padding: 10px; 
+    padding-top: 100px;
+    padding-left: 20px;
+    border-radius: 8px; 
+}
+.content { 
+    width: 70%; 
+    background: white; 
+    padding: 20px; 
+    border-radius: 10px; 
+    margin: auto;
+}
+.botones { 
+    display: flex; 
+    justify-content: space-around; 
+}
+button { 
+    padding: 10px; 
+    margin: 5px; 
+    cursor: pointer; 
+}
+ul { 
+    list-style: none; 
+    padding: 0; 
+}
+li { 
+    padding: 8px; 
+    margin: 5px; 
+    background: white; 
+    border-radius: 5px; 
+}
 
 
 /* Estilos del formulario */
