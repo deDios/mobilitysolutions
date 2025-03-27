@@ -278,56 +278,62 @@ if (isset($_POST['verificar'])) {
 </div>
 
 <script>
-        async function cargarAutos() {
+    async function cargarAutos() {
+        try {
             const respuesta = await fetch(`https://mobilitysolutionscorp.com/db_consultas/api_reservados.php`);
             const autos = await respuesta.json();
+            
             let html = "";
             autos.forEach(auto => {
                 html += `
                     <div class="car-card">
                         <p>${auto.id} - ${auto.marca} / ${auto.modelo} (${auto.nombre})</p>
-                        <button onclick="cambiarEstado(${auto.id})">Confirmar entrega</button>
+                        <button data-id_auto="${auto.id}" onclick="cambiarEstado(event, this)">Confirmar entrega</button>
                     </div>
                 `;
             });
+
             document.getElementById("listaAutos").innerHTML = html;
+        } catch (error) {
+            console.error("Error al cargar los autos:", error);
         }
+    }
 
-        async function cambiarEstado(boton) {
-            const id_auto = boton.getAttribute("data-id_auto");
-            const id_usuario = <?php echo $user_id; ?>; // Obtenemos el usuario desde PHP
+    async function cambiarEstado(event, boton) {
 
-            const data = {
-                vehiculo: { id: parseInt(id_auto) },
-                usuario: { id: parseInt(id_usuario) }
-            };
+        const id_auto = boton.getAttribute("data-id_auto");
+        const id_usuario = <?php echo $user_id; ?>; // Obtenemos el usuario desde PHP
 
-            try {
-                const respuesta = await fetch(`https://mobilitysolutionscorp.com/db_consultas/api_reservados_venta.php`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(data)
-                });
+        const data = {
+            vehiculo: { id: parseInt(id_auto) },
+            usuario: { id: parseInt(id_usuario) }
+        };
 
-                const resultado = await respuesta.json();
+        try {
+            const respuesta = await fetch(`https://mobilitysolutionscorp.com/db_consultas/api_reservados_venta.php`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
 
-                if (resultado.success) {
-                    alert("El estado del auto ha sido cambiado con éxito.");
-                    cargarAutos(); // Recargar la lista
-                } else {
-                    alert(resultado.message || "Ocurrió un error al cambiar el estado.");
-                }
-            } catch (error) {
-                console.error("Error:", error);
-                alert("Ocurrió un error inesperado.");
+            const resultado = await respuesta.json();
+
+            if (resultado.success) {
+                alert("El estado del auto ha sido cambiado con éxito.");
+                cargarAutos(); // Recargar la lista
+            } else {
+                alert(resultado.message || "Ocurrió un error al cambiar el estado.");
             }
+        } catch (error) {
+            console.error("Error en la solicitud:", error);
+            alert("Ocurrió un error inesperado.");
         }
+    }
 
-        document.addEventListener("DOMContentLoaded", cargarAutos);
+    document.addEventListener("DOMContentLoaded", cargarAutos);
 </script>
-
 
 <script>
     let todosLosRequerimientos = []; // Almacenará todos los requerimientos
