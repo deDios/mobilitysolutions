@@ -284,13 +284,24 @@ if (isset($_POST['verificar'])) {
         lista.innerHTML = "Cargando...";
 
         try {
-            const response = await fetch('https://mobilitysolutionscorp.com/db_consultas/api_requerimientos.php?cod=${cod}');
-            const datos = await response.json();
+            // Corrección en la interpolación de la URL
+            const response = await fetch(`https://mobilitysolutionscorp.com/db_consultas/api_requerimientos.php?cod=${cod}`);
+            
+            if (!response.ok) {
+                throw new Error(`Error HTTP: ${response.status}`);
+            }
 
+            const datos = await response.json();
             lista.innerHTML = "";
+
+            if (datos.length === 0) {
+                lista.innerHTML = "No hay requerimientos disponibles.";
+                return;
+            }
+
             datos.forEach(req => {
                 let li = document.createElement("li");
-                li.textContent = `${req.tipo_req} - ${req.comentarios} (${req.status_req})`;
+                li.textContent = `${req.tipo_req} - ${req.comentarios || "Sin comentarios"} (${req.status_req})`;
                 li.classList.add(req.status_req);
                 lista.appendChild(li);
             });
@@ -301,7 +312,7 @@ if (isset($_POST['verificar'])) {
         }
     }
 
-    // Cargar requerimientos con un ID de ejemplo (esto se cambiará por el ID real)
+    // Llamada con ID de prueba
     cargarLista(3);
 </script>
 
