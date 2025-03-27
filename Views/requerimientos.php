@@ -288,12 +288,19 @@ if (isset($_POST['verificar'])) {
                 html += `
                     <div class="car-card">
                         <p>${auto.id} - ${auto.marca} / ${auto.modelo} (${auto.nombre})</p>
-                        <button data-id_auto="${auto.id}" onclick="cambiarEstado(event, this)">Confirmar entrega</button>
+                        <button data-id_auto="${auto.id}">Confirmar entrega</button>
                     </div>
                 `;
             });
 
             document.getElementById("listaAutos").innerHTML = html;
+
+            // Añadir el event listener a cada botón
+            const botones = document.querySelectorAll("button[data-id_auto]");
+            botones.forEach(boton => {
+                boton.addEventListener("click", (event) => cambiarEstado(event, boton));
+            });
+
         } catch (error) {
             console.error("Error al cargar los autos:", error);
             document.getElementById("listaAutos").innerHTML = "Error al cargar la información.";
@@ -328,6 +335,7 @@ if (isset($_POST['verificar'])) {
             console.error("Error en la solicitud:", error);
         }
     }
+
 
     document.addEventListener("DOMContentLoaded", cargarAutos);
 </script>
