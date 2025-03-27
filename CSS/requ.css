@@ -215,13 +215,13 @@ body {
 .container_req { 
     display: grid;
     grid-template-columns: 1fr 4fr;
-    padding-top: 100px;
+    padding-top: 80px;
 }
 
 .container_req .requerimientos { 
     width: 100%; 
     padding: 20px;
-    padding-left: 10px;
+    padding-left: 30px;
     border-radius: 8px; 
 }
 
