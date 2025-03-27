@@ -239,6 +239,13 @@ body {
     margin-bottom: 15px;
 }
 
+#listaRequerimientos {
+    max-height: 300px;  /* Ajusta el tamaño según lo necesario */
+    overflow-y: auto;   /* Habilita el scroll vertical */
+    padding: 10px;      /* Agrega algo de espacio dentro de la lista */
+    border: 1px solid #ccc;  /* Opcional, para agregar un borde alrededor */
+}
+
 .botones button { 
     padding: 10px 15px; 
     cursor: pointer; 
