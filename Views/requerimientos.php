@@ -326,10 +326,10 @@ if (isset($_POST['verificar'])) {
             li.innerHTML = `
                 <strong>Requerimiento:</strong> ${req.id} <br>
                 <strong>Auto:</strong> ${req.id_auto} <br>
-                ${req.tipo_req} - (<strong>${req.status_req}</strong>) <br><br>
+                ${req.tipo_req} ${req.status_req ? `- (<strong>${req.status_req}</strong>)` : ""} <br><br>
                 <strong>${req.rechazo_coment}</strong>
             `;
-            li.classList.add(req.status_req);
+            li.classList.add(req.status_req || ""); // Evita error si es null
             lista.appendChild(li);
         });
     }
