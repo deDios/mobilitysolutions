@@ -258,7 +258,7 @@ if (isset($_POST['verificar'])) {
             </form>
         <?php elseif ($selected == '2'): ?>
             <form>
-                <h2>Vehículos en reserva</h2>
+                <h2 style="text-align: center;">Vehículos en reserva</h2> <br> 
                 <div id="listaAutos"></div>
             </form>
         <?php elseif ($selected == '3'): ?>
