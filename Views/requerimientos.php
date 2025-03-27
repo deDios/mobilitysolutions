@@ -286,9 +286,8 @@ if (isset($_POST['verificar'])) {
                 html += `
                     <div class="car-card">
                         <p>${auto.id} - ${auto.marca} / ${auto.modelo} (${auto.nombre})</p>
-                        <button onclick="cambiarEstado(${auto.id})">Pasar a Venta</button>
+                        <button onclick="cambiarEstado(${auto.id})">Confirmar entrega</button>
                     </div>
-                    <hr>
                 `;
             });
             document.getElementById("listaAutos").innerHTML = html;
