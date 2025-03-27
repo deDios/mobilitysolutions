@@ -220,8 +220,8 @@ body {
 
 .container_req .requerimientos { 
     width: 100%; 
-    padding: 50px;
-    padding-left: 30px;
+    padding: 20px;
+    padding-left: 50px;
     border-radius: 8px; 
 }
 
