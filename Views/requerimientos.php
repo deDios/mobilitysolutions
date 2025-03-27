@@ -279,45 +279,30 @@ if (isset($_POST['verificar'])) {
 </div>
 
 <script>
-    // Simulación de datos obtenidos desde una consulta
-    const requerimientos = [
-            { id: 1, nombre: "Requerimiento 1", estado: "curso" },
-            { id: 2, nombre: "Requerimiento 2", estado: "aprobado" },
-            { id: 3, nombre: "Requerimiento 3", estado: "declinado" },
-            { id: 4, nombre: "Requerimiento 4", estado: "curso" },
-            { id: 5, nombre: "Requerimiento 5", estado: "aprobado" }
-        ];
+    async function cargarLista(cod) {
+        const lista = document.getElementById("listaRequerimientos");
+        lista.innerHTML = "Cargando...";
 
-        function cargarLista() {
-            const lista = document.getElementById("listaRequerimientos");
-            lista.innerHTML = ""; // Limpiar lista antes de cargar
-            requerimientos.forEach(req => {
+        try {
+            const response = await fetch('../db_consultas/api_requerimientos.php?cod=${cod}');
+            const datos = await response.json();
+
+            lista.innerHTML = "";
+            datos.forEach(req => {
                 let li = document.createElement("li");
-                li.textContent = `${req.nombre} (${req.estado.charAt(0).toUpperCase() + req.estado.slice(1)})`;
-                li.classList.add(req.estado);
+                li.textContent = `${req.tipo_req} - ${req.comentarios} (${req.status_req})`;
+                li.classList.add(req.status_req);
                 lista.appendChild(li);
             });
-        }
 
-        function filtrarLista(estado) {
-            const items = document.querySelectorAll("#listaRequerimientos li");
-            items.forEach(item => {
-                if (item.classList.contains(estado)) {
-                    item.style.display = "list-item";
-                } else {
-                    item.style.display = "none";
-                }
-            });
+        } catch (error) {
+            lista.innerHTML = "Error al cargar los datos.";
+            console.error("Error en la carga de requerimientos:", error);
         }
+    }
 
-        function mostrarTodos() {
-            document.querySelectorAll("#listaRequerimientos li").forEach(item => {
-                item.style.display = "list-item";
-            });
-        }
-
-        // Cargar lista al iniciar
-        cargarLista();
+    // Cargar requerimientos con un ID de ejemplo (esto se cambiará por el ID real)
+    cargarLista(3);
 </script>
 
     <script>
