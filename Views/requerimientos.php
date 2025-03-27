@@ -296,6 +296,7 @@ if (isset($_POST['verificar'])) {
             document.getElementById("listaAutos").innerHTML = html;
         } catch (error) {
             console.error("Error al cargar los autos:", error);
+            document.getElementById("listaAutos").innerHTML = "Error al cargar la información.";
         }
     }
 
@@ -327,7 +328,7 @@ if (isset($_POST['verificar'])) {
             console.error("Error en la solicitud:", error);
         }
     }
-    
+
     document.addEventListener("DOMContentLoaded", cargarAutos);
 </script>
 
