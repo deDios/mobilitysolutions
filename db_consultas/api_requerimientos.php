@@ -24,7 +24,8 @@ $query = "SELECT
                 rechazo_by, 
                 rechazo_coment
           FROM mobility_solutions.tmx_requerimiento
-          WHERE created_by = $created_by;";
+          WHERE created_by = $created_by
+          ORDER BY id DESC;";
 
 $result = mysqli_query($con, $query);
 
