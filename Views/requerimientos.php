@@ -279,6 +279,7 @@ if (isset($_POST['verificar'])) {
 </div>
 
 <script>
+    let todosLosRequerimientos = []; // Almacenará todos los requerimientos
     async function cargarLista(cod) {
         const lista = document.getElementById("listaRequerimientos");
         lista.innerHTML = "Cargando...";
@@ -299,12 +300,11 @@ if (isset($_POST['verificar'])) {
                 return;
             }
 
-            datos.forEach(req => {
-                let li = document.createElement("li");
-                li.textContent = `${req.tipo_req} - ${req.comentarios || "Sin comentarios"} (${req.status_req})`;
-                li.classList.add(req.status_req);
-                lista.appendChild(li);
-            });
+            // Guardamos todos los requerimientos
+            todosLosRequerimientos = datos;
+
+            // Mostramos todos los requerimientos inicialmente
+            mostrarRequerimientos(todosLosRequerimientos);
 
         } catch (error) {
             lista.innerHTML = "Error al cargar los datos.";
@@ -312,8 +312,32 @@ if (isset($_POST['verificar'])) {
         }
     }
 
-    // Llamada con ID de prueba
+    function mostrarRequerimientos(requerimientos) {
+        const lista = document.getElementById("listaRequerimientos");
+        lista.innerHTML = "";  // Limpiar lista antes de agregar nuevos elementos
+
+        if (requerimientos.length === 0) {
+            lista.innerHTML = "No hay requerimientos disponibles.";
+            return;
+        }
+
+        requerimientos.forEach(req => {
+            let li = document.createElement("li");
+            li.textContent = `${req.tipo_req} - ${req.comentarios || "Sin comentarios"} (${req.status_req})`;
+            li.classList.add(req.status_req);
+            lista.appendChild(li);
+        });
+    }
+
+    function filtrarLista(status) {
+        // Filtramos los requerimientos por el estado seleccionado
+        const requerimientosFiltrados = todosLosRequerimientos.filter(req => req.status_req === status);
+        mostrarRequerimientos(requerimientosFiltrados);
+    }
+
+    // Llamada inicial con ID de prueba
     cargarLista(3);
+
 </script>
 
     <script>
