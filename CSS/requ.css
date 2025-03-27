@@ -227,6 +227,8 @@ body {
 
 .content { 
     max-width: 90%; /* Evita que se extienda demasiado */
+    max-height: 600px;  /* Ajusta el tamaño según lo necesario */
+    overflow-y: auto;   /* Habilita el scroll vertical */
     background: white; 
     padding: 20px; 
     border-radius: 10px; 
@@ -397,9 +399,4 @@ button:disabled {
 .car-card button:hover {
     background: #218838;
 }
-.listaAutos {
-    padding-top: 20px;
-    overflow-y: auto;   /* Habilita el scroll vertical */
-    border-radius: 10px;    
-    max-height: 600px;
-}
+
