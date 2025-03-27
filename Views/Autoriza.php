@@ -432,6 +432,8 @@ document.querySelectorAll('.requerimiento-item').forEach(item => {
         apiUrl = '../db_consultas/actualizar_estatus.php';
     } else if (tipoReq === "Reserva de vehículo") {
         apiUrl = '../db_consultas/actualizar_reserva.php';
+    }else if (tipoReq === "Entrega de vehículo") {
+        apiUrl = '../db_consultas/actualizar_venta.php';
     } else {
         alert("Error: Tipo de requerimiento desconocido.");
         return;
@@ -483,6 +485,8 @@ document.getElementById('rechazarBtn').addEventListener('click', function () {
     if (tipoReq === "Nuevo en catálogo") {
         apiUrl = '../db_consultas/rechazar_reserva.php';
     } else if (tipoReq === "Reserva de vehículo") {
+        apiUrl = '../db_consultas/rechazar_reserva.php';
+    }else if (tipoReq === "Entrega de vehículo") {
         apiUrl = '../db_consultas/rechazar_reserva.php';
     } else {
         alert("Error: Tipo de requerimiento desconocido.");
