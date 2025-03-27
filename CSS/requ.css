@@ -215,15 +215,14 @@ body {
 .container_req { 
     display: grid;
     grid-template-columns: 2fr 4fr;
+    padding-top: 50px;
 }
 
 .container_req .requerimientos { 
-    width: 100%; /* Tamaño fijo para la lista de requerimientos */
-    background: #f4f4f4; 
+    width: 100%; 
     padding: 20px;
-    padding-left: 100px;
+    padding-left: 10px;
     border-radius: 8px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .content { 
