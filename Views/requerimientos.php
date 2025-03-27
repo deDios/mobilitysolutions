@@ -211,7 +211,7 @@ if (isset($_POST['verificar'])) {
 <div class="container_req">
     <div class="requerimientos">
         <div class="botones">
-            <button onclick="filtrarLista('curso')">En curso</button>
+            <button onclick="filtrarLista('curso')">Pendientes</button>
             <button onclick="filtrarLista('aprobado')">Aprobados</button>
             <button onclick="filtrarLista('declinado')">Declinados</button>
         </div>

@@ -214,8 +214,8 @@ body {
 
 .container_req { 
     display: grid;
-    grid-template-columns: 2fr 4fr;
-    padding-top: 50px;
+    grid-template-columns: 1fr 4fr;
+    padding-top: 100px;
 }
 
 .container_req .requerimientos { 
