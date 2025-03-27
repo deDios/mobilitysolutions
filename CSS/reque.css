@@ -214,24 +214,24 @@ body {
 
 .container_req { 
     display: grid;
-    grid-template-columns: 2fr 4fr;
+    grid-template-columns: 2fr 5fr;
+    padding-top: 80px;
 }
 
 .container_req .requerimientos { 
-    width: 100%; /* Tamaño fijo para la lista de requerimientos */
-    background: #f4f4f4; 
+    width: 100%; 
     padding: 20px;
-    padding-left: 100px;
+    padding-left: 50px;
     border-radius: 8px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .content { 
     max-width: 90%; /* Evita que se extienda demasiado */
+    max-height: 600px;  /* Ajusta el tamaño según lo necesario */
+    overflow-y: auto;   /* Habilita el scroll vertical */
     background: white; 
     padding: 20px; 
     border-radius: 10px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Estilo para los botones de filtrado */
@@ -239,6 +239,14 @@ body {
     display: flex; 
     justify-content: space-between;
     margin-bottom: 15px;
+}
+
+#listaRequerimientos {
+    max-height: 500px;  /* Ajusta el tamaño según lo necesario */
+    overflow-y: auto;   /* Habilita el scroll vertical */
+    padding: 10px;  
+    border-radius: 10px;    
+    border: 1px solid #ccc;  /* Opcional, para agregar un borde alrededor */
 }
 
 .botones button { 
@@ -364,3 +372,33 @@ button:disabled {
     visibility: visible !important; /* Asegura que el botón sea visible */
     z-index: 1000;  /* Asegura que el botón esté encima de otros elementos */
 }
+
+.car-card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.car-card p {
+    font-size: 14px;
+    margin: 0;
+    font-weight: bold;
+}
+.car-card button {
+    background: #efefee;
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.car-card button:hover {
+    background: #bdbcbc;
+}
+
