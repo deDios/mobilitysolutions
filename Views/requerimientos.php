@@ -294,6 +294,9 @@ if (isset($_POST['verificar'])) {
         }
 
         async function cambiarEstado(id_auto, id_usuario) {
+            const id_auto = boton.getAttribute("data-id_auto");
+            const id_usuario = <?php echo $user_id; ?>; // Obtenemos el usuario desde PHP
+
             const data = {
                 id_auto: id_auto,
                 id_usuario: id_usuario
