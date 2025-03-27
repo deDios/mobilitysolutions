@@ -258,9 +258,8 @@ if (isset($_POST['verificar'])) {
             </form>
         <?php elseif ($selected == '2'): ?>
             <form>
-                <h2>Formulario de Requerimiento 2</h2>
-                <label>Descripción: <textarea name="descripcion"></textarea></label>
-                <button type="submit">Enviar</button>
+                <h2>Vehículos en reserva</h2>
+                <div id="listaAutos"></div>
             </form>
         <?php elseif ($selected == '3'): ?>
             <form>
@@ -277,6 +276,40 @@ if (isset($_POST['verificar'])) {
         <?php endif; ?>
     </div>
 </div>
+
+<script>
+        async function cargarAutos() {
+            const respuesta = await fetch(`https://mobilitysolutionscorp.com/db_consultas/api_reservados.php`);
+            const autos = await respuesta.json();
+            let html = "";
+            autos.forEach(auto => {
+                html += `
+                    <div>
+                        <p><strong>${auto.id} ${auto.marca} / ${auto.modelo} (${auto.nombre})</strong></p>
+                        <button onclick="cambiarEstado(${auto.id})">Pasar a Venta</button>
+                    </div>
+                    <hr>
+                `;
+            });
+            document.getElementById("listaAutos").innerHTML = html;
+        }
+
+        async function cambiarEstado(id) {
+            const formData = new FormData();
+            formData.append("id", id);
+
+            const respuesta = await fetch("cambiar_estado.php", {
+                method: "POST",
+                body: formData
+            });
+            const resultado = await respuesta.json();
+            alert(resultado.mensaje || resultado.error);
+            cargarAutos();
+        }
+
+        document.addEventListener("DOMContentLoaded", cargarAutos);
+</script>
+
 
 <script>
     let todosLosRequerimientos = []; // Almacenará todos los requerimientos
