@@ -260,6 +260,12 @@ if (isset($_POST['verificar'])) {
             <form>
                 <h2 style="text-align: center;">Vehículos en reserva</h2> <br> 
                 <div id="listaAutos"></div>
+                <div id="modalExito">
+                    <div class="modal-content">
+                        <p>El requerimiento de venta para el auto se ha realizado con éxito.</p>
+                        <button onclick="cerrarModal()">Cerrar</button>
+                    </div>
+                </div>
             </form>
         <?php elseif ($selected == '3'): ?>
             <form>
@@ -278,62 +284,73 @@ if (isset($_POST['verificar'])) {
 </div>
 
 <script>
-    async function cargarAutos() {
-        try {
-            const respuesta = await fetch(`https://mobilitysolutionscorp.com/db_consultas/api_reservados.php`);
-            const autos = await respuesta.json();
-            
-            let html = "";
-            autos.forEach(auto => {
-                html += `
-                    <div class="car-card">
-                        <p>${auto.id} - ${auto.marca} / ${auto.modelo} (${auto.nombre})</p>
-                        <button data-id_auto="${auto.id}" onclick="cambiarEstado(event, this)">Confirmar entrega</button>
-                    </div>
-                `;
-            });
+        async function cargarAutos() {
+            try {
+                const respuesta = await fetch(`https://mobilitysolutionscorp.com/db_consultas/api_reservados.php`);
+                const autos = await respuesta.json();
+                
+                let html = "";
+                autos.forEach(auto => {
+                    html += `
+                        <div class="car-card">
+                            <p>${auto.id} - ${auto.marca} / ${auto.modelo} (${auto.nombre})</p>
+                            <button data-id_auto="${auto.id}" onclick="cambiarEstado(event, this)">Confirmar entrega</button>
+                        </div>
+                    `;
+                });
 
-            document.getElementById("listaAutos").innerHTML = html;
-        } catch (error) {
-            console.error("Error al cargar los autos:", error);
-        }
-    }
-
-    async function cambiarEstado(event, boton) {
-
-        const id_auto = boton.getAttribute("data-id_auto");
-        const id_usuario = <?php echo $user_id; ?>; // Obtenemos el usuario desde PHP
-
-        const data = {
-            vehiculo: { id: parseInt(id_auto) },
-            usuario: { id: parseInt(id_usuario) }
-        };
-
-        try {
-            const respuesta = await fetch(`https://mobilitysolutionscorp.com/db_consultas/insert_sp_req_venta.php`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(data)
-            });
-
-            const resultado = await respuesta.json();
-
-            if (resultado.success) {
-                alert("El estado del auto ha sido cambiado con éxito.");
-                cargarAutos(); // Recargar la lista
-            } else {
-                alert(resultado.message || "Ocurrió un error al cambiar el estado.");
+                document.getElementById("listaAutos").innerHTML = html;
+            } catch (error) {
+                console.error("Error al cargar los autos:", error);
             }
-        } catch (error) {
-            console.error("Error en la solicitud:", error);
-            alert("Ocurrió un error inesperado.");
         }
-    }
 
-    document.addEventListener("DOMContentLoaded", cargarAutos);
-</script>
+        function mostrarModalExito() {
+            const modal = document.getElementById('modalExito');
+            modal.style.display = 'flex'; // Mostrar el modal
+        }
+
+        function cerrarModal() {
+            const modal = document.getElementById('modalExito');
+            modal.style.display = 'none'; // Cerrar el modal
+        }
+
+        async function cambiarEstado(event, boton) {
+            const id_auto = boton.getAttribute("data-id_auto");
+            const id_usuario = <?php echo $user_id; ?>; // Obtener el ID de usuario desde PHP
+
+            const data = {
+                vehiculo: { id: parseInt(id_auto) },
+                usuario: { id: parseInt(id_usuario) }
+            };
+
+            try {
+                console.log("Enviando solicitud...");
+                const respuesta = await fetch(`https://mobilitysolutionscorp.com/db_consultas/insert_sp_req_venta.php`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const resultado = await respuesta.json();
+                console.log(resultado); // Verificar la respuesta del servidor
+
+                if (resultado.success) {
+                    mostrarModalExito(); // Mostrar el modal si la venta fue exitosa
+                    cargarAutos(); // Recargar la lista de autos
+                } else {
+                    alert(resultado.message || "Ocurrió un error al cambiar el estado.");
+                }
+            } catch (error) {
+                console.error("Error en la solicitud:", error);
+                alert("Ocurrió un error inesperado.");
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", cargarAutos);
+    </script>
 
 <script>
     let todosLosRequerimientos = []; // Almacenará todos los requerimientos
