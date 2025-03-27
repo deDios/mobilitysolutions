@@ -300,9 +300,8 @@ if (isset($_POST['verificar'])) {
     }
 
     async function cambiarEstado(event, boton) {
-
         const id_auto = boton.getAttribute("data-id_auto");
-        const id_usuario = <?php echo $user_id; ?>; // Obtenemos el usuario desde PHP
+        const id_usuario = <?php echo $user_id; ?>;
 
         const data = {
             vehiculo: { id: parseInt(id_auto) },
@@ -312,26 +311,23 @@ if (isset($_POST['verificar'])) {
         try {
             const respuesta = await fetch(`https://mobilitysolutionscorp.com/db_consultas/insert_sp_req_venta.php`, {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data)
             });
 
             const resultado = await respuesta.json();
-
             if (resultado.success) {
-                alert("El requerimiento de venta para el auto se ha realizado con éxito.");
-                cargarAutos(); // Recargar la lista
+                alert("Venta registrada con éxito.");
+                cargarLista(userId);  // Recarga los requerimientos
             } else {
-                alert(resultado.message || "Ocurrió un error al cambiar el estado.");
+                alert("Error al registrar la venta.");
             }
         } catch (error) {
-            console.error("Error en la solicitud:", error);
             alert("Ocurrió un error inesperado.");
+            console.error("Error en la solicitud:", error);
         }
     }
-
+    
     document.addEventListener("DOMContentLoaded", cargarAutos);
 </script>
 
@@ -447,7 +443,7 @@ if (isset($_POST['verificar'])) {
                 alert("Ocurrió un error inesperado.");
             });
         });
-    });
+    }); 
     </script>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
