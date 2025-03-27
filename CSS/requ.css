@@ -370,3 +370,30 @@ button:disabled {
     visibility: visible !important; /* Asegura que el botón sea visible */
     z-index: 1000;  /* Asegura que el botón esté encima de otros elementos */
 }
+
+.car-card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    text-align: center;
+}
+.car-card p {
+    font-size: 18px;
+    margin: 10px 0;
+    font-weight: bold;
+}
+.car-card button {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.car-card button:hover {
+    background: #218838;
+}

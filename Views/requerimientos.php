@@ -284,8 +284,8 @@ if (isset($_POST['verificar'])) {
             let html = "";
             autos.forEach(auto => {
                 html += `
-                    <div>
-                        <p><strong>${auto.id} ${auto.marca} / ${auto.modelo} (${auto.nombre})</strong></p>
+                    <div class="car-card">
+                        <p>${auto.id} - ${auto.marca} / ${auto.modelo} (${auto.nombre})</p>
                         <button onclick="cambiarEstado(${auto.id})">Pasar a Venta</button>
                     </div>
                     <hr>
