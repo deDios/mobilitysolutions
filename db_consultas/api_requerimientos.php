@@ -15,7 +15,14 @@ $query = "SELECT
                 id, 
                 tipo_req, 
                 status_req, 
-                comentarios
+                comentarios, 
+                id_auto, 
+                created_by, 
+                req_created_at, 
+                req_closed_at, 
+                approved_by, 
+                rechazo_by, 
+                rechazo_coment
           FROM mobility_solutions.tmx_requerimiento
           WHERE created_by = $created_by;";
 
@@ -27,6 +34,11 @@ if ($result->num_rows > 0) {
         // Mapeo de status_req
         $status_map = [1 => "curso", 2 => "aprobado", 3 => "declinado"];
         $row['status_req'] = $status_map[$row['status_req']] ?? "desconocido";
+        
+        // Convertir fechas al formato ISO 8601
+        $row['req_created_at'] = $row['req_created_at'] ? date("c", strtotime($row['req_created_at'])) : null;
+        $row['req_closed_at'] = $row['req_closed_at'] ? date("c", strtotime($row['req_closed_at'])) : null;
+        
         $data[] = $row;
     }
 
@@ -37,3 +49,4 @@ if ($result->num_rows > 0) {
 
 $con->close();
 ?>
+
