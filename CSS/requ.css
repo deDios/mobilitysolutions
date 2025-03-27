@@ -397,3 +397,9 @@ button:disabled {
 .car-card button:hover {
     background: #218838;
 }
+.listaAutos {
+    padding-top: 20px;
+    overflow-y: auto;   /* Habilita el scroll vertical */
+    border-radius: 10px;    
+    max-height: 600px;
+}
