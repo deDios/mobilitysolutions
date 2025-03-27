@@ -240,7 +240,7 @@ body {
 }
 
 #listaRequerimientos {
-    max-height: 450px;  /* Ajusta el tamaño según lo necesario */
+    max-height: 500px;  /* Ajusta el tamaño según lo necesario */
     overflow-y: auto;   /* Habilita el scroll vertical */
     padding: 10px;  
     border-radius: 10px;    
