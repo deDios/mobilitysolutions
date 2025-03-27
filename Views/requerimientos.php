@@ -280,6 +280,8 @@ if (isset($_POST['verificar'])) {
 
 <script>
     let todosLosRequerimientos = []; // Almacenará todos los requerimientos
+    let userId = <?php echo $user_id; ?>;
+
     async function cargarLista(cod) {
         const lista = document.getElementById("listaRequerimientos");
         lista.innerHTML = "Cargando...";
@@ -341,7 +343,7 @@ if (isset($_POST['verificar'])) {
     }
 
     // Llamada inicial con ID de prueba
-    cargarLista(3);
+    cargarLista(userId);
 
 </script>
 
