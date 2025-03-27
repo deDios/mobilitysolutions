@@ -323,7 +323,11 @@ if (isset($_POST['verificar'])) {
 
         requerimientos.forEach(req => {
             let li = document.createElement("li");
-            li.textContent = `${req.tipo_req} - ${req.comentarios || "Sin comentarios"} (${req.status_req})`;
+            li.innerHTML = `
+                <strong>Requerimiento:</strong> ${req.id} <br>
+                <strong>Auto:</strong> ${req.id_auto} <br>
+                ${req.tipo_req} - (<strong>${req.status_req}</strong>)
+            `;
             li.classList.add(req.status_req);
             lista.appendChild(li);
         });
