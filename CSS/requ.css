@@ -1,0 +1,366 @@
+body {
+    margin: 0;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #f7f7f7;
+}
+.navbar {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 5px;
+}
+/*
+headeer top
+*/
+.topbar{
+  background-color: #212529;
+  padding: 0;
+}
+
+.topbar .container .row {
+  margin:-7px;
+  padding:0;
+}
+
+.topbar .container .row .col-md-12 { 
+  padding:0;
+}
+
+.topbar p{
+  margin:0;
+  display:inline-block;
+  font-size: 13px;
+  color: #f1f6ff;
+}
+
+.topbar p > i{
+  margin-right:5px;
+}
+.topbar p:last-child{
+  text-align:right;
+} 
+
+header .navbar {
+    margin-bottom: 0;
+}
+
+.topbar li.topbar {
+    display: inline;
+    padding-right: 18px;
+    line-height: 52px;
+    transition: all .3s linear;
+}
+
+.topbar li.topbar:hover {
+    color: #1bbde8;
+}
+
+.topbar ul.info i {
+    color: #131313;
+    font-style: normal;
+    margin-right: 8px;
+    display: inline-block;
+    position: relative;
+    top: 4px;
+}
+
+.topbar ul.info li {
+    float: right;
+    padding-left: 30px;
+    color: #ffffff;
+    font-size: 13px;
+    line-height: 44px;
+}
+
+.topbar ul.info i span {
+    color: #aaa;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 50px;
+    padding-left: 18px;
+}
+
+ul.social-network {
+  border:none;
+  margin:0;
+  padding:0;
+}
+
+ul.social-network li {
+  border:none;  
+  margin:0;
+}
+
+ul.social-network li i {
+  margin:0;
+}
+
+ul.social-network li {
+    display:inline;
+    margin: 0 5px;
+    border: 0px solid #2D2D2D;
+    padding: 5px 0 0;
+    width: 32px;
+    display: inline-block;
+    text-align: center;
+    height: 32px;
+    vertical-align: baseline;
+    color: #000;
+}
+
+ul.social-network {
+  list-style: none;
+  margin: 5px 0 10px -25px;
+  float: right;
+}
+
+.waves-effect {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    vertical-align: middle;
+    z-index: 1;
+    will-change: opacity, transform;
+    transition: .3s ease-out;
+    color: #fff;
+}
+a {
+  color: #0a0a0a;
+  text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
+.bg-image-full {
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+.bg-dark {
+    background-color: #222!important;
+}
+
+.mx-background-top-linear {
+    background: -webkit-linear-gradient(45deg, #e3e3e3 48%, #1b1e21 48%);
+    background: -webkit-linear-gradient(left, #e3e3e3 48%, #1b1e21 48%);
+    background: linear-gradient(45deg, #e3e3e3 48%, #1b1e21 48%);
+}
+
+
+/*--------------------------------------------------------------------------------------------------*/
+
+body {
+    background-color: grey;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    padding-top: 120px;
+}
+
+.menu-item {
+    width: 300px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #e3e3e3, #ffffff);  /* Gradiente de gris a blanco */
+    border-radius: 12px;
+    text-decoration: none;
+    color: black;  /* Color de texto en negro para buen contraste */
+    font-size: 16px;
+    flex-direction: column;
+    border: 2px solid #e3e3e3;  /* Borde gris claro */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* Sombra sutil */
+    transition: transform 0.3s, box-shadow 0.3s ease-in-out;  /* Transiciones suaves */
+}
+
+
+
+.menu-item:hover {
+    transform: translateY(-5px);  /* Efecto de hover para levantar el botón */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);  /* Sombra más grande al hacer hover */
+}
+
+.menu-item span {
+    font-size: 40px;  /* Aumentar el tamaño del ícono */
+    margin-bottom: 8px;  /* Espacio entre el ícono y el texto */
+}
+
+
+.container_req { 
+    display: grid;
+    grid-template-columns: 2fr 4fr;
+}
+
+.container_req .requerimientos { 
+    width: 100%; /* Tamaño fijo para la lista de requerimientos */
+    background: #f4f4f4; 
+    padding: 20px;
+    padding-left: 100px;
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.content { 
+    max-width: 90%; /* Evita que se extienda demasiado */
+    background: white; 
+    padding: 20px; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para los botones de filtrado */
+.requerimientos .botones { 
+    display: flex; 
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.botones button { 
+    padding: 10px 15px; 
+    cursor: pointer; 
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+.requerimientos .botones button:nth-child(1) { background: #f0ad4e; color: white; } /* Naranja - En curso */
+.requerimientos .botones button:nth-child(2) { background: #5cb85c; color: white; } /* Verde - Aprobado */
+.requerimientos .botones button:nth-child(3) { background: #d9534f; color: white; } /* Rojo - Declinado */
+
+.requerimientos .botones button:hover {
+    opacity: 0.8;
+}
+
+/* Estilo de la lista */
+.requerimientos ul { 
+    list-style: none; 
+    padding: 0; 
+    margin: 0;
+}
+
+.requerimientos li { 
+    padding: 10px; 
+    margin: 5px 0; 
+    background: white; 
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+}
+
+
+
+/* Estilos del formulario */
+form {
+    background: #f0efefb1;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 1000px;
+    margin: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Grupo del input y botón */
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.input-group input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Estilos del botón con icono */
+.btn-icon {
+    background: #007bff;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn-icon:hover {
+    background: #0056b3;
+}
+
+/* Estilos de mensajes de error */
+.error-msg {
+    color: red;
+    font-size: 14px;
+}
+
+/* Estilos de la tarjeta del vehículo */
+.vehiculo-card {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.vehiculo-img {
+    width: 250px;
+    height: auto;
+    border-radius: 10px;
+    margin-right: 15px;
+}
+
+.vehiculo-info {
+    flex: 1;
+}
+
+.vehiculo-info p {
+    margin: 5px 0;
+}
+
+/* Estilo para el formulario de vehículo (por defecto oculto) */
+#vehiculoInfo {
+    display: none;  /* Se mostrará cuando se obtengan datos */
+    margin-top: 20px;
+}
+
+/* Botón enviar deshabilitado */
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+/* Estilo para hacer el botón visible si está oculto por CSS */
+#consultarBtn {
+    visibility: visible !important; /* Asegura que el botón sea visible */
+    z-index: 1000;  /* Asegura que el botón esté encima de otros elementos */
+}
