@@ -216,9 +216,6 @@ if (isset($_POST['verificar'])) {
             <button onclick="filtrarLista('declinado')">Declinados</button>
         </div>
         <ul id="listaRequerimientos">
-            <li class="curso">Requerimiento 1 (En curso)</li>
-            <li class="aprobado">Requerimiento 2 (Aprobado)</li>
-            <li class="declinado">Requerimiento 3 (Declinado)</li>
         </ul>
     </div>
     <div class="content">
@@ -282,12 +279,45 @@ if (isset($_POST['verificar'])) {
 </div>
 
 <script>
-    function filtrarLista(estado) {
-        const items = document.querySelectorAll('#listaRequerimientos li');
-        items.forEach(item => {
-            item.style.display = item.classList.contains(estado) ? 'block' : 'none';
-        });
-    }
+    // Simulación de datos obtenidos desde una consulta
+    const requerimientos = [
+            { id: 1, nombre: "Requerimiento 1", estado: "curso" },
+            { id: 2, nombre: "Requerimiento 2", estado: "aprobado" },
+            { id: 3, nombre: "Requerimiento 3", estado: "declinado" },
+            { id: 4, nombre: "Requerimiento 4", estado: "curso" },
+            { id: 5, nombre: "Requerimiento 5", estado: "aprobado" }
+        ];
+
+        function cargarLista() {
+            const lista = document.getElementById("listaRequerimientos");
+            lista.innerHTML = ""; // Limpiar lista antes de cargar
+            requerimientos.forEach(req => {
+                let li = document.createElement("li");
+                li.textContent = `${req.nombre} (${req.estado.charAt(0).toUpperCase() + req.estado.slice(1)})`;
+                li.classList.add(req.estado);
+                lista.appendChild(li);
+            });
+        }
+
+        function filtrarLista(estado) {
+            const items = document.querySelectorAll("#listaRequerimientos li");
+            items.forEach(item => {
+                if (item.classList.contains(estado)) {
+                    item.style.display = "list-item";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        }
+
+        function mostrarTodos() {
+            document.querySelectorAll("#listaRequerimientos li").forEach(item => {
+                item.style.display = "list-item";
+            });
+        }
+
+        // Cargar lista al iniciar
+        cargarLista();
 </script>
 
     <script>
