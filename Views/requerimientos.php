@@ -284,7 +284,7 @@ if (isset($_POST['verificar'])) {
         lista.innerHTML = "Cargando...";
 
         try {
-            const response = await fetch('../db_consultas/api_requerimientos.php?cod=${cod}');
+            const response = await fetch('https://mobilitysolutionscorp.com/db_consultas/api_requerimientos.php?cod=${cod}');
             const datos = await response.json();
 
             lista.innerHTML = "";
