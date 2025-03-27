@@ -310,7 +310,7 @@ if (isset($_POST['verificar'])) {
         };
 
         try {
-            const respuesta = await fetch(`https://mobilitysolutionscorp.com/db_consultas/api_reservados_venta.php`, {
+            const respuesta = await fetch(`https://mobilitysolutionscorp.com/db_consultas/insert_sp_req_venta.php`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
