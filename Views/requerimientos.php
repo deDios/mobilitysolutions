@@ -327,7 +327,7 @@ if (isset($_POST['verificar'])) {
                 <strong>Requerimiento:</strong> ${req.id} <br>
                 <strong>Auto:</strong> ${req.id_auto} <br>
                 ${req.tipo_req} ${req.status_req ? `- (<strong>${req.status_req}</strong>)` : ""} <br><br>
-                <strong>${req.rechazo_coment}</strong>
+                <strong>${req.rechazo_coment ? `- (<strong>${req.rechazo_coment}</strong>)` : ""}</strong>
             `;
             li.classList.add(req.status_req || ""); // Evita error si es null
             lista.appendChild(li);
