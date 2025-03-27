@@ -293,17 +293,33 @@ if (isset($_POST['verificar'])) {
             document.getElementById("listaAutos").innerHTML = html;
         }
 
-        async function cambiarEstado(id) {
-            const formData = new FormData();
-            formData.append("id", id);
+        async function cambiarEstado(id_auto, id_usuario) {
+            const data = {
+                id_auto: id_auto,
+                id_usuario: id_usuario
+            };
 
-            const respuesta = await fetch("cambiar_estado.php", {
-                method: "POST",
-                body: formData
-            });
-            const resultado = await respuesta.json();
-            alert(resultado.mensaje || resultado.error);
-            cargarAutos();
+            try {
+                const respuesta = await fetch(`https://mobilitysolutionscorp.com/db_consultas/api_reservados_venta.php`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const resultado = await respuesta.json();
+
+                if (resultado.success) {
+                    alert("El estado del auto ha sido cambiado con éxito.");
+                    cargarAutos(); // Recargar la lista
+                } else {
+                    alert(resultado.error || "Ocurrió un error al cambiar el estado.");
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Ocurrió un error inesperado.");
+            }
         }
 
         document.addEventListener("DOMContentLoaded", cargarAutos);
