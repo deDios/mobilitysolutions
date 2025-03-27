@@ -384,13 +384,13 @@ button:disabled {
     align-items: center;
 }
 .car-card p {
-    font-size: 18px;
+    font-size: 14px;
     margin: 0;
     font-weight: bold;
 }
 .car-card button {
-    background: #28a745;
-    color: white;
+    background: #efefee;
+    color: black;
     border: none;
     padding: 10px 15px;
     font-size: 16px;
@@ -399,6 +399,6 @@ button:disabled {
     transition: background 0.3s;
 }
 .car-card button:hover {
-    background: #218838;
+    background: #bdbcbc;
 }
 
