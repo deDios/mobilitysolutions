@@ -293,13 +293,13 @@ if (isset($_POST['verificar'])) {
             document.getElementById("listaAutos").innerHTML = html;
         }
 
-        async function cambiarEstado(id_auto, id_usuario) {
+        async function cambiarEstado(boton) {
             const id_auto = boton.getAttribute("data-id_auto");
             const id_usuario = <?php echo $user_id; ?>; // Obtenemos el usuario desde PHP
 
             const data = {
-                id_auto: id_auto,
-                id_usuario: id_usuario
+                vehiculo: { id: parseInt(id_auto) },
+                usuario: { id: parseInt(id_usuario) }
             };
 
             try {
@@ -317,7 +317,7 @@ if (isset($_POST['verificar'])) {
                     alert("El estado del auto ha sido cambiado con éxito.");
                     cargarAutos(); // Recargar la lista
                 } else {
-                    alert(resultado.error || "Ocurrió un error al cambiar el estado.");
+                    alert(resultado.message || "Ocurrió un error al cambiar el estado.");
                 }
             } catch (error) {
                 console.error("Error:", error);
