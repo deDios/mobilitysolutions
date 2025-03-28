@@ -326,7 +326,7 @@ if (isset($_POST['verificar'])) {
             usuario: { id: parseInt(id_usuario) }
         };
 
-        console.log("Enviando:", data);
+        console.log("Datos enviados:", JSON.stringify(data));
 
         try {
             const respuesta = await fetch("https://mobilitysolutionscorp.com/db_consultas/insert_sp_req_venta.php", {
@@ -335,13 +335,17 @@ if (isset($_POST['verificar'])) {
                 body: JSON.stringify(data)
             });
 
-            const resultado = await respuesta.json();
-            console.log("Respuesta del servidor:", resultado);
+            const text = await respuesta.text(); // Obtiene la respuesta como texto
+            console.log("Texto de respuesta:", text);
+
+            const resultado = JSON.parse(text); // Intenta parsear a JSON
+            console.log("Respuesta JSON:", resultado);
+
             if (resultado.success) {
                 alert("Venta registrada con éxito.");
-                cargarAutos();  // Recarga la lista después de confirmar la venta
+                cargarAutos(); // Recargar la lista
             } else {
-                alert("Error al registrar la venta.");
+                alert("Error al registrar la venta: " + (resultado.message || "Error desconocido"));
             }
         } catch (error) {
             alert("Ocurrió un error inesperado.");
