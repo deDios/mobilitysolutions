@@ -343,7 +343,7 @@ if (isset($_POST['verificar'])) {
 
             if (resultado.success) {
                 alert("Venta registrada con éxito.");
-                cargarAutos(); // Recargar la lista
+                //cargarAutos(); // Recargar la lista
             } else {
                 alert("Error al registrar la venta: " + (resultado.message || "Error desconocido"));
             }
