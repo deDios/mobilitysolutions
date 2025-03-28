@@ -326,29 +326,41 @@ if (isset($_POST['verificar'])) {
             usuario: { id: parseInt(id_usuario) }
         };
 
-        console.log("Datos enviados:", JSON.stringify(data));
+        console.log("🚀 Enviando datos:", JSON.stringify(data));
 
         try {
             const respuesta = await fetch(`https://mobilitysolutionscorp.com/db_consultas/insert_sp_req_venta.php`, {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                    "Content-Type": "application/json"
+                },
                 body: JSON.stringify(data)
             });
 
-            const text = await respuesta.text(); // Obtiene la respuesta como texto
-            console.log("Texto de respuesta:", text);
+            console.log("📡 Estado de la respuesta:", respuesta.status);
 
-            const resultado = JSON.parse(text); // Intenta parsear a JSON
-            console.log("Respuesta JSON:", resultado);
+            const text = await respuesta.text();
+            console.log("📩 Respuesta cruda del servidor:", text);
+
+            let resultado;
+            try {
+                resultado = JSON.parse(text);
+            } catch (parseError) {
+                console.error("⚠️ Error al parsear JSON:", parseError);
+                alert("La respuesta del servidor no es JSON válido.");
+                return;
+            }
+
+            console.log("✅ Respuesta JSON:", resultado);
 
             if (resultado.success) {
                 alert("Venta registrada con éxito.");
                 cargarAutos(); // Recargar la lista
             } else {
-                alert("Error al registrar la venta: " + (resultado.message || "Error desconocido"));
+                alert("⚠️ Error en la venta: " + (resultado.message || "Error desconocido"));
             }
         } catch (error) {
-            alert("Ocurrió un error inesperado.");
+            alert("❌ Ocurrió un error inesperado.");
             console.error("Error en la solicitud:", error);
         }
     }
