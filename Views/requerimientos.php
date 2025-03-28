@@ -316,6 +316,8 @@ if (isset($_POST['verificar'])) {
             usuario: { id: parseInt(id_usuario) }
         };
 
+        console.log("Enviando:", data);
+
         try {
             const respuesta = await fetch("https://mobilitysolutionscorp.com/db_consultas/insert_sp_req_venta.php", {
                 method: "POST",
@@ -324,6 +326,7 @@ if (isset($_POST['verificar'])) {
             });
 
             const resultado = await respuesta.json();
+            console.log("Respuesta del servidor:", resultado);
             if (resultado.success) {
                 alert("Venta registrada con éxito.");
                 cargarLista(userId);  // Recarga los requerimientos
