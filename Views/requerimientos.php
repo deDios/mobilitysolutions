@@ -298,7 +298,7 @@ if (isset($_POST['verificar'])) {
             // Añadir el event listener a cada botón
             const botones = document.querySelectorAll("button[data-id_auto]");
             botones.forEach(boton => {
-                boton.addEventListener("click", (event) => cambiarEstado(event, boton));
+                boton.addEventListener("click", (event) => confirmarEntrega(event, boton));
             });
 
         } catch (error) {
@@ -307,10 +307,20 @@ if (isset($_POST['verificar'])) {
         }
     }
 
-    async function cambiarEstado(event, boton) {
+    function confirmarEntrega(event, boton) {
         const id_auto = boton.getAttribute("data-id_auto");
         const id_usuario = <?php echo $user_id; ?>;
 
+        const mensaje = `¿Estás seguro de hacer el requerimiento de venta para el Auto ${id_auto} Usuario ${id_usuario}?`;
+
+        if (confirm(mensaje)) {
+            cambiarEstado(id_auto, id_usuario);
+        } else {
+            console.log("Requerimiento cancelado.");
+        }
+    }
+
+    async function cambiarEstado(id_auto, id_usuario) {
         const data = {
             vehiculo: { id: parseInt(id_auto) },
             usuario: { id: parseInt(id_usuario) }
@@ -329,7 +339,7 @@ if (isset($_POST['verificar'])) {
             console.log("Respuesta del servidor:", resultado);
             if (resultado.success) {
                 alert("Venta registrada con éxito.");
-                cargarLista(userId);  // Recarga los requerimientos
+                cargarAutos();  // Recarga la lista después de confirmar la venta
             } else {
                 alert("Error al registrar la venta.");
             }
@@ -338,7 +348,6 @@ if (isset($_POST['verificar'])) {
             console.error("Error en la solicitud:", error);
         }
     }
-
 
     document.addEventListener("DOMContentLoaded", cargarAutos);
 </script>
