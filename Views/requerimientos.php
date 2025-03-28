@@ -295,10 +295,15 @@ if (isset($_POST['verificar'])) {
 
             document.getElementById("listaAutos").innerHTML = html;
 
-            // Añadir el event listener a cada botón
+            // Añadir event listener a cada botón
             const botones = document.querySelectorAll("button[data-id_auto]");
             botones.forEach(boton => {
-                boton.addEventListener("click", (event) => confirmarEntrega(event, boton));
+                boton.addEventListener("click", (event) => {
+                    const id_auto = boton.getAttribute("data-id_auto");
+                    const id_usuario = <?php echo $user_id; ?>; // Asegúrate de que este valor se genera correctamente en PHP
+                    
+                    confirmarEntrega(id_auto, id_usuario);
+                });
             });
 
         } catch (error) {
@@ -307,65 +312,56 @@ if (isset($_POST['verificar'])) {
         }
     }
 
-    function confirmarEntrega(event, boton) {
-        const id_auto = boton.getAttribute("data-id_auto");
-        const id_usuario = <?php echo $user_id; ?>;
+    function confirmarEntrega(id_auto, id_usuario) {
+        const confirmar = confirm(`¿Estás seguro de hacer el requerimiento de venta para el Auto ${id_auto} Usuario ${id_usuario}?`);
 
-        const mensaje = `¿Estás seguro de hacer el requerimiento de venta para el Auto ${id_auto} Usuario ${id_usuario}?`;
-
-        if (confirm(mensaje)) {
+        if (confirmar) {
             cambiarEstado(id_auto, id_usuario);
-        } else {
-            console.log("Requerimiento cancelado.");
         }
     }
 
-    async function cambiarEstado(id_auto, id_usuario) {
-        const data = {
+    function cambiarEstado(id_auto, id_usuario) {
+        const data = JSON.stringify({
             vehiculo: { id: parseInt(id_auto) },
             usuario: { id: parseInt(id_usuario) }
+        });
+
+        console.log("🚀 Intentando enviar solicitud con XMLHttpRequest...");
+        console.log("📡 URL:", "https://mobilitysolutionscorp.com/db_consultas/insert_sp_req_venta.php");
+        console.log("📨 Datos enviados:", data);
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "https://mobilitysolutionscorp.com/db_consultas/insert_sp_req_venta.php", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                console.log("✅ Respuesta recibida:", xhr.responseText);
+                try {
+                    const resultado = JSON.parse(xhr.responseText);
+                    if (resultado.success) {
+                        alert("Venta registrada con éxito.");
+                        cargarAutos(); // Recargar la lista de autos
+                    } else {
+                        alert("Error al registrar la venta: " + (resultado.message || "Error desconocido"));
+                    }
+                } catch (error) {
+                    console.error("❌ Error al parsear JSON de la respuesta:", error);
+                    alert("Error en la respuesta del servidor.");
+                }
+            }
         };
 
-        console.log("🚀 Enviando datos:", JSON.stringify(data));
+        xhr.onerror = function () {
+            console.error("❌ Error en la solicitud XMLHttpRequest.");
+            alert("Error en la solicitud.");
+        };
 
-        try {
-            const respuesta = await fetch(`https://mobilitysolutionscorp.com/db_consultas/insert_sp_req_venta.php`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(data)
-            });
-
-            console.log("📡 Estado de la respuesta:", respuesta.status);
-
-            const text = await respuesta.text();
-            console.log("📩 Respuesta cruda del servidor:", text);
-
-            let resultado;
-            try {
-                resultado = JSON.parse(text);
-            } catch (parseError) {
-                console.error("⚠️ Error al parsear JSON:", parseError);
-                alert("La respuesta del servidor no es JSON válido.");
-                return;
-            }
-
-            console.log("✅ Respuesta JSON:", resultado);
-
-            if (resultado.success) {
-                alert("Venta registrada con éxito.");
-                cargarAutos(); // Recargar la lista
-            } else {
-                alert("⚠️ Error en la venta: " + (resultado.message || "Error desconocido"));
-            }
-        } catch (error) {
-            alert("❌ Ocurrió un error inesperado.");
-            console.error("Error en la solicitud:", error);
-        }
+        xhr.send(data);
     }
 
     document.addEventListener("DOMContentLoaded", cargarAutos);
+
 </script>
 
 <script>
