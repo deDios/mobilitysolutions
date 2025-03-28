@@ -213,7 +213,7 @@ if (isset($_POST['verificar'])) {
         <div class="botones">
             <button onclick="filtrarLista('curso')">Pendientes</button>
             <button onclick="filtrarLista('aprobado')">Aprobados</button>
-            <button onclick="filtrarLista('declinado')">Declinados</button>
+            <button onclick="filtrarLista('declinado')">Rechazados</button>
         </div>
         <ul id="listaRequerimientos">
         </ul>
