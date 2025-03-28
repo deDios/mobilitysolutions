@@ -329,7 +329,7 @@ if (isset($_POST['verificar'])) {
         console.log("Datos enviados:", JSON.stringify(data));
 
         try {
-            const respuesta = await fetch("https://mobilitysolutionscorp.com/db_consultas/insert_sp_req_venta.php", {
+            const respuesta = await fetch(`https://mobilitysolutionscorp.com/db_consultas/insert_sp_req_venta.php`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data)
