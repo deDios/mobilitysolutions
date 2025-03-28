@@ -283,19 +283,16 @@ if (isset($_POST['verificar'])) {
             const respuesta = await fetch(`https://mobilitysolutionscorp.com/db_consultas/api_reservados.php`);
             const autos = await respuesta.json();
             
-            if (listaAutos) {
-                let html = "";
-                autos.forEach(auto => {
-                    html += `
-                        <div class="car-card">
-                            <p>${auto.id} - ${auto.marca} / ${auto.modelo} (${auto.nombre})</p>
-                            <button data-id_auto="${auto.id}">Confirmar entrega</button>
-                        </div>
-                    `;
-                });
-            } else {
-                console.error("Elemento con ID 'listaAutos' no encontrado.");
-            }
+
+            let html = "";
+            autos.forEach(auto => {
+                html += `
+                    <div class="car-card">
+                        <p>${auto.id} - ${auto.marca} / ${auto.modelo} (${auto.nombre})</p>
+                        <button data-id_auto="${auto.id}">Confirmar entrega</button>
+                    </div>
+                `;
+            });
 
             document.getElementById("listaAutos").innerHTML = html;
 
