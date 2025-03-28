@@ -77,7 +77,7 @@ $stmt->bind_param(
 
 // Ejecutar la consulta y verificar si fue exitosa
 if ($stmt->execute()) {
-    echo json_encode(["success" => true, "message" => "Reserva registrada correctamente"]);
+    echo json_encode(["success" => true, "message" => "Venta solicitada correctamente"]);
 } else {
     echo json_encode(["success" => false, "message" => "Error en la base de datos: " . $stmt->error]);
 }
