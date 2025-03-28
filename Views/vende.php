@@ -97,7 +97,7 @@
         
       <div class="col">
           <div class="card shadow-sm">
-          <img class="bd-placeholder-img card-img-top" width="100%" height="150" src="/Imagenes/Vende/registro.jpg">
+          <img class="bd-placeholder-img card-img-top" width="100%" height="150" src="/Imagenes/Vende/paso_1.jpg">
             <div class="card-body">
               <p class="card-text">Ingresa tus datos, las de tu vehículo y recibe una oferta por nuestro grupo de Mobility Solutions.</p><br>
             </div>
@@ -106,7 +106,7 @@
 
         <div class="col">
           <div class="card shadow-sm">
-            <img class="bd-placeholder-img card-img-top" width="100%" height="150" src="/Imagenes/Vende/agenda.jpg">
+            <img class="bd-placeholder-img card-img-top" width="100%" height="150" src="/Imagenes/Vende/paso_2.jpg">
 
             <div class="card-body">
               <p class="card-text">Programa la hora que más te convenga para la inspección de tu vehículo en nuestras sucursales.</p><br>
@@ -118,7 +118,7 @@
 
         <div class="col">
           <div class="card shadow-sm">
-            <img class="bd-placeholder-img card-img-top" width="100%" height="150" src="/Imagenes/Vende/registro.jpg">
+            <img class="bd-placeholder-img card-img-top" width="100%" height="150" src="/Imagenes/Vende/paso_3.jpg">
 
             <div class="card-body">
               <p class="card-text">Obtén tu pago y recibe el valor de tu auto de forma fácil, rápida y segura.</p><br>
