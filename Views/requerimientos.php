@@ -278,39 +278,54 @@ if (isset($_POST['verificar'])) {
 </div>
 
 <script>
-    async function cargarAutos() {
-        try {
-            const respuesta = await fetch(`https://mobilitysolutionscorp.com/db_consultas/api_reservados.php`);
-            const autos = await respuesta.json();
-            
+    function cargarAutos() {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://mobilitysolutionscorp.com/db_consultas/api_reservados.php", true);
 
-            let html = "";
-            autos.forEach(auto => {
-                html += `
-                    <div class="car-card">
-                        <p>${auto.id} - ${auto.marca} / ${auto.modelo} (${auto.nombre})</p>
-                        <button data-id_auto="${auto.id}">Confirmar entrega</button>
-                    </div>
-                `;
-            });
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    try {
+                        const autos = JSON.parse(xhr.responseText);
+                        let html = "";
+                        autos.forEach(auto => {
+                            html += `
+                                <div class="car-card">
+                                    <p>${auto.id} - ${auto.marca} / ${auto.modelo} (${auto.nombre})</p>
+                                    <button data-id_auto="${auto.id}">Confirmar entrega</button>
+                                </div>
+                            `;
+                        });
 
-            document.getElementById("listaAutos").innerHTML = html;
+                        document.getElementById("listaAutos").innerHTML = html;
 
-            // Añadir event listener a cada botón
-            const botones = document.querySelectorAll("button[data-id_auto]");
-            botones.forEach(boton => {
-                boton.addEventListener("click", (event) => {
-                    const id_auto = boton.getAttribute("data-id_auto");
-                    const id_usuario = <?php echo $user_id; ?>; // Asegúrate de que este valor se genera correctamente en PHP
-                    
-                    confirmarEntrega(id_auto, id_usuario);
-                });
-            });
+                        // Añadir event listener a cada botón
+                        const botones = document.querySelectorAll("button[data-id_auto]");
+                        botones.forEach(boton => {
+                            boton.addEventListener("click", (event) => {
+                                const id_auto = boton.getAttribute("data-id_auto");
+                                const id_usuario = <?php echo $user_id; ?>; // Asegúrate de que este valor se genera correctamente en PHP
 
-        } catch (error) {
-            console.error("Error al cargar los autos:", error);
-            document.getElementById("listaAutos").innerHTML = "Error al cargar la información.";
-        }
+                                confirmarEntrega(id_auto, id_usuario);
+                            });
+                        });
+                    } catch (error) {
+                        console.error("❌ Error al parsear JSON de la respuesta:", error);
+                        document.getElementById("listaAutos").innerHTML = "Error al cargar los autos.";
+                    }
+                } else {
+                    console.error("❌ Error al cargar los autos:", xhr.statusText);
+                    document.getElementById("listaAutos").innerHTML = "Error al cargar la información.";
+                }
+            }
+        };
+
+        xhr.onerror = function () {
+            console.error("❌ Error en la solicitud XMLHttpRequest.");
+            document.getElementById("listaAutos").innerHTML = "Error en la solicitud.";
+        };
+
+        xhr.send();
     }
 
     function confirmarEntrega(id_auto, id_usuario) {
@@ -362,7 +377,6 @@ if (isset($_POST['verificar'])) {
     }
 
     document.addEventListener("DOMContentLoaded", cargarAutos);
-
 </script>
 
 <script>
