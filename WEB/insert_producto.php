@@ -9,7 +9,6 @@ $input = json_decode(file_get_contents("php://input"), true);
 
 // Obtener parámetros desde el JSON
 $id_company = isset($input['id_company']) ? (int)$input['id_company'] : 0;
-$id_producto = isset($input['id_producto']) ? (int)$input['id_producto'] : 0;
 $nombre = isset($input['nombre']) ? $input['nombre'] : '';
 $descripcion = isset($input['descripcion']) ? $input['descripcion'] : '';
 $precio = isset($input['precio']) ? $input['precio'] : '';
@@ -21,32 +20,41 @@ $atrr_3 = isset($input['atrr_3']) ? $input['atrr_3'] : '';
 $categoria = isset($input['categoria']) ? (int)$input['categoria'] : 0;
 
 // Validar parámetros requeridos
-if ($id_company === 0 || $id_producto === 0 || empty($nombre) || empty($descripcion) || empty($precio) || empty($imagen_producto) || $categoria === 0) {
+if ($id_company === 0 || empty($nombre) || empty($descripcion) || empty($precio) || empty($imagen_producto) || $categoria === 0) {
     echo json_encode(["mensaje" => "Parámetros inválidos"]);
     exit;
 }
 
-// Construir query de actualización
+// Construir query de inserción
 $query = "
-    UPDATE mobility_solutions.moon_product
-    SET 
-        Categoria = $categoria,
-        Nombre = '$nombre',
-        Precio = '$precio',
-        Descripcion = '$descripcion',
-        Imagen_Producto = '$imagen_producto',
-        Status = $status,
-        atrr_1 = '$atrr_1',
-        atrr_2 = '$atrr_2',
-        atrr_3 = '$atrr_3'
-    WHERE id = $id_producto
+    INSERT INTO mobility_solutions.moon_product (
+        Nombre, 
+        Descripcion, 
+        Precio, 
+        Imagen_Producto, 
+        Status, 
+        atrr_1, 
+        atrr_2, 
+        atrr_3, 
+        Categoria
+    ) VALUES (
+        '$nombre', 
+        '$descripcion', 
+        '$precio', 
+        '$imagen_producto', 
+        $status, 
+        '$atrr_1', 
+        '$atrr_2', 
+        '$atrr_3', 
+        $categoria
+    )
 ";
 
 // Ejecutar la query
 if (mysqli_query($con, $query)) {
-    echo json_encode(["mensaje" => "Producto actualizado correctamente"]);
+    echo json_encode(["mensaje" => "Producto insertado correctamente"]);
 } else {
-    echo json_encode(["mensaje" => "Error al actualizar el producto: " . mysqli_error($con)]);
+    echo json_encode(["mensaje" => "Error al insertar el producto: " . mysqli_error($con)]);
 }
 
 $con->close();
