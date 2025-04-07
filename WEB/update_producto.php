@@ -4,18 +4,18 @@ header('Content-Type: application/json');
 // Incluir conexión
 $inc = include "../db/Conexion.php";
 
-// Obtener parámetros
-$id_company = isset($_REQUEST['id_company']) ? (int)$_REQUEST['id_company'] : 0;
-$id_producto = isset($_REQUEST['id_producto']) ? (int)$_REQUEST['id_producto'] : 0;
-$nombre = isset($_REQUEST['nombre']) ? $_REQUEST['nombre'] : '';
-$descripcion = isset($_REQUEST['descripcion']) ? $_REQUEST['descripcion'] : '';
-$precio = isset($_REQUEST['precio']) ? $_REQUEST['precio'] : '';
-$imagen_producto = isset($_REQUEST['imagen_producto']) ? $_REQUEST['imagen_producto'] : '';
-$status = isset($_REQUEST['status']) ? (int)$_REQUEST['status'] : 0;
-$atrr_1 = isset($_REQUEST['atrr_1']) ? $_REQUEST['atrr_1'] : '';
-$atrr_2 = isset($_REQUEST['atrr_2']) ? $_REQUEST['atrr_2'] : '';
-$atrr_3 = isset($_REQUEST['atrr_3']) ? $_REQUEST['atrr_3'] : '';
-$categoria = isset($_REQUEST['categoria']) ? (int)$_REQUEST['categoria'] : 0;  // Agregar la categoría como parámetro
+// Obtener parámetros desde POST (más seguro que REQUEST)
+$id_company = isset($_POST['id_company']) ? (int)$_POST['id_company'] : 0;
+$id_producto = isset($_POST['id_producto']) ? (int)$_POST['id_producto'] : 0;
+$nombre = isset($_POST['nombre']) ? $_POST['nombre'] : '';
+$descripcion = isset($_POST['descripcion']) ? $_POST['descripcion'] : '';
+$precio = isset($_POST['precio']) ? $_POST['precio'] : '';
+$imagen_producto = isset($_POST['imagen_producto']) ? $_POST['imagen_producto'] : '';
+$status = isset($_POST['status']) ? (int)$_POST['status'] : 0;
+$atrr_1 = isset($_POST['atrr_1']) ? $_POST['atrr_1'] : '';
+$atrr_2 = isset($_POST['atrr_2']) ? $_POST['atrr_2'] : '';
+$atrr_3 = isset($_POST['atrr_3']) ? $_POST['atrr_3'] : '';
+$categoria = isset($_POST['categoria']) ? (int)$_POST['categoria'] : 0;
 
 // Validar que los parámetros sean válidos
 if ($id_company === 0 || $id_producto === 0 || empty($nombre) || empty($descripcion) || empty($precio) || empty($imagen_producto) || $categoria === 0) {
@@ -48,3 +48,4 @@ if (mysqli_query($con, $query)) {
 
 $con->close();
 ?>
+
