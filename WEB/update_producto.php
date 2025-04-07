@@ -4,20 +4,23 @@ header('Content-Type: application/json');
 // Incluir conexión
 $inc = include "../db/Conexion.php";
 
-// Obtener parámetros desde POST (más seguro que REQUEST)
-$id_company = isset($_POST['id_company']) ? (int)$_POST['id_company'] : 0;
-$id_producto = isset($_POST['id_producto']) ? (int)$_POST['id_producto'] : 0;
-$nombre = isset($_POST['nombre']) ? $_POST['nombre'] : '';
-$descripcion = isset($_POST['descripcion']) ? $_POST['descripcion'] : '';
-$precio = isset($_POST['precio']) ? $_POST['precio'] : '';
-$imagen_producto = isset($_POST['imagen_producto']) ? $_POST['imagen_producto'] : '';
-$status = isset($_POST['status']) ? (int)$_POST['status'] : 0;
-$atrr_1 = isset($_POST['atrr_1']) ? $_POST['atrr_1'] : '';
-$atrr_2 = isset($_POST['atrr_2']) ? $_POST['atrr_2'] : '';
-$atrr_3 = isset($_POST['atrr_3']) ? $_POST['atrr_3'] : '';
-$categoria = isset($_POST['categoria']) ? (int)$_POST['categoria'] : 0;
+// Leer JSON crudo desde el body
+$input = json_decode(file_get_contents("php://input"), true);
 
-// Validar que los parámetros sean válidos
+// Obtener parámetros desde el JSON
+$id_company = isset($input['id_company']) ? (int)$input['id_company'] : 0;
+$id_producto = isset($input['id_producto']) ? (int)$input['id_producto'] : 0;
+$nombre = isset($input['nombre']) ? $input['nombre'] : '';
+$descripcion = isset($input['descripcion']) ? $input['descripcion'] : '';
+$precio = isset($input['precio']) ? $input['precio'] : '';
+$imagen_producto = isset($input['imagen_producto']) ? $input['imagen_producto'] : '';
+$status = isset($input['status']) ? (int)$input['status'] : 0;
+$atrr_1 = isset($input['atrr_1']) ? $input['atrr_1'] : '';
+$atrr_2 = isset($input['atrr_2']) ? $input['atrr_2'] : '';
+$atrr_3 = isset($input['atrr_3']) ? $input['atrr_3'] : '';
+$categoria = isset($input['categoria']) ? (int)$input['categoria'] : 0;
+
+// Validar parámetros requeridos
 if ($id_company === 0 || $id_producto === 0 || empty($nombre) || empty($descripcion) || empty($precio) || empty($imagen_producto) || $categoria === 0) {
     echo json_encode(["mensaje" => "Parámetros inválidos"]);
     exit;
@@ -48,4 +51,3 @@ if (mysqli_query($con, $query)) {
 
 $con->close();
 ?>
-
