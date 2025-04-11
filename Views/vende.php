@@ -97,21 +97,21 @@
         
       <div class="col">
           <div class="card shadow-sm">
-          <img class="bd-placeholder-img card-img-top" width="100%" height="150" src="/Imagenes/Vende/paso_1.jpg">
+          <img class="bd-placeholder-img card-img-top" width="100%" height="250" src="/Imagenes/Vende/paso_1.jpg">
             
           </div>
         </div>
 
         <div class="col">
           <div class="card shadow-sm">
-            <img class="bd-placeholder-img card-img-top" width="100%" height="150" src="/Imagenes/Vende/paso_2.jpg">
+            <img class="bd-placeholder-img card-img-top" width="100%" height="250" src="/Imagenes/Vende/paso_2.jpg">
             
           </div>
         </div>
 
         <div class="col">
           <div class="card shadow-sm">
-            <img class="bd-placeholder-img card-img-top" width="100%" height="150" src="/Imagenes/Vende/paso_3.jpg">
+            <img class="bd-placeholder-img card-img-top" width="100%" height="250" src="/Imagenes/Vende/paso_3.jpg">
 
           </div>
         </div>
