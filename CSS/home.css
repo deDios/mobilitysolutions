@@ -210,6 +210,10 @@ h1 {
     font-size: 16px;
 }
 
+.profile-info{
+    padding-left: 200px;
+}
+
 .profile-info p {
     font-size: 16px;
     margin: 8px 0;
