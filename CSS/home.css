@@ -184,8 +184,7 @@ h1 {
 
 .profile-header {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    align-items: flex-start; /* Alineación hacia arriba */
     margin-bottom: 20px;
 }
 
@@ -210,7 +209,14 @@ h1 {
     font-size: 16px;
 }
 
-.profile-info{
+.location-info {
+    margin-top: 20px; /* Separación de la ubicación */
+    font-size: 16px;
+    text-align: center; /* Centrado del texto */
+    color: #555;
+}
+
+.profile-info {
     padding-left: 220px;
 }
 

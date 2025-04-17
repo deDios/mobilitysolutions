@@ -169,6 +169,11 @@
         </div>
     </div>
     
+    <!-- Información de la ubicación -->
+    <div class="location-info">
+        <p>Morelia Michoacán, Sucursal: Morelia</p>
+    </div>
+
     <div class="profile-info">
         <p><small>Datos de contacto</small></p> <hr class="mt-2 mb-3"/>
         <p><strong>Username:</strong> <?php echo $user_name; ?></p>
@@ -179,6 +184,7 @@
     </div>
     <a href="edit_profile.php" class="edit-button">Editar Perfil</a>
 </div>
+
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
