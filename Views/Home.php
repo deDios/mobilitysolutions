@@ -152,9 +152,8 @@
 </div>
 
     <div class="container_1">
-        <h1>Perfil de Usuario</h1>
+        <h1><?php echo $nombre . ' ' . $s_nombre . ' ' . $last_name; ?></h1>
         <div class="profile-info">
-            <p><strong>Nombre Completo:</strong> <?php echo $nombre . ' ' . $s_nombre . ' ' . $last_name; ?></p>
             <p><strong>Username:</strong> <?php echo $user_name; ?></p>
             <p><strong>Email:</strong> <?php echo $email; ?></p>
             <p><strong>Fecha de Cumpleaños:</strong> <?php echo $cumpleaños; ?></p>
