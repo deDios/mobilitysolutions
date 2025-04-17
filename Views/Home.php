@@ -168,7 +168,9 @@
             </ul>
         </div>
     </div>
+    
     <div class="profile-info">
+        <p><small>Datos de contacto</small></p> <hr class="mt-2 mb-3"/>
         <p><strong>Username:</strong> <?php echo $user_name; ?></p>
         <p><strong>Email:</strong> <?php echo $email; ?></p>
         <p><strong>Fecha de Cumpleaños:</strong> <?php echo $cumpleaños; ?></p>
