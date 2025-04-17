@@ -151,9 +151,25 @@
   </nav>
 </div>
 
-<?php
-    echo 'Bienvenido '.$nombre.' '.$last_name.'';
-?>
+    <div class="container">
+        <h1>Perfil de Usuario</h1>
+        <div class="profile-info">
+            <p><strong>Nombre Completo:</strong> <?php echo $nombre . ' ' . $s_nombre . ' ' . $last_name; ?></p>
+            <p><strong>Username:</strong> <?php echo $user_name; ?></p>
+            <p><strong>Email:</strong> <?php echo $email; ?></p>
+            <p><strong>Fecha de Cumpleaños:</strong> <?php echo $cumpleaños; ?></p>
+            <p><strong>Teléfono:</strong> <?php echo $telefono; ?></p>
+            <p><strong>Tipo de Usuario:</strong> <?php echo $user_type; ?></p>
+            <p><strong>Roles:</strong></p>
+            <ul>
+                <li>Ejecutivo: <?php echo $r_ejecutivo ? 'Sí' : 'No'; ?></li>
+                <li>Editor: <?php echo $r_editor ? 'Sí' : 'No'; ?></li>
+                <li>Autorizador: <?php echo $r_autorizador ? 'Sí' : 'No'; ?></li>
+                <li>Analista: <?php echo $r_analista ? 'Sí' : 'No'; ?></li>
+            </ul>
+        </div>
+        <a href="edit_profile.php" class="edit-button">Editar Perfil</a>
+    </div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

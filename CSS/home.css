@@ -167,3 +167,50 @@ li {
 
 
 /*--------------------------------------------------------------------------------------------------*/
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+.profile-info p {
+    font-size: 16px;
+    margin: 8px 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.edit-button {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    padding: 10px;
+    text-align: center;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.edit-button:hover {
+    background-color: #0056b3;
+}
