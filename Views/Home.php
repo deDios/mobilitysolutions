@@ -166,13 +166,10 @@
                 <?php if ($r_autorizador) { echo "<li>Autorizador</li>"; } ?>
                 <?php if ($r_analista) { echo "<li>Analista</li>"; } ?>
             </ul>
+            <p>Morelia Michoacán | </p>
         </div>
     </div>
     
-    <!-- Información de la ubicación -->
-    <div class="location-info">
-        <p>Morelia Michoacán, Sucursal: Morelia</p>
-    </div>
 
     <div class="profile-info">
         <p><small>Datos de contacto</small></p> <hr class="mt-2 mb-3"/>
