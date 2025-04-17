@@ -190,8 +190,8 @@ h1 {
 }
 
 .profile-image {
-    width: 100px; /* Tamaño de la imagen */
-    height: 100px;
+    width: 200px; /* Tamaño de la imagen */
+    height: 200px;
     border-radius: 50%; /* Hace la imagen circular */
     object-fit: cover; /* Para que la imagen se recorte proporcionalmente */
 }
