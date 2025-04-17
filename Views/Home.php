@@ -155,7 +155,7 @@
     <h1><?php echo $nombre . ' ' . $s_nombre . ' ' . $last_name; ?></h1>
     <div class="profile-header">
         <!-- Imagen de perfil -->
-        <img src="<?php echo $profile_image; ?>" alt="Foto de perfil" class="profile-image">
+        <img src="../Imagenes/Usuarios/<?php echo $user_id; ?>.jpg" alt="Foto de perfil" class="profile-image">
         
         <!-- Información del rol -->
         <div class="roles">
