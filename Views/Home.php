@@ -151,7 +151,7 @@
   </nav>
 </div>
 
-    <div class="container">
+    <div class="container_1">
         <h1>Perfil de Usuario</h1>
         <div class="profile-info">
             <p><strong>Nombre Completo:</strong> <?php echo $nombre . ' ' . $s_nombre . ' ' . $last_name; ?></p>

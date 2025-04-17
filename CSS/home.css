@@ -168,14 +168,7 @@ li {
 
 /*--------------------------------------------------------------------------------------------------*/
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-}
-
-.container {
+.container_1 {
     width: 80%;
     margin: 20px auto;
     background-color: #fff;
