@@ -422,4 +422,24 @@ h1 {
     position: relative;
 }
 
+.skills-section {
+    margin-top: 40px;
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.skills-section h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.skills-section .placeholder {
+    font-style: italic;
+    color: #777;
+}
+
 
