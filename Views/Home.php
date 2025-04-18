@@ -224,7 +224,7 @@
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
         <h2>Editar Información</h2>
-        <form action="update_profiles.php" method="POST">
+        <form action="update_profile.php" method="POST">
             <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
 
             <label>Email:</label>
