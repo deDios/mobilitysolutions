@@ -210,17 +210,6 @@
     </div>
 </div>
 
-    <div class="profile-info">
-        <p><small>Datos de contacto</small></p> <hr class="mt-2 mb-3"/>
-        <p><strong>Username:</strong> <?php echo $user_name; ?></p>
-        <p><strong>Email:</strong> <?php echo $email; ?></p>
-        <p><strong>Fecha de Cumpleaños:</strong> <?php echo $cumpleaños; ?></p>
-        <p><strong>Teléfono:</strong> <?php echo $telefono; ?></p>
-        <p><strong>Tipo de Usuario:</strong> <?php echo $user_type; ?></p>
-    </div>
-    <a href="edit_profile.php" class="edit-button">Editar Perfil</a>
-</div>
-
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
