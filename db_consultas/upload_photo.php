@@ -22,14 +22,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Mover archivo al destino
         if (move_uploaded_file($imageFile["tmp_name"], $targetFile)) {
-            echo json_encode(["success" => true, "message" => "Imagen subida correctamente."]);
+            //echo json_encode(["success" => true, "message" => "Imagen subida correctamente."]);
         } else {
-            echo json_encode(["success" => false, "message" => "Error al mover la imagen."]);
+            //echo json_encode(["success" => false, "message" => "Error al mover la imagen."]);
         }
     } else {
-        echo json_encode(["success" => false, "message" => "Faltan datos necesarios."]);
+        //echo json_encode(["success" => false, "message" => "Faltan datos necesarios."]);
     }
 } else {
-    echo json_encode(["success" => false, "message" => "Método no permitido."]);
+    //echo json_encode(["success" => false, "message" => "Método no permitido."]);
 }
+
+header("Location: https://mobilitysolutionscorp.com/Views/Home.php", TRUE, 301);
+exit();
 ?>
