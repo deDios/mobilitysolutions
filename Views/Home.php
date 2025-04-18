@@ -224,7 +224,7 @@
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
         <h2>Editar Información</h2>
-        <form action="update_profile.php" method="POST">
+        <form action="../db_consultas/update_profile.php" method="POST">
             <label>Email:</label>
             <input type="email" name="email" value="<?php echo $email; ?>" required>
 
