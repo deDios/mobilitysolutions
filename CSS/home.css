@@ -168,31 +168,43 @@ li {
 
 /*--------------------------------------------------------------------------------------------------*/
 
-.container_1 {
-    width: 80%;
+/* Contenedor padre que une ambos paneles */
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1200px;
     margin: 20px auto;
-    background-color: #fff;
+}
+
+/* Ajuste para los contenedores */
+.container_1, .container_2 {
+    width: 50%;
+    box-sizing: border-box;
     padding: 20px;
     padding-top: 130px;
     border-radius: 8px;
+    background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Encabezado */
 h1 {
     text-align: center;
 }
 
+/* Imagen de perfil y roles */
 .profile-header {
     display: flex;
-    align-items: flex-start; /* Alineación hacia arriba */
+    align-items: flex-start;
     margin-bottom: 20px;
 }
 
 .profile-image {
-    width: 200px; /* Tamaño de la imagen */
+    width: 200px;
     height: 200px;
-    border-radius: 50%; /* Hace la imagen circular */
-    object-fit: cover; /* Para que la imagen se recorte proporcionalmente */
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .roles {
@@ -209,10 +221,11 @@ h1 {
     font-size: 16px;
 }
 
+/* Info de contacto */
 .location-info {
-    margin-top: 20px; /* Separación de la ubicación */
+    margin-top: 20px;
     font-size: 16px;
-    text-align: center; /* Centrado del texto */
+    text-align: center;
     color: #555;
 }
 
@@ -242,21 +255,9 @@ h1 {
     background-color: #0056b3;
 }
 
-.flex-container {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-}
-
-.container_1, .container_2 {
-    width: 50%;
-    box-sizing: border-box;
-    padding: 20px;
-}
-
+/* Estilo container_2 (totalizadores) */
 .container_2 {
     background-color: #f9f9f9;
-    padding-top: 130px;
     text-align: center;
 }
 
@@ -265,6 +266,7 @@ h1 {
     margin-bottom: 30px;
 }
 
+/* Estilo de los hexágonos */
 .hex-container {
     display: flex;
     flex-wrap: wrap;
@@ -284,6 +286,7 @@ h1 {
     color: white;
     font-weight: bold;
     transition: transform 0.3s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 .hex:hover {
