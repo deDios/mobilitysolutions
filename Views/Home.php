@@ -222,7 +222,7 @@
             </div>
         </div>
 
-        <canvas id="lineChart" width="100%" height="100"></canvas>
+        <canvas id="lineChart" width="100%" height="300px"></canvas>
 
     </div>
 </div>
