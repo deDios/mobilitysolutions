@@ -270,7 +270,7 @@
             telefono: form.telefono.value
         };
 
-        fetch("../db_consultas/update_profile.php", {
+        fetch("https://mobilitysolutionscorp.com/db_consultas/update_profile.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
