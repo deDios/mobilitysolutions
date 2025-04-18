@@ -381,3 +381,32 @@ h1 {
     font-size: 24px;
     cursor: pointer;
 }
+
+.profile-image-wrapper {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.edit-icon-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.profile-image-wrapper:hover .edit-icon-overlay {
+    opacity: 1;
+}
+
