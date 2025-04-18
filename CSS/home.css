@@ -410,3 +410,8 @@ h1 {
     opacity: 1;
 }
 
+#lineChart {
+    margin-top: 40px;
+    height: 300px;
+}
+

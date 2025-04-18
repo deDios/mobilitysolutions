@@ -86,7 +86,9 @@
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-   
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
 </head>
 
 <body>
@@ -219,6 +221,9 @@
                 <strong>100</strong>
             </div>
         </div>
+
+        <canvas id="lineChart" width="100%" height="100"></canvas>
+
     </div>
 </div>
 
@@ -292,6 +297,50 @@
         });
     });
 </script>
+
+<script>
+    const ctx = document.getElementById('lineChart').getContext('2d');
+    const lineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            datasets: [{
+                label: 'Valor mensual',
+                data: [10, 15, 8, 12, 20, 18, 25, 22, 19, 23, 17, 14], // Valores DUMMY
+                borderColor: '#007bff',
+                backgroundColor: 'rgba(0, 123, 255, 0.2)',
+                borderWidth: 2,
+                fill: true,
+                tension: 0.3,
+                pointRadius: 4,
+                pointBackgroundColor: '#007bff',
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 5
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top',
+                },
+                tooltip: {
+                    mode: 'index',
+                    intersect: false,
+                }
+            }
+        }
+    });
+</script>
+
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
