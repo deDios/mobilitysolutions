@@ -192,7 +192,6 @@
 
     <!-- Panel derecho con hexágonos -->
     <div class="container_2">
-        <h2>Totalizadores</h2>
         <div class="hex-container">
             <div class="hex">
                 <span>Ordenes</span>
@@ -205,6 +204,10 @@
             <div class="hex">
                 <span>Clientes</span>
                 <strong>342</strong>
+            </div>
+            <div class="hex">
+                <span>Entregas</span>
+                <strong>100</strong>
             </div>
         </div>
     </div>
