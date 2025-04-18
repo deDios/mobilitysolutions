@@ -158,7 +158,7 @@
 
         <div class="profile-header">
             <!-- Imagen de perfil con formulario -->
-            <form id="uploadForm" action="upload_photo.php" method="POST" enctype="multipart/form-data">
+            <form id="uploadForm" action="../db_consultas/upload_photo.php" method="POST" enctype="multipart/form-data">
                 <label for="profilePicInput">
                     <img src="../Imagenes/Usuarios/<?php echo $user_id; ?>.jpg" alt="Foto de perfil" class="profile-image" title="Haz clic para cambiar tu foto">
                 </label>
