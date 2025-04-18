@@ -166,7 +166,11 @@
                 <?php if ($r_autorizador) { echo "<li>Autorizador</li>"; } ?>
                 <?php if ($r_analista) { echo "<li>Analista</li>"; } ?>
             </ul>
-            <p>Morelia Michoacán | </p>
+            <?php
+                date_default_timezone_set('America/Mexico_City');
+                $hora_actual = date('h:i A'); // Formato 12 horas con AM/PM
+            ?>
+            <p>Morelia Michoacán | <?php echo $hora_actual; ?>.</p>
         </div>
     </div>
     
