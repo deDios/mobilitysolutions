@@ -152,43 +152,59 @@
 </div>
 
 <div class="flex-container">
-    
+    <!-- Perfil izquierdo -->
     <div class="container_1">
         <h1><?php echo $nombre . ' ' . $s_nombre . ' ' . $last_name; ?></h1>
-    <div class="profile-header">
-        <!-- Imagen de perfil -->
-        <img src="../Imagenes/Usuarios/<?php echo $user_id; ?>.jpg" alt="Foto de perfil" class="profile-image">
-        
-        <!-- Información del rol -->
-        <div class="roles">
-            <p><strong>Roles Activos:</strong></p>
-            <ul>
-                <?php if ($r_ejecutivo) { echo "<li>Ejecutivo</li>"; } ?>
-                <?php if ($r_editor) { echo "<li>Editor</li>"; } ?>
-                <?php if ($r_autorizador) { echo "<li>Autorizador</li>"; } ?>
-                <?php if ($r_analista) { echo "<li>Analista</li>"; } ?>
-            </ul>
-            <?php
-                date_default_timezone_set('America/Mexico_City');
-                $hora_actual = date('h:i A'); // Formato 12 horas con AM/PM
-            ?>
-            <p>Morelia Michoacán | <?php echo $hora_actual; ?>.</p>
+
+        <div class="profile-header">
+            <!-- Imagen de perfil -->
+            <img src="../Imagenes/Usuarios/<?php echo $user_id; ?>.jpg" alt="Foto de perfil" class="profile-image">
+
+            <!-- Información del rol -->
+            <div class="roles">
+                <p><strong>Roles Activos:</strong></p>
+                <ul>
+                    <?php if ($r_ejecutivo) { echo "<li>Ejecutivo</li>"; } ?>
+                    <?php if ($r_editor) { echo "<li>Editor</li>"; } ?>
+                    <?php if ($r_autorizador) { echo "<li>Autorizador</li>"; } ?>
+                    <?php if ($r_analista) { echo "<li>Analista</li>"; } ?>
+                </ul>
+                <?php
+                    date_default_timezone_set('America/Mexico_City');
+                    $hora_actual = date('h:i A');
+                ?>
+                <p>Morelia Michoacán | <?php echo $hora_actual; ?>.</p>
+            </div>
         </div>
+
+        <!-- Información de contacto -->
+        <div class="profile-info">
+            <p><small>Datos de contacto</small></p> <hr class="mt-2 mb-3"/>
+            <p><strong>Username:</strong> <?php echo $user_name; ?></p>
+            <p><strong>Email:</strong> <?php echo $email; ?></p>
+            <p><strong>Fecha de Cumpleaños:</strong> <?php echo $cumpleaños; ?></p>
+            <p><strong>Teléfono:</strong> <?php echo $telefono; ?></p>
+            <p><strong>Tipo de Usuario:</strong> <?php echo $user_type; ?></p>
+        </div>
+
+        <a href="edit_profile.php" class="edit-button">Editar Perfil</a>
     </div>
+
+    <!-- Panel derecho con hexágonos -->
     <div class="container_2">
         <h2>Totalizadores</h2>
         <div class="hex-container">
             <div class="hex">
-                <span>Total Ventas</span>
-                <strong>120</strong>
+                <span>Ordenes</span>
+                <strong>128</strong>
+            </div>
+            <div class="hex">
+                <span>Ventas</span>
+                <strong>$56K</strong>
             </div>
             <div class="hex">
                 <span>Clientes</span>
-                <strong>45</strong>
-            </div>
-            <div class="hex">
-                <span>Pedidos</span>
-                <strong>87</strong>
+                <strong>342</strong>
             </div>
         </div>
     </div>
