@@ -1,25 +1,26 @@
 <?php
-include "../db/Conexion.php";
+require_once '../db/Conexion.php';
+
+header("Content-Type: application/json");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Leer JSON del body
-    $json = file_get_contents("php://input");
-    $data = json_decode($json, true);
+    // Leer el cuerpo de la solicitud
+    $data = json_decode(file_get_contents("php://input"), true);
 
-    $email = filter_var(trim($data["email"]), FILTER_SANITIZE_EMAIL);
-    $cumpleanos = $data["cumpleanos"];
-    $telefono = trim($data["telefono"]);
-    $user_id = intval($data["user_id"]);
-
-    if (!$user_id) {
+    if (!$data) {
         http_response_code(400);
-        echo "ID de usuario inválido.";
+        echo json_encode(["error" => "Datos JSON inválidos."]);
         exit;
     }
 
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $email = filter_var(trim($data["email"] ?? ""), FILTER_SANITIZE_EMAIL);
+    $cumpleanos = $data["cumpleanos"] ?? "";
+    $telefono = trim($data["telefono"] ?? "");
+    $user_id = intval($data["user_id"] ?? 0);
+
+    if (!$user_id || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
         http_response_code(400);
-        echo "Email no válido.";
+        echo json_encode(["error" => "Datos incompletos o inválidos."]);
         exit;
     }
 
@@ -28,23 +29,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if (!$stmt) {
         http_response_code(500);
-        echo "Error al preparar la consulta: " . $conn->error;
+        echo json_encode(["error" => "Error al preparar la consulta."]);
         exit;
     }
 
     $stmt->bind_param("sssi", $email, $cumpleanos, $telefono, $user_id);
 
     if ($stmt->execute()) {
-        echo "Perfil actualizado correctamente";
+        echo json_encode(["success" => true, "message" => "Perfil actualizado correctamente."]);
     } else {
         http_response_code(500);
-        echo "Error al actualizar: " . $stmt->error;
+        echo json_encode(["error" => "Error al actualizar: " . $stmt->error]);
     }
 
     $stmt->close();
 } else {
-    http_response_code(405); // Método no permitido
-    echo "Método no permitido.";
+    http_response_code(405);
+    echo json_encode(["error" => "Método no permitido."]);
 }
 
 $conn->close();
