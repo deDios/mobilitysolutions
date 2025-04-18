@@ -224,7 +224,7 @@
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
         <h2>Editar Información</h2>
-        <form action="update_profile.php" method="POST">
+        <form id="editForm"> <!-- Quitamos action y method -->
             <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
 
             <label>Email:</label>
@@ -241,7 +241,7 @@
     </div>
 </div>
 
-<!-- JavaScript para abrir/cerrar modal -->
+<!-- JavaScript para abrir/cerrar modal y enviar JSON -->
 <script>
     function openModal() {
         document.getElementById("editModal").style.display = "block";
@@ -257,6 +257,37 @@
             modal.style.display = "none";
         }
     }
+
+    // Enviar datos como JSON
+    document.getElementById("editForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const form = e.target;
+        const data = {
+            user_id: form.user_id.value,
+            email: form.email.value,
+            cumpleanos: form.cumpleanos.value,
+            telefono: form.telefono.value
+        };
+
+        fetch("../db_consultas/update_profile.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.text())
+        .then(result => {
+            alert(result); // puedes usar toast o modal también
+            closeModal();
+            location.reload();
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("Error al actualizar perfil");
+        });
+    });
 </script>
 
 
