@@ -225,6 +225,8 @@
         <span class="close" onclick="closeModal()">&times;</span>
         <h2>Editar Información</h2>
         <form action="../db_consultas/update_profile.php" method="POST">
+            <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
+
             <label>Email:</label>
             <input type="email" name="email" value="<?php echo $email; ?>" required>
 

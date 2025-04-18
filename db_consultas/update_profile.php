@@ -2,28 +2,21 @@
 // Conexión a la base de datos
 require_once '../db/Conexion.php'; // Asegúrate que este archivo establece correctamente $conn
 
-// Validar que los datos han sido enviados
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Sanitizar entradas
     $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
     $cumpleanos = $_POST["cumpleanos"];
     $telefono = trim($_POST["telefono"]);
-
-    // Puedes obtener el ID del usuario desde la sesión o como un input oculto en el formulario
-    session_start();
-    $user_id = $_SESSION["user_id"] ?? null;
+    $user_id = intval($_POST["user_id"]); // Asegura que es un número
 
     if (!$user_id) {
-        die("ID de usuario no válido.");
+        die("ID de usuario inválido.");
     }
 
-    // Validar datos
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         die("Email no válido.");
     }
 
-    // Preparar consulta
-    $sql = "UPDATE usuarios SET email = ?, cumpleaños = ?, telefono = ? WHERE user_id = ?";
+    $sql = "UPDATE mobility_solutions.tmx_usuario SET email = ?, cumpleaños = ?, telefono = ? WHERE id = ?";
     $stmt = $conn->prepare($sql);
 
     if (!$stmt) {
@@ -33,7 +26,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt->bind_param("sssi", $email, $cumpleanos, $telefono, $user_id);
 
     if ($stmt->execute()) {
-        // Redirigir a la página del perfil (puedes cambiar la ruta)
         header("Location: perfil.php?mensaje=Perfil actualizado correctamente");
         exit;
     } else {
