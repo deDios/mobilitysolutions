@@ -157,8 +157,14 @@
         <h1><?php echo $nombre . ' ' . $s_nombre . ' ' . $last_name; ?></h1>
 
         <div class="profile-header">
-            <!-- Imagen de perfil -->
-            <img src="../Imagenes/Usuarios/<?php echo $user_id; ?>.jpg" alt="Foto de perfil" class="profile-image">
+            <!-- Imagen de perfil con formulario -->
+            <form id="uploadForm" action="upload_photo.php" method="POST" enctype="multipart/form-data">
+                <label for="profilePicInput">
+                    <img src="../Imagenes/Usuarios/<?php echo $user_id; ?>.jpg" alt="Foto de perfil" class="profile-image" title="Haz clic para cambiar tu foto">
+                </label>
+                <input type="file" id="profilePicInput" name="profilePic" style="display: none;" onchange="document.getElementById('uploadForm').submit();">
+                <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
+            </form>
 
             <!-- Información del rol -->
             <div class="roles">
@@ -187,7 +193,7 @@
             <p><strong>Tipo de Usuario:</strong> <?php echo $user_type; ?></p>
         </div>
 
-        <a href="edit_profile.php" class="edit-button">Editar Perfil</a>
+        <a href="#" class="edit-button" onclick="openModal()">Editar Perfil</a>
     </div>
 
     <!-- Panel derecho con hexágonos -->
@@ -213,6 +219,43 @@
     </div>
 </div>
 
+<!-- Modal de edición -->
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Editar Información</h2>
+        <form action="update_profile.php" method="POST">
+            <label>Email:</label>
+            <input type="email" name="email" value="<?php echo $email; ?>" required>
+
+            <label>Fecha de Cumpleaños:</label>
+            <input type="date" name="cumpleanos" value="<?php echo $cumpleaños; ?>" required>
+
+            <label>Teléfono:</label>
+            <input type="text" name="telefono" value="<?php echo $telefono; ?>" required>
+
+            <button type="submit">Guardar Cambios</button>
+        </form>
+    </div>
+</div>
+
+<!-- JavaScript para abrir/cerrar modal -->
+<script>
+    function openModal() {
+        document.getElementById("editModal").style.display = "block";
+    }
+
+    function closeModal() {
+        document.getElementById("editModal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        const modal = document.getElementById("editModal");
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
