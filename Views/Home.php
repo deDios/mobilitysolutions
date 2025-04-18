@@ -151,8 +151,10 @@
   </nav>
 </div>
 
-<div class="container_1">
-    <h1><?php echo $nombre . ' ' . $s_nombre . ' ' . $last_name; ?></h1>
+<div class="flex-container">
+    
+    <div class="container_1">
+        <h1><?php echo $nombre . ' ' . $s_nombre . ' ' . $last_name; ?></h1>
     <div class="profile-header">
         <!-- Imagen de perfil -->
         <img src="../Imagenes/Usuarios/<?php echo $user_id; ?>.jpg" alt="Foto de perfil" class="profile-image">
@@ -173,7 +175,24 @@
             <p>Morelia Michoacán | <?php echo $hora_actual; ?>.</p>
         </div>
     </div>
-    
+    <div class="container_2">
+        <h2>Totalizadores</h2>
+        <div class="hex-container">
+            <div class="hex">
+                <span>Total Ventas</span>
+                <strong>120</strong>
+            </div>
+            <div class="hex">
+                <span>Clientes</span>
+                <strong>45</strong>
+            </div>
+            <div class="hex">
+                <span>Pedidos</span>
+                <strong>87</strong>
+            </div>
+        </div>
+    </div>
+</div>
 
     <div class="profile-info">
         <p><small>Datos de contacto</small></p> <hr class="mt-2 mb-3"/>
