@@ -412,6 +412,6 @@ h1 {
 
 #lineChart {
     margin-top: 40px;
-    height: 300px;
+    max-height: 300px;
 }
 
