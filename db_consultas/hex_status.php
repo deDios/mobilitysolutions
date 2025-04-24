@@ -10,20 +10,32 @@ if (!is_numeric($user_id)) {
 
 $inc = include "../db/Conexion.php";
 
-$query = "SELECT
-            MONTHNAME(req_created_at) AS Mes,
-            SUM(CASE WHEN tipo_req = 'Nuevo en catálogo' THEN 1 ELSE 0 END) AS New,
-            SUM(CASE WHEN tipo_req = 'Reserva de vehículo' THEN 1 ELSE 0 END) AS Reserva,
-            SUM(CASE WHEN tipo_req = 'Entrega de vehículo' THEN 1 ELSE 0 END) AS Entrega
-        FROM 
-        mobility_solutions.tmx_requerimiento
-        WHERE 
-        YEAR(req_created_at) = YEAR(CURDATE()) AND status_req = 2 AND created_by = $user_id
-        GROUP BY 
-        MONTH(req_created_at),
-        MONTHNAME(req_created_at)
-        ORDER BY 
-        MONTH(req_created_at)"; 
+$query = $query = "SELECT
+                    m.Mes,
+                    COALESCE(SUM(CASE WHEN r.tipo_req = 'Nuevo en catálogo' THEN 1 ELSE 0 END), 0) AS New,
+                    COALESCE(SUM(CASE WHEN r.tipo_req = 'Reserva de vehículo' THEN 1 ELSE 0 END), 0) AS Reserva,
+                    COALESCE(SUM(CASE WHEN r.tipo_req = 'Entrega de vehículo' THEN 1 ELSE 0 END), 0) AS Entrega
+                FROM (
+                SELECT 1 AS num, 'Enero' AS Mes UNION ALL
+                SELECT 2, 'Febrero' UNION ALL
+                SELECT 3, 'Marzo' UNION ALL
+                SELECT 4, 'Abril' UNION ALL
+                SELECT 5, 'Mayo' UNION ALL
+                SELECT 6, 'Junio' UNION ALL
+                SELECT 7, 'Julio' UNION ALL
+                SELECT 8, 'Agosto' UNION ALL
+                SELECT 9, 'Septiembre' UNION ALL
+                SELECT 10, 'Octubre' UNION ALL
+                SELECT 11, 'Noviembre' UNION ALL
+                SELECT 12, 'Diciembre'
+                ) AS m
+                LEFT JOIN mobility_solutions.tmx_requerimiento r
+                ON MONTH(r.req_created_at) = m.num
+                AND YEAR(r.req_created_at) = YEAR(CURDATE())
+                AND r.status_req = 2
+                AND r.created_by = $user_id
+                GROUP BY m.num, m.Mes
+                ORDER BY m.num"; 
 
 $result = mysqli_query($con, $query);
 
