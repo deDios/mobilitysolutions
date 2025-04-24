@@ -302,21 +302,18 @@
     });
 </script>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const userId = 2; // <-- Reemplaza con el ID real del usuario
 
-        fetch('https://mobilitysolutionscorp.com/db_consultas/hex_status.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: 'user_id=' + encodeURIComponent(userId)
-        })
+<script>
+    const userId = $user_id; // <-- Aquí ponés el ID dinámico del usuario
+
+    fetch(`https://mobilitysolutionscorp.com/db_consultas/hex_status.php?user_id=${userId}`)
         .then(response => response.json())
         .then(data => {
             if (data.error) {
                 console.error("Error:", data.error);
                 return;
             }
+
             document.querySelector('#hex-nuevo strong').textContent = data.nuevo;
             document.querySelector('#hex-reserva strong').textContent = data.reserva;
             document.querySelector('#hex-entrega strong').textContent = data.entrega;
@@ -324,7 +321,6 @@
         .catch(error => {
             console.error('Error al obtener los datos:', error);
         });
-    });
 </script>
 
 <script>

@@ -3,8 +3,8 @@ include "../db/Conexion.php";
 
 header('Content-Type: application/json');
 
-// Asegúrate de que se recibe el user_id vía POST (recomendado)
-$user_id = isset($_POST['user_id']) ? intval($_POST['user_id']) : 0;
+// Obtener el user_id desde la URL (método GET)
+$user_id = isset($_GET['user_id']) ? intval($_GET['user_id']) : 0;
 
 if ($user_id > 0) {
     // Consulta SQL con filtrado por estatus = 2 y created_by
@@ -26,3 +26,4 @@ if ($user_id > 0) {
     echo json_encode(["error" => "user_id no válido"]);
 }
 ?>
+
