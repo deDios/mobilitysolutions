@@ -314,14 +314,15 @@
                 return;
             }
 
-            document.querySelector('#hex-nuevo strong').textContent = data.nuevo;
-            document.querySelector('#hex-reserva strong').textContent = data.reserva;
-            document.querySelector('#hex-entrega strong').textContent = data.entrega;
+            document.querySelector('#hex-nuevo strong').textContent = data.New;
+            document.querySelector('#hex-reserva strong').textContent = data.Reserva;
+            document.querySelector('#hex-entrega strong').textContent = data.Entrega;
         })
         .catch(error => {
             console.error('Error al obtener los datos:', error);
         });
 </script>
+
 
 
 <script>
