@@ -337,6 +337,10 @@
 
 
 <script>
+    const userId = <?php echo intval($user_id); ?>;
+    const meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+
+    // Inicializamos los datos de la gráfica
     const ctx = document.getElementById('lineChart').getContext('2d');
     const lineChart = new Chart(ctx, {
         type: 'line',
@@ -344,7 +348,7 @@
             labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
             datasets: [{
                 label: 'Valor mensual',
-                data: [10, 15, 8, 12, 20, 18, 25, 22, 19, 23, 17, 14], // Valores DUMMY
+                data: Array(12).fill(0),
                 borderColor: '#007bff',
                 backgroundColor: 'rgba(0, 123, 255, 0.2)',
                 borderWidth: 2,
@@ -377,7 +381,40 @@
             }
         }
     });
+
+    // Función para actualizar la gráfica según el tipo
+    function actualizarGraficaPorTipo(tipo) {
+        fetch(`https://mobilitysolutionscorp.com/db_consultas/hex_status.php?user_id=${userId}`)
+            .then(response => response.json())
+            .then(data => {
+                if (!Array.isArray(data)) return;
+
+                const valores = Array(12).fill(0);
+
+                data.forEach(item => {
+                    const idx = meses.indexOf(item.Mes);
+                    if (idx !== -1) {
+                        if (tipo === 'nuevo') valores[idx] = item.New;
+                        else if (tipo === 'reserva') valores[idx] = item.Reserva;
+                        else if (tipo === 'entrega') valores[idx] = item.Entrega;
+                    }
+                });
+
+                lineChart.data.datasets[0].data = valores;
+                lineChart.data.datasets[0].label = `Total mensual (${tipo})`;
+                lineChart.update();
+            })
+            .catch(error => {
+                console.error('Error al obtener datos:', error);
+            });
+    }
+
+    // Asignamos los eventos a los hexágonos
+    document.getElementById('hex-nuevo').addEventListener('click', () => actualizarGraficaPorTipo('nuevo'));
+    document.getElementById('hex-reserva').addEventListener('click', () => actualizarGraficaPorTipo('reserva'));
+    document.getElementById('hex-entrega').addEventListener('click', () => actualizarGraficaPorTipo('entrega'));
 </script>
+
 
 
 
