@@ -304,7 +304,7 @@
 
 
 <script>
-    const userId = $user_id; // <-- Aquí ponés el ID dinámico del usuario
+    const userId = <?php echo json_encode($user_id); ?>;
 
     fetch(`https://mobilitysolutionscorp.com/db_consultas/hex_status.php?user_id=${userId}`)
         .then(response => response.json())
@@ -322,6 +322,7 @@
             console.error('Error al obtener los datos:', error);
         });
 </script>
+
 
 <script>
     const ctx = document.getElementById('lineChart').getContext('2d');
