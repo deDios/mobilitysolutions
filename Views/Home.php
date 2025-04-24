@@ -177,7 +177,7 @@
                 <ul>
                     <?php if ($r_ejecutivo) { echo "<li>Ejecutivo</li>"; } ?>
                     <?php if ($r_editor) { echo "<li>Editor</li>"; } ?>
-                    <?php if ($r_autorizador) { echo "<li>Autorizador</li>"; } ?>
+                    <?php if ($r_autorizador) { echo "<li>Manager</li>"; } ?>
                     <?php if ($r_analista) { echo "<li>Analista</li>"; } ?>
                 </ul>
                 <?php
