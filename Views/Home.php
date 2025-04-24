@@ -204,21 +204,17 @@
     <!-- Panel derecho con hexágonos -->
     <div class="container_2">
         <div class="hex-container">
-            <div class="hex">
-                <span>Ordenes</span>
-                <strong>128</strong>
+            <div class="hex" id="hex-nuevo">
+                <span>Nuevo</span>
+                <strong>0</strong>
             </div>
-            <div class="hex">
-                <span>Ventas</span>
-                <strong>$56K</strong>
+            <div class="hex" id="hex-reserva">
+                <span>Reserva</span>
+                <strong>0</strong>
             </div>
-            <div class="hex">
-                <span>Clientes</span>
-                <strong>342</strong>
-            </div>
-            <div class="hex">
-                <span>Entregas</span>
-                <strong>100</strong>
+            <div class="hex" id="hex-entrega">
+                <span>Entrega</span>
+                <strong>0</strong>
             </div>
         </div>
 
@@ -302,6 +298,31 @@
         .catch(error => {
             console.error("Error:", error);
             alert("Error al actualizar perfil");
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const userId = 123; // <-- Reemplaza con el ID real del usuario
+
+        fetch('https://mobilitysolutionscorp.com/db_consultas/hex_status.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: 'user_id=' + encodeURIComponent(userId)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                console.error("Error:", data.error);
+                return;
+            }
+            document.querySelector('#hex-nuevo strong').textContent = data.nuevo;
+            document.querySelector('#hex-reserva strong').textContent = data.reserva;
+            document.querySelector('#hex-entrega strong').textContent = data.entrega;
+        })
+        .catch(error => {
+            console.error('Error al obtener los datos:', error);
         });
     });
 </script>
