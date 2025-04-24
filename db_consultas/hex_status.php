@@ -20,7 +20,7 @@ $query = "SELECT
         FROM 
         mobility_solutions.tmx_requerimiento
         WHERE 
-        YEAR(req_created_at) = YEAR(CURDATE()) AND estatus = 2 AND created_by = $user_id
+        YEAR(req_created_at) = YEAR(CURDATE()) AND status_req = 2 AND created_by = $user_id
         GROUP BY 
         MONTH(req_created_at),
         MONTHNAME(req_created_at)
