@@ -304,25 +304,34 @@
 
 
 <script>
-    const userId = <?php echo intval($user_id); ?>; // Asegúrate de que sea un número entero
+    const userId = <?php echo intval($user_id); ?>;
 
     fetch(`https://mobilitysolutionscorp.com/db_consultas/hex_status.php?user_id=${userId}`)
-    .then(response => response.json())
-    .then(data => {
-        console.log("Respuesta del servidor:", data); // 👈 esto imprime el JSON
+        .then(response => response.json())
+        .then(data => {
+            console.log("Datos por mes:", data); // 🔍 Verifica los datos que llegan
 
-        if (data.error) {
-            console.error("Error:", data.error);
-            return;
-        }
+            // Inicializar totales
+            let totalNuevo = 0;
+            let totalReserva = 0;
+            let totalEntrega = 0;
 
-        document.querySelector('#hex-nuevo strong').textContent = data.New;
-        document.querySelector('#hex-reserva strong').textContent = data.Reserva;
-        document.querySelector('#hex-entrega strong').textContent = data.Entrega;
-    })
-    .catch(error => {
-        console.error('Error al obtener los datos:', error);
-    });
+            // Recorrer los registros por mes y sumar
+            data.forEach(mes => {
+                totalNuevo += parseInt(mes.New) || 0;
+                totalReserva += parseInt(mes.Reserva) || 0;
+                totalEntrega += parseInt(mes.Entrega) || 0;
+            });
+
+            // Mostrar en los hexágonos
+            document.querySelector('#hex-nuevo strong').textContent = totalNuevo;
+            document.querySelector('#hex-reserva strong').textContent = totalReserva;
+            document.querySelector('#hex-entrega strong').textContent = totalEntrega;
+        })
+        .catch(error => {
+            console.error('Error al obtener los datos:', error);
+        });
+
 </script>
 
 
