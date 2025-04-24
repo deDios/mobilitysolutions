@@ -307,20 +307,22 @@
     const userId = parseInt($user_id, 10); // Asegúrate de que sea un número entero
 
     fetch(`https://mobilitysolutionscorp.com/db_consultas/hex_status.php?user_id=${userId}`)
-        .then(response => response.json())
-        .then(data => {
-            if (data.error) {
-                console.error("Error:", data.error);
-                return;
-            }
+    .then(response => response.json())
+    .then(data => {
+        console.log("Respuesta del servidor:", data); // 👈 esto imprime el JSON
 
-            document.querySelector('#hex-nuevo strong').textContent = data.New;
-            document.querySelector('#hex-reserva strong').textContent = data.Reserva;
-            document.querySelector('#hex-entrega strong').textContent = data.Entrega;
-        })
-        .catch(error => {
-            console.error('Error al obtener los datos:', error);
-        });
+        if (data.error) {
+            console.error("Error:", data.error);
+            return;
+        }
+
+        document.querySelector('#hex-nuevo strong').textContent = data.New;
+        document.querySelector('#hex-reserva strong').textContent = data.Reserva;
+        document.querySelector('#hex-entrega strong').textContent = data.Entrega;
+    })
+    .catch(error => {
+        console.error('Error al obtener los datos:', error);
+    });
 </script>
 
 
