@@ -304,7 +304,7 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        const userId = 123; // <-- Reemplaza con el ID real del usuario
+        const userId = 2; // <-- Reemplaza con el ID real del usuario
 
         fetch('https://mobilitysolutionscorp.com/db_consultas/hex_status.php', {
             method: 'POST',
