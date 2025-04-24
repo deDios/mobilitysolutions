@@ -304,7 +304,7 @@
 
 
 <script>
-    const userId = parseInt($user_id, 10); // Asegúrate de que sea un número entero
+    const userId = <?php echo intval($user_id); ?>; // Asegúrate de que sea un número entero
 
     fetch(`https://mobilitysolutionscorp.com/db_consultas/hex_status.php?user_id=${userId}`)
     .then(response => response.json())
