@@ -162,7 +162,7 @@
             <!-- Imagen de perfil con formulario -->
             <form id="uploadForm" action="../db_consultas/upload_photo.php" method="POST" enctype="multipart/form-data">
                 <label for="profilePicInput" class="profile-image-wrapper">
-                    <img src="../Imagenes/Usuarios/<?php echo $user_id; ?>.jpg" alt="Foto de perfil" class="profile-image" title="Haz clic para cambiar tu foto">
+                    <img src="../Imagenes/Usuarios/<?php echo $user_id; ?>.jpg?<?php echo time(); ?>" alt="Foto de perfil" class="profile-image" title="Haz clic para cambiar tu foto">
                     <div class="edit-icon-overlay">
                         ✎
                     </div>
