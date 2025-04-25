@@ -305,47 +305,52 @@
 
 <script>
     const userId = <?php echo intval($user_id); ?>;
+    let datosPorMes = []; // Aquí guardamos la data del API
+    let lineChart; // Referencia al gráfico
+
+    // Función para actualizar la gráfica con el tipo seleccionado
+    function actualizarGrafica(tipo) {
+        const valores = datosPorMes.map(mes => parseInt(mes[tipo]) || 0);
+        const label = {
+            'New': 'Nuevos por mes',
+            'Reserva': 'Reservas por mes',
+            'Entrega': 'Entregas por mes'
+        }[tipo];
+
+        lineChart.data.datasets[0].data = valores;
+        lineChart.data.datasets[0].label = label;
+        lineChart.update();
+    }
 
     fetch(`https://mobilitysolutionscorp.com/db_consultas/hex_status.php?user_id=${userId}`)
         .then(response => response.json())
         .then(data => {
-            console.log("Datos por mes:", data); // 🔍 Verifica los datos que llegan
+            console.log("Datos por mes:", data);
+            datosPorMes = data;
 
-            // Inicializar totales
-            let totalNuevo = 0;
-            let totalReserva = 0;
-            let totalEntrega = 0;
-
-            // Arrays para la gráfica
-            const valoresNuevo = [];
-
-            // Recorrer los registros por mes
+            // Calcular totales
+            let totalNuevo = 0, totalReserva = 0, totalEntrega = 0;
             data.forEach(mes => {
-                const nuevo = parseInt(mes.New) || 0;
-                const reserva = parseInt(mes.Reserva) || 0;
-                const entrega = parseInt(mes.Entrega) || 0;
-
-                totalNuevo += nuevo;
-                totalReserva += reserva;
-                totalEntrega += entrega;
-
-                valoresNuevo.push(nuevo);
+                totalNuevo += parseInt(mes.New) || 0;
+                totalReserva += parseInt(mes.Reserva) || 0;
+                totalEntrega += parseInt(mes.Entrega) || 0;
             });
 
-            // Mostrar en los hexágonos
+            // Mostrar en hexágonos
             document.querySelector('#hex-nuevo strong').textContent = totalNuevo;
             document.querySelector('#hex-reserva strong').textContent = totalReserva;
             document.querySelector('#hex-entrega strong').textContent = totalEntrega;
 
-            // Construir la gráfica con los datos reales
+            // Inicializar la gráfica con 'New'
+            const valoresIniciales = data.map(mes => parseInt(mes.New) || 0);
             const ctx = document.getElementById('lineChart').getContext('2d');
-            const lineChart = new Chart(ctx, {
+            lineChart = new Chart(ctx, {
                 type: 'line',
                 data: {
                     labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
                     datasets: [{
                         label: 'Nuevos por mes',
-                        data: valoresNuevo,
+                        data: valoresIniciales,
                         borderColor: '#007bff',
                         backgroundColor: 'rgba(0, 123, 255, 0.2)',
                         borderWidth: 2,
@@ -378,11 +383,17 @@
                     }
                 }
             });
+
+            // Agregar eventos de clic a los hexágonos
+            document.getElementById('hex-nuevo').addEventListener('click', () => actualizarGrafica('New'));
+            document.getElementById('hex-reserva').addEventListener('click', () => actualizarGrafica('Reserva'));
+            document.getElementById('hex-entrega').addEventListener('click', () => actualizarGrafica('Entrega'));
         })
         .catch(error => {
             console.error('Error al obtener los datos:', error);
         });
 </script>
+
 
 
 
