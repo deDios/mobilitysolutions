@@ -316,68 +316,74 @@
             let totalReserva = 0;
             let totalEntrega = 0;
 
-            // Recorrer los registros por mes y sumar
+            // Arrays para la gráfica
+            const valoresNuevo = [];
+
+            // Recorrer los registros por mes
             data.forEach(mes => {
-                totalNuevo += parseInt(mes.New) || 0;
-                totalReserva += parseInt(mes.Reserva) || 0;
-                totalEntrega += parseInt(mes.Entrega) || 0;
+                const nuevo = parseInt(mes.New) || 0;
+                const reserva = parseInt(mes.Reserva) || 0;
+                const entrega = parseInt(mes.Entrega) || 0;
+
+                totalNuevo += nuevo;
+                totalReserva += reserva;
+                totalEntrega += entrega;
+
+                valoresNuevo.push(nuevo);
             });
 
             // Mostrar en los hexágonos
             document.querySelector('#hex-nuevo strong').textContent = totalNuevo;
             document.querySelector('#hex-reserva strong').textContent = totalReserva;
             document.querySelector('#hex-entrega strong').textContent = totalEntrega;
+
+            // Construir la gráfica con los datos reales
+            const ctx = document.getElementById('lineChart').getContext('2d');
+            const lineChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                    datasets: [{
+                        label: 'Nuevos por mes',
+                        data: valoresNuevo,
+                        borderColor: '#007bff',
+                        backgroundColor: 'rgba(0, 123, 255, 0.2)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.3,
+                        pointRadius: 4,
+                        pointBackgroundColor: '#007bff',
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 5
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                        }
+                    }
+                }
+            });
         })
         .catch(error => {
             console.error('Error al obtener los datos:', error);
         });
-
 </script>
 
-
-
-<script>
-    const ctx = document.getElementById('lineChart').getContext('2d');
-    const lineChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-            datasets: [{
-                label: 'Valor mensual',
-                data: [10, 15, 8, 12, 20, 18, 25, 22, 19, 23, 17, 14], // Valores DUMMY
-                borderColor: '#007bff',
-                backgroundColor: 'rgba(0, 123, 255, 0.2)',
-                borderWidth: 2,
-                fill: true,
-                tension: 0.3,
-                pointRadius: 4,
-                pointBackgroundColor: '#007bff',
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        stepSize: 5
-                    }
-                }
-            },
-            plugins: {
-                legend: {
-                    display: true,
-                    position: 'top',
-                },
-                tooltip: {
-                    mode: 'index',
-                    intersect: false,
-                }
-            }
-        }
-    });
-</script>
 
 
 
