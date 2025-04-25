@@ -33,6 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //echo json_encode(["success" => false, "message" => "Método no permitido."]);
 }
 
-header("Location: https://mobilitysolutionscorp.com/Views/Home.php", TRUE, 301);
+header("Location: https://mobilitysolutionscorp.com/Views/Home.php", TRUE, 303);
 exit();
 ?>

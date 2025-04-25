@@ -305,10 +305,9 @@
 
 <script>
     const userId = <?php echo intval($user_id); ?>;
-    let datosPorMes = []; // Aquí guardamos la data del API
-    let lineChart; // Referencia al gráfico
+    let datosPorMes = []; 
+    let lineChart; 
 
-    // Función para actualizar la gráfica con el tipo seleccionado
     function actualizarGrafica(tipo) {
         const valores = datosPorMes.map(mes => parseInt(mes[tipo]) || 0);
         const label = {
@@ -393,9 +392,6 @@
             console.error('Error al obtener los datos:', error);
         });
 </script>
-
-
-
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
