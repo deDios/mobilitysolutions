@@ -18,8 +18,8 @@ $query = 'select
                 Status, 
                 En_Luna 
             from mobility_solutions.moon_cliente
-            WHERE id = ' . $cod . '
-            OR Telefono = ' . $cod . ';';
+            WHERE id = ' . $cod . ' AND Status = 1
+            OR Telefono = ' . $cod . ' AND Status = 1 ;';
 
 $result = mysqli_query($con, $query);
 
