@@ -9,7 +9,7 @@ if ($cod == 10) {
     // Si cod=10, traer todos los clientes incluyendo el nuevo campo numero_cliente
     $query = 'SELECT 
                 id,
-                numero_cliente,
+                numero_cliente AS Id_Cliente,
                 Nombre,
                 Correo,
                 Telefono,
@@ -25,7 +25,7 @@ if ($cod == 10) {
     // Si cod != 10, puedes hacer lo mismo pero también incluir numero_cliente
     $query = 'SELECT 
                 id,
-                numero_cliente,
+                numero_cliente AS Id_Cliente,
                 Nombre,
                 Correo,
                 Telefono,
