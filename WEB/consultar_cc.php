@@ -6,9 +6,10 @@ header('Content-Type: application/json');
 $inc = include "../db/Conexion.php";
 
 if ($cod == 10) {
-    // Si cod=10, traer todos los clientes
+    // Si cod=10, traer todos los clientes incluyendo el nuevo campo numero_cliente
     $query = 'SELECT 
                 id,
+                numero_cliente,
                 Nombre,
                 Correo,
                 Telefono,
@@ -21,9 +22,10 @@ if ($cod == 10) {
             FROM mobility_solutions.moon_cliente
             ORDER BY Nombre ASC;';
 } else {
-    // O podrías agregar otras opciones aquí si quieres filtrar por otros criterios
+    // Si cod != 10, puedes hacer lo mismo pero también incluir numero_cliente
     $query = 'SELECT 
                 id,
+                numero_cliente,
                 Nombre,
                 Correo,
                 Telefono,
@@ -50,6 +52,9 @@ if ($result->num_rows > 0) {
         $row['Edad'] = (int)$row['Edad'];
         $row['Status'] = (int)$row['Status'];
         $row['En_Luna'] = (int)$row['En_Luna'];
+
+        // Añadir el nuevo campo numero_cliente a la respuesta
+        $row['numero_cliente'] = $row['numero_cliente'];
 
         $data[] = $row;
     }
