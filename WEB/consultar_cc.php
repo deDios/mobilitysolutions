@@ -53,9 +53,6 @@ if ($result->num_rows > 0) {
         $row['Status'] = (int)$row['Status'];
         $row['En_Luna'] = (int)$row['En_Luna'];
 
-        // Añadir el nuevo campo numero_cliente a la respuesta
-        $row['numero_cliente'] = $row['numero_cliente'];
-
         $data[] = $row;
     }
 

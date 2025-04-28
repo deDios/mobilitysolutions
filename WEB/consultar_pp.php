@@ -4,7 +4,6 @@ header('Content-Type: application/json');
 
 $inc = include "../db/Conexion.php";
 
-
 if($cod == 9){
     $query = 'select 
     id,
