@@ -8,7 +8,7 @@ $inc = include "../db/Conexion.php";
 $input = json_decode(file_get_contents("php://input"), true);
 
 // Obtener parámetros desde el JSON
-$id_cliente = isset($input['id_cliente']) ? $input['id_cliente'] : ''; // número de cliente
+$id_cliente = isset($input['numero_cliente']) ? $input['numero_cliente'] : '';
 $nombre = isset($input['nombre']) ? $input['nombre'] : '';
 $correo = isset($input['correo']) ? $input['correo'] : '';
 $telefono = isset($input['telefono']) ? $input['telefono'] : '';
