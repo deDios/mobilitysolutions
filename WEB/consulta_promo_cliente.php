@@ -4,7 +4,7 @@ header("Content-Type: application/json; charset=UTF-8");
 
 $inc = include "../db/Conexion.php"; 
 
-$id_cliente = isset($_GET['id_cliente']) ? intval($_GET['id_cliente']) : 0;
+$id_cliente = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
 if ($id_cliente <= 0) {
     echo json_encode(["success" => false, "message" => "ID de cliente no válido"]);
