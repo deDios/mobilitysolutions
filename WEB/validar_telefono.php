@@ -1,29 +1,23 @@
 <?php
-// Forzar que PHP no imprima errores o contenido inesperado
 ob_start();
 header('Content-Type: application/json');
 
-// Leer parámetro
 $telefono = $_REQUEST['telefono'] ?? '';
 $telefono = trim($telefono);
 
-// Validar formato básico
 if (empty($telefono)) {
     echo json_encode(["success" => false, "message" => "Número de teléfono no proporcionado"]);
     exit();
 }
 
-// Conexión
 $inc = include "../db/Conexion.php";
 if (!$inc || !$con) {
     echo json_encode(["success" => false, "message" => "Error de conexión"]);
     exit();
 }
 
-// Escapar valor
 $telefono = mysqli_real_escape_string($con, $telefono);
 
-// Consulta
 $query = "SELECT COUNT(*) AS total FROM mobility_solutions.moon_cliente WHERE Telefono = '$telefono' AND Status = 1;";
 $result = mysqli_query($con, $query);
 
@@ -40,6 +34,5 @@ if ($result) {
 
 mysqli_close($con);
 
-// Limpiar cualquier posible salida extra
 ob_end_flush();
 ?>
