@@ -1,22 +1,45 @@
 <?php
+// Forzar que PHP no imprima errores o contenido inesperado
+ob_start();
 header('Content-Type: application/json');
 
-include 'conexion.php'; // tu conexión a la base de datos
+// Leer parámetro
+$telefono = $_REQUEST['telefono'] ?? '';
+$telefono = trim($telefono);
 
-$telefono = $_GET['telefono'] ?? '';
-
-if (!$telefono) {
-    echo json_encode(['error' => 'Teléfono no proporcionado']);
-    exit;
+// Validar formato básico
+if (empty($telefono)) {
+    echo json_encode(["success" => false, "message" => "Número de teléfono no proporcionado"]);
+    exit();
 }
 
-$query = "SELECT COUNT(*) as total FROM clientes WHERE telefono = ?";
-$stmt = $conn->prepare($query);
-$stmt->bind_param("s", $telefono);
-$stmt->execute();
-$result = $stmt->get_result()->fetch_assoc();
+// Conexión
+$inc = include "../db/Conexion.php";
+if (!$inc || !$con) {
+    echo json_encode(["success" => false, "message" => "Error de conexión"]);
+    exit();
+}
 
-$existe = $result['total'] > 0;
+// Escapar valor
+$telefono = mysqli_real_escape_string($con, $telefono);
 
-echo json_encode(['existe' => $existe]);
+// Consulta
+$query = "SELECT COUNT(*) AS total FROM mobility_solutions.moon_cliente WHERE Telefono = '$telefono' AND Status = 1;";
+$result = mysqli_query($con, $query);
+
+if ($result) {
+    $row = mysqli_fetch_assoc($result);
+    $exists = intval($row['total']) > 0;
+    echo json_encode([
+        "success" => !$exists,
+        "message" => $exists ? "El teléfono ya está registrado" : "El teléfono está disponible"
+    ]);
+} else {
+    echo json_encode(["success" => false, "message" => "Error al ejecutar la consulta"]);
+}
+
+mysqli_close($con);
+
+// Limpiar cualquier posible salida extra
+ob_end_flush();
 ?>
