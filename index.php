@@ -13,6 +13,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     
     <!------ Include the above in your HEAD tag ---------->
 </head>
@@ -27,13 +29,7 @@
           <div class="col-sm-12">
             <ul class="social-network">
               <li><a class="waves-effect waves-dark" href="https://www.facebook.com/profile.php?id=61563909313215&mibextid=kFxxJD"><i class="fa fa-facebook"></i></a></li>
-              <li>
-                <a class="waves-effect waves-dark" href="https://www.instagram.com/tu_cuenta" target="_blank">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
-                    <path d="M8 0C5.747 0 5.478.01 4.668.048c-.81.037-1.362.163-1.847.347A3.773 3.773 0 0 0 .395 2.821c-.184.485-.31 1.037-.347 1.847C.01 5.478 0 5.747 0 8s.01 2.522.048 3.332c.037.81.163 1.362.347 1.847a3.773 3.773 0 0 0 1.426 1.426c.485.184 1.037.31 1.847.347.81.038 1.079.048 3.332.048s2.522-.01 3.332-.048c.81-.037 1.362-.163 1.847-.347a3.773 3.773 0 0 0 1.426-1.426c.184-.485.31-1.037.347-1.847.038-.81.048-1.079.048-3.332s-.01-2.522-.048-3.332c-.037-.81-.163-1.362-.347-1.847A3.773 3.773 0 0 0 13.179.395c-.485-.184-1.037-.31-1.847-.347C10.522.01 10.253 0 8 0ZM8 1.44c2.187 0 2.445.008 3.304.048.702.032 1.08.148 1.331.246.33.128.565.282.813.53.248.248.402.483.53.813.098.25.214.629.246 1.331.04.859.048 1.117.048 3.304s-.008 2.445-.048 3.304c-.032.702-.148 1.08-.246 1.331a2.339 2.339 0 0 1-.53.813 2.34 2.34 0 0 1-.813.53c-.25.098-.629.214-1.331.246-.859.04-1.117.048-3.304.048s-2.445-.008-3.304-.048c-.702-.032-1.08-.148-1.331-.246a2.34 2.34 0 0 1-.813-.53 2.34 2.34 0 0 1-.53-.813c-.098-.25-.214-.629-.246-1.331C1.448 10.445 1.44 10.187 1.44 8s.008-2.445.048-3.304c.032-.702.148-1.08.246-1.331.128-.33.282-.565.53-.813.248-.248.483-.402.813-.53.25-.098.629-.214 1.331-.246.859-.04 1.117-.048 3.304-.048ZM8 3.89a4.11 4.11 0 1 0 0 8.22 4.11 4.11 0 0 0 0-8.22Zm0 6.78a2.67 2.67 0 1 1 0-5.34 2.67 2.67 0 0 1 0 5.34ZM12.3 3.7a.96.96 0 1 1-1.92 0 .96.96 0 0 1 1.92 0Z"/>
-                  </svg>
-                </a>
-              </li>
+              <li><a class="waves-effect waves-dark" href="https://www.instagram.com/mobility__solutions?igsh=MTA5cWFocWhqNmlqYw=="><i class="fa fa-instagram"></i></a></li>
               <li><a class="waves-effect waves-dark" href="https://mobilitysolutionscorp.com/views/ubicacion.php"><i class="fa fa-map-marker"></i></a></li>
               <li><a class="waves-effect waves-dark" href="https://mobilitysolutionscorp.com/views/login.php"><i class="fa fa-user"></i></a></li>
             </ul>
