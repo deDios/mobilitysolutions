@@ -35,6 +35,7 @@
 
     $result = mysqli_query($con,$query); 
 
+    
     if ($result){ 
         while($row = mysqli_fetch_assoc($result)){
                             $user_id = $row['user_id'];
