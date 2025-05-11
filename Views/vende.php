@@ -43,7 +43,7 @@
   </header>
   <nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear">
     <div class="container">
-      <a class="navbar-brand" rel="nofollow" target="_blank" href="https://mobilitysolutionscorp.com"> Mobility Solutions Corporation</a>
+      <a class="navbar-brand" rel="nofollow" target="_blank" href="https://mobilitysolutionscorp.com"> Mobility Solutions</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -316,7 +316,7 @@ Envía tu información
                 <p>6. Foto de motor. </p>
                 <p>7. Foto de tablero. </p>
                 <p>8. Foto de cajuela. </p><br>
-                <p>Al enviar tu registro, confirmas que has leído y aceptado los términos y condiciones generales de uso, incluyendo los avisos de privacidad y que tus datos personales serán únicamente utilizados por Mobility Solutions Corporation para la informacion que estas solicitando.</p>
+                <p>Al enviar tu registro, confirmas que has leído y aceptado los términos y condiciones generales de uso, incluyendo los avisos de privacidad y que tus datos personales serán únicamente utilizados por Mobility Solutions para la informacion que estas solicitando.</p>
                 <button class="btn btn-success btn-lg pull-right" type="submit">Enviar!</button>
             </div>
         </div>
