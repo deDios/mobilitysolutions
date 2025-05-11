@@ -391,7 +391,7 @@ footer .hr3 {
 
 /* --------------------------Termina boton ------------------------------ */
 
-@media (min-width: 701px) and (max-width: 1600px) {   
+@media (min-width: 1201px) and (max-width: 1600px) {   
     
     .container-items{
         display: grid;
@@ -405,7 +405,7 @@ footer .hr3 {
     }
 }
 
-@media (max-width:700px){
+@media (max-width:1200px){
     .menu_fix {
         padding-top: 85px;
         padding-bottom: 20px;
