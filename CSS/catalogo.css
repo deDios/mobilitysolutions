@@ -391,6 +391,18 @@ footer .hr3 {
 
 /* --------------------------Termina boton ------------------------------ */
 
+@media (min-width: 701px) and (max-width: 1024px) {
+    
+    .container-items .lista_item {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-row-gap: 10px;
+        padding-top: 200px;
+    }
+    
+
+}
+
 @media (max-width:700px){
     .menu_fix {
         padding-top: 85px;
