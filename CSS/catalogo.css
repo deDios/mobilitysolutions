@@ -392,6 +392,21 @@ footer .hr3 {
 /* --------------------------Termina boton ------------------------------ */
 
 @media (min-width: 701px) and (max-width: 1600px) {   
+    
+    .lista_item .item {
+        display: flex;
+        flex-direction: row;
+        height: 210px;
+        width: 80%;
+        border: 1px solid gainsboro;
+        border-top: 5px solid black;
+        border-radius: 0 0 10px 10px;
+        align-items: center;
+        padding: 5px;
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+    }
+    
     .container-items .lista_item {
         display: grid;
         grid-template-columns: repeat(2,1fr);
