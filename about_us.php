@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobility Solutions Corporation</title>
+    <title>Mobility Solutions</title>
     <link rel="shortcut icon" href="/Imagenes/movility.ico" />
     <link rel="stylesheet" href="CSS/estilos.css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -38,7 +38,7 @@
   </header>
   <nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear">
     <div class="container">
-      <a class="navbar-brand" rel="nofollow" target="_blank" href="https://mobilitysolutionscorp.com"> Mobility Solutions Corporation</a>
+      <a class="navbar-brand" rel="nofollow" target="_blank" href="https://mobilitysolutionscorp.com"> Mobility Solutions</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -76,7 +76,7 @@
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-light">Sobre nosotros</h1>
         <p class="lead text-muted">
-        Mobility Solutions Corporation es un equipo especializado en brindar soluciones integrales para la adquisición de vehículos nuevos y seminuevos. 
+        Mobility Solutions es un equipo especializado en brindar soluciones integrales para la adquisición de vehículos nuevos y seminuevos. 
         <br><br>Nuestra misión es facilitar el acceso a la movilidad mediante soluciones de financiamiento personalizadas que se adaptan a las necesidades de cada cliente. 
         <br><br>Gracias a nuestro sistema de aportaciones periódicas, nuestros clientes pueden ahorrar para el enganche y, en el momento adecuado, elegir el vehículo que mejor se adapte a sus gustos y necesidades de nuestro amplio catálogo de autos nuevos y seminuevos.
         </p>
@@ -116,7 +116,7 @@
             <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="/Imagenes/About_us/about_03.jpg">
 
             <div class="card-body">
-              <p class="card-text">En Mobility Solutions Corporation, nos enorgullecemos de fomentar una filosofía de colaboración y pertenencia.</p><br>
+              <p class="card-text">En Mobility Solutions, nos enorgullecemos de fomentar una filosofía de colaboración y pertenencia.</p><br>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary"></button>
@@ -133,7 +133,7 @@
             <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="/Imagenes/About_us/about_02.jpg">
 
             <div class="card-body">
-              <p class="card-text">Mobility Solutions Corporation es la elección inteligente para aquellos que buscan una solución de movilidad eficiente, accesible y personalizada.</p><br>
+              <p class="card-text">Mobility Solutions es la elección inteligente para aquellos que buscan una solución de movilidad eficiente, accesible y personalizada.</p><br>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary"></button>
@@ -399,7 +399,7 @@
             </h2>
             <div id="flush-19" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                 <div class="accordion-body">
-                Nuestros asesores siempre se comunicarán desde correos electrónicos o teléfonos oficiales de Mobility Solutions Corporation. 
+                Nuestros asesores siempre se comunicarán desde correos electrónicos o teléfonos oficiales de Mobility Solutions. 
                 Si tienes dudas sobre la autenticidad de un asesor, puedes contactarnos directamente a nuestras líneas oficiales para verificar su identidad.
                 </div>
             </div>
