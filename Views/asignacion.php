@@ -66,7 +66,7 @@ $inc = include "../db/Conexion.php";
 
   <nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear">
     <div class="container">
-      <a class="navbar-brand" rel="nofollow" target="_blank" href="#"> Aprobaciones </a>
+      <a class="navbar-brand" rel="nofollow" target="_blank" href="#"> Asignaciones </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -106,30 +106,15 @@ $inc = include "../db/Conexion.php";
   </nav>
 </div>
 
-  <div class="sidebar" id="sidebar">
-    <div class="toggle-btn" onclick="toggleSidebar()">☰</div>
-    <ul>
-      <li><i class="fa fa-home"></i><span>Inicio</span></li>
-      <li><i class="fa fa-user"></i><span>Perfil</span></li>
-      <li><i class="fa fa-cog"></i><span>Configuración</span></li>
-      <li><i class="fa fa-sign-out"></i><span>Salir</span></li>
-    </ul>
+<div class="contenedor">
+
+  <div class="menu_c">
   </div>
 
-  <div class="content">
-    <h1>Contenido principal</h1>
-    <p>Aquí va el contenido de tu página.</p>
+  <div class="items">
   </div>
 
-  <!-- FontAwesome para iconos -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
-  <script>
-    function toggleSidebar() {
-      const sidebar = document.getElementById('sidebar');
-      sidebar.classList.toggle('minimized');
-    }
-  </script>
+</div>
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

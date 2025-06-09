@@ -305,7 +305,7 @@ if ($result) {
             <?php endforeach; ?>
         </ul>
     </div>
-
+ 
     <!-- Detalle del requerimiento -->
     <div class="detalle-requerimiento">
     <!-- Imagen y título alineados -->

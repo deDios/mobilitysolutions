@@ -167,57 +167,16 @@ li {
 
 /*--------------------------------------------------------------------------------------------------*/
 
-/* Sidebar */
-    .sidebar {
-      padding-top: 150px;
-      width: 250px;
-      background-color: #2c3e50;
-      color: white;
-      transition: width 0.3s;
-      overflow: hidden;
-      height: 100vh;
-      position: fixed;
-    }
+/* Menu */
+.contenedor {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    padding-right: 10px;
+    padding-left: 10px;
+}
 
-    .sidebar.minimized {
-      width: 70px;
-    }
-
-    .sidebar .toggle-btn {
-      background-color: #1abc9c;
-      color: white;
-      padding: 10px;
-      cursor: pointer;
-      text-align: center;
-    }
-
-    .sidebar ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .sidebar ul li {
-      padding: 15px 20px;
-      border-bottom: 1px solid #34495e;
-      white-space: nowrap;
-    }
-
-    .sidebar ul li i {
-      margin-right: 10px;
-    }
-
-    .sidebar.minimized ul li span {
-      display: none;
-    }
-
-    .content {
-      margin-left: 250px;
-      padding: 20px;
-      transition: margin-left 0.3s;
-      width: 100%;
-    }
-
-    .sidebar.minimized ~ .content {
-      margin-left: 70px;
-    }
+.contenedor .menu_c {
+    border-right: 1px solid #ccc;
+    padding-top: 120px;
+    overflow-y: auto;
+}
