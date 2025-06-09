@@ -106,49 +106,30 @@ $inc = include "../db/Conexion.php";
   </nav>
 </div>
 
-  <div class="sidebar">
-      <div class="icono-mas">+</div>
-      <div class="info-box">
-        <strong>ℹ️ Info</strong>
-        <p>Presione el icono “+” para asignar una tarea/reconocimiento</p>
-      </div>
-      <div class="eventos">
-        <h4>Tus eventos próximos</h4>
-        <p>Tareas <span class="contador">5</span></p>
-        <p>Metas <span class="contador">5</span></p>
-        <p>Reconocimientos <span class="contador">5</span></p>
-      </div>
-      <div class="admin">
-        <h4>Administración</h4>
-        <p>Tareas <span class="contador oscuro">5</span></p>
-        <ul>
-          <li>Prioridad crítica <span class="contador">5</span></li>
-          <li>Prioridad alta <span class="contador">5</span></li>
-          <li>Prioridad media <span class="contador">5</span></li>
-          <li>Prioridad baja <span class="contador">5</span></li>
-        </ul>
-        <p>Metas <span class="contador">5</span></p>
-        <p>Reconocimientos <span class="contador">5</span></p>
-      </div>
-    </div>
+  <div class="sidebar" id="sidebar">
+    <div class="toggle-btn" onclick="toggleSidebar()">☰</div>
+    <ul>
+      <li><i class="fa fa-home"></i><span>Inicio</span></li>
+      <li><i class="fa fa-user"></i><span>Perfil</span></li>
+      <li><i class="fa fa-cog"></i><span>Configuración</span></li>
+      <li><i class="fa fa-sign-out"></i><span>Salir</span></li>
+    </ul>
+  </div>
 
-    <div class="main">
-      <div class="encabezado">
-        <h2>Usuarios</h2>
-        <button id="btnAgregar">+</button>
-      </div>
+  <div class="content">
+    <h1>Contenido principal</h1>
+    <p>Aquí va el contenido de tu página.</p>
+  </div>
 
-      <div class="grid-usuarios">
-         <div class="tarjeta-usuario">
-            <img src="<?= $row['imagen'] ?: 'placeholder.png' ?>" alt="Foto del trabajador">
-            <h4><?= $row['nombre'] ?></h4>
-            <p><?= $row['puesto'] ?></p>
-            <p><?= $row['departamento'] ?></p>
-          </div>
-      </div>
-    </div>
+  <!-- FontAwesome para iconos -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
-  <script src="script.js"></script>
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('minimized');
+    }
+  </script>
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
