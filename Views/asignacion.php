@@ -130,9 +130,9 @@ $titulo_profesional = "CTO en Consultora de Software";
       <div class="quick-access">
         <h4>Asignaciones</h4>
         <ul>
-          <li><i class="icon">&#128101;</i> Tareas</li>
-          <li><i class="icon">&#128197;</i> Metas</li>
-          <li><i class="icon">#</i> Reconocimientos</li>
+          <li><i class="icon">&#128221;</i> Tareas</li>         <!-- Bloc de notas o tarea -->
+          <li><i class="icon">&#127942;</i> Metas</li>          <!-- Medalla como símbolo de logro/meta -->
+          <li><i class="icon">&#127775;</i> Reconocimientos</li> <!-- Estrella como reconocimiento -->
         </ul>
       </div>
 
