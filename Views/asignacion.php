@@ -63,10 +63,10 @@ $query ='select
         if ($r_analista == 1) $roles_activos[] = "Analista";
 
         if ($user_id == 4) {
-            $titulo_profesional = "CEO";
+            $titulo_profesional = "CEO - Mobility Solutions";
         }
         elseif ($user_id == 1) {
-          $titulo_profesional = "CTO";
+          $titulo_profesional = "CTO - Líder técnico";
         } 
         else {
             $titulo_profesional = implode(" | ", $roles_activos);
