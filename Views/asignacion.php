@@ -45,7 +45,7 @@ $titulo_profesional = "CTO en Consultora de Software";
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
    
-    <link rel="stylesheet" href="/CSS/tareas.css?v=1.1">
+    <link rel="stylesheet" href="../CSS/tareas.css?v=1.1">
 
 
 </head>
