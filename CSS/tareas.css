@@ -175,7 +175,8 @@ li {
     padding-left: 10px;
 }
 
-.contenedor .menu_c {
+
+.menu_c {
     border-right: 1px solid #ccc;
     padding-top: 120px;
     overflow-y: auto;
