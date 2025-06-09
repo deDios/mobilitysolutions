@@ -193,7 +193,9 @@ $query ='select
         <ul>
           <li><i class="icon">&#128221;</i> Tareas</li>         <!-- Bloc de notas o tarea -->
           <li><i class="icon">&#127942;</i> Metas</li>          <!-- Medalla como símbolo de logro/meta -->
-          <li><i class="icon">&#127775;</i> Reconocimientos</li> <!-- Estrella como reconocimiento -->
+          <li onclick="mostrarReconocimientos()" style="cursor: pointer;">
+            <i class="icon">&#127775;</i> Reconocimientos
+          </li> <!-- Estrella como reconocimiento -->
         </ul>
       </div>
 
@@ -221,6 +223,67 @@ function mostrarMas() {
   mas.classList.toggle("hidden");
 }
 </script>
+
+<script>
+  function mostrarReconocimientos() {
+    const itemsDiv = document.querySelector(".items");
+    itemsDiv.innerHTML = `
+      <div class="form-container">
+        <h2>Otorgar Reconocimiento</h2>
+
+        <form id="formReconocimiento">
+          <label for="tipo">Tipo de reconocimiento:</label>
+          <select id="tipo" name="tipo" required>
+            <option value="">Selecciona un tipo</option>
+            <option value="Desempeño">Desempeño</option>
+            <option value="Liderazgo">Liderazgo</option>
+            <option value="Innovación">Innovación</option>
+          </select>
+
+          <label for="reconocimiento">Reconocimiento:</label>
+          <select id="reconocimiento" name="reconocimiento" required>
+            <option value="">Selecciona un reconocimiento</option>
+            <option value="Estrella del mes">Estrella del mes</option>
+            <option value="Campeón de ideas">Campeón de ideas</option>
+            <option value="Líder positivo">Líder positivo</option>
+          </select>
+
+          <label for="recurso">Recurso a reconocer:</label>
+          <select id="recurso" name="recurso" required>
+            <option value="">Selecciona un recurso</option>
+            <option value="1">Pablo de Dios</option>
+            <option value="2">Fiona la Grande</option>
+            <option value="3">Barry Allen</option>
+            <!-- Puedes llenar esto dinámicamente desde PHP si lo deseas -->
+          </select>
+
+          <label for="descripcion">Descripción:</label>
+          <textarea id="descripcion" name="descripcion" rows="4" placeholder="Describe el motivo del reconocimiento" required></textarea>
+
+          <div class="form-buttons">
+            <button type="button" onclick="cancelarFormulario()">Cancelar</button>
+            <button type="submit">Otorgar</button>
+          </div>
+        </form>
+      </div>
+    `;
+
+    // Añadir evento submit
+    document.getElementById("formReconocimiento").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Reconocimiento otorgado con éxito.");
+      this.reset(); // Limpia el formulario si deseas
+    });
+  }
+
+  function cancelarFormulario() {
+    if (confirm("¿Estás seguro de que deseas cancelar? Se perderán los datos ingresados.")) {
+      document.getElementById("formReconocimiento").reset();
+      document.querySelector(".items").innerHTML = ""; // Limpia el div
+    }
+  }
+  </script>
+
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
