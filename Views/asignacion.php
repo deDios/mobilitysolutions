@@ -184,7 +184,7 @@ $query ='select
         <p class="title"><?php echo $titulo_profesional; ?></p>
         <hr>
         <p class="connections">500+ conexiones</p>
-        <a href="perfil.php" class="view-profile">Ver perfil completo</a>
+        <a href="Home.php" class="view-profile">Ver perfil completo</a>
       </div>
 
       <!-- Accesos rápidos -->
