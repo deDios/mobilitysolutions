@@ -171,9 +171,7 @@ if ($result){
         <button id="btnAgregar">+</button>
       </div>
 
-      <div class="grid-usuarios">
-        
-      </div>
+      
     </div>
 
   <script src="script.js">
