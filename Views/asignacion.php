@@ -62,9 +62,13 @@ $query ='select
         if ($r_autorizador == 1) $roles_activos[] = "Autorizador";
         if ($r_analista == 1) $roles_activos[] = "Analista";
 
-        if (count($roles_activos) == 4) {
+        if (user_id == 4) {
             $titulo_profesional = "CEO";
-        } else {
+        }
+        elseif (user_id == 1) {
+          $titulo_profesional = "CTO"
+        } 
+        else {
             $titulo_profesional = implode(" | ", $roles_activos);
         }
     }
