@@ -171,7 +171,16 @@ if ($result){
         <button id="btnAgregar">+</button>
       </div>
 
-      
+      <div class="grid-usuarios">
+        <?php while($row = $result->fetch_assoc()): ?>
+          <div class="tarjeta-usuario">
+            <img src="<?= $row['imagen'] ?: 'placeholder.png' ?>" alt="Foto del trabajador">
+            <h4><?= $row['nombre'] ?></h4>
+            <p><?= $row['puesto'] ?></p>
+            <p><?= $row['departamento'] ?></p>
+          </div>
+        <?php endwhile; ?>
+      </div>
     </div>
 
   <script src="script.js">
