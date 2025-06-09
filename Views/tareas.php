@@ -1,9 +1,64 @@
+<?php
+session_start();
+
+// Validar sesión
+if (!isset ($_SESSION['username'])){
+    echo '<script>
+            alert("Es necesario hacer login, por favor ingrese sus credenciales") ;
+            window.location = "../views/login.php";
+          </script>';
+    session_destroy();
+    die();
+}
+
+// Conexión
+$inc = include "../db/Conexion.php";
+
+// Consulta de todos los usuarios con su info completa
+$query = "SELECT 
+            acc.user_id, 
+            acc.user_name, 
+            acc.user_password, 
+            acc.user_type, 
+            acc.r_ejecutivo, 
+            acc.r_editor, 
+            acc.r_autorizador, 
+            acc.r_analista, 
+            us.user_name AS nombre, 
+            us.second_name AS s_nombre, 
+            us.last_name, 
+            us.email, 
+            us.cumpleaños, 
+            us.telefono,
+            us.departamento,
+            us.puesto,
+            us.imagen
+          FROM mobility_solutions.tmx_acceso_usuario AS acc
+          LEFT JOIN mobility_solutions.tmx_usuario AS us
+            ON acc.user_id = us.id";
+
+// Ejecutar consulta
+$result = mysqli_query($con, $query);
+
+// Validar resultado
+if ($result){ 
+    $usuarios = [];
+    while($row = mysqli_fetch_assoc($result)){
+        $usuarios[] = $row;
+    }
+} else {
+    echo 'Falla en conexión.';
+    die();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aprobaciones</title>
+    <title>Aignaciones</title>
     <link rel="shortcut icon" href="../Imagenes/movility.ico" />
     <link rel="stylesheet" href="../CSS/tareas.css">
 
@@ -89,7 +144,55 @@
   </nav>
 </div>
 
+  <div class="sidebar">
+      <div class="icono-mas">+</div>
+      <div class="info-box">
+        <strong>ℹ️ Info</strong>
+        <p>Presione el icono “+” para asignar una tarea/reconocimiento</p>
+      </div>
+      <div class="eventos">
+        <h4>Tus eventos próximos</h4>
+        <p>Tareas <span class="contador">5</span></p>
+        <p>Metas <span class="contador">5</span></p>
+        <p>Reconocimientos <span class="contador">5</span></p>
+      </div>
+      <div class="admin">
+        <h4>Administración</h4>
+        <p>Tareas <span class="contador oscuro">5</span></p>
+        <ul>
+          <li>Prioridad crítica <span class="contador">5</span></li>
+          <li>Prioridad alta <span class="contador">5</span></li>
+          <li>Prioridad media <span class="contador">5</span></li>
+          <li>Prioridad baja <span class="contador">5</span></li>
+        </ul>
+        <p>Metas <span class="contador">5</span></p>
+        <p>Reconocimientos <span class="contador">5</span></p>
+      </div>
+    </div>
 
+    <div class="main">
+      <div class="encabezado">
+        <h2>Usuarios</h2>
+        <button id="btnAgregar">+</button>
+      </div>
+
+      <div class="grid-usuarios">
+        <?php while($row = $result->fetch_assoc()): ?>
+          <div class="tarjeta-usuario">
+            <img src="<?= $row['imagen'] ?: 'placeholder.png' ?>" alt="Foto del trabajador">
+            <h4><?= $row['nombre'] ?></h4>
+            <p><?= $row['puesto'] ?></p>
+            <p><?= $row['departamento'] ?></p>
+          </div>
+        <?php endwhile; ?>
+      </div>
+    </div>
+
+  <script src="script.js">
+    document.getElementById('btnAgregar').addEventListener('click', function () {
+      alert("Aquí puedes abrir un modal para agregar tareas o reconocimientos");
+    });
+  </script>
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

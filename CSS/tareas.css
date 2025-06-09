@@ -166,3 +166,94 @@ li {
 }
 
 /*--------------------------------------------------------------------------------------------------*/
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  display: flex;
+}
+
+.sidebar {
+  width: 250px;
+  padding: 20px;
+  background-color: #fff;
+  border-right: 1px solid #ccc;
+}
+
+.icono-mas {
+  font-size: 30px;
+  background: #000;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.info-box, .eventos, .admin {
+  margin-bottom: 20px;
+  background: #f8f8f8;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.contador {
+  background: #ccc;
+  border-radius: 20px;
+  padding: 2px 8px;
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.contador.oscuro {
+  background: #000;
+  color: #fff;
+}
+
+.main {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#btnAgregar {
+  background: #000;
+  color: #fff;
+  font-size: 24px;
+  border: none;
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.grid-usuarios {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.tarjeta-usuario {
+  background: #fff;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.tarjeta-usuario img {
+  width: 100%;
+  max-height: 120px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
