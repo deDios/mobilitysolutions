@@ -26,7 +26,6 @@ $titulo_profesional = "CTO en Consultora de Software";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Asignaciones</title>
     <link rel="shortcut icon" href="../Imagenes/movility.ico" />
-    <link rel="stylesheet" href="../CSS/tareas.css">
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -46,6 +45,9 @@ $titulo_profesional = "CTO en Consultora de Software";
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
    
+    <link rel="stylesheet" href="/CSS/tareas.css?v=1.1">
+
+
 </head>
 
 <body>
