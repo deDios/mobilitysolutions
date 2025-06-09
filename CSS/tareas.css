@@ -173,22 +173,25 @@ li {
     grid-template-columns: 1fr 3fr;
     padding-right: 10px;
     padding-left: 10px;
+    height: 100vh;         /* Altura completa */
 }
-
 
 .menu_c {
     border-right: 1px solid #ccc;
     padding-top: 120px;
     overflow-y: auto;
+    height: 100vh;         /* Altura completa de la pantalla */
+    box-sizing: border-box;
 }
 
 /* styles.css */
 .sidebar {
-  width: 280px;
   padding: 20px;
   background-color: #f3f2ef;
   font-family: Arial, sans-serif;
+  height: 100%; /* Opcional, ayuda si el contenido es bajo */
 }
+
 
 .user-card {
   background: white;
