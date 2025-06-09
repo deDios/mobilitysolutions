@@ -128,11 +128,11 @@ $titulo_profesional = "CTO en Consultora de Software";
 
       <!-- Accesos rápidos -->
       <div class="quick-access">
-        <h4>Accesos rápidos</h4>
+        <h4>Asignaciones</h4>
         <ul>
-          <li><i class="icon">&#128101;</i> Grupos</li>
-          <li><i class="icon">&#128197;</i> Eventos</li>
-          <li><i class="icon">#</i> Hashtags seguidos</li>
+          <li><i class="icon">&#128101;</i> Tareas</li>
+          <li><i class="icon">&#128197;</i> Metas</li>
+          <li><i class="icon">#</i> Reconocimientos</li>
         </ul>
       </div>
 
