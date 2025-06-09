@@ -12,39 +12,6 @@ if (!isset ($_SESSION['username'])){
 
 $inc = include "../db/Conexion.php";
 
-$query = "SELECT 
-            acc.user_id, 
-            acc.user_name, 
-            acc.user_password, 
-            acc.user_type, 
-            acc.r_ejecutivo, 
-            acc.r_editor, 
-            acc.r_autorizador, 
-            acc.r_analista, 
-            us.user_name AS nombre, 
-            us.second_name AS s_nombre, 
-            us.last_name, 
-            us.email, 
-            us.cumpleaños, 
-            us.telefono,
-            us.departamento,
-            us.puesto,
-            us.imagen
-          FROM mobility_solutions.tmx_acceso_usuario AS acc
-          LEFT JOIN mobility_solutions.tmx_usuario AS us
-            ON acc.user_id = us.id";
-
-$result = mysqli_query($con, $query);
-
-if ($result){ 
-    $usuarios = [];
-    while($row = mysqli_fetch_assoc($result)){
-        $usuarios[] = $row;
-    }
-} else {
-    echo 'Falla en conexión.';
-    die();
-}
 ?>
 
 
@@ -172,14 +139,12 @@ if ($result){
       </div>
 
       <div class="grid-usuarios">
-        <?php while($row = $result->fetch_assoc()): ?>
-          <div class="tarjeta-usuario">
+         <div class="tarjeta-usuario">
             <img src="<?= $row['imagen'] ?: 'placeholder.png' ?>" alt="Foto del trabajador">
             <h4><?= $row['nombre'] ?></h4>
             <p><?= $row['puesto'] ?></p>
             <p><?= $row['departamento'] ?></p>
           </div>
-        <?php endwhile; ?>
       </div>
     </div>
 
