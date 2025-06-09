@@ -62,19 +62,20 @@ $query ='select
         if ($r_autorizador == 1) $roles_activos[] = "Autorizador";
         if ($r_analista == 1) $roles_activos[] = "Analista";
 
-        if (user_id == 4) {
+        if ($user_id == 4) {
             $titulo_profesional = "CEO";
         }
-        elseif (user_id == 1) {
+        elseif ($user_id == 1) {
           $titulo_profesional = "CTO"
         } 
         else {
             $titulo_profesional = implode(" | ", $roles_activos);
         }
     }
-} else {
+  } 
+  else {
     echo 'Falla en conexión.';
-}
+  }
 
 ?>
 
