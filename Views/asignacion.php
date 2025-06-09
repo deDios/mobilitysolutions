@@ -127,7 +127,7 @@ $query ='select
             </ul>
           </div>
 
-        </div>
+        </div> 
       </div>
   </header>
 
@@ -179,7 +179,7 @@ $query ='select
     <div class="sidebar">
       <!-- Perfil del usuario -->
       <div class="user-card">
-        <img src="../Imagenes/Perfil/Perfil_01.jpg" alt="Foto de perfil" class="profile-pic">
+        <img src="../Imagenes/Usuarios/<?php echo $user_id; ?>.jpg?<?php echo time(); ?>" alt="Foto de perfil" class="profile-pic">
         <h3><?php echo $nombre_usuario; ?></h3>
         <p class="title"><?php echo $titulo_profesional; ?></p>
         <hr>
