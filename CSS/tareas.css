@@ -181,3 +181,83 @@ li {
     padding-top: 120px;
     overflow-y: auto;
 }
+
+/* styles.css */
+.sidebar {
+  width: 280px;
+  padding: 20px;
+  background-color: #f3f2ef;
+  font-family: Arial, sans-serif;
+}
+
+.user-card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+}
+
+.profile-pic {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.title {
+  color: gray;
+  font-size: 0.9em;
+  margin: 0;
+}
+
+.connections {
+  font-weight: bold;
+  color: #0a66c2;
+  margin: 10px 0;
+}
+
+.view-profile {
+  font-size: 0.85em;
+  color: #0a66c2;
+  text-decoration: none;
+}
+
+.quick-access {
+  margin-top: 20px;
+}
+
+.quick-access ul {
+  list-style: none;
+  padding: 0;
+}
+
+.quick-access li {
+  margin: 10px 0;
+  font-size: 0.9em;
+}
+
+.icon {
+  margin-right: 6px;
+}
+
+.discover-more {
+  margin-top: 20px;
+}
+
+.discover-more button {
+  background-color: transparent;
+  color: #0a66c2;
+  border: none;
+  cursor: pointer;
+}
+
+#masOpciones.hidden {
+  display: none;
+}
+
+#masOpciones ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}

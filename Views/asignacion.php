@@ -12,6 +12,10 @@ if (!isset ($_SESSION['username'])){
 
 $inc = include "../db/Conexion.php";
 
+$nombre_usuario = "Pablo de Dios";
+$titulo_profesional = "CTO en Consultora de Software";
+
+
 ?>
 
 
@@ -109,13 +113,52 @@ $inc = include "../db/Conexion.php";
 <div class="contenedor">
 
   <div class="menu_c">
-    test
+    <div class="sidebar">
+      <!-- Perfil del usuario -->
+      <div class="user-card">
+        <img src="images/profile.jpg" alt="Foto de perfil" class="profile-pic">
+        <h3><?php echo $nombre_usuario; ?></h3>
+        <p class="title"><?php echo $titulo_profesional; ?></p>
+        <hr>
+        <p class="connections">500+ conexiones</p>
+        <a href="perfil.php" class="view-profile">Ver perfil completo</a>
+      </div>
+
+      <!-- Accesos rápidos -->
+      <div class="quick-access">
+        <h4>Accesos rápidos</h4>
+        <ul>
+          <li><i class="icon">&#128101;</i> Grupos</li>
+          <li><i class="icon">&#128197;</i> Eventos</li>
+          <li><i class="icon">#</i> Hashtags seguidos</li>
+        </ul>
+      </div>
+
+      <!-- Botón descubrir más -->
+      <div class="discover-more">
+        <button onclick="mostrarMas()">Descubrir más</button>
+        <div id="masOpciones" class="hidden">
+          <ul>
+            <li>Empresas seguidas</li>
+            <li>Suscripciones</li>
+            <li>Recomendaciones</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="items">
   </div>
 
 </div>
+
+<script>
+function mostrarMas() {
+  const mas = document.getElementById("masOpciones");
+  mas.classList.toggle("hidden");
+}
+</script>
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
