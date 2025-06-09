@@ -118,7 +118,7 @@ $titulo_profesional = "CTO en Consultora de Software";
     <div class="sidebar">
       <!-- Perfil del usuario -->
       <div class="user-card">
-        <img src="images/profile.jpg" alt="Foto de perfil" class="profile-pic">
+        <img src="../iImagenes/Perfil/Perfil_01.jpg" alt="Foto de perfil" class="profile-pic">
         <h3><?php echo $nombre_usuario; ?></h3>
         <p class="title"><?php echo $titulo_profesional; ?></p>
         <hr>
