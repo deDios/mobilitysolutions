@@ -183,11 +183,7 @@ if ($result){
       </div>
     </div>
 
-  <script src="script.js">
-    document.getElementById('btnAgregar').addEventListener('click', function () {
-      alert("Aquí puedes abrir un modal para agregar tareas o reconocimientos");
-    });
-  </script>
+  <script src="script.js"></script>
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
