@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Validar sesión
 if (!isset ($_SESSION['username'])){
     echo '<script>
             alert("Es necesario hacer login, por favor ingrese sus credenciales") ;
@@ -11,10 +10,8 @@ if (!isset ($_SESSION['username'])){
     die();
 }
 
-// Conexión
 $inc = include "../db/Conexion.php";
 
-// Consulta de todos los usuarios con su info completa
 $query = "SELECT 
             acc.user_id, 
             acc.user_name, 
@@ -37,10 +34,8 @@ $query = "SELECT
           LEFT JOIN mobility_solutions.tmx_usuario AS us
             ON acc.user_id = us.id";
 
-// Ejecutar consulta
 $result = mysqli_query($con, $query);
 
-// Validar resultado
 if ($result){ 
     $usuarios = [];
     while($row = mysqli_fetch_assoc($result)){
@@ -58,7 +53,7 @@ if ($result){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aignaciones</title>
+    <title>Asignaciones</title>
     <link rel="shortcut icon" href="../Imagenes/movility.ico" />
     <link rel="stylesheet" href="../CSS/tareas.css">
 
