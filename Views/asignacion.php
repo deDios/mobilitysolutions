@@ -138,12 +138,11 @@ $titulo_profesional = "CTO en Consultora de Software";
 
       <!-- Botón descubrir más -->
       <div class="discover-more">
-        <button onclick="mostrarMas()">Descubrir más</button>
+        <button onclick="mostrarMas()">Más opciones</button>
         <div id="masOpciones" class="hidden">
           <ul>
-            <li>Empresas seguidas</li>
-            <li>Suscripciones</li>
-            <li>Recomendaciones</li>
+            <li>Dashboard ventas</li>
+            <li>Dashboard rendimientos</li>
           </ul>
         </div>
       </div>
