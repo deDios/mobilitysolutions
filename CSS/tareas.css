@@ -184,6 +184,10 @@ li {
     box-sizing: border-box;
 }
 
+.items {
+  padding-top: 140px;
+}
+
 /* styles.css */
 .sidebar {
   padding: 20px;
@@ -268,7 +272,6 @@ li {
 .form-container {
   background: #f9f9f9;
   padding: 20px;
-  padding-top: 120px;
   border-radius: 10px;
   max-width: 600px;
   margin: auto;
