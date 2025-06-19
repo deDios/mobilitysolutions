@@ -523,7 +523,7 @@ function mostrarMas() {
         asignado,
         anio,
         ...metasPorMes,
-        creado_por: usuarioActual
+        creado_por: parseInt(usuarioActual)
       };
 
       fetch("https://mobilitysolutionscorp.com/web/MS_save_meta.php", {
