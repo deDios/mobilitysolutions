@@ -15,10 +15,23 @@ if (!$user_id) {
 
 // Consulta para obtener tareas asignadas al usuario o creadas por él
 $query = "
-    SELECT id, nombre, asignado, descripcion, status, comentario, creado_por, created_at, updated_at
-    FROM mobility_solutions.tmx_tareas
-    WHERE asignado = ? OR creado_por = ?
-    ORDER BY status ASC, created_at DESC
+    SELECT 
+        t.id,
+        t.nombre,
+        t.asignado,
+        CONCAT(u_asig.user_name, ' ', u_asig.last_name) AS asignado_nombre,
+        t.descripcion,
+        t.status,
+        t.comentario,
+        t.creado_por,
+        CONCAT(u_rep.user_name, ' ', u_rep.last_name) AS creado_por_nombre,
+        t.created_at,
+        t.updated_at
+    FROM mobility_solutions.tmx_tareas t
+    LEFT JOIN mobility_solutions.tmx_usuario u_asig ON t.asignado = u_asig.id
+    LEFT JOIN mobility_solutions.tmx_usuario u_rep ON t.creado_por = u_rep.id
+    WHERE t.asignado = ? OR t.creado_por = ?
+    ORDER BY t.created_at DESC;
 ";
 
 $stmt = $con->prepare($query);
