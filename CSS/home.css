@@ -484,8 +484,8 @@ h1 {
 
 .hex-reconocimiento .titulo {
   font-weight: bold;
-  font-size: 8px;
-  line-height: 1.1;
+  font-size: 10px;
+  line-height: 1;
 }
 
 .hex-reconocimiento .fecha {
