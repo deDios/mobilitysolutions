@@ -167,12 +167,15 @@ li {
 
 /*--------------------------------------------------------------------------------------------------*/
 
+.task{
+    padding-top: 130px;
+}
+
 .kanban-board {
   display: flex;
   justify-content: space-between;   /* Distribuye columnas */
   align-items: flex-start;
   flex-wrap: nowrap;
-  padding-top: 130px;
   width: 100%;
   max-width: 100%;
   overflow-x: auto;

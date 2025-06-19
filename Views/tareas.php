@@ -153,7 +153,7 @@
   </nav>
 </div>
 
-
+<div class="task">
 <div class="kanban-board">
   <div class="kanban-column" data-status="0">
     <h3>Por hacer</h3>
@@ -171,6 +171,7 @@
     <h3>Hecho</h3>
     <div class="kanban-tasks" id="hecho"></div>
   </div>
+</div>
 </div>
 
 
