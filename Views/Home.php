@@ -188,7 +188,7 @@
             </div>
         </div>
 
-        <a href="https://mobilitysolutionscorp.com/views/asignacion.php" style="text-decoration: none;">
+        <a href="https://mobilitysolutionscorp.com/views/tareas.php" style="text-decoration: none;">
           <div class="task-badge-container">
             <div id="tarea-circle" class="task-badge-circle">0</div>
             <span class="task-badge-text">Tareas en curso</span>
@@ -263,17 +263,22 @@
 </div>
 
 <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const userId = <?php echo intval($user_id); ?>;
+
   fetch(`https://mobilitysolutionscorp.com/web/MS_get_tareas.php?user_id=${userId}`)
     .then(res => res.json())
     .then(data => {
       if (data.success && Array.isArray(data.tareas)) {
-        const tareasActivas = data.tareas.filter(t => parseInt(t.status) < 4).length;
-        document.getElementById("tarea-circle").textContent = tareasActivas;
+        const tareasEnCurso = data.tareas.filter(t => t.status != 4); // Excluye "Hecho"
+        document.getElementById("cantidad-tareas").textContent = tareasEnCurso.length;
       }
     })
-    .catch(err => console.error("Error al contar tareas:", err));
+    .catch(error => {
+      console.error("Error al cargar tareas en curso:", error);
+    });
+});
 </script>
-
 
 <!-- JavaScript para abrir/cerrar modal y enviar JSON -->
 <script>
