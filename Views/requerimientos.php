@@ -132,8 +132,8 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="#">Tareas</a>
-          </li>
+            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/asignacion.php">Asignaciones</a>
+            </li>
 
           <li class="nav-item">
             <a class="nav-link" href="#">Tableros</a>
