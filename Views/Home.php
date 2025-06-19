@@ -316,7 +316,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (data.success && data.reconocimientos.length > 0) {
         const grid = document.createElement("div");
-        grid.className = "hex-grid";
+        grid.className = "reconocimientos-wrapper";
 
         data.reconocimientos.forEach(item => {
           const hex = document.createElement("div");
