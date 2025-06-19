@@ -303,7 +303,7 @@ function mostrarMas() {
 
     // Reconocimientos según tipo
     const reconocimientosPorTipo = {
-      1: ['Empleado del mes', 'Mejor vendedor'],
+      1: ['Empleado del mes', 'Mejor vendedor', 'Objetivo logrado'],
       2: ['Líder'],
       3: ['Innovador']
     };
