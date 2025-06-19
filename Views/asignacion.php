@@ -478,19 +478,21 @@ function mostrarMas() {
       limpiarInputsMeses(); // Siempre limpia antes de cargar
 
       fetch(`https://mobilitysolutionscorp.com/web/MS_get_metas.php?tipo_meta=${tipo_meta}&asignado=${asignado}&anio=${anio}`)
-        .then(res => res.json())
-        .then(data => {
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.metas) {
           const meses = [
             "enero", "febrero", "marzo", "abril", "mayo", "junio",
             "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
           ];
           meses.forEach(mes => {
-            document.getElementById(mes).value = data[mes] ?? 0;
+            document.getElementById(mes).value = data.metas[mes] ?? 0;
           });
-        })
-        .catch(err => {
-          console.error("Error al recuperar metas:", err);
-        });
+        }
+      })
+      .catch(err => {
+        console.error("Error al recuperar metas:", err);
+      });
     }
 
     // Guardar metas
