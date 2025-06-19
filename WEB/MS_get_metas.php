@@ -2,10 +2,9 @@
 header('Content-Type: application/json');
 include "../db/Conexion.php";
 
-$input = json_decode(file_get_contents('php://input'), true);
-$asignado = $input['asignado'] ?? null;
-$tipo_meta = $input['tipo_meta'] ?? null;
-$anio = $input['anio'] ?? date('Y');
+$asignado = $_GET['asignado'] ?? null;
+$tipo_meta = $_GET['tipo_meta'] ?? null;
+$anio = $_GET['anio'] ?? date('Y');
 
 if (!$asignado || !$tipo_meta) {
     echo json_encode([
@@ -30,7 +29,6 @@ if ($row = $result->fetch_assoc()) {
         'metas' => $row
     ]);
 } else {
-    // Retornar metas vacías
     echo json_encode([
         'success' => true,
         'metas' => [

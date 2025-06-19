@@ -422,12 +422,13 @@ function mostrarMas() {
 
           <div class="row">
             ${['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']
-              .map(mes => `
+              .map((mes, i) => `
                 <div class="col-md-4">
                   <label for="${mes.toLowerCase()}">${mes}:</label>
                   <input type="number" id="${mes.toLowerCase()}" name="${mes.toLowerCase()}" value="0" min="0" required>
                 </div>
-              `).join('')}
+              `).join('')
+            }
           </div>
 
           <div class="form-buttons mt-3">
@@ -452,7 +453,7 @@ function mostrarMas() {
         });
       });
 
-    // Detectar cambios en los combos para cargar metas
+    // Listener para cargar metas al cambiar selección
     ["tipo_meta", "responsable_meta", "anio_meta"].forEach(id => {
       document.getElementById(id).addEventListener("change", intentarCargarMetas);
     });
@@ -463,8 +464,7 @@ function mostrarMas() {
         "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
       ];
       meses.forEach(mes => {
-        const input = document.getElementById(mes);
-        if (input) input.value = 0;
+        document.getElementById(mes).value = 0;
       });
     }
 
@@ -473,9 +473,9 @@ function mostrarMas() {
       const asignado = parseInt(document.getElementById("responsable_meta").value);
       const anio = parseInt(document.getElementById("anio_meta").value);
 
-      if (!tipo_meta || !asignado || !anio || isNaN(tipo_meta) || isNaN(asignado) || isNaN(anio)) return;
+      if (!tipo_meta || !asignado || !anio) return;
 
-      limpiarInputsMeses();
+      limpiarInputsMeses(); // Siempre limpia antes de cargar
 
       fetch(`https://mobilitysolutionscorp.com/web/MS_get_metas.php?tipo_meta=${tipo_meta}&asignado=${asignado}&anio=${anio}`)
         .then(res => res.json())
