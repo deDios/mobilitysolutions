@@ -144,7 +144,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="#">Tareas</a>
+            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/tareas.php">Tareas</a>
           </li>
 
           <li class="nav-item active">
