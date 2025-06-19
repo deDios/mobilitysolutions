@@ -498,7 +498,7 @@ h1 {
 
 /* 🟡 Desempeño (Hexágono dorado) */
 .recono-desempeno {
-  background: #FFD700;
+  background: #FFC500;
   clip-path: polygon(
     50% 0%,
     93% 25%,
@@ -511,7 +511,7 @@ h1 {
 
 /* ⚪ Liderazgo (Rombo plateado) */
 .recono-liderazgo {
-  background: #C0C0C0;
+  background: #3A99FC;
   clip-path: polygon(
     50% 0%,
     100% 50%,
@@ -522,7 +522,7 @@ h1 {
 
 /* 🟤 Innovación (Cuadrado bronce) */
 .recono-innovacion {
-  background: #CD7F32;
+  background: #00448B;
   clip-path: inset(0);
 }
 
