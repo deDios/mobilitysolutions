@@ -454,8 +454,8 @@ h1 {
 }
 
 .reconocimiento-item {
-  width: 90px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
