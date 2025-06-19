@@ -545,4 +545,31 @@ h1 {
   line-height: 1;
 }
 
+.tareas-circulo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.circulo-tareas {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.texto-tareas {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
 
