@@ -232,6 +232,8 @@ function mostrarMas() {
 <script>
   function mostrarReconocimientos() {
     const itemsDiv = document.querySelector(".items");
+    const currentYear = new Date().getFullYear();
+    const previousYear = currentYear - 1;
 
     itemsDiv.innerHTML = `
       <div class="form-container">
@@ -256,10 +258,30 @@ function mostrarMas() {
             <option value="">Cargando recursos...</option>
           </select>
 
-          <label for="descripcion">Descripción:</label>
+          <label for="mes_reconocimiento">Fecha del reconocimiento:</label>
+          <div class="row">
+            <div class="col-md-6">
+              <select id="mes_reconocimiento" name="mes_reconocimiento" required class="form-control">
+                <option value="">Mes</option>
+                ${[
+                  "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                  "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+                ].map((mes, i) => `<option value="${i + 1}">${mes}</option>`).join("")}
+              </select>
+            </div>
+            <div class="col-md-6">
+              <select id="anio_reconocimiento" name="anio_reconocimiento" required class="form-control">
+                <option value="">Año</option>
+                <option value="${currentYear}">${currentYear}</option>
+                <option value="${previousYear}">${previousYear}</option>
+              </select>
+            </div>
+          </div>
+
+          <label for="descripcion" class="mt-3">Descripción:</label>
           <textarea id="descripcion" name="descripcion" rows="4" placeholder="Describe el motivo del reconocimiento" required></textarea>
 
-          <div class="form-buttons">
+          <div class="form-buttons mt-3">
             <button type="button" onclick="cancelarFormulario()">Cancelar</button>
             <button type="submit">Otorgar</button>
           </div>
@@ -274,7 +296,7 @@ function mostrarMas() {
       3: ['Innovador']
     };
 
-    // Al cambiar el tipo, actualizar opciones del combo reconocimiento
+    // Cambiar reconocimientos al cambiar tipo
     document.getElementById("tipo").addEventListener("change", function () {
       const tipoSeleccionado = this.value;
       const comboReconocimiento = document.getElementById("reconocimiento");
@@ -290,7 +312,7 @@ function mostrarMas() {
       }
     });
 
-    // Cargar opciones de usuarios (recurso)
+    // Llenar combo de recursos
     fetch('https://mobilitysolutionscorp.com/web/MS_get_usuarios.php')
       .then(response => response.json())
       .then(data => {
@@ -302,17 +324,12 @@ function mostrarMas() {
           option.textContent = usuario.nombre;
           select.appendChild(option);
         });
-      })
-      .catch(error => {
-        console.error("Error al cargar usuarios:", error);
-        const select = document.getElementById("recurso");
-        select.innerHTML = '<option value="">Error al cargar usuarios</option>';
       });
 
-    // Envío del formulario
+    // Manejo del submit (puedes actualizar con POST real luego)
     document.getElementById("formReconocimiento").addEventListener("submit", function(e) {
       e.preventDefault();
-      alert("Reconocimiento otorgado con éxito."); // Aquí puedes hacer el POST real
+      alert("Reconocimiento otorgado con éxito.");
       this.reset();
     });
   }
@@ -323,6 +340,7 @@ function mostrarMas() {
     }
   }
 </script>
+
 
 
 <script>
