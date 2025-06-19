@@ -169,6 +169,8 @@ li {
 
 .task{
     padding-top: 130px;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
 .kanban-board {
