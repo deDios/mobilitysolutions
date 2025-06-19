@@ -305,56 +305,54 @@
 </script>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const userId = <?php echo intval($user_id); ?>;
+document.addEventListener("DOMContentLoaded", () => {
+  const userId = <?php echo intval($user_id); ?>;
 
-    fetch(`https://mobilitysolutionscorp.com/web/MS_get_reconocimientos.php?asignado=${userId}`)
-      .then(response => response.json())
-      .then(data => {
-        const contenedorSkills = document.querySelector(".skills-section");
-        contenedorSkills.innerHTML = "<h2>Reconocimientos / Skills</h2>";
+  fetch(`https://mobilitysolutionscorp.com/web/MS_get_reconocimientos.php?asignado=${userId}`)
+    .then(response => response.json())
+    .then(data => {
+      const contenedorSkills = document.querySelector(".skills-section");
+      contenedorSkills.innerHTML = "<h2>Reconocimientos / Skills</h2>";
 
-        if (data.success && data.reconocimientos.length > 0) {
-          const grid = document.createElement("div");
-          grid.className = "reconocimientos-wrapper";
+      if (data.success && Array.isArray(data.reconocimientos) && data.reconocimientos.length > 0) {
+        const grid = document.createElement("div");
+        grid.className = "reconocimientos-wrapper";
 
-          data.reconocimientos.forEach(item => {
-            let claseTipo = "";
-            switch (parseInt(item.tipo)) {
-              case 1:
-                claseTipo = "recono-desempeno";
-                break;
-              case 2:
-                claseTipo = "recono-liderazgo";
-                break;
-              case 3:
-                claseTipo = "recono-innovacion";
-                break;
-              default:
-                claseTipo = "recono-desempeno"; // valor por defecto
-            }
+        data.reconocimientos.forEach(item => {
+          const tipo = parseInt(item.tipo);
+          let claseTipo = "";
 
-            const div = document.createElement("div");
-            div.className = `reconocimiento-item ${claseTipo}`;
-            div.innerHTML = `
-              <div class="titulo">${item.reconocimiento}</div>
-              <div class="fecha">${item.mes}/${item.anio}</div>
-            `;
-            grid.appendChild(div);
-          });
+          if (tipo === 1) {
+            claseTipo = "recono-desempeno";
+          } else if (tipo === 2) {
+            claseTipo = "recono-liderazgo";
+          } else if (tipo === 3) {
+            claseTipo = "recono-innovacion";
+          } else {
+            claseTipo = "recono-desempeno"; // fallback por si viene un tipo desconocido
+          }
 
-          contenedorSkills.appendChild(grid);
-        } else {
-          const mensaje = document.createElement("p");
-          mensaje.className = "placeholder";
-          mensaje.textContent = "No hay reconocimientos asignados.";
-          contenedorSkills.appendChild(mensaje);
-        }
-      })
-      .catch(error => {
-        console.error("Error al cargar reconocimientos:", error);
-      });
-  });
+          const div = document.createElement("div");
+          div.classList.add("reconocimiento-item", claseTipo); // ✅ Esta línea es clave
+          div.innerHTML = `
+            <div class="titulo">${item.reconocimiento}</div>
+            <div class="fecha">${item.mes}/${item.anio}</div>
+          `;
+          grid.appendChild(div);
+        });
+
+        contenedorSkills.appendChild(grid);
+      } else {
+        const mensaje = document.createElement("p");
+        mensaje.className = "placeholder";
+        mensaje.textContent = "No hay reconocimientos asignados.";
+        contenedorSkills.appendChild(mensaje);
+      }
+    })
+    .catch(error => {
+      console.error("Error al cargar reconocimientos:", error);
+    });
+});
 </script>
 
 
