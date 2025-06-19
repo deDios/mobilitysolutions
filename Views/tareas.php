@@ -196,7 +196,6 @@
             card.className = "task-card";
             card.innerHTML = `
                 <h4>${tarea.nombre}</h4>
-                <p>${tarea.descripcion}</p>
                 <p><strong>Asignado a:</strong> ${tarea.asignado_nombre}</p>
                 <p><strong>Reportado por:</strong> ${tarea.creado_por_nombre}</p>
             `;
