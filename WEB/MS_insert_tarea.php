@@ -1,16 +1,16 @@
 <?php
 header('Content-Type: application/json');
-
 $inc = include "../db/Conexion.php";
 
-// Verifica si vienen los datos requeridos vía POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nombre = $_POST['nombre'] ?? '';
-    $asignado = $_POST['asignado'] ?? '';
-    $descripcion = $_POST['descripcion'] ?? '';
-    $status = 1; // Por defecto: 1 = Activa / Pendiente
+    // Detectar si el cuerpo viene como JSON
+    $input = json_decode(file_get_contents('php://input'), true);
 
-    // Validación básica
+    $nombre = $input['nombre'] ?? '';
+    $asignado = $input['asignado'] ?? '';
+    $descripcion = $input['descripcion'] ?? '';
+    $status = 1;
+
     if (empty($nombre) || empty($asignado) || empty($descripcion)) {
         echo json_encode([
             'success' => false,
@@ -19,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // Escapar valores
     $nombre = mysqli_real_escape_string($con, $nombre);
     $descripcion = mysqli_real_escape_string($con, $descripcion);
     $asignado = (int)$asignado;
