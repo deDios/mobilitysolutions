@@ -260,3 +260,8 @@ li {
   font-size: 14px;
   margin: 8px 0;
 }
+
+.task-card.dragging {
+  opacity: 0.5;
+  border: 2px dashed #007bff;
+}
