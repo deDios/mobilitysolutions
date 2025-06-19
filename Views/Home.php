@@ -344,127 +344,152 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 <script>
-const userId = <?php echo intval($user_id); ?>;
-let datosPorMes = []; // Datos reales
-let metasPorTipo = {}; // Metas organizadas por tipo_meta
-let lineChart;
+  const userId = <?php echo intval($user_id); ?>;
+  let datosPorMes = [];
+  let metasPorTipo = {
+    1: Array(12).fill(0), // tipo_meta 1 = Nuevos
+    2: Array(12).fill(0), // tipo_meta 2 = Reservas
+    3: Array(12).fill(0), // tipo_meta 3 = Entregas
+  };
+  let lineChart;
 
-function actualizarGrafica(tipo) {
-    const tipoMetaMap = { 'New': 1, 'Reserva': 2, 'Entrega': 3 };
-    const tipoMeta = tipoMetaMap[tipo];
+  function actualizarGrafica(tipo) {
+    const valores = datosPorMes.map(mes => parseInt(mes[tipo]) || 0);
+    const tipoMeta = {
+      'New': 1,
+      'Reserva': 2,
+      'Entrega': 3
+    }[tipo];
 
-    const valoresReales = datosPorMes.map(mes => parseInt(mes[tipo]) || 0);
-    const valoresMeta = metasPorTipo[tipoMeta] || Array(12).fill(0); // 12 meses
+    const metas = metasPorTipo[tipoMeta] || Array(12).fill(0);
+    const label = {
+      'New': 'Nuevos por mes',
+      'Reserva': 'Reservas por mes',
+      'Entrega': 'Entregas por mes'
+    }[tipo];
 
-    const labelMap = {
-        'New': 'Nuevos por mes',
-        'Reserva': 'Reservas por mes',
-        'Entrega': 'Entregas por mes'
-    };
-
-    lineChart.data.datasets = [
-        {
-            label: labelMap[tipo],
-            data: valoresReales,
-            borderColor: '#007bff',
-            backgroundColor: 'rgba(0, 123, 255, 0.2)',
-            borderWidth: 2,
-            fill: true,
-            tension: 0.3,
-            pointRadius: 4,
-            pointBackgroundColor: '#007bff',
-        },
-        {
-            label: 'Meta',
-            data: valoresMeta,
-            borderColor: '#ff0000',
-            backgroundColor: 'rgba(255, 0, 0, 0.1)',
-            borderWidth: 2,
-            fill: true,
-            tension: 0.3,
-            pointRadius: 4,
-            pointBackgroundColor: '#ff0000',
-            borderDash: [5, 5],
-        }
-    ];
+    lineChart.data.datasets[0].data = valores;
+    lineChart.data.datasets[0].label = label;
+    lineChart.data.datasets[1].data = metas;
+    lineChart.data.datasets[1].label = 'Meta';
 
     lineChart.update();
-}
 
-// 1. Obtener datos reales
-fetch(`https://mobilitysolutionscorp.com/db_consultas/hex_status.php?user_id=${userId}`)
+    // (Opcional) resaltar el hexágono activo
+    document.querySelectorAll('.hex').forEach(h => h.classList.remove('active'));
+    const hexMap = {
+      'New': '#hex-nuevo',
+      'Reserva': '#hex-reserva',
+      'Entrega': '#hex-entrega'
+    };
+    if (hexMap[tipo]) {
+      document.querySelector(hexMap[tipo]).classList.add('active');
+    }
+  }
+
+  // Cargar datos reales por mes
+  fetch(`https://mobilitysolutionscorp.com/db_consultas/hex_status.php?user_id=${userId}`)
     .then(response => response.json())
     .then(data => {
-        datosPorMes = data;
+      datosPorMes = data;
 
-        // Calcular totales
-        let totalNuevo = 0, totalReserva = 0, totalEntrega = 0;
-        data.forEach(mes => {
-            totalNuevo += parseInt(mes.New) || 0;
-            totalReserva += parseInt(mes.Reserva) || 0;
-            totalEntrega += parseInt(mes.Entrega) || 0;
-        });
+      // Calcular totales
+      let totalNuevo = 0, totalReserva = 0, totalEntrega = 0;
+      data.forEach(mes => {
+        totalNuevo += parseInt(mes.New) || 0;
+        totalReserva += parseInt(mes.Reserva) || 0;
+        totalEntrega += parseInt(mes.Entrega) || 0;
+      });
 
-        document.querySelector('#hex-nuevo strong').textContent = totalNuevo;
-        document.querySelector('#hex-reserva strong').textContent = totalReserva;
-        document.querySelector('#hex-entrega strong').textContent = totalEntrega;
+      // Mostrar en hexágonos
+      document.querySelector('#hex-nuevo strong').textContent = totalNuevo;
+      document.querySelector('#hex-reserva strong').textContent = totalReserva;
+      document.querySelector('#hex-entrega strong').textContent = totalEntrega;
 
-        // Inicializar la gráfica vacía
-        const ctx = document.getElementById('lineChart').getContext('2d');
-        lineChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-                datasets: []
+      // Inicializar la gráfica vacía
+      const ctx = document.getElementById('lineChart').getContext('2d');
+      lineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+          datasets: [
+            {
+              label: 'Datos',
+              data: Array(12).fill(0),
+              borderColor: '#007bff',
+              backgroundColor: 'rgba(0, 123, 255, 0.2)',
+              borderWidth: 2,
+              fill: true,
+              tension: 0.3,
+              pointRadius: 4,
+              pointBackgroundColor: '#007bff',
             },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            stepSize: 5
-                        }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        display: true,
-                        position: 'top',
-                    },
-                    tooltip: {
-                        mode: 'index',
-                        intersect: false,
-                    }
-                }
+            {
+              label: 'Meta',
+              data: Array(12).fill(0),
+              borderColor: '#ff9900',
+              borderWidth: 2,
+              fill: false,
+              tension: 0.3,
+              borderDash: [5, 5],
+              pointRadius: 3,
+              pointBackgroundColor: '#ff9900',
             }
-        });
-
-        // Activar botones cuando hay datos
-        document.getElementById('hex-nuevo').addEventListener('click', () => actualizarGrafica('New'));
-        document.getElementById('hex-reserva').addEventListener('click', () => actualizarGrafica('Reserva'));
-        document.getElementById('hex-entrega').addEventListener('click', () => actualizarGrafica('Entrega'));
-    })
-    .catch(error => console.error('Error al obtener datos reales:', error));
-
-// 2. Obtener metas del usuario
-fetch(`https://mobilitysolutionscorp.com/web/MS_get_metas_usuario.php?asignado=${userId}`)
-    .then(response => response.json())
-    .then(data => {
-        if (data.success && data.metas.length > 0) {
-            data.metas.forEach(meta => {
-                metasPorTipo[meta.tipo_meta] = [
-                    parseInt(meta.enero), parseInt(meta.febrero), parseInt(meta.marzo),
-                    parseInt(meta.abril), parseInt(meta.mayo), parseInt(meta.junio),
-                    parseInt(meta.julio), parseInt(meta.agosto), parseInt(meta.septiembre),
-                    parseInt(meta.octubre), parseInt(meta.noviembre), parseInt(meta.diciembre)
-                ];
-            });
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                stepSize: 5
+              }
+            }
+          },
+          plugins: {
+            legend: {
+              display: true,
+              position: 'top',
+            },
+            tooltip: {
+              mode: 'index',
+              intersect: false,
+            }
+          }
         }
+      });
+
+      // Después de inicializar la gráfica, cargar metas
+      fetch(`https://mobilitysolutionscorp.com/web/MS_get_metas_usuario.php?asignado=${userId}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.success && data.metas.length > 0) {
+            data.metas.forEach(meta => {
+              metasPorTipo[meta.tipo_meta] = [
+                parseInt(meta.enero), parseInt(meta.febrero), parseInt(meta.marzo),
+                parseInt(meta.abril), parseInt(meta.mayo), parseInt(meta.junio),
+                parseInt(meta.julio), parseInt(meta.agosto), parseInt(meta.septiembre),
+                parseInt(meta.octubre), parseInt(meta.noviembre), parseInt(meta.diciembre)
+              ];
+            });
+          }
+
+          // Mostrar la categoría por defecto
+          actualizarGrafica('New');
+        });
     })
-    .catch(error => console.error('Error al obtener metas:', error));
+    .catch(error => {
+      console.error('Error al obtener los datos:', error);
+    });
+
+  // Eventos de clic en los hexágonos
+  document.getElementById('hex-nuevo').addEventListener('click', () => actualizarGrafica('New'));
+  document.getElementById('hex-reserva').addEventListener('click', () => actualizarGrafica('Reserva'));
+  document.getElementById('hex-entrega').addEventListener('click', () => actualizarGrafica('Entrega'));
 </script>
+
 
 
 
