@@ -344,128 +344,128 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 <script>
-    const userId = <?php echo intval($user_id); ?>;
-    let datosPorMes = []; // hex_status
-    let metasPorMes = {}; // metas
-    let lineChart;
+const userId = <?php echo intval($user_id); ?>;
+let datosPorMes = []; // Datos reales
+let metasPorTipo = {}; // Metas organizadas por tipo_meta
+let lineChart;
 
-    function actualizarGrafica(tipo) {
-    const reales = datosPorMes.map(mes => parseInt(mes[tipo]) || 0);
-    const metas = [
-        metasPorMes["enero"], metasPorMes["febrero"], metasPorMes["marzo"],
-        metasPorMes["abril"], metasPorMes["mayo"], metasPorMes["junio"],
-        metasPorMes["julio"], metasPorMes["agosto"], metasPorMes["septiembre"],
-        metasPorMes["octubre"], metasPorMes["noviembre"], metasPorMes["diciembre"]
-    ].map(v => parseInt(v) || 0);
+function actualizarGrafica(tipo) {
+    const tipoMetaMap = { 'New': 1, 'Reserva': 2, 'Entrega': 3 };
+    const tipoMeta = tipoMetaMap[tipo];
 
-    const label = {
+    const valoresReales = datosPorMes.map(mes => parseInt(mes[tipo]) || 0);
+    const valoresMeta = metasPorTipo[tipoMeta] || Array(12).fill(0); // 12 meses
+
+    const labelMap = {
         'New': 'Nuevos por mes',
         'Reserva': 'Reservas por mes',
         'Entrega': 'Entregas por mes'
-    }[tipo];
+    };
 
-    lineChart.data.datasets[0].data = reales;
-    lineChart.data.datasets[0].label = label;
-    lineChart.data.datasets[1].data = metas;
+    lineChart.data.datasets = [
+        {
+            label: labelMap[tipo],
+            data: valoresReales,
+            borderColor: '#007bff',
+            backgroundColor: 'rgba(0, 123, 255, 0.2)',
+            borderWidth: 2,
+            fill: true,
+            tension: 0.3,
+            pointRadius: 4,
+            pointBackgroundColor: '#007bff',
+        },
+        {
+            label: 'Meta',
+            data: valoresMeta,
+            borderColor: '#ff0000',
+            backgroundColor: 'rgba(255, 0, 0, 0.1)',
+            borderWidth: 2,
+            fill: true,
+            tension: 0.3,
+            pointRadius: 4,
+            pointBackgroundColor: '#ff0000',
+            borderDash: [5, 5],
+        }
+    ];
+
     lineChart.update();
-    }
+}
 
-    // 1. Obtener metas del usuario
-    fetch(`https://mobilitysolutionscorp.com/web/MS_get_metas_usuario.php?asignado=${userId}`)
-    .then(res => res.json())
-    .then(data => {
-        metasPorMes = data.metas || {};
-
-        // 2. Obtener datos reales (hex_status)
-        return fetch(`https://mobilitysolutionscorp.com/db_consultas/hex_status.php?user_id=${userId}`);
-    })
-    .then(res => res.json())
+// 1. Obtener datos reales
+fetch(`https://mobilitysolutionscorp.com/db_consultas/hex_status.php?user_id=${userId}`)
+    .then(response => response.json())
     .then(data => {
         datosPorMes = data;
 
-        // Totales
+        // Calcular totales
         let totalNuevo = 0, totalReserva = 0, totalEntrega = 0;
         data.forEach(mes => {
-        totalNuevo += parseInt(mes.New) || 0;
-        totalReserva += parseInt(mes.Reserva) || 0;
-        totalEntrega += parseInt(mes.Entrega) || 0;
+            totalNuevo += parseInt(mes.New) || 0;
+            totalReserva += parseInt(mes.Reserva) || 0;
+            totalEntrega += parseInt(mes.Entrega) || 0;
         });
 
-        // Mostrar en hexágonos
         document.querySelector('#hex-nuevo strong').textContent = totalNuevo;
         document.querySelector('#hex-reserva strong').textContent = totalReserva;
         document.querySelector('#hex-entrega strong').textContent = totalEntrega;
 
-        // Gráfica
+        // Inicializar la gráfica vacía
         const ctx = document.getElementById('lineChart').getContext('2d');
         lineChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-            datasets: [
-            {
-                label: 'Nuevos por mes',
-                data: datosPorMes.map(m => parseInt(m.New) || 0),
-                borderColor: '#007bff',
-                backgroundColor: 'rgba(0, 123, 255, 0.2)',
-                borderWidth: 2,
-                fill: true,
-                tension: 0.3,
-                pointRadius: 4,
-                pointBackgroundColor: '#007bff',
+            type: 'line',
+            data: {
+                labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                datasets: []
             },
-            {
-                label: 'Meta mensual',
-                data: [
-                metasPorMes["enero"], metasPorMes["febrero"], metasPorMes["marzo"],
-                metasPorMes["abril"], metasPorMes["mayo"], metasPorMes["junio"],
-                metasPorMes["julio"], metasPorMes["agosto"], metasPorMes["septiembre"],
-                metasPorMes["octubre"], metasPorMes["noviembre"], metasPorMes["diciembre"]
-                ],
-                borderColor: '#28a745',
-                backgroundColor: 'rgba(40, 167, 69, 0.1)',
-                borderDash: [5, 5],
-                borderWidth: 2,
-                fill: false,
-                tension: 0.3,
-                pointRadius: 4,
-                pointBackgroundColor: '#28a745',
-            }
-            ]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-            y: {
-                beginAtZero: true,
-                ticks: {
-                stepSize: 5
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 5
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
+                    }
                 }
             }
-            },
-            plugins: {
-            legend: {
-                display: true,
-                position: 'top',
-            },
-            tooltip: {
-                mode: 'index',
-                intersect: false,
-            }
-            }
-        }
         });
 
-        // Clics para cambiar tipo
+        // Activar botones cuando hay datos
         document.getElementById('hex-nuevo').addEventListener('click', () => actualizarGrafica('New'));
         document.getElementById('hex-reserva').addEventListener('click', () => actualizarGrafica('Reserva'));
         document.getElementById('hex-entrega').addEventListener('click', () => actualizarGrafica('Entrega'));
     })
-    .catch(err => {
-        console.error("Error al cargar datos o metas:", err);
-    });
+    .catch(error => console.error('Error al obtener datos reales:', error));
+
+// 2. Obtener metas del usuario
+fetch(`https://mobilitysolutionscorp.com/web/MS_get_metas_usuario.php?asignado=${userId}`)
+    .then(response => response.json())
+    .then(data => {
+        if (data.success && data.metas.length > 0) {
+            data.metas.forEach(meta => {
+                metasPorTipo[meta.tipo_meta] = [
+                    parseInt(meta.enero), parseInt(meta.febrero), parseInt(meta.marzo),
+                    parseInt(meta.abril), parseInt(meta.mayo), parseInt(meta.junio),
+                    parseInt(meta.julio), parseInt(meta.agosto), parseInt(meta.septiembre),
+                    parseInt(meta.octubre), parseInt(meta.noviembre), parseInt(meta.diciembre)
+                ];
+            });
+        }
+    })
+    .catch(error => console.error('Error al obtener metas:', error));
 </script>
+
 
 
 
