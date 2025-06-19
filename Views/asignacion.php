@@ -416,6 +416,7 @@ function mostrarMas() {
 
           <label for="anio_meta">Año:</label>
           <select id="anio_meta" name="anio_meta" required>
+            <option value="">Selecciona un año</option>
             <option value="${currentYear}">${currentYear}</option>
             <option value="${lastYear}">${lastYear}</option>
           </select>
@@ -439,7 +440,7 @@ function mostrarMas() {
       </div>
     `;
 
-    // Cargar opciones de usuarios
+    // Cargar usuarios
     fetch('https://mobilitysolutionscorp.com/web/MS_get_usuarios.php')
       .then(response => response.json())
       .then(data => {
@@ -453,6 +454,47 @@ function mostrarMas() {
         });
       });
 
+    // Disparar consulta al cambiar combo
+    ["tipo_meta", "responsable_meta", "anio_meta"].forEach(id => {
+      document.getElementById(id).addEventListener("change", intentarCargarMetas);
+    });
+
+    function limpiarInputsMeses() {
+      const meses = [
+        "enero", "febrero", "marzo", "abril", "mayo", "junio",
+        "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+      ];
+      meses.forEach(mes => {
+        document.getElementById(mes).value = 0;
+      });
+    }
+
+    function intentarCargarMetas() {
+      const tipo_meta = parseInt(document.getElementById("tipo_meta").value);
+      const asignado = parseInt(document.getElementById("responsable_meta").value);
+      const anio = parseInt(document.getElementById("anio_meta").value);
+
+      limpiarInputsMeses(); // Limpia siempre antes de cargar
+
+      if (!tipo_meta || !asignado || !anio) return;
+
+      fetch(`https://mobilitysolutionscorp.com/web/MS_get_metas.php?tipo_meta=${tipo_meta}&asignado=${asignado}&anio=${anio}`)
+        .then(res => res.json())
+        .then(data => {
+          const meses = [
+            "enero", "febrero", "marzo", "abril", "mayo", "junio",
+            "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+          ];
+          meses.forEach(mes => {
+            document.getElementById(mes).value = data[mes] ?? 0;
+          });
+        })
+        .catch(err => {
+          console.error("Error al recuperar metas:", err);
+        });
+    }
+
+    // Guardar
     document.getElementById("formMeta").addEventListener("submit", function(e) {
       e.preventDefault();
 
@@ -501,8 +543,8 @@ function mostrarMas() {
       });
     });
   }
-
 </script>
+
 
 
 
