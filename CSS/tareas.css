@@ -205,9 +205,14 @@ li {
   box-shadow: 0 0 4px rgba(0,0,0,0.1);
 }
 
+.user-card img{
+  object-fit: cover;       
+  object-position: center;  
+}
+
 .profile-pic {
   width: 80px;
-  height: 90px;
+  height: 80px;
   border-radius: 50%;
   margin-bottom: 10px;
 }
