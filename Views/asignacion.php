@@ -291,61 +291,99 @@ function mostrarMas() {
 
 
 <script>
-function mostrarTareas() {
-  const itemsDiv = document.querySelector(".items");
+  function mostrarTareas() {
+    const itemsDiv = document.querySelector(".items");
 
-  // HTML base del formulario
-  itemsDiv.innerHTML = `
-    <div class="form-container">
-      <h2>Registrar Tarea</h2>
-      <form id="formTarea">
-        <label for="nombre_tarea">Nombre de la tarea:</label>
-        <input type="text" id="nombre_tarea" name="nombre_tarea" required>
+    // HTML del formulario
+    itemsDiv.innerHTML = `
+      <div class="form-container">
+        <h2>Registrar Tarea</h2>
+        <form id="formTarea">
+          <label for="nombre_tarea">Nombre de la tarea:</label>
+          <input type="text" id="nombre_tarea" name="nombre_tarea" required>
 
-        <label for="responsable_tarea">Asignar a:</label>
-        <select id="responsable_tarea" name="responsable_tarea" required>
-          <option value="">Cargando opciones...</option>
-        </select>
+          <label for="responsable_tarea">Asignar a:</label>
+          <select id="responsable_tarea" name="responsable_tarea" required>
+            <option value="">Cargando opciones...</option>
+          </select>
 
-        <label for="descripcion_tarea">Descripción:</label>
-        <textarea id="descripcion_tarea" name="descripcion_tarea" rows="4" required></textarea>
+          <label for="descripcion_tarea">Descripción:</label>
+          <textarea id="descripcion_tarea" name="descripcion_tarea" rows="4" required></textarea>
 
-        <div class="form-buttons">
-          <button type="button" onclick="cancelarFormulario()">Cancelar</button>
-          <button type="submit">Guardar</button>
-        </div>
-      </form>
-    </div>
-  `;
+          <div class="form-buttons">
+            <button type="button" onclick="cancelarFormulario()">Cancelar</button>
+            <button type="submit">Guardar</button>
+          </div>
+        </form>
+      </div>
+    `;
 
-  // Agregar evento submit
-  document.getElementById("formTarea").addEventListener("submit", function(e) {
-    e.preventDefault();
-    alert("Tarea registrada con éxito.");
-    this.reset();
-  });
-
-  // Llenar combo de responsables dinámicamente
-  fetch('https://mobilitysolutionscorp.com/web/MS_get_usuarios.php')
-    .then(response => response.json())
-    .then(data => {
-      const select = document.getElementById("responsable_tarea");
-      select.innerHTML = '<option value="">Selecciona un recurso</option>'; // limpiar y agregar opción por defecto
-
-      data.forEach(usuario => {
-        const option = document.createElement("option");
-        option.value = usuario.id;
-        option.textContent = usuario.nombre;
-        select.appendChild(option);
+    // Cargar opciones del combo "responsable_tarea"
+    fetch('https://mobilitysolutionscorp.com/web/MS_get_usuarios.php')
+      .then(response => response.json())
+      .then(data => {
+        const select = document.getElementById("responsable_tarea");
+        select.innerHTML = '<option value="">Selecciona un recurso</option>';
+        data.forEach(usuario => {
+          const option = document.createElement("option");
+          option.value = usuario.id;
+          option.textContent = usuario.nombre;
+          select.appendChild(option);
+        });
+      })
+      .catch(error => {
+        console.error("Error al cargar usuarios:", error);
+        const select = document.getElementById("responsable_tarea");
+        select.innerHTML = '<option value="">Error al cargar usuarios</option>';
       });
-    })
-    .catch(error => {
-      console.error("Error al cargar usuarios:", error);
-      const select = document.getElementById("responsable_tarea");
-      select.innerHTML = '<option value="">Error al cargar usuarios</option>';
+
+    // Manejar envío del formulario
+    document.getElementById("formTarea").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const nombre = document.getElementById("nombre_tarea").value.trim();
+      const asignado = document.getElementById("responsable_tarea").value;
+      const descripcion = document.getElementById("descripcion_tarea").value.trim();
+
+      if (!nombre || !asignado || !descripcion) {
+        alert("Por favor completa todos los campos.");
+        return;
+      }
+
+      fetch("https://mobilitysolutionscorp.com/web/MS_insert_tarea.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          nombre: nombre,
+          asignado: parseInt(asignado),
+          descripcion: descripcion
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          alert(data.message);
+          document.getElementById("formTarea").reset();
+        } else {
+          alert("Error: " + data.message);
+        }
+      })
+      .catch(error => {
+        console.error("Error al guardar tarea:", error);
+        alert("Ocurrió un error al guardar la tarea.");
+      });
     });
-}
+  }
+
+  function cancelarFormulario() {
+    if (confirm("¿Estás seguro de que deseas cancelar? Se perderán los datos ingresados.")) {
+      document.querySelector(".items").innerHTML = "";
+    }
+  }
 </script>
+
 
 
 <script>
