@@ -154,6 +154,58 @@
 </div>
 
 
+<div class="kanban-board">
+  <div class="kanban-column" data-status="0">
+    <h3>Por hacer</h3>
+    <div class="kanban-tasks" id="por-hacer"></div>
+  </div>
+  <div class="kanban-column" data-status="1">
+    <h3>En proceso</h3>
+    <div class="kanban-tasks" id="en-proceso"></div>
+  </div>
+  <div class="kanban-column" data-status="2">
+    <h3>Por revisar</h3>
+    <div class="kanban-tasks" id="por-revisar"></div>
+  </div>
+  <div class="kanban-column" data-status="3">
+    <h3>Hecho</h3>
+    <div class="kanban-tasks" id="hecho"></div>
+  </div>
+</div>
+
+
+<script>
+  const userId = <?php echo intval($_SESSION['user_id']); ?>;
+
+  fetch(`https://mobilitysolutionscorp.com/web/MS_get_tareas.php?usuario_id=${userId}`)
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        const estados = {
+          0: document.getElementById('por-hacer'),
+          1: document.getElementById('en-proceso'),
+          2: document.getElementById('por-revisar'),
+          3: document.getElementById('hecho'),
+        };
+
+        data.tareas.forEach(tarea => {
+          const card = document.createElement("div");
+          card.className = "task-card";
+          card.innerHTML = `
+            <h4>${tarea.nombre}</h4>
+            <p>${tarea.descripcion}</p>
+          `;
+          estados[tarea.status]?.appendChild(card);
+        });
+      } else {
+        console.error("Error al obtener tareas:", data.message);
+      }
+    })
+    .catch(err => {
+      console.error("Error de conexión:", err);
+    });
+</script>
+
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
