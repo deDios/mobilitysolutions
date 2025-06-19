@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['username'])) {
+if (!isset ($_SESSION['username'])){
     echo '<script>
             alert("Es necesario hacer login, por favor ingrese sus credenciales") ;
             window.location = "../views/login.php";
@@ -12,10 +12,7 @@ if (!isset($_SESSION['username'])) {
 
 $inc = include "../db/Conexion.php";
 
-// Escapar el username para evitar inyecciones
-$username = mysqli_real_escape_string($con, $_SESSION['username']);
-
-$query = "SELECT 
+$query ='select 
                 acc.user_id, 
                 acc.user_name, 
                 acc.user_password, 
@@ -24,69 +21,73 @@ $query = "SELECT
                 acc.r_editor, 
                 acc.r_autorizador, 
                 acc.r_analista, 
-                us.user_name AS nombre, 
-                us.second_name AS s_nombre, 
+                us.user_name as nombre, 
+                us.second_name as s_nombre, 
                 us.last_name, 
                 us.email, 
                 us.cumpleaños, 
                 us.telefono
-            FROM mobility_solutions.tmx_acceso_usuario AS acc
-            LEFT JOIN mobility_solutions.tmx_usuario AS us
-                ON acc.user_id = us.id
-            WHERE acc.user_name = '$username';";
+            from mobility_solutions.tmx_acceso_usuario  as acc
+            left join mobility_solutions.tmx_usuario as us
+                on acc.user_id = us.id
+            where acc.user_name = '.$_SESSION['username'].';';
 
-$result = mysqli_query($con, $query); 
+    $result = mysqli_query($con,$query); 
 
-if ($result && $row = mysqli_fetch_assoc($result)) {
-    $user_id = $row['user_id'];
-    $_SESSION['user_id'] = $user_id;
-    $user_name = $row['user_name'];
-    $user_password = $row['user_password'];
-    $user_type = $row['user_type'];
-    $r_ejecutivo = $row['r_ejecutivo'];
-    $r_editor = $row['r_editor'];
-    $r_autorizador = $row['r_autorizador'];
-    $r_analista = $row['r_analista'];
-    $nombre = $row['nombre'];
-    $s_nombre = $row['s_nombre'];
-    $last_name = $row['last_name'];
-    $email = $row['email'];
-    $cumpleaños = $row['cumpleaños'];
-    $telefono = $row['telefono'];
+    if ($result){ 
+        while($row = mysqli_fetch_assoc($result)){
+                            $user_id = $row['user_id'];
+                            $_SESSION['user_id'] = $user_id;
+                            $user_name = $row['user_name'];
+                            $user_password = $row['user_password'];
+                            $user_type = $row['user_type'];
+                            $r_ejecutivo = $row['r_ejecutivo'];
+                            $r_editor = $row['r_editor'];
+                            $r_autorizador = $row['r_autorizador'];
+                            $r_analista = $row['r_analista'];
+                            $nombre = $row['nombre'];
+                            $s_nombre = $row['s_nombre'];
+                            $last_name = $row['last_name'];
+                            $email = $row['email'];
+                            $cumpleaños = $row['cumpleaños'];
+                            $telefono = $row['telefono'];
+                           
+        // Concatenar nombre completo
+        $nombre_usuario = trim($nombre . " " . $s_nombre . " " . $last_name);
 
-    // 🔒 Validación de acceso
-    if (!in_array($user_id, [1, 4])) {
-        echo '<script>
-                alert("No tienes permiso para acceder a esta página.");
-                window.location = "../views/Home.php";
-              </script>';
-        exit;
+        // Determinar título profesional
+        $roles_activos = [];
+
+        if ($r_ejecutivo == 1) $roles_activos[] = "Ejecutivo";
+        if ($r_editor == 1) $roles_activos[] = "Editor";
+        if ($r_autorizador == 1) $roles_activos[] = "Autorizador";
+        if ($r_analista == 1) $roles_activos[] = "Analista";
+
+        if ($user_id == 4) {
+            $titulo_profesional = "CEO - Mobility Solutions";
+        }
+        elseif ($user_id == 1) {
+          $titulo_profesional = "CTO - Líder técnico";
+        } 
+        else {
+            $titulo_profesional = implode(" | ", $roles_activos);
+        }    
     }
 
-    // Nombre completo
-    $nombre_usuario = trim($nombre . " " . $s_nombre . " " . $last_name);
-
-    // Título profesional
-    $roles_activos = [];
-
-    if ($r_ejecutivo == 1) $roles_activos[] = "Ejecutivo";
-    if ($r_editor == 1) $roles_activos[] = "Editor";
-    if ($r_autorizador == 1) $roles_activos[] = "Autorizador";
-    if ($r_analista == 1) $roles_activos[] = "Analista";
-
-    if ($user_id == 4) {
-        $titulo_profesional = "CEO - Mobility Solutions";
-    } elseif ($user_id == 1) {
-        $titulo_profesional = "CTO - Líder técnico";
-    } else {
-        $titulo_profesional = implode(" | ", $roles_activos);
+    if ($r_autorizador == 1 && $r_analista == 1 ){
+        echo ' 
+        <script>
+            alert("No tiene acceso para entrar al apartado de aprobaciones, favor de solicitarlo al departamento de sistemas") ;
+            window.location = "../views/Home.php";
+        </script> ';
+        exit();
     }
-} else {
-    echo 'Falla en conexión o usuario no encontrado.';
-    exit;
-}
+  } 
+  else {
+    echo 'Falla en conexión.';
+  }
+
 ?>
-
 
 
 <!DOCTYPE html>
