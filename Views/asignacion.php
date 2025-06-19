@@ -74,14 +74,15 @@ $query ='select
         }    
     }
 
-    if ($r_autorizador == 1 && $r_analista == 1 ){
+    if ($user_id != 1 && $user_id != 4) {
         echo ' 
         <script>
-            alert("No tiene acceso para entrar al apartado de aprobaciones, favor de solicitarlo al departamento de sistemas") ;
+            alert("No tiene acceso para entrar al apartado de aprobaciones, favor de solicitarlo al departamento de sistemas");
             window.location = "../views/Home.php";
-        </script> ';
+        </script>';
         exit();
     }
+
   } 
   else {
     echo 'Falla en conexión.';
