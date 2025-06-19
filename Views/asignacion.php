@@ -191,11 +191,15 @@ $query ='select
       <div class="quick-access">
         <h4>Asignaciones</h4>
         <ul>
-          <li><i class="icon">&#128221;</i> Tareas</li>         <!-- Bloc de notas o tarea -->
-          <li><i class="icon">&#127942;</i> Metas</li>          <!-- Medalla como símbolo de logro/meta -->
+          <li onclick="mostrarTareas()" style="cursor: pointer;">
+            <i class="icon">&#128221;</i> Tareas
+          </li>
+          <li onclick="mostrarMetas()" style="cursor: pointer;">
+            <i class="icon">&#127942;</i> Metas
+          </li>
           <li onclick="mostrarReconocimientos()" style="cursor: pointer;">
             <i class="icon">&#127775;</i> Reconocimientos
-          </li> <!-- Estrella como reconocimiento -->
+          </li>
         </ul>
       </div>
 
@@ -282,7 +286,95 @@ function mostrarMas() {
       document.querySelector(".items").innerHTML = ""; // Limpia el div
     }
   }
+
   </script>
+
+
+<script>
+  function mostrarTareas() {
+    const itemsDiv = document.querySelector(".items");
+    itemsDiv.innerHTML = `
+      <div class="form-container">
+        <h2>Registrar Tarea</h2>
+        <form id="formTarea">
+          <label for="nombre_tarea">Nombre de la tarea:</label>
+          <input type="text" id="nombre_tarea" name="nombre_tarea" required>
+
+          <label for="responsable_tarea">Asignar a:</label>
+          <select id="responsable_tarea" name="responsable_tarea" required>
+            <option value="">Selecciona un recurso</option>
+            <option value="1">Pablo de Dios</option>
+            <option value="2">Fiona la Grande</option>
+            <option value="3">Barry Allen</option>
+          </select>
+
+          <label for="descripcion_tarea">Descripción:</label>
+          <textarea id="descripcion_tarea" name="descripcion_tarea" rows="4" required></textarea>
+
+          <div class="form-buttons">
+            <button type="button" onclick="cancelarFormulario()">Cancelar</button>
+            <button type="submit">Guardar</button>
+          </div>
+        </form>
+      </div>
+    `;
+
+    document.getElementById("formTarea").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Tarea registrada con éxito.");
+      this.reset();
+    });
+  }
+</script>
+
+<script>
+  function mostrarMetas() {
+    const itemsDiv = document.querySelector(".items");
+    itemsDiv.innerHTML = `
+      <div class="form-container">
+        <h2>Definir Meta</h2>
+        <form id="formMeta">
+          <label for="tipo_meta">Tipo de meta:</label>
+          <select id="tipo_meta" name="tipo_meta" required>
+            <option value="">Selecciona un tipo</option>
+            <option value="Ventas">Ventas</option>
+            <option value="Productividad">Productividad</option>
+            <option value="Crecimiento personal">Crecimiento personal</option>
+          </select>
+
+          <label for="responsable_meta">Asignar a:</label>
+          <select id="responsable_meta" name="responsable_meta" required>
+            <option value="">Selecciona un recurso</option>
+            <option value="1">Pablo de Dios</option>
+            <option value="2">Fiona la Grande</option>
+            <option value="3">Barry Allen</option>
+          </select>
+
+          <label for="descripcion_meta">Descripción:</label>
+          <textarea id="descripcion_meta" name="descripcion_meta" rows="4" required></textarea>
+
+          <div class="form-buttons">
+            <button type="button" onclick="cancelarFormulario()">Cancelar</button>
+            <button type="submit">Asignar</button>
+          </div>
+        </form>
+      </div>
+    `;
+
+    document.getElementById("formMeta").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Meta asignada con éxito.");
+      this.reset();
+    });
+  }
+
+  function cancelarFormulario() {
+    if (confirm("¿Estás seguro de que deseas cancelar? Se perderán los datos ingresados.")) {
+      document.querySelector(".items").innerHTML = "";
+    }
+  }
+</script>
+
 
 
 
