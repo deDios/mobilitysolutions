@@ -167,15 +167,15 @@ $query ='select
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/Autoriza.php">Aprobaciones</a>
-          </li>
-
-          <li class="nav-item active">
             <a class="nav-link" href="#">Tareas</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="#">Tableros</a>
+            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/Autoriza.php">Aprobaciones</a>
+          </li>
+
+          <li class="nav-item active">
+            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/asignacion.php">Asignaciones</a> 
           </li>
 
         </ul>
