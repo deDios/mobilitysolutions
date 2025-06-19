@@ -154,39 +154,38 @@
 </div>
 
 <div class="task">
-<div class="kanban-board">
-  <div class="kanban-column" data-status="0">
-    <h3>Por hacer</h3>
-    <div class="kanban-tasks" id="por-hacer"></div>
-  </div>
-  <div class="kanban-column" data-status="1">
-    <h3>En proceso</h3>
-    <div class="kanban-tasks" id="en-proceso"></div>
-  </div>
-  <div class="kanban-column" data-status="2">
-    <h3>Por revisar</h3>
-    <div class="kanban-tasks" id="por-revisar"></div>
-  </div>
-  <div class="kanban-column" data-status="3">
-    <h3>Hecho</h3>
-    <div class="kanban-tasks" id="hecho"></div>
+  <div class="kanban-board">
+    <div class="kanban-column" data-status="1">
+      <h3>Por hacer</h3>
+      <div class="kanban-tasks" id="por-hacer"></div>
+    </div>
+    <div class="kanban-column" data-status="2">
+      <h3>En proceso</h3>
+      <div class="kanban-tasks" id="en-proceso"></div>
+    </div>
+    <div class="kanban-column" data-status="3">
+      <h3>Por revisar</h3>
+      <div class="kanban-tasks" id="por-revisar"></div>
+    </div>
+    <div class="kanban-column" data-status="4">
+      <h3>Hecho</h3>
+      <div class="kanban-tasks" id="hecho"></div>
+    </div>
   </div>
 </div>
-</div>
-
 
 <script>
   const userId = <?php echo intval($_SESSION['user_id']); ?>;
 
-  fetch(`https://mobilitysolutionscorp.com/web/MS_get_tareas.php?usuario_id=${userId}`)
+  fetch(`https://mobilitysolutionscorp.com/web/MS_get_tareas.php?user_id=${userId}`)
     .then(res => res.json())
     .then(data => {
       if (data.success) {
         const estados = {
-          0: document.getElementById('por-hacer'),
-          1: document.getElementById('en-proceso'),
-          2: document.getElementById('por-revisar'),
-          3: document.getElementById('hecho'),
+          1: document.getElementById('por-hacer'),
+          2: document.getElementById('en-proceso'),
+          3: document.getElementById('por-revisar'),
+          4: document.getElementById('hecho'),
         };
 
         data.tareas.forEach(tarea => {
@@ -196,7 +195,10 @@
             <h4>${tarea.nombre}</h4>
             <p>${tarea.descripcion}</p>
           `;
-          estados[tarea.status]?.appendChild(card);
+          // Si el estado existe, lo colocamos
+          if (estados[tarea.status]) {
+            estados[tarea.status].appendChild(card);
+          }
         });
       } else {
         console.error("Error al obtener tareas:", data.message);
