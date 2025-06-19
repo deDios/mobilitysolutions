@@ -58,7 +58,7 @@ if ($result && $row = mysqli_fetch_assoc($result)) {
     if (!in_array($user_id, [1, 4])) {
         echo '<script>
                 alert("No tienes permiso para acceder a esta página.");
-                window.location = "../views/login.php";
+                window.location = "../views/Home.php";
               </script>';
         exit;
     }
