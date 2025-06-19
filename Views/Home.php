@@ -188,12 +188,13 @@
             </div>
         </div>
 
-        <div id="tareas-resumen" class="tareas-circulo">
-          <div class="circulo-tareas">
-            <span id="cantidad-tareas">0</span>
+        <a href="https://mobilitysolutionscorp.com/views/asignacion.php" style="text-decoration: none;">
+          <div class="task-badge-container">
+            <div id="tarea-circle" class="task-badge-circle">0</div>
+            <span class="task-badge-text">Tareas en curso</span>
           </div>
-          <div class="texto-tareas">Tareas en curso</div>
-        </div>
+        </a>
+
         <!-- Información de contacto -->
         <div class="profile-info">
             <p><small>Datos de contacto</small></p> <hr class="mt-2 mb-3"/>
@@ -262,22 +263,17 @@
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const userId = <?php echo intval($user_id); ?>;
-
   fetch(`https://mobilitysolutionscorp.com/web/MS_get_tareas.php?user_id=${userId}`)
     .then(res => res.json())
     .then(data => {
       if (data.success && Array.isArray(data.tareas)) {
-        const tareasEnCurso = data.tareas.filter(t => t.status != 4); // Excluye "Hecho"
-        document.getElementById("cantidad-tareas").textContent = tareasEnCurso.length;
+        const tareasActivas = data.tareas.filter(t => parseInt(t.status) < 4).length;
+        document.getElementById("tarea-circle").textContent = tareasActivas;
       }
     })
-    .catch(error => {
-      console.error("Error al cargar tareas en curso:", error);
-    });
-});
+    .catch(err => console.error("Error al contar tareas:", err));
 </script>
+
 
 <!-- JavaScript para abrir/cerrar modal y enviar JSON -->
 <script>
