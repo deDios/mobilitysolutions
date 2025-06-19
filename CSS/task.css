@@ -169,9 +169,16 @@ li {
 
 .kanban-board {
   display: flex;
-  gap: 20px;
-  padding: 20px;
+  justify-content: space-between;   /* Distribuye columnas */
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  padding-top: 130px;
+  width: 100%;
+  max-width: 100%;
   overflow-x: auto;
+  padding: 20px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .kanban-column {
