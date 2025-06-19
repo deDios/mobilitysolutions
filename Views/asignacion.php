@@ -230,6 +230,8 @@ function mostrarMas() {
 </script>
 
 <script>
+  const usuarioActual = <?php echo json_encode($_SESSION['user_id']); ?>;
+
   function mostrarReconocimientos() {
     const itemsDiv = document.querySelector(".items");
     const currentYear = new Date().getFullYear();
@@ -289,27 +291,24 @@ function mostrarMas() {
       </div>
     `;
 
-    // Mapeo de reconocimientos por tipo
+    // Reconocimientos según tipo
     const reconocimientosPorTipo = {
       1: ['Empleado del mes', 'Mejor vendedor'],
       2: ['Líder'],
       3: ['Innovador']
     };
 
-    // Cambiar reconocimientos al cambiar tipo
+    // Llenar combo reconocimiento según tipo
     document.getElementById("tipo").addEventListener("change", function () {
       const tipoSeleccionado = this.value;
-      const comboReconocimiento = document.getElementById("reconocimiento");
-      comboReconocimiento.innerHTML = '<option value="">Selecciona un reconocimiento</option>';
-
-      if (reconocimientosPorTipo[tipoSeleccionado]) {
-        reconocimientosPorTipo[tipoSeleccionado].forEach(nombre => {
-          const option = document.createElement("option");
-          option.value = nombre;
-          option.textContent = nombre;
-          comboReconocimiento.appendChild(option);
-        });
-      }
+      const combo = document.getElementById("reconocimiento");
+      combo.innerHTML = '<option value="">Selecciona un reconocimiento</option>';
+      (reconocimientosPorTipo[tipoSeleccionado] || []).forEach(nombre => {
+        const option = document.createElement("option");
+        option.value = nombre;
+        option.textContent = nombre;
+        combo.appendChild(option);
+      });
     });
 
     // Llenar combo de recursos
@@ -326,11 +325,46 @@ function mostrarMas() {
         });
       });
 
-    // Manejo del submit (puedes actualizar con POST real luego)
+    // Submit del formulario
     document.getElementById("formReconocimiento").addEventListener("submit", function(e) {
       e.preventDefault();
-      alert("Reconocimiento otorgado con éxito.");
-      this.reset();
+
+      const tipo = parseInt(document.getElementById("tipo").value);
+      const reconocimiento = document.getElementById("reconocimiento").value;
+      const asignado = parseInt(document.getElementById("recurso").value);
+      const mes = parseInt(document.getElementById("mes_reconocimiento").value);
+      const anio = parseInt(document.getElementById("anio_reconocimiento").value);
+      const descripcion = document.getElementById("descripcion").value.trim();
+
+      if (!tipo || !reconocimiento || !asignado || !mes || !anio || !descripcion) {
+        alert("Todos los campos son obligatorios.");
+        return;
+      }
+
+      const payload = {
+        tipo,
+        reconocimiento,
+        asignado,
+        mes,
+        anio,
+        descripcion,
+        creado_por: usuarioActual
+      };
+
+      fetch("https://mobilitysolutionscorp.com/web/MS_save_reconocimiento.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert(data.message);
+        if (data.success) this.reset();
+      })
+      .catch(err => {
+        console.error("Error al guardar reconocimiento:", err);
+        alert("Error al guardar el reconocimiento.");
+      });
     });
   }
 
@@ -340,7 +374,6 @@ function mostrarMas() {
     }
   }
 </script>
-
 
 
 <script>
