@@ -345,93 +345,128 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <script>
     const userId = <?php echo intval($user_id); ?>;
-    let datosPorMes = []; 
-    let lineChart; 
+    let datosPorMes = []; // hex_status
+    let metasPorMes = {}; // metas
+    let lineChart;
 
     function actualizarGrafica(tipo) {
-        const valores = datosPorMes.map(mes => parseInt(mes[tipo]) || 0);
-        const label = {
-            'New': 'Nuevos por mes',
-            'Reserva': 'Reservas por mes',
-            'Entrega': 'Entregas por mes'
-        }[tipo];
+    const reales = datosPorMes.map(mes => parseInt(mes[tipo]) || 0);
+    const metas = [
+        metasPorMes["enero"], metasPorMes["febrero"], metasPorMes["marzo"],
+        metasPorMes["abril"], metasPorMes["mayo"], metasPorMes["junio"],
+        metasPorMes["julio"], metasPorMes["agosto"], metasPorMes["septiembre"],
+        metasPorMes["octubre"], metasPorMes["noviembre"], metasPorMes["diciembre"]
+    ].map(v => parseInt(v) || 0);
 
-        lineChart.data.datasets[0].data = valores;
-        lineChart.data.datasets[0].label = label;
-        lineChart.update();
+    const label = {
+        'New': 'Nuevos por mes',
+        'Reserva': 'Reservas por mes',
+        'Entrega': 'Entregas por mes'
+    }[tipo];
+
+    lineChart.data.datasets[0].data = reales;
+    lineChart.data.datasets[0].label = label;
+    lineChart.data.datasets[1].data = metas;
+    lineChart.update();
     }
 
-    fetch(`https://mobilitysolutionscorp.com/db_consultas/hex_status.php?user_id=${userId}`)
-        .then(response => response.json())
-        .then(data => {
-            console.log("Datos por mes:", data);
-            datosPorMes = data;
+    // 1. Obtener metas del usuario
+    fetch(`https://mobilitysolutionscorp.com/web/MS_get_metas_usuario.php?asignado=${userId}`)
+    .then(res => res.json())
+    .then(data => {
+        metasPorMes = data.metas || {};
 
-            // Calcular totales
-            let totalNuevo = 0, totalReserva = 0, totalEntrega = 0;
-            data.forEach(mes => {
-                totalNuevo += parseInt(mes.New) || 0;
-                totalReserva += parseInt(mes.Reserva) || 0;
-                totalEntrega += parseInt(mes.Entrega) || 0;
-            });
+        // 2. Obtener datos reales (hex_status)
+        return fetch(`https://mobilitysolutionscorp.com/db_consultas/hex_status.php?user_id=${userId}`);
+    })
+    .then(res => res.json())
+    .then(data => {
+        datosPorMes = data;
 
-            // Mostrar en hexágonos
-            document.querySelector('#hex-nuevo strong').textContent = totalNuevo;
-            document.querySelector('#hex-reserva strong').textContent = totalReserva;
-            document.querySelector('#hex-entrega strong').textContent = totalEntrega;
-
-            // Inicializar la gráfica con 'New'
-            const valoresIniciales = data.map(mes => parseInt(mes.New) || 0);
-            const ctx = document.getElementById('lineChart').getContext('2d');
-            lineChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-                    datasets: [{
-                        label: 'Nuevos por mes',
-                        data: valoresIniciales,
-                        borderColor: '#007bff',
-                        backgroundColor: 'rgba(0, 123, 255, 0.2)',
-                        borderWidth: 2,
-                        fill: true,
-                        tension: 0.3,
-                        pointRadius: 4,
-                        pointBackgroundColor: '#007bff',
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            ticks: {
-                                stepSize: 5
-                            }
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            display: true,
-                            position: 'top',
-                        },
-                        tooltip: {
-                            mode: 'index',
-                            intersect: false,
-                        }
-                    }
-                }
-            });
-
-            // Agregar eventos de clic a los hexágonos
-            document.getElementById('hex-nuevo').addEventListener('click', () => actualizarGrafica('New'));
-            document.getElementById('hex-reserva').addEventListener('click', () => actualizarGrafica('Reserva'));
-            document.getElementById('hex-entrega').addEventListener('click', () => actualizarGrafica('Entrega'));
-        })
-        .catch(error => {
-            console.error('Error al obtener los datos:', error);
+        // Totales
+        let totalNuevo = 0, totalReserva = 0, totalEntrega = 0;
+        data.forEach(mes => {
+        totalNuevo += parseInt(mes.New) || 0;
+        totalReserva += parseInt(mes.Reserva) || 0;
+        totalEntrega += parseInt(mes.Entrega) || 0;
         });
+
+        // Mostrar en hexágonos
+        document.querySelector('#hex-nuevo strong').textContent = totalNuevo;
+        document.querySelector('#hex-reserva strong').textContent = totalReserva;
+        document.querySelector('#hex-entrega strong').textContent = totalEntrega;
+
+        // Gráfica
+        const ctx = document.getElementById('lineChart').getContext('2d');
+        lineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            datasets: [
+            {
+                label: 'Nuevos por mes',
+                data: datosPorMes.map(m => parseInt(m.New) || 0),
+                borderColor: '#007bff',
+                backgroundColor: 'rgba(0, 123, 255, 0.2)',
+                borderWidth: 2,
+                fill: true,
+                tension: 0.3,
+                pointRadius: 4,
+                pointBackgroundColor: '#007bff',
+            },
+            {
+                label: 'Meta mensual',
+                data: [
+                metasPorMes["enero"], metasPorMes["febrero"], metasPorMes["marzo"],
+                metasPorMes["abril"], metasPorMes["mayo"], metasPorMes["junio"],
+                metasPorMes["julio"], metasPorMes["agosto"], metasPorMes["septiembre"],
+                metasPorMes["octubre"], metasPorMes["noviembre"], metasPorMes["diciembre"]
+                ],
+                borderColor: '#28a745',
+                backgroundColor: 'rgba(40, 167, 69, 0.1)',
+                borderDash: [5, 5],
+                borderWidth: 2,
+                fill: false,
+                tension: 0.3,
+                pointRadius: 4,
+                pointBackgroundColor: '#28a745',
+            }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                stepSize: 5
+                }
+            }
+            },
+            plugins: {
+            legend: {
+                display: true,
+                position: 'top',
+            },
+            tooltip: {
+                mode: 'index',
+                intersect: false,
+            }
+            }
+        }
+        });
+
+        // Clics para cambiar tipo
+        document.getElementById('hex-nuevo').addEventListener('click', () => actualizarGrafica('New'));
+        document.getElementById('hex-reserva').addEventListener('click', () => actualizarGrafica('Reserva'));
+        document.getElementById('hex-entrega').addEventListener('click', () => actualizarGrafica('Entrega'));
+    })
+    .catch(err => {
+        console.error("Error al cargar datos o metas:", err);
+    });
 </script>
+
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
