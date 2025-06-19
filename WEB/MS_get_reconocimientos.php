@@ -12,7 +12,10 @@ if (!$asignado) {
     exit;
 }
 
-$query = "SELECT reconocimiento, mes, anio FROM mobility_solutions.tmx_reconocimientos WHERE asignado = ? ORDER BY anio DESC, mes DESC";
+$query = "SELECT tipo, reconocimiento, mes, anio 
+          FROM mobility_solutions.tmx_reconocimientos 
+          WHERE asignado = ? 
+          ORDER BY anio DESC, mes DESC";
 
 $stmt = $con->prepare($query);
 $stmt->bind_param("i", $asignado);
