@@ -302,6 +302,44 @@
     });
 </script>
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const userId = <?php echo intval($user_id); ?>;
+
+  fetch(`https://mobilitysolutionscorp.com/web/MS_get_reconocimientos.php?asignado=${userId}`)
+    .then(response => response.json())
+    .then(data => {
+      const contenedorSkills = document.querySelector(".skills-section");
+      contenedorSkills.innerHTML = "<h2>Reconocimientos / Skills</h2>";
+
+      if (data.success && data.reconocimientos.length > 0) {
+        const grid = document.createElement("div");
+        grid.className = "hex-grid";
+
+        data.reconocimientos.forEach(item => {
+          const hex = document.createElement("div");
+          hex.className = "hex hex-skill";
+          hex.innerHTML = `
+            <span>${item.reconocimiento}</span>
+            <small>${item.mes}/${item.anio}</small>
+          `;
+          grid.appendChild(hex);
+        });
+
+        contenedorSkills.appendChild(grid);
+      } else {
+        const mensaje = document.createElement("p");
+        mensaje.className = "placeholder";
+        mensaje.textContent = "No hay reconocimientos asignados.";
+        contenedorSkills.appendChild(mensaje);
+      }
+    })
+    .catch(error => {
+      console.error("Error al cargar reconocimientos:", error);
+    });
+});
+</script>
+
 
 <script>
     const userId = <?php echo intval($user_id); ?>;
