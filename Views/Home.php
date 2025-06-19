@@ -319,13 +319,23 @@ document.addEventListener("DOMContentLoaded", () => {
         grid.className = "reconocimientos-wrapper";
 
         data.reconocimientos.forEach(item => {
-          const hex = document.createElement("div");
-          hex.className = "hex hex-skill";
-          hex.innerHTML = `
-            <span>${item.reconocimiento}</span>
-            <small>${item.mes}/${item.anio}</small>
+          // Determinar clase según tipo
+          let claseTipo = "";
+          if (item.tipo == 1) {
+            claseTipo = "recono-desempeno"; // Oro (hexágono)
+          } else if (item.tipo == 2) {
+            claseTipo = "recono-liderazgo"; // Plata (rombo)
+          } else if (item.tipo == 3) {
+            claseTipo = "recono-innovacion"; // Bronce (cuadrado)
+          }
+
+          const div = document.createElement("div");
+          div.className = `reconocimiento-item ${claseTipo}`;
+          div.innerHTML = `
+            <div class="titulo">${item.reconocimiento}</div>
+            <div class="fecha">${item.mes}/${item.anio}</div>
           `;
-          grid.appendChild(hex);
+          grid.appendChild(div);
         });
 
         contenedorSkills.appendChild(grid);
@@ -341,6 +351,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 </script>
+
 
 
 <script>
