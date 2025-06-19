@@ -425,7 +425,7 @@ function mostrarMas() {
               .map((mes, i) => `
                 <div class="col-md-4">
                   <label for="${mes.toLowerCase()}">${mes}:</label>
-                  <input type="number" id="${mes.toLowerCase()}" name="${mes.toLowerCase()}" value="0" min="0" required>
+                  <input type="number" class="input-mes" id="${mes.toLowerCase()}" name="${mes.toLowerCase()}" value="0" min="0" required>
                 </div>
               `).join('')
             }

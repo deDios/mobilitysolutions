@@ -217,6 +217,11 @@ li {
   margin-bottom: 10px;
 }
 
+.input-mes {
+    width: 100%;
+    max-width: 120px;
+  }
+
 .title {
   color: gray;
   font-size: 0.9em;
