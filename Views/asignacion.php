@@ -232,6 +232,7 @@ function mostrarMas() {
 <script>
   function mostrarReconocimientos() {
     const itemsDiv = document.querySelector(".items");
+
     itemsDiv.innerHTML = `
       <div class="form-container">
         <h2>Otorgar Reconocimiento</h2>
@@ -240,26 +241,19 @@ function mostrarMas() {
           <label for="tipo">Tipo de reconocimiento:</label>
           <select id="tipo" name="tipo" required>
             <option value="">Selecciona un tipo</option>
-            <option value="Desempeño">Desempeño</option>
-            <option value="Liderazgo">Liderazgo</option>
-            <option value="Innovación">Innovación</option>
+            <option value="1">Desempeño</option>
+            <option value="2">Liderazgo</option>
+            <option value="3">Innovación</option>
           </select>
 
           <label for="reconocimiento">Reconocimiento:</label>
           <select id="reconocimiento" name="reconocimiento" required>
             <option value="">Selecciona un reconocimiento</option>
-            <option value="Estrella del mes">Estrella del mes</option>
-            <option value="Campeón de ideas">Campeón de ideas</option>
-            <option value="Líder positivo">Líder positivo</option>
           </select>
 
           <label for="recurso">Recurso a reconocer:</label>
           <select id="recurso" name="recurso" required>
-            <option value="">Selecciona un recurso</option>
-            <option value="1">Pablo de Dios</option>
-            <option value="2">Fiona la Grande</option>
-            <option value="3">Barry Allen</option>
-            <!-- Puedes llenar esto dinámicamente desde PHP si lo deseas -->
+            <option value="">Cargando recursos...</option>
           </select>
 
           <label for="descripcion">Descripción:</label>
@@ -273,22 +267,63 @@ function mostrarMas() {
       </div>
     `;
 
-    // Añadir evento submit
+    // Mapeo de reconocimientos por tipo
+    const reconocimientosPorTipo = {
+      1: ['Empleado del mes', 'Mejor vendedor'],
+      2: ['Líder'],
+      3: ['Innovador']
+    };
+
+    // Al cambiar el tipo, actualizar opciones del combo reconocimiento
+    document.getElementById("tipo").addEventListener("change", function () {
+      const tipoSeleccionado = this.value;
+      const comboReconocimiento = document.getElementById("reconocimiento");
+      comboReconocimiento.innerHTML = '<option value="">Selecciona un reconocimiento</option>';
+
+      if (reconocimientosPorTipo[tipoSeleccionado]) {
+        reconocimientosPorTipo[tipoSeleccionado].forEach(nombre => {
+          const option = document.createElement("option");
+          option.value = nombre;
+          option.textContent = nombre;
+          comboReconocimiento.appendChild(option);
+        });
+      }
+    });
+
+    // Cargar opciones de usuarios (recurso)
+    fetch('https://mobilitysolutionscorp.com/web/MS_get_usuarios.php')
+      .then(response => response.json())
+      .then(data => {
+        const select = document.getElementById("recurso");
+        select.innerHTML = '<option value="">Selecciona un recurso</option>';
+        data.forEach(usuario => {
+          const option = document.createElement("option");
+          option.value = usuario.id;
+          option.textContent = usuario.nombre;
+          select.appendChild(option);
+        });
+      })
+      .catch(error => {
+        console.error("Error al cargar usuarios:", error);
+        const select = document.getElementById("recurso");
+        select.innerHTML = '<option value="">Error al cargar usuarios</option>';
+      });
+
+    // Envío del formulario
     document.getElementById("formReconocimiento").addEventListener("submit", function(e) {
       e.preventDefault();
-      alert("Reconocimiento otorgado con éxito.");
-      this.reset(); // Limpia el formulario si deseas
+      alert("Reconocimiento otorgado con éxito."); // Aquí puedes hacer el POST real
+      this.reset();
     });
   }
 
   function cancelarFormulario() {
     if (confirm("¿Estás seguro de que deseas cancelar? Se perderán los datos ingresados.")) {
-      document.getElementById("formReconocimiento").reset();
-      document.querySelector(".items").innerHTML = ""; // Limpia el div
+      document.querySelector(".items").innerHTML = "";
     }
   }
+</script>
 
-  </script>
 
 <script>
   const usuarioActual = <?php echo json_encode($_SESSION['user_id']); ?>;
