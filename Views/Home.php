@@ -319,15 +319,23 @@
           grid.className = "reconocimientos-wrapper";
 
           data.reconocimientos.forEach(item => {
-            const tipo = parseInt(item.tipo);
-            let claseReconocimiento = "";
-
-            if (tipo === 1) claseReconocimiento = "recono-desempeno";
-            else if (tipo === 2) claseReconocimiento = "recono-liderazgo";
-            else if (tipo === 3) claseReconocimiento = "recono-innovacion";
+            let claseTipo = "";
+            switch (parseInt(item.tipo)) {
+              case 1:
+                claseTipo = "recono-desempeno";
+                break;
+              case 2:
+                claseTipo = "recono-liderazgo";
+                break;
+              case 3:
+                claseTipo = "recono-innovacion";
+                break;
+              default:
+                claseTipo = "recono-desempeno"; // valor por defecto
+            }
 
             const div = document.createElement("div");
-            div.className = `reconocimiento-item ${claseReconocimiento}`;
+            div.className = `reconocimiento-item ${claseTipo}`;
             div.innerHTML = `
               <div class="titulo">${item.reconocimiento}</div>
               <div class="fecha">${item.mes}/${item.anio}</div>
