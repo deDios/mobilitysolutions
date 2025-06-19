@@ -305,51 +305,48 @@
 </script>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const userId = <?php echo intval($user_id); ?>;
+  document.addEventListener("DOMContentLoaded", () => {
+    const userId = <?php echo intval($user_id); ?>;
 
-  fetch(`https://mobilitysolutionscorp.com/web/MS_get_reconocimientos.php?asignado=${userId}`)
-    .then(response => response.json())
-    .then(data => {
-      const contenedorSkills = document.querySelector(".skills-section");
-      contenedorSkills.innerHTML = "<h2>Reconocimientos / Skills</h2>";
+    fetch(`https://mobilitysolutionscorp.com/web/MS_get_reconocimientos.php?asignado=${userId}`)
+      .then(response => response.json())
+      .then(data => {
+        const contenedorSkills = document.querySelector(".skills-section");
+        contenedorSkills.innerHTML = "<h2>Reconocimientos / Skills</h2>";
 
-      if (data.success && data.reconocimientos.length > 0) {
-        const grid = document.createElement("div");
-        grid.className = "reconocimientos-wrapper";
+        if (data.success && data.reconocimientos.length > 0) {
+          const grid = document.createElement("div");
+          grid.className = "reconocimientos-wrapper";
 
-        data.reconocimientos.forEach(item => {
-          // Determinar clase según tipo
-          let claseTipo = "";
-          if (item.tipo == 1) {
-            claseTipo = "recono-desempeno"; // Oro (hexágono)
-          } else if (item.tipo == 2) {
-            claseTipo = "recono-liderazgo"; // Plata (rombo)
-          } else if (item.tipo == 3) {
-            claseTipo = "recono-innovacion"; // Bronce (cuadrado)
-          }
+          data.reconocimientos.forEach(item => {
+            const tipo = parseInt(item.tipo);
+            let claseReconocimiento = "";
 
-          const div = document.createElement("div");
-          div.className = `reconocimiento-item ${claseTipo}`;
-          div.innerHTML = `
-            <div class="titulo">${item.reconocimiento}</div>
-            <div class="fecha">${item.mes}/${item.anio}</div>
-          `;
-          grid.appendChild(div);
-        });
+            if (tipo === 1) claseReconocimiento = "recono-desempeno";
+            else if (tipo === 2) claseReconocimiento = "recono-liderazgo";
+            else if (tipo === 3) claseReconocimiento = "recono-innovacion";
 
-        contenedorSkills.appendChild(grid);
-      } else {
-        const mensaje = document.createElement("p");
-        mensaje.className = "placeholder";
-        mensaje.textContent = "No hay reconocimientos asignados.";
-        contenedorSkills.appendChild(mensaje);
-      }
-    })
-    .catch(error => {
-      console.error("Error al cargar reconocimientos:", error);
-    });
-});
+            const div = document.createElement("div");
+            div.className = `reconocimiento-item ${claseReconocimiento}`;
+            div.innerHTML = `
+              <div class="titulo">${item.reconocimiento}</div>
+              <div class="fecha">${item.mes}/${item.anio}</div>
+            `;
+            grid.appendChild(div);
+          });
+
+          contenedorSkills.appendChild(grid);
+        } else {
+          const mensaje = document.createElement("p");
+          mensaje.className = "placeholder";
+          mensaje.textContent = "No hay reconocimientos asignados.";
+          contenedorSkills.appendChild(mensaje);
+        }
+      })
+      .catch(error => {
+        console.error("Error al cargar reconocimientos:", error);
+      });
+  });
 </script>
 
 
