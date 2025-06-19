@@ -322,18 +322,22 @@ document.addEventListener("DOMContentLoaded", () => {
           const tipo = parseInt(item.tipo);
           let claseTipo = "";
 
-          if (tipo === 1) {
-            claseTipo = "recono-desempeno";
-          } else if (tipo === 2) {
-            claseTipo = "recono-liderazgo";
-          } else if (tipo === 3) {
-            claseTipo = "recono-innovacion";
-          } else {
-            claseTipo = "recono-desempeno"; // fallback por si viene un tipo desconocido
+          switch (tipo) {
+            case 1:
+              claseTipo = "recono-desempeno";
+              break;
+            case 2:
+              claseTipo = "recono-liderazgo";
+              break;
+            case 3:
+              claseTipo = "recono-innovacion";
+              break;
+            default:
+              claseTipo = "recono-desempeno"; // fallback
           }
 
           const div = document.createElement("div");
-          div.classList.add("reconocimiento-item", claseTipo); // ✅ Esta línea es clave
+          div.className = `reconocimiento-item ${claseTipo}`;  // <-- importante
           div.innerHTML = `
             <div class="titulo">${item.reconocimiento}</div>
             <div class="fecha">${item.mes}/${item.anio}</div>
