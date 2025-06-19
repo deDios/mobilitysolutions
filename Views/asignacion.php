@@ -289,6 +289,9 @@ function mostrarMas() {
 
   </script>
 
+<script>
+  const usuarioActual = <?php echo json_encode($_SESSION['user_id']); ?>;
+</script>
 
 <script>
   function mostrarTareas() {
@@ -359,6 +362,7 @@ function mostrarMas() {
           nombre: nombre,
           asignado: parseInt(asignado),
           descripcion: descripcion
+          creado_por: usuarioActual 
         })
       })
       .then(response => response.json())
