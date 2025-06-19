@@ -195,13 +195,16 @@
             const card = document.createElement("div");
             card.className = "task-card";
             card.innerHTML = `
-              <h4>${tarea.nombre}</h4>
-              <p>${tarea.descripcion}</p>
+                <h4>${tarea.nombre}</h4>
+                <p>${tarea.descripcion}</p>
+                <p><strong>Asignado a:</strong> ${tarea.asignado_nombre}</p>
+                <p><strong>Reportado por:</strong> ${tarea.creado_por_nombre}</p>
             `;
             if (estados[tarea.status]) {
-              estados[tarea.status].appendChild(card);
+                estados[tarea.status].appendChild(card);
             }
-          });
+            });
+
         } else {
           console.error("Error al obtener tareas:", data.message);
         }
