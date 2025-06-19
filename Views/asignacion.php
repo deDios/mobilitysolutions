@@ -394,30 +394,47 @@ function mostrarMas() {
 <script>
   function mostrarMetas() {
     const itemsDiv = document.querySelector(".items");
+    const añoActual = new Date().getFullYear();
+    const añoAnterior = añoActual - 1;
+
+    // HTML del formulario
     itemsDiv.innerHTML = `
       <div class="form-container">
         <h2>Definir Meta</h2>
         <form id="formMeta">
+          
           <label for="tipo_meta">Tipo de meta:</label>
           <select id="tipo_meta" name="tipo_meta" required>
             <option value="">Selecciona un tipo</option>
-            <option value="Ventas">Ventas</option>
-            <option value="Productividad">Productividad</option>
-            <option value="Crecimiento personal">Crecimiento personal</option>
+            <option value="Carga de autos">Carga de autos</option>
+            <option value="Reservas">Reservas</option>
+            <option value="Entregas">Entregas</option>
           </select>
 
           <label for="responsable_meta">Asignar a:</label>
           <select id="responsable_meta" name="responsable_meta" required>
-            <option value="">Selecciona un recurso</option>
-            <option value="1">Pablo de Dios</option>
-            <option value="2">Fiona la Grande</option>
-            <option value="3">Barry Allen</option>
+            <option value="">Cargando usuarios...</option>
           </select>
 
-          <label for="descripcion_meta">Descripción:</label>
-          <textarea id="descripcion_meta" name="descripcion_meta" rows="4" required></textarea>
+          <label for="anio_meta">Año:</label>
+          <select id="anio_meta" name="anio_meta" required>
+            <option value="">Selecciona un año</option>
+            <option value="${añoActual}">${añoActual}</option>
+            <option value="${añoAnterior}">${añoAnterior}</option>
+          </select>
 
-          <div class="form-buttons">
+          <label>Metas por mes:</label>
+          <div class="row">
+            ${[ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ]
+              .map((mes, i) => `
+                <div class="col-md-4">
+                  <label for="meta_${i+1}">${mes}:</label>
+                  <input type="number" id="meta_${i+1}" name="meta_${i+1}" class="form-control" min="0" required>
+                </div>
+              `).join('')}
+          </div>
+
+          <div class="form-buttons mt-3">
             <button type="button" onclick="cancelarFormulario()">Cancelar</button>
             <button type="submit">Asignar</button>
           </div>
@@ -425,20 +442,32 @@ function mostrarMas() {
       </div>
     `;
 
+    // Cargar usuarios
+    fetch('https://mobilitysolutionscorp.com/web/MS_get_usuarios.php')
+      .then(response => response.json())
+      .then(data => {
+        const select = document.getElementById("responsable_meta");
+        select.innerHTML = '<option value="">Selecciona un recurso</option>';
+        data.forEach(usuario => {
+          const option = document.createElement("option");
+          option.value = usuario.id;
+          option.textContent = usuario.nombre;
+          select.appendChild(option);
+        });
+      })
+      .catch(error => {
+        console.error("Error al cargar usuarios:", error);
+        document.getElementById("responsable_meta").innerHTML = '<option value="">Error al cargar</option>';
+      });
+
+    // Envío del formulario (puedes personalizar más adelante)
     document.getElementById("formMeta").addEventListener("submit", function(e) {
       e.preventDefault();
       alert("Meta asignada con éxito.");
       this.reset();
     });
   }
-
-  function cancelarFormulario() {
-    if (confirm("¿Estás seguro de que deseas cancelar? Se perderán los datos ingresados.")) {
-      document.querySelector(".items").innerHTML = "";
-    }
-  }
 </script>
-
 
 
 
