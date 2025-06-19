@@ -2,7 +2,7 @@
 header('Content-Type: application/json');
 $inc = include "../db/Conexion.php";
 
-$query = "SELECT id, CONCAT(user_name, ' ', second_name, ' ', last_name) AS nombre_completo 
+$query = "SELECT id, CONCAT(user_name, ' ', last_name) AS nombre_completo 
           FROM mobility_solutions.tmx_usuario 
           ORDER BY nombre_completo ASC";
 
