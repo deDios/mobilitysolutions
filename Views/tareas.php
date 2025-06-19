@@ -155,23 +155,42 @@
   </nav>
 </div>
 
-<div class="task">
-  <div class="kanban-board">
-    <div class="kanban-column" data-status="1">
-      <h3>Por hacer</h3>
-      <div class="kanban-tasks" id="por-hacer"></div>
+<div class="task-wrapper">
+  <div class="kanban-section">
+    <h2 class="kanban-title">Kanban de tareas</h2>
+    <div class="kanban-board">
+      <div class="kanban-column" data-status="1">
+        <h3>Por hacer</h3>
+        <hr>
+        <div class="kanban-tasks" id="por-hacer"></div>
+      </div>
+      <div class="kanban-column" data-status="2">
+        <h3>En proceso</h3>
+        <hr>
+        <div class="kanban-tasks" id="en-proceso"></div>
+      </div>
+      <div class="kanban-column" data-status="3">
+        <h3>Por revisar</h3>
+        <hr>
+        <div class="kanban-tasks" id="por-revisar"></div>
+      </div>
+      <div class="kanban-column" data-status="4">
+        <h3>Hecho</h3>
+        <hr>
+        <div class="kanban-tasks" id="hecho"></div>
+      </div>
     </div>
-    <div class="kanban-column" data-status="2">
-      <h3>En proceso</h3>
-      <div class="kanban-tasks" id="en-proceso"></div>
-    </div>
-    <div class="kanban-column" data-status="3">
-      <h3>Por revisar</h3>
-      <div class="kanban-tasks" id="por-revisar"></div>
-    </div>
-    <div class="kanban-column" data-status="4">
-      <h3>Hecho</h3>
-      <div class="kanban-tasks" id="hecho"></div>
+  </div>
+
+  <div class="detalle-section">
+    <h2>Detalle de tarea</h2>
+    <div id="detalle-tarea" class="detalle-content">
+      <p><strong>Nombre:</strong> <span id="detalle-nombre"></span></p>
+      <p><strong>Descripción:</strong> <span id="detalle-descripcion"></span></p>
+      <p><strong>Asignado a:</strong> <span id="detalle-asignado"></span></p>
+      <p><strong>Reportado por:</strong> <span id="detalle-creador"></span></p>
+      <p><strong>Comentario:</strong> <span id="detalle-comentario"></span></p>
+      <p><strong>Creado el:</strong> <span id="detalle-creado"></span></p>
     </div>
   </div>
 </div>
@@ -195,15 +214,22 @@
             const card = document.createElement("div");
             card.className = "task-card";
             card.innerHTML = `
-                <h4>${tarea.nombre}</h4>
-                <p><strong>Asignado a:</strong> ${tarea.asignado_nombre}</p>
-                <p><strong>Reportado por:</strong> ${tarea.creado_por_nombre}</p>
+              <h4>${tarea.nombre}</h4>
+              <p><strong>Asignado a:</strong> ${tarea.asignado_nombre}</p>
+              <p><strong>Reportado por:</strong> ${tarea.creado_por_nombre}</p>
             `;
-            if (estados[tarea.status]) {
-                estados[tarea.status].appendChild(card);
-            }
+            card.addEventListener("click", () => {
+              document.getElementById("detalle-nombre").textContent = tarea.nombre;
+              document.getElementById("detalle-descripcion").textContent = tarea.descripcion;
+              document.getElementById("detalle-asignado").textContent = tarea.asignado_nombre;
+              document.getElementById("detalle-creador").textContent = tarea.creado_por_nombre;
+              document.getElementById("detalle-comentario").textContent = tarea.comentario || 'N/A';
+              document.getElementById("detalle-creado").textContent = tarea.created_at;
             });
-
+            if (estados[tarea.status]) {
+              estados[tarea.status].appendChild(card);
+            }
+          });
         } else {
           console.error("Error al obtener tareas:", data.message);
         }
