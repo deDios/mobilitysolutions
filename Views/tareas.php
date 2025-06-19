@@ -213,11 +213,17 @@
           data.tareas.forEach(tarea => {
             const card = document.createElement("div");
             card.className = "task-card";
+            card.setAttribute("draggable", "true");
+            card.dataset.id = tarea.id;
+            card.dataset.status = tarea.status;
+            card.dataset.creado_por = tarea.creado_por;
             card.innerHTML = `
               <h4>${tarea.nombre}</h4>
               <p><strong>Asignado a:</strong> ${tarea.asignado_nombre}</p>
               <p><strong>Reportado por:</strong> ${tarea.creado_por_nombre}</p>
             `;
+
+            // Mostrar detalle al hacer clic
             card.addEventListener("click", () => {
               document.getElementById("detalle-nombre").textContent = tarea.nombre;
               document.getElementById("detalle-descripcion").textContent = tarea.descripcion;
@@ -226,12 +232,58 @@
               document.getElementById("detalle-comentario").textContent = tarea.comentario || 'N/A';
               document.getElementById("detalle-creado").textContent = tarea.created_at;
             });
-            if (estados[tarea.status]) {
-              estados[tarea.status].appendChild(card);
+
+            estados[tarea.status]?.appendChild(card);
+          });
+
+          // Habilitar columnas como zonas de drop
+          document.querySelectorAll('.kanban-column').forEach(column => {
+            column.addEventListener('dragover', e => e.preventDefault());
+
+            column.addEventListener('drop', e => {
+              e.preventDefault();
+              const targetStatus = parseInt(column.dataset.status);
+              const draggedCard = document.querySelector('.dragging');
+              const tareaId = parseInt(draggedCard.dataset.id);
+              const creador = parseInt(draggedCard.dataset.creado_por);
+
+              // Restricción: solo el creador puede mover a "Hecho"
+              if (targetStatus === 4 && userId !== creador) {
+                alert("Solo la persona que creó la tarea puede marcarla como 'Hecho'.");
+                return;
+              }
+
+              // Actualizar visualmente
+              column.querySelector('.kanban-tasks').appendChild(draggedCard);
+
+              // Llamar al API para actualizar el status
+              fetch('https://mobilitysolutionscorp.com/web/MS_update_tarea_status.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: tareaId, status: targetStatus })
+              })
+              .then(res => res.json())
+              .then(response => {
+                if (!response.success) {
+                  alert("Error al actualizar el estatus: " + response.message);
+                }
+              })
+              .catch(err => console.error("Error al llamar API:", err));
+            });
+          });
+
+          // Eventos de arrastrar tarjeta
+          document.addEventListener('dragstart', e => {
+            if (e.target.classList.contains('task-card')) {
+              e.target.classList.add('dragging');
             }
           });
-        } else {
-          console.error("Error al obtener tareas:", data.message);
+
+          document.addEventListener('dragend', e => {
+            if (e.target.classList.contains('task-card')) {
+              e.target.classList.remove('dragging');
+            }
+          });
         }
       })
       .catch(err => {
@@ -240,88 +292,6 @@
   } else {
     console.warn("Usuario no válido.");
   }
-</script>
-
-<script>
-const userId = <?php echo isset($_SESSION['user_id']) ? intval($_SESSION['user_id']) : 0; ?>;
-
-if (userId > 0) {
-  fetch(`https://mobilitysolutionscorp.com/web/MS_get_tareas.php?user_id=${userId}`)
-    .then(res => res.json())
-    .then(data => {
-      if (data.success) {
-        const estados = {
-          1: document.getElementById('por-hacer'),
-          2: document.getElementById('en-proceso'),
-          3: document.getElementById('por-revisar'),
-          4: document.getElementById('hecho'),
-        };
-
-        data.tareas.forEach(tarea => {
-          const card = document.createElement("div");
-          card.className = "task-card";
-          card.setAttribute("draggable", "true");
-          card.dataset.id = tarea.id;
-          card.dataset.status = tarea.status;
-          card.dataset.creado_por = tarea.creado_por;
-          card.innerHTML = `
-            <h4>${tarea.nombre}</h4>
-            <p><strong>Asignado a:</strong> ${tarea.asignado_nombre}</p>
-            <p><strong>Reportado por:</strong> ${tarea.creado_por_nombre}</p>
-          `;
-          estados[tarea.status]?.appendChild(card);
-        });
-
-        // Habilitar columnas como zonas de drop
-        document.querySelectorAll('.kanban-column').forEach(column => {
-          column.addEventListener('dragover', e => e.preventDefault());
-          column.addEventListener('drop', e => {
-            e.preventDefault();
-            const targetStatus = parseInt(column.dataset.status);
-            const draggedCard = document.querySelector('.dragging');
-            const tareaId = parseInt(draggedCard.dataset.id);
-            const creador = parseInt(draggedCard.dataset.creado_por);
-
-            // Restricción: solo el creador puede mover a "Hecho"
-            if (targetStatus === 4 && userId !== creador) {
-              alert("Solo la persona que creó la tarea puede marcarla como 'Hecho'.");
-              return;
-            }
-
-            // Actualizar visualmente
-            column.querySelector('.kanban-tasks').appendChild(draggedCard);
-
-            // Llamar al API para actualizar el status
-            fetch('https://mobilitysolutionscorp.com/web/MS_update_tarea_status.php', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ id: tareaId, status: targetStatus })
-            })
-            .then(res => res.json())
-            .then(response => {
-              if (!response.success) {
-                alert("Error al actualizar el estatus: " + response.message);
-              }
-            })
-            .catch(err => console.error("Error al llamar API:", err));
-          });
-        });
-
-        // Eventos de arrastrar tarjeta
-        document.addEventListener('dragstart', e => {
-          if (e.target.classList.contains('task-card')) {
-            e.target.classList.add('dragging');
-          }
-        });
-
-        document.addEventListener('dragend', e => {
-          if (e.target.classList.contains('task-card')) {
-            e.target.classList.remove('dragging');
-          }
-        });
-      }
-    });
-}
 </script>
 
 
