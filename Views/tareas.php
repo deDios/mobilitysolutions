@@ -175,39 +175,43 @@
 </div>
 
 <script>
-  const userId = <?php echo intval($_SESSION['user_id']); ?>;
+  const userId = <?php echo isset($_SESSION['user_id']) ? intval($_SESSION['user_id']) : 0; ?>;
 
-  fetch(`https://mobilitysolutionscorp.com/web/MS_get_tareas.php?user_id=${userId}`)
-    .then(res => res.json())
-    .then(data => {
-      if (data.success) {
-        const estados = {
-          1: document.getElementById('por-hacer'),
-          2: document.getElementById('en-proceso'),
-          3: document.getElementById('por-revisar'),
-          4: document.getElementById('hecho'),
-        };
+  if (userId > 0) {
+    fetch(`https://mobilitysolutionscorp.com/web/MS_get_tareas.php?user_id=${userId}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          const estados = {
+            1: document.getElementById('por-hacer'),
+            2: document.getElementById('en-proceso'),
+            3: document.getElementById('por-revisar'),
+            4: document.getElementById('hecho'),
+          };
 
-        data.tareas.forEach(tarea => {
-          const card = document.createElement("div");
-          card.className = "task-card";
-          card.innerHTML = `
-            <h4>${tarea.nombre}</h4>
-            <p>${tarea.descripcion}</p>
-          `;
-          // Si el estado existe, lo colocamos
-          if (estados[tarea.status]) {
-            estados[tarea.status].appendChild(card);
-          }
-        });
-      } else {
-        console.error("Error al obtener tareas:", data.message);
-      }
-    })
-    .catch(err => {
-      console.error("Error de conexión:", err);
-    });
+          data.tareas.forEach(tarea => {
+            const card = document.createElement("div");
+            card.className = "task-card";
+            card.innerHTML = `
+              <h4>${tarea.nombre}</h4>
+              <p>${tarea.descripcion}</p>
+            `;
+            if (estados[tarea.status]) {
+              estados[tarea.status].appendChild(card);
+            }
+          });
+        } else {
+          console.error("Error al obtener tareas:", data.message);
+        }
+      })
+      .catch(err => {
+        console.error("Error de conexión:", err);
+      });
+  } else {
+    console.warn("Usuario no válido.");
+  }
 </script>
+
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
