@@ -443,4 +443,52 @@ h1 {
     color: #777;
 }
 
+.reconocimientos-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+  justify-content: flex-start;
+}
+
+.hex-reconocimiento {
+  width: 100px;
+  height: 115px;
+  background: #f3f3f3;
+  clip-path: polygon(
+    50% 0%,
+    93% 25%,
+    93% 75%,
+    50% 100%,
+    7% 75%,
+    7% 25%
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #333;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.hex-reconocimiento:hover {
+  transform: scale(1.05);
+}
+
+.hex-reconocimiento .titulo {
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.hex-reconocimiento .fecha {
+  font-size: 10px;
+  margin-top: 4px;
+  color: #555;
+}
+
 
