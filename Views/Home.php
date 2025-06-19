@@ -189,12 +189,14 @@
         </div>
 
         <div id="tareas-resumen" class="tareas-circulo">
-          <div class="circulo-tareas">
-            <span id="cantidad-tareas">0</span>
-          </div>
+          <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/tareas.php">
+            <div class="circulo-tareas">
+              <span id="cantidad-tareas">0</span>
+            </div>
+          </a>
           <div class="texto-tareas">Tareas en curso</div>
         </div>
-        
+
         <!-- Información de contacto -->
         <div class="profile-info">
             <p><small>Datos de contacto</small></p> <hr class="mt-2 mb-3"/>
