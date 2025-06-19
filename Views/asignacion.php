@@ -361,7 +361,7 @@ function mostrarMas() {
         body: JSON.stringify({
           nombre: nombre,
           asignado: parseInt(asignado),
-          descripcion: descripcion
+          descripcion: descripcion,
           creado_por: usuarioActual 
         })
       })
