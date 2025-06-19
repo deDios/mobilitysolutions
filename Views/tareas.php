@@ -39,6 +39,7 @@
     if ($result){ 
         while($row = mysqli_fetch_assoc($result)){
                             $user_id = $row['user_id'];
+                            $_SESSION['user_id'] = $user_id;
                             $user_name = $row['user_name'];
                             $user_password = $row['user_password'];
                             $user_type = $row['user_type'];
@@ -55,6 +56,7 @@
                            
         }
     }
+
     else{
         echo 'Falla en conexión.';
     }
