@@ -188,13 +188,13 @@
             </div>
         </div>
 
-        <a href="https://mobilitysolutionscorp.com/views/tareas.php" style="text-decoration: none;">
-          <div class="task-badge-container">
-            <div id="tarea-circle" class="task-badge-circle">0</div>
-            <span class="task-badge-text">Tareas en curso</span>
+        <div id="tareas-resumen" class="tareas-circulo">
+          <div class="circulo-tareas">
+            <span id="cantidad-tareas">0</span>
           </div>
-        </a>
-
+          <div class="texto-tareas">Tareas en curso</div>
+        </div>
+        
         <!-- Información de contacto -->
         <div class="profile-info">
             <p><small>Datos de contacto</small></p> <hr class="mt-2 mb-3"/>

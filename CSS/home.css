@@ -572,36 +572,5 @@ h1 {
     color: #333;
 }
 
-.task-badge-container {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-    gap: 10px;
-    transition: transform 0.2s ease;
-}
-
-.task-badge-container:hover {
-    transform: scale(1.03);
-}
-
-.task-badge-circle {
-    width: 50px;
-    height: 50px;
-    background-color: #007bff;
-    border-radius: 50%;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    font-size: 16px;
-    box-shadow: 0 0 8px rgba(0,0,0,0.2);
-}
-
-.task-badge-text {
-    font-size: 16px;
-    color: #333;
-    font-weight: 500;
-}
 
 
