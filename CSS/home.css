@@ -450,7 +450,7 @@ h1 {
   flex-wrap: wrap;
   gap: 16px;
   margin-top: 20px;
-  justify-content: flex-start;
+  justify-content: space-between;
 }
 
 .reconocimiento-item {
