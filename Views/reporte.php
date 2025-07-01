@@ -188,21 +188,23 @@ $query ='select
 <div class="ds">
 <div class="dashboard-container">
     <div class="header">
-      <div class="hex-box">
-        <h2 id="dealsTotal">0</h2>
-        <p>New Deals</p>
-      </div>
-      <div class="hex-box">
-        <h2 id="reservasTotal">0</h2>
-        <p>Reservations</p>
-      </div>
-      <div class="hex-box">
-        <h2 id="entregasTotal">0</h2>
-        <p>Deliveries</p>
-      </div>
-      <div class="chart-container">
-        <canvas id="graficaMetas" height="120"></canvas>
-      </div>
+        <div class="hex-totalizadores">
+            <div class="hex-box" id="dealsBox">
+            <h2 id="dealsTotal">0</h2>
+            <p>New Deals</p>
+            </div>
+            <div class="hex-box" id="reservasBox">
+            <h2 id="reservasTotal">0</h2>
+            <p>Reservations</p>
+            </div>
+            <div class="hex-box" id="entregasBox">
+            <h2 id="entregasTotal">0</h2>
+            <p>Deliveries</p>
+            </div>
+        </div>
+        <div class="chart-container">
+            <canvas id="graficaMetas"></canvas>
+        </div>
     </div>
 
     <div class="metrics-section">
