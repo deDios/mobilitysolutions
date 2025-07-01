@@ -180,25 +180,36 @@ body {
   padding: 20px;
 }
 
-/* CONTENEDOR DE HEADER en COLUMNA */
+/* CONTENEDOR DE HEADER EN FILA: HEX + GRAFICA */
 .header {
   display: flex;
-  flex-direction: column; /* ⬅️ Cambiado de row a column */
-  align-items: stretch;
-  justify-content: flex-start;
+  flex-direction: row; /* Layout horizontal */
+  align-items: flex-start;
+  justify-content: space-between;
   width: 100%;
+  gap: 0;
+  height: auto;
+}
+
+/* CONTENEDOR IZQUIERDO: HEXÁGONOS + CÍRCULOS */
+.hex-totalizadores-container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 /* HEXÁGONOS EN UNA SOLA FILA */
 .hex-totalizadores {
-  width: 100%; /* ⬅️ Ancho completo */
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 20px;
-  padding: 20px;
-  box-sizing: border-box;
+  width: 100%;
 }
 
 /* ESTADO ACTIVO DEL HEXÁGONO */
@@ -234,11 +245,10 @@ body {
   justify-content: center;
   align-items: center;
   gap: 12px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 20px;
   flex-wrap: nowrap;
   overflow-x: auto;
-  padding: 10px 0;
+  padding: 10px;
 }
 
 .month-circle {
@@ -269,17 +279,17 @@ body {
   background-color: #2ecc71;
 }
 
-/* GRAFICA ABAJO */
+/* GRAFICA A LA DERECHA */
 .chart-container {
-  width: 100%;
-  height: 400px;
+  width: 50%;
+  height: 450px;
   padding: 20px;
-  padding-top: 0;
+  padding-right: 100px;
   box-sizing: border-box;
 }
 
 .chart-container canvas {
-  width: 100% !important;
+  width: auto !important;
   height: 100% !important;
 }
 

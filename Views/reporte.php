@@ -187,27 +187,29 @@ $query ='select
 <div class="ds">
   <div class="dashboard-container">
     <div class="header">
-        <div class="hex-totalizadores">
+        <div class="hex-totalizadores-container">
+            <div class="hex-totalizadores">
             <div class="hex-box" id="dealsBox">
-            <h2 id="dealsTotal">0</h2>
-            <p>New Deals</p>
+                <h2 id="dealsTotal">0</h2>
+                <p>New Deals</p>
             </div>
             <div class="hex-box" id="reservasBox">
-            <h2 id="reservasTotal">0</h2>
-            <p>Reservations</p>
+                <h2 id="reservasTotal">0</h2>
+                <p>Reservations</p>
             </div>
             <div class="hex-box" id="entregasBox">
-            <h2 id="entregasTotal">0</h2>
-            <p>Deliveries</p>
+                <h2 id="entregasTotal">0</h2>
+                <p>Deliveries</p>
             </div>
+            </div>
+            <div id="avanceMensual" class="month-circles-container"></div>
         </div>
-
-        <div id="avanceMensual" class="month-circles-container"></div>
 
         <div class="chart-container">
             <canvas id="graficaMetas"></canvas>
         </div>
     </div>
+
 
     <div class="metrics-section">
       <h3>User Metrics</h3>
