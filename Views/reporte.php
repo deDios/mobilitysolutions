@@ -261,39 +261,41 @@ $query ='select
   // Gráfica mensual por tipo
   function renderGraficaPorTipo(tipo) {
     getDataUsuario(globalUserId).then(data => {
+        const tipoMeta = { New: 1, Reserva: 2, Entrega: 3 }[tipo];
         const meses = [
-        "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-        "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+        "enero", "febrero", "marzo", "abril", "mayo", "junio",
+        "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
         ];
 
-        const datosMensuales = new Array(12).fill(0);
-        const metaMensualFija = new Array(12).fill(10); // ← Meta fija por mes
-
-        // Sumar datos reales por mes
+        // Sumar avance real por mes
+        const avanceMensual = new Array(12).fill(0);
         data.hex.forEach(row => {
         const index = meses.findIndex(m => m.toLowerCase() === row.Mes.toLowerCase());
-        if (index >= 0) {
-            datosMensuales[index] += row[tipo] || 0;
-        }
+        if (index >= 0) avanceMensual[index] += row[tipo] || 0;
         });
 
-        // Destruir gráfica anterior
+        // Sumar metas por tipo_meta
+        const metasFiltradas = data.metas.filter(m => m.tipo_meta == tipoMeta);
+        const metasMensuales = meses.map(mes =>
+        metasFiltradas.reduce((sum, meta) => sum + (parseInt(meta[mes]) || 0), 0)
+        );
+
         if (currentChart) currentChart.destroy();
 
         const ctx = document.getElementById("graficaMetas").getContext("2d");
         currentChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: meses,
+            labels: meses.map(m => m.charAt(0).toUpperCase() + m.slice(1)),
             datasets: [
             {
                 label: `Avance mensual - ${tipo}`,
-                data: datosMensuales,
+                data: avanceMensual,
                 backgroundColor: '#3498db'
             },
             {
                 label: 'Meta',
-                data: metaMensualFija,
+                data: metasMensuales,
                 backgroundColor: '#95a5a6'
             }
             ]
@@ -305,6 +307,7 @@ $query ='select
         });
     });
     }
+
 
 
 function renderGauge(tipo) {
