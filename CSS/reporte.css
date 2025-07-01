@@ -232,8 +232,9 @@ body {
 /* GRAFICA A LA DERECHA */
 .chart-container {
   width: 50%;
-  height: 600px;
+  height: 450px;
   padding: 20px;
+  padding-right: 100px;
   box-sizing: border-box;
 }
 
