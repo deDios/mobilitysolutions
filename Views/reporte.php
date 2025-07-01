@@ -261,44 +261,60 @@ $query ='select
   // Gráfica mensual por tipo
   function renderGraficaPorTipo(tipo) {
     getDataUsuario(globalUserId).then(data => {
-      const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-      const datosMensuales = new Array(12).fill(0);
-      const target = new Array(12).fill(10);
+        const meses = [
+        "enero", "febrero", "marzo", "abril", "mayo", "junio",
+        "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+        ];
 
-      data.hex.forEach(row => {
-        const index = meses.indexOf(row.Mes);
+        const datosMensuales = new Array(12).fill(0);
+        const target = new Array(12).fill(0);
+
+        // Obtener valores alcanzados por mes
+        data.hex.forEach(row => {
+        const index = meses.findIndex(m => m.toLowerCase() === row.Mes.toLowerCase());
         if (index >= 0) {
-          datosMensuales[index] = row[tipo] || 0;
+            datosMensuales[index] = row[tipo] || 0;
         }
-      });
+        });
 
-      if (currentChart) currentChart.destroy();
+        // Obtener metas desde el servicio
+        const meta = data.metas.find(m => m.tipo_meta.toLowerCase() === tipo.toLowerCase());
+        if (meta) {
+        meses.forEach((mes, idx) => {
+            const valor = meta[mes];
+            target[idx] = valor !== null ? parseInt(valor) : 0;
+        });
+        }
 
-      const ctx = document.getElementById("graficaMetas").getContext("2d");
-      currentChart = new Chart(ctx, {
+        // Destruir gráfica previa si existe
+        if (currentChart) currentChart.destroy();
+
+        // Generar nueva gráfica
+        const ctx = document.getElementById("graficaMetas").getContext("2d");
+        currentChart = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: meses,
-          datasets: [
+            labels: meses.map(m => m.charAt(0).toUpperCase() + m.slice(1)), // Capitalizar
+            datasets: [
             {
-              label: `Avance mensual - ${tipo}`,
-              data: datosMensuales,
-              backgroundColor: '#3498db'
+                label: `Avance mensual - ${tipo}`,
+                data: datosMensuales,
+                backgroundColor: '#3498db'
             },
             {
-              label: 'Meta',
-              data: target,
-              backgroundColor: '#95a5a6'
+                label: 'Meta',
+                data: target,
+                backgroundColor: '#95a5a6'
             }
-          ]
+            ]
         },
         options: {
-          responsive: true,
-          maintainAspectRatio: false
+            responsive: true,
+            maintainAspectRatio: false
         }
-      });
+        });
     });
-  }
+    }
 
   // Gráfica tipo gauge
   function renderGauge(tipo) {
