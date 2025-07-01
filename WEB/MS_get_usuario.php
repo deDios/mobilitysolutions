@@ -36,7 +36,7 @@ while ($row = $result->fetch_assoc()) {
         "email" => $row["email"],
         "telefono" => $row["telefono"],
         "cumpleaños" => $row["cumpleaños"],
-        "foto" => "https://mobilitysolutionscorp.com/fotos/usuarios/{$row['user_id']}.jpg"
+        "foto" => "https://mobilitysolutionscorp.com/Imagenes/Usuarios/{$row['user_id']}.jpg"
     ];
 }
 

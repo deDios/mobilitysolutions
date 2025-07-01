@@ -219,7 +219,7 @@ $query ='select
   </div>
 </div>
   <script>
-    const globalUserId = 9999;
+const globalUserId = 9999;
 
 // Obtener metas y hexágonos para un usuario específico
 async function getDataUsuario(userId) {
@@ -256,7 +256,7 @@ function generarTotales(data) {
 function renderGrafica(data) {
   const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
   const acumulado = new Array(12).fill(0);
-  const target = new Array(12).fill(30); // Meta fija por mes (puedes cambiarla)
+  const target = new Array(12).fill(30); // Meta fija por mes (puedes ajustar esto)
 
   data.hex.forEach(row => {
     const mesIndex = meses.indexOf(row.Mes);
@@ -302,7 +302,14 @@ async function renderUserCards() {
 
   for (const usuario of usuarios) {
     const datos = await getDataUsuario(usuario.id);
-    const hex = datos.hex[datos.hex.length - 1] || { New: 0, Reserva: 0, Entrega: 0 };
+
+    // Suma total de hexágonos por usuario
+    let totalNew = 0, totalReserva = 0, totalEntrega = 0;
+    datos.hex.forEach(row => {
+      totalNew += row.New;
+      totalReserva += row.Reserva;
+      totalEntrega += row.Entrega;
+    });
 
     const div = document.createElement("div");
     div.className = "user-metric";
@@ -311,9 +318,9 @@ async function renderUserCards() {
       <h4>${usuario.nombre}</h4>
       <div class="user-role">${usuario.rol}</div>
       <div class="user-indicators">
-        <span>${hex.New}</span>
-        <span>${hex.Reserva}</span>
-        <span>${hex.Entrega}</span>
+        <span title="Nuevo en catálogo">${totalNew}</span>
+        <span title="Reserva de vehículo">${totalReserva}</span>
+        <span title="Entrega de vehículo">${totalEntrega}</span>
       </div>
     `;
     contenedor.appendChild(div);
@@ -322,14 +329,13 @@ async function renderUserCards() {
 
 // Inicializar todo el dashboard
 async function init() {
-  const data = await getDataUsuario(globalUserId); // resumen general
+  const data = await getDataUsuario(globalUserId); // Resumen general
   generarTotales(data);
   renderGrafica(data);
-  await renderUserCards(); // tarjetas por usuario
+  await renderUserCards(); // Tarjetas por usuario
 }
 
 init();
-
 
   </script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
