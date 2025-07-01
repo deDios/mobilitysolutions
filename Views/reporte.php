@@ -157,7 +157,7 @@ $query ='select
               <span class="sr-only">(current)</span>
             </a>
           </li>
-
+ 
           <li class="nav-item">
             <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/edicion_catalogo.php">Catálogo</a>
           </li>
@@ -186,10 +186,126 @@ $query ='select
 
 
 
+<div class="dashboard-container">
+    <div class="header">
+      <div class="hex-box">
+        <h2 id="dealsTotal">0</h2>
+        <p>New Deals</p>
+      </div>
+      <div class="hex-box">
+        <h2 id="reservasTotal">0</h2>
+        <p>Reservations</p>
+      </div>
+      <div class="hex-box">
+        <h2 id="entregasTotal">0</h2>
+        <p>Deliveries</p>
+      </div>
+      <div class="chart-container">
+        <canvas id="graficaMetas" height="120"></canvas>
+      </div>
+    </div>
 
+    <div class="metrics-section">
+      <h3>User Metrics</h3>
+      <div id="userMetrics" class="metrics-grid"></div>
+    </div>
 
+    <div class="recognitions-section">
+      <h3>Recognitions</h3>
+      <div class="recognitions-placeholder">
+        <!-- Espacio reservado para reconocimientos -->
+      </div>
+    </div>
+  </div>
 
+  <script>
+    const userIds = [1, 2, 3, 4, 5]; // Cambia por los IDs reales de usuarios
 
+    async function getData(userId) {
+    const metasRes = await fetch(`https://mobilitysolutionscorp.com/web/MS_get_metas_usuario.php?asignado=${userId}`);
+    const hexRes = await fetch(`https://mobilitysolutionscorp.com/db_consultas/hex_status.php?user_id=${userId}`);
+
+    const metasData = await metasRes.json();
+    const hexData = await hexRes.json();
+
+    return { metas: metasData?.metas || [], hex: hexData || [] };
+    }
+
+    function generarTotales(usersHexData) {
+    let totalDeals = 0, totalReservas = 0, totalEntregas = 0;
+
+    usersHexData.forEach(userData => {
+        userData.hex.forEach(row => {
+        totalDeals += row.New;
+        totalReservas += row.Reserva;
+        totalEntregas += row.Entrega;
+        });
+    });
+
+    document.getElementById("dealsTotal").innerText = totalDeals;
+    document.getElementById("reservasTotal").innerText = totalReservas;
+    document.getElementById("entregasTotal").innerText = totalEntregas;
+    }
+
+    function renderGrafica(usersHexData) {
+    const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+    const acumulado = new Array(12).fill(0);
+    const target = new Array(12).fill(30); // valor dummy
+
+    usersHexData.forEach(user => {
+        user.hex.forEach((row, index) => {
+        const mesIndex = meses.indexOf(row.Mes);
+        if (mesIndex >= 0) {
+            acumulado[mesIndex] += (row.New + row.Reserva + row.Entrega);
+        }
+        });
+    });
+
+    new Chart(document.getElementById("graficaMetas"), {
+        type: 'line',
+        data: {
+        labels: meses,
+        datasets: [
+            { label: 'New Users', data: acumulado, borderColor: '#3498db', fill: false },
+            { label: 'Targets', data: target, borderColor: '#bdc3c7', fill: false }
+        ]
+        }
+    });
+    }
+
+    function renderUserCards(usersHexData) {
+    const contenedor = document.getElementById("userMetrics");
+    contenedor.innerHTML = "";
+
+    usersHexData.forEach((data, i) => {
+        const hex = data.hex[data.hex.length - 1] || { New: 0, Reserva: 0, Entrega: 0 };
+        const div = document.createElement("div");
+        div.className = "user-metric";
+        div.innerHTML = `
+        <h4>Usuario ${userIds[i]}</h4>
+        <div class="user-role">Rol asignado</div>
+        <div class="user-indicators">
+            <span>${hex.New}</span>
+            <span>${hex.Reserva}</span>
+            <span>${hex.Entrega}</span>
+        </div>
+        `;
+        contenedor.appendChild(div);
+    });
+    }
+
+    async function init() {
+    const allData = await Promise.all(userIds.map(getData));
+    generarTotales(allData);
+    renderGrafica(allData);
+    renderUserCards(allData);
+    }
+
+    init();
+
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
