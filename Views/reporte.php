@@ -262,14 +262,14 @@ $query ='select
   function renderGraficaPorTipo(tipo) {
     getDataUsuario(globalUserId).then(data => {
         const meses = [
-        "enero", "febrero", "marzo", "abril", "mayo", "junio",
-        "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+        "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+        "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
         ];
 
         const datosMensuales = new Array(12).fill(0);
-        const metasMensuales = new Array(12).fill(0);
+        const metaMensualFija = new Array(12).fill(10); // ← Meta fija por mes
 
-        // Acumulamos los valores reales por mes
+        // Sumar datos reales por mes
         data.hex.forEach(row => {
         const index = meses.findIndex(m => m.toLowerCase() === row.Mes.toLowerCase());
         if (index >= 0) {
@@ -277,23 +277,14 @@ $query ='select
         }
         });
 
-        // Agrupar metas por mes sumando todas las filas con el tipo_meta coincidente
-        data.metas
-        .filter(m => m.tipo_meta?.toLowerCase() === tipo.toLowerCase())
-        .forEach(m => {
-            meses.forEach((mes, idx) => {
-            metasMensuales[idx] += parseInt(m[mes]) || 0;
-            });
-        });
-
+        // Destruir gráfica anterior
         if (currentChart) currentChart.destroy();
 
         const ctx = document.getElementById("graficaMetas").getContext("2d");
-
         currentChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: meses.map(m => m.charAt(0).toUpperCase() + m.slice(1)),
+            labels: meses,
             datasets: [
             {
                 label: `Avance mensual - ${tipo}`,
@@ -302,7 +293,7 @@ $query ='select
             },
             {
                 label: 'Meta',
-                data: metasMensuales,
+                data: metaMensualFija,
                 backgroundColor: '#95a5a6'
             }
             ]
@@ -317,52 +308,40 @@ $query ='select
 
 
 function renderGauge(tipo) {
-    getDataUsuario(globalUserId).then(data => {
-        const total = data.hex.reduce((acc, row) => acc + (row[tipo] || 0), 0);
+  getDataUsuario(globalUserId).then(data => {
+    const total = data.hex.reduce((acc, row) => acc + (row[tipo] || 0), 0);
+    const metaAnual = 120; // ← Meta fija para todo el año
 
-        const meses = [
-        "enero", "febrero", "marzo", "abril", "mayo", "junio",
-        "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
-        ];
+    if (currentChart) currentChart.destroy();
 
-        // Sumar todas las metas del año para ese tipo_meta
-        const metaAnual = data.metas
-        .filter(m => m.tipo_meta?.toLowerCase() === tipo.toLowerCase())
-        .reduce((sum, m) => {
-            return sum + meses.reduce((mesSum, mes) => mesSum + (parseInt(m[mes]) || 0), 0);
-        }, 0);
-
-        if (currentChart) currentChart.destroy();
-
-        const ctx = document.getElementById("graficaMetas").getContext("2d");
-        currentChart = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: ['Avance', 'Restante'],
-            datasets: [{
-            data: metaAnual > 0 ? [total, Math.max(0, metaAnual - total)] : [1, 0],
-            backgroundColor: ['#27ae60', '#ecf0f1']
-            }]
-        },
-        options: {
-            circumference: 180,
-            rotation: -90,
-            cutout: '70%',
-            plugins: {
-            tooltip: {
-                callbacks: {
-                label: function (ctx) {
-                    return ctx.label + ': ' + ctx.formattedValue + ' puntos';
-                }
-                }
-            },
-            legend: { display: false }
+    const ctx = document.getElementById("graficaMetas").getContext("2d");
+    currentChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Avance', 'Restante'],
+        datasets: [{
+          data: [total, Math.max(0, metaAnual - total)],
+          backgroundColor: ['#27ae60', '#ecf0f1']
+        }]
+      },
+      options: {
+        circumference: 180,
+        rotation: -90,
+        cutout: '70%',
+        plugins: {
+          tooltip: {
+            callbacks: {
+              label: function (ctx) {
+                return ctx.label + ': ' + ctx.formattedValue + ' puntos';
+              }
             }
+          },
+          legend: { display: false }
         }
-        });
+      }
     });
-    }
-
+  });
+}
 
 
   // Tarjetas por usuario
