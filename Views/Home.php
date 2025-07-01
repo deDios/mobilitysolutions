@@ -508,7 +508,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Después de inicializar la gráfica, cargar metas
       fetch(`https://mobilitysolutionscorp.com/web/MS_get_metas_usuario.php?asignado=${userId}`)
-        .then(response => response.json())
+        .then(response => response.json()) 
         .then(data => {
           if (data.success && data.metas.length > 0) {
             data.metas.forEach(meta => {

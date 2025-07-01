@@ -219,7 +219,7 @@ $query ='select
   </div>
 
   <script>
-    const userIds = [1, 2, 3, 4, 5]; // Cambia por los IDs reales de usuarios
+    const globalUserId = 9999;
 
     async function getData(userId) {
     const metasRes = await fetch(`https://mobilitysolutionscorp.com/web/MS_get_metas_usuario.php?asignado=${userId}`);
@@ -231,15 +231,13 @@ $query ='select
     return { metas: metasData?.metas || [], hex: hexData || [] };
     }
 
-    function generarTotales(usersHexData) {
+    function generarTotales(data) {
     let totalDeals = 0, totalReservas = 0, totalEntregas = 0;
 
-    usersHexData.forEach(userData => {
-        userData.hex.forEach(row => {
+    data.hex.forEach(row => {
         totalDeals += row.New;
         totalReservas += row.Reserva;
         totalEntregas += row.Entrega;
-        });
     });
 
     document.getElementById("dealsTotal").innerText = totalDeals;
@@ -247,18 +245,16 @@ $query ='select
     document.getElementById("entregasTotal").innerText = totalEntregas;
     }
 
-    function renderGrafica(usersHexData) {
+    function renderGrafica(data) {
     const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
     const acumulado = new Array(12).fill(0);
-    const target = new Array(12).fill(30); // valor dummy
+    const target = new Array(12).fill(30); // puedes ajustar esto
 
-    usersHexData.forEach(user => {
-        user.hex.forEach((row, index) => {
+    data.hex.forEach(row => {
         const mesIndex = meses.indexOf(row.Mes);
         if (mesIndex >= 0) {
-            acumulado[mesIndex] += (row.New + row.Reserva + row.Entrega);
+        acumulado[mesIndex] += (row.New + row.Reserva + row.Entrega);
         }
-        });
     });
 
     new Chart(document.getElementById("graficaMetas"), {
@@ -273,32 +269,39 @@ $query ='select
     });
     }
 
-    function renderUserCards(usersHexData) {
+    function renderUserCards() {
     const contenedor = document.getElementById("userMetrics");
-    contenedor.innerHTML = "";
-
-    usersHexData.forEach((data, i) => {
-        const hex = data.hex[data.hex.length - 1] || { New: 0, Reserva: 0, Entrega: 0 };
-        const div = document.createElement("div");
-        div.className = "user-metric";
-        div.innerHTML = `
-        <h4>Usuario ${userIds[i]}</h4>
-        <div class="user-role">Rol asignado</div>
+    contenedor.innerHTML = `
+        <div class="user-metric">
+        <h4>Total General</h4>
+        <div class="user-role">Todos los empleados</div>
         <div class="user-indicators">
-            <span>${hex.New}</span>
-            <span>${hex.Reserva}</span>
-            <span>${hex.Entrega}</span>
+            <span id="hexNew">0</span>
+            <span id="hexReserva">0</span>
+            <span id="hexEntrega">0</span>
         </div>
-        `;
-        contenedor.appendChild(div);
-    });
+        </div>
+    `;
     }
 
     async function init() {
-    const allData = await Promise.all(userIds.map(getData));
-    generarTotales(allData);
-    renderGrafica(allData);
-    renderUserCards(allData);
+    const data = await getData(globalUserId);
+
+    generarTotales(data);
+    renderGrafica(data);
+    renderUserCards();
+
+    // Actualiza valores en hexágonos de resumen
+    let totalNew = 0, totalReserva = 0, totalEntrega = 0;
+    data.hex.forEach(row => {
+        totalNew += row.New;
+        totalReserva += row.Reserva;
+        totalEntrega += row.Entrega;
+    });
+
+    document.getElementById("hexNew").innerText = totalNew;
+    document.getElementById("hexReserva").innerText = totalReserva;
+    document.getElementById("hexEntrega").innerText = totalEntrega;
     }
 
     init();
