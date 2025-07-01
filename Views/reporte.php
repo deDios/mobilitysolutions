@@ -184,27 +184,27 @@ $query ='select
   </nav>
 </div>
 
-
 <div class="ds">
-<div class="dashboard-container">
+  <div class="dashboard-container">
     <div class="header">
-        <div class="hex-totalizadores">
-            <div class="hex-box" id="dealsBox">
-            <h2 id="dealsTotal">0</h2>
-            <p>New Deals</p>
-            </div>
-            <div class="hex-box" id="reservasBox">
-            <h2 id="reservasTotal">0</h2>
-            <p>Reservations</p>
-            </div>
-            <div class="hex-box" id="entregasBox">
-            <h2 id="entregasTotal">0</h2>
-            <p>Deliveries</p>
-            </div>
+      <div class="hex-totalizadores">
+        <div class="hex-box" id="dealsBox">
+          <h2 id="dealsTotal">0</h2>
+          <p>New Deals</p>
         </div>
-        <div class="chart-container">
-            <canvas id="graficaMetas"></canvas>
+        <div class="hex-box" id="reservasBox">
+          <h2 id="reservasTotal">0</h2>
+          <p>Reservations</p>
         </div>
+        <div class="hex-box" id="entregasBox">
+          <h2 id="entregasTotal">0</h2>
+          <p>Deliveries</p>
+        </div>
+      </div>
+      <div class="chart-container">
+        <canvas id="graficaMetas"></canvas>
+        <div id="avanceMensual" class="month-circles"></div>
+      </div>
     </div>
 
     <div class="metrics-section">
@@ -221,13 +221,11 @@ $query ='select
   </div>
 </div>
 
-
- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
   const globalUserId = 9999;
   let currentChart = null;
 
-  // Obtener metas y hexágonos para un usuario específico
   async function getDataUsuario(userId) {
     const metasRes = await fetch(`https://mobilitysolutionscorp.com/web/MS_get_metas_usuario.php?asignado=${userId}`);
     const hexRes = await fetch(`https://mobilitysolutionscorp.com/db_consultas/hex_status.php?user_id=${userId}`);
@@ -236,14 +234,12 @@ $query ='select
     return { metas: metasData?.metas || [], hex: hexData || [] };
   }
 
-  // Obtener lista de usuarios
   async function getUsuarios() {
     const res = await fetch("https://mobilitysolutionscorp.com/web/MS_get_usuario.php");
     const data = await res.json();
     return data.usuarios || [];
   }
 
-  // Generar totalizadores superiores
   function generarTotales(data) {
     let totalDeals = 0, totalReservas = 0, totalEntregas = 0;
 
@@ -258,109 +254,102 @@ $query ='select
     document.getElementById("entregasTotal").innerText = totalEntregas;
   }
 
-  // Gráfica mensual por tipo
+  function renderAvanceMensual(tipo, avance, metas) {
+    const container = document.getElementById("avanceMensual");
+    container.innerHTML = "";
+    const meses = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
+
+    if (tipo === "Entrega") {
+      const totalAvance = avance.reduce((acc, val) => acc + val, 0);
+      const totalMeta = metas.reduce((acc, val) => acc + val, 0);
+      const pct = totalMeta ? (totalAvance / totalMeta) * 100 : 0;
+      const color = pct < 90 ? 'gris' : pct < 98 ? 'amarillo' : 'verde';
+      const circle = `<div class="month-circle ${color}"><div>${Math.round(pct)}%</div></div>`;
+      container.innerHTML = circle;
+    } else {
+      meses.forEach((mes, i) => {
+        const pct = metas[i] ? (avance[i] / metas[i]) * 100 : 0;
+        const color = pct < 90 ? 'gris' : pct < 98 ? 'amarillo' : 'verde';
+        const circle = `<div class="month-circle ${color}"><div>${mes}<br>${Math.round(pct)}%</div></div>`;
+        container.innerHTML += circle;
+      });
+    }
+  }
+
   function renderGraficaPorTipo(tipo) {
     getDataUsuario(globalUserId).then(data => {
-        const tipoMeta = { New: 1, Reserva: 2, Entrega: 3 }[tipo];
-        const meses = [
-        "enero", "febrero", "marzo", "abril", "mayo", "junio",
-        "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
-        ];
+      const tipoMeta = { New: 1, Reserva: 2, Entrega: 3 }[tipo];
+      const meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
 
-        // Sumar avance real por mes
-        const avanceMensual = new Array(12).fill(0);
-        data.hex.forEach(row => {
+      const avanceMensual = new Array(12).fill(0);
+      data.hex.forEach(row => {
         const index = meses.findIndex(m => m.toLowerCase() === row.Mes.toLowerCase());
         if (index >= 0) avanceMensual[index] += row[tipo] || 0;
-        });
+      });
 
-        // Sumar metas por tipo_meta
-        const metasFiltradas = data.metas.filter(m => m.tipo_meta == tipoMeta);
-        const metasMensuales = meses.map(mes =>
+      const metasFiltradas = data.metas.filter(m => m.tipo_meta == tipoMeta);
+      const metasMensuales = meses.map(mes =>
         metasFiltradas.reduce((sum, meta) => sum + (parseInt(meta[mes]) || 0), 0)
-        );
+      );
 
-        if (currentChart) currentChart.destroy();
+      renderAvanceMensual(tipo, avanceMensual, metasMensuales);
 
-        const ctx = document.getElementById("graficaMetas").getContext("2d");
-        currentChart = new Chart(ctx, {
+      if (currentChart) currentChart.destroy();
+      const ctx = document.getElementById("graficaMetas").getContext("2d");
+      currentChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: meses.map(m => m.charAt(0).toUpperCase() + m.slice(1)),
-            datasets: [
-            {
-                label: `Avance mensual - ${tipo}`,
-                data: avanceMensual,
-                backgroundColor: '#3498db'
-            },
-            {
-                label: 'Meta',
-                data: metasMensuales,
-                backgroundColor: '#95a5a6'
-            }
-            ]
+          labels: meses.map(m => m.charAt(0).toUpperCase() + m.slice(1)),
+          datasets: [
+            { label: `Avance mensual - ${tipo}`, data: avanceMensual, backgroundColor: '#3498db' },
+            { label: 'Meta', data: metasMensuales, backgroundColor: '#95a5a6' }
+          ]
+        },
+        options: { responsive: true, maintainAspectRatio: false }
+      });
+    });
+  }
+
+  function renderGauge(tipo) {
+    getDataUsuario(globalUserId).then(data => {
+      const tipoMeta = { New: 1, Reserva: 2, Entrega: 3 }[tipo];
+      const meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+
+      const totalAvance = data.hex.reduce((acc, row) => acc + (row[tipo] || 0), 0);
+      const metasFiltradas = data.metas.filter(m => m.tipo_meta == tipoMeta);
+      const metaAnual = meses.reduce((sum, mes) =>
+        sum + metasFiltradas.reduce((subtotal, meta) => subtotal + (parseInt(meta[mes]) || 0), 0), 0
+      );
+
+      renderAvanceMensual(tipo, [totalAvance], [metaAnual]);
+
+      if (currentChart) currentChart.destroy();
+      const ctx = document.getElementById("graficaMetas").getContext("2d");
+      currentChart = new Chart(ctx, {
+        type: 'polarArea',
+        data: {
+          labels: ['Avance', 'Pendiente'],
+          datasets: [{
+            data: [totalAvance, Math.max(0, metaAnual - totalAvance)],
+            backgroundColor: ['#2980b9', '#dcdde1']
+          }]
         },
         options: {
-            responsive: true,
-            maintainAspectRatio: false
-        }
-        });
-    });
-    }
-
-
-function renderGauge(tipo) {
-  getDataUsuario(globalUserId).then(data => {
-    const tipoMeta = { New: 1, Reserva: 2, Entrega: 3 }[tipo];
-    const meses = [
-      "enero", "febrero", "marzo", "abril", "mayo", "junio",
-      "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
-    ];
-
-    const totalAvance = data.hex.reduce((acc, row) => acc + (row[tipo] || 0), 0);
-
-    const metasFiltradas = data.metas.filter(m => m.tipo_meta == tipoMeta);
-    const metaAnual = meses.reduce((sum, mes) =>
-      sum + metasFiltradas.reduce((subtotal, meta) => subtotal + (parseInt(meta[mes]) || 0), 0), 0
-    );
-
-    if (currentChart) currentChart.destroy();
-
-    const ctx = document.getElementById("graficaMetas").getContext("2d");
-    currentChart = new Chart(ctx, {
-      type: 'polarArea',
-      data: {
-        labels: ['Avance', 'Pendiente'],
-        datasets: [{
-          data: [totalAvance, Math.max(0, metaAnual - totalAvance)],
-          backgroundColor: ['#2980b9', '#dcdde1']
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            display: true,
-            position: 'bottom'
-          },
-          tooltip: {
-            enabled: true,
-            callbacks: {
-              label: function (context) {
-                const label = context.label || '';
-                const value = context.raw || 0;
-                return `${label}: ${value}`;
+          responsive: true,
+          plugins: {
+            legend: { display: true, position: 'bottom' },
+            tooltip: {
+              enabled: true,
+              callbacks: {
+                label: context => `${context.label || ''}: ${context.raw || 0}`
               }
             }
           }
         }
-      }
+      });
     });
-  });
-}
+  }
 
-
-  // Tarjetas por usuario
   async function renderUserCards() {
     const usuarios = await getUsuarios();
     const contenedor = document.getElementById("userMetrics");
@@ -369,7 +358,6 @@ function renderGauge(tipo) {
     for (const usuario of usuarios) {
       const datos = await getDataUsuario(usuario.id);
       let totalNew = 0, totalReserva = 0, totalEntrega = 0;
-
       datos.hex.forEach(row => {
         totalNew += row.New;
         totalReserva += row.Reserva;
@@ -396,22 +384,19 @@ function renderGauge(tipo) {
     }
   }
 
-  // Activar visualmente el hexágono actual
   function activarHexagono(hexId) {
     document.querySelectorAll(".hex-box").forEach(box => box.classList.remove("active"));
     const box = document.getElementById(hexId);
     if (box) box.classList.add("active");
   }
 
-  // Inicializar dashboard
   async function init() {
     const data = await getDataUsuario(globalUserId);
     generarTotales(data);
-    renderGraficaPorTipo("New"); // Por defecto
+    renderGraficaPorTipo("New");
     activarHexagono("dealsBox");
     await renderUserCards();
 
-    // Eventos con activación visual
     document.getElementById("dealsBox").addEventListener("click", () => {
       activarHexagono("dealsBox");
       renderGraficaPorTipo("New");

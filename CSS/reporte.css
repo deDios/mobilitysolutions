@@ -243,6 +243,44 @@ body {
   height: 100% !important;
 }
 
+/* CÍRCULOS DE CUMPLIMIENTO MENSUAL */
+.month-circles-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  gap: 12px;
+}
+
+.month-circle {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background-color: #ccc;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.month-circle.gray {
+  background-color: #bdc3c7;
+}
+
+.month-circle.yellow {
+  background-color: #f1c40f;
+}
+
+.month-circle.green {
+  background-color: #2ecc71;
+}
+
 /* METRICAS POR USUARIO */
 .metrics-section {
   margin-top: 60px;
@@ -321,14 +359,8 @@ body {
 }
 
 /* COLORES POR TIPO DE INDICADOR */
-.user-indicators span:nth-child(1) {
-  background-color: #7DA5FD;
-}
-
-.user-indicators span:nth-child(2) {
-  background-color: #7DA5FD;
-}
-
+.user-indicators span:nth-child(1),
+.user-indicators span:nth-child(2),
 .user-indicators span:nth-child(3) {
   background-color: #7DA5FD;
 }
@@ -337,3 +369,4 @@ body {
 .recognitions-section {
   margin-top: 40px;
 }
+
