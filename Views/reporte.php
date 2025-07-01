@@ -317,10 +317,8 @@ function renderGauge(tipo) {
       "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
     ];
 
-    // Sumar avance real anual
     const totalAvance = data.hex.reduce((acc, row) => acc + (row[tipo] || 0), 0);
 
-    // Sumar meta anual del tipo_meta
     const metasFiltradas = data.metas.filter(m => m.tipo_meta == tipoMeta);
     const metaAnual = meses.reduce((sum, mes) =>
       sum + metasFiltradas.reduce((subtotal, meta) => subtotal + (parseInt(meta[mes]) || 0), 0), 0
@@ -330,27 +328,36 @@ function renderGauge(tipo) {
 
     const ctx = document.getElementById("graficaMetas").getContext("2d");
     currentChart = new Chart(ctx, {
-      type: 'doughnut',
+      type: 'polarArea',
       data: {
-        labels: ['Avance', 'Restante'],
+        labels: ['Avance', 'Pendiente'],
         datasets: [{
           data: [totalAvance, Math.max(0, metaAnual - totalAvance)],
-          backgroundColor: ['#27ae60', '#ecf0f1']
+          backgroundColor: ['#2980b9', '#dcdde1']
         }]
       },
       options: {
-        circumference: 180,
-        rotation: -90,
-        cutout: '70%',
+        responsive: true,
         plugins: {
-          tooltip: { enabled: true },
-          legend: { display: false }
+          legend: {
+            display: true,
+            position: 'bottom'
+          },
+          tooltip: {
+            enabled: true,
+            callbacks: {
+              label: function (context) {
+                const label = context.label || '';
+                const value = context.raw || 0;
+                return `${label}: ${value}`;
+              }
+            }
+          }
         }
       }
     });
   });
 }
-
 
 
   // Tarjetas por usuario
