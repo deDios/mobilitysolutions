@@ -267,34 +267,33 @@ $query ='select
         ];
 
         const datosMensuales = new Array(12).fill(0);
-        const target = new Array(12).fill(0);
+        const metasMensuales = new Array(12).fill(0);
 
-        // Obtener valores alcanzados por mes
+        // Sumar los valores reales por mes
         data.hex.forEach(row => {
         const index = meses.findIndex(m => m.toLowerCase() === row.Mes.toLowerCase());
         if (index >= 0) {
-            datosMensuales[index] = row[tipo] || 0;
+            datosMensuales[index] += row[tipo] || 0;
         }
         });
 
-        // Obtener metas desde el servicio
-        const meta = data.metas.find(m => m.tipo_meta.toLowerCase() === tipo.toLowerCase());
+        // Buscar metas desde el backend
+        const meta = data.metas.find(m => m.tipo_meta?.toLowerCase() === tipo.toLowerCase());
+
         if (meta) {
-        meses.forEach((mes, idx) => {
-            const valor = meta[mes];
-            target[idx] = valor !== null ? parseInt(valor) : 0;
+        meses.forEach((mes, i) => {
+            metasMensuales[i] = parseInt(meta[mes]) || 0;
         });
         }
 
-        // Destruir gráfica previa si existe
         if (currentChart) currentChart.destroy();
 
-        // Generar nueva gráfica
         const ctx = document.getElementById("graficaMetas").getContext("2d");
+
         currentChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: meses.map(m => m.charAt(0).toUpperCase() + m.slice(1)), // Capitalizar
+            labels: meses.map(m => m.charAt(0).toUpperCase() + m.slice(1)),
             datasets: [
             {
                 label: `Avance mensual - ${tipo}`,
@@ -303,7 +302,7 @@ $query ='select
             },
             {
                 label: 'Meta',
-                data: target,
+                data: metasMensuales,
                 backgroundColor: '#95a5a6'
             }
             ]
@@ -316,18 +315,17 @@ $query ='select
     });
     }
 
+
   function renderGauge(tipo) {
     getDataUsuario(globalUserId).then(data => {
-        // Total alcanzado en el año
         const total = data.hex.reduce((acc, row) => acc + (row[tipo] || 0), 0);
 
-        // Buscar metas del tipo solicitado
         const meses = [
         "enero", "febrero", "marzo", "abril", "mayo", "junio",
         "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
         ];
 
-        const meta = data.metas.find(m => m.tipo_meta.toLowerCase() === tipo.toLowerCase());
+        const meta = data.metas.find(m => m.tipo_meta?.toLowerCase() === tipo.toLowerCase());
         const metaAnual = meta
         ? meses.reduce((sum, mes) => sum + (parseInt(meta[mes]) || 0), 0)
         : 0;
@@ -340,7 +338,7 @@ $query ='select
         data: {
             labels: ['Avance', 'Restante'],
             datasets: [{
-            data: [total, Math.max(0, metaAnual - total)],
+            data: metaAnual > 0 ? [total, Math.max(0, metaAnual - total)] : [1, 0],
             backgroundColor: ['#27ae60', '#ecf0f1']
             }]
         },
@@ -349,13 +347,20 @@ $query ='select
             rotation: -90,
             cutout: '70%',
             plugins: {
-            tooltip: { enabled: true },
+            tooltip: {
+                callbacks: {
+                label: function (ctx) {
+                    return ctx.label + ': ' + ctx.formattedValue + ' puntos';
+                }
+                }
+            },
             legend: { display: false }
             }
         }
         });
     });
     }
+
 
   // Tarjetas por usuario
   async function renderUserCards() {
