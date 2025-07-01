@@ -248,6 +248,7 @@ body {
   margin-top: 20px;
   flex-wrap: nowrap;
   overflow-x: auto;
+  padding-top: 100px;
   padding: 10px;
 }
 
@@ -261,7 +262,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 100px;
   font-size: 10px;
   font-weight: bold;
   text-align: center;
