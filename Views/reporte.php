@@ -316,36 +316,46 @@ $query ='select
     });
     }
 
-  // Gráfica tipo gauge
   function renderGauge(tipo) {
     getDataUsuario(globalUserId).then(data => {
-      const total = data.hex.reduce((acc, row) => acc + (row[tipo] || 0), 0);
-      const metaAnual = 120;
+        // Total alcanzado en el año
+        const total = data.hex.reduce((acc, row) => acc + (row[tipo] || 0), 0);
 
-      if (currentChart) currentChart.destroy();
+        // Buscar metas del tipo solicitado
+        const meses = [
+        "enero", "febrero", "marzo", "abril", "mayo", "junio",
+        "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+        ];
 
-      const ctx = document.getElementById("graficaMetas").getContext("2d");
-      currentChart = new Chart(ctx, {
+        const meta = data.metas.find(m => m.tipo_meta.toLowerCase() === tipo.toLowerCase());
+        const metaAnual = meta
+        ? meses.reduce((sum, mes) => sum + (parseInt(meta[mes]) || 0), 0)
+        : 0;
+
+        if (currentChart) currentChart.destroy();
+
+        const ctx = document.getElementById("graficaMetas").getContext("2d");
+        currentChart = new Chart(ctx, {
         type: 'doughnut',
         data: {
-          labels: ['Avance', 'Restante'],
-          datasets: [{
+            labels: ['Avance', 'Restante'],
+            datasets: [{
             data: [total, Math.max(0, metaAnual - total)],
             backgroundColor: ['#27ae60', '#ecf0f1']
-          }]
+            }]
         },
         options: {
-          circumference: 180,
-          rotation: -90,
-          cutout: '70%',
-          plugins: {
+            circumference: 180,
+            rotation: -90,
+            cutout: '70%',
+            plugins: {
             tooltip: { enabled: true },
             legend: { display: false }
-          }
+            }
         }
-      });
+        });
     });
-  }
+    }
 
   // Tarjetas por usuario
   async function renderUserCards() {
