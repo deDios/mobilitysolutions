@@ -185,7 +185,7 @@ $query ='select
 </div>
 
 
-
+<div class="ds">
 <div class="dashboard-container">
     <div class="header">
       <div class="hex-box">
@@ -217,7 +217,7 @@ $query ='select
       </div>
     </div>
   </div>
-
+</div>
   <script>
     const globalUserId = 9999;
 
