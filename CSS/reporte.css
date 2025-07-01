@@ -180,20 +180,18 @@ body {
   padding: 20px;
 }
 
-/* CONTENEDOR DE HEADER (Hexágonos + Gráfica) */
+/* CONTENEDOR DE HEADER en COLUMNA */
 .header {
   display: flex;
-  flex-direction: row;
+  flex-direction: column; /* ⬅️ Cambiado de row a column */
   align-items: stretch;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 100%;
-  height: 450px;
-  gap: 0;
 }
 
 /* HEXÁGONOS EN UNA SOLA FILA */
 .hex-totalizadores {
-  width: 50%;
+  width: 100%; /* ⬅️ Ancho completo */
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -229,20 +227,6 @@ body {
   transform: scale(1.05);
 }
 
-/* GRAFICA A LA DERECHA */
-.chart-container {
-  width: 50%;
-  height: 450px;
-  padding: 20px;
-  padding-right: 100px;
-  box-sizing: border-box;
-}
-
-.chart-container canvas {
-  width: auto !important;
-  height: 100% !important;
-}
-
 /* CÍRCULOS DE CUMPLIMIENTO MENSUAL */
 .month-circles-container {
   display: flex;
@@ -250,10 +234,11 @@ body {
   justify-content: center;
   align-items: center;
   gap: 12px;
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   flex-wrap: nowrap;
   overflow-x: auto;
-  padding: 10px;
+  padding: 10px 0;
 }
 
 .month-circle {
@@ -282,6 +267,20 @@ body {
 
 .month-circle.green {
   background-color: #2ecc71;
+}
+
+/* GRAFICA ABAJO */
+.chart-container {
+  width: 100%;
+  height: 400px;
+  padding: 20px;
+  padding-top: 0;
+  box-sizing: border-box;
+}
+
+.chart-container canvas {
+  width: 100% !important;
+  height: 100% !important;
 }
 
 /* METRICAS POR USUARIO */
@@ -372,4 +371,3 @@ body {
 .recognitions-section {
   margin-top: 40px;
 }
-
