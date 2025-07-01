@@ -191,15 +191,15 @@ $query ='select
             <div class="hex-totalizadores">
             <div class="hex-box" id="dealsBox">
                 <h2 id="dealsTotal">0</h2>
-                <p>New Deals</p>
+                <p>Nuevos</p>
             </div>
             <div class="hex-box" id="reservasBox">
                 <h2 id="reservasTotal">0</h2>
-                <p>Reservations</p>
+                <p>Contratos</p>
             </div>
             <div class="hex-box" id="entregasBox">
                 <h2 id="entregasTotal">0</h2>
-                <p>Deliveries</p>
+                <p>Entregas</p>
             </div>
         </div>
         <div class="circulos">
