@@ -309,11 +309,22 @@ $query ='select
     }
 
 
-
 function renderGauge(tipo) {
   getDataUsuario(globalUserId).then(data => {
-    const total = data.hex.reduce((acc, row) => acc + (row[tipo] || 0), 0);
-    const metaAnual = 120; // ← Meta fija para todo el año
+    const tipoMeta = { New: 1, Reserva: 2, Entrega: 3 }[tipo];
+    const meses = [
+      "enero", "febrero", "marzo", "abril", "mayo", "junio",
+      "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+    ];
+
+    // Sumar avance real anual
+    const totalAvance = data.hex.reduce((acc, row) => acc + (row[tipo] || 0), 0);
+
+    // Sumar meta anual del tipo_meta
+    const metasFiltradas = data.metas.filter(m => m.tipo_meta == tipoMeta);
+    const metaAnual = meses.reduce((sum, mes) =>
+      sum + metasFiltradas.reduce((subtotal, meta) => subtotal + (parseInt(meta[mes]) || 0), 0), 0
+    );
 
     if (currentChart) currentChart.destroy();
 
@@ -323,7 +334,7 @@ function renderGauge(tipo) {
       data: {
         labels: ['Avance', 'Restante'],
         datasets: [{
-          data: [total, Math.max(0, metaAnual - total)],
+          data: [totalAvance, Math.max(0, metaAnual - totalAvance)],
           backgroundColor: ['#27ae60', '#ecf0f1']
         }]
       },
@@ -332,19 +343,14 @@ function renderGauge(tipo) {
         rotation: -90,
         cutout: '70%',
         plugins: {
-          tooltip: {
-            callbacks: {
-              label: function (ctx) {
-                return ctx.label + ': ' + ctx.formattedValue + ' puntos';
-              }
-            }
-          },
+          tooltip: { enabled: true },
           legend: { display: false }
         }
       }
     });
   });
 }
+
 
 
   // Tarjetas por usuario
