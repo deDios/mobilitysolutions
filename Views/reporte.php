@@ -269,7 +269,7 @@ $query ='select
         const datosMensuales = new Array(12).fill(0);
         const metasMensuales = new Array(12).fill(0);
 
-        // Sumar los valores reales por mes
+        // Acumulamos los valores reales por mes
         data.hex.forEach(row => {
         const index = meses.findIndex(m => m.toLowerCase() === row.Mes.toLowerCase());
         if (index >= 0) {
@@ -277,14 +277,14 @@ $query ='select
         }
         });
 
-        // Buscar metas desde el backend
-        const meta = data.metas.find(m => m.tipo_meta?.toLowerCase() === tipo.toLowerCase());
-
-        if (meta) {
-        meses.forEach((mes, i) => {
-            metasMensuales[i] = parseInt(meta[mes]) || 0;
+        // Agrupar metas por mes sumando todas las filas con el tipo_meta coincidente
+        data.metas
+        .filter(m => m.tipo_meta?.toLowerCase() === tipo.toLowerCase())
+        .forEach(m => {
+            meses.forEach((mes, idx) => {
+            metasMensuales[idx] += parseInt(m[mes]) || 0;
+            });
         });
-        }
 
         if (currentChart) currentChart.destroy();
 
@@ -316,7 +316,7 @@ $query ='select
     }
 
 
-  function renderGauge(tipo) {
+function renderGauge(tipo) {
     getDataUsuario(globalUserId).then(data => {
         const total = data.hex.reduce((acc, row) => acc + (row[tipo] || 0), 0);
 
@@ -325,10 +325,12 @@ $query ='select
         "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
         ];
 
-        const meta = data.metas.find(m => m.tipo_meta?.toLowerCase() === tipo.toLowerCase());
-        const metaAnual = meta
-        ? meses.reduce((sum, mes) => sum + (parseInt(meta[mes]) || 0), 0)
-        : 0;
+        // Sumar todas las metas del año para ese tipo_meta
+        const metaAnual = data.metas
+        .filter(m => m.tipo_meta?.toLowerCase() === tipo.toLowerCase())
+        .reduce((sum, m) => {
+            return sum + meses.reduce((mesSum, mes) => mesSum + (parseInt(m[mes]) || 0), 0);
+        }, 0);
 
         if (currentChart) currentChart.destroy();
 
@@ -360,6 +362,7 @@ $query ='select
         });
     });
     }
+
 
 
   // Tarjetas por usuario
