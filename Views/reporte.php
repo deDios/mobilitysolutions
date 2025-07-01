@@ -201,8 +201,10 @@ $query ='select
                 <h2 id="entregasTotal">0</h2>
                 <p>Deliveries</p>
             </div>
-            </div>
+        </div>
+        <div class="circulos">
             <div id="avanceMensual" class="month-circles-container"></div>
+        </div>
         </div>
 
         <div class="chart-container">
