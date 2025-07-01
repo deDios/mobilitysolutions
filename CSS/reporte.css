@@ -256,4 +256,13 @@ body {
 .recognitions-section {
   margin-top: 40px;
 }
+
+.user-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
  

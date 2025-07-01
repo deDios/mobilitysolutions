@@ -221,90 +221,115 @@ $query ='select
   <script>
     const globalUserId = 9999;
 
-    async function getData(userId) {
-    const metasRes = await fetch(`https://mobilitysolutionscorp.com/web/MS_get_metas_usuario.php?asignado=${userId}`);
-    const hexRes = await fetch(`https://mobilitysolutionscorp.com/db_consultas/hex_status.php?user_id=${userId}`);
+// Obtener metas y hexágonos para un usuario específico
+async function getDataUsuario(userId) {
+  const metasRes = await fetch(`https://mobilitysolutionscorp.com/web/MS_get_metas_usuario.php?asignado=${userId}`);
+  const hexRes = await fetch(`https://mobilitysolutionscorp.com/db_consultas/hex_status.php?user_id=${userId}`);
+  const metasData = await metasRes.json();
+  const hexData = await hexRes.json();
+  return { metas: metasData?.metas || [], hex: hexData || [] };
+}
 
-    const metasData = await metasRes.json();
-    const hexData = await hexRes.json();
+// Obtener lista de usuarios
+async function getUsuarios() {
+  const res = await fetch("https://mobilitysolutionscorp.com/web/MS_get_usuario.php");
+  const data = await res.json();
+  return data.usuarios || [];
+}
 
-    return { metas: metasData?.metas || [], hex: hexData || [] };
+// Generar los totalizadores superiores del dashboard
+function generarTotales(data) {
+  let totalDeals = 0, totalReservas = 0, totalEntregas = 0;
+
+  data.hex.forEach(row => {
+    totalDeals += row.New;
+    totalReservas += row.Reserva;
+    totalEntregas += row.Entrega;
+  });
+
+  document.getElementById("dealsTotal").innerText = totalDeals;
+  document.getElementById("reservasTotal").innerText = totalReservas;
+  document.getElementById("entregasTotal").innerText = totalEntregas;
+}
+
+// Renderizar la gráfica general del dashboard
+function renderGrafica(data) {
+  const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+  const acumulado = new Array(12).fill(0);
+  const target = new Array(12).fill(30); // Meta fija por mes (puedes cambiarla)
+
+  data.hex.forEach(row => {
+    const mesIndex = meses.indexOf(row.Mes);
+    if (mesIndex >= 0) {
+      acumulado[mesIndex] += (row.New + row.Reserva + row.Entrega);
     }
+  });
 
-    function generarTotales(data) {
-    let totalDeals = 0, totalReservas = 0, totalEntregas = 0;
-
-    data.hex.forEach(row => {
-        totalDeals += row.New;
-        totalReservas += row.Reserva;
-        totalEntregas += row.Entrega;
-    });
-
-    document.getElementById("dealsTotal").innerText = totalDeals;
-    document.getElementById("reservasTotal").innerText = totalReservas;
-    document.getElementById("entregasTotal").innerText = totalEntregas;
-    }
-
-    function renderGrafica(data) {
-    const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-    const acumulado = new Array(12).fill(0);
-    const target = new Array(12).fill(30); // puedes ajustar esto
-
-    data.hex.forEach(row => {
-        const mesIndex = meses.indexOf(row.Mes);
-        if (mesIndex >= 0) {
-        acumulado[mesIndex] += (row.New + row.Reserva + row.Entrega);
+  new Chart(document.getElementById("graficaMetas"), {
+    type: 'line',
+    data: {
+      labels: meses,
+      datasets: [
+        {
+          label: 'Indicadores',
+          data: acumulado,
+          borderColor: '#3498db',
+          backgroundColor: 'transparent',
+          borderWidth: 2
+        },
+        {
+          label: 'Meta',
+          data: target,
+          borderColor: '#bdc3c7',
+          backgroundColor: 'transparent',
+          borderWidth: 2,
+          borderDash: [5, 5]
         }
-    });
-
-    new Chart(document.getElementById("graficaMetas"), {
-        type: 'line',
-        data: {
-        labels: meses,
-        datasets: [
-            { label: 'New Users', data: acumulado, borderColor: '#3498db', fill: false },
-            { label: 'Targets', data: target, borderColor: '#bdc3c7', fill: false }
-        ]
-        }
-    });
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false
     }
+  });
+}
 
-    function renderUserCards() {
-    const contenedor = document.getElementById("userMetrics");
-    contenedor.innerHTML = `
-        <div class="user-metric">
-        <h4>Total General</h4>
-        <div class="user-role">Todos los empleados</div>
-        <div class="user-indicators">
-            <span id="hexNew">0</span>
-            <span id="hexReserva">0</span>
-            <span id="hexEntrega">0</span>
-        </div>
-        </div>
+// Mostrar tarjetas individuales por usuario
+async function renderUserCards() {
+  const usuarios = await getUsuarios();
+  const contenedor = document.getElementById("userMetrics");
+  contenedor.innerHTML = "";
+
+  for (const usuario of usuarios) {
+    const datos = await getDataUsuario(usuario.id);
+    const hex = datos.hex[datos.hex.length - 1] || { New: 0, Reserva: 0, Entrega: 0 };
+
+    const div = document.createElement("div");
+    div.className = "user-metric";
+    div.innerHTML = `
+      <img src="${usuario.foto}" alt="${usuario.nombre}" class="user-avatar">
+      <h4>${usuario.nombre}</h4>
+      <div class="user-role">${usuario.rol}</div>
+      <div class="user-indicators">
+        <span>${hex.New}</span>
+        <span>${hex.Reserva}</span>
+        <span>${hex.Entrega}</span>
+      </div>
     `;
-    }
+    contenedor.appendChild(div);
+  }
+}
 
-    async function init() {
-    const data = await getData(globalUserId);
+// Inicializar todo el dashboard
+async function init() {
+  const data = await getDataUsuario(globalUserId); // resumen general
+  generarTotales(data);
+  renderGrafica(data);
+  await renderUserCards(); // tarjetas por usuario
+}
 
-    generarTotales(data);
-    renderGrafica(data);
-    renderUserCards();
+init();
 
-    // Actualiza valores en hexágonos de resumen
-    let totalNew = 0, totalReserva = 0, totalEntrega = 0;
-    data.hex.forEach(row => {
-        totalNew += row.New;
-        totalReserva += row.Reserva;
-        totalEntrega += row.Entrega;
-    });
-
-    document.getElementById("hexNew").innerText = totalNew;
-    document.getElementById("hexReserva").innerText = totalReserva;
-    document.getElementById("hexEntrega").innerText = totalEntrega;
-    }
-
-    init();
 
   </script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
