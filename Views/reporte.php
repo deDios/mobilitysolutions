@@ -203,7 +203,7 @@ $query ='select
       </div>
       <div class="chart-container">
         <canvas id="graficaMetas"></canvas>
-        <div id="avanceMensual" class="month-circles"></div>
+        <div id="avanceMensual" class="month-circles-container"></div>
       </div>
     </div>
 
