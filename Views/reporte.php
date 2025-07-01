@@ -314,15 +314,20 @@ async function renderUserCards() {
     const div = document.createElement("div");
     div.className = "user-metric";
     div.innerHTML = `
-      <img src="${usuario.foto}" alt="${usuario.nombre}" class="user-avatar">
-      <h4>${usuario.nombre}</h4>
-      <div class="user-role">${usuario.rol}</div>
-      <div class="user-indicators">
+    <div class="user-header">
+        <img src="${usuario.foto}" alt="${usuario.nombre}" class="user-avatar">
+        <div class="user-info">
+        <h4>${usuario.nombre}</h4>
+        <div class="user-role">${usuario.rol}</div>
+        </div>
+    </div>
+    <div class="user-indicators">
         <span title="Nuevo en catálogo">${totalNew}</span>
         <span title="Reserva de vehículo">${totalReserva}</span>
         <span title="Entrega de vehículo">${totalEntrega}</span>
-      </div>
+    </div>
     `;
+
     contenedor.appendChild(div);
   }
 }
@@ -336,6 +341,55 @@ async function init() {
 }
 
 init();
+
+document.getElementById("dealsTotal").parentElement.addEventListener("click", () => {
+  renderGraficaPorTipo("New");
+});
+document.getElementById("reservasTotal").parentElement.addEventListener("click", () => {
+  renderGraficaPorTipo("Reserva");
+});
+document.getElementById("entregasTotal").parentElement.addEventListener("click", () => {
+  renderGauge("Entrega");
+});
+
+function renderGraficaPorTipo(tipo) {
+  getDataUsuario(globalUserId).then(data => {
+    const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+    const datosMensuales = new Array(12).fill(0);
+    const target = new Array(12).fill(10); // Puedes ajustar por tipo si es necesario
+
+    data.hex.forEach(row => {
+      const index = meses.indexOf(row.Mes);
+      if (index >= 0) {
+        datosMensuales[index] = row[tipo] || 0;
+      }
+    });
+
+    new Chart(document.getElementById("graficaMetas"), {
+      type: 'bar',
+      data: {
+        labels: meses,
+        datasets: [
+          {
+            label: `Avance mensual - ${tipo}`,
+            data: datosMensuales,
+            backgroundColor: '#3498db'
+          },
+          {
+            label: 'Meta',
+            data: target,
+            backgroundColor: '#95a5a6'
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    });
+  });
+}
+
 
   </script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

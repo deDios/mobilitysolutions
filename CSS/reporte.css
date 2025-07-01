@@ -266,15 +266,31 @@ body {
 } 
 
 .user-indicators span:nth-child(1) {
-  background-color: #27ae60; /* Verde para Nuevo */
+  background-color: #7DA5FD; /* Verde para Nuevo */
 }
 
 .user-indicators span:nth-child(2) {
-  background-color: #e67e22; /* Naranja para Reserva */
+  background-color: #7DA5FD; /* Naranja para Reserva */
 }
 
 .user-indicators span:nth-child(3) {
-  background-color: #2980b9; /* Azul para Entrega */
+  background-color: #7DA5FD; /* Azul para Entrega */
+}
+
+.user-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.user-info h4 {
+  margin: 0;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
 }
 
 
