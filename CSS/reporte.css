@@ -239,7 +239,7 @@ body {
 }
 
 .chart-container canvas {
-  width: 100% !important;
+  width: auto !important;
   height: 100% !important;
 }
 
