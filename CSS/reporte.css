@@ -166,16 +166,14 @@ li {
 }
 
 /*--------------------------------------------------------------------------------------------------*/
- 
-
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   background-color: #f8f9fa;
 }
 
-.ds{
-    padding-top: 130px;
+.ds {
+  padding-top: 130px;
 }
 
 .dashboard-container {
@@ -184,15 +182,23 @@ body {
 
 .header {
   display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  height: 600px;
+}
+
+.hex-totalizadores {
+  width: 50%;
+  display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  align-items: center;
-  justify-content: space-between;
+  align-content: flex-start;
+  justify-content: center;
 }
 
 .hex-box {
-  width: 120px;
-  height: 100px;
+  width: 140px;
+  height: 120px;
   background: #2c3e50;
   color: white;
   clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
@@ -200,11 +206,24 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.hex-box:hover {
+  transform: scale(1.05);
 }
 
 .chart-container {
-  flex-grow: 1;
-  min-width: 300px;
+  width: 50%;
+  height: 600px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.chart-container canvas {
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .metrics-section {
@@ -215,6 +234,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  justify-content: flex-start;
 }
 
 .user-metric {
@@ -223,14 +243,41 @@ body {
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   width: 250px;
+  display: flex;
+  flex-direction: column;
 }
 
-.user-metric h4 {
+.user-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.user-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-info h4 {
+  font-size: 0.95em;
   margin: 0;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .user-role {
-  font-size: 0.9em;
+  font-size: 0.75em;
   color: gray;
 }
 
@@ -253,45 +300,18 @@ body {
   font-size: 0.8em;
 }
 
-.recognitions-section {
-  margin-top: 40px;
-}
-
-.user-avatar {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 10px;
-} 
-
 .user-indicators span:nth-child(1) {
-  background-color: #7DA5FD; /* Verde para Nuevo */
+  background-color: #7DA5FD;
 }
 
 .user-indicators span:nth-child(2) {
-  background-color: #7DA5FD; /* Naranja para Reserva */
+  background-color: #7DA5FD;
 }
 
 .user-indicators span:nth-child(3) {
-  background-color: #7DA5FD; /* Azul para Entrega */
+  background-color: #7DA5FD;
 }
 
-.user-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
+.recognitions-section {
+  margin-top: 40px;
 }
-
-.user-info h4 {
-  margin: 0;
-}
-
-.user-info {
-  display: flex;
-  flex-direction: column;
-}
-
-
- 
