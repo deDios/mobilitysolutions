@@ -218,178 +218,174 @@ $query ='select
     </div>
   </div>
 </div>
+
+
   <script>
-const globalUserId = 9999;
+    const globalUserId = 9999;
+    let currentChart = null;
 
-// Obtener metas y hexágonos para un usuario específico
-async function getDataUsuario(userId) {
-  const metasRes = await fetch(`https://mobilitysolutionscorp.com/web/MS_get_metas_usuario.php?asignado=${userId}`);
-  const hexRes = await fetch(`https://mobilitysolutionscorp.com/db_consultas/hex_status.php?user_id=${userId}`);
-  const metasData = await metasRes.json();
-  const hexData = await hexRes.json();
-  return { metas: metasData?.metas || [], hex: hexData || [] };
-}
-
-// Obtener lista de usuarios
-async function getUsuarios() {
-  const res = await fetch("https://mobilitysolutionscorp.com/web/MS_get_usuario.php");
-  const data = await res.json();
-  return data.usuarios || [];
-}
-
-// Generar los totalizadores superiores del dashboard
-function generarTotales(data) {
-  let totalDeals = 0, totalReservas = 0, totalEntregas = 0;
-
-  data.hex.forEach(row => {
-    totalDeals += row.New;
-    totalReservas += row.Reserva;
-    totalEntregas += row.Entrega;
-  });
-
-  document.getElementById("dealsTotal").innerText = totalDeals;
-  document.getElementById("reservasTotal").innerText = totalReservas;
-  document.getElementById("entregasTotal").innerText = totalEntregas;
-}
-
-// Renderizar la gráfica general del dashboard
-function renderGrafica(data) {
-  const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-  const acumulado = new Array(12).fill(0);
-  const target = new Array(12).fill(30); // Meta fija por mes (puedes ajustar esto)
-
-  data.hex.forEach(row => {
-    const mesIndex = meses.indexOf(row.Mes);
-    if (mesIndex >= 0) {
-      acumulado[mesIndex] += (row.New + row.Reserva + row.Entrega);
+    // Obtener metas y hexágonos para un usuario específico
+    async function getDataUsuario(userId) {
+    const metasRes = await fetch(`https://mobilitysolutionscorp.com/web/MS_get_metas_usuario.php?asignado=${userId}`);
+    const hexRes = await fetch(`https://mobilitysolutionscorp.com/db_consultas/hex_status.php?user_id=${userId}`);
+    const metasData = await metasRes.json();
+    const hexData = await hexRes.json();
+    return { metas: metasData?.metas || [], hex: hexData || [] };
     }
-  });
 
-  new Chart(document.getElementById("graficaMetas"), {
-    type: 'line',
-    data: {
-      labels: meses,
-      datasets: [
-        {
-          label: 'Indicadores',
-          data: acumulado,
-          borderColor: '#3498db',
-          backgroundColor: 'transparent',
-          borderWidth: 2
-        },
-        {
-          label: 'Meta',
-          data: target,
-          borderColor: '#bdc3c7',
-          backgroundColor: 'transparent',
-          borderWidth: 2,
-          borderDash: [5, 5]
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false
+    // Obtener lista de usuarios
+    async function getUsuarios() {
+    const res = await fetch("https://mobilitysolutionscorp.com/web/MS_get_usuario.php");
+    const data = await res.json();
+    return data.usuarios || [];
     }
-  });
-}
 
-// Mostrar tarjetas individuales por usuario
-async function renderUserCards() {
-  const usuarios = await getUsuarios();
-  const contenedor = document.getElementById("userMetrics");
-  contenedor.innerHTML = "";
-
-  for (const usuario of usuarios) {
-    const datos = await getDataUsuario(usuario.id);
-
-    // Suma total de hexágonos por usuario
-    let totalNew = 0, totalReserva = 0, totalEntrega = 0;
-    datos.hex.forEach(row => {
-      totalNew += row.New;
-      totalReserva += row.Reserva;
-      totalEntrega += row.Entrega;
-    });
-
-    const div = document.createElement("div");
-    div.className = "user-metric";
-    div.innerHTML = `
-    <div class="user-header">
-        <img src="${usuario.foto}" alt="${usuario.nombre}" class="user-avatar">
-        <div class="user-info">
-        <h4>${usuario.nombre}</h4>
-        <div class="user-role">${usuario.rol}</div>
-        </div>
-    </div>
-    <div class="user-indicators">
-        <span title="Nuevo en catálogo">${totalNew}</span>
-        <span title="Reserva de vehículo">${totalReserva}</span>
-        <span title="Entrega de vehículo">${totalEntrega}</span>
-    </div>
-    `;
-
-    contenedor.appendChild(div);
-  }
-}
-
-// Inicializar todo el dashboard
-async function init() {
-  const data = await getDataUsuario(globalUserId); // Resumen general
-  generarTotales(data);
-  renderGrafica(data);
-  await renderUserCards(); // Tarjetas por usuario
-}
-
-init();
-
-document.getElementById("dealsTotal").parentElement.addEventListener("click", () => {
-  renderGraficaPorTipo("New");
-});
-document.getElementById("reservasTotal").parentElement.addEventListener("click", () => {
-  renderGraficaPorTipo("Reserva");
-});
-document.getElementById("entregasTotal").parentElement.addEventListener("click", () => {
-  renderGauge("Entrega");
-});
-
-function renderGraficaPorTipo(tipo) {
-  getDataUsuario(globalUserId).then(data => {
-    const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-    const datosMensuales = new Array(12).fill(0);
-    const target = new Array(12).fill(10); // Puedes ajustar por tipo si es necesario
+    // Generar los totalizadores superiores del dashboard
+    function generarTotales(data) {
+    let totalDeals = 0, totalReservas = 0, totalEntregas = 0;
 
     data.hex.forEach(row => {
-      const index = meses.indexOf(row.Mes);
-      if (index >= 0) {
-        datosMensuales[index] = row[tipo] || 0;
-      }
+        totalDeals += row.New;
+        totalReservas += row.Reserva;
+        totalEntregas += row.Entrega;
     });
 
-    new Chart(document.getElementById("graficaMetas"), {
-      type: 'bar',
-      data: {
-        labels: meses,
-        datasets: [
-          {
-            label: `Avance mensual - ${tipo}`,
-            data: datosMensuales,
-            backgroundColor: '#3498db'
-          },
-          {
-            label: 'Meta',
-            data: target,
-            backgroundColor: '#95a5a6'
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false
-      }
-    });
-  });
-}
+    document.getElementById("dealsTotal").innerText = totalDeals;
+    document.getElementById("reservasTotal").innerText = totalReservas;
+    document.getElementById("entregasTotal").innerText = totalEntregas;
+    }
 
+    // Gráfica mensual por tipo (New o Reserva)
+    function renderGraficaPorTipo(tipo) {
+    getDataUsuario(globalUserId).then(data => {
+        const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+        const datosMensuales = new Array(12).fill(0);
+        const target = new Array(12).fill(10); // Meta mensual estimada
+
+        data.hex.forEach(row => {
+        const index = meses.indexOf(row.Mes);
+        if (index >= 0) {
+            datosMensuales[index] = row[tipo] || 0;
+        }
+        });
+
+        if (currentChart) currentChart.destroy();
+
+        const ctx = document.getElementById("graficaMetas").getContext("2d");
+        currentChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: meses,
+            datasets: [
+            {
+                label: `Avance mensual - ${tipo}`,
+                data: datosMensuales,
+                backgroundColor: '#3498db'
+            },
+            {
+                label: 'Meta',
+                data: target,
+                backgroundColor: '#95a5a6'
+            }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+        });
+    });
+    }
+
+    // Gráfica tipo gauge (doughnut con semicírculo)
+    function renderGauge(tipo) {
+    getDataUsuario(globalUserId).then(data => {
+        const total = data.hex.reduce((acc, row) => acc + (row[tipo] || 0), 0);
+        const metaAnual = 120; // Ajustar según metas reales
+
+        if (currentChart) currentChart.destroy();
+
+        const ctx = document.getElementById("graficaMetas").getContext("2d");
+        currentChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Avance', 'Restante'],
+            datasets: [{
+            data: [total, Math.max(0, metaAnual - total)],
+            backgroundColor: ['#27ae60', '#ecf0f1']
+            }]
+        },
+        options: {
+            circumference: 180,
+            rotation: -90,
+            cutout: '70%',
+            plugins: {
+            tooltip: { enabled: true },
+            legend: { display: false }
+            }
+        }
+        });
+    });
+    }
+
+    // Mostrar tarjetas individuales por usuario
+    async function renderUserCards() {
+    const usuarios = await getUsuarios();
+    const contenedor = document.getElementById("userMetrics");
+    contenedor.innerHTML = "";
+
+    for (const usuario of usuarios) {
+        const datos = await getDataUsuario(usuario.id);
+
+        let totalNew = 0, totalReserva = 0, totalEntrega = 0;
+        datos.hex.forEach(row => {
+        totalNew += row.New;
+        totalReserva += row.Reserva;
+        totalEntrega += row.Entrega;
+        });
+
+        const div = document.createElement("div");
+        div.className = "user-metric";
+        div.innerHTML = `
+        <div class="user-header">
+            <img src="${usuario.foto}" alt="${usuario.nombre}" class="user-avatar">
+            <div class="user-info">
+            <h4>${usuario.nombre}</h4>
+            <div class="user-role">${usuario.rol}</div>
+            </div>
+        </div>
+        <div class="user-indicators">
+            <span title="Nuevo en catálogo">${totalNew}</span>
+            <span title="Reserva de vehículo">${totalReserva}</span>
+            <span title="Entrega de vehículo">${totalEntrega}</span>
+        </div>
+        `;
+        contenedor.appendChild(div);
+    }
+    }
+
+    // Inicializar dashboard completo
+    async function init() {
+    const data = await getDataUsuario(globalUserId);
+    generarTotales(data);
+    renderGraficaPorTipo("New"); // por defecto
+    await renderUserCards();
+
+    // Eventos para cambiar gráfica según el totalizador clicado
+    document.getElementById("dealsTotal").parentElement.addEventListener("click", () => {
+        renderGraficaPorTipo("New");
+    });
+
+    document.getElementById("reservasTotal").parentElement.addEventListener("click", () => {
+        renderGraficaPorTipo("Reserva");
+    });
+
+    document.getElementById("entregasTotal").parentElement.addEventListener("click", () => {
+        renderGauge("Entrega");
+    });
+    }
+
+    init();
 
   </script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
