@@ -246,11 +246,14 @@ body {
 /* CÍRCULOS DE CUMPLIMIENTO MENSUAL */
 .month-circles-container {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  margin-top: 20px;
   gap: 12px;
+  margin-top: 20px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 10px;
 }
 
 .month-circle {
