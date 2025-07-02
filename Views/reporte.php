@@ -215,7 +215,7 @@ $query ='select
 
 
     <div class="metrics-section">
-      <h3>Metricas por usuario</h3>
+      <h3>Equipo Mobility</h3>
       <div id="userMetrics" class="metrics-grid"></div>
     </div>
 
