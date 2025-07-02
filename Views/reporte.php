@@ -220,7 +220,7 @@ $query ='select
     </div>
 
     <div class="recognitions-section">
-      <h3>Recognitions</h3>
+      <h3></h3>
       <div class="recognitions-placeholder">
         <!-- Espacio reservado para reconocimientos -->
       </div>
