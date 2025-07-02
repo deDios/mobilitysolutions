@@ -276,7 +276,7 @@ $query ='select
     } else {
       meses.forEach((mes, i) => {
         const pct = metas[i] ? (avance[i] / metas[i]) * 100 : 0;
-        const color = pct < 90 ? 'gris' : pct < 98 ? 'amarillo' : 'verde';
+        const color = pct < 90 ? 'gray' : pct < 95 ? 'yellow' : 'green';
         const circle = `<div class="month-circle ${color}"><div>${mes}<br>${Math.round(pct)}%</div></div>`;
         container.innerHTML += circle;
       });
