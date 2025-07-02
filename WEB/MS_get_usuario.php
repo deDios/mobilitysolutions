@@ -24,14 +24,36 @@ $query = "
 ";
 
 $result = $con->query($query);
-
 $usuarios = [];
 
 while ($row = $result->fetch_assoc()) {
+    // Lógica para calcular el rol
+    $rol = "Sin rol";
+
+    if (
+        $row["r_ejecutivo"] == 1 &&
+        empty($row["r_editor"]) &&
+        empty($row["r_autorizador"]) &&
+        empty($row["r_analista"])
+    ) {
+        $rol = "Ejecutivo";
+    } elseif (
+        $row["r_editor"] == 1 &&
+        $row["r_autorizador"] == 0 &&
+        $row["r_analista"] == 0
+    ) {
+        $rol = "Maestro de catálogo";
+    } elseif (
+        $row["r_autorizador"] == 1 ||
+        $row["r_analista"] == 1
+    ) {
+        $rol = "Manager";
+    }
+
     $usuarios[] = [
         "id" => $row["user_id"],
         "username" => $row["user_name"],
-        "rol" => $row["user_type"],
+        "rol" => $rol,
         "nombre" => trim("{$row['nombre']} {$row['s_nombre']} {$row['last_name']}"),
         "email" => $row["email"],
         "telefono" => $row["telefono"],
