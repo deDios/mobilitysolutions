@@ -270,7 +270,7 @@ $query ='select
       const totalAvance = avance.reduce((acc, val) => acc + val, 0);
       const totalMeta = metas.reduce((acc, val) => acc + val, 0);
       const pct = totalMeta ? (totalAvance / totalMeta) * 100 : 0;
-      const color = pct < 90 ? 'gris' : pct < 98 ? 'amarillo' : 'verde';
+      const color = pct < 90 ? 'gray' : pct < 95 ? 'yellow' : 'green';
       const circle = `<div class="month-circle ${color}"><div>${Math.round(pct)}%</div></div>`;
       container.innerHTML = circle;
     } else {
