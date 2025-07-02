@@ -185,7 +185,7 @@ $query ='select
 </div>
 
 <div class="ds">
-    <h3>Dashboar general</h3>
+    <h3 class="titulo_d">Dashboard general</h3>
   <div class="dashboard-container">
     <div class="header">
         <div class="hex-totalizadores-container">

@@ -239,7 +239,9 @@ body {
 }
 
 /* CÍRCULOS DE CUMPLIMIENTO MENSUAL */
-
+.titulo_d{
+    padding-left: 50px;
+}
 .circulos{
     padding-top: 80px;
 }
