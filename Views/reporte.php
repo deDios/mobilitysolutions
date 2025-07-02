@@ -270,13 +270,13 @@ $query ='select
       const totalAvance = avance.reduce((acc, val) => acc + val, 0);
       const totalMeta = metas.reduce((acc, val) => acc + val, 0);
       const pct = totalMeta ? (totalAvance / totalMeta) * 100 : 0;
-      const color = pct < 90 ? 'gray' : pct < 95 ? 'yellow' : 'green';
+      const color = pct < 90 ? 'gray' : pct < 96 ? 'yellow' : 'green';
       const circle = `<div class="month-circle ${color}"><div>${Math.round(pct)}%</div></div>`;
       container.innerHTML = circle;
     } else {
       meses.forEach((mes, i) => {
         const pct = metas[i] ? (avance[i] / metas[i]) * 100 : 0;
-        const color = pct < 90 ? 'gray' : pct < 95 ? 'yellow' : 'green';
+        const color = pct < 90 ? 'gray' : pct < 96 ? 'yellow' : 'green';
         const circle = `<div class="month-circle ${color}"><div>${mes}<br>${Math.round(pct)}%</div></div>`;
         container.innerHTML += circle;
       });
