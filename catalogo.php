@@ -388,7 +388,7 @@
                                                   <?php echo " " . $sucursal;?> 
                                                 </div>
                                                 <?php if ($estatus == 3){?>
-                                                  <img src="Imagenes/Sellos/reservado.jpg" class="imagen-sello" alt="sello">
+                                                  <img src="Imagenes/reserved.jpg" class="imagen-sello" alt="sello"> 
                                                 <?php
                                                   } else {
                                                 ?> <?php } ?>
