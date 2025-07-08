@@ -430,9 +430,6 @@ $query ='select
     const select = document.getElementById("filtroUsuarios");
     if (!select) return;
 
-    // Limpiamos opciones previas
-    select.innerHTML = "";
-
     const usuarios = await getUsuarios();
 
     usuarios.forEach(usuario => {
@@ -441,24 +438,18 @@ $query ='select
       option.textContent = usuario.nombre;
       select.appendChild(option);
     });
-
-    // Inicializar Select2 (solo si no se ha inicializado antes)
-    if (!$(select).hasClass("select2-hidden-accessible")) {
-      $(select).select2({
-        placeholder: "Selecciona usuarios",
-        allowClear: true,
-        width: 'resolve'
-      });
-    }
   }
 
+  llenarFiltroUsuarios();
 
   init();
 </script>
 
 <!-- CSS y JS de Select2 -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
