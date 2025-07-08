@@ -185,13 +185,7 @@ $query ='select
 </div>
 
 <div class="ds">
-    <div class="titulo-con-filtro">
-      <h3 class="titulo_d">Dashboard general</h3>
-      <select id="filtroUsuarios" multiple>
-        <!-- Opciones se llenarán por JS -->
-      </select>
-    </div>
-
+    <h3 class="titulo_d">Dashboard general</h3>
   <div class="dashboard-container">
     <div class="header">
         <div class="hex-totalizadores-container">
@@ -238,8 +232,6 @@ $query ='select
 <script>
   const globalUserId = 9999;
   let currentChart = null;
-  let allUsuarios = [];
-  let usuariosSeleccionados = [];
 
   async function getDataUsuario(userId) {
     const metasRes = await fetch(`https://mobilitysolutionscorp.com/web/MS_get_metas_usuario.php?asignado=${userId}`);
@@ -405,30 +397,12 @@ $query ='select
     if (box) box.classList.add("active");
   }
 
-  async function initFiltroUsuarios() {
-    allUsuarios = await getUsuarios();
-    const filtro = document.getElementById("filtroUsuarios");
-
-    allUsuarios.forEach(usuario => {
-      const option = document.createElement("option");
-      option.value = usuario.id;
-      option.text = usuario.nombre;
-      filtro.appendChild(option);
-    });
-
-    filtro.addEventListener("change", () => {
-      const seleccionados = Array.from(filtro.selectedOptions).map(opt => parseInt(opt.value));
-      usuariosSeleccionados = seleccionados.length ? seleccionados : allUsuarios.map(u => u.id);
-      actualizarDashboard();
-    });
-
-    usuariosSeleccionados = allUsuarios.map(u => u.id);
-  }
-
   async function init() {
-    await initFiltroUsuarios();
+    const data = await getDataUsuario(globalUserId);
+    generarTotales(data);
+    renderGraficaPorTipo("New");
     activarHexagono("dealsBox");
-    await actualizarDashboard();
+    await renderUserCards();
 
     document.getElementById("dealsBox").addEventListener("click", () => {
       activarHexagono("dealsBox");
