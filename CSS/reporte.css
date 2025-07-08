@@ -388,3 +388,19 @@ body {
   margin-top: 40px;
 }
 
+.titulo-con-filtro {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-left: 20px;
+}
+
+#filtroUsuarios {
+  padding: 5px 10px;
+  font-size: 0.9em;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  min-width: 200px;
+}
+
+
