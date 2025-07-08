@@ -387,3 +387,20 @@ body {
 .recognitions-section {
   margin-top: 40px;
 }
+
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px 10px 50px;
+}
+
+.filtro-select {
+  min-width: 220px;
+  max-width: 280px;
+  height: auto;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 0.9em;
+}

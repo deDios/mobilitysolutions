@@ -185,7 +185,10 @@ $query ='select
 </div>
 
 <div class="ds">
+  <div class="dashboard-header">
     <h3 class="titulo_d">Dashboard general</h3>
+    <select id="filtroUsuarios" multiple class="filtro-select"></select>
+  </div>
   <div class="dashboard-container">
     <div class="header">
         <div class="hex-totalizadores-container">
@@ -215,7 +218,23 @@ $query ='select
 
 
     <div class="metrics-section">
-      <h3>Equipo Mobility</h3>
+      <div class="dashboard-header">
+        <h3 class="titulo_d">Equipo Mobility</h3>
+        <select id="filtroMeses" multiple class="filtro-select">
+          <option value="Enero">Enero</option>
+          <option value="Febrero">Febrero</option>
+          <option value="Marzo">Marzo</option>
+          <option value="Abril">Abril</option>
+          <option value="Mayo">Mayo</option>
+          <option value="Junio">Junio</option>
+          <option value="Julio">Julio</option>
+          <option value="Agosto">Agosto</option>
+          <option value="Septiembre">Septiembre</option>
+          <option value="Octubre">Octubre</option>
+          <option value="Noviembre">Noviembre</option>
+          <option value="Diciembre">Diciembre</option>
+        </select>
+      </div>
       <div id="userMetrics" class="metrics-grid"></div>
     </div>
 
@@ -245,6 +264,19 @@ $query ='select
     const res = await fetch("https://mobilitysolutionscorp.com/web/MS_get_usuario.php");
     const data = await res.json();
     return data.usuarios || [];
+  }
+
+  async function cargarFiltroUsuarios() {
+    const usuarios = await getUsuarios();
+    const filtro = document.getElementById("filtroUsuarios");
+    filtro.innerHTML = "";
+
+    usuarios.forEach(user => {
+      const opt = document.createElement("option");
+      opt.value = user.id;
+      opt.text = user.nombre;
+      filtro.appendChild(opt);
+    });
   }
 
   function generarTotales(data) {
@@ -403,6 +435,7 @@ $query ='select
     renderGraficaPorTipo("New");
     activarHexagono("dealsBox");
     await renderUserCards();
+    await cargarFiltroUsuarios();
 
     document.getElementById("dealsBox").addEventListener("click", () => {
       activarHexagono("dealsBox");
