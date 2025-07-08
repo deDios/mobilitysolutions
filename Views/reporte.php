@@ -187,9 +187,10 @@ $query ='select
 <div class="ds">
     <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 20px;">
       <h3 class="titulo_d">Dashboard general</h3>
-      <select id="filtroUsuarios" multiple style="min-width: 220px; padding: 5px;">
-        <!-- opciones se llenan dinámicamente -->
+      <select id="filtroUsuarios" multiple class="select2-multi" style="min-width: 250px;">
+        <!-- Opciones se llenan dinámicamente -->
       </select>
+
     </div>
   <div class="dashboard-container">
     <div class="header">
@@ -429,6 +430,9 @@ $query ='select
     const select = document.getElementById("filtroUsuarios");
     if (!select) return;
 
+    // Limpiamos opciones previas
+    select.innerHTML = "";
+
     const usuarios = await getUsuarios();
 
     usuarios.forEach(usuario => {
@@ -437,12 +441,25 @@ $query ='select
       option.textContent = usuario.nombre;
       select.appendChild(option);
     });
+
+    // Inicializar Select2 (solo si no se ha inicializado antes)
+    if (!$(select).hasClass("select2-hidden-accessible")) {
+      $(select).select2({
+        placeholder: "Selecciona usuarios",
+        allowClear: true,
+        width: 'resolve'
+      });
+    }
   }
 
-  llenarFiltroUsuarios();
 
   init();
 </script>
+
+<!-- CSS y JS de Select2 -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
