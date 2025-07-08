@@ -185,7 +185,12 @@ $query ='select
 </div>
 
 <div class="ds">
-    <h3 class="titulo_d">Dashboard general</h3>
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 20px;">
+      <h3 class="titulo_d">Dashboard general</h3>
+      <select id="filtroUsuarios" multiple style="min-width: 220px; padding: 5px;">
+        <!-- opciones se llenan dinámicamente -->
+      </select>
+    </div>
   <div class="dashboard-container">
     <div class="header">
         <div class="hex-totalizadores-container">
@@ -419,6 +424,22 @@ $query ='select
       renderGauge("Entrega");
     });
   }
+
+  async function llenarFiltroUsuarios() {
+    const select = document.getElementById("filtroUsuarios");
+    if (!select) return;
+
+    const usuarios = await getUsuarios();
+
+    usuarios.forEach(usuario => {
+      const option = document.createElement("option");
+      option.value = usuario.id;
+      option.textContent = usuario.nombre;
+      select.appendChild(option);
+    });
+  }
+
+  llenarFiltroUsuarios();
 
   init();
 </script>
