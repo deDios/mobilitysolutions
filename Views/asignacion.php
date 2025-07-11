@@ -219,7 +219,7 @@ $query ='select
         <button onclick="mostrarMas()">Más opciones</button>
         <div id="masOpciones" class="hidden">
           <ul>
-            <li>Dashboard ventas</li>
+            <li><a class="nav-link" href="https://mobilitysolutionscorp.com/Views/reporte.php"> Dashboar General </a></li>
             <li>Dashboard rendimientos</li>
           </ul>
         </div>
