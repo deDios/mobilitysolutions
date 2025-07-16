@@ -356,7 +356,7 @@
                             $query .=" AND pasajeros > '".$_GET['InputPasajeros']."' ";
                           }
                         }
-                        $query .=" order by RAND()";
+                        $query .=" order by estatus ASC, RAND()";
                         $result = mysqli_query($con,$query);  
                         if ($result){         
                             while($row = mysqli_fetch_assoc($result)){
