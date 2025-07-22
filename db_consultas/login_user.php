@@ -28,8 +28,8 @@
             from mobility_solutions.tmx_acceso_usuario  as acc
             left join mobility_solutions.tmx_usuario as us
                 on acc.user_id = us.id
-            where acc.user_name = '.$username_valor.'
-                or us.email = '.$username_valor.'
+            where (acc.user_name = '.$username_valor.'
+                or us.email = '.$username_valor.')
                 and acc.user_password = '.$password_valor.';';
 
     $result = mysqli_query($con,$query); 
