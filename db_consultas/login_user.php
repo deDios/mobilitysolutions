@@ -41,7 +41,7 @@
     } else{
         echo ' 
             <script>
-                alert("Usuario no existe, por favor verifique sus datos") ;
+                alert("Usuario o contraseña invalido, por favor verifique sus datos") ;
                 window.location = "../views/login.php";
             </script> ';
             exit();
