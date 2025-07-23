@@ -57,6 +57,14 @@
     else{
         echo 'Falla en conexión.';
     }
+    if ($r_editor == 0){
+        echo ' 
+        <script>
+            alert("No tiene acceso para entrar al apartado de catalogo, favor de solicitarlo al departamento de sistemas") ;
+            window.location = "../views/Home.php";
+        </script> ';
+        exit();
+    }
 
 ?>
 
