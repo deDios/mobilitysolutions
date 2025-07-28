@@ -1,10 +1,10 @@
 <?php
 header('Content-Type: application/json');
-session_start(); // Asegura que se active la sesión
+session_start(); // Asegúrate de tener la sesión activa
 
 $inc = include "../db/Conexion.php";
 
-// Depuración: mostrar contenido de la sesión
+// Validar sesión
 if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_type'])) {
     echo json_encode([
         "success" => false,
@@ -14,16 +14,17 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_type'])) {
     exit;
 }
 
-$user_id = $_SESSION['user_id'];
-$user_type = $_SESSION['user_type'];
+// Forzar valores enteros eliminando comillas y espacios
+$user_id = (int)trim($_SESSION['user_id']);
+$user_type = (int)trim($_SESSION['user_type']);
 
-// Si es CTO o CEO
-if ($user_type == 5 || $user_type == 6) {
+// Si es CTO o CEO, muestra a todos
+if ($user_type === 5 || $user_type === 6) {
     $query = "SELECT id, CONCAT(user_name, ' ', last_name) AS nombre_completo 
               FROM mobility_solutions.tmx_usuario 
               ORDER BY nombre_completo ASC";
 } else {
-    // Solo usuarios subordinados
+    // Mostrar solo usuarios subordinados (los que reportan al user actual)
     $query = "SELECT id, CONCAT(user_name, ' ', last_name) AS nombre_completo 
               FROM mobility_solutions.tmx_usuario 
               WHERE id IN (
@@ -35,7 +36,6 @@ if ($user_type == 5 || $user_type == 6) {
 }
 
 $result = mysqli_query($con, $query);
-
 $data = [];
 
 if ($result && $result->num_rows > 0) {
@@ -45,12 +45,17 @@ if ($result && $result->num_rows > 0) {
             "nombre" => $row["nombre_completo"]
         ];
     }
-}
 
-echo json_encode([
-    "success" => true,
-    "usuarios" => $data
-]);
+    echo json_encode([
+        "success" => true,
+        "usuarios" => $data
+    ]);
+} else {
+    echo json_encode([
+        "success" => false,
+        "message" => "No se encontraron usuarios para este nivel"
+    ]);
+}
 
 $con->close();
 ?>
