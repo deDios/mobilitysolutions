@@ -59,14 +59,18 @@
         echo 'Falla en conexión.'; 
     }
 
-    if ($r_autorizador == 0){
+    <?php
+    // Validar si el usuario es un Asesor(a)
+    if ($user_type == 1) {
         echo ' 
         <script>
-            alert("No tiene acceso para entrar al apartado de aprobaciones, favor de solicitarlo al departamento de sistemas") ;
+            alert("No tiene acceso para entrar al apartado de aprobaciones, favor de solicitarlo al departamento de sistemas");
             window.location = "../views/Home.php";
         </script> ';
         exit();
     }
+    ?>
+
 
 ?>
 
@@ -199,7 +203,6 @@ if ($user_type == 5 || $user_type == 6) {
     LEFT JOIN mobility_solutions.tmx_marca_auto AS m_auto ON auto.nombre = m_auto.id
     WHERE auto.status_req = 1;";
 } else {
-    // Los demás ven solo los de jerarquía inferior
     $query = "
         WITH RECURSIVE jerarquia AS (
         SELECT user_id
