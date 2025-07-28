@@ -56,7 +56,7 @@
         }
     }
     else{
-        echo 'Falla en conexión.';
+        echo 'Falla en conexión.'; 
     }
 
     if ($r_autorizador == 0){
@@ -164,71 +164,83 @@
 
 <?php
 $inc = include "../db/Conexion.php";
-if ($user_id != 4 && $user_id != 1){
-$query = "select 
-                auto.id,
-                auto.id_auto,
-                auto.tipo_req,
-                auto.comentarios,
-                DATE_SUB(auto.req_created_at, INTERVAL 6 HOUR) as req_created_at, 
-                auto.c_type,
-                auto.created_by,
-                m_auto.auto AS nombre, 
-                modelo.nombre AS modelo, 
-                marca.nombre AS marca, 
-                auto.mensualidad, 
-                auto.costo, 
-                sucursal.nombre AS sucursal, 
-                auto.color, 
-                auto.transmision, 
-                auto.interior, 
-                auto.kilometraje, 
-                auto.combustible, 
-                auto.cilindros, 
-                auto.eje, 
-                auto.pasajeros, 
-                auto.propietarios,
-                auto.created_at, 
-                auto.updated_at 
-          FROM mobility_solutions.tmx_requerimiento AS auto
-          LEFT JOIN mobility_solutions.tmx_sucursal AS sucursal ON auto.sucursal = sucursal.id 
-          LEFT JOIN mobility_solutions.tmx_modelo AS modelo ON auto.modelo = modelo.id 
-          LEFT JOIN mobility_solutions.tmx_marca AS marca ON auto.marca = marca.id
-          LEFT JOIN mobility_solutions.tmx_marca_auto AS m_auto ON auto.nombre = m_auto.id
-          WHERE auto.status_req = 1
-          AND auto.created_by != '$user_id';";
+if ($user_type == 5 || $user_type == 6) {
+    // CTO y CEO ven todos
+    $query = "
+    SELECT 
+        auto.id,
+        auto.id_auto,
+        auto.tipo_req,
+        auto.comentarios,
+        DATE_SUB(auto.req_created_at, INTERVAL 6 HOUR) as req_created_at, 
+        auto.c_type,
+        auto.created_by,
+        m_auto.auto AS nombre, 
+        modelo.nombre AS modelo, 
+        marca.nombre AS marca, 
+        auto.mensualidad, 
+        auto.costo, 
+        sucursal.nombre AS sucursal, 
+        auto.color, 
+        auto.transmision, 
+        auto.interior, 
+        auto.kilometraje, 
+        auto.combustible, 
+        auto.cilindros, 
+        auto.eje, 
+        auto.pasajeros, 
+        auto.propietarios,
+        auto.created_at, 
+        auto.updated_at 
+    FROM mobility_solutions.tmx_requerimiento AS auto
+    LEFT JOIN mobility_solutions.tmx_sucursal AS sucursal ON auto.sucursal = sucursal.id 
+    LEFT JOIN mobility_solutions.tmx_modelo AS modelo ON auto.modelo = modelo.id 
+    LEFT JOIN mobility_solutions.tmx_marca AS marca ON auto.marca = marca.id
+    LEFT JOIN mobility_solutions.tmx_marca_auto AS m_auto ON auto.nombre = m_auto.id
+    WHERE auto.status_req = 1;";
 } else {
-    $query = "select 
-    auto.id,
-    auto.id_auto,
-    auto.tipo_req,
-    auto.comentarios,
-    DATE_SUB(auto.req_created_at, INTERVAL 6 HOUR) as req_created_at, 
-    auto.c_type,
-    auto.created_by,
-    m_auto.auto AS nombre, 
-    modelo.nombre AS modelo, 
-    marca.nombre AS marca, 
-    auto.mensualidad, 
-    auto.costo, 
-    sucursal.nombre AS sucursal, 
-    auto.color, 
-    auto.transmision, 
-    auto.interior, 
-    auto.kilometraje, 
-    auto.combustible, 
-    auto.cilindros, 
-    auto.eje, 
-    auto.pasajeros, 
-    auto.propietarios,
-    auto.created_at, 
-    auto.updated_at 
-FROM mobility_solutions.tmx_requerimiento AS auto
-LEFT JOIN mobility_solutions.tmx_sucursal AS sucursal ON auto.sucursal = sucursal.id 
-LEFT JOIN mobility_solutions.tmx_modelo AS modelo ON auto.modelo = modelo.id 
-LEFT JOIN mobility_solutions.tmx_marca AS marca ON auto.marca = marca.id
-LEFT JOIN mobility_solutions.tmx_marca_auto AS m_auto ON auto.nombre = m_auto.id
-WHERE auto.status_req = 1;"; 
+    // Los demás ven solo los de jerarquía inferior
+    $query = "
+    SELECT 
+        auto.id,
+        auto.id_auto,
+        auto.tipo_req,
+        auto.comentarios,
+        DATE_SUB(auto.req_created_at, INTERVAL 6 HOUR) as req_created_at, 
+        auto.c_type,
+        auto.created_by,
+        m_auto.auto AS nombre, 
+        modelo.nombre AS modelo, 
+        marca.nombre AS marca, 
+        auto.mensualidad, 
+        auto.costo, 
+        sucursal.nombre AS sucursal, 
+        auto.color, 
+        auto.transmision, 
+        auto.interior, 
+        auto.kilometraje, 
+        auto.combustible, 
+        auto.cilindros, 
+        auto.eje, 
+        auto.pasajeros, 
+        auto.propietarios,
+        auto.created_at, 
+        auto.updated_at 
+    FROM mobility_solutions.tmx_requerimiento AS auto
+    LEFT JOIN mobility_solutions.tmx_sucursal AS sucursal ON auto.sucursal = sucursal.id 
+    LEFT JOIN mobility_solutions.tmx_modelo AS modelo ON auto.modelo = modelo.id 
+    LEFT JOIN mobility_solutions.tmx_marca AS marca ON auto.marca = marca.id
+    LEFT JOIN mobility_solutions.tmx_marca_auto AS m_auto ON auto.nombre = m_auto.id
+    WHERE auto.status_req = 1
+    AND auto.created_by IN (
+        SELECT user_id
+        FROM mobility_solutions.tmx_acceso_usuario
+        WHERE user_type > (
+            SELECT user_type 
+            FROM mobility_solutions.tmx_acceso_usuario
+            WHERE user_id = $user_id
+        )
+    );";
 }
 
 $result = mysqli_query($con, $query);
