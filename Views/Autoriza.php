@@ -59,7 +59,6 @@
         echo 'Falla en conexión.'; 
     }
 
-    <?php
     // Validar si el usuario es un Asesor(a)
     if ($user_type == 1) {
         echo ' 
@@ -69,7 +68,6 @@
         </script> ';
         exit();
     }
-    ?>
 
 
 ?>
