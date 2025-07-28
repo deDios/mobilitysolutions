@@ -333,18 +333,17 @@ function mostrarMas() {
         user_type: tipoUsuarioActual
       })
     })
-    .then(response => response.json())
     .then(data => {
-      const select = document.getElementById("recurso"); // o responsable_tarea / responsable_meta
+      const select = document.getElementById("recurso");  
       select.innerHTML = '<option value="">Selecciona un recurso</option>';
-      data.forEach(usuario => {
+      
+      (data.usuarios || []).forEach(usuario => {
         const option = document.createElement("option");
         option.value = usuario.id;
         option.textContent = usuario.nombre;
         select.appendChild(option);
       });
     });
-
 
     // Submit del formulario
     document.getElementById("formReconocimiento").addEventListener("submit", function(e) {
@@ -399,6 +398,7 @@ function mostrarMas() {
 
 <script>
   const usuarioActual = <?php echo json_encode($_SESSION['user_id']); ?>;
+  const tipoUsuarioActual = <?php echo json_encode($user_type); ?>;
 </script>
 
 <script>
@@ -441,17 +441,18 @@ function mostrarMas() {
       })
     })
 
-    .then(response => response.json())
     .then(data => {
-      const select = document.getElementById("recurso"); // o responsable_tarea / responsable_meta
+      const select = document.getElementById("recurso"); 
       select.innerHTML = '<option value="">Selecciona un recurso</option>';
-      data.forEach(usuario => {
+      
+      (data.usuarios || []).forEach(usuario => {
         const option = document.createElement("option");
         option.value = usuario.id;
         option.textContent = usuario.nombre;
         select.appendChild(option);
       });
     });
+
 
 
     // Manejar envío del formulario
@@ -564,11 +565,11 @@ function mostrarMas() {
       })
     })
 
-    .then(response => response.json())
     .then(data => {
-      const select = document.getElementById("recurso"); // o responsable_tarea / responsable_meta
+      const select = document.getElementById("recurso");  // o responsable_tarea / responsable_meta
       select.innerHTML = '<option value="">Selecciona un recurso</option>';
-      data.forEach(usuario => {
+      
+      (data.usuarios || []).forEach(usuario => {
         const option = document.createElement("option");
         option.value = usuario.id;
         option.textContent = usuario.nombre;
