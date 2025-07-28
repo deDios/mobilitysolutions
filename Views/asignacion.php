@@ -522,6 +522,11 @@ function mostrarMas() {
 </script>
 
 <script>
+  const usuarioActual = <?php echo json_encode($_SESSION['user_id']); ?>;
+  const tipoUsuarioActual = <?php echo json_encode($user_type); ?>;
+</script>
+
+<script>
   function mostrarMetas() {
     const itemsDiv = document.querySelector(".items");
     const currentYear = new Date().getFullYear();
@@ -570,7 +575,7 @@ function mostrarMas() {
       </div>
     `;
 
-    // Cargar usuarios
+    // Cargar usuarios subordinados con jerarquía
     fetch("https://mobilitysolutionscorp.com/web/MS_get_usuarios.php", {
       method: "POST",
       headers: {
@@ -581,19 +586,27 @@ function mostrarMas() {
         user_type: tipoUsuarioActual
       })
     })
-
+    .then(res => res.json())
     .then(data => {
-      const select = document.getElementById("recurso");  // o responsable_tarea / responsable_meta
+      const select = document.getElementById("responsable_meta");
       select.innerHTML = '<option value="">Selecciona un recurso</option>';
-      
-      (data.usuarios || []).forEach(usuario => {
-        const option = document.createElement("option");
-        option.value = usuario.id;
-        option.textContent = usuario.nombre;
-        select.appendChild(option);
-      });
-    });
 
+      if (data.success && Array.isArray(data.usuarios)) {
+        data.usuarios.forEach(usuario => {
+          const option = document.createElement("option");
+          option.value = usuario.id;
+          option.textContent = usuario.nombre;
+          select.appendChild(option);
+        });
+      } else {
+        select.innerHTML = '<option value="">No hay usuarios disponibles</option>';
+      }
+    })
+    .catch(error => {
+      console.error("Error al cargar usuarios:", error);
+      const select = document.getElementById("responsable_meta");
+      select.innerHTML = '<option value="">Error al cargar recursos</option>';
+    });
 
     // Listener para cargar metas al cambiar selección
     ["tipo_meta", "responsable_meta", "anio_meta"].forEach(id => {
@@ -617,24 +630,24 @@ function mostrarMas() {
 
       if (!tipo_meta || !asignado || !anio) return;
 
-      limpiarInputsMeses(); // Siempre limpia antes de cargar
+      limpiarInputsMeses(); // Limpia antes de cargar
 
       fetch(`https://mobilitysolutionscorp.com/web/MS_get_metas.php?tipo_meta=${tipo_meta}&asignado=${asignado}&anio=${anio}`)
-      .then(res => res.json())
-      .then(data => {
-        if (data.success && data.metas) {
-          const meses = [
-            "enero", "febrero", "marzo", "abril", "mayo", "junio",
-            "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
-          ];
-          meses.forEach(mes => {
-            document.getElementById(mes).value = data.metas[mes] ?? 0;
-          });
-        }
-      })
-      .catch(err => {
-        console.error("Error al recuperar metas:", err);
-      });
+        .then(res => res.json())
+        .then(data => {
+          if (data.success && data.metas) {
+            const meses = [
+              "enero", "febrero", "marzo", "abril", "mayo", "junio",
+              "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+            ];
+            meses.forEach(mes => {
+              document.getElementById(mes).value = data.metas[mes] ?? 0;
+            });
+          }
+        })
+        .catch(err => {
+          console.error("Error al recuperar metas:", err);
+        });
     }
 
     // Guardar metas
@@ -685,6 +698,12 @@ function mostrarMas() {
         alert("Error al guardar la meta.");
       });
     });
+  }
+
+  function cancelarFormulario() {
+    if (confirm("¿Estás seguro de que deseas cancelar? Se perderán los datos ingresados.")) {
+      document.querySelector(".items").innerHTML = "";
+    }
   }
 </script>
 
