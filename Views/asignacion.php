@@ -521,8 +521,6 @@ function mostrarMas() {
   }
 </script>
 
-
-
 <script>
   function mostrarMetas() {
     const itemsDiv = document.querySelector(".items");
