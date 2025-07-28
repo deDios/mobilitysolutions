@@ -241,6 +241,7 @@ function mostrarMas() {
 
 <script>
   const usuarioActual = <?php echo json_encode($_SESSION['user_id']); ?>;
+  const tipoUsuarioActual = <?php echo json_encode($user_type); ?>;
 
   function mostrarReconocimientos() {
     const itemsDiv = document.querySelector(".items");
@@ -327,7 +328,10 @@ function mostrarMas() {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ user_id: usuarioActual })
+      body: JSON.stringify({
+        user_id: usuarioActual,
+        user_type: tipoUsuarioActual
+      })
     })
     .then(response => response.json())
     .then(data => {
@@ -431,8 +435,12 @@ function mostrarMas() {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ user_id: usuarioActual })
+      body: JSON.stringify({
+        user_id: usuarioActual,
+        user_type: tipoUsuarioActual
+      })
     })
+
     .then(response => response.json())
     .then(data => {
       const select = document.getElementById("recurso"); // o responsable_tarea / responsable_meta
@@ -550,8 +558,12 @@ function mostrarMas() {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ user_id: usuarioActual })
+      body: JSON.stringify({
+        user_id: usuarioActual,
+        user_type: tipoUsuarioActual
+      })
     })
+
     .then(response => response.json())
     .then(data => {
       const select = document.getElementById("recurso"); // o responsable_tarea / responsable_meta
