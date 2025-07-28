@@ -88,7 +88,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         "id" => (int)$row["id"],
         "nombre" => $row["nombre_completo"]
     ];
-}
+} 
 
 echo json_encode([
     "success" => true,

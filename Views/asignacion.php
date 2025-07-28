@@ -519,7 +519,7 @@ function mostrarMas() {
       document.querySelector(".items").innerHTML = "";
     }
   }
-</script>
+</script> 
 
 <script>
   const usuarioActual = <?php echo json_encode($_SESSION['user_id']); ?>;
