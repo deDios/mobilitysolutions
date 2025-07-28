@@ -333,17 +333,28 @@ function mostrarMas() {
         user_type: tipoUsuarioActual
       })
     })
+    .then(res => res.json())
     .then(data => {
       const select = document.getElementById("recurso");  
       select.innerHTML = '<option value="">Selecciona un recurso</option>';
-      
-      (data.usuarios || []).forEach(usuario => {
-        const option = document.createElement("option");
-        option.value = usuario.id;
-        option.textContent = usuario.nombre;
-        select.appendChild(option);
-      });
+
+      if (data.success && Array.isArray(data.usuarios)) {
+        data.usuarios.forEach(usuario => {
+          const option = document.createElement("option");
+          option.value = usuario.id;
+          option.textContent = usuario.nombre;
+          select.appendChild(option);
+        });
+      } else {
+        select.innerHTML = '<option value="">No hay usuarios disponibles</option>';
+      }
+    })
+    .catch(error => {
+      console.error("Error al cargar usuarios:", error);
+      const select = document.getElementById("recurso");
+      select.innerHTML = '<option value="">Error al cargar recursos</option>';
     });
+
 
     // Submit del formulario
     document.getElementById("formReconocimiento").addEventListener("submit", function(e) {
