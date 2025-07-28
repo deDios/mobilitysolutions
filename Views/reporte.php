@@ -69,6 +69,12 @@ $query ='select
         elseif ($user_id == 1) {
           $titulo_profesional = "CTO - Líder técnico";
         } 
+        elseif ($user_id == 18) {
+          $titulo_profesional = "CTO - Líder técnico";
+        } 
+        elseif ($user_id == 17) {
+          $titulo_profesional = "CTO - Líder técnico";
+        } 
         else {
             $titulo_profesional = implode(" | ", $roles_activos);
         }    
