@@ -201,6 +201,18 @@ if ($user_type == 5 || $user_type == 6) {
 } else {
     // Los demás ven solo los de jerarquía inferior
     $query = "
+        WITH RECURSIVE jerarquia AS (
+        SELECT user_id
+        FROM mobility_solutions.tmx_acceso_usuario
+        WHERE reporta_a = $user_id
+
+        UNION ALL
+
+        SELECT h.user_id
+        FROM mobility_solutions.tmx_acceso_usuario h
+        INNER JOIN jerarquia j ON h.reporta_a = j.user_id
+    )
+
     SELECT 
         auto.id,
         auto.id_auto,
@@ -232,15 +244,7 @@ if ($user_type == 5 || $user_type == 6) {
     LEFT JOIN mobility_solutions.tmx_marca AS marca ON auto.marca = marca.id
     LEFT JOIN mobility_solutions.tmx_marca_auto AS m_auto ON auto.nombre = m_auto.id
     WHERE auto.status_req = 1
-    AND auto.created_by IN (
-        SELECT user_id
-        FROM mobility_solutions.tmx_acceso_usuario
-        WHERE user_type > (
-            SELECT user_type 
-            FROM mobility_solutions.tmx_acceso_usuario
-            WHERE user_id = $user_id
-        )
-    );";
+    AND auto.created_by IN (SELECT user_id FROM jerarquia);";
 }
 
 $result = mysqli_query($con, $query);
