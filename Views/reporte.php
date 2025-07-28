@@ -234,6 +234,11 @@ $query ='select
   </div>
 </div>
 
+<script>
+  const usuarioActual = <?php echo json_encode($_SESSION['user_id']); ?>;
+  const tipoUsuarioActual = <?php echo json_encode($user_type); ?>;
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
   const globalUserId = 9999;
@@ -363,39 +368,57 @@ $query ='select
     });
   }
 
-  async function renderUserCards() {
-    const usuarios = await getUsuarios();
-    const contenedor = document.getElementById("userMetrics");
-    contenedor.innerHTML = "";
+  async function getUsuariosJerarquia() {
+  const res = await fetch("https://mobilitysolutionscorp.com/web/MS_get_usuarios_reporte.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      user_id: globalUserId,
+      user_type: tipoUsuarioActual
+    })
+  });
 
-    for (const usuario of usuarios) {
-      const datos = await getDataUsuario(usuario.id);
-      let totalNew = 0, totalReserva = 0, totalEntrega = 0;
-      datos.hex.forEach(row => {
-        totalNew += row.New;
-        totalReserva += row.Reserva;
-        totalEntrega += row.Entrega;
-      });
+  const data = await res.json();
+  return data.usuarios || [];
+}
 
-      const div = document.createElement("div");
-      div.className = "user-metric";
-      div.innerHTML = `
-        <div class="user-header">
-          <img src="${usuario.foto}" alt="${usuario.nombre}" class="user-avatar">
-          <div class="user-info">
-            <h4>${usuario.nombre}</h4>
-            <div class="user-role">${usuario.rol}</div>
-          </div>
+async function renderUserCards() {
+  const usuarios = await getUsuariosJerarquia();
+  const contenedor = document.getElementById("userMetrics");
+  contenedor.innerHTML = "";
+
+  for (const usuario of usuarios) {
+    const datos = await getDataUsuario(usuario.id);
+    let totalNew = 0, totalReserva = 0, totalEntrega = 0;
+
+    datos.hex.forEach(row => {
+      totalNew += row.New;
+      totalReserva += row.Reserva;
+      totalEntrega += row.Entrega;
+    });
+
+    const div = document.createElement("div");
+    div.className = "user-metric";
+    div.innerHTML = `
+      <div class="user-header">
+        <img src="${usuario.foto}" alt="${usuario.nombre}" class="user-avatar">
+        <div class="user-info">
+          <h4>${usuario.nombre}</h4>
+          <div class="user-role">${usuario.rol}</div>
         </div>
-        <div class="user-indicators">
-          <span title="Nuevo en catálogo">${totalNew}</span>
-          <span title="Reserva de vehículo">${totalReserva}</span>
-          <span title="Entrega de vehículo">${totalEntrega}</span>
-        </div>
-      `;
-      contenedor.appendChild(div);
-    }
+      </div>
+      <div class="user-indicators">
+        <span title="Nuevo en catálogo">${totalNew}</span>
+        <span title="Reserva de vehículo">${totalReserva}</span>
+        <span title="Entrega de vehículo">${totalEntrega}</span>
+      </div>
+    `;
+    contenedor.appendChild(div);
   }
+
+  // Si después quieres construir un mapa jerárquico:
+  // console.log("Jerarquía completa con reporta_a:", usuarios);
+}
 
   function activarHexagono(hexId) {
     document.querySelectorAll(".hex-box").forEach(box => box.classList.remove("active"));
