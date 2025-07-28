@@ -1,10 +1,14 @@
 <?php
 header('Content-Type: application/json');
-session_start(); // Asegúrate de tener la sesión activa
+session_start();
+include "../db/Conexion.php";
 
-$inc = include "../db/Conexion.php";
+// Limpieza segura de valores en sesión
+function limpiar_sesion($valor) {
+    return (int)trim(str_replace('"', '', $valor));
+}
 
-// Validar sesión
+// Validación de sesión
 if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_type'])) {
     echo json_encode([
         "success" => false,
@@ -14,23 +18,32 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_type'])) {
     exit;
 }
 
-// Forzar valores enteros eliminando comillas y espacios
-$user_id = (int)trim($_SESSION['user_id']);
-$user_type = (int)trim($_SESSION['user_type']);
+$user_id = limpiar_sesion($_SESSION['user_id']);
+$user_type = limpiar_sesion($_SESSION['user_type']);
 
-// Si es CTO o CEO, muestra a todos
+// Validación secundaria
+if ($user_id <= 0 || $user_type <= 0) {
+    echo json_encode([
+        "success" => false,
+        "message" => "Datos de sesión inválidos",
+        "session_data" => $_SESSION
+    ]);
+    exit;
+}
+
+// Si es CTO o CEO, mostrar todos
 if ($user_type === 5 || $user_type === 6) {
     $query = "SELECT id, CONCAT(user_name, ' ', last_name) AS nombre_completo 
               FROM mobility_solutions.tmx_usuario 
               ORDER BY nombre_completo ASC";
 } else {
-    // Mostrar solo usuarios subordinados (los que reportan al user actual)
+    // Mostrar solo subordinados directos
     $query = "SELECT id, CONCAT(user_name, ' ', last_name) AS nombre_completo 
               FROM mobility_solutions.tmx_usuario 
               WHERE id IN (
-                SELECT user_id
-                FROM mobility_solutions.tmx_acceso_usuario
-                WHERE reporta_a = $user_id
+                  SELECT user_id
+                  FROM mobility_solutions.tmx_acceso_usuario
+                  WHERE reporta_a = $user_id
               )
               ORDER BY nombre_completo ASC";
 }
@@ -53,9 +66,9 @@ if ($result && $result->num_rows > 0) {
 } else {
     echo json_encode([
         "success" => false,
-        "message" => "No se encontraron usuarios para este nivel"
+        "message" => "No se encontraron usuarios subordinados",
+        "query" => $query
     ]);
 }
 
 $con->close();
-?>
