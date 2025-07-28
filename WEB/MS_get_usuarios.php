@@ -1,32 +1,26 @@
 <?php
 header('Content-Type: application/json');
-session_start();
 include "../db/Conexion.php";
 
-// Limpieza segura de valores en sesión
-function limpiar_sesion($valor) {
-    return (int)trim(str_replace('"', '', $valor));
-}
+// Obtener datos del cuerpo del POST (formato JSON)
+$input = json_decode(file_get_contents("php://input"), true);
 
-// Validación de sesión
-if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_type'])) {
+// Validar que se mandaron user_id y user_type
+if (!isset($input['user_id']) || !isset($input['user_type'])) {
     echo json_encode([
         "success" => false,
-        "message" => "Sesión no válida",
-        "session_data" => $_SESSION
+        "message" => "Faltan parámetros obligatorios"
     ]);
     exit;
 }
 
-$user_id = limpiar_sesion($_SESSION['user_id']);
-$user_type = limpiar_sesion($_SESSION['user_type']);
+$user_id = (int) $input['user_id'];
+$user_type = (int) $input['user_type'];
 
-// Validación secundaria
 if ($user_id <= 0 || $user_type <= 0) {
     echo json_encode([
         "success" => false,
-        "message" => "Datos de sesión inválidos",
-        "session_data" => $_SESSION
+        "message" => "Parámetros inválidos"
     ]);
     exit;
 }
@@ -66,7 +60,7 @@ if ($result && $result->num_rows > 0) {
 } else {
     echo json_encode([
         "success" => false,
-        "message" => "No se encontraron usuarios subordinados",
+        "message" => "No se encontraron usuarios",
         "query" => $query
     ]);
 }
