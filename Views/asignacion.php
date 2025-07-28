@@ -322,18 +322,25 @@ function mostrarMas() {
     });
 
     // Llenar combo de recursos
-    fetch('https://mobilitysolutionscorp.com/web/MS_get_usuarios.php')
-      .then(response => response.json())
-      .then(data => {
-        const select = document.getElementById("recurso");
-        select.innerHTML = '<option value="">Selecciona un recurso</option>';
-        data.forEach(usuario => {
-          const option = document.createElement("option");
-          option.value = usuario.id;
-          option.textContent = usuario.nombre;
-          select.appendChild(option);
-        });
+    fetch("https://mobilitysolutionscorp.com/web/MS_get_usuarios.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ user_id: usuarioActual })
+    })
+    .then(response => response.json())
+    .then(data => {
+      const select = document.getElementById("recurso"); // o responsable_tarea / responsable_meta
+      select.innerHTML = '<option value="">Selecciona un recurso</option>';
+      data.forEach(usuario => {
+        const option = document.createElement("option");
+        option.value = usuario.id;
+        option.textContent = usuario.nombre;
+        select.appendChild(option);
       });
+    });
+
 
     // Submit del formulario
     document.getElementById("formReconocimiento").addEventListener("submit", function(e) {
@@ -419,23 +426,25 @@ function mostrarMas() {
     `;
 
     // Cargar opciones del combo "responsable_tarea"
-    fetch('https://mobilitysolutionscorp.com/web/MS_get_usuarios.php')
-      .then(response => response.json())
-      .then(data => {
-        const select = document.getElementById("responsable_tarea");
-        select.innerHTML = '<option value="">Selecciona un recurso</option>';
-        data.forEach(usuario => {
-          const option = document.createElement("option");
-          option.value = usuario.id;
-          option.textContent = usuario.nombre;
-          select.appendChild(option);
-        });
-      })
-      .catch(error => {
-        console.error("Error al cargar usuarios:", error);
-        const select = document.getElementById("responsable_tarea");
-        select.innerHTML = '<option value="">Error al cargar usuarios</option>';
+    fetch("https://mobilitysolutionscorp.com/web/MS_get_usuarios.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ user_id: usuarioActual })
+    })
+    .then(response => response.json())
+    .then(data => {
+      const select = document.getElementById("recurso"); // o responsable_tarea / responsable_meta
+      select.innerHTML = '<option value="">Selecciona un recurso</option>';
+      data.forEach(usuario => {
+        const option = document.createElement("option");
+        option.value = usuario.id;
+        option.textContent = usuario.nombre;
+        select.appendChild(option);
       });
+    });
+
 
     // Manejar envío del formulario
     document.getElementById("formTarea").addEventListener("submit", function(e) {
@@ -536,18 +545,25 @@ function mostrarMas() {
     `;
 
     // Cargar usuarios
-    fetch('https://mobilitysolutionscorp.com/web/MS_get_usuarios.php')
-      .then(response => response.json())
-      .then(data => {
-        const select = document.getElementById("responsable_meta");
-        select.innerHTML = '<option value="">Selecciona un recurso</option>';
-        data.forEach(usuario => {
-          const option = document.createElement("option");
-          option.value = usuario.id;
-          option.textContent = usuario.nombre;
-          select.appendChild(option);
-        });
+    fetch("https://mobilitysolutionscorp.com/web/MS_get_usuarios.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ user_id: usuarioActual })
+    })
+    .then(response => response.json())
+    .then(data => {
+      const select = document.getElementById("recurso"); // o responsable_tarea / responsable_meta
+      select.innerHTML = '<option value="">Selecciona un recurso</option>';
+      data.forEach(usuario => {
+        const option = document.createElement("option");
+        option.value = usuario.id;
+        option.textContent = usuario.nombre;
+        select.appendChild(option);
       });
+    });
+
 
     // Listener para cargar metas al cambiar selección
     ["tipo_meta", "responsable_meta", "anio_meta"].forEach(id => {
