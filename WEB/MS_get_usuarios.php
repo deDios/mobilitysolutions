@@ -1,8 +1,13 @@
 <?php
+session_start(); // Activar la sesión
 header('Content-Type: application/json');
-session_start(); // Asegúrate de tener la sesión activa
 
 $inc = include "../db/Conexion.php";
+
+if (!$con) {
+    echo json_encode(["error" => "No se pudo conectar a la base de datos"]);
+    exit;
+}
 
 // Validar sesión
 if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_type'])) {
@@ -10,31 +15,31 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_type'])) {
     exit;
 }
 
-$user_id = $_SESSION['user_id'];
-$user_type = $_SESSION['user_type'];
+$user_id = intval($_SESSION['user_id']);
+$user_type = intval($_SESSION['user_type']);
 
-// Si es CTO o CEO, muestra a todos
-if ($user_type == 5 || $user_type == 6) {
+$data = [];
+
+if ($user_type === 5 || $user_type === 6) {
+    // CTO o CEO pueden ver a todos
     $query = "SELECT id, CONCAT(user_name, ' ', last_name) AS nombre_completo 
               FROM mobility_solutions.tmx_usuario 
               ORDER BY nombre_completo ASC";
 } else {
-    // Mostrar solo usuarios subordinados (los que reportan al user actual)
+    // Otros usuarios solo ven a los que les reportan directamente
     $query = "SELECT id, CONCAT(user_name, ' ', last_name) AS nombre_completo 
               FROM mobility_solutions.tmx_usuario 
               WHERE id IN (
-                SELECT user_id
-                FROM mobility_solutions.tmx_acceso_usuario
-                WHERE reporta_a = $user_id
+                  SELECT user_id
+                  FROM mobility_solutions.tmx_acceso_usuario
+                  WHERE reporta_a = $user_id
               )
               ORDER BY nombre_completo ASC";
 }
 
 $result = mysqli_query($con, $query);
 
-$data = [];
-
-if ($result && $result->num_rows > 0) {
+if ($result && mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         $data[] = [
             "id" => (int)$row["id"],
@@ -46,4 +51,5 @@ if ($result && $result->num_rows > 0) {
 echo json_encode($data);
 $con->close();
 ?>
+
 
