@@ -225,12 +225,11 @@ $query ='select
             </div>
           </div>
         </div>
-    </div>
-
-      <!-- Contenedor para la gráfica -->
-      <div class="chart-container">
-        <canvas id="graficaMetas"></canvas>
-      </div>
+        <!-- Contenedor para la gráfica -->
+        <div class="chart-container">
+          <canvas id="graficaMetas"></canvas>
+        </div>
+      </div> 
     </div>
 
 
