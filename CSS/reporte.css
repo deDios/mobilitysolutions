@@ -183,8 +183,9 @@ body {
   grid-template-columns: 1fr 1fr; /* 50% y 50% */
   gap: 30px;
   padding: 20px;
+  padding-left: 50px;
   box-sizing: border-box;
-  align-items: start;
+  align-items: center;
 }
 
 /* CONTENEDOR DE HEADER EN FILA: HEX + GRAFICA */
@@ -217,7 +218,7 @@ body {
 .hex-totalizadores-container {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 100%;
   align-items: center;
   justify-content: flex-start;
   padding: 20px;
@@ -310,7 +311,7 @@ body {
 
 /* GRAFICA DEBAJO DE LOS CÍRCULOS */
 .chart-container {
-  width: 50%; /* Ocupa todo el ancho disponible */
+  width: 100%; /* Ocupa todo el ancho disponible */
   height: 450px;
   padding: 20px;
   box-sizing: border-box;
