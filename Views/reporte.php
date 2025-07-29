@@ -238,10 +238,11 @@ $query ='select
     <div class="lower-section">
       <h3>Equipo Mobility</h3>
       <div id="userTree" class="hierarchy-tree-container">
-        <!-- Aquí se generará el árbol con renderUserTree() -->
+        <div id="userMetrics"></div>
       </div>
     </div>
-    
+
+
   </div>
 
 </div>
