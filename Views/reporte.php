@@ -201,7 +201,7 @@ $query ='select
           <div class="hex-totalizadores">
             <div class="hex-box" id="dealsBox">
               <h2 id="dealsTotal">0</h2>
-              <p>Nuevos</p>
+              <p>Cargas en catálogo</p>
             </div>
             <div class="hex-box" id="reservasBox">
               <h2 id="reservasTotal">0</h2>
