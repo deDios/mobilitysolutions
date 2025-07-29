@@ -193,11 +193,9 @@ li {
 /* NUEVA ESTRUCTURA EN DOS SECCIONES */
 .upper-section {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
+  flex-direction: column; /* AHORA ES COLUMNA */
   width: 100%;
-  gap: 20px;
+  gap: 30px;
   margin-bottom: 60px;
 }
 
@@ -301,9 +299,9 @@ li {
   background-color: #2ecc71;
 }
 
-/* GRAFICA A LA DERECHA */
+/* GRAFICA DEBAJO DE LOS CÍRCULOS */
 .chart-container {
-  width: 50%;
+  width: 100%; /* Ocupa todo el ancho disponible */
   height: 450px;
   padding: 20px;
   box-sizing: border-box;
