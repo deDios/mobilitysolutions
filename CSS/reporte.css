@@ -221,7 +221,6 @@ body {
   width: 100%;
   align-items: center;
   justify-content: flex-start;
-  padding: 20px;
   box-sizing: border-box;
 }
 
@@ -266,7 +265,7 @@ body {
 }
 
 .circulos {
-  padding-top: 80px;
+  padding-top: 20px;
 }
 
 .month-circles-container {
