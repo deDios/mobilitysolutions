@@ -229,7 +229,6 @@ $query ='select
 
     <!-- SEGUNDA SECCIÓN: ÁRBOL DE USUARIOS -->
     <div class="lower-section">
-      <h3>Equipo Mobility</h3>
       <div id="userTree" class="hierarchy-tree-container">
         <div id="userMetrics"></div>
       </div>

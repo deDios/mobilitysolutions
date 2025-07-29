@@ -469,7 +469,6 @@ ul.tree-vertical {
   border-left: 2px solid #ccc; /* Continuación vertical hacia hijos */
 }
 
-
 /* TARJETA DEL USUARIO */
 .tree-vertical .user-metric {
   display: block;
