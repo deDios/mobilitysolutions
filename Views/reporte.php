@@ -191,11 +191,8 @@ $query ='select
 </div>
 
 <div class="ds">
-    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 20px;">
-      <h3 class="titulo_d">Dashboard general</h3>
-    </div>
-  
   <div class="dashboard-container">
+    
     <!-- PRIMERA SECCIÓN: TOTALIZADORES + CÍRCULOS + GRÁFICA -->
     <div class="upper-section">
       <!-- Contenedor para hexágonos + círculos -->
