@@ -389,49 +389,43 @@ $query ='select
   return data.usuarios || [];
 }
 
-function renderUserTree(usuarios) {
-  const treeContainer = document.getElementById("userTree");
-  if (!treeContainer) return;
+function createTreeNode(user) {
+  const li = document.createElement("li");
+  li.classList.add("tree-node");
 
-  // Indexar por ID
-  const userMap = {};
-  usuarios.forEach(u => {
-    userMap[u.id] = { ...u, children: [] };
-  });
+  // Construir la tarjeta como en renderUserCards
+  const div = document.createElement("div");
+  div.className = "user-metric";
+  div.innerHTML = `
+    <div class="user-header">
+      <img src="${user.foto}" alt="${user.nombre}" class="user-avatar">
+      <div class="user-info">
+        <h4>${user.nombre}</h4>
+        <div class="user-role">${user.rol}</div>
+      </div>
+    </div>
+    <div class="user-indicators">
+      <span title="Nuevo en catálogo">${user.totalNew || 0}</span>
+      <span title="Reserva de vehículo">${user.totalReserva || 0}</span>
+      <span title="Entrega de vehículo">${user.totalEntrega || 0}</span>
+    </div>
+  `;
 
-  // Crear estructura jerárquica
-  let rootNodes = [];
-  usuarios.forEach(u => {
-    if (u.reporta_a && userMap[u.reporta_a]) {
-      userMap[u.reporta_a].children.push(userMap[u.id]);
-    } else {
-      rootNodes.push(userMap[u.id]); // Usuarios sin jefe (CTO, CEO)
-    }
-  });
+  li.appendChild(div);
 
-  // Crear HTML recursivo
-  function createTreeNode(user) {
-    const li = document.createElement("li");
-    li.innerHTML = `<div class="node">${user.nombre} <br><small>${user.rol}</small></div>`;
-    if (user.children.length > 0) {
-      const ul = document.createElement("ul");
-      user.children.forEach(child => {
-        ul.appendChild(createTreeNode(child));
-      });
-      li.appendChild(ul);
-    }
-    return li;
+  // Hijos recursivos
+  if (user.children.length > 0) {
+    const ul = document.createElement("ul");
+    ul.classList.add("tree-children");
+    user.children.forEach(child => {
+      ul.appendChild(createTreeNode(child));
+    });
+    li.appendChild(ul);
   }
 
-  const ul = document.createElement("ul");
-  ul.classList.add("tree");
-  rootNodes.forEach(root => {
-    ul.appendChild(createTreeNode(root));
-  });
-
-  treeContainer.innerHTML = "";
-  treeContainer.appendChild(ul);
+  return li;
 }
+
 
 
 async function renderUserCards() {
@@ -449,6 +443,12 @@ async function renderUserCards() {
       totalEntrega += row.Entrega;
     });
 
+    // 💡 Agrega los totales al objeto para usarlos en el árbol jerárquico
+    usuario.totalNew = totalNew;
+    usuario.totalReserva = totalReserva;
+    usuario.totalEntrega = totalEntrega;
+
+    // 🔁 Crea la tarjeta de usuario
     const div = document.createElement("div");
     div.className = "user-metric";
     div.innerHTML = `
@@ -468,8 +468,10 @@ async function renderUserCards() {
     contenedor.appendChild(div);
   }
 
-  return usuarios; // ✅ IMPORTANTE: Devuelve los usuarios para usar en renderUserTree
+  // Retorna los usuarios ya enriquecidos para usarlos en el árbol
+  return usuarios;
 }
+
 
 
   function activarHexagono(hexId) {
