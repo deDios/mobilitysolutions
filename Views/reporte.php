@@ -228,6 +228,8 @@ $query ='select
 
 
     <!-- SEGUNDA SECCIÓN: ÁRBOL DE USUARIOS -->
+
+    <div class="lower-section">
     <div class="filters-row">
       <div class="filter-group">
         <label for="filtroMes">📅 Mes:</label>
@@ -255,7 +257,7 @@ $query ='select
       </div>
     </div>
 
-    <div class="lower-section">
+
       <div id="userTree" class="hierarchy-tree-container">
         <div id="userMetrics"></div>
       </div>
