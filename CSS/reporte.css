@@ -423,13 +423,14 @@ body {
   margin-top: 40px;
 }
 
-/* ÁRBOL JERÁRQUICO CSS */
+/* CONTENEDOR DEL ÁRBOL */
 .hierarchy-tree-container {
   margin-top: 60px;
   padding: 20px;
   overflow-x: auto;
 }
 
+/* LISTA PRINCIPAL */
 ul.tree-vertical {
   list-style: none;
   padding-left: 0;
@@ -437,45 +438,94 @@ ul.tree-vertical {
   position: relative;
 }
 
+/* NODO INDIVIDUAL */
 .tree-vertical .tree-node {
   position: relative;
-  margin-left: 40px;
-  padding-left: 20px;
-  border-left: 2px solid #ccc;
-  margin-bottom: 20px; /* 🔹 Espacio entre tarjetas */
+  margin-bottom: 40px;           /* Espacio entre tarjetas */
+  padding-left: 30px;            /* Espacio para la línea vertical */
+  border-left: 2px solid #ccc;   /* Línea vertical principal */
 }
 
+/* LÍNEA HORIZONTAL HACIA LA TARJETA */
 .tree-vertical .tree-node::before {
   content: '';
   position: absolute;
-  top: 32px; /* 🔹 Altura del medio de la card */
-  left: -20px;
+  top: 40px;                     /* Centro vertical del card (ajustable) */
+  left: -20px;                   /* Donde inicia la línea horizontal */
   width: 20px;
   height: 2px;
   background-color: #ccc;
 }
 
-/* Evitar línea horizontal desde el padre al primer nodo raíz */
+/* EVITA LÍNEA EN EL PRIMER NODO RAÍZ */
 .tree-vertical > .tree-node:first-child::before {
   display: none;
 }
 
-/* Card personalizada para usuarios */
+/* SUBNIVELES (HIJOS) */
+.tree-vertical .tree-node > ul.tree-vertical {
+  margin-top: 20px;
+  padding-left: 20px;
+  border-left: 2px solid #ccc; /* Continuación vertical hacia hijos */
+}
+
+/* TARJETA DEL USUARIO */
 .tree-vertical .user-metric {
   display: block;
   background: white;
-  padding: 10px 20px;
+  padding: 15px 20px;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   min-width: 240px;
   text-align: center;
   position: relative;
 }
 
-/* Línea vertical ajustada desde el centro superior */
-.tree-vertical .tree-node > ul.tree-vertical {
-  margin-top: 0;
-  padding-left: 20px;
-  border-left: 2px solid #ccc;
-  margin-left: 20px;
+/* AJUSTE OPCIONAL PARA AVATAR Y METADATOS */
+.user-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.user-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.user-info h4 {
+  margin: 0;
+  font-size: 0.95em;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-role {
+  font-size: 0.75em;
+  color: gray;
+}
+
+.user-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.user-indicators span {
+  width: 35px;
+  height: 35px;
+  background: #7DA5FD;
+  color: white;
+  clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8em;
 }
