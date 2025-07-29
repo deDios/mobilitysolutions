@@ -185,7 +185,9 @@ body {
   padding: 20px;
   box-sizing: border-box;
   align-items: center;
+  position: relative; /* ✅ Esto es clave para la línea divisoria */
 }
+
 
 /* Línea divisoria vertical */
 .dashboard-container::before {
