@@ -183,8 +183,6 @@ body {
   grid-template-columns: 1fr 1fr; /* 50% y 50% */
   gap: 30px;
   padding: 20px;
-  padding-left: 50px;
-  padding-right: 50px;
   box-sizing: border-box;
   align-items: center;
 }
@@ -193,7 +191,7 @@ body {
 .dashboard-container::before {
   content: "";
   position: absolute;
-  top: 0;
+  top: 100px;
   bottom: 0;
   left: 50%;
   width: 1px;
