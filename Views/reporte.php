@@ -193,10 +193,6 @@ $query ='select
 <div class="ds">
     <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 20px;">
       <h3 class="titulo_d">Dashboard general</h3>
-      <select id="filtroUsuarios" multiple class="select2-multi" style="min-width: 250px;">
-        <!-- Opciones se llenan dinámicamente -->
-      </select>
-
     </div>
   
   <div class="dashboard-container">
