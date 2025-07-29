@@ -192,7 +192,7 @@ $query ='select
 
 <div class="ds">
   <div class="dashboard-container">
-    
+
     <!-- PRIMERA SECCIÓN: TOTALIZADORES + CÍRCULOS + GRÁFICA -->
     <div class="upper-section">
       <!-- Contenedor para hexágonos + círculos -->
@@ -442,7 +442,7 @@ function renderUserTree(usuarios) {
     userMap[u.id] = { ...u, children: [] };
   });
 
-  // Armar jerarquía
+  // Construir jerarquía
   const rootNodes = [];
   usuarios.forEach(u => {
     if (u.reporta_a && userMap[u.reporta_a]) {
@@ -452,15 +452,15 @@ function renderUserTree(usuarios) {
     }
   });
 
-  // Crear árbol visual
+  // Crear raíz visual
   const ul = document.createElement("ul");
-  ul.classList.add("tree");
+  ul.className = "tree-vertical";
 
   rootNodes.forEach(root => {
     ul.appendChild(createTreeNode(root));
   });
 
-  treeContainer.innerHTML = ""; // Limpiar
+  treeContainer.innerHTML = "";
   treeContainer.appendChild(ul);
 }
 
@@ -486,20 +486,19 @@ function createTreeNode(usuario) {
   `;
   li.appendChild(card);
 
-  if (usuario.children && usuario.children.length > 0) {
-    const ul = document.createElement("ul");
-    ul.className = "tree-children";  // 👈 ¡Este es el cambio clave!
+  if (usuario.children.length > 0) {
+    const childUl = document.createElement("ul");
+    childUl.className = "tree-vertical"; // Vertical hacia abajo
 
     usuario.children.forEach(child => {
-      ul.appendChild(createTreeNode(child));
+      childUl.appendChild(createTreeNode(child));
     });
 
-    li.appendChild(ul);
+    li.appendChild(childUl);
   }
 
   return li;
 }
-
 
   function activarHexagono(hexId) {
     document.querySelectorAll(".hex-box").forEach(box => box.classList.remove("active"));

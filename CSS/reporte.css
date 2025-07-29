@@ -327,6 +327,7 @@ body {
   height: 450px;
   padding: 20px;
   box-sizing: border-box;
+  align-items: center;
 }
 
 .chart-container canvas {
@@ -429,65 +430,37 @@ body {
   overflow-x: auto;
 }
 
-ul.tree {
+/* Estructura del árbol en forma vertical */
+ul.tree-vertical {
   list-style: none;
   padding-left: 0;
+  margin: 0;
   position: relative;
 }
 
-.tree-node {
+.tree-vertical .tree-node {
   position: relative;
-  margin-top: 40px;
-  text-align: center;
+  margin-left: 40px;
+  padding-left: 20px;
+  border-left: 2px solid #ccc;
 }
 
-.tree-node::before {
+.tree-vertical .tree-node::before {
   content: '';
   position: absolute;
-  top: -20px;
-  left: 50%;
-  width: 2px;
-  height: 20px;
-  background-color: #ccc;
-  transform: translateX(-50%);
-}
-
-.tree > .tree-node::before {
-  display: none;
-}
-
-.tree-children {
-  list-style: none;
-  padding-left: 0;
-  margin-top: 40px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  gap: 60px;
-}
-
-.tree-children::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 20px;
+  left: -20px;
+  width: 20px;
   height: 2px;
   background-color: #ccc;
 }
 
-.tree-children > .tree-node::before {
-  content: '';
-  position: absolute;
-  top: -20px;
-  left: 50%;
-  width: 2px;
-  height: 20px;
-  background-color: #ccc;
-  transform: translateX(-50%);
+.tree-vertical > .tree-node:first-child::before {
+  display: none;
 }
 
-.tree .user-metric {
+/* Tarjeta del usuario */
+.tree-vertical .user-metric {
   display: block;
   background: white;
   padding: 10px;
@@ -495,4 +468,12 @@ ul.tree {
   box-shadow: 0 0 6px rgba(0,0,0,0.1);
   min-width: 220px;
   text-align: center;
+}
+
+/* 🧼 Limpieza de estilos antiguos no usados */
+ul.tree,
+.tree-children,
+.tree-children::before,
+.tree-children > .tree-node::before {
+  all: unset;
 }
