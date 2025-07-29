@@ -466,3 +466,27 @@ ul.tree {
   min-width: 220px;
   text-align: center;
 }
+
+/* === NUEVA ESTRUCTURA EN DOS SECCIONES === */
+
+.upper-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.lower-section {
+  border-top: 2px solid #e0e0e0;
+  padding-top: 40px;
+}
+
+/* Asegura que el canvas tenga buena altura */
+.chart-container {
+  width: 100%;
+  height: 400px;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
