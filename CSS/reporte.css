@@ -192,16 +192,14 @@ body {
   height: auto;
 }
 
-
-/* NUEVO CONTENEDOR VERTICAL PARA HEXÁGONOS + CÍRCULOS + GRÁFICA */
-.upper-content {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
+.upper-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 50% y 50% */
   width: 100%;
-  align-items: center;
+  gap: 30px;
+  margin-bottom: 60px;
+  align-items: start;
 }
-
 
 .lower-section {
   border-top: 2px solid #e0e0e0;
@@ -305,7 +303,7 @@ body {
 
 /* GRAFICA DEBAJO DE LOS CÍRCULOS */
 .chart-container {
-  width: 50%; /* Ocupa todo el ancho disponible */
+  width: 100%; /* Ocupa todo el ancho disponible */
   height: 450px;
   padding: 20px;
   box-sizing: border-box;
