@@ -228,10 +228,12 @@ $query ='select
 
 
     <!-- SEGUNDA SECCIÓN: ÁRBOL DE USUARIOS -->
-
-    <div class="lower-section">
-      <div id="userTree" class="hierarchy-tree-container">
-        <div id="userMetrics"></div>
+    <div>
+      <h4> Organigrama </h4>
+      <div class="lower-section">
+        <div id="userTree" class="hierarchy-tree-container">
+          <div id="userMetrics"></div>
+        </div>
       </div>
     </div>
 
