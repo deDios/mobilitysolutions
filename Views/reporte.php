@@ -228,6 +228,33 @@ $query ='select
 
 
     <!-- SEGUNDA SECCIÓN: ÁRBOL DE USUARIOS -->
+    <div class="filters-row">
+      <div class="filter-group">
+        <label for="filtroMes">📅 Mes:</label>
+        <select id="filtroMes" multiple>
+          <option value="01">Enero</option>
+          <option value="02">Febrero</option>
+          <option value="03">Marzo</option>
+          <option value="04">Abril</option>
+          <option value="05">Mayo</option>
+          <option value="06">Junio</option>
+          <option value="07">Julio</option>
+          <option value="08">Agosto</option>
+          <option value="09">Septiembre</option>
+          <option value="10">Octubre</option>
+          <option value="11">Noviembre</option>
+          <option value="12">Diciembre</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="filtroUsuarios">👤 Usuario:</label>
+        <select id="filtroUsuarios" multiple>
+          <!-- Opciones dinámicas desde JS -->
+        </select>
+      </div>
+    </div>
+
     <div class="lower-section">
       <div id="userTree" class="hierarchy-tree-container">
         <div id="userMetrics"></div>
@@ -531,21 +558,20 @@ async function init() {
 }
 
 
-  async function llenarFiltroUsuarios() {
-    const select = document.getElementById("filtroUsuarios");
-    if (!select) return;
+async function llenarFiltroUsuarios() {
+  const select = document.getElementById("filtroUsuarios");
+  if (!select) return;
 
-    const usuarios = await getUsuarios();
+  const usuarios = await getUsuarios(); // Reutiliza tu función
 
-    usuarios.forEach(usuario => {
-      const option = document.createElement("option");
-      option.value = usuario.id;
-      option.textContent = usuario.nombre;
-      select.appendChild(option);
-    });
-  }
-
-  llenarFiltroUsuarios();
+  usuarios.forEach(usuario => {
+    const option = document.createElement("option");
+    option.value = usuario.id;
+    option.textContent = usuario.nombre;
+    select.appendChild(option);
+  });
+}
+llenarFiltroUsuarios();
 
   init();
 </script>
