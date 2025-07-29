@@ -301,7 +301,7 @@ li {
 
 /* GRAFICA DEBAJO DE LOS CÍRCULOS */
 .chart-container {
-  width: 100%; /* Ocupa todo el ancho disponible */
+  width: 50%; /* Ocupa todo el ancho disponible */
   height: 450px;
   padding: 20px;
   box-sizing: border-box;
