@@ -379,7 +379,7 @@ $query ='select
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      user_id: globalUserId,
+      user_id: usuarioActual,
       user_type: tipoUsuarioActual
     })
   });
