@@ -388,27 +388,58 @@ body {
   margin-top: 40px;
 }  
 
+/* ===================== */
+/* ÁRBOL JERÁRQUICO CSS  */
+/* ===================== */
+
 .hierarchy-tree-container {
-  margin-top: 60px;
-  padding: 10px 0;
-  border-top: 2px solid #e0e0e0;
+  margin-top: 40px;
+  padding: 20px;
+  overflow-x: auto;
 }
 
-.hierarchy-tree-container ul.tree {
-  list-style: none;
-  padding-left: 0;
-}
-
-.hierarchy-tree-container .tree-node {
-  margin-bottom: 20px;
+.tree {
+  list-style-type: none;
+  padding-left: 20px;
   position: relative;
 }
 
-.hierarchy-tree-container .tree-children {
+.tree-children {
+  list-style-type: none;
   margin-left: 40px;
-  border-left: 2px dashed #ccc;
   padding-left: 20px;
+  position: relative;
 }
 
+/* Línea vertical desde padre hacia hijos */
+.tree-children::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20px;
+  width: 2px;
+  height: 100%;
+  background: #ccc;
+}
 
+/* Nodo de árbol */
+.tree-node {
+  position: relative;
+  margin: 20px 0;
+}
 
+/* Línea horizontal que conecta un nodo con su padre */
+.tree-node::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 20px;
+  height: 2px;
+  background: #ccc;
+}
+
+/* Evita línea horizontal en el nodo raíz */
+.tree > .tree-node::before {
+  display: none;
+}

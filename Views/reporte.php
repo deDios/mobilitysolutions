@@ -464,36 +464,36 @@ function renderUserTree(usuarios) {
   treeContainer.innerHTML = ""; // Limpiar
   treeContainer.appendChild(ul);
 }
-
-function createTreeNode(user) {
+function createTreeNode(usuario) {
   const li = document.createElement("li");
-  li.classList.add("tree-node");
+  li.className = "tree-node";
 
-  const div = document.createElement("div");
-  div.className = "user-metric";
-  div.innerHTML = `
+  const card = document.createElement("div");
+  card.className = "user-metric";
+  card.innerHTML = `
     <div class="user-header">
-      <img src="${user.foto}" alt="${user.nombre}" class="user-avatar">
+      <img src="${usuario.foto}" alt="${usuario.nombre}" class="user-avatar">
       <div class="user-info">
-        <h4>${user.nombre}</h4>
-        <div class="user-role">${user.rol}</div>
+        <h4>${usuario.nombre}</h4>
+        <div class="user-role">${usuario.rol}</div>
       </div>
     </div>
     <div class="user-indicators">
-      <span title="Nuevo en catálogo">${user.totalNew || 0}</span>
-      <span title="Reserva de vehículo">${user.totalReserva || 0}</span>
-      <span title="Entrega de vehículo">${user.totalEntrega || 0}</span>
+      <span title="Nuevo en catálogo">${usuario.totalNew}</span>
+      <span title="Reserva de vehículo">${usuario.totalReserva}</span>
+      <span title="Entrega de vehículo">${usuario.totalEntrega}</span>
     </div>
   `;
+  li.appendChild(card);
 
-  li.appendChild(div);
-
-  if (user.children.length > 0) {
+  if (usuario.children && usuario.children.length > 0) {
     const ul = document.createElement("ul");
-    ul.classList.add("tree-children");
-    user.children.forEach(child => {
+    ul.className = "tree-children";  // 👈 ¡Este es el cambio clave!
+
+    usuario.children.forEach(child => {
       ul.appendChild(createTreeNode(child));
     });
+
     li.appendChild(ul);
   }
 
