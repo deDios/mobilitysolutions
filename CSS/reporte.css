@@ -191,7 +191,7 @@ body {
 .dashboard-container::before {
   content: "";
   position: absolute;
-  top: 300px;
+  top: 150px;
   bottom: 0;
   left: 50%;
   width: 1px;
