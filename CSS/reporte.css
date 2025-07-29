@@ -165,7 +165,9 @@ li {
     background: linear-gradient(45deg, #e3e3e3 48%, #1b1e21 48%);
 }
 
-/*--------------------------------------------------------------------------------------------------*/body {
+/*--------------------------------------------------------------------------------------------------*/
+
+body {
   font-family: Arial, sans-serif;
   margin: 0;
   background-color: #f8f9fa;
@@ -190,14 +192,16 @@ li {
   height: auto;
 }
 
-/* NUEVA ESTRUCTURA EN DOS SECCIONES */
-.upper-section {
+
+/* NUEVO CONTENEDOR VERTICAL PARA HEXÁGONOS + CÍRCULOS + GRÁFICA */
+.upper-content {
   display: flex;
-  flex-direction: column; /* AHORA ES COLUMNA */
-  width: 100%;
+  flex-direction: column;
   gap: 30px;
-  margin-bottom: 60px;
+  width: 100%;
+  align-items: center;
 }
+
 
 .lower-section {
   border-top: 2px solid #e0e0e0;

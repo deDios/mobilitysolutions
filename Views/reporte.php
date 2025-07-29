@@ -198,6 +198,7 @@ $query ='select
       </select>
 
     </div>
+  
   <div class="dashboard-container">
     <!-- PRIMERA SECCIÓN: TOTALIZADORES + CÍRCULOS + GRÁFICA -->
     <div class="upper-section">
