@@ -201,33 +201,38 @@ $query ='select
   <div class="dashboard-container">
     <!-- PRIMERA SECCIÓN: TOTALIZADORES + CÍRCULOS + GRÁFICA -->
     <div class="upper-section">
-      <div class="hex-totalizadores-container">
-        <div class="hex-totalizadores">
-          <div class="hex-box" id="dealsBox">
-            <h2 id="dealsTotal">0</h2>
-            <p>Nuevos</p>
+      <!-- Contenedor para hexágonos + círculos -->
+      <div class="upper-content">
+        <div class="hex-totalizadores-container">
+          <div class="hex-totalizadores">
+            <div class="hex-box" id="dealsBox">
+              <h2 id="dealsTotal">0</h2>
+              <p>Nuevos</p>
+            </div>
+            <div class="hex-box" id="reservasBox">
+              <h2 id="reservasTotal">0</h2>
+              <p>Contratos</p>
+            </div>
+            <div class="hex-box" id="entregasBox">
+              <h2 id="entregasTotal">0</h2>
+              <p>Entregas</p>
+            </div>
           </div>
-          <div class="hex-box" id="reservasBox">
-            <h2 id="reservasTotal">0</h2>
-            <p>Contratos</p>
-          </div>
-          <div class="hex-box" id="entregasBox">
-            <h2 id="entregasTotal">0</h2>
-            <p>Entregas</p>
+
+          <div class="circulos">
+            <div id="avanceMensual" class="month-circles-container">
+              <!-- Los círculos mensuales se insertarán dinámicamente aquí -->
+            </div>
           </div>
         </div>
+    </div>
 
-        <div class="circulos">
-          <div id="avanceMensual" class="month-circles-container">
-            <!-- Los círculos mensuales se insertarán dinámicamente aquí -->
-          </div>
-        </div>
-      </div>
-
+      <!-- Contenedor para la gráfica -->
       <div class="chart-container">
         <canvas id="graficaMetas"></canvas>
       </div>
     </div>
+
 
     <!-- SEGUNDA SECCIÓN: ÁRBOL DE USUARIOS -->
     <div class="lower-section">

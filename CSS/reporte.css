@@ -165,8 +165,7 @@ li {
     background: linear-gradient(45deg, #e3e3e3 48%, #1b1e21 48%);
 }
 
-/*--------------------------------------------------------------------------------------------------*/
-body {
+/*--------------------------------------------------------------------------------------------------*/body {
   font-family: Arial, sans-serif;
   margin: 0;
   background-color: #f8f9fa;
@@ -183,12 +182,28 @@ body {
 /* CONTENEDOR DE HEADER EN FILA: HEX + GRAFICA */
 .header {
   display: flex;
-  flex-direction: row; /* Layout horizontal */
+  flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
   width: 100%;
   gap: 0;
   height: auto;
+}
+
+/* NUEVA ESTRUCTURA EN DOS SECCIONES */
+.upper-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  gap: 20px;
+  margin-bottom: 60px;
+}
+
+.lower-section {
+  border-top: 2px solid #e0e0e0;
+  padding-top: 40px;
 }
 
 /* CONTENEDOR IZQUIERDO: HEXÁGONOS + CÍRCULOS */
@@ -212,7 +227,6 @@ body {
   width: 100%;
 }
 
-/* ESTADO ACTIVO DEL HEXÁGONO */
 .hex-box.active {
   box-shadow: 0 0 0 4px #7DA5FD, 0 0 12px rgba(125,165,253,0.6);
   transform: scale(1.08);
@@ -239,12 +253,14 @@ body {
 }
 
 /* CÍRCULOS DE CUMPLIMIENTO MENSUAL */
-.titulo_d{
-    padding-left: 20px;
+.titulo_d {
+  padding-left: 20px;
 }
-.circulos{
-    padding-top: 80px;
+
+.circulos {
+  padding-top: 80px;
 }
+
 .month-circles-container {
   display: flex;
   flex-direction: row;
@@ -290,7 +306,6 @@ body {
   width: 50%;
   height: 450px;
   padding: 20px;
-  padding-right: 100px;
   box-sizing: border-box;
 }
 
@@ -376,7 +391,6 @@ body {
   font-size: 0.8em;
 }
 
-/* COLORES POR TIPO DE INDICADOR */
 .user-indicators span:nth-child(1),
 .user-indicators span:nth-child(2),
 .user-indicators span:nth-child(3) {
@@ -386,12 +400,9 @@ body {
 /* SECCION DE RECONOCIMIENTOS FUTURA */
 .recognitions-section {
   margin-top: 40px;
-}  
+}
 
-/* ===================== */
-/* ÁRBOL JERÁRQUICO CSS  */
-/* ===================== */
-
+/* ÁRBOL JERÁRQUICO CSS */
 .hierarchy-tree-container {
   margin-top: 60px;
   padding: 20px;
@@ -456,7 +467,6 @@ ul.tree {
   transform: translateX(-50%);
 }
 
-/* Estilo visual para cada tarjeta */
 .tree .user-metric {
   display: block;
   background: white;
@@ -466,27 +476,3 @@ ul.tree {
   min-width: 220px;
   text-align: center;
 }
-
-/* === NUEVA ESTRUCTURA EN DOS SECCIONES === */
-
-.upper-section {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 30px;
-  margin-bottom: 60px;
-}
-
-.lower-section {
-  border-top: 2px solid #e0e0e0;
-  padding-top: 40px;
-}
-
-/* Asegura que el canvas tenga buena altura */
-.chart-container {
-  width: 100%;
-  height: 400px;
-  padding: 0 40px;
-  box-sizing: border-box;
-}
-
