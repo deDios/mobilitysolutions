@@ -393,33 +393,49 @@ body {
 /* ===================== */
 
 .hierarchy-tree-container {
-  margin-top: 40px;
-  padding: 20px;
+  padding: 40px 20px;
   overflow-x: auto;
 }
 
-.tree {
-  list-style-type: none;
+ul.tree {
+  list-style: none;
   padding-left: 0;
   position: relative;
-  display: flex;
-  justify-content: center;
-}
-
-.tree-node {
-  position: relative;
-  margin: 40px 20px; /* Separación entre tarjetas */
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+.tree-node {
+  position: relative;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tree-node::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 20px;
+  background-color: #ccc;
+  transform: translateX(-50%);
+}
+
+.tree > .tree-node::before {
+  display: none;
+}
+
 .tree-children {
-  list-style-type: none;
-  margin-top: 30px;
-  padding-left: 0;
+  list-style: none;
   display: flex;
   justify-content: center;
+  gap: 60px; /* Separación entre nodos hermanos */
+  margin-top: 40px;
+  padding-left: 0;
   position: relative;
 }
 
@@ -427,42 +443,29 @@ body {
   content: '';
   position: absolute;
   top: 0;
-  left: 50%;
-  width: 0;
-  height: 20px;
-  border-left: 2px solid #ccc;
-}
-
-.tree-node::before {
-  content: '';
-  position: absolute;
-  top: -20px;
-  left: 50%;
-  width: 0;
-  height: 20px;
-  border-left: 2px solid #ccc;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #ccc;
 }
 
 .tree-children > .tree-node::before {
   content: '';
   position: absolute;
   top: -20px;
+  left: 50%;
   width: 2px;
   height: 20px;
-  left: 50%;
-  transform: translateX(-50%);
   background-color: #ccc;
+  transform: translateX(-50%);
 }
 
-/* Línea horizontal que une a los hijos */
-.tree-children::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: #ccc;
-  z-index: -1;
-  margin-top: 20px;
+.tree .user-metric {
+  display: block;
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+  min-width: 200px;
+  text-align: center;
 }
