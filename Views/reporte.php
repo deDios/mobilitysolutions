@@ -465,6 +465,42 @@ function renderUserTree(usuarios) {
   treeContainer.appendChild(ul);
 }
 
+function createTreeNode(user) {
+  const li = document.createElement("li");
+  li.classList.add("tree-node");
+
+  const div = document.createElement("div");
+  div.className = "user-metric";
+  div.innerHTML = `
+    <div class="user-header">
+      <img src="${user.foto}" alt="${user.nombre}" class="user-avatar">
+      <div class="user-info">
+        <h4>${user.nombre}</h4>
+        <div class="user-role">${user.rol}</div>
+      </div>
+    </div>
+    <div class="user-indicators">
+      <span title="Nuevo en catálogo">${user.totalNew || 0}</span>
+      <span title="Reserva de vehículo">${user.totalReserva || 0}</span>
+      <span title="Entrega de vehículo">${user.totalEntrega || 0}</span>
+    </div>
+  `;
+
+  li.appendChild(div);
+
+  if (user.children.length > 0) {
+    const ul = document.createElement("ul");
+    ul.classList.add("tree-children");
+    user.children.forEach(child => {
+      ul.appendChild(createTreeNode(child));
+    });
+    li.appendChild(ul);
+  }
+
+  return li;
+}
+
+
   function activarHexagono(hexId) {
     document.querySelectorAll(".hex-box").forEach(box => box.classList.remove("active"));
     const box = document.getElementById(hexId);
@@ -477,8 +513,8 @@ async function init() {
   renderGraficaPorTipo("New");
   activarHexagono("dealsBox");
 
-  const usuarios = await renderUserCards(); // Aquí los recuperas planos pero enriquecidos
-  renderUserTree(usuarios); // Aquí ya se arma la jerarquía y se pinta
+  const usuarios = await renderUserCards(); 
+  renderUserTree(usuarios); 
 
   document.getElementById("dealsBox").addEventListener("click", () => {
     activarHexagono("dealsBox");
