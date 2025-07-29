@@ -455,8 +455,6 @@ ul.tree-vertical {
   height: 2px;
   background-color: #ccc;
   z-index: 0; /* Asegura que se vea detrás de la tarjeta */
-  animation: grow-line-horizontal 0.4s ease-out;
-  transform-origin: left;
 }
 
 /* EVITA LÍNEA EN EL PRIMER NODO RAÍZ */
@@ -465,16 +463,11 @@ ul.tree-vertical {
 }
 
 /* SUBNIVELES (HIJOS) */
-
 .tree-vertical .tree-node > ul.tree-vertical {
-  margin-top: 0;
+  margin-top: 20px;
   padding-left: 20px;
-  border-left: 2px solid #ccc;
-  margin-left: 20px;
-  animation: grow-line-vertical 0.6s ease-out;
-  transform-origin: top;
+  border-left: 2px solid #ccc; /* Continuación vertical hacia hijos */
 }
-
 
 
 /* TARJETA DEL USUARIO */
