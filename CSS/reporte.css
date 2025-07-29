@@ -400,55 +400,69 @@ body {
 
 .tree {
   list-style-type: none;
-  position: relative;
-  padding-left: 0;
-}
-
-.tree ul {
-  list-style-type: none;
-  margin-left: 40px;
   padding-left: 0;
   position: relative;
-}
-
-.tree-children .tree-node {
-  margin-top: 30px; /* Separación vertical entre niveles */
+  display: flex;
+  justify-content: center;
 }
 
 .tree-node {
   position: relative;
-  margin: 20px 0;
+  margin: 40px 20px; /* Separación entre tarjetas */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.tree-node > .user-metric {
-  display: inline-block;
-  vertical-align: top;
-  /* border: 1px dashed #999; */ /* útil para depuración */
+.tree-children {
+  list-style-type: none;
+  margin-top: 30px;
+  padding-left: 0;
+  display: flex;
+  justify-content: center;
+  position: relative;
 }
 
-/* Línea vertical que conecta el padre con sus hijos */
-.tree ul::before {
+.tree-children::before {
   content: '';
   position: absolute;
   top: 0;
-  left: 25px;
-  width: 2px;
-  height: 100%;
-  background: #ccc;
+  left: 50%;
+  width: 0;
+  height: 20px;
+  border-left: 2px solid #ccc;
 }
 
-/* Línea horizontal desde padre al hijo */
 .tree-node::before {
   content: '';
   position: absolute;
   top: -20px;
-  left: -40px;
-  width: 40px;
-  height: 2px;
-  background: #ccc;
+  left: 50%;
+  width: 0;
+  height: 20px;
+  border-left: 2px solid #ccc;
 }
 
-/* No dibujar línea hacia el nodo raíz */
-.tree > .tree-node::before {
-  display: none;
+.tree-children > .tree-node::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  width: 2px;
+  height: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ccc;
+}
+
+/* Línea horizontal que une a los hijos */
+.tree-children::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #ccc;
+  z-index: -1;
+  margin-top: 20px;
 }
