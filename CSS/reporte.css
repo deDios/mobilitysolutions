@@ -400,46 +400,55 @@ body {
 
 .tree {
   list-style-type: none;
-  padding-left: 20px;
   position: relative;
+  padding-left: 0;
 }
 
-.tree-children {
+.tree ul {
   list-style-type: none;
   margin-left: 40px;
-  padding-left: 20px;
+  padding-left: 0;
   position: relative;
 }
 
-/* Línea vertical desde padre hacia hijos */
-.tree-children::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 20px;
-  width: 2px;
-  height: 100%;
-  background: #ccc;
+.tree-children .tree-node {
+  margin-top: 30px; /* Separación vertical entre niveles */
 }
 
-/* Nodo de árbol */
 .tree-node {
   position: relative;
   margin: 20px 0;
 }
 
-/* Línea horizontal que conecta un nodo con su padre */
+.tree-node > .user-metric {
+  display: inline-block;
+  vertical-align: top;
+  /* border: 1px dashed #999; */ /* útil para depuración */
+}
+
+/* Línea vertical que conecta el padre con sus hijos */
+.tree ul::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 25px;
+  width: 2px;
+  height: 100%;
+  background: #ccc;
+}
+
+/* Línea horizontal desde padre al hijo */
 .tree-node::before {
   content: '';
   position: absolute;
   top: -20px;
-  left: -20px;
-  width: 20px;
+  left: -40px;
+  width: 40px;
   height: 2px;
   background: #ccc;
 }
 
-/* Evita línea horizontal en el nodo raíz */
+/* No dibujar línea hacia el nodo raíz */
 .tree > .tree-node::before {
   display: none;
 }
