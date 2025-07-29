@@ -468,9 +468,9 @@ async function renderUserCards() {
     contenedor.appendChild(div);
   }
 
-  // Si después quieres construir un mapa jerárquico:
-  // console.log("Jerarquía completa con reporta_a:", usuarios);
+  return usuarios; // ✅ IMPORTANTE: Devuelve los usuarios para usar en renderUserTree
 }
+
 
   function activarHexagono(hexId) {
     document.querySelectorAll(".hex-box").forEach(box => box.classList.remove("active"));
