@@ -228,16 +228,9 @@ $query ='select
 
     <div class="metrics-section">
       <h3>Equipo Mobility</h3>
-      <div id="userMetrics" class="metrics-grid"></div>
       <div id="userTree" class="hierarchy-tree-container"></div>
     </div>
 
-    <div class="recognitions-section">
-      <h3></h3>
-      <div class="recognitions-placeholder">
-        <!-- Espacio reservado para reconocimientos -->
-      </div>
-    </div>
   </div>
 </div>
 
@@ -464,6 +457,7 @@ function renderUserTree(usuarios) {
   treeContainer.innerHTML = ""; // Limpiar
   treeContainer.appendChild(ul);
 }
+
 function createTreeNode(usuario) {
   const li = document.createElement("li");
   li.className = "tree-node";
