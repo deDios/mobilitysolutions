@@ -424,11 +424,13 @@ body {
 }
 
 /* CONTENEDOR DEL ÁRBOL */
+
 .hierarchy-tree-container {
-  margin-top: 60px;
-  padding: 20px;
-  overflow-x: auto;
+  max-height: calc(100vh - 500px); /* Ajusta 300px según tu layout */
+  overflow-y: auto;
+  padding-right: 10px;
 }
+
 
 /* LISTA PRINCIPAL */
 ul.tree-vertical {
