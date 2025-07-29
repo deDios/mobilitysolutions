@@ -441,20 +441,21 @@ ul.tree-vertical {
 /* NODO INDIVIDUAL */
 .tree-vertical .tree-node {
   position: relative;
-  margin-bottom: 40px;           /* Espacio entre tarjetas */
-  padding-left: 30px;            /* Espacio para la línea vertical */
-  border-left: 2px solid #ccc;   /* Línea vertical principal */
+  margin-bottom: 40px;
+  padding-left: 30px;
+  border-left: 2px solid #ccc;
 }
 
-/* LÍNEA HORIZONTAL HACIA LA TARJETA */
 .tree-vertical .tree-node::before {
   content: '';
   position: absolute;
-  top: 40px;                     /* Centro vertical del card (ajustable) */
-  left: -20px;                   /* Donde inicia la línea horizontal */
+  top: 50%;                    /* Centrado verticalmente */
+  transform: translateY(-50%); /* Asegura que se centre correctamente */
+  left: -20px;                 /* Extensión horizontal hacia la línea principal */
   width: 20px;
   height: 2px;
   background-color: #ccc;
+  z-index: 0; /* Asegura que se vea detrás de la tarjeta */
 }
 
 /* EVITA LÍNEA EN EL PRIMER NODO RAÍZ */
