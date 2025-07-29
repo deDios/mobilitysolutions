@@ -229,6 +229,7 @@ $query ='select
     <div class="metrics-section">
       <h3>Equipo Mobility</h3>
       <div id="userMetrics" class="metrics-grid"></div>
+      <div id="userTree" class="hierarchy-tree-container"></div>
     </div>
 
     <div class="recognitions-section">
@@ -388,6 +389,51 @@ $query ='select
   return data.usuarios || [];
 }
 
+function renderUserTree(usuarios) {
+  const treeContainer = document.getElementById("userTree");
+  if (!treeContainer) return;
+
+  // Indexar por ID
+  const userMap = {};
+  usuarios.forEach(u => {
+    userMap[u.id] = { ...u, children: [] };
+  });
+
+  // Crear estructura jerárquica
+  let rootNodes = [];
+  usuarios.forEach(u => {
+    if (u.reporta_a && userMap[u.reporta_a]) {
+      userMap[u.reporta_a].children.push(userMap[u.id]);
+    } else {
+      rootNodes.push(userMap[u.id]); // Usuarios sin jefe (CTO, CEO)
+    }
+  });
+
+  // Crear HTML recursivo
+  function createTreeNode(user) {
+    const li = document.createElement("li");
+    li.innerHTML = `<div class="node">${user.nombre} <br><small>${user.rol}</small></div>`;
+    if (user.children.length > 0) {
+      const ul = document.createElement("ul");
+      user.children.forEach(child => {
+        ul.appendChild(createTreeNode(child));
+      });
+      li.appendChild(ul);
+    }
+    return li;
+  }
+
+  const ul = document.createElement("ul");
+  ul.classList.add("tree");
+  rootNodes.forEach(root => {
+    ul.appendChild(createTreeNode(root));
+  });
+
+  treeContainer.innerHTML = "";
+  treeContainer.appendChild(ul);
+}
+
+
 async function renderUserCards() {
   const usuarios = await getUsuariosJerarquia();
   const contenedor = document.getElementById("userMetrics");
@@ -432,28 +478,31 @@ async function renderUserCards() {
     if (box) box.classList.add("active");
   }
 
-  async function init() {
-    const data = await getDataUsuario(globalUserId);
-    generarTotales(data);
-    renderGraficaPorTipo("New");
+async function init() {
+  const data = await getDataUsuario(globalUserId);
+  generarTotales(data);
+  renderGraficaPorTipo("New");
+  activarHexagono("dealsBox");
+
+  const usuarios = await renderUserCards(); // ✅ Ahora recibes los usuarios
+  renderUserTree(usuarios); // ✅ Dibuja el árbol jerárquico
+
+  document.getElementById("dealsBox").addEventListener("click", () => {
     activarHexagono("dealsBox");
-    await renderUserCards();
+    renderGraficaPorTipo("New");
+  });
 
-    document.getElementById("dealsBox").addEventListener("click", () => {
-      activarHexagono("dealsBox");
-      renderGraficaPorTipo("New");
-    });
+  document.getElementById("reservasBox").addEventListener("click", () => {
+    activarHexagono("reservasBox");
+    renderGraficaPorTipo("Reserva");
+  });
 
-    document.getElementById("reservasBox").addEventListener("click", () => {
-      activarHexagono("reservasBox");
-      renderGraficaPorTipo("Reserva");
-    });
+  document.getElementById("entregasBox").addEventListener("click", () => {
+    activarHexagono("entregasBox");
+    renderGauge("Entrega");
+  });
+}
 
-    document.getElementById("entregasBox").addEventListener("click", () => {
-      activarHexagono("entregasBox");
-      renderGauge("Entrega");
-    });
-  }
 
   async function llenarFiltroUsuarios() {
     const select = document.getElementById("filtroUsuarios");
