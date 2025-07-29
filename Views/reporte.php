@@ -241,6 +241,7 @@ $query ='select
         <!-- Aquí se generará el árbol con renderUserTree() -->
       </div>
     </div>
+    
   </div>
 
 </div>

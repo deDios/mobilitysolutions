@@ -177,8 +177,14 @@ body {
   padding-top: 130px;
 }
 
+/* DASHBOARD GRID 2 COLUMNAS */
 .dashboard-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 50% y 50% */
+  gap: 30px;
   padding: 20px;
+  box-sizing: border-box;
+  align-items: start;
 }
 
 /* CONTENEDOR DE HEADER EN FILA: HEX + GRAFICA */
@@ -192,13 +198,14 @@ body {
   height: auto;
 }
 
+
+
 .upper-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* 50% y 50% */
+  display: flex;
+  flex-direction: column; /* AHORA ES COLUMNA */
   width: 100%;
   gap: 30px;
   margin-bottom: 60px;
-  align-items: start;
 }
 
 .lower-section {
@@ -303,7 +310,7 @@ body {
 
 /* GRAFICA DEBAJO DE LOS CÍRCULOS */
 .chart-container {
-  width: 100%; /* Ocupa todo el ancho disponible */
+  width: 50%; /* Ocupa todo el ancho disponible */
   height: 450px;
   padding: 20px;
   box-sizing: border-box;
