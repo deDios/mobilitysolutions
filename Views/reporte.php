@@ -389,45 +389,6 @@ $query ='select
   return data.usuarios || [];
 }
 
-function createTreeNode(user) {
-  const li = document.createElement("li");
-  li.classList.add("tree-node");
-
-  // Construir la tarjeta como en renderUserCards
-  const div = document.createElement("div");
-  div.className = "user-metric";
-  div.innerHTML = `
-    <div class="user-header">
-      <img src="${user.foto}" alt="${user.nombre}" class="user-avatar">
-      <div class="user-info">
-        <h4>${user.nombre}</h4>
-        <div class="user-role">${user.rol}</div>
-      </div>
-    </div>
-    <div class="user-indicators">
-      <span title="Nuevo en catálogo">${user.totalNew || 0}</span>
-      <span title="Reserva de vehículo">${user.totalReserva || 0}</span>
-      <span title="Entrega de vehículo">${user.totalEntrega || 0}</span>
-    </div>
-  `;
-
-  li.appendChild(div);
-
-  // Hijos recursivos
-  if (user.children.length > 0) {
-    const ul = document.createElement("ul");
-    ul.classList.add("tree-children");
-    user.children.forEach(child => {
-      ul.appendChild(createTreeNode(child));
-    });
-    li.appendChild(ul);
-  }
-
-  return li;
-}
-
-
-
 async function renderUserCards() {
   const usuarios = await getUsuariosJerarquia();
   const contenedor = document.getElementById("userMetrics");
@@ -472,7 +433,37 @@ async function renderUserCards() {
   return usuarios;
 }
 
+function renderUserTree(usuarios) {
+  const treeContainer = document.getElementById("userTree");
+  if (!treeContainer) return;
 
+  // Mapear por ID
+  const userMap = {};
+  usuarios.forEach(u => {
+    userMap[u.id] = { ...u, children: [] };
+  });
+
+  // Armar jerarquía
+  const rootNodes = [];
+  usuarios.forEach(u => {
+    if (u.reporta_a && userMap[u.reporta_a]) {
+      userMap[u.reporta_a].children.push(userMap[u.id]);
+    } else {
+      rootNodes.push(userMap[u.id]);
+    }
+  });
+
+  // Crear árbol visual
+  const ul = document.createElement("ul");
+  ul.classList.add("tree");
+
+  rootNodes.forEach(root => {
+    ul.appendChild(createTreeNode(root));
+  });
+
+  treeContainer.innerHTML = ""; // Limpiar
+  treeContainer.appendChild(ul);
+}
 
   function activarHexagono(hexId) {
     document.querySelectorAll(".hex-box").forEach(box => box.classList.remove("active"));
@@ -486,8 +477,8 @@ async function init() {
   renderGraficaPorTipo("New");
   activarHexagono("dealsBox");
 
-  const usuarios = await renderUserCards(); // ✅ Ahora recibes los usuarios
-  renderUserTree(usuarios); // ✅ Dibuja el árbol jerárquico
+  const usuarios = await renderUserCards(); // Aquí los recuperas planos pero enriquecidos
+  renderUserTree(usuarios); // Aquí ya se arma la jerarquía y se pinta
 
   document.getElementById("dealsBox").addEventListener("click", () => {
     activarHexagono("dealsBox");
