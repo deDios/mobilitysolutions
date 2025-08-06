@@ -6,10 +6,10 @@ $asignado = isset($_GET['asignado']) ? intval($_GET['asignado']) : null;
 $user_type = isset($_GET['user_type']) ? intval($_GET['user_type']) : null;
 $anio = date("Y");
 
-if (!$asignado) {
+if (!$asignado || !$user_type) {
     echo json_encode([
         "success" => false,
-        "message" => "Falta el parámetro asignado"
+        "message" => "Faltan parámetros requeridos"
     ]);
     exit;
 }
@@ -32,12 +32,31 @@ function obtenerSubordinados($con, $userId, &$subordinados) {
     $stmt->close();
 }
 
-$ids_consultados = [$asignado]; // incluye a sí mismo
-obtenerSubordinados($con, $asignado, $ids_consultados);
+// 🧠 Determinar qué usuarios consultar
+$ids_consultados = [];
 
-// 📦 Construir placeholders para IN (...)
+if (in_array($user_type, [5, 6])) {
+    // CTO o CEO: consultar TODOS los usuarios que tienen metas este año
+    $query = "SELECT DISTINCT asignado FROM mobility_solutions.tmx_metas WHERE anio = ?";
+    $stmt = $con->prepare($query);
+    $stmt->bind_param("i", $anio);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    while ($row = $result->fetch_assoc()) {
+        $ids_consultados[] = $row['asignado'];
+    }
+
+    $stmt->close();
+} else {
+    // Para cualquier otro tipo, consultar solo el usuario y sus subordinados
+    $ids_consultados = [$asignado]; // incluye a sí mismo
+    obtenerSubordinados($con, $asignado, $ids_consultados);
+}
+
+// 🧱 Armar la consulta
 $placeholders = implode(',', array_fill(0, count($ids_consultados), '?'));
-$tipos = str_repeat('i', count($ids_consultados) + 1); // +1 por $anio
+$tipos = str_repeat('i', count($ids_consultados)) . 'i'; // usuarios + año
 
 $query = "
     SELECT tipo_meta, asignado, enero, febrero, marzo, abril, mayo, junio,
@@ -48,7 +67,7 @@ $query = "
 
 $stmt = $con->prepare($query);
 
-// 📌 Bind dinámico
+// 🧷 Bind dinámico
 $params = array_merge($ids_consultados, [$anio]);
 $stmt->bind_param($tipos, ...$params);
 
@@ -63,7 +82,7 @@ while ($row = $result->fetch_assoc()) {
 echo json_encode([
     "success" => true,
     "metas" => $metas
-]); 
+]);
 
 $stmt->close();
 $con->close();
