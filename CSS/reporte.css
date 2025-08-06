@@ -530,6 +530,12 @@ ul.tree-vertical {
   font-size: 0.8em;
 }
 
+.user-metric.selected {
+  border: 2px solid #007bff;
+  background-color: #e6f0ff;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}
+
 @keyframes grow-line-vertical {
   from {
     height: 0;

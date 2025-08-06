@@ -403,12 +403,10 @@ async function renderUserCards() {
       totalEntrega += row.Entrega;
     });
 
-    // 💡 Agrega los totales al objeto para usarlos en el árbol jerárquico
     usuario.totalNew = totalNew;
     usuario.totalReserva = totalReserva;
     usuario.totalEntrega = totalEntrega;
 
-    // 🔁 Crea la tarjeta de usuario
     const div = document.createElement("div");
     div.className = "user-metric";
     div.innerHTML = `
@@ -420,12 +418,24 @@ async function renderUserCards() {
         </div>
       </div>
     `;
+
+    // 🔁 CLICK PARA SELECCIONAR USUARIO Y FILTRAR
+    div.addEventListener("click", async () => {
+      document.querySelectorAll(".user-metric").forEach(card => card.classList.remove("selected"));
+      div.classList.add("selected");
+      usuarioActual = usuario.id; // cambia el contexto actual
+      const data = await getDataUsuario(usuarioActual);
+      generarTotales(data);
+      renderGraficaPorTipo("New"); // refresca gráfica
+      activarHexagono("dealsBox"); // activa hexágono inicial
+    });
+
     contenedor.appendChild(div);
   }
 
-  // Retorna los usuarios ya enriquecidos para usarlos en el árbol
   return usuarios;
 }
+
 
 function renderUserTree(usuarios) {
   const treeContainer = document.getElementById("userTree");
