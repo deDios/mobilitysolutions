@@ -14,26 +14,43 @@ if (!$asignado) {
     exit;
 }
 
-// Si el usuario es CEO o CTO (tipos 5 o 6), traemos todas las metas
-if ($user_type === 5 || $user_type === 6 || $asignado == 9999) {
-    $query = "
-        SELECT tipo_meta, asignado, enero, febrero, marzo, abril, mayo, junio,
-               julio, agosto, septiembre, octubre, noviembre, diciembre
-        FROM mobility_solutions.tmx_metas
-        WHERE anio = ?
-    ";
-    $stmt = $con->prepare($query);
-    $stmt->bind_param("i", $anio);
-} else {
-    $query = "
-        SELECT tipo_meta, asignado, enero, febrero, marzo, abril, mayo, junio,
-               julio, agosto, septiembre, octubre, noviembre, diciembre
-        FROM mobility_solutions.tmx_metas
-        WHERE asignado = ? AND anio = ?
-    ";
-    $stmt = $con->prepare($query);
-    $stmt->bind_param("ii", $asignado, $anio);
+// 🔁 Función recursiva para obtener todos los subordinados
+function obtenerSubordinados($con, $userId, &$subordinados) {
+    $stmt = $con->prepare("SELECT user_id FROM mobility_solutions.tmx_acceso_usuario WHERE reporta_a = ?");
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    while ($row = $result->fetch_assoc()) {
+        $subId = $row['user_id'];
+        if (!in_array($subId, $subordinados)) {
+            $subordinados[] = $subId;
+            obtenerSubordinados($con, $subId, $subordinados); // recursivo
+        }
+    }
+
+    $stmt->close();
 }
+
+$ids_consultados = [$asignado]; // incluye a sí mismo
+obtenerSubordinados($con, $asignado, $ids_consultados);
+
+// 📦 Construir placeholders para IN (...)
+$placeholders = implode(',', array_fill(0, count($ids_consultados), '?'));
+$tipos = str_repeat('i', count($ids_consultados) + 1); // +1 por $anio
+
+$query = "
+    SELECT tipo_meta, asignado, enero, febrero, marzo, abril, mayo, junio,
+           julio, agosto, septiembre, octubre, noviembre, diciembre
+    FROM mobility_solutions.tmx_metas
+    WHERE asignado IN ($placeholders) AND anio = ?
+";
+
+$stmt = $con->prepare($query);
+
+// 📌 Bind dinámico
+$params = array_merge($ids_consultados, [$anio]);
+$stmt->bind_param($tipos, ...$params);
 
 $stmt->execute();
 $result = $stmt->get_result();
