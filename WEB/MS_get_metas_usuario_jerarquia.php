@@ -2,69 +2,79 @@
 header('Content-Type: application/json');
 include "../db/Conexion.php";
 
-$asignado = isset($_GET['asignado']) ? intval($_GET['asignado']) : null;
+$user_id = isset($_GET['user_id']) ? intval($_GET['user_id']) : null;
 $user_type = isset($_GET['user_type']) ? intval($_GET['user_type']) : null;
-$anio = date("Y");
 
-if (!$asignado) {
-    echo json_encode([
-        "success" => false,
-        "message" => "Falta el parámetro asignado"
-    ]);
+if (!$user_id || !$user_type) {
+    echo json_encode(["error" => "Faltan parámetros"]);
     exit;
 }
 
-// 🔁 Función recursiva para obtener todos los subordinados
-function obtenerSubordinados($con, $userId, &$subordinados) {
-    $stmt = $con->prepare("SELECT user_id FROM mobility_solutions.tmx_acceso_usuario WHERE reporta_a = ?");
-    $stmt->bind_param("i", $userId);
-    $stmt->execute();
-    $result = $stmt->get_result();
+// Obtener usuarios subordinados o asignados con metas si es CTO/CEO
+function getSubordinados($user_id, $user_type, $con) {
+    $anioActual = date("Y");
 
-    while ($row = $result->fetch_assoc()) {
-        $subId = $row['user_id'];
-        if (!in_array($subId, $subordinados)) {
-            $subordinados[] = $subId;
-            obtenerSubordinados($con, $subId, $subordinados); // recursivo
-        }
+    if (in_array($user_type, [5, 6])) {
+        // CTO o CEO: solo usuarios que tienen metas en el año actual
+        $query = "
+            SELECT DISTINCT asignado AS id 
+            FROM mobility_solutions.tmx_metas 
+            WHERE anio = $anioActual
+        ";
+    } else {
+        // Jerarquía descendente desde el usuario actual
+        $query = "
+            WITH RECURSIVE jerarquia AS (
+                SELECT id FROM mobility_solutions.tmx_acceso_usuario WHERE id = $user_id
+                UNION ALL
+                SELECT u.id FROM mobility_solutions.tmx_acceso_usuario u
+                INNER JOIN jerarquia j ON u.reporta_a = j.id
+            )
+            SELECT id FROM jerarquia
+        ";
     }
 
-    $stmt->close();
+    $res = mysqli_query($con, $query);
+    $ids = [];
+
+    while ($row = mysqli_fetch_assoc($res)) {
+        $ids[] = $row['id'];
+    }
+
+    return $ids;
 }
 
-$ids_consultados = [$asignado]; // incluye a sí mismo
-obtenerSubordinados($con, $asignado, $ids_consultados);
+$ids = getSubordinados($user_id, $user_type, $con);
+$anioActual = date("Y");
+$id_list = implode(',', $ids);
 
-// 📦 Construir placeholders para IN (...)
-$placeholders = implode(',', array_fill(0, count($ids_consultados), '?'));
-$tipos = str_repeat('i', count($ids_consultados) + 1); // +1 por $anio
-
+// Consulta de metas
 $query = "
     SELECT tipo_meta, asignado, enero, febrero, marzo, abril, mayo, junio,
            julio, agosto, septiembre, octubre, noviembre, diciembre
     FROM mobility_solutions.tmx_metas
-    WHERE asignado IN ($placeholders) AND anio = ?
+    WHERE asignado IN ($id_list)
+      AND anio = $anioActual
 ";
 
-$stmt = $con->prepare($query);
-
-// 📌 Bind dinámico
-$params = array_merge($ids_consultados, [$anio]);
-$stmt->bind_param($tipos, ...$params);
-
-$stmt->execute();
-$result = $stmt->get_result();
-
+$result = mysqli_query($con, $query);
 $metas = [];
-while ($row = $result->fetch_assoc()) {
-    $metas[] = $row;
+
+if ($result) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $metas[] = $row;
+    }
+
+    echo json_encode([
+        "success" => true,
+        "metas" => $metas
+    ]);
+} else {
+    echo json_encode([
+        "success" => false,
+        "error" => "Error al ejecutar la consulta de metas"
+    ]);
 }
 
-echo json_encode([
-    "success" => true,
-    "metas" => $metas
-]); 
-
-$stmt->close();
-$con->close();
+mysqli_close($con);
 ?>
