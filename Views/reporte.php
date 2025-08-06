@@ -419,11 +419,6 @@ async function renderUserCards() {
           <div class="user-role">${usuario.rol}</div>
         </div>
       </div>
-      <div class="user-indicators">
-        <span title="Nuevo en catálogo">${totalNew}</span>
-        <span title="Reserva de vehículo">${totalReserva}</span>
-        <span title="Entrega de vehículo">${totalEntrega}</span>
-      </div>
     `;
     contenedor.appendChild(div);
   }
@@ -477,11 +472,6 @@ function createTreeNode(usuario) {
         <h4>${usuario.nombre}</h4>
         <div class="user-role">${usuario.rol}</div>
       </div>
-    </div>
-    <div class="user-indicators">
-      <span title="Nuevo en catálogo">${usuario.totalNew}</span>
-      <span title="Reserva de vehículo">${usuario.totalReserva}</span>
-      <span title="Entrega de vehículo">${usuario.totalEntrega}</span>
     </div>
   `;
   li.appendChild(card);
