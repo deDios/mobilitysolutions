@@ -63,7 +63,7 @@ while ($row = $result->fetch_assoc()) {
 echo json_encode([
     "success" => true,
     "metas" => $metas
-]);
+]); 
 
 $stmt->close();
 $con->close();
