@@ -248,7 +248,6 @@ $query ='select
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-  const globalUserId = 9999;
   let currentChart = null;
 
   async function getDataUsuario(userId) {
@@ -302,7 +301,7 @@ $query ='select
   }
 
   function renderGraficaPorTipo(tipo) {
-    getDataUsuario(globalUserId).then(data => {
+    getDataUsuario(usuarioActual).then(data => {
       const tipoMeta = { New: 1, Reserva: 2, Entrega: 3 }[tipo];
       const meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
 
@@ -336,7 +335,7 @@ $query ='select
   }
 
   function renderGauge(tipo) {
-    getDataUsuario(globalUserId).then(data => {
+    getDataUsuario(usuarioActual).then(data => {
       const tipoMeta = { New: 1, Reserva: 2, Entrega: 3 }[tipo];
       const meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
 
@@ -508,7 +507,7 @@ function createTreeNode(usuario) {
   }
 
 async function init() {
-  const data = await getDataUsuario(globalUserId);
+  const data = await getDataUsuario(usuarioActual);
   generarTotales(data);
   renderGraficaPorTipo("New");
   activarHexagono("dealsBox");
