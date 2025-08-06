@@ -44,9 +44,10 @@ $id_list = implode(',', $ids);
 // Consulta de requerimientos
 $query = "SELECT
             m.Mes,
-            COALESCE(SUM(CASE WHEN r.tipo_req = 'Nuevo en catálogo' THEN 1 ELSE 0 END), 0) AS New,
-            COALESCE(SUM(CASE WHEN r.tipo_req = 'Reserva de vehículo' THEN 1 ELSE 0 END), 0) AS Reserva,
-            COALESCE(SUM(CASE WHEN r.tipo_req = 'Entrega de vehículo' THEN 1 ELSE 0 END), 0) AS Entrega
+            COALESCE(SUM(CASE WHEN LOWER(TRIM(r.tipo_req)) LIKE '%nuevo%' THEN 1 ELSE 0 END), 0) AS New,
+            COALESCE(SUM(CASE WHEN LOWER(TRIM(r.tipo_req)) LIKE '%reserva%' THEN 1 ELSE 0 END), 0) AS Reserva,
+            COALESCE(SUM(CASE WHEN LOWER(TRIM(r.tipo_req)) LIKE '%entrega%' THEN 1 ELSE 0 END), 0) AS Entrega
+
           FROM (
             SELECT 1 AS num, 'Enero' AS Mes UNION ALL
             SELECT 2, 'Febrero' UNION ALL
