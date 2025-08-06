@@ -242,9 +242,11 @@ $query ='select
 </div>
 
 <script>
-  const usuarioActual = <?php echo json_encode($_SESSION['user_id']); ?>;
+  const usuarioOriginal = <?php echo json_encode($_SESSION['user_id']); ?>;
+  let usuarioActual = usuarioOriginal;
   const tipoUsuarioActual = <?php echo json_encode($user_type); ?>;
 </script>
+
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
@@ -419,15 +421,25 @@ async function renderUserCards() {
       </div>
     `;
 
-    // 🔁 CLICK PARA SELECCIONAR USUARIO Y FILTRAR
+    // 🔁 CLICK PARA SELECCIONAR / DESELECCIONAR USUARIO
     div.addEventListener("click", async () => {
+      const yaSeleccionado = div.classList.contains("selected");
+      
       document.querySelectorAll(".user-metric").forEach(card => card.classList.remove("selected"));
-      div.classList.add("selected");
-      usuarioActual = usuario.id; // cambia el contexto actual
+
+      if (yaSeleccionado) {
+        // 🔄 Restablecer al usuario original
+        usuarioActual = usuarioOriginal;
+      } else {
+        // ✅ Seleccionar nuevo usuario
+        div.classList.add("selected");
+        usuarioActual = usuario.id;
+      }
+
       const data = await getDataUsuario(usuarioActual);
       generarTotales(data);
-      renderGraficaPorTipo("New"); // refresca gráfica
-      activarHexagono("dealsBox"); // activa hexágono inicial
+      renderGraficaPorTipo("New");
+      activarHexagono("dealsBox");
     });
 
     contenedor.appendChild(div);
