@@ -10,44 +10,48 @@ if (!$user_id || !$user_type) {
     exit;
 }
 
-// Obtener usuarios subordinados
-function getSubordinados($user_id, $user_type, $con) {
-    if (in_array($user_type, [5, 6])) {
-        // CTO o CEO
-        $query = "SELECT id FROM mobility_solutions.tmx_acceso_usuario";
-    } else {
-        $query = "
-            WITH RECURSIVE jerarquia AS (
-                SELECT id FROM mobility_solutions.tmx_acceso_usuario WHERE id = $user_id
-                UNION ALL
-                SELECT u.id FROM mobility_solutions.tmx_acceso_usuario u
-                INNER JOIN jerarquia j ON u.reporta_a = j.id
-            )
-            SELECT id FROM jerarquia
-        ";
+// 🔁 Función recursiva para obtener todos los subordinados
+function obtenerSubordinados($con, $userId, &$subordinados) {
+    $stmt = $con->prepare("SELECT user_id FROM mobility_solutions.tmx_acceso_usuario WHERE reporta_a = ?");
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    while ($row = $result->fetch_assoc()) {
+        $subId = $row['user_id'];
+        if (!in_array($subId, $subordinados)) {
+            $subordinados[] = $subId;
+            obtenerSubordinados($con, $subId, $subordinados); // recursivo
+        }
     }
 
-    $res = mysqli_query($con, $query);
-    $ids = [];
-
-    while ($row = mysqli_fetch_assoc($res)) {
-        $ids[] = $row['id'];
-    }
-
-    return $ids;
+    $stmt->close();
 }
 
-$ids = getSubordinados($user_id, $user_type, $con);
-$anioActual = date("Y");
-$id_list = implode(',', $ids);
+// 📦 Obtener lista de IDs según el tipo de usuario
+if (in_array($user_type, [5, 6])) {
+    // CEO o CTO: incluir a todos
+    $query = "SELECT user_id FROM mobility_solutions.tmx_acceso_usuario";
+    $res = mysqli_query($con, $query);
+    $ids = [];
+    while ($row = mysqli_fetch_assoc($res)) {
+        $ids[] = $row['user_id'];
+    }
+} else {
+    // Otros usuarios: incluir a sí mismo + subordinados
+    $ids = [$user_id];
+    obtenerSubordinados($con, $user_id, $ids);
+}
 
-// Consulta de requerimientos
+$id_list = implode(',', $ids);
+$anioActual = date("Y");
+
+// 📊 Consulta de requerimientos
 $query = "SELECT
             m.Mes,
             COALESCE(SUM(CASE WHEN LOWER(TRIM(r.tipo_req)) LIKE '%nuevo%' THEN 1 ELSE 0 END), 0) AS New,
             COALESCE(SUM(CASE WHEN LOWER(TRIM(r.tipo_req)) LIKE '%reserva%' THEN 1 ELSE 0 END), 0) AS Reserva,
             COALESCE(SUM(CASE WHEN LOWER(TRIM(r.tipo_req)) LIKE '%entrega%' THEN 1 ELSE 0 END), 0) AS Entrega
-
           FROM (
             SELECT 1 AS num, 'Enero' AS Mes UNION ALL
             SELECT 2, 'Febrero' UNION ALL
@@ -63,10 +67,10 @@ $query = "SELECT
             SELECT 12, 'Diciembre'
           ) AS m
           LEFT JOIN mobility_solutions.tmx_requerimiento r
-          ON MONTH(r.req_created_at) = m.num
-          AND YEAR(r.req_created_at) = $anioActual
-          AND r.status_req = 2
-          AND r.created_by IN ($id_list)
+            ON MONTH(r.req_created_at) = m.num
+            AND YEAR(r.req_created_at) = $anioActual
+            AND r.status_req = 2
+            AND r.created_by IN ($id_list)
           GROUP BY m.num, m.Mes
           ORDER BY m.num";
 
