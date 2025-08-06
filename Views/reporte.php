@@ -482,35 +482,56 @@ function renderUserTree(usuarios) {
 }
 
 function createTreeNode(usuario) {
-  const li = document.createElement("li");
-  li.className = "tree-node";
+    const li = document.createElement("li");
+    li.className = "tree-node";
 
-  const card = document.createElement("div");
-  card.className = "user-metric";
-  card.innerHTML = `
-    <div class="user-header">
-      <img src="${usuario.foto}" alt="${usuario.nombre}" class="user-avatar">
-      <div class="user-info">
-        <h4>${usuario.nombre}</h4>
-        <div class="user-role">${usuario.rol}</div>
+    const card = document.createElement("div");
+    card.className = "user-metric";
+    card.innerHTML = `
+      <div class="user-header">
+        <img src="${usuario.foto}" alt="${usuario.nombre}" class="user-avatar">
+        <div class="user-info">
+          <h4>${usuario.nombre}</h4>
+          <div class="user-role">${usuario.rol}</div>
+        </div>
       </div>
-    </div>
-  `;
-  li.appendChild(card);
+    `;
 
-  if (usuario.children.length > 0) {
-    const childUl = document.createElement("ul");
-    childUl.className = "tree-vertical"; // Vertical hacia abajo
+    // 👇 Aquí agregamos el evento de clic
+    card.addEventListener("click", async (e) => {
+      e.stopPropagation();
+      const yaSeleccionado = card.classList.contains("selected");
+      document.querySelectorAll(".user-metric").forEach(c => c.classList.remove("selected"));
 
-    usuario.children.forEach(child => {
-      childUl.appendChild(createTreeNode(child));
+      if (yaSeleccionado) {
+        usuarioActual = usuarioOriginal;
+      } else {
+        card.classList.add("selected");
+        usuarioActual = usuario.id;
+      }
+
+      const data = await getDataUsuario(usuarioActual);
+      generarTotales(data);
+      renderGraficaPorTipo("New");
+      activarHexagono("dealsBox");
     });
 
-    li.appendChild(childUl);
+    li.appendChild(card);
+
+    if (usuario.children.length > 0) {
+      const childUl = document.createElement("ul");
+      childUl.className = "tree-vertical";
+
+      usuario.children.forEach(child => {
+        childUl.appendChild(createTreeNode(child));
+      });
+
+      li.appendChild(childUl);
+    }
+
+    return li;
   }
 
-  return li;
-}
 
   function activarHexagono(hexId) {
     document.querySelectorAll(".hex-box").forEach(box => box.classList.remove("active"));
