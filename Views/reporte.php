@@ -253,7 +253,7 @@ $query ='select
 
   async function getDataUsuario(userId) {
     const metasRes = await fetch(`https://mobilitysolutionscorp.com/web/MS_get_metas_usuario_jerarquia.php?asignado=${usuarioActual}&user_type=${tipoUsuarioActual}`);
-    const hexRes = await fetch(`https://mobilitysolutionscorp.com/web/MS_get_hex_usuario_jerarquia.php?user_id=${usuarioActual}&user_type=${tipoUsuarioActual}`);
+    const hexRes = await fetch(`https://mobilitysolutionscorp.com/db_consultas/hex_status.php?user_id=${userId}`);
     const metasData = await metasRes.json();
     const hexData = await hexRes.json();
     return { metas: metasData?.metas || [], hex: hexData || [] };
