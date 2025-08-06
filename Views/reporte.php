@@ -252,7 +252,7 @@ $query ='select
   let currentChart = null;
 
   async function getDataUsuario(userId) {
-    const metasRes = await fetch(`https://mobilitysolutionscorp.com/web/MS_get_metas_usuario.php?asignado=${userId}`);
+    const metasRes = await fetch(`https://mobilitysolutionscorp.com/web/MS_get_metas_usuario.php?asignado=${userId}&user_type=${tipoUsuarioActual}`);
     const hexRes = await fetch(`https://mobilitysolutionscorp.com/db_consultas/hex_status.php?user_id=${userId}`);
     const metasData = await metasRes.json();
     const hexData = await hexRes.json();
