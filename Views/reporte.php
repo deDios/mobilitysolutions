@@ -253,12 +253,13 @@ $query ='select
   let currentChart = null;
 
   async function getDataUsuario(userId) {
-    const metasRes = await fetch(`https://mobilitysolutionscorp.com/web/MS_get_metas_usuario_jerarquia.php?asignado=${usuarioActual}&user_type=${tipoUsuarioActual}`);
-    const hexRes = await fetch(`https://mobilitysolutionscorp.com/web/MS_get_hex_usuario_jerarquia.php?user_id=${usuarioActual}&user_type=${tipoUsuarioActual}`);
+    const metasRes = await fetch(`https://mobilitysolutionscorp.com/web/MS_get_metas_usuario_jerarquia.php?asignado=${userId}&user_type=${tipoUsuarioActual}`);
+    const hexRes = await fetch(`https://mobilitysolutionscorp.com/web/MS_get_hex_usuario_jerarquia.php?user_id=${userId}&user_type=${tipoUsuarioActual}`);
     const metasData = await metasRes.json();
     const hexData = await hexRes.json();
     return { metas: metasData?.metas || [], hex: hexData || [] };
   }
+
 
   async function getUsuarios() {
     const res = await fetch("https://mobilitysolutionscorp.com/web/MS_get_usuario.php");
