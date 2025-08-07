@@ -245,6 +245,7 @@ $query ='select
   const usuarioOriginal = <?php echo json_encode($_SESSION['user_id']); ?>;
   let usuarioActual = usuarioOriginal;
   const tipoUsuarioActual = <?php echo json_encode($user_type); ?>;
+  let soloUsuarioSeleccionado = false; 
 </script>
 
 
@@ -306,7 +307,7 @@ $query ='select
   }
 
   function renderGraficaPorTipo(tipo) {
-    getDataUsuario(usuarioActual).then(data => {
+    getDataUsuario(usuarioActual, soloUsuarioSeleccionado).then(data => {
       const tipoMeta = { New: 1, Reserva: 2, Entrega: 3 }[tipo];
       const meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
 
@@ -340,7 +341,7 @@ $query ='select
   }
 
   function renderGauge(tipo) {
-    getDataUsuario(usuarioActual).then(data => {
+    getDataUsuario(usuarioActual, soloUsuarioSeleccionado).then(data => {
       const tipoMeta = { New: 1, Reserva: 2, Entrega: 3 }[tipo];
       const meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
 
@@ -427,23 +428,26 @@ async function renderUserCards() {
     // 🔁 CLICK PARA SELECCIONAR / DESELECCIONAR USUARIO
     div.addEventListener("click", async () => {
       const yaSeleccionado = div.classList.contains("selected");
-      
       document.querySelectorAll(".user-metric").forEach(card => card.classList.remove("selected"));
 
       if (yaSeleccionado) {
         // 🔄 Restablecer al usuario original
         usuarioActual = usuarioOriginal;
+        soloUsuarioSeleccionado = false;
       } else {
         // ✅ Seleccionar nuevo usuario
         div.classList.add("selected");
         usuarioActual = usuario.id;
+        soloUsuarioSeleccionado = true;
       }
 
-      const data = await getDataUsuario(usuarioActual, true); // ← soloUsuario = true
+
+      const data = await getDataUsuario(usuarioActual, soloUsuarioSeleccionado);
       generarTotales(data);
       renderGraficaPorTipo("New");
       activarHexagono("dealsBox");
     });
+
 
     contenedor.appendChild(div);
   }
@@ -508,16 +512,20 @@ function createTreeNode(usuario) {
 
       if (yaSeleccionado) {
         usuarioActual = usuarioOriginal;
+        soloUsuarioSeleccionado = false;
       } else {
         card.classList.add("selected");
         usuarioActual = usuario.id;
+        soloUsuarioSeleccionado = true;
       }
 
-      const data = await getDataUsuario(usuarioActual, true); // ← soloUsuario = true
+
+      const data = await getDataUsuario(usuarioActual, soloUsuarioSeleccionado);
       generarTotales(data);
       renderGraficaPorTipo("New");
       activarHexagono("dealsBox");
     });
+
 
     li.appendChild(card);
 
@@ -543,7 +551,7 @@ function createTreeNode(usuario) {
   }
 
 async function init() {
-  const data = await getDataUsuario(usuarioActual);
+  const data = await getDataUsuario(usuarioActual, soloUsuarioSeleccionado);
   generarTotales(data);
   renderGraficaPorTipo("New");
   activarHexagono("dealsBox");
