@@ -252,13 +252,15 @@ $query ='select
 <script>
   let currentChart = null;
 
-  async function getDataUsuario(userId) {
-    const metasRes = await fetch(`https://mobilitysolutionscorp.com/web/MS_get_metas_usuario_jerarquia.php?asignado=${userId}&user_type=${tipoUsuarioActual}`);
-    const hexRes = await fetch(`https://mobilitysolutionscorp.com/web/MS_get_hex_usuario_jerarquia.php?user_id=${userId}&user_type=${tipoUsuarioActual}`);
+  async function getDataUsuario(userId, soloUsuario = false) {
+    const soloParam = soloUsuario ? "&solo_usuario=1" : "";
+    const metasRes = await fetch(`https://mobilitysolutionscorp.com/web/MS_get_metas_usuario_jerarquia.php?asignado=${userId}&user_type=${tipoUsuarioActual}${soloParam}`);
+    const hexRes = await fetch(`https://mobilitysolutionscorp.com/web/MS_get_hex_usuario_jerarquia.php?user_id=${userId}&user_type=${tipoUsuarioActual}${soloParam}`);
     const metasData = await metasRes.json();
     const hexData = await hexRes.json();
     return { metas: metasData?.metas || [], hex: hexData || [] };
   }
+
 
 
   async function getUsuarios() {
@@ -437,7 +439,7 @@ async function renderUserCards() {
         usuarioActual = usuario.id;
       }
 
-      const data = await getDataUsuario(usuarioActual);
+      const data = await getDataUsuario(usuarioActual, true); // ← soloUsuario = true
       generarTotales(data);
       renderGraficaPorTipo("New");
       activarHexagono("dealsBox");
@@ -511,7 +513,7 @@ function createTreeNode(usuario) {
         usuarioActual = usuario.id;
       }
 
-      const data = await getDataUsuario(usuarioActual);
+      const data = await getDataUsuario(usuarioActual, true); // ← soloUsuario = true
       generarTotales(data);
       renderGraficaPorTipo("New");
       activarHexagono("dealsBox");

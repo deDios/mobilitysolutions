@@ -4,6 +4,7 @@ include "../db/Conexion.php";
 
 $user_id = isset($_GET['user_id']) ? intval($_GET['user_id']) : null;
 $user_type = isset($_GET['user_type']) ? intval($_GET['user_type']) : null;
+$solo_usuario = isset($_GET['solo_usuario']) ? intval($_GET['solo_usuario']) === 1 : false;
 
 if (!$user_id || !$user_type) {
     echo json_encode(["error" => "Faltan parámetros"]);
@@ -28,17 +29,21 @@ function obtenerSubordinados($con, $userId, &$subordinados) {
     $stmt->close();
 }
 
-// 📦 Obtener lista de IDs según el tipo de usuario
-if (in_array($user_type, [5, 6])) {
-    // CEO o CTO: incluir a todos
+// 📦 Obtener lista de IDs a consultar
+$ids = [];
+
+if ($solo_usuario) {
+    // Solo consultar al usuario indicado
+    $ids = [$user_id];
+} elseif (in_array($user_type, [5, 6])) {
+    // CEO o CTO: consultar a todos
     $query = "SELECT user_id FROM mobility_solutions.tmx_acceso_usuario";
     $res = mysqli_query($con, $query);
-    $ids = [];
     while ($row = mysqli_fetch_assoc($res)) {
         $ids[] = $row['user_id'];
     }
 } else {
-    // Otros usuarios: incluir a sí mismo + subordinados
+    // Usuario normal: incluirse y a sus subordinados
     $ids = [$user_id];
     obtenerSubordinados($con, $user_id, $ids);
 }

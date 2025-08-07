@@ -4,6 +4,7 @@ include "../db/Conexion.php";
 
 $asignado = isset($_GET['asignado']) ? intval($_GET['asignado']) : null;
 $user_type = isset($_GET['user_type']) ? intval($_GET['user_type']) : null;
+$solo_usuario = isset($_GET['solo_usuario']) ? intval($_GET['solo_usuario']) === 1 : false;
 $anio = date("Y");
 
 if (!$asignado || !$user_type) {
@@ -35,7 +36,10 @@ function obtenerSubordinados($con, $userId, &$subordinados) {
 // 🧠 Determinar qué usuarios consultar
 $ids_consultados = [];
 
-if (in_array($user_type, [5, 6])) {
+if ($solo_usuario) {
+    // Solo consultar al usuario indicado, sin subordinados ni jerarquía
+    $ids_consultados = [$asignado];
+} elseif (in_array($user_type, [5, 6])) {
     // CTO o CEO: consultar TODOS los usuarios que tienen metas este año
     $query = "SELECT DISTINCT asignado FROM mobility_solutions.tmx_metas WHERE anio = ?";
     $stmt = $con->prepare($query);
@@ -49,8 +53,8 @@ if (in_array($user_type, [5, 6])) {
 
     $stmt->close();
 } else {
-    // Para cualquier otro tipo, consultar solo el usuario y sus subordinados
-    $ids_consultados = [$asignado]; // incluye a sí mismo
+    // Usuario común: incluir a sí mismo y subordinados
+    $ids_consultados = [$asignado];
     obtenerSubordinados($con, $asignado, $ids_consultados);
 }
 
