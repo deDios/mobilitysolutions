@@ -195,6 +195,8 @@ $query ='select
 
     <!-- PRIMERA SECCIÓN: TOTALIZADORES + CÍRCULOS + GRÁFICA -->
     <div class="upper-section">
+      <h3 id="tituloGrafica" style="text-align: center; margin-top: 10px;">Gráfica de Avance - New</h3>
+
       <!-- Contenedor para hexágonos + círculos -->
       <div class="upper-content">
         <div class="hex-totalizadores-container">
@@ -307,6 +309,7 @@ $query ='select
   }
 
   function renderGraficaPorTipo(tipo) {
+    actualizarTituloGrafica(tipo);
     getDataUsuario(usuarioActual, soloUsuarioSeleccionado).then(data => {
       const tipoMeta = { New: 1, Reserva: 2, Entrega: 3 }[tipo];
       const meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
@@ -340,7 +343,18 @@ $query ='select
     });
   }
 
+  function actualizarTituloGrafica(tipo) {
+  const mapa = {
+    New: 'Carga en catálogo',
+    Reserva: 'Reserva de vehículo',
+    Entrega: 'Entrega de vehículo'
+  };
+  const titulo = mapa[tipo] || tipo;
+  document.getElementById("tituloGrafica").innerText = `Gráfica de Avance - ${titulo}`;
+}
+
   function renderGauge(tipo) {
+    actualizarTituloGrafica(tipo);
     getDataUsuario(usuarioActual, soloUsuarioSeleccionado).then(data => {
       const tipoMeta = { New: 1, Reserva: 2, Entrega: 3 }[tipo];
       const meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
