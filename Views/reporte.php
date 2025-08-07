@@ -80,12 +80,12 @@ $query ='select
         }    
     }
 
-    if ($user_id != 1 && $user_id != 4 && $user_id != 17 && $user_id != 18) {
+    if ((int)$user_type < 2) {
         echo ' 
         <script>
             alert("No tiene acceso para entrar al apartado de asignaciones, favor de solicitarlo al departamento de sistemas");
             window.location = "../views/Home.php";
-        </script>';
+        </script>'; 
         exit();
     }
 

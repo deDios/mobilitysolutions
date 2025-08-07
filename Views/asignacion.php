@@ -63,18 +63,32 @@ $query ='select
         if ($r_autorizador == 1) $roles_activos[] = "Autorizador";
         if ($r_analista == 1) $roles_activos[] = "Analista";
 
-        if ($user_id == 4) {
-            $titulo_profesional = "CEO - Mobility Solutions";
-        }
-        elseif ($user_id == 1) {
-          $titulo_profesional = "CTO - Líder técnico";
-        } 
-        else {
-            $titulo_profesional = implode(" | ", $roles_activos);
-        }    
+        switch ((int)$user_type) {
+          case 1:
+              $titulo_profesional = "Asesor(a)";
+              break;
+          case 2:
+              $titulo_profesional = "Supervisor(a)";
+              break;
+          case 3:
+              $titulo_profesional = "Analista";
+              break;
+          case 4:
+              $titulo_profesional = "Manager";
+              break;
+          case 5:
+              $titulo_profesional = "CTO - Líder técnico";
+              break;
+          case 6:
+              $titulo_profesional = "CEO - Mobility Solutions";
+              break;
+          default:
+              $titulo_profesional = "Sin rol";
+      }
+    
     }
 
-    if ($user_id != 1 && $user_id != 4 && $user_id != 17 && $user_id != 18) {
+    if ((int)$user_type < 2) {
         echo ' 
         <script>
             alert("No tiene acceso para entrar al apartado de asignaciones, favor de solicitarlo al departamento de sistemas");
