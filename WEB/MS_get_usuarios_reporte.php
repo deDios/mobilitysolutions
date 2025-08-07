@@ -99,25 +99,27 @@ $result = $stmt->get_result();
 $usuarios = [];
 
 while ($row = $result->fetch_assoc()) {
-    $rol = "Sin rol";
-    if (
-        $row["r_ejecutivo"] == 1 &&
-        empty($row["r_editor"]) &&
-        empty($row["r_autorizador"]) &&
-        empty($row["r_analista"])
-    ) {
-        $rol = "Ejecutivo";
-    } elseif (
-        $row["r_editor"] == 1 &&
-        $row["r_autorizador"] == 0 &&
-        $row["r_analista"] == 0
-    ) {
-        $rol = "Maestro de catálogo";
-    } elseif (
-        $row["r_autorizador"] == 1 ||
-        $row["r_analista"] == 1
-    ) {
-        $rol = "Manager";
+    switch ((int)$row["user_type"]) {
+        case 1:
+            $rol = "Asesor(a)";
+            break;
+        case 2:
+            $rol = "Supervisor(a)";
+            break;
+        case 3:
+            $rol = "Analista";
+            break;
+        case 4:
+            $rol = "Manager";
+            break;
+        case 5:
+            $rol = "CTO";
+            break;
+        case 6:
+            $rol = "CEO";
+            break;
+        default:
+            $rol = "Sin rol";
     }
 
     $usuarios[] = [
