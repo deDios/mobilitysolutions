@@ -175,9 +175,9 @@
             <div class="roles">
                 <p><strong>Roles Activos:</strong></p>
                 <ul>
-                    <?php if ($r_ejecutivo) { echo "<li>Ejecutivo</li>"; } ?>
-                    <?php if ($r_editor) { echo "<li>Editor</li>"; } ?>
-                    <?php if ($r_autorizador) { echo "<li>Manager</li>"; } ?>
+                    <?php if ($r_ejecutivo) { echo "<li>Asesor(a)</li>"; } ?>
+                    <?php if ($r_editor) { echo "<li>Maestro de catálogo</li>"; } ?>
+                    <?php if ($r_autorizador) { echo "<li>Supervisor(a)</li>"; } ?>
                     <?php if ($r_analista) { echo "<li>Analista</li>"; } ?>
                 </ul>
                 <?php
@@ -218,7 +218,7 @@
                 <strong>0</strong>
             </div>
             <div class="hex" id="hex-reserva">
-                <span>Reserva</span>
+                <span>Venta</span>
                 <strong>0</strong>
             </div>
             <div class="hex" id="hex-entrega">
@@ -409,7 +409,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const metas = metasPorTipo[tipoMeta] || Array(12).fill(0);
     const label = {
       'New': 'Nuevos por mes',
-      'Reserva': 'Reservas por mes',
+      'Reserva': 'Ventas por mes',
       'Entrega': 'Entregas por mes'
     }[tipo];
 
