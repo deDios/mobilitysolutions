@@ -823,13 +823,7 @@ function mostrarMas() {
           </select>
 
           <label for="hora_inasistencia">Hora / Registro:</label>
-          <div style="display: flex; gap: 8px; align-items: center;">
-            <input type="time" id="hora_inasistencia" required>
-            <select id="ampm_inasistencia" required>
-              <option value="AM">AM</option>
-              <option value="PM">PM</option>
-            </select>
-          </div>
+          <input type="time" id="hora_inasistencia" required>
 
           <label for="comentario_inasistencia">Comentario:</label>
           <textarea id="comentario_inasistencia" name="comentario_inasistencia" rows="4" required></textarea>
@@ -866,23 +860,16 @@ function mostrarMas() {
     document.getElementById("formInasistencia").addEventListener("submit", function(e) {
       e.preventDefault();
 
-      const hora = document.getElementById("hora_inasistencia").value; // formato HH:MM (24h)
-      const ampm = document.getElementById("ampm_inasistencia").value;
-
+      const hora = document.getElementById("hora_inasistencia").value;
       if (!hora) {
         alert("Debe seleccionar una hora");
         return;
       }
 
-      // Convertir a formato 12h con AM/PM
-      const [hh, mm] = hora.split(":");
-      const hh12 = ((parseInt(hh) + 11) % 12 + 1); // Convierte a 12h
-      const horaFinal = `${hh12}:${mm} ${ampm}`;
-
       const payload = {
         id_empleado: parseInt(document.getElementById("empleado_inasistencia").value),
         reportado_por: usuarioActual,
-        hr_registro: horaFinal,
+        hr_registro: hora, // Se envía tal cual lo selecciona el usuario (ej. "08:30" o "08:30 AM" según navegador)
         comentario: document.getElementById("comentario_inasistencia").value.trim(),
         created_by: usuarioActual
       };
@@ -899,7 +886,6 @@ function mostrarMas() {
       });
     });
   }
-
 </script>
 
 
