@@ -228,6 +228,19 @@ $query ='select
         </ul>
       </div>
 
+      <!-- BLOQUE DE REPORTES -->
+      <div class="quick-access mt-4">
+        <h4>Reportes</h4>
+        <ul>
+          <li onclick="mostrarQuejas()" style="cursor: pointer;">
+            <i class="icon">&#9888;</i> Quejas
+          </li>
+          <li onclick="mostrarInasistencias()" style="cursor: pointer;">
+            <i class="icon">&#9201;</i> Inasistencias
+          </li>
+        </ul>
+      </div>
+
       <!-- Botón descubrir más -->
       <div class="discover-more">
         <button onclick="mostrarMas()">Más opciones</button>
@@ -720,6 +733,155 @@ function mostrarMas() {
     }
   }
 </script>
+
+<script>
+  function mostrarQuejas() {
+    const itemsDiv = document.querySelector(".items");
+
+    itemsDiv.innerHTML = `
+      <div class="form-container">
+        <h2>Registrar Queja</h2>
+        <form id="formQueja">
+          
+          <label for="empleado_queja">Empleado:</label>
+          <select id="empleado_queja" name="empleado_queja" required>
+            <option value="">Cargando...</option>
+          </select>
+
+          <label for="cliente_queja">Cliente:</label>
+          <input type="text" id="cliente_queja" name="cliente_queja" required>
+
+          <label for="comentario_queja">Comentario:</label>
+          <textarea id="comentario_queja" name="comentario_queja" rows="4" required></textarea>
+
+          <div class="form-buttons mt-3">
+            <button type="button" onclick="cancelarFormulario()">Cancelar</button>
+            <button type="submit">Guardar</button>
+          </div>
+        </form>
+      </div>
+    `;
+
+    // Cargar usuarios subordinados
+    fetch("https://mobilitysolutionscorp.com/web/MS_get_usuarios.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        user_id: usuarioActual,
+        user_type: tipoUsuarioActual
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+      const select = document.getElementById("empleado_queja");
+      select.innerHTML = '<option value="">Seleccione empleado</option>';
+      if (data.success && Array.isArray(data.usuarios)) {
+        data.usuarios.forEach(usuario => {
+          select.innerHTML += `<option value="${usuario.id}">${usuario.nombre}</option>`;
+        });
+      }
+    });
+
+    // Guardar Queja
+    document.getElementById("formQueja").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const payload = {
+        id_empleado: parseInt(document.getElementById("empleado_queja").value),
+        reportado_por: usuarioActual,
+        cliente: document.getElementById("cliente_queja").value.trim(),
+        comentario: document.getElementById("comentario_queja").value.trim(),
+        created_by: usuarioActual
+      };
+
+      fetch("https://mobilitysolutionscorp.com/web/MS_queja_insert.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert(data.message);
+        if (data.success) this.reset();
+      });
+    });
+  }
+</script>
+
+<script>
+  function mostrarInasistencias() {
+    const itemsDiv = document.querySelector(".items");
+
+    itemsDiv.innerHTML = `
+      <div class="form-container">
+        <h2>Registrar Inasistencia</h2>
+        <form id="formInasistencia">
+          
+          <label for="empleado_inasistencia">Empleado:</label>
+          <select id="empleado_inasistencia" name="empleado_inasistencia" required>
+            <option value="">Cargando...</option>
+          </select>
+
+          <label for="hr_registro_inasistencia">Hora/Registro:</label>
+          <input type="text" id="hr_registro_inasistencia" name="hr_registro_inasistencia" required>
+
+          <label for="comentario_inasistencia">Comentario:</label>
+          <textarea id="comentario_inasistencia" name="comentario_inasistencia" rows="4" required></textarea>
+
+          <div class="form-buttons mt-3">
+            <button type="button" onclick="cancelarFormulario()">Cancelar</button>
+            <button type="submit">Guardar</button>
+          </div>
+        </form>
+      </div>
+    `;
+
+    // Cargar usuarios subordinados
+    fetch("https://mobilitysolutionscorp.com/web/MS_get_usuarios.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        user_id: usuarioActual,
+        user_type: tipoUsuarioActual
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+      const select = document.getElementById("empleado_inasistencia");
+      select.innerHTML = '<option value="">Seleccione empleado</option>';
+      if (data.success && Array.isArray(data.usuarios)) {
+        data.usuarios.forEach(usuario => {
+          select.innerHTML += `<option value="${usuario.id}">${usuario.nombre}</option>`;
+        });
+      }
+    });
+
+    // Guardar Inasistencia
+    document.getElementById("formInasistencia").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const payload = {
+        id_empleado: parseInt(document.getElementById("empleado_inasistencia").value),
+        reportado_por: usuarioActual,
+        hr_registro: document.getElementById("hr_registro_inasistencia").value.trim(),
+        comentario: document.getElementById("comentario_inasistencia").value.trim(),
+        created_by: usuarioActual
+      };
+
+      fetch("https://mobilitysolutionscorp.com/web/MS_inasistencia_insert.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert(data.message);
+        if (data.success) this.reset();
+      });
+    });
+  }
+</script>
+
 
 
 
