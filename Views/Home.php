@@ -196,6 +196,23 @@
           </a>
           <div class="texto-tareas">Tareas en curso</div>
         </div>
+        <!-- Indicadores de Reportes -->
+        <div id="reportes-resumen" class="reportes-resumen">
+          <a class="resumen-pill pill-quejas" href="https://mobilitysolutionscorp.com/Views/asignacion.php" title="Ver quejas">
+            <div class="pill-circle">
+              <span id="cantidad-quejas">0</span>
+            </div>
+            <div class="pill-text">Quejas</div>
+          </a>
+
+          <a class="resumen-pill pill-inasistencias" href="https://mobilitysolutionscorp.com/Views/asignacion.php" title="Ver inasistencias">
+            <div class="pill-circle">
+              <span id="cantidad-inasistencias">0</span>
+            </div>
+            <div class="pill-text">Inasistencias</div>
+          </a>
+        </div>
+
 
         <!-- Información de contacto -->
         <div class="profile-info">
@@ -386,6 +403,51 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const userId = <?php echo intval($user_id); ?>;
+
+    // === Indicadores: Quejas / Inasistencias ===
+    function actualizarContador(elId, count) {
+      const el = document.getElementById(elId);
+      if (el) el.textContent = count;
+    }
+
+    // Utilidad: intenta leer count, rows.length o arrays específicos
+    function extraerConteo(respuesta, nombreArrayPosible) {
+      if (typeof respuesta.count === 'number') return respuesta.count;
+      if (Array.isArray(respuesta.rows)) return respuesta.rows.length;
+      if (Array.isArray(respuesta[nombreArrayPosible])) return respuesta[nombreArrayPosible].length;
+      return 0;
+    }
+
+    // Quejas
+    fetch("https://mobilitysolutionscorp.com/web/MS_queja_get.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ usuario: userId })
+    })
+    .then(r => r.json())
+    .then(data => {
+      const count = extraerConteo(data, "quejas");
+      actualizarContador("cantidad-quejas", count);
+    })
+    .catch(() => actualizarContador("cantidad-quejas", 0));
+
+    // Inasistencias
+    fetch("https://mobilitysolutionscorp.com/web/MS_inasistencia_get.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ usuario: userId })
+    })
+    .then(r => r.json())
+    .then(data => {
+      const count = extraerConteo(data, "inasistencias");
+      actualizarContador("cantidad-inasistencias", count);
+    })
+    .catch(() => actualizarContador("cantidad-inasistencias", 0));
+  });
+</script>
 
 
 <script>

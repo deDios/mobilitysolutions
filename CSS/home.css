@@ -572,5 +572,73 @@ h1 {
     color: #333;
 }
 
+/* ===== Indicadores Quejas / Inasistencias ===== */
+.reportes-resumen {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-top: 14px;
+}
+
+.resumen-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  background: #ffffff;
+  border-radius: 999px;
+  padding: 8px 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+  color: #222;
+}
+
+.resumen-pill:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0,0,0,.08);
+  background: #fafafa;
+}
+
+.pill-circle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: #fff;
+}
+
+.pill-text {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Colores por tipo */
+.pill-quejas .pill-circle {
+  background: #ff6b6b; /* rojo suave */
+}
+
+.pill-inasistencias .pill-circle {
+  background: #6c8cff; /* azul suave */
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+  .reportes-resumen {
+    gap: 10px;
+  }
+  .pill-circle {
+    width: 38px;
+    height: 38px;
+    font-size: 14px;
+  }
+  .pill-text {
+    font-size: 13px;
+  }
+}
+
+
 
 
