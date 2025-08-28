@@ -152,6 +152,48 @@
 
   .rewards-legend{display:flex; justify-content:space-between; margin-top:10px; font-size:12px; color:#6b7280;}
   .rewards-legend .next{font-weight:700; color:#111827;}
+
+  /* === Acordeón de Reconocimientos por tipo === */
+.rec-groups { margin-top: 8px; display: grid; gap: 10px; }
+
+.rec-group {
+  background:#fff; border:1px solid #e5e7eb; border-radius:10px;
+  box-shadow:0 2px 6px rgba(0,0,0,.04); overflow: hidden;
+}
+
+.rec-group__header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 14px; cursor:pointer; user-select:none;
+  background:#f9fafb;
+}
+.rec-group__left { display:flex; gap:10px; align-items:center; }
+.rec-group__title {
+  font-weight:700; color:#111827; font-size:14px;
+}
+.rec-group__badge {
+  font-size:12px; background:#eef2ff; color:#3730a3; border-radius:999px;
+  padding:2px 8px; font-weight:700;
+}
+.rec-group__points { font-size:12px; color:#374151; }
+
+.rec-group__chev {
+  transition: transform .2s ease;
+}
+.rec-group.open .rec-group__chev { transform: rotate(90deg); }
+
+.rec-group__body {
+  display:none;
+  padding:12px;
+  background:#fff;
+}
+.rec-group.open .rec-group__body { display:block; }
+
+/* grid interno reutiliza tus tiles existentes */
+.rec-grid {
+  display:flex; flex-wrap:wrap; gap:16px; justify-content:flex-start;
+}
+
+
 </style>
 
 
@@ -493,36 +535,81 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       // ====== Grid de reconocimientos (tu lógica actual) ======
-      if (lista.length > 0) {
+      // ====== Agrupar por tipo y mostrar como acordeón ======
+    const NOMBRES_TIPO = { 1: "Desempeño", 2: "Liderazgo", 3: "Innovación" };
+    const CLASE_TIPO   = { 1: "recono-desempeno", 2: "recono-liderazgo", 3: "recono-innovacion" };
+    const PUNTOS_TIPO  = { 1: 30, 2: 20, 3: 10 };
+
+    if (lista.length > 0) {
+      // 1) Agrupar
+      const grupos = {};
+      lista.forEach(it => {
+        const t = parseInt(it.tipo, 10) || 1;
+        if (!grupos[t]) grupos[t] = [];
+        grupos[t].push(it);
+      });
+
+      // 2) Contenedor de grupos
+      const groupsWrap = document.createElement("div");
+      groupsWrap.className = "rec-groups";
+
+      // 3) Crear cada grupo
+      Object.keys(grupos).sort().forEach((tipoStr, idx) => {
+        const tipo = parseInt(tipoStr, 10);
+        const items = grupos[tipo];
+        const totalPtsGrupo = items.length * (PUNTOS_TIPO[tipo] || 0);
+
+        // Card del grupo
+        const card = document.createElement("div");
+        card.className = "rec-group" + (idx === 0 ? " open" : ""); // el primero abierto
+
+        // Header
+        const header = document.createElement("div");
+        header.className = "rec-group__header";
+        header.innerHTML = `
+          <div class="rec-group__left">
+            <span class="rec-group__title">${NOMBRES_TIPO[tipo] || "Tipo " + tipo}</span>
+            <span class="rec-group__badge">${items.length}</span>
+          </div>
+          <div class="rec-group__right">
+            <span class="rec-group__points">${totalPtsGrupo} pts</span>
+            <span class="rec-group__chev">▶</span>
+          </div>
+        `;
+        header.addEventListener("click", () => card.classList.toggle("open"));
+
+        // Body con grid de reconocimientos
+        const body = document.createElement("div");
+        body.className = "rec-group__body";
         const grid = document.createElement("div");
-        grid.className = "reconocimientos-wrapper";
+        grid.className = "rec-grid";
 
-        lista.forEach(item => {
-          const tipo = parseInt(item.tipo);
-          let claseTipo = "";
-          switch (tipo) {
-            case 1: claseTipo = "recono-desempeno"; break;
-            case 2: claseTipo = "recono-liderazgo"; break;
-            case 3: claseTipo = "recono-innovacion"; break;
-            default: claseTipo = "recono-desempeno";
-          }
-
-          const div = document.createElement("div");
-          div.className = `reconocimiento-item ${claseTipo}`;
-          div.innerHTML = `
+        items.forEach(item => {
+          const tipoItem = parseInt(item.tipo, 10);
+          const tile = document.createElement("div");
+          tile.className = `reconocimiento-item ${CLASE_TIPO[tipoItem] || CLASE_TIPO[1]}`;
+          tile.innerHTML = `
             <div class="titulo">${item.reconocimiento}</div>
             <div class="fecha">${item.mes}/${item.anio}</div>
           `;
-          grid.appendChild(div);
+          grid.appendChild(tile);
         });
 
-        contenedorSkills.appendChild(grid);
-      } else {
-        const mensaje = document.createElement("p");
-        mensaje.className = "placeholder";
-        mensaje.textContent = "No hay reconocimientos asignados.";
-        contenedorSkills.appendChild(mensaje);
-      }
+        body.appendChild(grid);
+        card.appendChild(header);
+        card.appendChild(body);
+        groupsWrap.appendChild(card);
+      });
+
+      contenedorSkills.appendChild(groupsWrap);
+
+    } else {
+      const mensaje = document.createElement("p");
+      mensaje.className = "placeholder";
+      mensaje.textContent = "No hay reconocimientos asignados.";
+      contenedorSkills.appendChild(mensaje);
+    }
+
     })
     .catch(error => {
       console.error("Error al cargar reconocimientos:", error);
