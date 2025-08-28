@@ -358,30 +358,91 @@ document.addEventListener("DOMContentLoaded", () => {
       const contenedorSkills = document.querySelector(".skills-section");
       contenedorSkills.innerHTML = "<h2>Reconocimientos / Skills</h2>";
 
-      if (data.success && Array.isArray(data.reconocimientos) && data.reconocimientos.length > 0) {
+      // ====== Cálculo de puntos por tipo ======
+      // tipo: 1 = Desempeño (30), 2 = Liderazgo (20), 3 = Innovación (10)
+      const puntosPorTipo = {1: 30, 2: 20, 3: 10};
+      const lista = Array.isArray(data?.reconocimientos) ? data.reconocimientos : [];
+      const totalPuntos = lista.reduce((acc, item) => {
+        const tipo = parseInt(item.tipo, 10);
+        return acc + (puntosPorTipo[tipo] || 0);
+      }, 0);
+
+      // ====== Configuración del termómetro ======
+      const metas = [
+        { pts: 100, nombre: "Premio 1" },
+        { pts: 150, nombre: "Premio 2" },
+        { pts: 200, nombre: "Premio 3" },
+        { pts: 250, nombre: "Premio 4" }
+      ];
+      const maxPts = metas[metas.length - 1].pts; // 250
+      const pct = Math.min(100, (totalPuntos / maxPts) * 100);
+
+      // Calcular siguiente premio
+      const siguiente = metas.find(m => totalPuntos < m.pts);
+      const textoSiguiente = siguiente
+        ? `Siguiente: ${siguiente.nombre} a ${siguiente.pts} pts`
+        : `¡Todos los premios conseguidos!`;
+
+      // ====== Render del termómetro ======
+      const rewardsWrapper = document.createElement("div");
+      rewardsWrapper.className = "rewards-wrapper";
+      rewardsWrapper.innerHTML = `
+        <div class="rewards-head">
+          <div class="rewards-title">Línea de recompensas</div>
+          <div class="rewards-stats">
+            Puntos: <strong id="pts-actuales">${totalPuntos}</strong> / ${maxPts}
+          </div>
+        </div>
+
+        <div class="rewards-bar">
+          <div class="rewards-fill" id="rewards-fill" style="width:0%"></div>
+          <div class="rewards-markers" id="rewards-markers"></div>
+        </div>
+
+        <div class="rewards-legend">
+          <span>30 (Desempeño) · 20 (Liderazgo) · 10 (Innovación)</span>
+          <span class="next" id="rewards-next">${textoSiguiente}</span>
+        </div>
+      `;
+      contenedorSkills.appendChild(rewardsWrapper);
+
+      // Colocar marcadores de premios
+      const markers = document.getElementById("rewards-markers");
+      metas.forEach((m, i) => {
+        const left = (m.pts / maxPts) * 100;
+        const marker = document.createElement("div");
+        marker.className = "rewards-marker" + (totalPuntos >= m.pts ? " achieved" : "");
+        marker.style.left = `${left}%`;
+        marker.innerHTML = `
+          <div class="dot"></div>
+          <div class="label">${m.nombre}<br>${m.pts} pts</div>
+        `;
+        markers.appendChild(marker);
+      });
+
+      // Animar el “llenado”
+      requestAnimationFrame(() => {
+        const fill = document.getElementById("rewards-fill");
+        fill.style.width = pct + "%";
+      });
+
+      // ====== Grid de reconocimientos (tu lógica actual) ======
+      if (lista.length > 0) {
         const grid = document.createElement("div");
         grid.className = "reconocimientos-wrapper";
 
-        data.reconocimientos.forEach(item => {
+        lista.forEach(item => {
           const tipo = parseInt(item.tipo);
           let claseTipo = "";
-
           switch (tipo) {
-            case 1:
-              claseTipo = "recono-desempeno";
-              break;
-            case 2:
-              claseTipo = "recono-liderazgo";
-              break;
-            case 3:
-              claseTipo = "recono-innovacion";
-              break;
-            default:
-              claseTipo = "recono-desempeno"; // fallback
+            case 1: claseTipo = "recono-desempeno"; break;
+            case 2: claseTipo = "recono-liderazgo"; break;
+            case 3: claseTipo = "recono-innovacion"; break;
+            default: claseTipo = "recono-desempeno";
           }
 
           const div = document.createElement("div");
-          div.className = `reconocimiento-item ${claseTipo}`;  // <-- importante
+          div.className = `reconocimiento-item ${claseTipo}`;
           div.innerHTML = `
             <div class="titulo">${item.reconocimiento}</div>
             <div class="fecha">${item.mes}/${item.anio}</div>
@@ -402,6 +463,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 </script>
+
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
