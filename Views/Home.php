@@ -436,8 +436,9 @@ document.addEventListener("DOMContentLoaded", () => {
       // ====== Configuración del termómetro ======
       const metas = [
         { pts: 100, nombre: "Premio 1" },
-        { pts: 200, nombre: "Premio 2" },
-        { pts: 250, nombre: "Premio 3" }
+        { pts: 150, nombre: "Premio 2" },
+        { pts: 200, nombre: "Premio 3" },
+        { pts: 250, nombre: "Premio 4" }
       ];
       const maxPts = metas[metas.length - 1].pts; // 250
       const pct = Math.min(100, (totalPuntos / maxPts) * 100);
