@@ -201,8 +201,8 @@
 }
 
 .hex.active {
-  transform: scale(1.1);
-  background-color: #28a745 !important; /* Verde o el color que prefieras */
+  transform: scale(1.3);
+  background-color:rgb(0, 71, 122) !important; /* Verde o el color que prefieras */
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
