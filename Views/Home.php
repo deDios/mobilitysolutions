@@ -801,7 +801,7 @@ document.addEventListener("DOMContentLoaded", () => {
           }
 
           // Mostrar la categoría por defecto
-          actualizarGrafica('New');
+          actualizarGrafica('Reserva');
         });
     })
     .catch(error => {
