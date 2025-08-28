@@ -316,7 +316,7 @@
 
         <!-- Sección de Reconocimientos / Skills -->
         <div class="skills-section">
-            <h2>Reconocimientos / Skills</h2>
+            <h2>Reconocimientos</h2>
             <div id="reconocimientosWrapper" class="reconocimientos-wrapper">
                 <p class="placeholder">Aquí aparecerán los reconocimientos otorgados al usuario.</p>
             </div>
