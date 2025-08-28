@@ -351,13 +351,10 @@
     <!-- Panel derecho con hexágonos -->
     <div class="container_2">
         <div class="hex-container">
-            <?php if ($user_type == 3): ?>
-              <div class="hex" id="hex-nuevo">
-                  <span>Nuevo</span>
-                  <strong>0</strong>
-              </div>
-            <?php endif; ?>
-
+            <div class="hex" id="hex-nuevo">
+                <span>Nuevo</span>
+                <strong>0</strong>
+            </div>
             <div class="hex" id="hex-reserva">
                 <span>Venta</span>
                 <strong>0</strong>
@@ -367,7 +364,6 @@
                 <strong>0</strong>
             </div>
         </div>
-
 
         <div class="chart-wrapper">
             <canvas id="lineChart"></canvas>
@@ -819,13 +815,10 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error('Error al obtener los datos:', error);
     });
 
-  const hexNuevo = document.getElementById('hex-nuevo');
-  if (hexNuevo) {
-    hexNuevo.addEventListener('click', () => actualizarGrafica('New'));
-  }
+  // Eventos de clic en los hexágonos
+  document.getElementById('hex-nuevo').addEventListener('click', () => actualizarGrafica('New'));
   document.getElementById('hex-reserva').addEventListener('click', () => actualizarGrafica('Reserva'));
   document.getElementById('hex-entrega').addEventListener('click', () => actualizarGrafica('Entrega'));
-
 </script>
 
 
