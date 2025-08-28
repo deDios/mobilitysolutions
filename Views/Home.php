@@ -200,6 +200,13 @@
   font-style: italic;
 }
 
+.hex.active {
+  transform: scale(1.1);
+  background-color: #28a745 !important; /* Verde o el color que prefieras */
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+
 </style>
 
 
