@@ -96,7 +96,7 @@
     margin-bottom:16px; box-shadow:0 2px 10px rgba(0,0,0,.04);
     
   }
-  .rewards-head{display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:10px;}
+  .rewards-head{display:flex; align-items:baseline; justify-content:space-between; gap:32px; margin-bottom:10px;}
   .rewards-title{font-size:16px; font-weight:700; color:#1f2937;}
   .rewards-stats{font-size:14px; color:#374151;}
   .rewards-stats strong{font-weight:800;}
