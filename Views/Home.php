@@ -105,12 +105,11 @@
     position: relative !important;      /* <- ancla para absolutos */
     width: 100%;
     height: 14px;
-    padding:20px 24px !important;  
     border-radius: 999px;
     background: linear-gradient(90deg,#f3f4f6 0%, #eef2ff 100%);
     overflow: visible !important;        /* <- deja ver etiquetas */
     box-shadow: inset 0 0 0 1px rgba(0,0,0,.08);
-    margin: 8px 0 36px !important;       /* <- espacio para etiquetas abajo */
+    margin: 40px 0 50px !important;       /* <- espacio para etiquetas abajo */
   }
   .rewards-fill{
     position:absolute; inset:0 auto 0 0; width:0%;
