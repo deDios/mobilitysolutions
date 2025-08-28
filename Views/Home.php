@@ -109,7 +109,7 @@
     background: linear-gradient(90deg,#f3f4f6 0%, #eef2ff 100%);
     overflow: visible !important;        /* <- deja ver etiquetas */
     box-shadow: inset 0 0 0 1px rgba(0,0,0,.08);
-    margin: 40px 0 80px !important;       /* <- espacio para etiquetas abajo */
+    margin: 40px 0 60px !important;       /* <- espacio para etiquetas abajo */
   }
   .rewards-fill{
     position:absolute; inset:0 auto 0 0; width:0%;
@@ -422,7 +422,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(response => response.json())
     .then(data => {
       const contenedorSkills = document.querySelector(".skills-section");
-      contenedorSkills.innerHTML = "<h2>Reconocimientos / Skills</h2>";
+      contenedorSkills.innerHTML = "<h2>Reconocimientos</h2>";
 
       // ====== Cálculo de puntos por tipo ======
       // tipo: 1 = Desempeño (30), 2 = Liderazgo (20), 3 = Innovación (10)
