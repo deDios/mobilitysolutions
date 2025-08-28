@@ -92,37 +92,28 @@
     <style>
   /* --- Recompensas: barra horizontal y marcadores sobre la barra --- */
   .rewards-wrapper{
-    background:#fff; 
-    border:1px solid #e9ecef; 
-    border-radius:12px; 
-    padding:20px 24px !important;   /* más aire */
-    margin-bottom:24px !important; 
-    box-shadow:0 2px 10px rgba(0,0,0,.04);
+    background:#fff; border:1px solid #e9ecef; border-radius:12px; padding:14px 16px; 
+    margin-bottom:16px; box-shadow:0 2px 10px rgba(0,0,0,.04);
+    
   }
-
-  .rewards-head{
-    display:flex; align-items:baseline; justify-content:space-between; gap:12px; 
-    margin-bottom:14px;
-  }
+  .rewards-head{display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:10px;}
   .rewards-title{font-size:16px; font-weight:700; color:#1f2937;}
-  .rewards-stats{font-size:15px; color:#374151; padding-left:12px;}
+  .rewards-stats{font-size:14px; color:#374151;}
   .rewards-stats strong{font-weight:800;}
 
   .rewards-bar{
     position: relative !important;      /* <- ancla para absolutos */
     width: 100%;
-    height: 16px;                       /* más alto */
+    height: 14px;
     border-radius: 999px;
     background: linear-gradient(90deg,#f3f4f6 0%, #eef2ff 100%);
-    overflow: visible !important;       /* deja ver etiquetas */
+    overflow: visible !important;        /* <- deja ver etiquetas */
     box-shadow: inset 0 0 0 1px rgba(0,0,0,.08);
-    margin: 16px 0 50px !important;     /* más espacio abajo para labels */
+    margin: 8px 0 36px !important;       /* <- espacio para etiquetas abajo */
   }
-
   .rewards-fill{
     position:absolute; inset:0 auto 0 0; width:0%;
-    border-radius:999px; 
-    background:linear-gradient(90deg,#60a5fa,#4f46e5);
+    border-radius:999px; background:linear-gradient(90deg,#60a5fa,#4f46e5);
     transition: width .8s ease-in-out;
   }
 
@@ -137,22 +128,21 @@
   .rewards-marker{
     position: absolute !important;
     transform: translateX(-50%);
-    top: -14px;                          /* subimos un poquito */
-    width: 2px; height: 38px;
+    top: -12px;                          /* un poco por arriba de la barra */
+    width: 2px; height: 34px;
     background: #cfd8ff;
   }
   .rewards-marker .dot{
-    position:absolute; top:-8px; left:50%; transform:translate(-50%,-50%);
-    width:14px; height:14px; border-radius:999px; background:#93c5fd;
+    position:absolute; top:-6px; left:50%; transform:translate(-50%,-50%);
+    width:12px; height:12px; border-radius:999px; background:#93c5fd;
     border:2px solid #fff; box-shadow:0 0 0 2px #cfd8ff;
   }
   /* etiqueta BAJO la barra */
   .rewards-marker .label{
-    position:absolute; top:50px; left:50%; transform:translateX(-50%);
-    white-space:nowrap; font-size:13px; font-weight:700; color:#374151;
-    background:#fff; padding:4px 10px; border-radius:999px;
+    position:absolute; top:58px; left:50%; transform:translateX(-50%);
+    white-space:nowrap; font-size:12px; font-weight:700; color:#374151;
+    background:#fff; padding:2px 8px; border-radius:999px;
     box-shadow:0 1px 4px rgba(0,0,0,.05); border:1px solid #e5e7eb;
-    line-height: 1.3;
   }
 
   /* estados ganados */
@@ -160,16 +150,9 @@
   .rewards-marker.achieved .dot{ background:#10b981; box-shadow:0 0 0 2px #bbf7d0; }
   .rewards-marker.achieved .label{ color:#065f46; border-color:#bbf7d0; background:#ecfdf5; }
 
-  .rewards-legend{
-    display:flex; justify-content:space-between; 
-    margin-top:16px !important; 
-    font-size:13px !important; 
-    color:#6b7280;
-    padding-top:6px;
-  }
+  .rewards-legend{display:flex; justify-content:space-between; margin-top:10px; font-size:12px; color:#6b7280;}
   .rewards-legend .next{font-weight:700; color:#111827;}
 </style>
-
 
 
 </head>
