@@ -109,7 +109,7 @@
     background: linear-gradient(90deg,#f3f4f6 0%, #eef2ff 100%);
     overflow: visible !important;        /* <- deja ver etiquetas */
     box-shadow: inset 0 0 0 1px rgba(0,0,0,.08);
-    margin: 40px 0 60px !important;       /* <- espacio para etiquetas abajo */
+    margin: 40px 0 90px !important;       /* <- espacio para etiquetas abajo */
   }
   .rewards-fill{
     position:absolute; inset:0 auto 0 0; width:0%;
