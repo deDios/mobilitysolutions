@@ -605,10 +605,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // ====== Configuración del termómetro ======
       const metas = [
-        { pts: 25, nombre: "Premio 1" },
-        { pts: 50, nombre: "Premio 2" },
-        { pts: 75, nombre: "Premio 3" },
-        { pts: 100, nombre: "Premio 4" }
+        { pts: 50, nombre: "Amazon" },
+        { pts: 75, nombre: "Bono" },
+        { pts: 100, nombre: "Viaje" }
       ];
       const maxPts = 100; // explícito (coincide con window.rew.max)
       window.rew.metas = metas.map(m => m.pts); // sincroniza metas globales
