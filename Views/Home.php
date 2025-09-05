@@ -95,13 +95,14 @@ window.rew = {
   quejas: 0,
   inasistencias: 0,
   entregas: 0,
+  reconocimientos: 0,
   metas: [25, 50, 75, 100],
   max: 100
 };
 
 // Calcula puntos aplicando fórmula y clamp 0..max
 window.computeRewardPoints = function () {
-  const raw = (window.rew.entregas * 5) - (window.rew.inasistencias * 2) - (window.rew.quejas * 3);
+  const raw = (window.rew.entregas * 5) + window.rew.reconocimientos - (window.rew.inasistencias * 2) - (window.rew.quejas * 3);
   return Math.max(0, Math.min(window.rew.max, raw));
 };
 
@@ -597,6 +598,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const tipo = parseInt(item.tipo, 10);
         return acc + (puntosPorTipo[tipo] || 0);
       }, 0);
+
+      window.rew.reconocimientos = totalPuntos;
 
       // ====== Configuración del termómetro ======
       const metas = [
