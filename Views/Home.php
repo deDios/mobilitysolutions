@@ -100,10 +100,16 @@ window.rew = {
   max: 100
 };
 
-// Calcula puntos aplicando fórmula y clamp 0..max
+// Calcula puntos aplicando fórmula y clamp 0..max (forzando a número)
 window.computeRewardPoints = function () {
-  const raw = (window.rew.entregas * 5) + window.rew.reconocimientos - (window.rew.inasistencias * 2) - (window.rew.quejas * 3);
-  return Math.max(0, Math.min(window.rew.max, raw));
+  const entregas        = Number(window.rew.entregas)        || 0;
+  const reconocimientos = Number(window.rew.reconocimientos) || 0;
+  const inasistencias   = Number(window.rew.inasistencias)   || 0;
+  const quejas          = Number(window.rew.quejas)          || 0;
+  const maxPts          = Number(window.rew.max)             || 100;
+
+  const raw = (entregas * 5) + reconocimientos - (inasistencias * 2) - (quejas * 3);
+  return Math.max(0, Math.min(maxPts, raw));
 };
 
 // Actualiza UI del termómetro (número, barra, markers y “Siguiente:”)
@@ -792,157 +798,152 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 </script>
 
-
-
 <script>
+  // ——— Utils ———
+  const toInt = (v) => {
+    const n = Number(v);
+    return Number.isFinite(n) ? n : 0;
+  };
+
   const userId = <?php echo intval($user_id); ?>;
+
   let datosPorMes = [];
   let metasPorTipo = {
     1: Array(12).fill(0), // tipo_meta 1 = Nuevos
     2: Array(12).fill(0), // tipo_meta 2 = Reservas
     3: Array(12).fill(0), // tipo_meta 3 = Entregas
   };
+
   let lineChart;
 
-  function actualizarGrafica(tipo) {
-    const valores = datosPorMes.map(mes => parseInt(mes[tipo]) || 0);
-    const tipoMeta = {
-      'New': 1,
-      'Reserva': 2,
-      'Entrega': 3
-    }[tipo];
-
-    const metas = metasPorTipo[tipoMeta] || Array(12).fill(0);
-    const label = {
-      'New': 'Nuevos por mes',
-      'Reserva': 'Ventas por mes',
-      'Entrega': 'Entregas por mes'
-    }[tipo];
-
-    lineChart.data.datasets[0].data = valores;
-    lineChart.data.datasets[0].label = label;
-    lineChart.data.datasets[1].data = metas;
-    lineChart.data.datasets[1].label = 'Meta';
-
-    lineChart.update();
-
-    // (Opcional) resaltar el hexágono activo
-    document.querySelectorAll('.hex').forEach(h => h.classList.remove('active'));
-    const hexMap = {
-      'New': '#hex-nuevo',
-      'Reserva': '#hex-reserva',
-      'Entrega': '#hex-entrega'
-    };
-    if (hexMap[tipo]) {
-      document.querySelector(hexMap[tipo]).classList.add('active');
-    }
+  // Inicializa la línea una sola vez
+  function initLineChart() {
+    const ctx = document.getElementById('lineChart').getContext('2d');
+    lineChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+        datasets: [
+          {
+            label: 'Datos',
+            data: Array(12).fill(0),
+            borderColor: '#007bff',
+            backgroundColor: 'rgba(0, 123, 255, 0.2)',
+            borderWidth: 2,
+            fill: true,
+            tension: 0.3,
+            pointRadius: 4,
+            pointBackgroundColor: '#007bff',
+          },
+          {
+            label: 'Meta',
+            data: Array(12).fill(0),
+            borderColor: '#ff9900',
+            borderWidth: 2,
+            fill: false,
+            tension: 0.3,
+            borderDash: [5, 5],
+            pointRadius: 3,
+            pointBackgroundColor: '#ff9900',
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: { beginAtZero: true, ticks: { stepSize: 5 } }
+        },
+        plugins: {
+          legend: { display: true, position: 'top' },
+          tooltip: { mode: 'index', intersect: false }
+        }
+      }
+    });
   }
 
-  // Cargar datos reales por mes
-  fetch(`https://mobilitysolutionscorp.com/db_consultas/hex_status.php?user_id=${userId}`)
-    .then(response => response.json())
-    .then(data => {
-      datosPorMes = data;
+  // Cambia los datos de la línea según tipo
+  function actualizarGrafica(tipo) {
+    if (!lineChart) return;
 
-      // Calcular totales
+    const valores = datosPorMes.map(mes => toInt(mes[tipo]));
+    const tipoMeta = { 'New': 1, 'Reserva': 2, 'Entrega': 3 }[tipo];
+    const metas = (metasPorTipo[tipoMeta] || Array(12).fill(0)).map(toInt);
+    const label = { 'New': 'Nuevos por mes', 'Reserva': 'Ventas por mes', 'Entrega': 'Entregas por mes' }[tipo];
+
+    lineChart.data.datasets[0].data  = valores;
+    lineChart.data.datasets[0].label = label;
+    lineChart.data.datasets[1].data  = metas;
+    lineChart.data.datasets[1].label = 'Meta';
+    lineChart.update();
+
+    // resalta hex correspondiente
+    document.querySelectorAll('.hex').forEach(h => h.classList.remove('active'));
+    const hexMap = { 'New': '#hex-nuevo', 'Reserva': '#hex-reserva', 'Entrega': '#hex-entrega' };
+    const hexSel = hexMap[tipo];
+    if (hexSel) { const el = document.querySelector(hexSel); if (el) el.classList.add('active'); }
+  }
+
+  // ——— Flujo de carga ———
+  // 1) Inicializa la línea
+  initLineChart();
+
+  // 2) Carga datos por mes y actualiza totales + recompensas
+  fetch(`https://mobilitysolutionscorp.com/db_consultas/hex_status.php?user_id=${userId}`)
+    .then(r => r.json())
+    .then(data => {
+      datosPorMes = Array.isArray(data) ? data : [];
+
+      // Totales
       let totalNuevo = 0, totalReserva = 0, totalEntrega = 0;
-      data.forEach(mes => {
-        totalNuevo += parseInt(mes.New) || 0;
-        totalReserva += parseInt(mes.Reserva) || 0;
-        totalEntrega += parseInt(mes.Entrega) || 0;
+      datosPorMes.forEach(mes => {
+        totalNuevo   += toInt(mes.New);
+        totalReserva += toInt(mes.Reserva);
+        totalEntrega += toInt(mes.Entrega);
       });
 
-      // Mostrar en hexágonos
-      document.querySelector('#hex-nuevo strong').textContent = totalNuevo;
-      document.querySelector('#hex-reserva strong').textContent = totalReserva;
-      document.querySelector('#hex-entrega strong').textContent = totalEntrega;
+      // Muestra totales en hex
+      const hexNuevo   = document.querySelector('#hex-nuevo strong');
+      const hexReserva = document.querySelector('#hex-reserva strong');
+      const hexEntrega = document.querySelector('#hex-entrega strong');
+      if (hexNuevo)   hexNuevo.textContent   = totalNuevo;
+      if (hexReserva) hexReserva.textContent = totalReserva;
+      if (hexEntrega) hexEntrega.textContent = totalEntrega;
 
-      window.rew.entregas = totalEntrega;
+      // Recompensas: usa número SIEMPRE y repinta
+      window.rew.entregas = toInt(totalEntrega);
       window.renderRewards();
 
-      // Inicializar la gráfica vacía
-      const ctx = document.getElementById('lineChart').getContext('2d');
-      lineChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-          datasets: [
-            {
-              label: 'Datos',
-              data: Array(12).fill(0),
-              borderColor: '#007bff',
-              backgroundColor: 'rgba(0, 123, 255, 0.2)',
-              borderWidth: 2,
-              fill: true,
-              tension: 0.3,
-              pointRadius: 4,
-              pointBackgroundColor: '#007bff',
-            },
-            {
-              label: 'Meta',
-              data: Array(12).fill(0),
-              borderColor: '#ff9900',
-              borderWidth: 2,
-              fill: false,
-              tension: 0.3,
-              borderDash: [5, 5],
-              pointRadius: 3,
-              pointBackgroundColor: '#ff9900',
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: {
-            y: {
-              beginAtZero: true,
-              ticks: {
-                stepSize: 5
-              }
-            }
-          },
-          plugins: {
-            legend: {
-              display: true,
-              position: 'top',
-            },
-            tooltip: {
-              mode: 'index',
-              intersect: false,
-            }
-          }
-        }
-      });
+      // Muestra "Reserva" por defecto
+      actualizarGrafica('Reserva');
 
-      // Después de inicializar la gráfica, cargar metas
-      fetch(`https://mobilitysolutionscorp.com/web/MS_get_metas_usuario.php?asignado=${userId}`)
-        .then(response => response.json()) 
-        .then(data => {
-          if (data.success && data.metas.length > 0) {
-            data.metas.forEach(meta => {
-              metasPorTipo[meta.tipo_meta] = [
-                parseInt(meta.enero), parseInt(meta.febrero), parseInt(meta.marzo),
-                parseInt(meta.abril), parseInt(meta.mayo), parseInt(meta.junio),
-                parseInt(meta.julio), parseInt(meta.agosto), parseInt(meta.septiembre),
-                parseInt(meta.octubre), parseInt(meta.noviembre), parseInt(meta.diciembre)
-              ];
-            });
-          }
-
-          // Mostrar la categoría por defecto
-          actualizarGrafica('Reserva');
-        });
+      // 3) Carga metas por tipo y vuelve a pintar
+      return fetch(`https://mobilitysolutionscorp.com/web/MS_get_metas_usuario.php?asignado=${userId}`);
     })
-    .catch(error => {
-      console.error('Error al obtener los datos:', error);
-    });
+    .then(r => r.json())
+    .then(data => {
+      if (data && data.success && Array.isArray(data.metas)) {
+        data.metas.forEach(meta => {
+          const tipo = toInt(meta.tipo_meta); // 1,2,3
+          metasPorTipo[tipo] = [
+            toInt(meta.enero), toInt(meta.febrero), toInt(meta.marzo),
+            toInt(meta.abril), toInt(meta.mayo), toInt(meta.junio),
+            toInt(meta.julio), toInt(meta.agosto), toInt(meta.septiembre),
+            toInt(meta.octubre), toInt(meta.noviembre), toInt(meta.diciembre)
+          ];
+        });
+      }
+      // refresca la vista actual (Reserva)
+      actualizarGrafica('Reserva');
+    })
+    .catch(err => console.error('Error al obtener datos/metas:', err));
 
-  // Eventos de clic en los hexágonos
-  document.getElementById('hex-nuevo').addEventListener('click', () => actualizarGrafica('New'));
-  document.getElementById('hex-reserva').addEventListener('click', () => actualizarGrafica('Reserva'));
-  document.getElementById('hex-entrega').addEventListener('click', () => actualizarGrafica('Entrega'));
+  // 4) Eventos de clic
+  document.getElementById('hex-nuevo')  ?.addEventListener('click', () => actualizarGrafica('New'));
+  document.getElementById('hex-reserva')?.addEventListener('click', () => actualizarGrafica('Reserva'));
+  document.getElementById('hex-entrega')?.addEventListener('click', () => actualizarGrafica('Entrega'));
 </script>
+
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
