@@ -632,7 +632,8 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
 
         <div class="rewards-legend">
-          <span>2 (Desempeño) · 2 (Seguimiento) · 4 (Innovación)</span>
+          <span>2 (Desempeño) · 2 (Seguimiento) · 4 (Innovación)<br>
+                5 (Entregas)  · -2 (Faltas)     · -3 (Quejas)</span>
           <span>5 Entregas · -2 Faltas · -3 Quejas</span>
           <span class="next" id="rewards-next">${textoSiguiente}</span>
         </div>
