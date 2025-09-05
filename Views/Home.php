@@ -282,6 +282,8 @@ window.renderRewards = function () {
   transition: transform .15s ease, filter .15s ease;
   user-select:none;
 }
+.rewards-legend .neg { color:#ef4444; font-weight:600; }
+
 
 .mini-hex span{font-size:12px; line-height:1; opacity:.95; margin-bottom:2px;}
 .mini-hex strong{font-size:16px; line-height:1;}
@@ -636,7 +638,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         <div class="rewards-legend">
           <span>2 (Desempeño) · 2 (Seguimiento) · 4 (Innovación)<br>
-                5 (Entregas)  · -2 (Faltas)     · -3 (Quejas)</span>
+                5 (Entregas)  · <span class="neg">-2 (Faltas)</span>     · <span class="neg">-3 (Quejas)</span></span>
           <span class="next" id="rewards-next">${textoSiguiente}</span>
         </div>
       `;
