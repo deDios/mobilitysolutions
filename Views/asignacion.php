@@ -284,7 +284,7 @@ function mostrarMas() {
           <select id="tipo" name="tipo" required>
             <option value="">Selecciona un tipo</option>
             <option value="1">Desempeño</option>
-            <option value="2">Liderazgo</option>
+            <option value="2">Seguimiento</option>
             <option value="3">Innovación</option>
           </select>
 
@@ -331,9 +331,9 @@ function mostrarMas() {
 
     // Reconocimientos según tipo
     const reconocimientosPorTipo = {
-      1: ['Empleado del mes', 'Mejor vendedor', 'Objetivo logrado'],
-      2: ['Líder'],
-      3: ['Innovador']
+      1: ['Puntualidad', 'Mejor vendedor', 'Objetivo Alcanzado', 'Mejor Vendedor', 'Trabajo en equipo'],
+      2: ['Cobranza Alcanzada', 'Atención al cliente'],
+      3: ['Estrella de Cine', 'Colaborador', 'Extraordinario']
     };
 
     // Llenar combo reconocimiento según tipo
