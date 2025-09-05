@@ -542,8 +542,8 @@ document.addEventListener("DOMContentLoaded", () => {
       contenedorSkills.innerHTML = "<h2>Reconocimientos</h2>";
 
       // ====== Cálculo de puntos por tipo ======
-      // tipo: 1 = Desempeño (30), 2 = Liderazgo (20), 3 = Innovación (10)
-      const puntosPorTipo = {1: 30, 2: 20, 3: 10};
+      // tipo: 1 = Desempeño (2), 2 = Seguimiento (2), 3 = Innovación (4)
+      const puntosPorTipo = {1: 2, 2: 2, 3: 4};
       const lista = Array.isArray(data?.reconocimientos) ? data.reconocimientos : [];
       const totalPuntos = lista.reduce((acc, item) => {
         const tipo = parseInt(item.tipo, 10);
@@ -552,12 +552,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // ====== Configuración del termómetro ======
       const metas = [
-        { pts: 100, nombre: "Premio 1" },
-        { pts: 150, nombre: "Premio 2" },
-        { pts: 200, nombre: "Premio 3" },
-        { pts: 250, nombre: "Premio 4" }
+        { pts: 25, nombre: "Premio 1" },
+        { pts: 50, nombre: "Premio 2" },
+        { pts: 75, nombre: "Premio 3" },
+        { pts: 100, nombre: "Premio 4" }
       ];
-      const maxPts = metas[metas.length - 1].pts; // 250
+      const maxPts = metas[metas.length - 1].pts; // 100
       const pct = Math.min(100, (totalPuntos / maxPts) * 100);
 
       // Calcular siguiente premio
@@ -573,7 +573,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="rewards-head">
           <div class="rewards-title">Línea de recompensas</div>
           <div class="rewards-stats">
-            Puntos: <strong id="pts-actuales">${totalPuntos}</strong> / ${maxPts}
+            Puntos: <strong id="pts-actuales">${Math.min(totalPuntos, maxPts)}</strong> / ${maxPts}
           </div>
         </div>
 
@@ -583,7 +583,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
 
         <div class="rewards-legend">
-          <span>30 (Desempeño) · 20 (Seguimiento) · 10 (Innovación)</span>
+          <span>2 (Desempeño) · 2 (Seguimiento) · 4 (Innovación)</span>
           <span class="next" id="rewards-next">${textoSiguiente}</span>
         </div>
       `;
@@ -613,7 +613,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // ====== Agrupar por tipo y mostrar como acordeón (siempre 3 grupos) ======
       const NOMBRES_TIPO = { 1: "Desempeño", 2: "Seguimiento", 3: "Innovación" };
       const CLASE_TIPO   = { 1: "recono-desempeno", 2: "recono-liderazgo", 3: "recono-innovacion" };
-      const PUNTOS_TIPO  = { 1: 30, 2: 20, 3: 10 };
+      const PUNTOS_TIPO  = { 1: 2, 2: 2, 3: 4 };
 
       const tiposOrden = [1, 2, 3]; // orden fijo de grupos
       const grupos = { 1: [], 2: [], 3: [] }; // inicia vacío para garantizar presencia
