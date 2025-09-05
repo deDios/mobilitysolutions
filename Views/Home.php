@@ -206,6 +206,52 @@
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
+/* === Panal de mini-hex debajo de los hex grandes === */
+.hex-honey{
+  /* se colocan debajo y "embonados" entre los 3 hex grandes */
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap: 120px;              /* separación horizontal entre los dos mini-hex */
+  margin-top: -28px;       /* los sube un poco para que embonen */
+  margin-bottom: 12px;
+}
+
+.mini-hex{
+  width: 90px;             /* más chico que los 120px de los grandes */
+  height: 78px;            /* proporción del hex para que embone visualmente */
+  clip-path: polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  color:#fff;
+  font-weight:700;
+  text-align:center;
+  text-decoration:none;
+  box-shadow: 0 4px 8px rgba(0,0,0,.12);
+  transition: transform .15s ease, filter .15s ease;
+  user-select:none;
+}
+
+.mini-hex span{font-size:12px; line-height:1; opacity:.95; margin-bottom:2px;}
+.mini-hex strong{font-size:16px; line-height:1;}
+
+.mini-hex:hover{ transform: scale(1.05); filter: brightness(1.02); }
+
+/* Colores por tipo (alineados con tus cápsulas anteriores) */
+.mini-hex.quejas{ background:#ff6b6b; }
+.mini-hex.inasistencias{ background:#6c8cff; }
+
+/* Responsivo: si la pantalla es angosta, que no se solapen */
+@media (max-width: 768px){
+  .hex-honey{
+    gap: 40px;
+    margin-top: 6px;     /* no los “metas” en pantallas chicas */
+  }
+  .mini-hex{ width:82px; height:70px; }
+}
+
 
 </style>
 
@@ -317,7 +363,9 @@
           </a>
           <div class="texto-tareas">Tareas en curso</div>
         </div>
-        <!-- Indicadores de Reportes -->
+
+        <!-- 
+        Indicadores de Reportes
         <div id="reportes-resumen" class="reportes-resumen">
           <a class="resumen-pill pill-quejas" href="https://mobilitysolutionscorp.com/Views/asignacion.php" title="Ver quejas">
             <div class="pill-circle">
@@ -325,7 +373,7 @@
             </div>
             <div class="pill-text">Quejas</div>
           </a>
-
+          
           <a class="resumen-pill pill-inasistencias" href="https://mobilitysolutionscorp.com/Views/asignacion.php" title="Ver inasistencias">
             <div class="pill-circle">
               <span id="cantidad-inasistencias">0</span>
@@ -333,7 +381,7 @@
             <div class="pill-text">Inasistencias</div>
           </a>
         </div>
-
+        -->
 
         <!-- Información de contacto -->
         <div class="profile-info">
@@ -364,6 +412,20 @@
                 <strong>0</strong>
             </div>
         </div>
+
+        <!-- MINI-HEXs en panal (quejas / inasistencias) -->
+        <div class="hex-honey">
+          <a class="mini-hex quejas" href="https://mobilitysolutionscorp.com/Views/asignacion.php" title="Ver quejas">
+            <span>Quejas</span>
+            <strong id="hc-quejas">0</strong>
+          </a>
+
+          <a class="mini-hex inasistencias" href="https://mobilitysolutionscorp.com/Views/asignacion.php" title="Ver inasistencias">
+            <span>Inasistencias</span>
+            <strong id="hc-inasistencias">0</strong>
+          </a>
+        </div>
+
 
         <div class="chart-wrapper">
             <canvas id="lineChart"></canvas>
@@ -631,17 +693,18 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("DOMContentLoaded", () => {
     const userId = <?php echo intval($user_id); ?>;
 
-    // === Indicadores: Quejas / Inasistencias ===
-    function actualizarContador(elId, count) {
-      const el = document.getElementById(elId);
-      if (el) el.textContent = count;
+    function actualizarContadores(selectores, count){
+      (Array.isArray(selectores) ? selectores : [selectores]).forEach(sel=>{
+        const el = document.querySelector(sel);
+        if (el) el.textContent = count;
+      });
     }
 
-    // Utilidad: intenta leer count, rows.length o arrays específicos
+    // Intenta leer count, rows.length o un arreglo con nombre conocido
     function extraerConteo(respuesta, nombreArrayPosible) {
-      if (typeof respuesta.count === 'number') return respuesta.count;
-      if (Array.isArray(respuesta.rows)) return respuesta.rows.length;
-      if (Array.isArray(respuesta[nombreArrayPosible])) return respuesta[nombreArrayPosible].length;
+      if (respuesta && typeof respuesta.count === 'number') return respuesta.count;
+      if (respuesta && Array.isArray(respuesta.rows)) return respuesta.rows.length;
+      if (respuesta && Array.isArray(respuesta[nombreArrayPosible])) return respuesta[nombreArrayPosible].length;
       return 0;
     }
 
@@ -654,9 +717,9 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(r => r.json())
     .then(data => {
       const count = extraerConteo(data, "quejas");
-      actualizarContador("cantidad-quejas", count);
+      actualizarContadores(["#cantidad-quejas", "#hc-quejas"], count);
     })
-    .catch(() => actualizarContador("cantidad-quejas", 0));
+    .catch(() => actualizarContadores(["#cantidad-quejas", "#hc-quejas"], 0));
 
     // Inasistencias
     fetch("https://mobilitysolutionscorp.com/web/MS_inasistencia_get.php", {
@@ -667,11 +730,12 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(r => r.json())
     .then(data => {
       const count = extraerConteo(data, "inasistencias");
-      actualizarContador("cantidad-inasistencias", count);
+      actualizarContadores(["#cantidad-inasistencias", "#hc-inasistencias"], count);
     })
-    .catch(() => actualizarContador("cantidad-inasistencias", 0));
+    .catch(() => actualizarContadores(["#cantidad-inasistencias", "#hc-inasistencias"], 0));
   });
 </script>
+
 
 
 <script>
