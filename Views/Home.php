@@ -89,6 +89,54 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
+<script>
+// === Recompensas basadas en indicadores (global) ===
+window.rew = {
+  quejas: 0,
+  inasistencias: 0,
+  entregas: 0,
+  metas: [25, 50, 75, 100],
+  max: 100
+};
+
+// Calcula puntos aplicando fórmula y clamp 0..max
+window.computeRewardPoints = function () {
+  const raw = (window.rew.entregas * 5) - (window.rew.inasistencias * 2) - (window.rew.quejas * 3);
+  return Math.max(0, Math.min(window.rew.max, raw));
+};
+
+// Actualiza UI del termómetro (número, barra, markers y “Siguiente:”)
+window.renderRewards = function () {
+  const pts = window.computeRewardPoints();
+  const maxPts = window.rew.max;
+
+  const fill = document.getElementById("rewards-fill");
+  const ptsEl = document.getElementById("pts-actuales");
+  const nextEl = document.getElementById("rewards-next");
+  const markersWrap = document.getElementById("rewards-markers");
+
+  if (ptsEl) ptsEl.textContent = pts;
+  if (fill)   fill.style.width = (pts / maxPts * 100) + "%";
+
+  if (markersWrap && window.rew.metas) {
+    const markers = markersWrap.children;
+    window.rew.metas.forEach((m, i) => {
+      const mk = markers[i];
+      if (!mk) return;
+      if (pts >= m) mk.classList.add("achieved");
+      else          mk.classList.remove("achieved");
+    });
+  }
+
+  if (nextEl) {
+    const next = window.rew.metas.find(m => pts < m);
+    nextEl.textContent = next
+      ? `Siguiente: Premio ${window.rew.metas.indexOf(next) + 1} a ${next} pts`
+      : `¡Todos los premios conseguidos!`;
+  }
+};
+</script>
+
     <style>
   /* --- Recompensas: barra horizontal y marcadores sobre la barra --- */
   .rewards-wrapper{
@@ -557,7 +605,8 @@ document.addEventListener("DOMContentLoaded", () => {
         { pts: 75, nombre: "Premio 3" },
         { pts: 100, nombre: "Premio 4" }
       ];
-      const maxPts = metas[metas.length - 1].pts; // 100
+      const maxPts = 100; // explícito (coincide con window.rew.max)
+      window.rew.metas = metas.map(m => m.pts); // sincroniza metas globales
       const pct = Math.min(100, (totalPuntos / maxPts) * 100);
 
       // Calcular siguiente premio
@@ -573,7 +622,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="rewards-head">
           <div class="rewards-title">Línea de recompensas</div>
           <div class="rewards-stats">
-            Puntos: <strong id="pts-actuales">${Math.min(totalPuntos, maxPts)}</strong> / ${maxPts}
+            Puntos: <strong id="pts-actuales">0</strong> / ${maxPts}
           </div>
         </div>
 
@@ -584,6 +633,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         <div class="rewards-legend">
           <span>2 (Desempeño) · 2 (Seguimiento) · 4 (Innovación)</span>
+          <span>5 Entregas · -2 Faltas · -3 Quejas</span>
           <span class="next" id="rewards-next">${textoSiguiente}</span>
         </div>
       `;
@@ -591,10 +641,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Colocar marcadores de premios
       const markers = document.getElementById("rewards-markers");
-      metas.forEach((m, i) => {
+      metas.forEach((m) => {
         const left = (m.pts / maxPts) * 100;
         const marker = document.createElement("div");
-        marker.className = "rewards-marker" + (totalPuntos >= m.pts ? " achieved" : "");
+        marker.className = "rewards-marker";
         marker.style.left = `${left}%`;
         marker.innerHTML = `
           <div class="dot"></div>
@@ -604,10 +654,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       // Animar el “llenado”
-      requestAnimationFrame(() => {
-        const fill = document.getElementById("rewards-fill");
-        fill.style.width = pct + "%";
-      });
+      window.renderRewards();
 
       // ====== Grid de reconocimientos (tu lógica actual) ======
       // ====== Agrupar por tipo y mostrar como acordeón (siempre 3 grupos) ======
@@ -718,6 +765,8 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(data => {
       const count = extraerConteo(data, "quejas");
       actualizarContadores(["#cantidad-quejas", "#hc-quejas"], count);
+      window.rew.quejas = count;
+      window.renderRewards();
     })
     .catch(() => actualizarContadores(["#cantidad-quejas", "#hc-quejas"], 0));
 
@@ -731,6 +780,8 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(data => {
       const count = extraerConteo(data, "inasistencias");
       actualizarContadores(["#cantidad-inasistencias", "#hc-inasistencias"], count);
+      window.rew.inasistencias = count;
+      window.renderRewards();
     })
     .catch(() => actualizarContadores(["#cantidad-inasistencias", "#hc-inasistencias"], 0));
   });
@@ -800,6 +851,9 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelector('#hex-nuevo strong').textContent = totalNuevo;
       document.querySelector('#hex-reserva strong').textContent = totalReserva;
       document.querySelector('#hex-entrega strong').textContent = totalEntrega;
+
+      window.rew.entregas = totalEntrega;
+      window.renderRewards();
 
       // Inicializar la gráfica vacía
       const ctx = document.getElementById('lineChart').getContext('2d');
