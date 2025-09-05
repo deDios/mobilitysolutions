@@ -583,7 +583,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
 
         <div class="rewards-legend">
-          <span>30 (Desempeño) · 20 (Liderazgo) · 10 (Innovación)</span>
+          <span>30 (Desempeño) · 20 (Seguimiento) · 10 (Innovación)</span>
           <span class="next" id="rewards-next">${textoSiguiente}</span>
         </div>
       `;
@@ -611,7 +611,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // ====== Grid de reconocimientos (tu lógica actual) ======
       // ====== Agrupar por tipo y mostrar como acordeón (siempre 3 grupos) ======
-      const NOMBRES_TIPO = { 1: "Desempeño", 2: "Liderazgo", 3: "Innovación" };
+      const NOMBRES_TIPO = { 1: "Desempeño", 2: "Seguimiento", 3: "Innovación" };
       const CLASE_TIPO   = { 1: "recono-desempeno", 2: "recono-liderazgo", 3: "recono-innovacion" };
       const PUNTOS_TIPO  = { 1: 30, 2: 20, 3: 10 };
 
