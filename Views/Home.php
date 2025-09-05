@@ -241,7 +241,7 @@
 
 /* Colores por tipo (alineados con tus cápsulas anteriores) */
 .mini-hex.quejas{ background:#ff6b6b; }
-.mini-hex.inasistencias{ background:#6c8cff; }
+.mini-hex.inasistencias{ background:#ff6b6b; }
 
 /* Responsivo: si la pantalla es angosta, que no se solapen */
 @media (max-width: 768px){
@@ -421,7 +421,7 @@
           </a>
 
           <a class="mini-hex inasistencias" href="https://mobilitysolutionscorp.com/Views/asignacion.php" title="Ver inasistencias">
-            <span>Inasistencias</span>
+            <span>Faltas</span>
             <strong id="hc-inasistencias">0</strong>
           </a>
         </div>
