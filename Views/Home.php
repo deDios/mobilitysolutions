@@ -612,11 +612,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // ====== Configuración del termómetro ======
       const metas = [
-        { pts: 50, nombre: "Tarjeta Amazon" },
-        { pts: 75, nombre: "Bono especial" },
-        { pts: 100, nombre: "Viaje anual" }
+        { pts: 35, nombre: "Tarjeta Amazon" },
+        { pts: 55, nombre: "Bono especial" },
+        { pts: 75, nombre: "Viaje anual" }
       ];
-      const maxPts = 100; // explícito (coincide con window.rew.max)
+      const maxPts = 75; // explícito (coincide con window.rew.max)
       window.rew.metas = metas.map(m => m.pts); // sincroniza metas globales
       const pct = Math.min(100, (totalPuntos / maxPts) * 100);
 
