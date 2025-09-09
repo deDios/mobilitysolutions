@@ -1052,18 +1052,23 @@ function renderGaugeEntrega() {
     });
   });
 
-  function showLine(tipo) {
-  const gaugeCanvas = document.getElementById('gaugeChart');
-  const lineCanvas  = document.getElementById('lineChart');
 
-  if (gaugeCanvas) gaugeCanvas.style.display = 'none';
-  if (lineCanvas)  lineCanvas.style.display  = 'block';
-
-  if (!lineChart) initLineChart();
-  actualizarGrafica(tipo);
+  // Resalta hex “Entrega”
+  document.querySelectorAll('.hex').forEach(h => h.classList.remove('active'));
+  const hexEntrega = document.querySelector('#hex-entrega');
+  if (hexEntrega) hexEntrega.classList.add('active');
 }
 
-// === FLUJO: inicializa y carga datos + metas ===
+  function showLine(tipo) {
+    const gaugeCanvas = document.getElementById('gaugeChart');
+    const lineCanvas  = document.getElementById('lineChart');
+    if (gaugeCanvas) gaugeCanvas.style.display = 'none';
+    if (lineCanvas)  lineCanvas.style.display  = 'block';
+    if (!lineChart) initLineChart();
+    actualizarGrafica(tipo);
+  }
+
+  // === FLUJO: inicializa y carga datos + metas ===
   initLineChart();
 
   // 1) Datos por mes (totales)
@@ -1071,7 +1076,6 @@ function renderGaugeEntrega() {
     .then(r => r.json())
     .then(data => {
       datosPorMes = Array.isArray(data) ? data : [];
-
       totalNuevo = 0; totalReserva = 0; totalEntrega = 0;
       datosPorMes.forEach(mes => {
         totalNuevo   += toInt(mes.New);
@@ -1079,32 +1083,29 @@ function renderGaugeEntrega() {
         totalEntrega += toInt(mes.Entrega);
       });
 
-      // Totales en los hex
-      const hexNuevo   = document.querySelector('#hex-nuevo strong');
-      const hexReserva = document.querySelector('#hex-reserva strong');
-      const hexEntrega = document.querySelector('#hex-entrega strong');
-      if (hexNuevo)   hexNuevo.textContent   = totalNuevo;
-      if (hexReserva) hexReserva.textContent = totalReserva;
-      if (hexEntrega) hexEntrega.textContent = totalEntrega;
+      // Totales en hex
+      document.querySelector('#hex-nuevo strong').textContent   = totalNuevo;
+      document.querySelector('#hex-reserva strong').textContent = totalReserva;
+      document.querySelector('#hex-entrega strong').textContent = totalEntrega;
 
-      // Recompensas (si usas rew)
+      // Recompensas
       if (window.rew) {
         window.rew.entregas = totalEntrega;
         if (typeof window.renderRewards === 'function') window.renderRewards();
       }
 
-      // Vista por defecto: línea de “Reserva”
+      // Vista por defecto
       showLine('Reserva');
 
-      // 2) Metas por tipo
+      // 2) Metas
       return fetch('https://mobilitysolutionscorp.com/web/MS_get_metas_usuario.php?asignado=' + userId);
     })
     .then(r => r.json())
     .then(data => {
       if (data && data.success && Array.isArray(data.metas)) {
         data.metas.forEach(meta => {
-          const tipo = toInt(meta.tipo_meta); // 1=Nuevo, 2=Reserva, 3=Entrega
-          metasPorTipo[tipo] = [
+          const t = toInt(meta.tipo_meta); // 1,2,3
+          metasPorTipo[t] = [
             toInt(meta.enero), toInt(meta.febrero), toInt(meta.marzo),
             toInt(meta.abril), toInt(meta.mayo), toInt(meta.junio),
             toInt(meta.julio), toInt(meta.agosto), toInt(meta.septiembre),
@@ -1113,37 +1114,23 @@ function renderGaugeEntrega() {
         });
       }
 
-      // >>> 3) Mantener la DONA actualizada cuando lleguen las metas <<<
+      // (3) Si la DONA está visible, redibujarla con el target correcto
       const gauge = document.getElementById('gaugeChart');
-      const gaugeVisible = gauge && getComputedStyle(gauge).display !== 'none';
-
-      if (gaugeVisible) {
-        // Si el usuario está viendo la dona, recalcularla con el target correcto
-        renderGaugeEntrega();
-      } else {
-        // Si no, mantener la línea (tu vista por defecto)
-        showLine('Reserva');
-      }
+      const visible = gauge && getComputedStyle(gauge).display !== 'none';
+      if (visible) renderGaugeEntrega(); else showLine('Reserva');
     })
     .catch(err => console.error('Error al obtener datos/metas:', err));
 
-  // 3.1) Eventos de clic en los hex
+  // Listeners una sola vez
   (function wireClicks(){
-    var hexN = document.getElementById('hex-nuevo');
-    var hexR = document.getElementById('hex-reserva');
-    var hexE = document.getElementById('hex-entrega');
-
-    if (hexN) hexN.addEventListener('click', function(){ showLine('New'); });
-    if (hexR) hexR.addEventListener('click', function(){ showLine('Reserva'); });
-    if (hexE) hexE.addEventListener('click', function(){ renderGaugeEntrega(); });
+    const hexN = document.getElementById('hex-nuevo');
+    const hexR = document.getElementById('hex-reserva');
+    const hexE = document.getElementById('hex-entrega');
+    if (hexN) hexN.addEventListener('click', () => showLine('New'));
+    if (hexR) hexR.addEventListener('click', () => showLine('Reserva'));
+    if (hexE) hexE.addEventListener('click', () => renderGaugeEntrega());
   })();
 
-
-  // Resalta hex “Entrega”
-  document.querySelectorAll('.hex').forEach(h => h.classList.remove('active'));
-  const hexEntrega = document.querySelector('#hex-entrega');
-  if (hexEntrega) hexEntrega.classList.add('active');
-}
 </script>
 
 
