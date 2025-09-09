@@ -290,6 +290,17 @@ window.renderRewards = function () {
 }
 .rewards-legend .neg { color:#ef4444; font-weight:600; }
 
+.chart-wrapper{
+  position: relative;
+  height: 280px;           /* altura visible del área de gráficas */
+}
+
+#gaugeChart{
+  display: none;           /* se muestra sólo al pedir el velocímetro */
+  width: 100% !important;
+  height: 100% !important; /* que use toda la altura del wrapper */
+}
+
 
 .mini-hex span{font-size:12px; line-height:1; opacity:.95; margin-bottom:2px;}
 .mini-hex strong{font-size:16px; line-height:1;}
@@ -939,55 +950,50 @@ document.addEventListener("DOMContentLoaded", () => {
     const gaugeCanvas = document.getElementById('gaugeChart');
     const lineCanvas  = document.getElementById('lineChart');
 
-    // Target = suma anual de metas de Entregas (tipo 3)
-    let metaAnualEntrega = (metasPorTipo[3] || []).reduce((a, b) => a + toInt(b), 0);
-    // Si todavía no hay metas, usa al menos el valor actual o 1
-    if (!metaAnualEntrega) metaAnualEntrega = Math.max(totalEntrega, 1);
-
-    const valor = toInt(totalEntrega);
-    const data = [ Math.min(valor, metaAnualEntrega), Math.max(metaAnualEntrega - valor, 0) ];
-
-    // Destruye gauge previo si existe
-    if (gaugeChart) { try { gaugeChart.destroy(); } catch(e){} }
-
-    const gctx = gaugeCanvas.getContext('2d');
-    gaugeChart = new Chart(gctx, {
-      type: 'doughnut',
-      data: {
-        labels: ['Progreso', 'Restante'],
-        datasets: [{
-          data: data,
-          borderWidth: 0,
-          backgroundColor: ['#22c55e', '#e5e7eb'], // verde / gris
-          hoverOffset: 0
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        rotation: -Math.PI,       // 180°
-        circumference: Math.PI,   // semicircular
-        cutout: '70%',
-        plugins: {
-          legend: { display: false },
-          tooltip: { enabled: false },
-          title: {
-            display: true,
-            text: 'Entregas (Año ' + (new Date().getFullYear()) + ')'
-          },
-          // Pasamos valor/target al plugin
-          gaugeNeedle: {
-            value: valor,
-            target: metaAnualEntrega
-          }
-        }
-      },
-      plugins: [gaugeNeedlePlugin]
-    });
-
-    // Mostrar gauge, ocultar línea
+    // 1) Mostrar/ocultar ANTES de crear el chart
     if (lineCanvas)  lineCanvas.style.display  = 'none';
     if (gaugeCanvas) gaugeCanvas.style.display = 'block';
+
+    // 2) Destruir gauge previo si existe
+    if (window.gaugeChart) { try { window.gaugeChart.destroy(); } catch(e){} }
+
+    // 3) Esperar un frame para que el canvas ya tenga medidas correctas
+    requestAnimationFrame(() => {
+      // Target = suma anual de metas de Entregas (tipo 3)
+      let metaAnualEntrega = (metasPorTipo[3] || []).reduce((a, b) => a + toInt(b), 0);
+      if (!metaAnualEntrega) metaAnualEntrega = Math.max(toInt(totalEntrega), 1);
+
+      const valor = toInt(totalEntrega);
+      const data  = [ Math.min(valor, metaAnualEntrega), Math.max(metaAnualEntrega - valor, 0) ];
+
+      const gctx = gaugeCanvas.getContext('2d');
+      window.gaugeChart = new Chart(gctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Progreso', 'Restante'],
+          datasets: [{
+            data,
+            borderWidth: 0,
+            backgroundColor: ['#22c55e', '#e5e7eb'],
+            hoverOffset: 0
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,    // usa la altura del wrapper
+          rotation: -Math.PI,            // 180°
+          circumference: Math.PI,        // semicircular
+          cutout: '70%',
+          plugins: {
+            legend: { display: false },
+            tooltip:{ enabled: false },
+            title: { display: true, text: 'Entregas (Año ' + (new Date().getFullYear()) + ')' },
+            gaugeNeedle: { value: valor, target: metaAnualEntrega }
+          }
+        },
+        plugins: [gaugeNeedlePlugin]
+      });
+    });
 
     // Resalta hex “Entrega”
     document.querySelectorAll('.hex').forEach(h => h.classList.remove('active'));
@@ -1055,8 +1061,17 @@ document.addEventListener("DOMContentLoaded", () => {
           ];
         });
       }
-      // Refresca vista actual
-      showLine('Reserva');
+
+      // <<< AQUI: si el gauge está visible, redibujarlo con el target correcto >>>
+      const gauge = document.getElementById('gaugeChart');
+      const gaugeVisible = gauge && getComputedStyle(gauge).display !== 'none';
+
+      if (gaugeVisible) {
+        renderGaugeEntrega();     // se mantiene el velocímetro en pantalla
+      } else {
+        showLine('Reserva');      // sólo vuelve a la línea si NO estaba el gauge
+      }
+
     })
     .catch(err => console.error('Error al obtener datos/metas:', err));
 
