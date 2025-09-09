@@ -534,6 +534,36 @@ window.renderRewards = function () {
 </div>
 
 <script>
+// Texto en el centro de una doughnut
+const centerTextPlugin = {
+  id: 'centerText',
+  afterDraw(chart, args, opts) {
+    const {ctx, chartArea} = chart;
+    if (!chartArea) return;
+    const x = (chartArea.left + chartArea.right) / 2;
+    const y = (chartArea.top + chartArea.bottom) / 2;
+
+    ctx.save();
+    // número grande (entregas)
+    ctx.font = '700 32px system-ui, -apple-system, Segoe UI, Roboto';
+    ctx.fillStyle = '#0f172a';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(String(opts.text || ''), x, y);
+
+    // subtítulo opcional (ej. "Entregas" o "%")
+    if (opts.subtext) {
+      ctx.font = '600 12px system-ui, -apple-system, Segoe UI, Roboto';
+      ctx.fillStyle = '#64748b';
+      ctx.fillText(String(opts.subtext), x, y + 22);
+    }
+    ctx.restore();
+  }
+};
+</script>
+
+
+<script>
 document.addEventListener("DOMContentLoaded", () => {
   const userId = <?php echo intval($user_id); ?>;
 
@@ -945,77 +975,98 @@ document.addEventListener("DOMContentLoaded", () => {
     if (hexSel) { const el = document.querySelector(hexSel); if (el) el.classList.add('active'); }
   }
 
-  // ——— Velocímetro para ENTREGAS ———
-  function renderGaugeEntrega() {
-    const gaugeCanvas = document.getElementById('gaugeChart');
-    const lineCanvas  = document.getElementById('lineChart');
+  
+function renderGaugeEntrega() {
+  const gaugeCanvas = document.getElementById('gaugeChart');
+  const lineCanvas  = document.getElementById('lineChart');
 
-    // 1) Mostrar/ocultar ANTES de crear el chart
-    if (lineCanvas)  lineCanvas.style.display  = 'none';
-    if (gaugeCanvas) gaugeCanvas.style.display = 'block';
+  // Mostrar dona y ocultar línea
+  if (lineCanvas)  lineCanvas.style.display  = 'none';
+  if (gaugeCanvas) gaugeCanvas.style.display = 'block';
 
-    // 2) Destruir gauge previo si existe
-    if (window.gaugeChart) { try { window.gaugeChart.destroy(); } catch(e){} }
+  // Destruye chart previo si existe
+  if (window.gaugeChart) { try { window.gaugeChart.destroy(); } catch(e){} }
 
-    // 3) Esperar un frame para que el canvas ya tenga medidas correctas
-    requestAnimationFrame(() => {
-      // Target = suma anual de metas de Entregas (tipo 3)
-      let metaAnualEntrega = (metasPorTipo[3] || []).reduce((a, b) => a + toInt(b), 0);
-      if (!metaAnualEntrega) metaAnualEntrega = Math.max(toInt(totalEntrega), 1);
+  // Espera un frame para que el canvas ya tenga tamaño real
+  requestAnimationFrame(() => {
+    // Meta anual = suma de metas del tipo 3 (Entregas)
+    let metaAnualEntrega = (metasPorTipo[3] || []).reduce((a,b)=>a + toInt(b), 0);
+    if (!metaAnualEntrega) metaAnualEntrega = Math.max(toInt(totalEntrega), 1);
 
-      const valor = toInt(totalEntrega);
-      const data  = [ Math.min(valor, metaAnualEntrega), Math.max(metaAnualEntrega - valor, 0) ];
+    const valor = toInt(totalEntrega);
+    const pctRaw = (valor / metaAnualEntrega) * 100;
+    const pct    = Math.max(0, Math.min(100, pctRaw));          // 0..100
+    const pctRestante = 100 - pct;
 
-      const gctx = gaugeCanvas.getContext('2d');
-      window.gaugeChart = new Chart(gctx, {
-        type: 'doughnut',
-        data: {
-          labels: ['Progreso', 'Restante'],
-          datasets: [{
-            data,
+    const gctx = gaugeCanvas.getContext('2d');
+
+    // Gradiente bonito para el aro de progreso
+    const grad = gctx.createLinearGradient(0, gaugeCanvas.height, gaugeCanvas.width, 0);
+    grad.addColorStop(0, '#34d399'); // verde
+    grad.addColorStop(1, '#0ea5e9'); // azul
+
+    window.gaugeChart = new Chart(gctx, {
+      type: 'doughnut',
+      data: {
+        // 2 anillos: fondo (gris), progreso (pct / resto transparente)
+        datasets: [
+          {
+            // anillo de fondo (track)
+            data: [100],
+            backgroundColor: ['#e5e7eb'],
             borderWidth: 0,
-            backgroundColor: ['#22c55e', '#e5e7eb'],
-            hoverOffset: 0
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,    // usa la altura del wrapper
-          rotation: -Math.PI,            // 180°
-          circumference: Math.PI,        // semicircular
-          cutout: '70%',
-          plugins: {
-            legend: { display: false },
-            tooltip:{ enabled: false },
-            title: { display: true, text: 'Entregas (Año ' + (new Date().getFullYear()) + ')' },
-            gaugeNeedle: { value: valor, target: metaAnualEntrega }
+            cutout: '72%',
+            weight: 1
+          },
+          {
+            // anillo de progreso
+            data: [pct, pctRestante],
+            backgroundColor: [grad, 'rgba(0,0,0,0)'], // el resto deja ver el track
+            borderWidth: 0,
+            cutout: '72%',
+            borderRadius: 12,
+            weight: 1
           }
-        },
-        plugins: [gaugeNeedlePlugin]
-      });
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        rotation: -90 * (Math.PI / 180), // empieza arriba
+        circumference: 360 * (Math.PI / 180),
+        plugins: {
+          legend: { display: false },
+          tooltip: { enabled: false },
+          title: {
+            display: true,
+            text: `Entregas — ${Math.round(pct)}% de la meta (${new Date().getFullYear()})`
+          },
+          // texto central
+          centerText: {
+            text: valor,        // << entregas realizadas
+            subtext: 'Entregas' // (puedes cambiar a `Meta: ${metaAnualEntrega}`)
+          }
+        }
+      },
+      plugins: [centerTextPlugin]
     });
-
-    // Resalta hex “Entrega”
-    document.querySelectorAll('.hex').forEach(h => h.classList.remove('active'));
-    const hexEntrega = document.querySelector('#hex-entrega');
-    if (hexEntrega) hexEntrega.classList.add('active');
-  }
+  });
 
   function showLine(tipo) {
-    const gaugeCanvas = document.getElementById('gaugeChart');
-    const lineCanvas  = document.getElementById('lineChart');
-    if (gaugeCanvas) gaugeCanvas.style.display = 'none';
-    if (lineCanvas)  lineCanvas.style.display  = 'block';
+  const gaugeCanvas = document.getElementById('gaugeChart');
+  const lineCanvas  = document.getElementById('lineChart');
 
-    if (!lineChart) initLineChart();
-    actualizarGrafica(tipo);
-  }
+  if (gaugeCanvas) gaugeCanvas.style.display = 'none';
+  if (lineCanvas)  lineCanvas.style.display  = 'block';
 
-  // ——— Flujo ———
-  // 1) Inicializa línea vacía
+  if (!lineChart) initLineChart();
+  actualizarGrafica(tipo);
+}
+
+// === FLUJO: inicializa y carga datos + metas ===
   initLineChart();
 
-  // 2) Carga datos por mes
+  // 1) Datos por mes (totales)
   fetch('https://mobilitysolutionscorp.com/db_consultas/hex_status.php?user_id=' + userId)
     .then(r => r.json())
     .then(data => {
@@ -1028,7 +1079,7 @@ document.addEventListener("DOMContentLoaded", () => {
         totalEntrega += toInt(mes.Entrega);
       });
 
-      // Totales en hex
+      // Totales en los hex
       const hexNuevo   = document.querySelector('#hex-nuevo strong');
       const hexReserva = document.querySelector('#hex-reserva strong');
       const hexEntrega = document.querySelector('#hex-entrega strong');
@@ -1042,17 +1093,17 @@ document.addEventListener("DOMContentLoaded", () => {
         if (typeof window.renderRewards === 'function') window.renderRewards();
       }
 
-      // Por defecto: mostrar línea de “Reserva”
+      // Vista por defecto: línea de “Reserva”
       showLine('Reserva');
 
-      // 3) Carga metas por tipo
+      // 2) Metas por tipo
       return fetch('https://mobilitysolutionscorp.com/web/MS_get_metas_usuario.php?asignado=' + userId);
     })
     .then(r => r.json())
     .then(data => {
       if (data && data.success && Array.isArray(data.metas)) {
         data.metas.forEach(meta => {
-          const tipo = toInt(meta.tipo_meta); // 1,2,3
+          const tipo = toInt(meta.tipo_meta); // 1=Nuevo, 2=Reserva, 3=Entrega
           metasPorTipo[tipo] = [
             toInt(meta.enero), toInt(meta.febrero), toInt(meta.marzo),
             toInt(meta.abril), toInt(meta.mayo), toInt(meta.junio),
@@ -1062,20 +1113,21 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
 
-      // <<< AQUI: si el gauge está visible, redibujarlo con el target correcto >>>
+      // >>> 3) Mantener la DONA actualizada cuando lleguen las metas <<<
       const gauge = document.getElementById('gaugeChart');
       const gaugeVisible = gauge && getComputedStyle(gauge).display !== 'none';
 
       if (gaugeVisible) {
-        renderGaugeEntrega();     // se mantiene el velocímetro en pantalla
+        // Si el usuario está viendo la dona, recalcularla con el target correcto
+        renderGaugeEntrega();
       } else {
-        showLine('Reserva');      // sólo vuelve a la línea si NO estaba el gauge
+        // Si no, mantener la línea (tu vista por defecto)
+        showLine('Reserva');
       }
-
     })
     .catch(err => console.error('Error al obtener datos/metas:', err));
 
-  // 4) Eventos de clic (sin optional chaining)
+  // 3.1) Eventos de clic en los hex
   (function wireClicks(){
     var hexN = document.getElementById('hex-nuevo');
     var hexR = document.getElementById('hex-reserva');
@@ -1085,8 +1137,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if (hexR) hexR.addEventListener('click', function(){ showLine('Reserva'); });
     if (hexE) hexE.addEventListener('click', function(){ renderGaugeEntrega(); });
   })();
-</script>
 
+
+  // Resalta hex “Entrega”
+  document.querySelectorAll('.hex').forEach(h => h.classList.remove('active'));
+  const hexEntrega = document.querySelector('#hex-entrega');
+  if (hexEntrega) hexEntrega.classList.add('active');
+}
+</script>
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
