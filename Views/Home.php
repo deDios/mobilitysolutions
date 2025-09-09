@@ -295,12 +295,6 @@ window.renderRewards = function () {
   height: 280px;           /* altura visible del área de gráficas */
 }
 
-#gaugeChart{
-  display: none;           /* se muestra sólo al pedir el velocímetro */
-  width: 100% !important;
-  height: 100% !important; /* que use toda la altura del wrapper */
-}
-
 
 .mini-hex span{font-size:12px; line-height:1; opacity:.95; margin-bottom:2px;}
 .mini-hex strong{font-size:16px; line-height:1;}
