@@ -110,7 +110,7 @@ window.computeRewardPoints = function () {
   const quejas          = Number(window.rew.quejas)          || 0;
   const maxPts          = Number(window.rew.max)             || 100;
 
-  const raw = (entregas * 5) + reconocimientos - (inasistencias * 2) - (quejas * 3);
+  const raw = (entregas * 4) + (reservas * 1) + reconocimientos - (inasistencias * 2) - (quejas * 3);
   return Math.max(0, Math.min(maxPts, raw));
 };
 
