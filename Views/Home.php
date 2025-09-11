@@ -295,7 +295,7 @@ window.renderRewards = function () {
 
 .chart-wrapper{
   position: relative;
-  height: auto;              /* sin alto fijo */
+  height: 240px;              /* sin alto fijo */
 }
 
 #gaugeChart{
@@ -307,7 +307,6 @@ window.renderRewards = function () {
   -webkit-clip-path: none !important;
   clip-path: none !important;
 }
-
 
 
 .mini-hex span{font-size:12px; line-height:1; opacity:.95; margin-bottom:2px;}
@@ -650,7 +649,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // ====== Cálculo de puntos por tipo ======
       // tipo: 1 = Desempeño (2), 2 = Seguimiento (2), 3 = Innovación (4)
-      const puntosPorTipo = {1: 2, 2: 2, 3: 3};
+      const puntosPorTipo = {1: 2, 2: 2, 3: 2};
       const lista = (data && Array.isArray(data.reconocimientos)) ? data.reconocimientos : [];
       const totalPuntos = lista.reduce((acc, item) => {
         const tipo = parseInt(item.tipo, 10);
@@ -693,7 +692,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
 
         <div class="rewards-legend">
-          <span>2 (Desempeño) · 2 (Seguimiento) · 3 (Innovación)<br>
+          <span>2 (Desempeño) · 2 (Seguimiento) · 2 (Innovación)<br>
                 1 (Ventas) · 4 (Entregas)  · <span class="neg">-2 (Faltas)</span>     · <span class="neg">-3 (Quejas)</span></span>
           <span class="next" id="rewards-next">${textoSiguiente}</span>
         </div>
@@ -721,7 +720,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // ====== Agrupar por tipo y mostrar como acordeón (siempre 3 grupos) ======
       const NOMBRES_TIPO = { 1: "Desempeño", 2: "Seguimiento", 3: "Innovación" };
       const CLASE_TIPO   = { 1: "recono-desempeno", 2: "recono-liderazgo", 3: "recono-innovacion" };
-      const PUNTOS_TIPO  = { 1: 2, 2: 2, 3: 3 };
+      const PUNTOS_TIPO  = { 1: 2, 2: 2, 3: 2 };
 
       const tiposOrden = [1, 2, 3]; // orden fijo de grupos
       const grupos = { 1: [], 2: [], 3: [] }; // inicia vacío para garantizar presencia
