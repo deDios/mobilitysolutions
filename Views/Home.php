@@ -295,13 +295,13 @@ window.renderRewards = function () {
 
 .chart-wrapper{
   position: relative;
-  height: 240px;              /* sin alto fijo */
+  height: auto;              /* sin alto fijo */
 }
 
 #gaugeChart{
   display: none;
   width: 100%;
-  height: auto;              /* NO 100% */
+  height: 300px;              /* NO 100% */
   aspect-ratio: 1 / 1;       /* cuadrado */
   transform: none !important;
   -webkit-clip-path: none !important;
