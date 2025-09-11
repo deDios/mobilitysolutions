@@ -293,20 +293,21 @@ window.renderRewards = function () {
 .rewards-legend .neg { color:#ef4444; font-weight:600; }
 
 
-.chart-wrapper { position: relative; height:auto; display:flex; justify-content:center; }
+.chart-wrapper{
+  position: relative;
+  height: auto;              /* sin alto fijo */
+}
 
-/* Antes: height:100% !important; */
 #gaugeChart{
-  display:none;
-  width: min(100%, 360px);     /* responsivo y centrado */
-  height: auto !important;
-  aspect-ratio: 1 / 1;         /* cuadrado */
-  margin: 0 auto;
+  display: none;
+  width: 100%;
+  height: auto;              /* NO 100% */
+  aspect-ratio: 1 / 1;       /* cuadrado */
+  transform: none !important;
+  -webkit-clip-path: none !important;
+  clip-path: none !important;
 }
 
-@media (max-width: 768px){
-  .chart-wrapper { height: 260px; }
-}
 
 
 .mini-hex span{font-size:12px; line-height:1; opacity:.95; margin-bottom:2px;}
@@ -987,21 +988,21 @@ function renderGaugeEntrega() {
   const gaugeCanvas = document.getElementById('gaugeChart');
   const lineCanvas  = document.getElementById('lineChart');
 
-  // Mostrar dona, ocultar línea
+  // Mostrar dona y ocultar la línea
   if (lineCanvas)  lineCanvas.style.display  = 'none';
   if (gaugeCanvas) {
     gaugeCanvas.style.display = 'block';
-    // Fallback: forzar alto = ancho (por si el CSS aspect-ratio no aplica)
+
+    // Fallback: forzar alto = ancho si el navegador ignora aspect-ratio
     const w = gaugeCanvas.getBoundingClientRect().width
            || gaugeCanvas.clientWidth
            || (gaugeCanvas.parentElement ? gaugeCanvas.parentElement.clientWidth : 300);
     if (w > 0) gaugeCanvas.style.height = w + 'px';
   }
 
-  // Destruye instancia anterior si existe
-  if (window.gaugeChart) { try { window.gaugeChart.destroy(); } catch(e){} }
+  // Destruir instancia previa
+  if (window.gaugeChart) { try { window.gaugeChart.destroy(); } catch (e) {} }
 
-  // Espera a que el canvas tenga tamaño real
   requestAnimationFrame(() => {
     // Meta anual = suma de metas del tipo 3 (Entregas)
     let metaAnualEntrega = (metasPorTipo[3] || []).reduce((a,b)=>a + toInt(b), 0);
@@ -1012,10 +1013,10 @@ function renderGaugeEntrega() {
 
     const ctx = gaugeCanvas.getContext('2d');
 
-    // Gradiente del aro de progreso
+    // Gradiente
     const grad = ctx.createLinearGradient(0, 0, gaugeCanvas.width, 0);
-    grad.addColorStop(0, '#06b6d4'); // cian
-    grad.addColorStop(1, '#22c55e'); // verde
+    grad.addColorStop(0, '#06b6d4');
+    grad.addColorStop(1, '#22c55e');
 
     window.gaugeChart = new Chart(ctx, {
       type: 'doughnut',
@@ -1031,9 +1032,9 @@ function renderGaugeEntrega() {
       },
       options: {
         responsive: true,
-        maintainAspectRatio: true,  // <- mantener proporción
-        aspectRatio: 1,              // <- cuadrado
-        layout: { padding: 8 },      // margen para evitar cortes
+        maintainAspectRatio: true,
+        aspectRatio: 1,               // cuadrado
+        layout: { padding: 8 },       // evita cortes
         rotation: -90 * (Math.PI / 180),
         circumference: 360 * (Math.PI / 180),
         plugins: {
@@ -1043,16 +1044,13 @@ function renderGaugeEntrega() {
             display: true,
             text: `Entregas — ${Math.round(pct)}% de la meta (${new Date().getFullYear()})`
           },
-          centerText: {
-            text: valor,
-            subtext: 'Entregas'
-          }
+          centerText: { text: valor, subtext: 'Entregas' }
         }
       },
       plugins: [centerTextPlugin]
     });
 
-    // Reajusta si cambia el tamaño del contenedor
+    // Reajuste si el contenedor cambia de tamaño
     if (!window._gaugeResizeObs) {
       window._gaugeResizeObs = new ResizeObserver(() => {
         const w2 = gaugeCanvas.getBoundingClientRect().width;
@@ -1068,7 +1066,6 @@ function renderGaugeEntrega() {
   const hexEntrega = document.querySelector('#hex-entrega');
   if (hexEntrega) hexEntrega.classList.add('active');
 }
-
 
 
   function showLine(tipo) {
