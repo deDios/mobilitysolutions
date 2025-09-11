@@ -292,9 +292,11 @@ window.renderRewards = function () {
 }
 .rewards-legend .neg { color:#ef4444; font-weight:600; }
 
-.chart-wrapper{
-  position: relative;
-  height: 280px;           /* altura visible del área de gráficas */
+
+.chart-wrapper { position: relative; height: 320px; } /* antes 280px */
+#gaugeChart { display:none; width:100% !important; height:100% !important; }
+@media (max-width: 768px){
+  .chart-wrapper { height: 260px; }
 }
 
 
@@ -976,59 +978,45 @@ function renderGaugeEntrega() {
   const gaugeCanvas = document.getElementById('gaugeChart');
   const lineCanvas  = document.getElementById('lineChart');
 
-  // Mostrar dona y ocultar línea
+  // Mostrar dona, ocultar línea
   if (lineCanvas)  lineCanvas.style.display  = 'none';
   if (gaugeCanvas) gaugeCanvas.style.display = 'block';
 
-  // Destruye chart previo si existe
+  // Destruye instancia anterior si existe
   if (window.gaugeChart) { try { window.gaugeChart.destroy(); } catch(e){} }
 
-  // Espera un frame para que el canvas ya tenga tamaño real
+  // Espera a que el canvas tenga tamaño real
   requestAnimationFrame(() => {
     // Meta anual = suma de metas del tipo 3 (Entregas)
     let metaAnualEntrega = (metasPorTipo[3] || []).reduce((a,b)=>a + toInt(b), 0);
     if (!metaAnualEntrega) metaAnualEntrega = Math.max(toInt(totalEntrega), 1);
 
     const valor = toInt(totalEntrega);
-    const pctRaw = (valor / metaAnualEntrega) * 100;
-    const pct    = Math.max(0, Math.min(100, pctRaw));          // 0..100
-    const pctRestante = 100 - pct;
+    const pct   = Math.max(0, Math.min(100, (valor / metaAnualEntrega) * 100));
 
     const gctx = gaugeCanvas.getContext('2d');
-
-    // Gradiente bonito para el aro de progreso
-    const grad = gctx.createLinearGradient(0, gaugeCanvas.height, gaugeCanvas.width, 0);
-    grad.addColorStop(0, '#34d399'); // verde
-    grad.addColorStop(1, '#0ea5e9'); // azul
+    const grad = gctx.createLinearGradient(0, 0, gaugeCanvas.width, 0);
+    grad.addColorStop(0, '#06b6d4'); // cian
+    grad.addColorStop(1, '#22c55e'); // verde
 
     window.gaugeChart = new Chart(gctx, {
       type: 'doughnut',
       data: {
-        // 2 anillos: fondo (gris), progreso (pct / resto transparente)
-        datasets: [
-          {
-            // anillo de fondo (track)
-            data: [100],
-            backgroundColor: ['#e5e7eb'],
-            borderWidth: 0,
-            cutout: '72%',
-            weight: 1
-          },
-          {
-            // anillo de progreso
-            data: [pct, pctRestante],
-            backgroundColor: [grad, 'rgba(0,0,0,0)'], // el resto deja ver el track
-            borderWidth: 0,
-            cutout: '72%',
-            borderRadius: 12,
-            weight: 1
-          }
-        ]
+        labels: ['Progreso', 'Restante'],
+        // <<< UN SOLO DATASET >>>
+        datasets: [{
+          data: [pct, 100 - pct],
+          backgroundColor: [grad, '#e5e7eb'],
+          borderWidth: 0,
+          cutout: '72%',
+          hoverOffset: 0
+        }]
       },
       options: {
         responsive: true,
         maintainAspectRatio: false,
-        rotation: -90 * (Math.PI / 180), // empieza arriba
+        layout: { padding: 8 },               // evita cortes en bordes
+        rotation: -90 * (Math.PI / 180),
         circumference: 360 * (Math.PI / 180),
         plugins: {
           legend: { display: false },
@@ -1037,23 +1025,31 @@ function renderGaugeEntrega() {
             display: true,
             text: `Entregas — ${Math.round(pct)}% de la meta (${new Date().getFullYear()})`
           },
-          // texto central
           centerText: {
-            text: valor,        // << entregas realizadas
-            subtext: 'Entregas' // (puedes cambiar a `Meta: ${metaAnualEntrega}`)
+            text: valor,
+            subtext: 'Entregas'
           }
         }
       },
       plugins: [centerTextPlugin]
     });
-  });
 
+    // Si el contenedor cambia de tamaño, reajusta
+    if (!window._gaugeResizeObs) {
+      window._gaugeResizeObs = new ResizeObserver(() => {
+        if (window.gaugeChart) window.gaugeChart.resize();
+      });
+      const wrap = document.querySelector('.chart-wrapper');
+      if (wrap) window._gaugeResizeObs.observe(wrap);
+    }
+  });
 
   // Resalta hex “Entrega”
   document.querySelectorAll('.hex').forEach(h => h.classList.remove('active'));
   const hexEntrega = document.querySelector('#hex-entrega');
   if (hexEntrega) hexEntrega.classList.add('active');
 }
+
 
   function showLine(tipo) {
     const gaugeCanvas = document.getElementById('gaugeChart');
