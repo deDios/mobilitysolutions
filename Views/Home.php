@@ -95,6 +95,7 @@ window.rew = {
   quejas: 0,
   inasistencias: 0,
   entregas: 0,
+  reservas: 0,
   reconocimientos: 0,
   metas: [25, 50, 75, 100],
   max: 100
@@ -103,6 +104,7 @@ window.rew = {
 // Calcula puntos aplicando fórmula y clamp 0..max (forzando a número)
 window.computeRewardPoints = function () {
   const entregas        = Number(window.rew.entregas)        || 0;
+  const reservas        = Number(window.rew.reservas)        || 0;
   const reconocimientos = Number(window.rew.reconocimientos) || 0;
   const inasistencias   = Number(window.rew.inasistencias)   || 0;
   const quejas          = Number(window.rew.quejas)          || 0;
@@ -636,7 +638,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // ====== Cálculo de puntos por tipo ======
       // tipo: 1 = Desempeño (2), 2 = Seguimiento (2), 3 = Innovación (4)
-      const puntosPorTipo = {1: 2, 2: 2, 3: 4};
+      const puntosPorTipo = {1: 2, 2: 2, 3: 3};
       const lista = (data && Array.isArray(data.reconocimientos)) ? data.reconocimientos : [];
       const totalPuntos = lista.reduce((acc, item) => {
         const tipo = parseInt(item.tipo, 10);
@@ -679,8 +681,8 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
 
         <div class="rewards-legend">
-          <span>2 (Desempeño) · 2 (Seguimiento) · 4 (Innovación)<br>
-                5 (Entregas)  · <span class="neg">-2 (Faltas)</span>     · <span class="neg">-3 (Quejas)</span></span>
+          <span>2 (Desempeño) · 2 (Seguimiento) · 3 (Innovación)<br>
+                1 (Ventas) · 4 (Entregas)  · <span class="neg">-2 (Faltas)</span>     · <span class="neg">-3 (Quejas)</span></span>
           <span class="next" id="rewards-next">${textoSiguiente}</span>
         </div>
       `;
@@ -707,7 +709,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // ====== Agrupar por tipo y mostrar como acordeón (siempre 3 grupos) ======
       const NOMBRES_TIPO = { 1: "Desempeño", 2: "Seguimiento", 3: "Innovación" };
       const CLASE_TIPO   = { 1: "recono-desempeno", 2: "recono-liderazgo", 3: "recono-innovacion" };
-      const PUNTOS_TIPO  = { 1: 2, 2: 2, 3: 4 };
+      const PUNTOS_TIPO  = { 1: 2, 2: 2, 3: 3 };
 
       const tiposOrden = [1, 2, 3]; // orden fijo de grupos
       const grupos = { 1: [], 2: [], 3: [] }; // inicia vacío para garantizar presencia
@@ -1085,6 +1087,7 @@ function renderGaugeEntrega() {
       // Recompensas
       if (window.rew) {
         window.rew.entregas = totalEntrega;
+        window.rew.reservas = totalReserva;
         if (typeof window.renderRewards === 'function') window.renderRewards();
       }
 
