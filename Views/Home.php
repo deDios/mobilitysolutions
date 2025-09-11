@@ -293,8 +293,17 @@ window.renderRewards = function () {
 .rewards-legend .neg { color:#ef4444; font-weight:600; }
 
 
-.chart-wrapper { position: relative; height: 320px; } /* antes 280px */
-#gaugeChart { display:none; width:100% !important; height:100% !important; }
+.chart-wrapper { position: relative; height:auto; display:flex; justify-content:center; }
+
+/* Antes: height:100% !important; */
+#gaugeChart{
+  display:none;
+  width: min(100%, 360px);     /* responsivo y centrado */
+  height: auto !important;
+  aspect-ratio: 1 / 1;         /* cuadrado */
+  margin: 0 auto;
+}
+
 @media (max-width: 768px){
   .chart-wrapper { height: 260px; }
 }
@@ -980,7 +989,14 @@ function renderGaugeEntrega() {
 
   // Mostrar dona, ocultar línea
   if (lineCanvas)  lineCanvas.style.display  = 'none';
-  if (gaugeCanvas) gaugeCanvas.style.display = 'block';
+  if (gaugeCanvas) {
+    gaugeCanvas.style.display = 'block';
+    // Fallback: forzar alto = ancho (por si el CSS aspect-ratio no aplica)
+    const w = gaugeCanvas.getBoundingClientRect().width
+           || gaugeCanvas.clientWidth
+           || (gaugeCanvas.parentElement ? gaugeCanvas.parentElement.clientWidth : 300);
+    if (w > 0) gaugeCanvas.style.height = w + 'px';
+  }
 
   // Destruye instancia anterior si existe
   if (window.gaugeChart) { try { window.gaugeChart.destroy(); } catch(e){} }
@@ -994,28 +1010,30 @@ function renderGaugeEntrega() {
     const valor = toInt(totalEntrega);
     const pct   = Math.max(0, Math.min(100, (valor / metaAnualEntrega) * 100));
 
-    const gctx = gaugeCanvas.getContext('2d');
-    const grad = gctx.createLinearGradient(0, 0, gaugeCanvas.width, 0);
+    const ctx = gaugeCanvas.getContext('2d');
+
+    // Gradiente del aro de progreso
+    const grad = ctx.createLinearGradient(0, 0, gaugeCanvas.width, 0);
     grad.addColorStop(0, '#06b6d4'); // cian
     grad.addColorStop(1, '#22c55e'); // verde
 
-    window.gaugeChart = new Chart(gctx, {
+    window.gaugeChart = new Chart(ctx, {
       type: 'doughnut',
       data: {
         labels: ['Progreso', 'Restante'],
-        // <<< UN SOLO DATASET >>>
         datasets: [{
           data: [pct, 100 - pct],
           backgroundColor: [grad, '#e5e7eb'],
           borderWidth: 0,
-          cutout: '72%',
-          hoverOffset: 0
+          hoverOffset: 0,
+          cutout: '72%'
         }]
       },
       options: {
         responsive: true,
-        maintainAspectRatio: false,
-        layout: { padding: 8 },               // evita cortes en bordes
+        maintainAspectRatio: true,  // <- mantener proporción
+        aspectRatio: 1,              // <- cuadrado
+        layout: { padding: 8 },      // margen para evitar cortes
         rotation: -90 * (Math.PI / 180),
         circumference: 360 * (Math.PI / 180),
         plugins: {
@@ -1034,13 +1052,14 @@ function renderGaugeEntrega() {
       plugins: [centerTextPlugin]
     });
 
-    // Si el contenedor cambia de tamaño, reajusta
+    // Reajusta si cambia el tamaño del contenedor
     if (!window._gaugeResizeObs) {
       window._gaugeResizeObs = new ResizeObserver(() => {
+        const w2 = gaugeCanvas.getBoundingClientRect().width;
+        if (w2 > 0) gaugeCanvas.style.height = w2 + 'px';
         if (window.gaugeChart) window.gaugeChart.resize();
       });
-      const wrap = document.querySelector('.chart-wrapper');
-      if (wrap) window._gaugeResizeObs.observe(wrap);
+      window._gaugeResizeObs.observe(gaugeCanvas.parentElement || gaugeCanvas);
     }
   });
 
@@ -1049,6 +1068,7 @@ function renderGaugeEntrega() {
   const hexEntrega = document.querySelector('#hex-entrega');
   if (hexEntrega) hexEntrega.classList.add('active');
 }
+
 
 
   function showLine(tipo) {
