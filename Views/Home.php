@@ -308,60 +308,56 @@ window.renderRewards = function () {
   clip-path: none !important;
 }
 
-/* ===== KPI Entregas (compacto) ===== */
+/* ===== KPI Entregas (versión compacta) ===== */
 .entrega-kpi{
   position: relative;
   display: flex; align-items: center; justify-content: center;
-  gap: 18px; padding: 2px 0;
-  max-width: 720px; margin: 0 auto;
+  gap: 12px; padding: 0; margin: 0 auto;
+  max-width: 620px;          /* <— más chico */
 }
 
 .entrega-kpi .left{
   display: flex; flex-direction: column; align-items: flex-end;
-  gap: 8px; min-width: 240px;
+  gap: 6px; min-width: 200px;  /* <— más chico */
 }
 
 .entrega-kpi .num{
-  font: 700 clamp(28px,4vw,52px)/1 system-ui,-apple-system,Segoe UI,Roboto;
-  color: #111; text-shadow: 0 2px 6px rgba(0,0,0,.18);
+  font: 700 clamp(22px,3.2vw,38px)/1 system-ui,-apple-system,Segoe UI,Roboto;
+  color: #111; text-shadow: 0 2px 5px rgba(0,0,0,.15);
 }
 
 .entrega-kpi .label{
-  font: 600 clamp(12px,1.5vw,18px)/1.1 system-ui,-apple-system,Segoe UI,Roboto;
+  font: 600 clamp(11px,1.3vw,15px)/1.1 system-ui,-apple-system,Segoe UI,Roboto;
   color: #111;
 }
 
-.entrega-kpi .hrow{
-  display: flex; align-items: center; gap: 10px;
+.entrega-kpi .meta-wrap{
+  display: flex; flex-direction: column; align-items: flex-end;
+  gap: 6px;                   /* “Meta” arriba de la línea */
 }
 
-/* línea horizontal hacia el divisor */
 .entrega-kpi .hline{
   height: 4px;
-  width: clamp(120px, 16vw, 220px);
+  width: clamp(110px, 14vw, 170px);  /* <— línea más corta */
   background: #0b7285;
   border-radius: 4px;
   box-shadow: 0 1px 2px rgba(0,0,0,.2);
 }
 
-/* divisor vertical */
 .entrega-kpi .divider{
-  width: 8px; min-height: 160px;
+  width: 6px; min-height: 120px;     /* <— más delgado y bajo */
   background: #0b7285; border-radius: 6px;
   box-shadow: inset 0 0 0 2px rgba(0,0,0,.12);
 }
 
-/* porcentaje a la derecha, también más compacto */
 .entrega-kpi .right{ display: flex; align-items: center; gap: 6px; color:#111; }
-.entrega-kpi .right .symbol{ font: 900 clamp(36px,6vw,72px)/1 system-ui; }
-.entrega-kpi .right .pct{    font: 900 clamp(44px,7vw,96px)/1 system-ui; text-shadow:0 2px 6px rgba(0,0,0,.18); }
+.entrega-kpi .right .symbol{ font: 900 clamp(26px,4.2vw,48px)/1 system-ui; }
+.entrega-kpi .right .pct{    font: 900 clamp(32px,5.8vw,72px)/1 system-ui; text-shadow:0 2px 6px rgba(0,0,0,.18); }
 
 @media (max-width: 768px){
-  .entrega-kpi{ gap: 14px; }
-  .entrega-kpi .divider{ min-height: 140px; }
+  .entrega-kpi{ gap: 10px; max-width: 92%; }
+  .entrega-kpi .divider{ min-height: 110px; }
 }
-
-
 
 
 .mini-hex span{font-size:12px; line-height:1; opacity:.95; margin-bottom:2px;}
@@ -1045,16 +1041,21 @@ function renderGaugeEntrega() {
   // Oculta la línea
   if (lineCanvas) lineCanvas.style.display = 'none';
 
-  // Crea el KPI una sola vez
+  // Crea o normaliza el KPI
   let kpi = document.getElementById('entregaKPI');
   if (!kpi) {
     kpi = document.createElement('div');
     kpi.id = 'entregaKPI';
     kpi.className = 'entrega-kpi';
+    wrap.appendChild(kpi);
+  }
+
+  // Si la estructura vieja existe, la reemplazamos
+  if (!kpi.querySelector('.meta-wrap')) {
     kpi.innerHTML = `
       <div class="left">
         <div class="num" id="kpiMetaNum">0</div>
-        <div class="hrow">
+        <div class="meta-wrap">
           <div class="label">Meta</div>
           <div class="hline"></div>
         </div>
@@ -1069,30 +1070,27 @@ function renderGaugeEntrega() {
         <span class="pct" id="kpiPct">0</span>
       </div>
     `;
-    wrap.appendChild(kpi);
   } else {
     kpi.style.display = 'flex';
   }
 
-  // Cálculo de meta/valor/porcentaje
+  // Cálculos
   let meta = (metasPorTipo[3] || []).reduce((a,b)=>a + toInt(b), 0);
   if (!meta) meta = Math.max(toInt(totalEntrega), 1);
 
   const valor = toInt(totalEntrega);
   const pct   = Math.round((valor / meta) * 1000) / 10; // 1 decimal
 
-  // Pinta los números
+  // Pinta valores
   document.getElementById('kpiMetaNum').textContent     = meta;
   document.getElementById('kpiEntregasNum').textContent = valor;
   document.getElementById('kpiPct').textContent         = pct;
 
-  // Resalta el hex de “Entrega”
+  // Resalta hex de “Entrega”
   document.querySelectorAll('.hex').forEach(h => h.classList.remove('active'));
   const hexEntrega = document.getElementById('hex-entrega');
   if (hexEntrega) hexEntrega.classList.add('active');
 }
-
-
 
 function showLine(tipo) {
   const kpi = document.getElementById('entregaKPI');
