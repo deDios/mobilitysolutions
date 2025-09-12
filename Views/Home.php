@@ -308,22 +308,59 @@ window.renderRewards = function () {
   clip-path: none !important;
 }
 
-/* ===== KPI Entregas (mock) ===== */
-.entrega-kpi{display:flex;align-items:center;justify-content:center;gap:28px;padding:8px 0;}
-.entrega-kpi .left{display:flex;flex-direction:column;align-items:flex-end;gap:12px}
-.entrega-kpi .num{font:700 clamp(42px,6vw,76px)/1 system-ui,-apple-system,Segoe UI,Roboto;color:#111;text-shadow:0 2px 6px rgba(0,0,0,.18)}
-.entrega-kpi .label{font:600 clamp(16px,2.2vw,28px)/1.1 system-ui,-apple-system,Segoe UI,Roboto;color:#111}
-.entrega-kpi .hrow{display:flex;align-items:center;gap:12px}
-.entrega-kpi .hline{width:clamp(110px,14vw,200px);height:6px;background:#0b7285;border-radius:6px;box-shadow:0 1px 3px rgba(0,0,0,.25)}
-.entrega-kpi .divider{width:10px;align-self:stretch;min-height:220px;background:#0b7285;border-radius:8px;box-shadow:inset 0 0 0 2px rgba(0,0,0,.15)}
-.entrega-kpi .right{display:flex;align-items:center;gap:8px;color:#111;letter-spacing:-1px}
-.entrega-kpi .right .symbol{font:900 clamp(48px,8vw,120px)/1 system-ui}
-.entrega-kpi .right .pct{font:900 clamp(58px,9vw,140px)/1 system-ui;text-shadow:0 2px 6px rgba(0,0,0,.18)}
-
-@media (max-width:768px){
-  .entrega-kpi{gap:18px}
-  .entrega-kpi .divider{min-height:180px}
+/* ===== KPI Entregas (compacto) ===== */
+.entrega-kpi{
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+  gap: 18px; padding: 2px 0;
+  max-width: 720px; margin: 0 auto;
 }
+
+.entrega-kpi .left{
+  display: flex; flex-direction: column; align-items: flex-end;
+  gap: 8px; min-width: 240px;
+}
+
+.entrega-kpi .num{
+  font: 700 clamp(28px,4vw,52px)/1 system-ui,-apple-system,Segoe UI,Roboto;
+  color: #111; text-shadow: 0 2px 6px rgba(0,0,0,.18);
+}
+
+.entrega-kpi .label{
+  font: 600 clamp(12px,1.5vw,18px)/1.1 system-ui,-apple-system,Segoe UI,Roboto;
+  color: #111;
+}
+
+.entrega-kpi .hrow{
+  display: flex; align-items: center; gap: 10px;
+}
+
+/* línea horizontal hacia el divisor */
+.entrega-kpi .hline{
+  height: 4px;
+  width: clamp(120px, 16vw, 220px);
+  background: #0b7285;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.2);
+}
+
+/* divisor vertical */
+.entrega-kpi .divider{
+  width: 8px; min-height: 160px;
+  background: #0b7285; border-radius: 6px;
+  box-shadow: inset 0 0 0 2px rgba(0,0,0,.12);
+}
+
+/* porcentaje a la derecha, también más compacto */
+.entrega-kpi .right{ display: flex; align-items: center; gap: 6px; color:#111; }
+.entrega-kpi .right .symbol{ font: 900 clamp(36px,6vw,72px)/1 system-ui; }
+.entrega-kpi .right .pct{    font: 900 clamp(44px,7vw,96px)/1 system-ui; text-shadow:0 2px 6px rgba(0,0,0,.18); }
+
+@media (max-width: 768px){
+  .entrega-kpi{ gap: 14px; }
+  .entrega-kpi .divider{ min-height: 140px; }
+}
+
 
 
 
@@ -1018,13 +1055,15 @@ function renderGaugeEntrega() {
       <div class="left">
         <div class="num" id="kpiMetaNum">0</div>
         <div class="hrow">
-          <div class="hline"></div>
           <div class="label">Meta</div>
+          <div class="hline"></div>
         </div>
         <div class="num" id="kpiEntregasNum">0</div>
         <div class="label">Entregas</div>
       </div>
+
       <div class="divider"></div>
+
       <div class="right">
         <span class="symbol">%</span>
         <span class="pct" id="kpiPct">0</span>
@@ -1035,22 +1074,24 @@ function renderGaugeEntrega() {
     kpi.style.display = 'flex';
   }
 
-  // Calcula valores (mismos datos que ya usas)
+  // Cálculo de meta/valor/porcentaje
   let meta = (metasPorTipo[3] || []).reduce((a,b)=>a + toInt(b), 0);
   if (!meta) meta = Math.max(toInt(totalEntrega), 1);
+
   const valor = toInt(totalEntrega);
   const pct   = Math.round((valor / meta) * 1000) / 10; // 1 decimal
 
-  // Pinta
-  document.getElementById('kpiMetaNum').textContent      = meta;
-  document.getElementById('kpiEntregasNum').textContent  = valor;
-  document.getElementById('kpiPct').textContent          = pct;
+  // Pinta los números
+  document.getElementById('kpiMetaNum').textContent     = meta;
+  document.getElementById('kpiEntregasNum').textContent = valor;
+  document.getElementById('kpiPct').textContent         = pct;
 
-  // Resalta hex “Entrega”
+  // Resalta el hex de “Entrega”
   document.querySelectorAll('.hex').forEach(h => h.classList.remove('active'));
   const hexEntrega = document.getElementById('hex-entrega');
   if (hexEntrega) hexEntrega.classList.add('active');
 }
+
 
 
 function showLine(tipo) {
