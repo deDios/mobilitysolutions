@@ -292,11 +292,13 @@ window.renderRewards = function () {
 }
 .rewards-legend .neg { color:#ef4444; font-weight:600; }
 
-
-.chart-wrapper{
-  position: relative;
-  height: auto;              /* sin alto fijo */
+#lineChart{
+  display: block;
+  width: 100% !important;
+  height: 260px !important;     /* ajusta a gusto (240–360px) */
 }
+
+.chart-wrapper{ position: relative; }
 
 #gaugeChart{
   display: none;
