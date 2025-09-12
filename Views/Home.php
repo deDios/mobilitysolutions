@@ -308,6 +308,24 @@ window.renderRewards = function () {
   clip-path: none !important;
 }
 
+/* ===== KPI Entregas (mock) ===== */
+.entrega-kpi{display:flex;align-items:center;justify-content:center;gap:28px;padding:8px 0;}
+.entrega-kpi .left{display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+.entrega-kpi .num{font:700 clamp(42px,6vw,76px)/1 system-ui,-apple-system,Segoe UI,Roboto;color:#111;text-shadow:0 2px 6px rgba(0,0,0,.18)}
+.entrega-kpi .label{font:600 clamp(16px,2.2vw,28px)/1.1 system-ui,-apple-system,Segoe UI,Roboto;color:#111}
+.entrega-kpi .hrow{display:flex;align-items:center;gap:12px}
+.entrega-kpi .hline{width:clamp(110px,14vw,200px);height:6px;background:#0b7285;border-radius:6px;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.entrega-kpi .divider{width:10px;align-self:stretch;min-height:220px;background:#0b7285;border-radius:8px;box-shadow:inset 0 0 0 2px rgba(0,0,0,.15)}
+.entrega-kpi .right{display:flex;align-items:center;gap:8px;color:#111;letter-spacing:-1px}
+.entrega-kpi .right .symbol{font:900 clamp(48px,8vw,120px)/1 system-ui}
+.entrega-kpi .right .pct{font:900 clamp(58px,9vw,140px)/1 system-ui;text-shadow:0 2px 6px rgba(0,0,0,.18)}
+
+@media (max-width:768px){
+  .entrega-kpi{gap:18px}
+  .entrega-kpi .divider{min-height:180px}
+}
+
+
 
 .mini-hex span{font-size:12px; line-height:1; opacity:.95; margin-bottom:2px;}
 .mini-hex strong{font-size:16px; line-height:1;}
@@ -984,97 +1002,69 @@ document.addEventListener("DOMContentLoaded", () => {
 
   
 function renderGaugeEntrega() {
-  const gaugeCanvas = document.getElementById('gaugeChart');
-  const lineCanvas  = document.getElementById('lineChart');
+  const wrap = document.querySelector('.chart-wrapper');
+  const lineCanvas = document.getElementById('lineChart');
 
-  // Mostrar dona y ocultar la línea
-  if (lineCanvas)  lineCanvas.style.display  = 'none';
-  if (gaugeCanvas) {
-    gaugeCanvas.style.display = 'block';
+  // Oculta la línea
+  if (lineCanvas) lineCanvas.style.display = 'none';
 
-    // Fallback: forzar alto = ancho si el navegador ignora aspect-ratio
-    const w = gaugeCanvas.getBoundingClientRect().width
-           || gaugeCanvas.clientWidth
-           || (gaugeCanvas.parentElement ? gaugeCanvas.parentElement.clientWidth : 300);
-    if (w > 0) gaugeCanvas.style.height = w + 'px';
+  // Crea el KPI una sola vez
+  let kpi = document.getElementById('entregaKPI');
+  if (!kpi) {
+    kpi = document.createElement('div');
+    kpi.id = 'entregaKPI';
+    kpi.className = 'entrega-kpi';
+    kpi.innerHTML = `
+      <div class="left">
+        <div class="num" id="kpiMetaNum">0</div>
+        <div class="hrow">
+          <div class="hline"></div>
+          <div class="label">Meta</div>
+        </div>
+        <div class="num" id="kpiEntregasNum">0</div>
+        <div class="label">Entregas</div>
+      </div>
+      <div class="divider"></div>
+      <div class="right">
+        <span class="symbol">%</span>
+        <span class="pct" id="kpiPct">0</span>
+      </div>
+    `;
+    wrap.appendChild(kpi);
+  } else {
+    kpi.style.display = 'flex';
   }
 
-  // Destruir instancia previa
-  if (window.gaugeChart) { try { window.gaugeChart.destroy(); } catch (e) {} }
+  // Calcula valores (mismos datos que ya usas)
+  let meta = (metasPorTipo[3] || []).reduce((a,b)=>a + toInt(b), 0);
+  if (!meta) meta = Math.max(toInt(totalEntrega), 1);
+  const valor = toInt(totalEntrega);
+  const pct   = Math.round((valor / meta) * 1000) / 10; // 1 decimal
 
-  requestAnimationFrame(() => {
-    // Meta anual = suma de metas del tipo 3 (Entregas)
-    let metaAnualEntrega = (metasPorTipo[3] || []).reduce((a,b)=>a + toInt(b), 0);
-    if (!metaAnualEntrega) metaAnualEntrega = Math.max(toInt(totalEntrega), 1);
-
-    const valor = toInt(totalEntrega);
-    const pct   = Math.max(0, Math.min(100, (valor / metaAnualEntrega) * 100));
-
-    const ctx = gaugeCanvas.getContext('2d');
-
-    // Gradiente
-    const grad = ctx.createLinearGradient(0, 0, gaugeCanvas.width, 0);
-    grad.addColorStop(0, '#06b6d4');
-    grad.addColorStop(1, '#22c55e');
-
-    window.gaugeChart = new Chart(ctx, {
-      type: 'doughnut',
-      data: {
-        labels: ['Progreso', 'Restante'],
-        datasets: [{
-          data: [pct, 100 - pct],
-          backgroundColor: [grad, '#e5e7eb'],
-          borderWidth: 0,
-          hoverOffset: 0,
-          cutout: '72%'
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: true,
-        aspectRatio: 1,               // cuadrado
-        layout: { padding: 8 },       // evita cortes
-        rotation: -90 * (Math.PI / 180),
-        circumference: 360 * (Math.PI / 180),
-        plugins: {
-          legend: { display: false },
-          tooltip: { enabled: false },
-          title: {
-            display: true,
-            text: `Entregas — ${Math.round(pct)}% de la meta (${new Date().getFullYear()})`
-          },
-          centerText: { text: valor, subtext: 'Entregas' }
-        }
-      },
-      plugins: [centerTextPlugin]
-    });
-
-    // Reajuste si el contenedor cambia de tamaño
-    if (!window._gaugeResizeObs) {
-      window._gaugeResizeObs = new ResizeObserver(() => {
-        const w2 = gaugeCanvas.getBoundingClientRect().width;
-        if (w2 > 0) gaugeCanvas.style.height = w2 + 'px';
-        if (window.gaugeChart) window.gaugeChart.resize();
-      });
-      window._gaugeResizeObs.observe(gaugeCanvas.parentElement || gaugeCanvas);
-    }
-  });
+  // Pinta
+  document.getElementById('kpiMetaNum').textContent      = meta;
+  document.getElementById('kpiEntregasNum').textContent  = valor;
+  document.getElementById('kpiPct').textContent          = pct;
 
   // Resalta hex “Entrega”
   document.querySelectorAll('.hex').forEach(h => h.classList.remove('active'));
-  const hexEntrega = document.querySelector('#hex-entrega');
+  const hexEntrega = document.getElementById('hex-entrega');
   if (hexEntrega) hexEntrega.classList.add('active');
 }
 
 
-  function showLine(tipo) {
-    const gaugeCanvas = document.getElementById('gaugeChart');
-    const lineCanvas  = document.getElementById('lineChart');
-    if (gaugeCanvas) gaugeCanvas.style.display = 'none';
-    if (lineCanvas)  lineCanvas.style.display  = 'block';
-    if (!lineChart) initLineChart();
-    actualizarGrafica(tipo);
-  }
+function showLine(tipo) {
+  const kpi = document.getElementById('entregaKPI');
+  if (kpi) kpi.style.display = 'none';   // <— ocultar KPI
+
+  const gaugeCanvas = document.getElementById('gaugeChart'); // ya no se usa, pero por si quedó
+  const lineCanvas  = document.getElementById('lineChart');
+  if (gaugeCanvas) gaugeCanvas.style.display = 'none';
+  if (lineCanvas)  lineCanvas.style.display  = 'block';
+  if (!lineChart) initLineChart();
+  actualizarGrafica(tipo);
+}
+
 
   // === FLUJO: inicializa y carga datos + metas ===
   initLineChart();
