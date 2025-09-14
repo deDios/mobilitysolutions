@@ -1,13 +1,28 @@
 <?php
 
 function getDBConnection() {
-    $con = mysqli_init();
-    mysqli_ssl_set($con, NULL, NULL, "/home/site/wwwroot/db/DigiCertGlobalRootCA.crt.pem", NULL, NULL);
-    mysqli_real_connect($con, "mobilitysolutions-server.mysql.database.azure.com", "btdonyajwn", "Llaverito_4855797'?", "mobility_solutions", 3306, MYSQLI_CLIENT_SSL);
+    $host   = "mobilitysolutions-server.mysql.database.azure.com";
+    $user   = "btdonyajwn";                 // (Flexible Server) sin @server
+    $pass   = "Llaverito_4855797'?";
+    $db     = "mobility_solutions";
+    $port   = 3306;
+    $caPath = "/home/site/wwwroot/db/DigiCertGlobalRootG2.crt.pem"; // <-- nombre correcto (G2)
 
-    if (mysqli_connect_errno()) {
+    $con = mysqli_init();
+
+    // Verificar certificado del servidor (recomendado)
+    mysqli_options($con, MYSQLI_OPT_SSL_VERIFY_SERVER_CERT, true);
+
+    // Cargar la CA
+    if (!mysqli_ssl_set($con, NULL, NULL, $caPath, NULL, NULL)) {
+        die('Error: No se pudo cargar la CA: ' . mysqli_error($con));
+    }
+
+    // ¡OJO! el 7º parámetro es el socket (NULL), el 8º son los flags
+    if (!mysqli_real_connect($con, $host, $user, $pass, $db, $port, NULL, MYSQLI_CLIENT_SSL)) {
         die('Error: Falla en la conexión de MySQL. ' . mysqli_connect_error());
     }
+
     return $con;
 }
 
