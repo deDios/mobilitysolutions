@@ -1,7 +1,7 @@
 <?php
 $host = "mobilitysolutions-server.mysql.database.azure.com";
-$user = "btdonyajwn";                     // sin @server
-$pass = "Llaverito_4855797'?";             // actualízalo
+$user = "btdonyajwn";                     
+$pass = "Llaverito_4855797'?";             
 $db   = "mobility_solutions";
 $port = 3306;
 $caPath = "/home/site/wwwroot/db/DigiCertGlobalRootG2.crt.pem";
