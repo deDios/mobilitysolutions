@@ -50,7 +50,7 @@ a{ color:#0a0a0a; text-decoration:none }
 /* Aumentar altura de imágenes del carrusel */
 #heroCarousel .carousel-inner img{
   width:100%;
-  height: clamp(420px, 62vh, 640px); /* más alto en desktop */
+  height: clamp(420px, 62vh, 740px); /* más alto en desktop */
   object-fit:cover;
   max-height:none;
 }
