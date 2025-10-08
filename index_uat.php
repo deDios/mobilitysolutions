@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mobility Solutions</title>
   <link rel="shortcut icon" href="/Imagenes/movility.ico" />
 
-  <!-- ESTILOS -->
+  <!-- CSS propio -->
   <link rel="stylesheet" href="CSS/estilos_uat.css">
 
   <!-- Bootstrap 5.3 (única versión) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Font Awesome (si ya usas clases fa-*) -->
+  <!-- Font Awesome (si usas clases fa-*) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <!-- jQuery solo si lo necesitas para otras partes (Bootstrap 5 NO lo requiere) -->
+  <!-- jQuery (solo si lo necesitas para otras partes) -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
   <!-- Meta Pixel Code -->
@@ -82,52 +82,55 @@
   </nav>
 </div>
 
-<!-- Carousel con miniaturas -->
+<!-- Carousel con padding horizontal y mayor altura -->
 <div class="div_carrusel">
-  <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6000">
-    <div class="carousel-inner rounded-3 shadow">
-      <div class="carousel-item active">
-        <a href="https://mobilitysolutionscorp.com/catalogo.php?buscar=&InputMarca=Todos&InputAnio=Todos&InputColor=Todos&InputTransmision=Todos&InputInterior=Todos&InputTipo=Todos&InputPasajeros=Todos&InputMensualidad_Mayor=&InputMensualidad_Menor=&enviar=">
-          <img src="Imagenes/Carrusel/carrusel 1.jpg" class="d-block w-100" alt="Catálogo">
-        </a>
-      </div>
-      <div class="carousel-item">
-        <a href="https://mobilitysolutionscorp.com/Views/vende.php">
-          <img src="Imagenes/Carrusel/carrusel 4.jpg" class="d-block w-100" alt="Vende tu auto">
-        </a>
-      </div>
-      <div class="carousel-item">
-        <img src="Imagenes/Carrusel/carrusel 2.jpg" class="d-block w-100" alt="Banner 2">
-      </div>
-      <div class="carousel-item">
-        <img src="Imagenes/Carrusel/carrusel 3.jpg" class="d-block w-100" alt="Banner 3">
+  <div class="carousel-shell"><!-- NUEVO wrapper para padding lateral -->
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6000">
+      <div class="carousel-inner rounded-3 shadow">
+        <div class="carousel-item active">
+          <a href="https://mobilitysolutionscorp.com/catalogo.php?buscar=&InputMarca=Todos&InputAnio=Todos&InputColor=Todos&InputTransmision=Todos&InputInterior=Todos&InputTipo=Todos&InputPasajeros=Todos&InputMensualidad_Mayor=&InputMensualidad_Menor=&enviar=">
+            <img src="Imagenes/Carrusel/carrusel 1.jpg" class="d-block w-100" alt="Catálogo">
+          </a>
+        </div>
+        <div class="carousel-item">
+          <a href="https://mobilitysolutionscorp.com/Views/vende.php">
+            <img src="Imagenes/Carrusel/carrusel 4.jpg" class="d-block w-100" alt="Vende tu auto">
+          </a>
+        </div>
+        <div class="carousel-item">
+          <img src="Imagenes/Carrusel/carrusel 2.jpg" class="d-block w-100" alt="Banner 2">
+        </div>
+        <div class="carousel-item">
+          <img src="Imagenes/Carrusel/carrusel 3.jpg" class="d-block w-100" alt="Banner 3">
+        </div>
+
+        <!-- Controles -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+          <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+          <span class="visually-hidden">Siguiente</span>
+        </button>
       </div>
     </div>
+  </div>
 
-    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-      <span class="visually-hidden">Anterior</span>
+  <!-- Thumbs circulares (con el mismo padding lateral del shell) -->
+  <div class="carousel-thumbs mt-3">
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="thumb active" aria-label="Slide 1">
+      <img src="Imagenes/Carrusel/carrusel 1.jpg" alt="Preview 1">
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon"></span>
-      <span class="visually-hidden">Siguiente</span>
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" class="thumb" aria-label="Slide 2">
+      <img src="Imagenes/Carrusel/carrusel 4.jpg" alt="Preview 2">
     </button>
-
-    <!-- Thumbs circulares como previews -->
-    <div class="carousel-thumbs mt-3">
-      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="thumb active" aria-label="Slide 1">
-        <img src="Imagenes/Carrusel/carrusel 1.jpg" alt="Preview 1">
-      </button>
-      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" class="thumb" aria-label="Slide 2">
-        <img src="Imagenes/Carrusel/carrusel 4.jpg" alt="Preview 2">
-      </button>
-      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" class="thumb" aria-label="Slide 3">
-        <img src="Imagenes/Carrusel/carrusel 2.jpg" alt="Preview 3">
-      </button>
-      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3" class="thumb" aria-label="Slide 4">
-        <img src="Imagenes/Carrusel/carrusel 3.jpg" alt="Preview 4">
-      </button>
-    </div>
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" class="thumb" aria-label="Slide 3">
+      <img src="Imagenes/Carrusel/carrusel 2.jpg" alt="Preview 3">
+    </button>
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3" class="thumb" aria-label="Slide 4">
+      <img src="Imagenes/Carrusel/carrusel 3.jpg" alt="Preview 4">
+    </button>
   </div>
 </div>
 
