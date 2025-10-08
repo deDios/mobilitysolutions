@@ -125,5 +125,7 @@ footer .hr3{ height:3px; border-color:gray;     background-color:gray }
   }
   #heroCarousel .carousel-inner img{
     height: clamp(240px, 40vh, 380px);
+    object-fit:scale-down;
   }
+
 }
