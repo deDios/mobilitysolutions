@@ -9,51 +9,55 @@
             session_destroy();
             die();
     }
-    $inc = include "../db/Conexion.php";
-    $query ='select 
-                acc.user_id, 
-                acc.user_name, 
-                acc.user_password, 
-                acc.user_type, 
-                acc.r_ejecutivo, 
-                acc.r_editor, 
-                acc.r_autorizador, 
-                acc.r_analista, 
-                us.user_name as nombre, 
-                us.second_name as s_nombre, 
-                us.last_name, 
-                us.email, 
-                us.cumpleaños, 
-                us.telefono
-            from mobility_solutions.tmx_acceso_usuario  as acc
-            left join mobility_solutions.tmx_usuario as us
-                on acc.user_id = us.id
-            where acc.user_name = '.$_SESSION['username'].';';
 
-    $result = mysqli_query($con,$query); 
-    if ($result){ 
-        while($row = mysqli_fetch_assoc($result)){
-                            $user_id = $row['user_id'];
-                            $user_name = $row['user_name'];
-                            $user_password = $row['user_password'];
-                            $user_type = $row['user_type'];
-                            $r_ejecutivo = $row['r_ejecutivo'];
-                            $r_editor = $row['r_editor'];
-                            $r_autorizador = $row['r_autorizador'];
-                            $r_analista = $row['r_analista'];
-                            $nombre = $row['nombre'];
-                            $s_nombre = $row['s_nombre'];
-                            $last_name = $row['last_name'];
-                            $email = $row['email'];
-                            $cumpleaños = $row['cumpleaños'];
-                            $telefono = $row['telefono'];                         
-        }
-    }
-    else{
-        echo 'Falla en conexión.';
+    // Conexión
+    $inc = include "../db/Conexion.php";
+
+    // ====== CONSULTA SEGURA (prepared statement) ======
+    $user = $_SESSION['username'] ?? '';
+    $stmt = $con->prepare(
+      'SELECT 
+          acc.user_id, 
+          acc.user_name, 
+          acc.user_password, 
+          acc.user_type, 
+          acc.r_ejecutivo, 
+          acc.r_editor, 
+          acc.r_autorizador, 
+          acc.r_analista, 
+          us.user_name as nombre, 
+          us.second_name as s_nombre, 
+          us.last_name, 
+          us.email, 
+          us.cumpleaños, 
+          us.telefono
+       FROM mobility_solutions.tmx_acceso_usuario acc
+       LEFT JOIN mobility_solutions.tmx_usuario us ON acc.user_id = us.id
+       WHERE acc.user_name = ?'
+    );
+    $stmt->bind_param('s', $user);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result && $row = $result->fetch_assoc()){
+        $user_id       = $row['user_id'];
+        $user_name     = $row['user_name'];
+        $user_password = $row['user_password'];
+        $user_type     = $row['user_type'];
+        $r_ejecutivo   = $row['r_ejecutivo'];
+        $r_editor      = $row['r_editor'];
+        $r_autorizador = $row['r_autorizador'];
+        $r_analista    = $row['r_analista'];
+        $nombre        = $row['nombre'];
+        $s_nombre      = $row['s_nombre'];
+        $last_name     = $row['last_name'];
+        $email         = $row['email'];
+        $cumpleaños    = $row['cumpleaños'];
+        $telefono      = $row['telefono']; 
+    } else {
+        echo 'Falla en conexión o usuario no encontrado.';
     }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,24 +67,23 @@
     <link rel="shortcut icon" href="../Imagenes/movility.ico" />
     <link rel="stylesheet" href="../CSS/reque_uat.css">
 
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Limpieza: solo Bootstrap 5 y un jQuery -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Font Awesome (iconos) -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- DataTables (si lo ocupas después) -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
-    <!-- jQuery -->
+
+    <!-- jQuery (una sola) -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <!-- DataTable JS -->
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
- 
-    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-   
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
@@ -93,7 +96,8 @@
             <ul class="social-network">
               <li><a class="waves-effect waves-dark" href="https://www.facebook.com/profile.php?id=61563909313215&mibextid=kFxxJD"><i class="fa fa-facebook"></i></a></li>
               
-              <li><a class="waves-effect waves-dark" href="" data-toggle="modal" data-target="#exampleModal2"><i class="fa fa-map-marker"></i></a></li>       
+              <!-- Ajustado a Bootstrap 5: data-bs-toggle -->
+              <li><a class="waves-effect waves-dark" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal2"><i class="fa fa-map-marker"></i></a></li>       
 
               <li><a class="waves-effect waves-dark" href="https://mobilitysolutionscorp.com/db_consultas/cerrar_sesion.php"><i class="fa fa-sign-out"></i></a></li>
             </ul>
@@ -106,12 +110,12 @@
   <nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear">
     <div class="container">
       <a class="navbar-brand" rel="nofollow" target="_blank" href="#"> Requerimientos </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
 
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ms-auto">
 
           <li class="nav-item">
             <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/Home.php">Inicio
@@ -149,56 +153,59 @@
 $selected = isset($_GET['req']) ? $_GET['req'] : '1';
 $inc = include "../db/Conexion.php"; 
 $vehiculo = null;
+$mensaje  = $mensaje ?? '';
 
 if (isset($_POST['verificar'])) {
     $cod = $_POST['id_vehiculo'];
-        $query = "select 
-                    auto.id, 
-                    m_auto.auto AS nombre, 
-                    modelo.nombre AS modelo, 
-                    marca.nombre AS marca, 
-                    auto.mensualidad, 
-                    auto.costo, 
-                    sucursal.nombre AS sucursal, 
-                    auto.img1, 
-                    auto.img2, 
-                    auto.img3, 
-                    auto.img4, 
-                    auto.img5, 
-                    auto.img6, 
-                    auto.color, 
-                    auto.transmision, 
-                    auto.interior, 
-                    auto.kilometraje, 
-                    auto.combustible, 
-                    auto.cilindros, 
-                    auto.eje, 
-                    auto.estatus, 
-                    auto.pasajeros, 
-                    auto.propietarios, 
-                    auto.created_at, 
-                    auto.updated_at 
-                FROM mobility_solutions.tmx_auto AS auto 
-                LEFT JOIN mobility_solutions.tmx_sucursal AS sucursal 
-                    ON auto.sucursal = sucursal.id 
-                LEFT JOIN mobility_solutions.tmx_estatus AS estatus 
-                    ON auto.estatus = estatus.id 
-                LEFT JOIN mobility_solutions.tmx_modelo AS modelo 
-                    ON auto.modelo = modelo.id 
-                LEFT JOIN mobility_solutions.tmx_marca AS marca 
-                    ON auto.marca = marca.id 
-                LEFT JOIN mobility_solutions.tmx_marca_auto AS m_auto 
-                    ON auto.nombre = m_auto.id 
-                WHERE auto.estatus = 1
-                AND auto.id = '$cod'";
-}
-    $result = mysqli_query($con,$query);
-    if ($result->num_rows > 0) {
-        $vehiculo = $result->fetch_assoc();
-        $disabled = "";
+
+    $query = "SELECT 
+                auto.id, 
+                m_auto.auto AS nombre, 
+                modelo.nombre AS modelo, 
+                marca.nombre AS marca, 
+                auto.mensualidad, 
+                auto.costo, 
+                sucursal.nombre AS sucursal, 
+                auto.img1, 
+                auto.img2, 
+                auto.img3, 
+                auto.img4, 
+                auto.img5, 
+                auto.img6, 
+                auto.color, 
+                auto.transmision, 
+                auto.interior, 
+                auto.kilometraje, 
+                auto.combustible, 
+                auto.cilindros, 
+                auto.eje, 
+                auto.estatus, 
+                auto.pasajeros, 
+                auto.propietarios, 
+                auto.created_at, 
+                auto.updated_at 
+            FROM mobility_solutions.tmx_auto AS auto 
+            LEFT JOIN mobility_solutions.tmx_sucursal AS sucursal 
+                ON auto.sucursal = sucursal.id 
+            LEFT JOIN mobility_solutions.tmx_estatus AS estatus 
+                ON auto.estatus = estatus.id 
+            LEFT JOIN mobility_solutions.tmx_modelo AS modelo 
+                ON auto.modelo = modelo.id 
+            LEFT JOIN mobility_solutions.tmx_marca AS marca 
+                ON auto.marca = marca.id 
+            LEFT JOIN mobility_solutions.tmx_marca_auto AS m_auto 
+                ON auto.nombre = m_auto.id 
+            WHERE auto.estatus = 1
+              AND auto.id = '".mysqli_real_escape_string($con, $cod)."'";
+
+    $resultV = mysqli_query($con,$query);
+    if ($resultV && $resultV->num_rows > 0) {
+        $vehiculo  = $resultV->fetch_assoc();
+        $disabled  = "";
     } else {
         $mensaje = "ID no encontrado";
     }
+}
 ?>
 
 <!-- ===== NUEVO LAYOUT · AJUSTES ===== -->
@@ -209,8 +216,8 @@ if (isset($_POST['verificar'])) {
     <div class="card-body d-flex align-items-center gap-3 flex-wrap">
       <div class="ms-avatar">
         <?php
-          $ini = ($nombre ?? 'Usuario').' '.($last_name ?? 'Demo');
-          $parts = explode(' ', trim($ini));
+          $ini = trim(($nombre ?? 'Usuario').' '.($last_name ?? 'Demo'));
+          $parts = preg_split('/\s+/', $ini);
           $iniciales = mb_substr($parts[0] ?? 'U',0,1).mb_substr($parts[1] ?? '',0,1);
           echo htmlspecialchars(strtoupper($iniciales));
         ?>
@@ -233,7 +240,7 @@ if (isset($_POST['verificar'])) {
           <i class="fa fa-bookmark-o me-2"></i> Reservar
         </a>
         <a href="?req=2" class="list-group-item list-group-item-action <?= ($selected=='2'?'active':'') ?>">
-          <i class="fa fa-shopping-cart me-2"></i> Venta de auto
+          <i class="fa fa-truck me-2"></i> Entrega de vehículo
         </a>
         <div class="list-group-item disabled d-flex align-items-center" title="Próximamente">
           <i class="fa fa-bar-chart me-2"></i> Req 3
@@ -253,7 +260,7 @@ if (isset($_POST['verificar'])) {
             <span class="fw-semibold"><i class="fa fa-bookmark-o me-2"></i> Reserva de vehículo</span>
           </div>
           <div class="card-body">
-            <form method="POST" onsubmit="/* deja tu submit */">
+            <form method="POST">
               <div class="row g-2 align-items-end">
                 <div class="col-sm-8">
                   <label class="form-label small">ID del vehículo</label>
@@ -266,21 +273,22 @@ if (isset($_POST['verificar'])) {
                 </div>
               </div>
 
-              <p class="error-msg mt-2 mb-0"><?= $mensaje ?? '' ?></p>
+              <p class="error-msg mt-2 mb-0"><?= htmlspecialchars($mensaje) ?></p>
 
               <?php if (!empty($vehiculo['marca'])): ?>
               <div class="ms-vehiculo card shadow-sm mt-3">
                 <div class="card-body d-flex gap-3 flex-wrap">
-                  <img class="ms-veh-img" src="../Imagenes/Catalogo/Auto <?= $vehiculo['id'];?>/Img01.jpg" alt="Vehículo">
+                  <img class="ms-veh-img" src="../Imagenes/Catalogo/Auto <?= (int)$vehiculo['id'];?>/Img01.jpg" alt="Vehículo"
+                       onerror="this.src='https://via.placeholder.com/320x200?text=Auto';">
                   <div class="flex-grow-1">
                     <div class="h6 mb-1"><?= htmlspecialchars($vehiculo['nombre']) ?> · <?= htmlspecialchars($vehiculo['modelo']) ?></div>
                     <div class="small text-muted mb-2"><?= htmlspecialchars($vehiculo['marca']) ?> — <?= htmlspecialchars($vehiculo['sucursal']) ?></div>
                     <div class="row g-2 small">
-                      <div class="col-sm-6"><strong>Costo:</strong> $<?= number_format($vehiculo['costo']) ?></div>
-                      <div class="col-sm-6"><strong>Mensualidad:</strong> $<?= number_format($vehiculo['mensualidad']) ?></div>
+                      <div class="col-sm-6"><strong>Costo:</strong> $<?= number_format((float)$vehiculo['costo']) ?></div>
+                      <div class="col-sm-6"><strong>Mensualidad:</strong> $<?= number_format((float)$vehiculo['mensualidad']) ?></div>
                       <div class="col-sm-6"><strong>Color:</strong> <?= htmlspecialchars($vehiculo['color']) ?></div>
                       <div class="col-sm-6"><strong>Transmisión:</strong> <?= htmlspecialchars($vehiculo['transmision']) ?></div>
-                      <div class="col-sm-6"><strong>Kilometraje:</strong> <?= number_format($vehiculo['kilometraje']) ?> km</div>
+                      <div class="col-sm-6"><strong>Kilometraje:</strong> <?= number_format((float)$vehiculo['kilometraje']) ?> km</div>
                       <div class="col-sm-6"><strong>Combustible:</strong> <?= htmlspecialchars($vehiculo['combustible']) ?></div>
                     </div>
                   </div>
@@ -289,7 +297,7 @@ if (isset($_POST['verificar'])) {
 
               <div class="text-end mt-3">
                 <button class="btn btn-success" type="button" id="boton_reserva" 
-                  data-marca="<?= isset($vehiculo['marca']) ? $vehiculo['marca'] : '' ?>"
+                  data-marca="<?= isset($vehiculo['marca']) ? htmlspecialchars($vehiculo['marca']) : '' ?>"
                   data-vehiculo='<?= json_encode($vehiculo) ?>'
                   data-usuario='<?= json_encode($user_id) ?>'
                   <?= isset($vehiculo['marca']) ? '' : 'disabled'; ?>>
@@ -301,16 +309,34 @@ if (isset($_POST['verificar'])) {
           </div>
         </div>
       <?php elseif ($selected == '2'): ?>
-        <!-- ============ VENTA DE AUTO ============ -->
+        <!-- ============ ENTREGA DE VEHÍCULO (antes Venta) ============ -->
         <div class="card ms-card shadow-sm">
           <div class="card-header d-flex align-items-center justify-content-between">
-            <span class="fw-semibold"><i class="fa fa-shopping-cart me-2"></i> Vehículos en reserva</span>
+            <span class="fw-semibold"><i class="fa fa-truck me-2"></i> Autos reservados — Entrega</span>
             <button type="button" class="btn btn-outline-dark btn-sm" onclick="cargarAutos()">
               <i class="fa fa-refresh me-1"></i> Actualizar
             </button>
           </div>
           <div class="card-body">
+            <div class="d-flex flex-wrap gap-2 justify-content-between mb-2">
+              <div class="input-group input-group-sm ms-w-280">
+                <span class="input-group-text bg-white"><i class="fa fa-search"></i></span>
+                <input id="filtroAutos" type="text" class="form-control" placeholder="Filtrar por marca/modelo/sucursal...">
+              </div>
+              <div class="btn-group btn-group-sm">
+                <button type="button" class="btn btn-outline-secondary" onclick="cargarAutos()">
+                  <i class="fa fa-refresh me-1"></i> Actualizar
+                </button>
+              </div>
+            </div>
             <div id="listaAutos" class="ms-lista-autos"></div>
+          </div>
+        </div>
+      <?php else: ?>
+        <!-- Puedes extender Req 3, Req 4 aquí cuando estén listos -->
+        <div class="card ms-card shadow-sm">
+          <div class="card-body">
+            <div class="text-muted">Sección en construcción.</div>
           </div>
         </div>
       <?php endif; ?>
@@ -319,137 +345,191 @@ if (isset($_POST['verificar'])) {
 </div>
 <!-- ===== /NUEVO LAYOUT · AJUSTES ===== -->
 
-
+<!-- ========== JS ========== -->
 <script>
-    function cargarAutos() {
-        const xhr = new XMLHttpRequest();
-        xhr.open("GET", "https://mobilitysolutionscorp.com/db_consultas/api_reservados.php", true);
+  // Helpers de UI para badges
+  function msStatusBadgeCls(s){
+    if(!s) return 'bg-warning-subtle text-dark';
+    s = (s+'').toLowerCase();
+    if(s.includes('aprob')) return 'bg-success-subtle text-success';
+    if(s.includes('declin') || s.includes('rechaz')) return 'bg-danger-subtle text-danger';
+    return 'bg-warning-subtle text-dark';
+  }
 
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                    try {
-                        const autos = JSON.parse(xhr.responseText);
-                        let html = "";
-                        autos.forEach(auto => {
-                            html += `
-                                <div class="car-card">
-                                    <p>${auto.id} - ${auto.marca} / ${auto.modelo} (${auto.nombre})</p>
-                                    <button data-id_auto="${auto.id}">Confirmar entrega</button>
-                                </div>
-                            `;
-                        });
+  // Render de tabla bonita con miniatura + filtro
+  function renderTablaReservas(autos){
+    const wrap = document.getElementById('listaAutos');
+    const q = (document.getElementById('filtroAutos')?.value || '').trim().toLowerCase();
 
-                        document.getElementById("listaAutos").innerHTML = html;
+    const filtrados = autos.filter(a=>{
+      if(!q) return true;
+      const texto = [
+        a.id, a.marca, a.modelo, a.nombre, a.sucursal, a.status_req
+      ].filter(Boolean).join(' ').toLowerCase();
+      return texto.includes(q);
+    });
 
-                        // Añadir event listener a cada botón
-                        const botones = document.querySelectorAll("button[data-id_auto]");
-                        botones.forEach(boton => {
-                            boton.addEventListener("click", (event) => {
-                                const id_auto = boton.getAttribute("data-id_auto");
-                                const id_usuario = <?php echo $user_id; ?>; // Asegúrate de que este valor se genera correctamente en PHP
-
-                                confirmarEntrega(id_auto, id_usuario);
-                            });
-                        });
-                    } catch (error) {
-                        console.error("❌ Error al parsear JSON de la respuesta:", error);
-                        document.getElementById("listaAutos").innerHTML = "Error al cargar los autos.";
-                    }
-                } else {
-                    console.error("❌ Error al cargar los autos:", xhr.statusText);
-                    document.getElementById("listaAutos").innerHTML = "Error al cargar la información.";
-                }
-            }
-        };
-
-        xhr.onerror = function () {
-            console.error("❌ Error en la solicitud XMLHttpRequest.");
-            document.getElementById("listaAutos").innerHTML = "Error en la solicitud.";
-        };
-
-        xhr.send();
+    if(!filtrados.length){
+      wrap.innerHTML = '<div class="alert alert-warning mb-0">No hay vehículos en reserva con ese filtro.</div>';
+      return;
     }
 
-    function confirmarEntrega(id_auto, id_usuario) {
-        const confirmar = confirm(`¿Estás seguro de hacer el requerimiento de venta para el Auto ${id_auto} Usuario ${id_usuario}?`);
+    const rows = filtrados.map(a => `
+      <tr>
+        <td class="text-muted">${a.id}</td>
+        <td>
+          <div class="d-flex align-items-center gap-2">
+            <img class="ms-thumb" src="../Imagenes/Catalogo/Auto ${a.id}/Img01.jpg"
+                 onerror="this.src='https://via.placeholder.com/96x64?text=Auto';" alt="">
+            <div>
+              <div class="fw-semibold">${(a.marca ?? '')} ${(a.modelo ?? '')}</div>
+              <small class="text-muted">${a.nombre ?? ''}</small>
+            </div>
+          </div>
+        </td>
+        <td>${a.sucursal ?? '-'}</td>
+        <td><span class="badge rounded-pill ${msStatusBadgeCls(a.status_req)}">${a.status_req ?? 'pendiente'}</span></td>
+        <td class="text-end">
+          <button class="btn btn-sm btn-success" data-id_auto="${a.id}">
+            <i class="fa fa-check me-1"></i> Confirmar entrega
+          </button>
+        </td>
+      </tr>
+    `).join('');
 
-        if (confirmar) {
-            cambiarEstado(id_auto, id_usuario);
+    wrap.innerHTML = `
+      <div class="table-responsive ms-table-wrap">
+        <table class="table table-hover align-middle ms-table">
+          <thead>
+            <tr>
+              <th style="width:80px">ID</th>
+              <th>Vehículo</th>
+              <th style="min-width:140px">Sucursal</th>
+              <th style="min-width:120px">Estado</th>
+              <th class="text-end" style="width:180px">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+    `;
+
+    // Eventos de Confirmar entrega
+    wrap.querySelectorAll('button[data-id_auto]').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const id_auto = btn.getAttribute('data-id_auto');
+        const id_usuario = <?= (int)($user_id ?? 0) ?>;
+        confirmarEntrega(id_auto, id_usuario);
+      });
+    });
+  }
+
+  // Carga de autos (API) + conexión con tabla
+  function cargarAutos() {
+    const wrap = document.getElementById('listaAutos');
+    if (!wrap) return;
+    wrap.innerHTML = '<div class="text-center text-muted py-3">Cargando...</div>';
+
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://mobilitysolutionscorp.com/db_consultas/api_reservados.php", true);
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          try {
+            const autos = JSON.parse(xhr.responseText) || [];
+            renderTablaReservas(autos);
+
+            // filtrar en vivo
+            const filtro = document.getElementById('filtroAutos');
+            if (filtro && !filtro.__wired) {
+              filtro.__wired = true;
+              filtro.addEventListener('input', ()=> renderTablaReservas(autos));
+            }
+          } catch (e) {
+            console.error("Error JSON:", e);
+            wrap.innerHTML = '<div class="alert alert-danger mb-0">Error al procesar la respuesta.</div>';
+          }
+        } else {
+          wrap.innerHTML = '<div class="alert alert-danger mb-0">Error al cargar la información.</div>';
         }
+      }
+    };
+
+    xhr.onerror = function(){
+      wrap.innerHTML = '<div class="alert alert-danger mb-0">Error en la solicitud.</div>';
+    };
+
+    xhr.send();
+  }
+
+  // Confirmar entrega (flujo de venta)
+  function confirmarEntrega(id_auto, id_usuario) {
+    const confirmar = confirm(`¿Estás seguro de hacer el requerimiento de venta para el Auto ${id_auto} Usuario ${id_usuario}?`);
+    if (confirmar) {
+      cambiarEstado(id_auto, id_usuario);
     }
+  }
 
-    function cambiarEstado(id_auto, id_usuario) {
-        const data = JSON.stringify({
-            vehiculo: { id: parseInt(id_auto) },
-            usuario: { id: parseInt(id_usuario) }
-        });
+  function cambiarEstado(id_auto, id_usuario) {
+    const data = JSON.stringify({
+      vehiculo: { id: parseInt(id_auto) },
+      usuario: { id: parseInt(id_usuario) }
+    });
 
-        console.log("🚀 Intentando enviar solicitud con XMLHttpRequest...");
-        console.log("📡 URL:", "https://mobilitysolutionscorp.com/db_consultas/insert_sp_req_venta.php");
-        console.log("📨 Datos enviados:", data);
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "https://mobilitysolutionscorp.com/db_consultas/insert_sp_req_venta.php", true);
+    xhr.setRequestHeader("Content-Type", "application/json");
 
-        const xhr = new XMLHttpRequest();
-        xhr.open("POST", "https://mobilitysolutionscorp.com/db_consultas/insert_sp_req_venta.php", true);
-        xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        try {
+          const resultado = JSON.parse(xhr.responseText);
+          if (resultado.success) {
+            alert("Venta registrada con éxito.");
+            cargarAutos(); // Recargar la lista
+          } else {
+            alert("Error al registrar la venta: " + (resultado.message || "Error desconocido"));
+          }
+        } catch (error) {
+          console.error("❌ Error al parsear JSON de la respuesta:", error);
+          alert("Error en la respuesta del servidor.");
+        }
+      }
+    };
 
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) {
-                console.log("✅ Respuesta recibida:", xhr.responseText);
-                try {
-                    const resultado = JSON.parse(xhr.responseText);
-                    if (resultado.success) {
-                        alert("Venta registrada con éxito.");
-                        cargarAutos(); // Recargar la lista de autos
-                    } else {
-                        alert("Error al registrar la venta: " + (resultado.message || "Error desconocido"));
-                    }
-                } catch (error) {
-                    console.error("❌ Error al parsear JSON de la respuesta:", error);
-                    alert("Error en la respuesta del servidor.");
-                }
-            }
-        };
+    xhr.onerror = function () {
+      console.error("❌ Error en la solicitud XMLHttpRequest.");
+      alert("Error en la solicitud.");
+    };
 
-        xhr.onerror = function () {
-            console.error("❌ Error en la solicitud XMLHttpRequest.");
-            alert("Error en la solicitud.");
-        };
-
-        xhr.send(data);
-    }
-
-    document.addEventListener("DOMContentLoaded", cargarAutos);
+    xhr.send(data);
+  }
 </script>
 
 <script>
+    // ====== REQUERIMIENTOS (lista izquierda) ======
     let todosLosRequerimientos = []; // Almacenará todos los requerimientos
-    let userId = <?php echo $user_id; ?>;
+    let userId = <?= (int)($user_id ?? 0) ?>;
 
     async function cargarLista(cod) {
         const lista = document.getElementById("listaRequerimientos");
+        if (!lista) return;
         lista.innerHTML = "Cargando...";
 
         try {
-            // Corrección en la interpolación de la URL
             const response = await fetch(`https://mobilitysolutionscorp.com/db_consultas/api_requerimientos.php?cod=${cod}`);
-            
-            if (!response.ok) {
-                throw new Error(`Error HTTP: ${response.status}`);
-            }
+            if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
 
             const datos = await response.json();
             lista.innerHTML = "";
 
-            if (datos.length === 0) {
+            if (!datos || datos.length === 0) {
                 lista.innerHTML = "No hay requerimientos disponibles.";
                 return;
             }
 
-            // Guardamos todos los requerimientos
             todosLosRequerimientos = datos;
-
-            // Mostramos todos los requerimientos inicialmente
             mostrarRequerimientos(todosLosRequerimientos);
 
         } catch (error) {
@@ -460,9 +540,10 @@ if (isset($_POST['verificar'])) {
 
     function mostrarRequerimientos(requerimientos) {
         const lista = document.getElementById("listaRequerimientos");
-        lista.innerHTML = "";  // Limpiar lista antes de agregar nuevos elementos
+        if (!lista) return;
+        lista.innerHTML = "";
 
-        if (requerimientos.length === 0) {
+        if (!requerimientos.length) {
             lista.innerHTML = "No hay requerimientos disponibles.";
             return;
         }
@@ -475,71 +556,73 @@ if (isset($_POST['verificar'])) {
                 ${req.tipo_req} ${req.status_req ? `- (<strong>${req.status_req}</strong>)` : ""} <br><br>
                 <strong>${req.rechazo_coment ? `- (<strong>${req.rechazo_coment}</strong>)` : ""}</strong>
             `;
-            li.classList.add(req.status_req || ""); // Evita error si es null
+            li.classList.add(req.status_req || "");
             lista.appendChild(li);
         });
     }
 
     function filtrarLista(status) {
-        // Filtramos los requerimientos por el estado seleccionado
         const requerimientosFiltrados = todosLosRequerimientos.filter(req => req.status_req === status);
         mostrarRequerimientos(requerimientosFiltrados);
     }
 
-    // Llamada inicial con ID de prueba
-    cargarLista(userId);
-
+    // Cargar lista de requerimientos al entrar
+    document.addEventListener('DOMContentLoaded', ()=> cargarLista(userId));
 </script>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-        const botonReserva = document.getElementById("boton_reserva");
-        const marca = botonReserva.getAttribute("data-marca");
+<script>
+    // ====== Botón "Solicitar reserva" ======
+    document.addEventListener("DOMContentLoaded", function () {
+      const botonReserva = document.getElementById("boton_reserva");
+      if(!botonReserva) return;
 
-        // Deshabilita el botón si la marca está vacía
-        if (!marca.trim()) {
-            botonReserva.disabled = true;
-        }
+      const marca = (botonReserva.getAttribute("data-marca") || '').trim();
+      if (!marca) {
+          botonReserva.disabled = true;
+      }
 
-        botonReserva.addEventListener("click", function () {
-            const vehiculoData = botonReserva.getAttribute("data-vehiculo");
-            const usuarioData = botonReserva.getAttribute("data-usuario");
+      botonReserva.addEventListener("click", function () {
+          const vehiculoData = botonReserva.getAttribute("data-vehiculo");
+          const usuarioData  = botonReserva.getAttribute("data-usuario");
 
-            if (!vehiculoData || !usuarioData) {
-                alert("Faltan datos para la reserva.");
-                return;
-            }
+          if (!vehiculoData || !usuarioData) {
+              alert("Faltan datos para la reserva.");
+              return;
+          }
 
-            const vehiculo = JSON.parse(vehiculoData);
-            const usuario = { id: usuarioData };  // Aquí agregamos la propiedad id
+          const vehiculo = JSON.parse(vehiculoData);
+          const usuario  = { id: usuarioData };
 
-            fetch("../db_consultas/insert_sp_req.php", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ vehiculo, usuario })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert("Reserva realizada con éxito.");
-                    window.location.href = window.location.pathname;
-                } else {
-                    alert("Error al realizar la reserva.");
-                }
-            })
-            .catch(error => {
-                console.error("Error:", error);
-                alert("Ocurrió un error inesperado.");
-            });
-        });
+          fetch("../db_consultas/insert_sp_req.php", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ vehiculo, usuario })
+          })
+          .then(response => response.json())
+          .then(data => {
+              if (data.success) {
+                  alert("Reserva realizada con éxito.");
+                  window.location.href = window.location.pathname;
+              } else {
+                  alert("Error al realizar la reserva.");
+              }
+          })
+          .catch(error => {
+              console.error("Error:", error);
+              alert("Ocurrió un error inesperado.");
+          });
+      });
     }); 
-    </script>
+</script>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<?php if ($selected == '2'): ?>
+<!-- Lanza cargarAutos SOLO si estás en Entrega de vehículo -->
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+    cargarAutos();
+  });
+</script>
+<?php endif; ?>
 
 </body>
 </html>
