@@ -488,5 +488,13 @@ function url_with($key, $val){
     </div>
   </div>
 </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var el = document.getElementById('collapseFiltros');
+  if (el) bootstrap.Collapse.getOrCreateInstance(el).hide();
+});
+</script>
+
 </body>
 </html>
