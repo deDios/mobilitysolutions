@@ -223,14 +223,14 @@ if (isset($_POST['verificar'])) {
     <!-- Sidebar -->
     <aside class="col-12 col-lg-3">
       <nav class="list-group ms-side sticky-lg-top">
+        <a href="?req=3" class="list-group-item list-group-item-action <?= ($selected=='3'?'active':'') ?>">
+          <i class="fa fa-list-alt me-2"></i> Mis requerimientos
+        </a>
         <a href="?req=1" class="list-group-item list-group-item-action <?= ($selected=='1'?'active':'') ?>">
           <i class="fa fa-bookmark-o me-2"></i> Reservar
         </a>
         <a href="?req=2" class="list-group-item list-group-item-action <?= ($selected=='2'?'active':'') ?>">
           <i class="fa fa-truck me-2"></i> Entrega de vehículo
-        </a>
-        <a href="?req=3" class="list-group-item list-group-item-action <?= ($selected=='3'?'active':'') ?>">
-          <i class="fa fa-list-alt me-2"></i> Mis requerimientos
         </a>
         <div class="list-group-item disabled d-flex align-items-center" title="Próximamente">
           <i class="fa fa-search me-2"></i> Req 4
@@ -240,34 +240,6 @@ if (isset($_POST['verificar'])) {
 
     <!-- Contenido -->
     <section class="col-12 col-lg-9">
-      <?php elseif ($selected == '3'): ?>
-        <!-- ============ REQ 3: MIS REQUERIMIENTOS ============ -->
-        <div class="card ms-card shadow-sm">
-          <div class="card-header d-flex align-items-center justify-content-between">
-            <span class="fw-semibold"><i class="fa fa-list-alt me-2"></i> Mis requerimientos</span>
-            <button type="button" class="btn btn-outline-dark btn-sm" onclick="cargarReq3()">
-              <i class="fa fa-refresh me-1"></i> Actualizar
-            </button>
-          </div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table id="tablaReq3" class="table table-hover align-middle" style="width:100%">
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Auto</th>
-                    <th>Tipo</th>
-                    <th>Estado</th>
-                    <th>Comentario</th>
-                    <th>Fecha</th>
-                  </tr>
-                </thead>
-                <tbody><!-- llenado por JS --></tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
       <?php if ($selected == '1'): ?>
         <!-- ============ RESERVAR ============ -->
         <div class="card ms-card shadow-sm">
@@ -346,6 +318,34 @@ if (isset($_POST['verificar'])) {
               </div>
             </div>
             <div id="listaAutos" class="ms-lista-autos"></div>
+          </div>
+        </div>
+
+      <?php elseif ($selected == '3'): ?>
+        <!-- ============ REQ 3: MIS REQUERIMIENTOS ============ -->
+        <div class="card ms-card shadow-sm">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <span class="fw-semibold"><i class="fa fa-list-alt me-2"></i> Mis requerimientos</span>
+            <button type="button" class="btn btn-outline-dark btn-sm" onclick="cargarReq3()">
+              <i class="fa fa-refresh me-1"></i> Actualizar
+            </button>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table id="tablaReq3" class="table table-hover align-middle" style="width:100%">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Auto</th>
+                    <th>Tipo</th>
+                    <th>Estado</th>
+                    <th>Comentario</th>
+                    <th>Fecha</th>
+                  </tr>
+                </thead>
+                <tbody><!-- llenado por JS --></tbody>
+              </table>
+            </div>
           </div>
         </div>
 
