@@ -135,7 +135,9 @@
 </div>
 
 <?php
-$selected = isset($_GET['req']) ? $_GET['req'] : '1';
+// ===== Arranque en Req 3 como default (cámbialo a '1' si quieres iniciar en Reservar) =====
+$selected = isset($_GET['req']) ? $_GET['req'] : '3';
+
 $inc = include "../db/Conexion.php"; 
 $vehiculo = null;
 $mensaje  = $mensaje ?? '';
@@ -227,9 +229,9 @@ if (isset($_POST['verificar'])) {
         <a href="?req=2" class="list-group-item list-group-item-action <?= ($selected=='2'?'active':'') ?>">
           <i class="fa fa-truck me-2"></i> Entrega de vehículo
         </a>
-        <div class="list-group-item disabled d-flex align-items-center" title="Próximamente">
-          <i class="fa fa-bar-chart me-2"></i> Req 3
-        </div>
+        <a href="?req=3" class="list-group-item list-group-item-action <?= ($selected=='3'?'active':'') ?>">
+          <i class="fa fa-list-alt me-2"></i> Mis requerimientos
+        </a>
         <div class="list-group-item disabled d-flex align-items-center" title="Próximamente">
           <i class="fa fa-search me-2"></i> Req 4
         </div>
@@ -293,6 +295,7 @@ if (isset($_POST['verificar'])) {
             </form>
           </div>
         </div>
+
       <?php elseif ($selected == '2'): ?>
         <!-- ============ ENTREGA DE VEHÍCULO (antes Venta) ============ -->
         <div class="card ms-card shadow-sm">
@@ -317,8 +320,37 @@ if (isset($_POST['verificar'])) {
             <div id="listaAutos" class="ms-lista-autos"></div>
           </div>
         </div>
+
+      <?php elseif ($selected == '3'): ?>
+        <!-- ============ REQ 3: MIS REQUERIMIENTOS ============ -->
+        <div class="card ms-card shadow-sm">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <span class="fw-semibold"><i class="fa fa-list-alt me-2"></i> Mis requerimientos</span>
+            <button type="button" class="btn btn-outline-dark btn-sm" onclick="cargarReq3()">
+              <i class="fa fa-refresh me-1"></i> Actualizar
+            </button>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table id="tablaReq3" class="table table-hover align-middle" style="width:100%">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Auto</th>
+                    <th>Tipo</th>
+                    <th>Estado</th>
+                    <th>Comentario</th>
+                    <th>Fecha</th>
+                  </tr>
+                </thead>
+                <tbody><!-- llenado por JS --></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
       <?php else: ?>
-        <!-- Puedes extender Req 3, Req 4 aquí cuando estén listos -->
+        <!-- Puedes extender Req 4 aquí cuando esté listo -->
         <div class="card ms-card shadow-sm">
           <div class="card-body">
             <div class="text-muted">Sección en construcción.</div>
@@ -341,7 +373,7 @@ if (isset($_POST['verificar'])) {
     return 'bg-warning-subtle text-dark';
   }
 
-  // Render de tabla bonita con miniatura + filtro
+  // Render de tabla bonita con miniatura + filtro (ENTREGA)
   function renderTablaReservas(autos){
     const wrap = document.getElementById('listaAutos');
     const q = (document.getElementById('filtroAutos')?.value || '').trim().toLowerCase();
@@ -409,7 +441,7 @@ if (isset($_POST['verificar'])) {
     });
   }
 
-  // Carga de autos (API) + conexión con tabla
+  // Carga de autos (API) + conexión con tabla (ENTREGA)
   function cargarAutos() {
     const wrap = document.getElementById('listaAutos');
     if (!wrap) return;
@@ -451,6 +483,7 @@ if (isset($_POST['verificar'])) {
   // Confirmar entrega (flujo de venta)
   function confirmarEntrega(id_auto, id_usuario) {
     const confirmar = confirm(`¿Estás seguro de hacer el requerimiento de venta para el Auto ${id_auto} Usuario ${id_usuario}?`);
+
     if (confirmar) {
       cambiarEstado(id_auto, id_usuario);
     }
@@ -477,14 +510,14 @@ if (isset($_POST['verificar'])) {
             alert("Error al registrar la venta: " + (resultado.message || "Error desconocido"));
           }
         } catch (error) {
-          console.error("Error al parsear JSON de la respuesta:", error);
+          console.error("❌ Error al parsear JSON de la respuesta:", error);
           alert("Error en la respuesta del servidor.");
         }
       }
     };
 
     xhr.onerror = function () {
-      console.error("Error en la solicitud XMLHttpRequest.");
+      console.error("❌ Error en la solicitud XMLHttpRequest.");
       alert("Error en la solicitud.");
     };
 
@@ -493,7 +526,7 @@ if (isset($_POST['verificar'])) {
 </script>
 
 <script>
-    // ====== REQUERIMIENTOS (lista izquierda) ======
+    // ====== REQUERIMIENTOS (lista izquierda que ya tenías) ======
     let todosLosRequerimientos = []; // Almacenará todos los requerimientos
     let userId = <?= (int)($user_id ?? 0) ?>;
 
@@ -551,8 +584,78 @@ if (isset($_POST['verificar'])) {
         mostrarRequerimientos(requerimientosFiltrados);
     }
 
-    // Cargar lista de requerimientos al entrar
+    // Cargar lista de requerimientos al entrar (si esa lista existe en la vista)
     document.addEventListener('DOMContentLoaded', ()=> cargarLista(userId));
+</script>
+
+<!-- ===== Req 3: Mis requerimientos (tabla central) ===== -->
+<script>
+  let dtReq3 = null;
+
+  function safe(val){ return (val===null || val===undefined) ? '' : val; }
+
+  function cargarReq3(){
+    const userId = <?= (int)($user_id ?? 0) ?>;
+    const url = `https://mobilitysolutionscorp.com/db_consultas/api_requerimientos.php?cod=${userId}`;
+
+    fetch(url)
+      .then(r => {
+        if(!r.ok) throw new Error('HTTP '+r.status);
+        return r.json();
+      })
+      .then(datos => {
+        const tbody = document.querySelector('#tablaReq3 tbody');
+        if(!tbody) return;
+        if(!Array.isArray(datos) || !datos.length){
+          tbody.innerHTML = `<tr><td colspan="6" class="text-center text-muted">No hay requerimientos.</td></tr>`;
+        }else{
+          const rows = datos.map(req => {
+            const badge = `<span class="badge rounded-pill ${msStatusBadgeCls(req.status_req)}">${safe(req.status_req) || 'pendiente'}</span>`;
+            const fecha = safe(req.created_at || req.fecha || '').toString().slice(0,19);
+            return `
+              <tr>
+                <td class="text-muted">${safe(req.id)}</td>
+                <td>${safe(req.id_auto)}</td>
+                <td>${safe(req.tipo_req)}</td>
+                <td>${badge}</td>
+                <td>${safe(req.rechazo_coment)}</td>
+                <td>${fecha}</td>
+              </tr>`;
+          }).join('');
+          tbody.innerHTML = rows;
+        }
+
+        if (dtReq3){ dtReq3.destroy(); }
+        dtReq3 = $('#tablaReq3').DataTable({
+          pageLength: 10,
+          order: [[0,'desc']],
+          lengthChange: false,
+          language: {
+            emptyTable: "Sin datos",
+            info: "Mostrando _START_ a _END_ de _TOTAL_",
+            infoEmpty: "Mostrando 0 a 0 de 0",
+            loadingRecords: "Cargando...",
+            processing: "Procesando...",
+            search: "Buscar:",
+            zeroRecords: "No hay coincidencias",
+            paginate: { first: "Primero", last: "Último", next: "Siguiente", previous: "Anterior" }
+          }
+        });
+      })
+      .catch(err => {
+        console.error('Req3 error:', err);
+        const tbody = document.querySelector('#tablaReq3 tbody');
+        if(tbody) tbody.innerHTML = `<tr><td colspan="6" class="text-center text-danger">Error al cargar la información.</td></tr>`;
+      });
+  }
+
+  // Al entrar a la página, según la pestaña activa
+  document.addEventListener('DOMContentLoaded', function(){
+    const urlParams = new URLSearchParams(window.location.search);
+    const req = urlParams.get('req') || '3';
+    if (req === '3') cargarReq3();
+    if (req === '2') cargarAutos();
+  });
 </script>
 
 <script>
@@ -587,7 +690,8 @@ if (isset($_POST['verificar'])) {
           .then(data => {
               if (data.success) {
                   alert("Reserva realizada con éxito.");
-                  window.location.href = window.location.pathname;
+                  // si quieres quedarte en Req 1, deja la línea siguiente como estaba:
+                  window.location.href = window.location.pathname + '?req=3'; // te llevo a Mis requerimientos
               } else {
                   alert("Error al realizar la reserva.");
               }
