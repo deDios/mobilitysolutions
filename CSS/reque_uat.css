@@ -373,6 +373,15 @@ button:disabled {
     z-index: 1000;  /* Asegura que el botón esté encima de otros elementos */
 }
 
+.ms-thumb{
+    width: 100px;
+    height: 100px;
+    object-fit: contain;      /* usa contain si prefieres la imagen completa */
+    border-radius: 6px;
+    flex: 0 0 100px;
+    display: block;
+  }
+
 .car-card {
     background: white;
     padding: 15px;
