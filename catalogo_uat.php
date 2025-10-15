@@ -181,11 +181,24 @@ function url_with($key, $val){
           <input class="form-control form-text ps-3" maxlength="128" placeholder="Busca por marca, modelo, tipo..." type="text" name="buscar" value="<?= htmlspecialchars($_GET['buscar'] ?? '') ?>"/>
         </div>
 
-        <div class="div_icon pt-2">
-          <a class="btn btn-secondary btn-lg" data-bs-toggle="collapse" href="#collapseFiltros" role="button" aria-expanded="true" aria-controls="collapseFiltros">
+        <div class="div_icon pt-2 d-flex align-items-center justify-content-between">
+        <?php
+            $base = strtok($_SERVER['REQUEST_URI'],'?');
+        ?>
+
+        <div class="btn-group" role="group" aria-label="Acciones de filtros">
+            <a class="btn btn-secondary btn-lg" data-bs-toggle="collapse" href="#collapseFiltros"
+            role="button" aria-expanded="true" aria-controls="collapseFiltros">
             <i class="fa fa-filter"></i>
-          </a>
-          <figcaption class="blockquote-footer pt-2">
+            </a>
+
+            <a class="btn btn-outline-secondary btn-lg" href="<?= $base ?>" title="Limpiar filtros">
+            Limpiar
+            </a>
+            <!-- Si quieres conservar la búsqueda, usa: href="<?= $hrefClear ?>" -->
+        </div>
+
+        <figcaption class="blockquote-footer pt-2 ms-3 flex-grow-1">
             <?= htmlspecialchars(($buscar ?? '')) ?>
             <?= $marca!=='Todos' ? ' / '.$marca : '' ?>
             <?= $anio!=='Todos' ? ' / '.$anio : '' ?>
@@ -196,8 +209,9 @@ function url_with($key, $val){
             <?= $pasajeros!=='Todos' ? ' / '.$pasajeros : '' ?>
             <?= $mn_mayor!=='' ? ' / Mayor a $'.$mn_mayor : '' ?>
             <?= $mn_menor!=='' ? ' / Menor a $'.$mn_menor : '' ?>
-          </figcaption>
+        </figcaption>
         </div>
+
 
         <div class="collapse show py-2" id="collapseFiltros">
           <div class="lay_ser">

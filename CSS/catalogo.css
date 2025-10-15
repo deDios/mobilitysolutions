@@ -390,6 +390,8 @@ footer .hr3 {
 }
 .pagination { gap: 6px; }
 .pagination .page-link { min-width: 36px; text-align:center; }
+.div_icon .btn-group .btn { padding-inline: 14px; }
+.div_icon figcaption { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 :root{
   /* alto total del header fijo (topbar + navbar) */
