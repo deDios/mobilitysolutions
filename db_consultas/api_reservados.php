@@ -7,10 +7,7 @@
  *   - debug    (int)  -> 1..5 checkpoints de depuración (opcional)
  *
  * Vista completa:
- *   - user_type 5 (CTO), 6 (CEO)  [y puedes añadir r_autorizador si quieres]
- *
- * Si NO tiene vista completa, solo devuelve autos cuyo **último** req 'reserva'
- * fue hecho por ese usuario.
+ *   - user_type 5 (CTO), 6 (CEO)  [puedes añadir r_autorizador si quieres]
  */
 
 header('Content-Type: application/json; charset=utf-8');
@@ -21,7 +18,6 @@ $debug   = isset($_GET['debug'])   ? (int)$_GET['debug']   : 0;
 $userId  = isset($_GET['user_id']) ? (int)$_GET['user_id'] : 0;
 $estatus = isset($_GET['estatus']) ? (int)$_GET['estatus'] : 3; // 3 = reservado
 
-// Helper para salidas de depuración
 function out($step, $extra = []) {
   $base = [
     'ok'      => true,
@@ -38,19 +34,16 @@ function out($step, $extra = []) {
   exit;
 }
 
-// ===== Paso 1: script reachable =====
-if ($debug === 1) {
-  out(1, ['raw_get' => $_GET]);
-}
+/* ===== Paso 1 ===== */
+if ($debug === 1) out(1, ['raw_get' => $_GET]);
 
-// Validación user_id
 if ($userId <= 0) {
   http_response_code(400);
   echo json_encode(["ok"=>false,"step"=>1,"error"=>"Falta el parámetro user_id (numérico)"]);
   exit;
 }
 
-// ===== Paso 2: conexión a BD =====
+/* ===== Paso 2: conexión BD ===== */
 $inc = include "../db/Conexion.php";
 if (!$inc || !isset($con) || !$con) {
   http_response_code(500);
@@ -59,11 +52,9 @@ if (!$inc || !isset($con) || !$con) {
 }
 if (function_exists('mysqli_set_charset')) { mysqli_set_charset($con, "utf8mb4"); }
 
-if ($debug === 2) {
-  out(2, ['db_connected'=>true, 'user_id'=>$userId, 'estatus'=>$estatus]);
-}
+if ($debug === 2) out(2, ['db_connected'=>true, 'user_id'=>$userId, 'estatus'=>$estatus]);
 
-// ===== Paso 3: cargar rol del usuario =====
+/* ===== Paso 3: cargar rol del usuario ===== */
 $sqlUser = "
   SELECT 
     acc.user_id,
@@ -92,16 +83,14 @@ $userRow = $resUser ? $resUser->fetch_assoc() : null;
 if (!$userRow) {
   http_response_code(404);
   echo json_encode(["ok"=>false,"step"=>3,"error"=>"Usuario no encontrado","user_id"=>$userId]);
-  $stmtUser->close();
-  $con->close();
-  exit;
+  $stmtUser->close(); $con->close(); exit;
 }
 
-$currentUserId   = (int)$userRow['user_id'];   // tmx_usuario.id
-$currentUserType = (int)$userRow['user_type']; // 5/6
+$currentUserId   = (int)$userRow['user_id'];
+$currentUserType = (int)$userRow['user_type'];
 $r_autorizador   = (int)($userRow['r_autorizador'] ?? 0);
 
-// Ajusta aquí si quieres que autorizador también sea FullView:
+/* CTO/CEO con vista completa (activa r_autorizador si lo deseas) */
 $isFullView = ($currentUserType === 5 || $currentUserType === 6 /* || $r_autorizador === 1 */);
 
 if ($debug === 3) {
@@ -115,7 +104,10 @@ if ($debug === 3) {
   ]);
 }
 
-// ===== Paso 4: construir SQL =====
+/* ===== Paso 4: construir SQL =====
+   NOTA: en tmx_requerimiento la columna del usuario es "created_by" */
+$reqUserCol = "created_by";   // <- ajustado con tu DDL
+
 $sql = "
   SELECT 
     a.id,
@@ -126,12 +118,13 @@ $sql = "
     r.status_req,
     r.tipo_req,
     r.created_at,
-    r.id_usuario
+    r.$reqUserCol        AS r_id_usuario
   FROM mobility_solutions.tmx_auto a
   LEFT JOIN mobility_solutions.tmx_modelo mo          ON a.modelo   = mo.id
   LEFT JOIN mobility_solutions.tmx_marca  ma          ON a.marca    = ma.id
   LEFT JOIN mobility_solutions.tmx_marca_auto m_auto  ON a.nombre   = m_auto.id
   LEFT JOIN mobility_solutions.tmx_sucursal s         ON a.sucursal = s.id
+  /* Último requerimiento de tipo 'reserva' por auto */
   LEFT JOIN (
     SELECT rr.*
     FROM mobility_solutions.tmx_requerimiento rr
@@ -146,11 +139,12 @@ $sql = "
 ";
 
 $params = [];
-$types  = "i";         // estatus primero
+$types  = "i";
 $params[] = $estatus;
 
+/* Si no es vista completa, filtra por el dueño del último req (created_by) */
 if (!$isFullView) {
-  $sql .= " AND r.id_usuario = ? ";
+  $sql .= " AND r.$reqUserCol = ? ";
   $types  .= "i";
   $params[] = $currentUserId;
 }
@@ -160,35 +154,24 @@ $sql .= " ORDER BY a.id DESC";
 if ($debug === 4) {
   out(4, [
     'is_full_view' => $isFullView,
+    'user_col'     => $reqUserCol,
     'sql_preview'  => $sql,
     'bind_types'   => $types,
     'bind_params'  => $params
   ]);
 }
 
-// ===== Paso 5: ejecutar consulta =====
-// ===== Paso 5: ejecutar consulta =====
-// Reportes de MySQL controlados (por si tu server convierte warnings en 404)
-if (function_exists('mysqli_report')) {
-  mysqli_report(MYSQLI_REPORT_OFF);
-}
+/* ===== Paso 5: ejecutar consulta ===== */
+if (function_exists('mysqli_report')) { mysqli_report(MYSQLI_REPORT_OFF); }
 
 $stmt = $con->prepare($sql);
 if (!$stmt) {
-  // Si preparar falla, devolvemos TODO para depurar
   if ($debug >= 5) {
     echo json_encode([
-      "ok"            => false,
-      "step"          => 5,
-      "stage"         => "prepare",
-      "error"         => "Error al preparar la consulta principal",
-      "mysqli_errno"  => $con->errno,
-      "mysqli_error"  => $con->error,
-      "sql"           => $sql,
-      "bind_types"    => $types,
-      "bind_params"   => $params,
-    ], JSON_UNESCAPED_UNICODE);
-    exit;
+      "ok"=>false,"step"=>5,"stage"=>"prepare",
+      "mysqli_errno"=>$con->errno,"mysqli_error"=>$con->error,
+      "sql"=>$sql,"bind_types"=>$types,"bind_params"=>$params
+    ], JSON_UNESCAPED_UNICODE); exit;
   }
   http_response_code(500);
   echo json_encode(["ok"=>false,"step"=>5,"error"=>"Error al preparar la consulta principal"]);
@@ -198,17 +181,10 @@ if (!$stmt) {
 if (!$stmt->bind_param($types, ...$params)) {
   if ($debug >= 5) {
     echo json_encode([
-      "ok"            => false,
-      "step"          => 5,
-      "stage"         => "bind",
-      "error"         => "Error en bind_param",
-      "stmt_errno"    => $stmt->errno,
-      "stmt_error"    => $stmt->error,
-      "sql"           => $sql,
-      "bind_types"    => $types,
-      "bind_params"   => $params,
-    ], JSON_UNESCAPED_UNICODE);
-    exit;
+      "ok"=>false,"step"=>5,"stage"=>"bind",
+      "stmt_errno"=>$stmt->errno,"stmt_error"=>$stmt->error,
+      "sql"=>$sql,"bind_types"=>$types,"bind_params"=>$params
+    ], JSON_UNESCAPED_UNICODE); exit;
   }
   http_response_code(500);
   echo json_encode(["ok"=>false,"step"=>5,"error"=>"Error en bind_param"]);
@@ -218,17 +194,10 @@ if (!$stmt->bind_param($types, ...$params)) {
 if (!$stmt->execute()) {
   if ($debug >= 5) {
     echo json_encode([
-      "ok"            => false,
-      "step"          => 5,
-      "stage"         => "execute",
-      "error"         => "Error al ejecutar la consulta",
-      "stmt_errno"    => $stmt->errno,
-      "stmt_error"    => $stmt->error,
-      "sql"           => $sql,
-      "bind_types"    => $types,
-      "bind_params"   => $params,
-    ], JSON_UNESCAPED_UNICODE);
-    exit;
+      "ok"=>false,"step"=>5,"stage"=>"execute",
+      "stmt_errno"=>$stmt->errno,"stmt_error"=>$stmt->error,
+      "sql"=>$sql,"bind_types"=>$types,"bind_params"=>$params
+    ], JSON_UNESCAPED_UNICODE); exit;
   }
   http_response_code(500);
   echo json_encode(["ok"=>false,"step"=>5,"error"=>"Error al ejecutar la consulta"]);
@@ -242,31 +211,25 @@ if ($debug === 5) {
     while ($r = $result->fetch_assoc()) { $rows[] = $r; }
   }
   echo json_encode([
-    'ok'         => true,
-    'step'       => 5,
-    'message'    => 'query executed',
-    'row_count'  => count($rows),
-    'sample'     => array_slice($rows, 0, 5),
-    'note'       => $isFullView ? 'full rows returned' : 'id_usuario se oculta en salida normal',
-    'sql'        => $sql,       // útil para correrlo directo en MySQL si hace falta
-    'bind_types' => $types,
-    'bind_params'=> $params
-  ], JSON_UNESCAPED_UNICODE);
-  exit;
+    'ok'=>true,'step'=>5,'message'=>'query executed',
+    'row_count'=>count($rows),'sample'=>array_slice($rows,0,5),
+    'note'=>$isFullView ? 'full rows returned' : 'r_id_usuario oculto en salida normal',
+    'sql'=>$sql,'bind_types'=>$types,'bind_params'=>$params
+  ], JSON_UNESCAPED_UNICODE); exit;
 }
 
-// ===== Salida normal (sin debug) =====
+/* ===== Salida normal ===== */
 $data = [];
 if ($result && $result->num_rows > 0) {
   while ($row = $result->fetch_assoc()) {
-    if (!$isFullView) { unset($row['id_usuario']); }
+    if (!$isFullView) { unset($row['r_id_usuario']); }
     $data[] = $row;
   }
 }
 
 echo json_encode($data, JSON_UNESCAPED_UNICODE);
 
-// ===== Cierre =====
+/* ===== Cierre ===== */
 $stmt->close();
 $stmtUser->close();
 $con->close();
