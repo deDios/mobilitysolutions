@@ -399,8 +399,8 @@ function url_with($key, $val){
     <!-- Paginador -->
     <?php if ($pages > 1): ?>
     <?php
-        // ventana de 5 botones
-        $window = 5;
+        // ventana de 4 botones
+        $window = 4;
         $half   = (int)floor($window/2);
         $start  = max(1, $page - $half);
         $end    = min($pages, $start + $window - 1);
