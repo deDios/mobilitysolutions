@@ -15,6 +15,8 @@
 
   <!-- Font Awesome (si usas clases fa-*) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
 
   <!-- jQuery (solo si lo necesitas para otras partes) -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
