@@ -1,11 +1,26 @@
 <?php
+/**
+ * API: Autos reservados con jerarquía
+ * GET params:
+ *   - user_id  (int)  -> id del usuario (tmx_usuario.id)
+ *   - estatus  (int)  -> estatus del auto (por defecto 3 = reservado)
+ *
+ * Perfiles con vista completa:
+ *   - user_type = 5 (CTO)
+ *   - user_type = 6 (CEO)
+ *   - r_autorizador = 1
+ *
+ * Si NO tiene vista completa, solo se devuelven autos cuyo último
+ * requerimiento de tipo 'reserva' pertenece a ese usuario.
+ */
+
 header('Content-Type: application/json; charset=utf-8');
 
-// ===============================
+// -------------------------------
 // 1) Parámetros de entrada
-// ===============================
-$userId  = isset($_GET['user_id']) ? (int)$_GET['user_id'] : 0; // <-- ahora por GET
-$estatus = isset($_GET['estatus']) ? (int)$_GET['estatus'] : 3; // 3 = reservado (por tu API original)
+// -------------------------------
+$userId  = isset($_GET['user_id']) ? (int)$_GET['user_id'] : 0;
+$estatus = isset($_GET['estatus']) ? (int)$_GET['estatus'] : 3; // 3 = reservado
 
 if ($userId <= 0) {
   http_response_code(400);
@@ -13,24 +28,29 @@ if ($userId <= 0) {
   exit;
 }
 
-// ===============================
+// -------------------------------
 // 2) Conexión BD
-// ===============================
+// -------------------------------
 $inc = include "../db/Conexion.php";
-if (!$inc || !isset($con)) {
+if (!$inc || !isset($con) || !$con) {
   http_response_code(500);
   echo json_encode(["error" => "Falla en la conexión a la BD"]);
   exit;
 }
 
-// ===============================
-// 3) Cargar rol del usuario (por user_id)
-// ===============================
+// Forzar charset (evita problemas con acentos)
+if (function_exists('mysqli_set_charset')) {
+  mysqli_set_charset($con, "utf8mb4");
+}
+
+// -------------------------------
+// 3) Cargar rol del usuario
+// -------------------------------
 $sqlUser = "
   SELECT 
     acc.user_id,
     acc.user_name,
-    acc.user_type,        -- NUMÉRICO (FK a tmx_tipo_usuario)
+    acc.user_type,        -- 5=CTO, 6=CEO
     acc.reporta_a,
     acc.r_ejecutivo,
     acc.r_editor,
@@ -40,11 +60,13 @@ $sqlUser = "
   WHERE acc.user_id = ?
   LIMIT 1
 ";
+
 if (!($stmtUser = $con->prepare($sqlUser))) {
   http_response_code(500);
   echo json_encode(["error" => "Error preparando consulta de usuario"]);
   exit;
 }
+
 $stmtUser->bind_param("i", $userId);
 $stmtUser->execute();
 $resUser = $stmtUser->get_result();
@@ -53,23 +75,27 @@ $userRow = $resUser ? $resUser->fetch_assoc() : null;
 if (!$userRow) {
   http_response_code(404);
   echo json_encode(["error" => "Usuario no encontrado"]);
+  $stmtUser->close();
+  $con->close();
   exit;
 }
 
-$currentUserId   = (int)$userRow['user_id'];        // ID en tmx_usuario
-$currentUserType = (int)$userRow['user_type'];      // 5=CTO, 6=CEO
+$currentUserId   = (int)$userRow['user_id'];        // tmx_usuario.id
+$currentUserType = (int)$userRow['user_type'];      // 5/6
 $r_autorizador   = (int)($userRow['r_autorizador'] ?? 0);
 
-// ===============================
-// 4) Regla de acceso
-// ===============================
-$isFullView = ($currentUserType === 5 || $currentUserType === 6 || $r_autorizador === 1);
+// -------------------------------
+// 4) Regla de acceso (vista completa)
+// -------------------------------
+$isFullView = ($currentUserType === 5 || $currentUserType === 6 );
 
-// ===============================
+// -------------------------------
 // 5) Consulta principal
-//    - Unimos la info del auto
-//    - Sumamos el ÚLTIMO requerimiento de tipo 'reserva' por auto
-// ===============================
+//    - Une info del auto
+//    - Suma el último req de tipo 'reserva' por auto
+//    - Filtra por a.estatus (p.ej. 3 = reservado)
+//    - Si NO es vista completa: además filtra por r.id_usuario
+// -------------------------------
 $sql = "
   SELECT 
     a.id,
@@ -83,7 +109,7 @@ $sql = "
     r.id_usuario
   FROM mobility_solutions.tmx_auto a
   LEFT JOIN mobility_solutions.tmx_modelo mo          ON a.modelo   = mo.id
-  LEFT JOIN mobility_solutions.tmx_marca ma           ON a.marca    = ma.id
+  LEFT JOIN mobility_solutions.tmx_marca  ma          ON a.marca    = ma.id
   LEFT JOIN mobility_solutions.tmx_marca_auto m_auto  ON a.nombre   = m_auto.id
   LEFT JOIN mobility_solutions.tmx_sucursal s         ON a.sucursal = s.id
   /* Último requerimiento de tipo 'reserva' por auto */
@@ -101,29 +127,30 @@ $sql = "
 ";
 
 $params = [];
-$types  = "i"; // estatus primero
+$types  = "";
 
+/* bind de parámetros: primero estatus */
+$params[] = $estatus;
+$types   .= "i";
+
+/* si no es vista completa, filtra por r.id_usuario */
 if (!$isFullView) {
-  // Usuario normal: solo los autos donde el ÚLTIMO req de 'reserva'
-  // fue creado por ese usuario
   $sql .= " AND r.id_usuario = ? ";
-  $params[] = $estatus;
   $params[] = $currentUserId;
   $types   .= "i";
-} else {
-  // Vista completa: CTO/CEO/autorizador ven todos los reservados
-  $params[] = $estatus;
 }
 
 $sql .= " ORDER BY a.id DESC";
 
-// ===============================
+// -------------------------------
 // 6) Ejecutar consulta
-// ===============================
+// -------------------------------
 $stmt = $con->prepare($sql);
 if (!$stmt) {
   http_response_code(500);
   echo json_encode(["error" => "Error al preparar la consulta principal"]);
+  $stmtUser->close();
+  $con->close();
   exit;
 }
 
@@ -135,18 +162,21 @@ $data = [];
 if ($result && $result->num_rows > 0) {
   while ($row = $result->fetch_assoc()) {
     if (!$isFullView) {
-      // Por seguridad: no exponemos id_usuario a perfiles no-full
+      // No exponemos id_usuario a perfiles sin vista completa
       unset($row['id_usuario']);
     }
     $data[] = $row;
   }
 }
 
+// -------------------------------
+// 7) Respuesta
+// -------------------------------
 echo json_encode($data);
 
-// ===============================
-// 7) Cierre
-// ===============================
+// -------------------------------
+// 8) Cierre
+// -------------------------------
 $stmt->close();
 $stmtUser->close();
 $con->close();
