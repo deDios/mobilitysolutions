@@ -213,12 +213,13 @@ footer .hr3{ height:3px; border-color:gray;     background-color:gray }
 
 /* ===== TUNING MOBILE (≤700px) ===== */
 @media (max-width: 700px){
-  .div_carrusel{ padding-top: 96px; }
+  .div_carrusel{ padding-top: 100px; }
 
+   /* ↓ Baja la altura del slide: ajusta el 40vw a tu gusto (35–45) */
   #heroCarousel .carousel-item{
-    min-height: 0;
-    aspect-ratio: 16 / 9;   /* altura proporcional al ancho */
-    background: #f5f5f7;
+    min-height: 0;               
+    height: clamp(180px, 35vw, 260px);
+    background:#f5f5f7;
   }
 
   #heroCarousel .carousel-item > a,
