@@ -1,80 +1,69 @@
 <?php
 /**
- * API: Autos reservados con jerarquía (con depuración por pasos)
+ * API: Autos reservados con jerarquía
  * GET:
- *   - user_id  (int)  -> tmx_usuario.id
+ *   - user_id  (int)  -> id del usuario (tmx_usuario.id)  [OBLIGATORIO]
  *   - estatus  (int)  -> estatus del auto (default 3 = reservado)
- *   - debug    (int)  -> pasos de depuración:
- *                       1 = Ping del script + echo de GET (no valida nada)
- *                       2 = Valida parámetros mínimos
- *                       3 = Prueba conexión BD
- *                       4 = Busca rol del usuario
- *                       5 = Ejecuta consulta principal (modo normal)
+ *   - debug    (int)  -> 1..5 checkpoints de depuración (opcional)
+ *
+ * Vista completa:
+ *   - user_type 5 (CTO), 6 (CEO)  [y puedes añadir r_autorizador si quieres]
+ *
+ * Si NO tiene vista completa, solo devuelve autos cuyo **último** req 'reserva'
+ * fue hecho por ese usuario.
  */
 
 header('Content-Type: application/json; charset=utf-8');
+header('Cache-Control: no-cache, no-store, must-revalidate');
+header('Pragma: no-cache');
 
-// ---------- Depuración ----------
-$debug = isset($_GET['debug']) ? (int)$_GET['debug'] : 0;
-
-// PASO 1: confirmar que el archivo se carga y que Nginx lo encuentra
-if ($debug === 1) {
-  echo json_encode([
-    'ok'      => true,
-    'step'    => 1,
-    'message' => 'script reachable',
-    'raw_get' => $_GET
-  ]);
-  exit;
-}
-
-// ---------- 1) Parámetros ----------
+$debug   = isset($_GET['debug'])   ? (int)$_GET['debug']   : 0;
 $userId  = isset($_GET['user_id']) ? (int)$_GET['user_id'] : 0;
 $estatus = isset($_GET['estatus']) ? (int)$_GET['estatus'] : 3; // 3 = reservado
 
-if ($debug === 2) {
-  // Solo valida parámetros y muestra resultado
-  $valid = $userId > 0;
-  http_response_code($valid ? 200 : 400);
-  echo json_encode([
-    'ok'        => $valid,
-    'step'      => 2,
-    'message'   => $valid ? 'parámetros OK' : 'Falta el parámetro user_id (numérico)',
-    'user_id'   => $userId,
-    'estatus'   => $estatus
-  ]);
+// Helper para salidas de depuración
+function out($step, $extra = []) {
+  $base = [
+    'ok'      => true,
+    'step'    => $step,
+    'message' => [
+      1 => 'script reachable',
+      2 => 'db connected',
+      3 => 'user loaded',
+      4 => 'sql built',
+      5 => 'query executed',
+    ][$step] ?? 'debug'
+  ];
+  echo json_encode(array_merge($base, $extra), JSON_UNESCAPED_UNICODE);
   exit;
 }
 
+// ===== Paso 1: script reachable =====
+if ($debug === 1) {
+  out(1, ['raw_get' => $_GET]);
+}
+
+// Validación user_id
 if ($userId <= 0) {
   http_response_code(400);
-  echo json_encode(["error" => "Falta el parámetro user_id (numérico)"]);
+  echo json_encode(["ok"=>false,"step"=>1,"error"=>"Falta el parámetro user_id (numérico)"]);
   exit;
 }
 
-// ---------- 2) Conexión BD ----------
+// ===== Paso 2: conexión a BD =====
 $inc = include "../db/Conexion.php";
-if ($debug === 3) {
-  $ok = ($inc && isset($con) && $con);
-  http_response_code($ok ? 200 : 500);
-  echo json_encode([
-    'ok'      => $ok,
-    'step'    => 3,
-    'message' => $ok ? 'Conexión BD OK' : 'Falla en la conexión a la BD',
-  ]);
-  exit;
-}
-
 if (!$inc || !isset($con) || !$con) {
   http_response_code(500);
-  echo json_encode(["error" => "Falla en la conexión a la BD"]);
+  echo json_encode(["ok"=>false,"step"=>2,"error"=>"Falla en la conexión a la BD"]);
   exit;
 }
-if (function_exists('mysqli_set_charset')) {
-  mysqli_set_charset($con, "utf8mb4");
+if (function_exists('mysqli_set_charset')) { mysqli_set_charset($con, "utf8mb4"); }
+
+if ($debug === 2) {
+  out(2, ['db_connected'=>true, 'user_id'=>$userId, 'estatus'=>$estatus]);
 }
 
-// ---------- 3) Rol del usuario ----------
+// ===== Paso 3: cargar rol del usuario =====
 $sqlUser = "
   SELECT 
     acc.user_id,
@@ -89,10 +78,10 @@ $sqlUser = "
   WHERE acc.user_id = ?
   LIMIT 1
 ";
-
-if (!($stmtUser = $con->prepare($sqlUser))) {
+$stmtUser = $con->prepare($sqlUser);
+if (!$stmtUser) {
   http_response_code(500);
-  echo json_encode(["error" => "Error preparando consulta de usuario"]);
+  echo json_encode(["ok"=>false,"step"=>3,"error"=>"Error preparando consulta de usuario"]);
   exit;
 }
 $stmtUser->bind_param("i", $userId);
@@ -100,36 +89,33 @@ $stmtUser->execute();
 $resUser = $stmtUser->get_result();
 $userRow = $resUser ? $resUser->fetch_assoc() : null;
 
-if ($debug === 4) {
-  $found = (bool)$userRow;
-  http_response_code($found ? 200 : 404);
-  echo json_encode([
-    'ok'      => $found,
-    'step'    => 4,
-    'message' => $found ? 'Usuario encontrado' : 'Usuario no encontrado',
-    'user'    => $userRow
-  ]);
-  $stmtUser->close();
-  $con->close();
-  exit;
-}
-
 if (!$userRow) {
   http_response_code(404);
-  echo json_encode(["error" => "Usuario no encontrado"]);
+  echo json_encode(["ok"=>false,"step"=>3,"error"=>"Usuario no encontrado","user_id"=>$userId]);
   $stmtUser->close();
   $con->close();
   exit;
 }
 
-$currentUserId   = (int)$userRow['user_id'];        // tmx_usuario.id
-$currentUserType = (int)$userRow['user_type'];      // 5/6
+$currentUserId   = (int)$userRow['user_id'];   // tmx_usuario.id
+$currentUserType = (int)$userRow['user_type']; // 5/6
 $r_autorizador   = (int)($userRow['r_autorizador'] ?? 0);
 
-// Vista completa: CTO, CEO o autorizador
-$isFullView = ($currentUserType === 5 || $currentUserType === 6 || $r_autorizador === 1);
+// Ajusta aquí si quieres que autorizador también sea FullView:
+$isFullView = ($currentUserType === 5 || $currentUserType === 6 /* || $r_autorizador === 1 */);
 
-// ---------- 5) Consulta principal ----------
+if ($debug === 3) {
+  out(3, [
+    'user' => [
+      'user_id'       => $currentUserId,
+      'user_type'     => $currentUserType,
+      'r_autorizador' => $r_autorizador,
+      'is_full_view'  => $isFullView
+    ]
+  ]);
+}
+
+// ===== Paso 4: construir SQL =====
 $sql = "
   SELECT 
     a.id,
@@ -161,60 +147,62 @@ $sql = "
 ";
 
 $params = [];
-$types  = "";
-
-// bind de parámetros: primero estatus
+$types  = "i";         // estatus primero
 $params[] = $estatus;
-$types   .= "i";
 
-// si no es vista completa, filtra por r.id_usuario
 if (!$isFullView) {
   $sql .= " AND r.id_usuario = ? ";
+  $types  .= "i";
   $params[] = $currentUserId;
-  $types   .= "i";
 }
 
 $sql .= " ORDER BY a.id DESC";
 
-// Ejecutar
+if ($debug === 4) {
+  out(4, [
+    'is_full_view' => $isFullView,
+    'sql_preview'  => $sql,
+    'bind_types'   => $types,
+    'bind_params'  => $params
+  ]);
+}
+
+// ===== Paso 5: ejecutar consulta =====
 $stmt = $con->prepare($sql);
 if (!$stmt) {
   http_response_code(500);
-  echo json_encode(["error" => "Error al preparar la consulta principal"]);
-  $stmtUser->close();
-  $con->close();
-  exit;
+  echo json_encode(["ok"=>false,"step"=>5,"error"=>"Error al preparar la consulta principal"]);
+  $stmtUser->close(); $con->close(); exit;
 }
+
 $stmt->bind_param($types, ...$params);
 $stmt->execute();
 $result = $stmt->get_result();
 
+if ($debug === 5) {
+  $rows = [];
+  if ($result && $result->num_rows > 0) {
+    while ($r = $result->fetch_assoc()) { $rows[] = $r; }
+  }
+  out(5, [
+    'row_count' => count($rows),
+    'sample'    => array_slice($rows, 0, 5),
+    'note'      => $isFullView ? 'full rows returned' : 'id_usuario se oculta en salida normal'
+  ]);
+}
+
+// ===== Salida normal (sin debug) =====
 $data = [];
 if ($result && $result->num_rows > 0) {
   while ($row = $result->fetch_assoc()) {
-    if (!$isFullView) {
-      unset($row['id_usuario']); // ocultar para vista limitada
-    }
+    if (!$isFullView) { unset($row['id_usuario']); }
     $data[] = $row;
   }
 }
 
-// En modo debug=5 mostramos también metadatos útiles
-if ($debug === 5) {
-  echo json_encode([
-    'ok'         => true,
-    'step'       => 5,
-    'full_view'  => $isFullView,
-    'params'     => ['estatus'=>$estatus, 'user_id'=>$currentUserId],
-    'rows'       => count($data),
-    'data'       => $data
-  ]);
-} else {
-  // Modo normal
-  echo json_encode($data);
-}
+echo json_encode($data, JSON_UNESCAPED_UNICODE);
 
-// Cierre
+// ===== Cierre =====
 $stmt->close();
 $stmtUser->close();
 $con->close();
