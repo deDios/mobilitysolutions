@@ -13,8 +13,7 @@
  * Si NO tiene vista completa, solo se devuelven autos cuyo último
  * requerimiento de tipo 'reserva' pertenece a ese usuario.
  */
-
-header('Content-Type: application/json; charset=utf-8');
+header('Content-Type: application/json');
 
 // -------------------------------
 // 1) Parámetros de entrada
