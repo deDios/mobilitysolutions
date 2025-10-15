@@ -38,7 +38,6 @@ if ($user_type === 5 || $user_type === 6) {
     exit;
 }
 
-// 👇 Para todos los demás: construir recursivamente la jerarquía
 function obtenerSubordinadosRecursivos($con, $user_id) {
     $subordinados = [];
     $visitados = [];
