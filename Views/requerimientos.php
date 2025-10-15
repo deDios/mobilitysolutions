@@ -94,7 +94,7 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear">
     <div class="container">
-      <a class="navbar-brand" rel="nofollow" target="_blank" href="#"> Requerimientos </a>
+      <a class="navbar-brand" rel="nofollow" target="_blank" href="https://mobilitysolutionscorp.com/"> Mobility Solutions </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -102,29 +102,28 @@
 
         <ul class="navbar-nav ms-auto">
 
-          <li class="nav-item">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/Home.php">Inicio</a>
-          </li>
+            <?php
+                $self = basename($_SERVER['PHP_SELF']); // p.ej. "requerimientos.php"
+            ?>
+            <li class="nav-item">
+            <a class="nav-link <?= $self==='Home.php' ? 'active' : '' ?>" href="https://mobilitysolutionscorp.com/Views/Home.php">Inicio</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link <?= $self==='edicion_catalogo.php' ? '' : '' ?>" href="https://mobilitysolutionscorp.com/Views/edicion_catalogo.php">Catálogo</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link <?= $self==='requerimientos.php' ? 'active' : '' ?>" aria-current="<?= $self==='requerimientos.php' ? 'page' : '' ?>" href="https://mobilitysolutionscorp.com/Views/requerimientos.php">Requerimientos</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link <?= $self==='tareas.php' ? 'active' : '' ?>" href="https://mobilitysolutionscorp.com/Views/tareas.php">Tareas</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link <?= $self==='Autoriza.php' ? 'active' : '' ?>" href="https://mobilitysolutionscorp.com/Views/Autoriza.php">Aprobaciones</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link <?= $self==='asignacion.php' ? 'active' : '' ?>" href="https://mobilitysolutionscorp.com/Views/asignacion.php">Asignaciones</a>
+            </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/edicion_catalogo.php">Catálogo</a>
-          </li>
-
-         <li class="nav-item active">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/requerimientos.php">Requerimientos</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/tareas.php">Tareas</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/Autoriza.php">Aprobaciones</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/asignacion.php">Asignaciones</a> 
-          </li>
 
         </ul>
       </div>
