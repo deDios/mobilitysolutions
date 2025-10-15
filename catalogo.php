@@ -1,12 +1,11 @@
-
- <?php
+<?php
 // =================== INICIO PHP (arriba del <!DOCTYPE>) ===================
 $inc = include "db/Conexion.php";
 if (!$inc) { die("Sin conexión a la base"); }
 
-function esc($s){ 
-  global $con; 
-  return mysqli_real_escape_string($con, trim((string)$s)); 
+function esc($s){
+  global $con;
+  return mysqli_real_escape_string($con, trim((string)$s));
 }
 
 // --------- Lee GET con defaults ----------
@@ -18,12 +17,14 @@ $transmision  = $_GET['InputTransmision']  ?? 'Todos';
 $interior     = $_GET['InputInterior']     ?? 'Todos';
 $tipo         = $_GET['InputTipo']         ?? 'Todos';
 $pasajeros    = $_GET['InputPasajeros']    ?? 'Todos';
-$mn_mayor     = esc($_GET['InputMensualidad_Mayor'] ?? '');
-$mn_menor     = esc($_GET['InputMensualidad_Menor'] ?? '');
+
+/* NUEVO: rango de PRECIO (costo) */
+$precio_desde = esc($_GET['InputPrecio_Desde'] ?? '');
+$precio_hasta = esc($_GET['InputPrecio_Hasta'] ?? '');
 
 // --------- WHERE dinámico reutilizable ----------
 function buildWhere(array $exclude = []){
-  global $buscar,$marca,$anio,$color,$transmision,$interior,$tipo,$pasajeros,$mn_mayor,$mn_menor;
+  global $buscar,$marca,$anio,$color,$transmision,$interior,$tipo,$pasajeros,$precio_desde,$precio_hasta;
   $w = ["1=1"];
   if ($buscar !== '')                                   $w[] = "search_key LIKE '%$buscar%'";
   if ($marca !== 'Todos'       && !in_array('marca',$exclude))         $w[] = "marca = '".esc($marca)."'";
@@ -32,8 +33,9 @@ function buildWhere(array $exclude = []){
   if ($interior !== 'Todos'    && !in_array('interior',$exclude))      $w[] = "interior = '".esc($interior)."'";
   if ($tipo !== 'Todos'        && !in_array('tipo',$exclude))          $w[] = "c_type = '".esc($tipo)."'";
   if ($anio !== 'Todos'        && !in_array('anio',$exclude))          $w[] = "nombre LIKE '%".esc($anio)."%'";
-  if ($mn_mayor !== ''         && !in_array('mn_mayor',$exclude))       $w[] = "mensualidad >= '".esc($mn_mayor)."'";
-  if ($mn_menor !== ''         && !in_array('mn_menor',$exclude))       $w[] = "mensualidad <= '".esc($mn_menor)."'";
+  /* NUEVO: rango de PRECIO (costo) */
+  if ($precio_desde !== ''     && !in_array('precio_desde',$exclude))  $w[] = "costo >= '".esc($precio_desde)."'";
+  if ($precio_hasta !== ''     && !in_array('precio_hasta',$exclude))  $w[] = "costo <= '".esc($precio_hasta)."'";
   if ($pasajeros !== 'Todos'   && !in_array('pasajeros',$exclude))      $w[] = ($pasajeros==='6' ? "pasajeros > 6" : "pasajeros = '".esc($pasajeros)."'");
   return implode(' AND ', $w);
 }
@@ -51,13 +53,13 @@ function facet($col, array $exclude = []){
   return mysqli_query($con,$sql);
 }
 
-// Facetas (para poblar selects dinámicos si los necesitas)
+// Facetas
 $facMarca    = facet('marca', ['marca']);
 $facColor    = facet('color', ['color']);
 $facTrans    = facet('transmision', ['transmision']);
 $facInterior = facet('interior', ['interior']);
 $facTipo     = facet('c_type', ['tipo']);
-$facPax      = facet('CASE WHEN pasajeros>6 THEN "7+" ELSE CAST(pasajeros AS CHAR) END', ['pasajeros']);
+$facPax      = facet('CASE WHEN pasajeros>6 THEN \"7+\" ELSE CAST(pasajeros AS CHAR) END', ['pasajeros']);
 
 // Faceta de años (si el año está dentro de "nombre")
 $years = range(2016, 2025);
@@ -100,7 +102,7 @@ $sqlData = "SELECT id,nombre,modelo,marca,mensualidad,costo,sucursal,estatus,upd
 $data = mysqli_query($con,$sqlData);
 
 // Para mantener filtros en los links (base sin 'p')
-$qs = $_GET; 
+$qs = $_GET;
 unset($qs['p']);
 $baseQS = '?'.http_build_query($qs);
 
@@ -112,8 +114,6 @@ function url_with($key, $val){
 }
 // =================== FIN PHP INICIAL ===================
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -330,13 +330,16 @@ function url_with($key, $val){
                 <div id="fPrecio" class="accordion-collapse collapse" aria-labelledby="fPrecioH">
                   <div class="accordion-body">
                     <div class="pt-1">
-                      <span class="input-group-text">$ Mayor a: MX/mensuales</span>
-                      <input id="InputMensualidad_Mayor" type="text" pattern="[0-9]+" class="form-control" name="InputMensualidad_Mayor" value="<?= htmlspecialchars($_GET['InputMensualidad_Mayor'] ?? '') ?>">
+                      <span class="input-group-text">Precio desde (MXN)</span>
+                      <input id="InputPrecio_Desde" type="number" min="0" step="1000" class="form-control"
+                            name="InputPrecio_Desde" value="<?= htmlspecialchars($_GET['InputPrecio_Desde'] ?? '') ?>">
                     </div>
                     <div class="pt-3">
-                      <span class="input-group-text">$ Menor a: MX/mensuales</span>
-                      <input id="InputMensualidad_Menor" type="text" pattern="[0-9]+" class="form-control" name="InputMensualidad_Menor" value="<?= htmlspecialchars($_GET['InputMensualidad_Menor'] ?? '') ?>">
+                      <span class="input-group-text">Precio hasta (MXN)</span>
+                      <input id="InputPrecio_Hasta" type="number" min="0" step="1000" class="form-control"
+                            name="InputPrecio_Hasta" value="<?= htmlspecialchars($_GET['InputPrecio_Hasta'] ?? '') ?>">
                     </div>
+
                     <div class="text-end pt-3">
                       <button class="btn btn-link" type="submit" name="enviar">Aplicar filtros</button>
                     </div>
