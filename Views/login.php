@@ -33,6 +33,9 @@
             </div>
             <button type="submit">Entrar</button>
             <p class="forgot-password"><a href="#">¿Olvidaste tu contraseña?</a></p>
+
+            <!-- (Opcional) segundo enlace abajo del formulario -->
+            <p class="back-home-inline"><a href="https://mobilitysolutionscorp.com/">Regresar al inicio</a></p>
         </form>
     </div>
 </body>
