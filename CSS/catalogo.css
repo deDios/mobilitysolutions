@@ -413,6 +413,54 @@ footer.foo{
   z-index: 0;
 }
 
+/* ====== PAGINADOR (estilo brand) ====== */
+:root{
+  --brand-yellow: #FFC00A;
+  --brand-dark:   #1b1e21;
+}
+
+.lista_item .pagination {
+  gap: 8px;
+}
+
+.lista_item .pagination .page-link{
+  background:#fff;
+  color:#374151;                 /* gris oscuro legible */
+  border:1px solid #e5e7eb;      /* gris claro */
+  border-radius:10px;            /* pill suave */
+  padding:6px 12px;
+  min-width: 38px;               /* tamaño mínimo homogéneo */
+  text-align:center;
+  box-shadow:0 2px 6px rgba(0,0,0,.06);
+  transition:all .18s ease;
+}
+
+.lista_item .pagination .page-link:hover{
+  border-color: var(--brand-yellow);
+  color:#111;
+  background: #fff8da;           /* amarillo MUY claro al hover */
+}
+
+.lista_item .page-item.active .page-link{
+  background: var(--brand-yellow);
+  border-color: var(--brand-yellow);
+  color:#111;                    /* texto oscuro sobre amarillo */
+  box-shadow:0 4px 10px rgba(255,192,10,.35);
+}
+
+.lista_item .page-item.disabled .page-link{
+  background:#f3f4f6;
+  color:#9ca3af;
+  border-color:#e5e7eb;
+  box-shadow:none;
+  cursor:not-allowed;
+}
+
+/* Enfoque accesible */
+.lista_item .pagination .page-link:focus{
+  outline:0;
+  box-shadow:0 0 0 3px rgba(255,192,10,.35);
+}
 
 /* --------------------------Termina boton ------------------------------ */
 
@@ -437,6 +485,7 @@ footer.foo{
         width: 94%;
         background-color: white;
     }
+    
     header{
         flex-direction: column;
     }
@@ -555,5 +604,10 @@ footer.foo{
         background: -webkit-linear-gradient(left, #FFC00A 70%, #1b1e21 26%);
         background: linear-gradient(45deg, #FFC00A 70%, #1b1e21 26%);
       }
+    .lista_item .pagination .page-link{
+    padding:4px 10px;
+    min-width: 34px;
+    border-radius:8px;
+  }
 
 }
