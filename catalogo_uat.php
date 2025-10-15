@@ -188,7 +188,7 @@ function url_with($key, $val){
 
         <div class="btn-group" role="group" aria-label="Acciones de filtros">
             <a class="btn btn-secondary btn-lg" data-bs-toggle="collapse" href="#collapseFiltros"
-            role="button" aria-expanded="true" aria-controls="collapseFiltros">
+            role="button" aria-expanded="false" aria-controls="collapseFiltros">
             <i class="fa fa-filter"></i>
             </a>
 
@@ -213,7 +213,7 @@ function url_with($key, $val){
         </div>
 
 
-        <div class="collapse show py-2" id="collapseFiltros">
+        <div class="collapse py-2" id="collapseFiltros">
           <div class="lay_ser">
             <h5 class="fw-light py-2">Filtros</h5>
             <hr class="mt-2 mb-3"/>
@@ -399,8 +399,8 @@ function url_with($key, $val){
     <!-- Paginador -->
     <?php if ($pages > 1): ?>
     <?php
-        // ventana de 4 botones
-        $window = 4;
+        // ventana de 5 botones
+        $window = 5;
         $half   = (int)floor($window/2);
         $start  = max(1, $page - $half);
         $end    = min($pages, $start + $window - 1);

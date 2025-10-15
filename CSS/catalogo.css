@@ -413,17 +413,6 @@ footer.foo{
   z-index: 0;
 }
 
-/* Paginación “pegajosa” al borde inferior del viewport */
-.lista_item > nav[aria-label="Paginación"]{
-  position: sticky;
-  bottom: 5px;       /* se queda pegada al borde inferior mientras haces scroll */
-  z-index: 5;
-  background: #fff;
-  border: 1px solid rgba(0,0,0,.08);
-  border-radius: 10px;
-  box-shadow: 0 6px 18px rgba(0,0,0,.12);
-}
-
 
 /* --------------------------Termina boton ------------------------------ */
 
