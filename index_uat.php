@@ -219,7 +219,7 @@
           if ($inc){
             $q = "SELECT Id, Nombre, Dias, Descripcion 
                   FROM mobility_solutions.tmx_resenas 
-                  ORDER BY RAND() LIMIT 6;";
+                  ORDER BY RAND() LIMIT 100;";
             $r = mysqli_query($con,$q);
             if ($r){
               while($row = mysqli_fetch_assoc($r)){

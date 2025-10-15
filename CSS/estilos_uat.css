@@ -35,13 +35,21 @@ a{ color:#0a0a0a; text-decoration:none }
 .div_carrusel{ padding-top:150px }
 
 /* NUEVO: el “lienzo” del slide toma altura y centra el contenido */
+/* Mantén el item base sin tocar el display que maneja Bootstrap */
 #heroCarousel .carousel-item{
-  display:flex;               /* centra el contenido vertical */
-  align-items:center;
-  justify-content:center;
   min-height: clamp(460px, 66vh, 820px);
   background:#f5f5f7;
 }
+
+/* Solo los visibles (activos o en transición) se centran con flex */
+#heroCarousel .carousel-item.active,
+#heroCarousel .carousel-item-next,
+#heroCarousel .carousel-item-prev{
+  display:flex;                /* aquí sí */
+  align-items:center;
+  justify-content:center;
+}
+
 #heroCarousel .carousel-item > a,
 #heroCarousel .carousel-item > img{
   width:100%;
@@ -221,7 +229,7 @@ footer .hr3{ height:3px; border-color:gray;     background-color:gray }
     padding-top: 110px;         /* también un poco más en móvil */
   }
    #heroCarousel .carousel-item{
-    min-height: clamp(300px, 52vh, 520px); /* en lugar de height */
+    min-height: clamp(120px, 52vh, 520px); /* en lugar de height */
   }
   /* en móvil seguimos mostrando imagen completa */
   #heroCarousel .carousel-item img{
