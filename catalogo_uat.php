@@ -3,9 +3,12 @@
 $inc = include "db/Conexion.php";
 if (!$inc) { die("Sin conexión a la base"); }
 
-function esc($s){ global $con; return mysqli_real_escape_string($con, trim((string)$s)); }
+function esc($s){ 
+  global $con; 
+  return mysqli_real_escape_string($con, trim((string)$s)); 
+}
 
-// Lee GET con defaults
+// --------- Lee GET con defaults ----------
 $buscar       = isset($_GET['buscar']) ? esc($_GET['buscar']) : '';
 $marca        = $_GET['InputMarca']        ?? 'Todos';
 $anio         = $_GET['InputAnio']         ?? 'Todos';
@@ -17,24 +20,24 @@ $pasajeros    = $_GET['InputPasajeros']    ?? 'Todos';
 $mn_mayor     = esc($_GET['InputMensualidad_Mayor'] ?? '');
 $mn_menor     = esc($_GET['InputMensualidad_Menor'] ?? '');
 
-// Construye WHERE base según filtros actuales
+// --------- WHERE dinámico reutilizable ----------
 function buildWhere(array $exclude = []){
   global $buscar,$marca,$anio,$color,$transmision,$interior,$tipo,$pasajeros,$mn_mayor,$mn_menor;
   $w = ["1=1"];
-  if ($buscar !== '')             $w[] = "search_key LIKE '%$buscar%'";
-  if ($marca !== 'Todos' && !in_array('marca',$exclude))            $w[] = "marca = '".esc($marca)."'";
-  if ($color !== 'Todos' && !in_array('color',$exclude))            $w[] = "color = '".esc($color)."'";
-  if ($transmision !== 'Todos' && !in_array('transmision',$exclude))$w[] = "transmision = '".esc($transmision)."'";
-  if ($interior !== 'Todos' && !in_array('interior',$exclude))      $w[] = "interior = '".esc($interior)."'";
-  if ($tipo !== 'Todos' && !in_array('tipo',$exclude))              $w[] = "c_type = '".esc($tipo)."'";
-  if ($anio !== 'Todos' && !in_array('anio',$exclude))              $w[] = "nombre LIKE '%".esc($anio)."%'";
-  if ($mn_mayor !== '' && !in_array('mn_mayor',$exclude))           $w[] = "mensualidad >= '$mn_mayor'";
-  if ($mn_menor !== '' && !in_array('mn_menor',$exclude))           $w[] = "mensualidad <= '$mn_menor'";
-  if ($pasajeros !== 'Todos' && !in_array('pasajeros',$exclude))    $w[] = ($pasajeros==='6' ? "pasajeros > 6" : "pasajeros = '".esc($pasajeros)."'");
+  if ($buscar !== '')                                   $w[] = "search_key LIKE '%$buscar%'";
+  if ($marca !== 'Todos'       && !in_array('marca',$exclude))         $w[] = "marca = '".esc($marca)."'";
+  if ($color !== 'Todos'       && !in_array('color',$exclude))         $w[] = "color = '".esc($color)."'";
+  if ($transmision !== 'Todos' && !in_array('transmision',$exclude))   $w[] = "transmision = '".esc($transmision)."'";
+  if ($interior !== 'Todos'    && !in_array('interior',$exclude))      $w[] = "interior = '".esc($interior)."'";
+  if ($tipo !== 'Todos'        && !in_array('tipo',$exclude))          $w[] = "c_type = '".esc($tipo)."'";
+  if ($anio !== 'Todos'        && !in_array('anio',$exclude))          $w[] = "nombre LIKE '%".esc($anio)."%'";
+  if ($mn_mayor !== ''         && !in_array('mn_mayor',$exclude))       $w[] = "mensualidad >= '".esc($mn_mayor)."'";
+  if ($mn_menor !== ''         && !in_array('mn_menor',$exclude))       $w[] = "mensualidad <= '".esc($mn_menor)."'";
+  if ($pasajeros !== 'Todos'   && !in_array('pasajeros',$exclude))      $w[] = ($pasajeros==='6' ? "pasajeros > 6" : "pasajeros = '".esc($pasajeros)."'");
   return implode(' AND ', $w);
 }
 
-// Helper de faceta genérico (SELECT col, COUNT(*) ...)
+// --------- Helper de facetas ----------
 function facet($col, array $exclude = []){
   global $con;
   $w = buildWhere($exclude);
@@ -47,52 +50,70 @@ function facet($col, array $exclude = []){
   return mysqli_query($con,$sql);
 }
 
-// Facetas
-$facMarca   = facet('marca', ['marca']);
-$facColor   = facet('color', ['color']);
-$facTrans   = facet('transmision', ['transmision']);
-$facInterior= facet('interior', ['interior']);
-$facTipo    = facet('c_type', ['tipo']);
-$facPax     = facet('CASE WHEN pasajeros>6 THEN "7+" ELSE CAST(pasajeros AS CHAR) END', ['pasajeros']); // mapeo 7+
+// Facetas (para poblar selects dinámicos si los necesitas)
+$facMarca    = facet('marca', ['marca']);
+$facColor    = facet('color', ['color']);
+$facTrans    = facet('transmision', ['transmision']);
+$facInterior = facet('interior', ['interior']);
+$facTipo     = facet('c_type', ['tipo']);
+$facPax      = facet('CASE WHEN pasajeros>6 THEN "7+" ELSE CAST(pasajeros AS CHAR) END', ['pasajeros']);
 
-// Faceta “Año”: si el año está en nombre, probamos por existencia
+// Faceta de años (si el año está dentro de "nombre")
 $years = range(2016, 2025);
 $facYears = [];
 foreach ($years as $y){
-  $w = buildWhere(['anio']); // excluye el propio año
+  $w = buildWhere(['anio']);
   $sqlY = "SELECT COUNT(*) c FROM mobility_solutions.v_catalogo_active
            WHERE $w AND nombre LIKE '%$y%'";
-  $c = mysqli_fetch_assoc(mysqli_query($con,$sqlY))['c'] ?? 0;
-  if ($c>0) $facYears[] = ['val'=>$y, 'c'=>$c];
+  $resY = mysqli_query($con,$sqlY);
+  $rowY = $resY ? mysqli_fetch_assoc($resY) : ['c'=>0];
+  if (($rowY['c'] ?? 0) > 0) $facYears[] = ['val'=>$y, 'c'=>(int)$rowY['c']];
+  if ($resY) mysqli_free_result($resY);
 }
 
-// Paginación
+// --------- Paginación (9 por página) ----------
 $perPage = 9;
 $page    = max(1, (int)($_GET['p'] ?? 1));
 $offset  = ($page-1) * $perPage;
 
-// Total
 $WHERE = buildWhere();
+
+// Total de filas
 $sqlCount = "SELECT COUNT(*) AS total
              FROM mobility_solutions.v_catalogo_active
              WHERE $WHERE";
-$tot = (int) (mysqli_fetch_assoc(mysqli_query($con,$sqlCount))['total'] ?? 0);
+$resCount = mysqli_query($con,$sqlCount);
+$rowCount = $resCount ? mysqli_fetch_assoc($resCount) : ['total'=>0];
+if ($resCount) mysqli_free_result($resCount);
+
+$tot   = (int)($rowCount['total'] ?? 0);
 $pages = max(1, (int)ceil($tot / $perPage));
 if ($page > $pages){ $page = $pages; $offset = ($page-1)*$perPage; }
 
-// Datos página
-$sqlData = "SELECT id,nombre,modelo,marca,mensualidad,costo,sucursal,estatus
+// Datos de la página actual
+$sqlData = "SELECT id,nombre,modelo,marca,mensualidad,costo,sucursal,estatus,updated_at
             FROM mobility_solutions.v_catalogo_active
             WHERE $WHERE
             ORDER BY estatus ASC, updated_at DESC, id DESC
             LIMIT $perPage OFFSET $offset";
 $data = mysqli_query($con,$sqlData);
 
-// Para mantener filtros en los links
-$qs = $_GET; unset($qs['p']);
+// Para mantener filtros en los links (base sin 'p')
+$qs = $_GET; 
+unset($qs['p']);
 $baseQS = '?'.http_build_query($qs);
+
+// Helper para construir URL conservando filtros
+function url_with($key, $val){
+  $params = $_GET;
+  $params[$key] = $val;
+  return '?' . http_build_query($params);
+}
 // =================== FIN PHP INICIAL ===================
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -362,25 +383,56 @@ $baseQS = '?'.http_build_query($qs);
     <?php endwhile; ?>
 
     <!-- Paginador -->
-    <?php if ($pages>1): ?>
-      <nav class="mt-3 d-flex justify-content-center" aria-label="Paginación">
-        <ul class="pagination pagination-sm">
-          <?php $prev=max(1,$page-1); $next=min($pages,$page+1); ?>
-          <li class="page-item <?= $page==1?'disabled':'' ?>">
-            <a class="page-link" href="<?= $baseQS.'&p='.$prev ?>" aria-label="Anterior">&lt;</a>
-          </li>
-          <?php for($i=1;$i<=$pages;$i++): ?>
-            <li class="page-item <?= $i==$page?'active':'' ?>">
-              <a class="page-link" href="<?= $baseQS.'&p='.$i ?>"><?= $i ?></a>
+    <?php if ($pages > 1): ?>
+    <?php
+        // ventana de 5 botones
+        $window = 5;
+        $half   = (int)floor($window/2);
+        $start  = max(1, $page - $half);
+        $end    = min($pages, $start + $window - 1);
+        // si estamos al final, corre la ventana para mantener 5
+        $start  = max(1, min($start, $pages - $window + 1));
+    ?>
+    <nav class="mt-3 d-flex justify-content-center" aria-label="Paginación">
+        <ul class="pagination pagination-sm justify-content-center flex-wrap">
+        <!-- Primera / Anterior -->
+        <li class="page-item <?= $page <= 1 ? 'disabled' : '' ?>">
+            <a class="page-link" href="<?= url_with('p', 1) ?>" aria-label="Primera">«</a>
+        </li>
+        <li class="page-item <?= $page <= 1 ? 'disabled' : '' ?>">
+            <a class="page-link" href="<?= url_with('p', max(1, $page-1)) ?>" aria-label="Anterior">‹</a>
+        </li>
+
+        <!-- Elipsis izquierda -->
+        <?php if ($start > 1): ?>
+            <li class="page-item disabled"><span class="page-link">…</span></li>
+        <?php endif; ?>
+
+        <!-- Números visibles -->
+        <?php for ($i = $start; $i <= $end; $i++): ?>
+            <li class="page-item <?= $i == $page ? 'active' : '' ?>">
+            <a class="page-link" href="<?= url_with('p', $i) ?>"><?= $i ?></a>
             </li>
-          <?php endfor; ?>
-          <li class="page-item <?= $page==$pages?'disabled':'' ?>">
-            <a class="page-link" href="<?= $baseQS.'&p='.$next ?>" aria-label="Siguiente">&gt;</a>
-          </li>
+        <?php endfor; ?>
+
+        <!-- Elipsis derecha -->
+        <?php if ($end < $pages): ?>
+            <li class="page-item disabled"><span class="page-link">…</span></li>
+        <?php endif; ?>
+
+        <!-- Siguiente / Última -->
+        <li class="page-item <?= $page >= $pages ? 'disabled' : '' ?>">
+            <a class="page-link" href="<?= url_with('p', min($pages, $page+1)) ?>" aria-label="Siguiente">›</a>
+        </li>
+        <li class="page-item <?= $page >= $pages ? 'disabled' : '' ?>">
+            <a class="page-link" href="<?= url_with('p', $pages) ?>" aria-label="Última">»</a>
+        </li>
         </ul>
-      </nav>
+    </nav>
     <?php endif; ?>
+
   </div><!-- /lista_item -->
+
 </div><!-- /container-items -->
 
 <script>

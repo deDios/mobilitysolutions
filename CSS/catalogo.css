@@ -388,6 +388,8 @@ footer .hr3 {
     height: 3px;
     border-color: gray;
 }
+.pagination { gap: 6px; }
+.pagination .page-link { min-width: 36px; text-align:center; }
 
 /* --------------------------Termina boton ------------------------------ */
 
