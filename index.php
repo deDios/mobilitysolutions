@@ -177,7 +177,7 @@ function timeAgoEsFromDays(int $dias): string {
           </div>
           <script type="module">
             import { CountUp } from '/js/countup.js/dist/countUP.min.js';
-            const options = { duration: 2.2, prefix: '+' };
+            const options = { duration: 20, prefix: '+' };
             const demo = new CountUp('count-up-container-top', 1356, options);
             if (!demo.error) demo.start(); else console.error(demo.error);
           </script>
@@ -190,7 +190,7 @@ function timeAgoEsFromDays(int $dias): string {
           </div>
           <script type="module">
             import { CountUp } from '/js/countup.js/dist/countUP.min.js';
-            const options2 = { duration: 2.2, prefix: '+' };
+            const options2 = { duration: 20, prefix: '+' };
             const demo2 = new CountUp('count-up-container-top2', 356, options2);
             if (!demo2.error) demo2.start(); else console.error(demo2.error);
           </script>
@@ -203,7 +203,7 @@ function timeAgoEsFromDays(int $dias): string {
           </div>
           <script type="module">
             import { CountUp } from '/js/countup.js/dist/countUP.min.js';
-            const options3 = { duration: 2.2, prefix: '+' };
+            const options3 = { duration: 20, prefix: '+' };
             const demo3 = new CountUp('count-up-container-top3', 10, options3);
             if (!demo3.error) demo3.start(); else console.error(demo3.error);
           </script>
