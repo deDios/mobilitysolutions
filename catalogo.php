@@ -94,7 +94,7 @@ if ($page > $pages){ $page = $pages; $offset = ($page-1)*$perPage; }
 $sqlData = "SELECT id,nombre,modelo,marca,mensualidad,costo,sucursal,estatus,updated_at
             FROM mobility_solutions.v_catalogo_active
             WHERE $WHERE
-            ORDER BY RAND()
+            ORDER BY estatus ASC, updated_at DESC, id DESC
             LIMIT $perPage OFFSET $offset";
 $data = mysqli_query($con,$sqlData);
 
