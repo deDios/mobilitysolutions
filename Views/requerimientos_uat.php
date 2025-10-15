@@ -240,6 +240,34 @@ if (isset($_POST['verificar'])) {
 
     <!-- Contenido -->
     <section class="col-12 col-lg-9">
+      <?php elseif ($selected == '3'): ?>
+        <!-- ============ REQ 3: MIS REQUERIMIENTOS ============ -->
+        <div class="card ms-card shadow-sm">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <span class="fw-semibold"><i class="fa fa-list-alt me-2"></i> Mis requerimientos</span>
+            <button type="button" class="btn btn-outline-dark btn-sm" onclick="cargarReq3()">
+              <i class="fa fa-refresh me-1"></i> Actualizar
+            </button>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table id="tablaReq3" class="table table-hover align-middle" style="width:100%">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Auto</th>
+                    <th>Tipo</th>
+                    <th>Estado</th>
+                    <th>Comentario</th>
+                    <th>Fecha</th>
+                  </tr>
+                </thead>
+                <tbody><!-- llenado por JS --></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
       <?php if ($selected == '1'): ?>
         <!-- ============ RESERVAR ============ -->
         <div class="card ms-card shadow-sm">
@@ -318,34 +346,6 @@ if (isset($_POST['verificar'])) {
               </div>
             </div>
             <div id="listaAutos" class="ms-lista-autos"></div>
-          </div>
-        </div>
-
-      <?php elseif ($selected == '3'): ?>
-        <!-- ============ REQ 3: MIS REQUERIMIENTOS ============ -->
-        <div class="card ms-card shadow-sm">
-          <div class="card-header d-flex align-items-center justify-content-between">
-            <span class="fw-semibold"><i class="fa fa-list-alt me-2"></i> Mis requerimientos</span>
-            <button type="button" class="btn btn-outline-dark btn-sm" onclick="cargarReq3()">
-              <i class="fa fa-refresh me-1"></i> Actualizar
-            </button>
-          </div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table id="tablaReq3" class="table table-hover align-middle" style="width:100%">
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Auto</th>
-                    <th>Tipo</th>
-                    <th>Estado</th>
-                    <th>Comentario</th>
-                    <th>Fecha</th>
-                  </tr>
-                </thead>
-                <tbody><!-- llenado por JS --></tbody>
-              </table>
-            </div>
           </div>
         </div>
 
