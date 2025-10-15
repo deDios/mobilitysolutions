@@ -15,6 +15,9 @@
 
   <!-- Font Awesome (si usas clases fa-*) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="CSS/estilos_uat.css?v=2">
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 
 
@@ -203,7 +206,7 @@
     <!-- IZQUIERDA: Frase individual que cambia -->
     <div class="col-12 col-lg-6">
       <figure class="motivation-hero h-100 shadow-sm">
-        <blockquote id="mot-quote" class="quote-big in">
+        <blockquote id="mot-quote" class="quote-big in" aria-live="polite">
           Gracias por elegirnos para comenzar un nuevo capítulo sobre ruedas. En cada auto que entregamos, prometemos emociones, aventuras y un camino lleno de experiencias inolvidables. ¡Bienvenidos a tu próximo viaje!
         </blockquote>
         <figcaption class="visually-hidden">Frases motivadoras sobre seminuevos</figcaption>

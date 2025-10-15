@@ -114,9 +114,6 @@ footer .hr1{ height:3px; border-color:var(--yellow); background-color:var(--yell
 footer .hr2{ height:3px; border-color:black;    background-color:black }
 footer .hr3{ height:3px; border-color:gray;     background-color:gray }
 
-/* Tipografía elegante para la frase (opcional) */
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
-
 /* Frase: layout consistente en todos los navegadores */
 .motivation-hero{
   background:#fff;
@@ -133,19 +130,24 @@ footer .hr3{ height:3px; border-color:gray;     background-color:gray }
   text-align:left;             /* como tu mock (izquierda) */
 }
 
+:root { --serif: "Merriweather", Georgia, "Times New Roman", Times, serif; }
+
 .quote-big{
-  font-family: "Merriweather", Georgia, serif;
-  font-weight:700;
-  color:#1f2937;
+  font-family: var(--serif);
+  font-weight: 700;
+  color: #1f2937;
   font-size: clamp(22px, 2.2vw + 16px, 36px);
-  line-height:1.35;
-  letter-spacing:.1px;
-  margin:0;
-  max-width: 34ch;             /* un poco más amplio que 30ch para Firefox */
-  opacity:0;
+  line-height: 1.35;
+  letter-spacing: .1px;
+  margin: 0;
+  max-width: 34ch;                 /* control de ancho */
+  opacity: 0;                      /* estado inicial para el fade */
   transform: translateY(8px);
   transition: opacity .5s ease, transform .5s ease;
 }
+.quote-big.in{ opacity:1; transform: translateY(0); }
+
+
 .quote-big.in{ opacity:1; transform: translateY(0); }
 
 /* Dots tipo pastilla anclados abajo-derecha */
