@@ -53,13 +53,10 @@ $r_analista     = (int)($userRow['r_analista'] ?? 0);
 
 // ===== 4) Reglas de acceso =====
 //  - CEO/CTO: vista full
-//  - r_autorizador (por ejemplo directores): vista full
 //  - resto: solo sus reservas
-$isFullView = in_array($userType, ['CEO','CTO'], true) || $r_autorizador === 1;
+$isFullView = in_array($userType, ['CEO','CTO'], true);
 
 // ===== 5) Parámetros opcionales =====
-//    Puedes permitir override del estatus por query string (?estatus=3)
-//    pero por defecto usamos 3 (reservado) como en tu API original.
 $estatus = isset($_GET['estatus']) ? (int)$_GET['estatus'] : 3;
 
 // ===== 6) SQL base =====
