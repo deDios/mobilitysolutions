@@ -1,3 +1,25 @@
+<?php
+function timeAgoEsFromDays(int $dias): string {
+  if ($dias <= 0) return 'hoy';
+  if ($dias === 1) return 'ayer';
+  if ($dias < 7) return "hace $dias días";
+
+  $semanas = intdiv($dias, 7);
+  if ($semanas < 4) {
+    return 'hace ' . $semanas . ' ' . ($semanas === 1 ? 'semana' : 'semanas');
+  }
+
+  // A partir de 4 semanas, mostrar meses
+  $meses = max(1, intdiv($dias, 30)); // max(1, …) para que 28–30 días muestren "1 mes"
+  if ($meses < 12) {
+    return 'hace ' . $meses . ' ' . ($meses === 1 ? 'mes' : 'meses');
+  }
+
+  // A partir de 12 meses, mostrar años
+  $anios = intdiv($dias, 365);
+  return 'hace ' . $anios . ' ' . ($anios === 1 ? 'año' : 'años');
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -236,7 +258,7 @@
                         <div class="flex-grow-1">
                           <h5 class="mb-0"><?= htmlspecialchars($Nombre) ?></h5>
                           <div class="stars" aria-label="5 estrellas">★★★★★</div>
-                          <small class="text-muted"><?= $Dias ?> días atrás</small>
+                          <small class="text-muted"><?= timeAgoEsFromDays((int)$Dias) ?></small>
                         </div>
                       </div>
                       <p class="mb-3 text-secondary lh-base"><?= nl2br(htmlspecialchars($Desc)) ?></p>

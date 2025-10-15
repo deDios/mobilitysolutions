@@ -32,7 +32,7 @@ ul.social-network li{ display:inline-block; margin:0 5px; width:32px; height:32p
 a{ color:#0a0a0a; text-decoration:none }
 
 /* ====== CARRUSEL ====== */
-.div_carrusel{ padding-top:150px }
+.div_carrusel{ padding-top:120px }
 
 /* NUEVO: el “lienzo” del slide toma altura y centra el contenido */
 /* Mantén el item base sin tocar el display que maneja Bootstrap */
