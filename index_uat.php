@@ -196,71 +196,98 @@
   </div>
 
   <!-- Reseña destacada (testimonial) -->
-  <section class="container my-5">
-    <div id="reviewCarousel" class="carousel slide testimonial" data-bs-ride="carousel" data-bs-interval="8000">
-      <div class="carousel-inner">
-        <?php 
-          $inc = include "db/Conexion.php";
-          if ($inc){
-            $query = "SELECT Id, Nombre, Dias, Descripcion 
-                      FROM mobility_solutions.tmx_resenas 
-                      ORDER BY RAND() LIMIT 6;";
-            $result = mysqli_query($con,$query);
-            $isFirst = true;
-            if ($result){
-              while($row = mysqli_fetch_assoc($result)){
-                $id = (int)$row['Id'];
-                $Nombre = $row['Nombre'];
-                $Dias = (int)$row['Dias'];
-                $Descripcion = $row['Descripcion'];
-                ?>
-                <div class="carousel-item <?= $isFirst ? 'active' : '' ?>">
-                  <div class="row justify-content-center">
-                    <div class="col-12 col-md-10 col-lg-8">
-                      <div class="card testimonial-card shadow-sm border-0">
-                        <div class="card-body p-4">
-                          <div class="d-flex align-items-center gap-3 mb-2">
-                            <div class="position-relative reviewer-avatar">
-                              <img src="Imagenes/Perfil_resena/Img<?= $id ?>.jpg" class="rounded-circle" alt="Foto <?= htmlspecialchars($Nombre) ?>">
-                              <img src="Imagenes/logo_google.jpg" class="logo-mini" alt="Google">
-                            </div>
-                            <div class="flex-grow-1">
-                              <h5 class="mb-0"><?= htmlspecialchars($Nombre) ?></h5>
-                              <div class="stars" aria-label="5 estrellas">★★★★★</div>
-                              <small class="text-muted"><?= $Dias ?> días atrás</small>
-                            </div>
+<section class="container my-5">
+  <div class="row g-4 align-items-stretch">
+    <!-- Columna IZQUIERDA: Frases -->
+    <div class="col-12 col-lg-6">
+      <div class="card motivation-card h-100 shadow-sm border-0">
+        <div class="card-body p-4">
+          <h3 class="fw-bold mb-3">¿Listo para tu seminuevo?</h3>
+          <p class="text-muted mb-4">Un auto perfecto para tu momento. Inspírate:</p>
+
+          <!-- Rotador de frases -->
+          <div class="quote-rotator" aria-live="polite">
+            <div class="quote active">“Estrena confianza: un seminuevo certificado rinde como nuevo.”</div>
+            <div class="quote">“Paga menos, maneja más: rendimiento y estilo sin devaluación.”</div>
+            <div class="quote">“Elige inteligente: historial claro, precio honesto, valor real.”</div>
+            <div class="quote">“Tu próximo destino empieza con este volante.”</div>
+            <div class="quote">“Seminuevo premium: tecnología, seguridad y ahorro en un solo paso.”</div>
+            <div class="quote">“Manejo de alto nivel sin romper tu presupuesto.”</div>
+            <div class="quote">“Cada kilómetro cuenta cuando pagas el precio correcto.”</div>
+            <div class="quote">“Apuesta por el valor, no por la etiqueta de ‘nuevo’.”</div>
+            <div class="quote">“Menos trámites, más momentos al volante.”</div>
+            <div class="quote">“Hoy tomas la decisión, mañana disfrutas el camino.”</div>
+          </div>
+
+          <div class="d-flex gap-2 mt-3">
+            <span class="qdot active"></span><span class="qdot"></span><span class="qdot"></span><span class="qdot"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna DERECHA: Reseñas (tu carrusel existente) -->
+    <div class="col-12 col-lg-6">
+      <div id="reviewCarousel" class="carousel slide testimonial h-100" data-bs-ride="carousel" data-bs-interval="8000">
+        <div class="carousel-inner h-100">
+          <?php 
+            $inc = include "db/Conexion.php";
+            if ($inc){
+              $query = "SELECT Id, Nombre, Dias, Descripcion 
+                        FROM mobility_solutions.tmx_resenas 
+                        ORDER BY RAND() LIMIT 6;";
+              $result = mysqli_query($con,$query);
+              $isFirst = true;
+              if ($result){
+                while($row = mysqli_fetch_assoc($result)){
+                  $id = (int)$row['Id'];
+                  $Nombre = $row['Nombre'];
+                  $Dias = (int)$row['Dias'];
+                  $Descripcion = $row['Descripcion'];
+                  ?>
+                  <div class="carousel-item <?= $isFirst ? 'active' : '' ?>">
+                    <div class="card testimonial-card shadow-sm border-0 h-100">
+                      <div class="card-body p-4">
+                        <div class="d-flex align-items-center gap-3 mb-2">
+                          <div class="position-relative reviewer-avatar">
+                            <img src="Imagenes/Perfil_resena/Img<?= $id ?>.jpg" class="rounded-circle" alt="Foto <?= htmlspecialchars($Nombre) ?>">
+                            <img src="Imagenes/logo_google.jpg" class="logo-mini" alt="Google">
                           </div>
-                          <p class="mb-3 text-secondary lh-base"><?= nl2br(htmlspecialchars($Descripcion)) ?></p>
-                          <div class="testimonial-photo mt-3">
-                            <img src="Imagenes/Entregas/entrega<?= ($id % 6) + 1 ?>.jpg" alt="Entrega Mobility" onerror="this.style.display='none'">
+                          <div class="flex-grow-1">
+                            <h5 class="mb-0"><?= htmlspecialchars($Nombre) ?></h5>
+                            <div class="stars" aria-label="5 estrellas">★★★★★</div>
+                            <small class="text-muted"><?= $Dias ?> días atrás</small>
                           </div>
-                          <div class="d-flex justify-content-center gap-2 mt-3">
-                            <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                          </div>
+                        </div>
+                        <p class="mb-3 text-secondary lh-base"><?= nl2br(htmlspecialchars($Descripcion)) ?></p>
+                        <div class="testimonial-photo mt-3">
+                          <img src="Imagenes/Entregas/entrega<?= ($id % 6) + 1 ?>.jpg" alt="Entrega Mobility" onerror="this.style.display='none'">
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <?php
-                $isFirst = false;
+                  <?php
+                  $isFirst = false;
+                }
+              } else {
+                echo '<div class="carousel-item active"><div class="alert alert-warning m-0">No pudimos cargar reseñas por ahora.</div></div>';
               }
-            } else {
-              echo '<div class="carousel-item active"><div class="alert alert-warning m-0">No pudimos cargar reseñas por ahora.</div></div>';
+              if ($result) { mysqli_free_result($result); }
             }
-            if ($result) { mysqli_free_result($result); }
-          }
-        ?>
-      </div>
+          ?>
+        </div>
 
-      <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon"></span><span class="visually-hidden">Anterior</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#reviewCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon"></span><span class="visually-hidden">Siguiente</span>
-      </button>
+        <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span><span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#reviewCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span><span class="visually-hidden">Siguiente</span>
+        </button>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
 </main>
 
@@ -312,6 +339,27 @@
     });
   }
 </script>
+
+<script>
+  (function(){
+    const quotes = Array.from(document.querySelectorAll('.quote-rotator .quote'));
+    const dots   = Array.from(document.querySelectorAll('.qdot'));
+    if(!quotes.length) return;
+
+    let idx = 0;
+    function show(i){
+      quotes.forEach((q,k)=> q.classList.toggle('active', k===i));
+      dots.forEach  ((d,k)=> d.classList.toggle('active',  k===i%dots.length));
+    }
+    show(idx);
+
+    setInterval(()=>{
+      idx = (idx + 1) % quotes.length;
+      show(idx);
+    }, 6000);
+  })();
+</script>
+
 
 </body>
 </html>

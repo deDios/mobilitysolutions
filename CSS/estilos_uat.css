@@ -114,6 +114,41 @@ footer .hr1{ height:3px; border-color:var(--yellow); background-color:var(--yell
 footer .hr2{ height:3px; border-color:black;    background-color:black }
 footer .hr3{ height:3px; border-color:gray;     background-color:gray }
 
+/* Frases motivadoras */
+.motivation-card{
+  border-radius:14px;
+  background:#fff;
+}
+
+.quote-rotator{
+  position: relative;
+  min-height: 96px; /* asegura espacio estable */
+}
+
+.quote{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  transform: translateY(8px);
+  transition: opacity .5s ease, transform .5s ease;
+  font-size:1.15rem;
+  line-height:1.5;
+  font-weight:600;
+  color:#111;
+}
+
+.quote.active{
+  opacity:1;
+  transform: translateY(0);
+}
+
+.qdot{
+  width:8px; height:8px; border-radius:50%;
+  background:#d0d0d0; display:inline-block;
+}
+.qdot.active{ background: var(--yellow); }
+
+
 /* ====== RESPONSIVE ====== */
 @media (max-width:700px){
   .mx-background-top-linear{
