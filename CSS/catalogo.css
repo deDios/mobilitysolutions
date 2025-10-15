@@ -391,6 +391,53 @@ footer .hr3 {
 .pagination { gap: 6px; }
 .pagination .page-link { min-width: 36px; text-align:center; }
 
+/* --- FIX: grid estable aunque haya 1, 2 o 3 cards --- */
+.container-items .lista_item{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(260px, 1fr)); /* columnas sólidas */
+  gap: 14px;                    /* usa gap único en vez de grid-row/column-gap */
+  align-content: start;         /* evita compresiones raras con poco contenido */
+  justify-items: stretch;       /* que cada celda estire su contenido */
+  grid-auto-rows: minmax(230px, auto); /* alto mínimo por fila */
+}
+
+/* El hijo directo del grid es el anchor: que sea bloque y ocupe la celda completa */
+.container-items .lista_item > a{
+  display:block;
+  min-width:0;                  /* evita desbordes por textos largos */
+}
+
+/* La tarjeta: altura flexible (no fija) pero con mínimo cómodo */
+.lista_item .item{
+  height:auto;
+  min-height:210px;
+  border:1px solid gainsboro;
+  border-top:5px solid black;
+  border-radius:0 0 10px 10px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+/* La imagen no debe “empujar” la tarjeta */
+.item figure{
+  flex:0 0 230px;               /* ancho fijo de la columna de imagen */
+  height:200px;
+  padding-top:12px;
+  margin:0;
+}
+.item figure img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  border-radius:10px 0 0 10px;
+}
+
+/* (Opcional) si quieres centrar cuando haya 1 o 2 ítems por fila grande:
+.container-items .lista_item { justify-content: start; }
+*/
+
+
 /* --------------------------Termina boton ------------------------------ */
 
 @media (min-width: 1201px) and (max-width: 1600px) {   
