@@ -458,7 +458,7 @@ if (isset($_POST['verificar'])) {
     wrap.innerHTML = '<div class="text-center text-muted py-3">Cargando...</div>';
 
     const xhr = new XMLHttpRequest();
-    xhr.open("GET", urlReservados(), true);s
+    xhr.open("GET", urlReservados(), true);
 
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4) {
