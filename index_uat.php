@@ -337,7 +337,9 @@
 <script>
 (() => {
   const frases = [
-    'Gracias por elegirnos para comenzar un nuevo capítulo sobre ruedas. En cada auto que entregamos, prometemos emociones, aventuras y un camino lleno de experiencias inolvidables. ¡Bienvenidos a tu próximo viaje!',
+    'Invierte con inteligencia: calidad verificada, historial claro y precio competitivo.',
+    'Elige con certeza: seminuevos certificados, valor transparente y desempeño probado.',
+    'Conduce con confianza: vehículos seleccionados para ofrecer seguridad, rendimiento y tranquilidad.s',
     'Estrena confianza: un seminuevo certificado rinde como nuevo.',
     'Paga menos, maneja más: rendimiento y estilo sin devaluación.',
     'Elige inteligente: historial claro, precio honesto, valor real.'
