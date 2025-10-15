@@ -850,12 +850,36 @@ if (isset($_POST['verificar'])) {
 
     // Eventos de "Cancelar entrega" (por ahora solo UI / placeholder)
     wrap.querySelectorAll('button[data-id_auto]').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const id_auto = btn.getAttribute('data-id_auto');
-        // Aquí luego llamaremos a tu servicio para poner a.estatus = 1
-        alert(`Cancelar entrega (solo UI): Auto ${id_auto}. Luego llamaremos al servicio para estatus=1.`);
-      });
+    btn.addEventListener('click', ()=>{
+        const id_auto = parseInt(btn.getAttribute('data-id_auto'), 10);
+        const id_usuario = <?= (int)($user_id ?? 0) ?>;
+
+        if (!confirm(`¿Cancelar la entrega del auto ${id_auto}?`)) return;
+
+        fetch("https://mobilitysolutionscorp.com/db_consultas/api_cancelar_entrega.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            vehiculo: { id: id_auto },
+            usuario:  { id: id_usuario }
+        })
+        })
+        .then(r => r.json())
+        .then(res => {
+        if (res.success) {
+            alert(res.message || "Entrega cancelada.");
+            cargarAutosCancel(); // refresca la lista
+        } else {
+            alert("No se pudo cancelar: " + (res.message || "Error"));
+        }
+        })
+        .catch(err => {
+        console.error(err);
+        alert("Error de red o servidor.");
+        });
     });
+    });
+
   }
 </script>
 
