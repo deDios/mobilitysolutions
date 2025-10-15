@@ -332,44 +332,48 @@
 <script>
 (() => {
   const frases = [
+    'Gracias por elegirnos para comenzar un nuevo capítulo sobre ruedas. En cada auto que entregamos, prometemos emociones, aventuras y un camino lleno de experiencias inolvidables. ¡Bienvenidos a tu próximo viaje!',
     'Estrena confianza: un seminuevo certificado rinde como nuevo.',
     'Paga menos, maneja más: rendimiento y estilo sin devaluación.',
-    'Elige inteligente: historial claro, precio honesto, valor real.',
-    'Tu próximo destino empieza con este volante.'
+    'Elige inteligente: historial claro, precio honesto, valor real.'
   ];
 
   const quoteEl = document.getElementById('mot-quote');
-  const dots    = Array.from(document.querySelectorAll('.qdot'));
-  if(!quoteEl || !dots.length) return;
+  const dotsWrap = document.querySelector('.q-dots');
+  if (!quoteEl || !dotsWrap) return;
+
+  // (A) construir dots según cantidad de frases
+  dotsWrap.innerHTML = '';
+  const dots = frases.map((_, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'qdot';
+    b.setAttribute('aria-label', `Frase ${i+1}`);
+    dotsWrap.appendChild(b);
+    return b;
+  });
 
   let idx = 0, timer = null;
 
   function setActive(i){
-    idx = i % frases.length;
-    // animación out -> in
+    idx = (i + frases.length) % frases.length;
     quoteEl.classList.remove('in');
     setTimeout(() => {
       quoteEl.textContent = frases[idx];
       quoteEl.classList.add('in');
       dots.forEach((d,k)=> d.classList.toggle('active', k===idx));
-    }, 180); // timing corto para el fade-out
+    }, 180);
   }
 
   function auto(){
     clearInterval(timer);
-    timer = setInterval(() => setActive((idx+1)%frases.length), 6000);
+    timer = setInterval(() => setActive(idx+1), 6000);
   }
 
-  // dots clicables
-  dots.forEach((d,k)=> d.addEventListener('click', () => {
-    setActive(k);
-    auto(); // reinicia el ciclo
-  }));
+  dots.forEach((d,k)=> d.addEventListener('click', () => { setActive(k); auto(); }));
 
   // init
-  quoteEl.textContent = frases[idx];
-  quoteEl.classList.add('in');
-  dots[0].classList.add('active');
+  setActive(0);
   auto();
 })();
 </script>
