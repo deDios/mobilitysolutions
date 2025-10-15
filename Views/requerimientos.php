@@ -367,7 +367,7 @@ if (isset($_POST['verificar'])) {
   // Helper para armar la URL (evita caché con _=timestamp)
   function urlReservados(userId = USER_ID, estatus = ESTATUS_RESERVADO){
     const ts = Date.now();
-    return `https://mobilitysolutionscorp.com/db_consultas/api_reservados.php?user_id=${encodeURIComponent(userId)}&estatus=${encodeURIComponent(estatus)}&_=${ts}`;
+    return `https://mobilitysolutionscorp.com/db_consultas/api_reservados.php?user_id=${encodeURIComponent(userId)}&estatus=${encodeURIComponent(estatus)}`;
   }
 </script>
 
