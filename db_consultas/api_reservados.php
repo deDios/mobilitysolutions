@@ -131,7 +131,7 @@ $sql = "
     INNER JOIN (
       SELECT id_auto, MAX(id) AS max_id
       FROM mobility_solutions.tmx_requerimiento
-      WHERE tipo_req = 'reserva'
+      WHERE tipo_req = 'Reserva de vehículo'
       GROUP BY id_auto
     ) mx ON rr.id = mx.max_id
   ) r ON r.id_auto = a.id
