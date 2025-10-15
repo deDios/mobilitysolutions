@@ -229,9 +229,10 @@ if (isset($_POST['verificar'])) {
         <a href="?req=2" class="list-group-item list-group-item-action <?= ($selected=='2'?'active':'') ?>">
           <i class="fa fa-truck me-2"></i> Entrega de vehículo
         </a>
-        <div class="list-group-item disabled d-flex align-items-center" title="Próximamente">
-          <i class="fa fa-search me-2"></i> Req 4
-        </div>
+        <a href="?req=4" class="list-group-item list-group-item-action <?= ($selected=='4'?'active':'') ?>">
+            <i class="fa fa-ban me-2"></i> Cancelar entrega
+        </a>
+        
       </nav>
     </aside>
 
@@ -346,14 +347,40 @@ if (isset($_POST['verificar'])) {
           </div>
         </div>
 
-      <?php else: ?>
-        <!-- Puedes extender Req 4 aquí cuando esté listo -->
+      
+        <?php elseif ($selected == '4'): ?>
+        <!-- ============ REQ 4: CANCELAR ENTREGA (solo UI) ============ -->
         <div class="card ms-card shadow-sm">
-          <div class="card-body">
-            <div class="text-muted">Sección en construcción.</div>
-          </div>
+            <div class="card-header d-flex align-items-center justify-content-between">
+            <span class="fw-semibold"><i class="fa fa-ban me-2"></i> Cancelar entrega</span>
+            <button type="button" class="btn btn-outline-dark btn-sm" onclick="cargarAutosCancel()">
+                <i class="fa fa-refresh me-1"></i> Actualizar
+            </button>
+            </div>
+            <div class="card-body">
+            <div class="d-flex flex-wrap gap-2 justify-content-between mb-2">
+                <div class="input-group input-group-sm ms-w-280">
+                <span class="input-group-text bg-white"><i class="fa fa-search"></i></span>
+                <input id="filtroAutosCancel" type="text" class="form-control" placeholder="Filtrar por marca/modelo/sucursal...">
+                </div>
+                <div class="btn-group btn-group-sm">
+                <button type="button" class="btn btn-outline-secondary" onclick="cargarAutosCancel()">
+                    <i class="fa fa-refresh me-1"></i> Actualizar
+                </button>
+                </div>
+            </div>
+            <div id="listaAutosCancel" class="ms-lista-autos"></div>
+            </div>
         </div>
-      <?php endif; ?>
+        <?php else: ?>
+
+        <!-- ============ DEFAULT ============ -->
+        <div class="card ms-card shadow-sm">
+        <div class="card-body">
+            <div class="text-muted">Sección en construcción.</div>
+        </div>
+        </div>
+    <?php endif; ?>
     </section>
   </div>
 </div>
@@ -493,6 +520,48 @@ if (isset($_POST['verificar'])) {
 
   xhr.send();
 }
+
+// Carga de autos (API) para CANCELAR ENTREGA
+  function cargarAutosCancel() {
+    const wrap = document.getElementById('listaAutosCancel');
+    if (!wrap) return;
+    wrap.innerHTML = '<div class="text-center text-muted py-3">Cargando...</div>';
+
+    const url = urlReservados(); // misma API que Entrega (estatus=3)
+    console.log('GET (cancel)', url);
+
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          try {
+            const autos = JSON.parse(xhr.responseText) || [];
+            renderTablaCancel(autos);
+            const filtro = document.getElementById('filtroAutosCancel');
+            if (filtro && !filtro.__wired) {
+              filtro.__wired = true;
+              filtro.addEventListener('input', ()=> renderTablaCancel(autos));
+            }
+          } catch (e) {
+            console.error("Error JSON:", e, xhr.responseText);
+            wrap.innerHTML = '<div class="alert alert-danger mb-0">Error al procesar la respuesta.</div>';
+          }
+        } else {
+          console.error('HTTP', xhr.status, 'URL:', url);
+          wrap.innerHTML = '<div class="alert alert-danger mb-0">Error al cargar la información.</div>';
+        }
+      }
+    };
+
+    xhr.onerror = function(){
+      console.error('XHR error URL:', url);
+      wrap.innerHTML = '<div class="alert alert-danger mb-0">Error en la solicitud.</div>';
+    };
+
+    xhr.send();
+  }
 
 
   // Confirmar entrega (flujo de venta)
@@ -670,6 +739,7 @@ if (isset($_POST['verificar'])) {
     const req = urlParams.get('req') || '3';
     if (req === '3') cargarReq3();
     if (req === '2') cargarAutos();
+    if (req === '4') cargarAutosCancel();
   });
 </script>
 
@@ -718,6 +788,77 @@ if (isset($_POST['verificar'])) {
       });
     }); 
 </script>
+
+<script>
+  // Render de tabla (CANCELAR ENTREGA)
+  function renderTablaCancel(autos){
+    const wrap = document.getElementById('listaAutosCancel');
+    const q = (document.getElementById('filtroAutosCancel')?.value || '').trim().toLowerCase();
+
+    const filtrados = autos.filter(a=>{
+      if(!q) return true;
+      const texto = [
+        a.id, a.marca, a.modelo, a.nombre, a.sucursal, a.status_req
+      ].filter(Boolean).join(' ').toLowerCase();
+      return texto.includes(q);
+    });
+
+    if(!filtrados.length){
+      wrap.innerHTML = '<div class="alert alert-warning mb-0">No hay vehículos en reserva con ese filtro.</div>';
+      return;
+    }
+
+    const rows = filtrados.map(a => `
+      <tr>
+        <td class="text-muted">${a.id}</td>
+        <td>
+          <div class="d-flex align-items-center gap-2">
+            <img class="ms-thumb" src="../Imagenes/Catalogo/Auto ${a.id}/Img01.jpg"
+                 onerror="this.src='https://via.placeholder.com/96x64?text=Auto';" alt="">
+            <div>
+              <div class="fw-semibold">${(a.marca ?? '')} ${(a.modelo ?? '')}</div>
+              <small class="text-muted">${a.nombre ?? ''}</small>
+            </div>
+          </div>
+        </td>
+        <td>${a.sucursal ?? '-'}</td>
+        <td><span class="badge rounded-pill ${msStatusBadgeCls(a.status_req)}">${a.status_req ?? 'pendiente'}</span></td>
+        <td class="text-end">
+          <button class="btn btn-sm btn-danger" data-id_auto="${a.id}">
+            <i class="fa fa-ban me-1"></i> Cancelar entrega
+          </button>
+        </td>
+      </tr>
+    `).join('');
+
+    wrap.innerHTML = `
+      <div class="table-responsive ms-table-wrap">
+        <table class="table table-hover align-middle ms-table">
+          <thead>
+            <tr>
+              <th style="width:80px">ID</th>
+              <th>Vehículo</th>
+              <th style="min-width:140px">Sucursal</th>
+              <th style="min-width:120px">Estado</th>
+              <th class="text-end" style="width:180px">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+    `;
+
+    // Eventos de "Cancelar entrega" (por ahora solo UI / placeholder)
+    wrap.querySelectorAll('button[data-id_auto]').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const id_auto = btn.getAttribute('data-id_auto');
+        // Aquí luego llamaremos a tu servicio para poner a.estatus = 1
+        alert(`Cancelar entrega (solo UI): Auto ${id_auto}. Luego llamaremos al servicio para estatus=1.`);
+      });
+    });
+  }
+</script>
+
 
 <?php if ($selected == '2'): ?>
 <!-- Lanza cargarAutos SOLO si estás en Entrega de vehículo -->
