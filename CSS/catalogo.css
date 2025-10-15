@@ -391,11 +391,25 @@ footer .hr3 {
 .pagination { gap: 6px; }
 .pagination .page-link { min-width: 36px; text-align:center; }
 
-/* El footer se “pega” al fondo */
-footer.foo{
-  margin-top: auto;
+:root{
+  /* alto total del header fijo (topbar + navbar) */
+  --hdr-h: 120px;   /* si usas padding-top:150px en .container-items, pon 150px */
+  /* alto aproximado del footer (depende de tu contenido) */
+  --ftr-h: 220px;
 }
 
+/* 2) Asegura que el bloque principal rellene la ventana
+      para empujar el footer al borde inferior */
+.container-items{
+  min-height: calc(100svh - var(--hdr-h) - var(--ftr-h));
+}
+
+/* 3) Fallback: si el contenido es muy corto, “péga” el footer al fondo */
+footer.foo{
+  position: sticky;
+  top: 100svh;       /* 100vh para desktop, 100svh cubre móviles con barras */
+  z-index: 0;
+}
 
 /* --------------------------Termina boton ------------------------------ */
 
