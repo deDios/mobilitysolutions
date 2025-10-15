@@ -132,7 +132,6 @@ $sql = "
   LEFT JOIN mobility_solutions.tmx_marca  ma          ON a.marca    = ma.id
   LEFT JOIN mobility_solutions.tmx_marca_auto m_auto  ON a.nombre   = m_auto.id
   LEFT JOIN mobility_solutions.tmx_sucursal s         ON a.sucursal = s.id
-  /* Último requerimiento de tipo 'reserva' por auto */
   LEFT JOIN (
     SELECT rr.*
     FROM mobility_solutions.tmx_requerimiento rr
@@ -168,27 +167,92 @@ if ($debug === 4) {
 }
 
 // ===== Paso 5: ejecutar consulta =====
+// ===== Paso 5: ejecutar consulta =====
+// Reportes de MySQL controlados (por si tu server convierte warnings en 404)
+if (function_exists('mysqli_report')) {
+  mysqli_report(MYSQLI_REPORT_OFF);
+}
+
 $stmt = $con->prepare($sql);
 if (!$stmt) {
+  // Si preparar falla, devolvemos TODO para depurar
+  if ($debug >= 5) {
+    echo json_encode([
+      "ok"            => false,
+      "step"          => 5,
+      "stage"         => "prepare",
+      "error"         => "Error al preparar la consulta principal",
+      "mysqli_errno"  => $con->errno,
+      "mysqli_error"  => $con->error,
+      "sql"           => $sql,
+      "bind_types"    => $types,
+      "bind_params"   => $params,
+    ], JSON_UNESCAPED_UNICODE);
+    exit;
+  }
   http_response_code(500);
   echo json_encode(["ok"=>false,"step"=>5,"error"=>"Error al preparar la consulta principal"]);
   $stmtUser->close(); $con->close(); exit;
 }
 
-$stmt->bind_param($types, ...$params);
-$stmt->execute();
-$result = $stmt->get_result();
+if (!$stmt->bind_param($types, ...$params)) {
+  if ($debug >= 5) {
+    echo json_encode([
+      "ok"            => false,
+      "step"          => 5,
+      "stage"         => "bind",
+      "error"         => "Error en bind_param",
+      "stmt_errno"    => $stmt->errno,
+      "stmt_error"    => $stmt->error,
+      "sql"           => $sql,
+      "bind_types"    => $types,
+      "bind_params"   => $params,
+    ], JSON_UNESCAPED_UNICODE);
+    exit;
+  }
+  http_response_code(500);
+  echo json_encode(["ok"=>false,"step"=>5,"error"=>"Error en bind_param"]);
+  $stmt->close(); $stmtUser->close(); $con->close(); exit;
+}
 
+if (!$stmt->execute()) {
+  if ($debug >= 5) {
+    echo json_encode([
+      "ok"            => false,
+      "step"          => 5,
+      "stage"         => "execute",
+      "error"         => "Error al ejecutar la consulta",
+      "stmt_errno"    => $stmt->errno,
+      "stmt_error"    => $stmt->error,
+      "sql"           => $sql,
+      "bind_types"    => $types,
+      "bind_params"   => $params,
+    ], JSON_UNESCAPED_UNICODE);
+    exit;
+  }
+  http_response_code(500);
+  echo json_encode(["ok"=>false,"step"=>5,"error"=>"Error al ejecutar la consulta"]);
+  $stmt->close(); $stmtUser->close(); $con->close(); exit;
+}
+
+$result = $stmt->get_result();
 if ($debug === 5) {
   $rows = [];
   if ($result && $result->num_rows > 0) {
     while ($r = $result->fetch_assoc()) { $rows[] = $r; }
   }
-  out(5, [
-    'row_count' => count($rows),
-    'sample'    => array_slice($rows, 0, 5),
-    'note'      => $isFullView ? 'full rows returned' : 'id_usuario se oculta en salida normal'
-  ]);
+  echo json_encode([
+    'ok'         => true,
+    'step'       => 5,
+    'message'    => 'query executed',
+    'row_count'  => count($rows),
+    'sample'     => array_slice($rows, 0, 5),
+    'note'       => $isFullView ? 'full rows returned' : 'id_usuario se oculta en salida normal',
+    'sql'        => $sql,       // útil para correrlo directo en MySQL si hace falta
+    'bind_types' => $types,
+    'bind_params'=> $params
+  ], JSON_UNESCAPED_UNICODE);
+  exit;
 }
 
 // ===== Salida normal (sin debug) =====
