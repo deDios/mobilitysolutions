@@ -388,7 +388,7 @@ function url_with($key, $val){
             <div class="Localidad">
               <div><i class="bi bi-geo-alt-fill"></i> <?= ' '.$sucursal ?></div>
               <?php if ((int)$estatus === 3): ?>
-                <img src="Imagenes/Sellos/reservado.jpg" class="imagen-sello" alt="sello">
+                <img src="Imagenes/reserved.jpg" class="imagen-sello" alt="sello">
               <?php endif; ?>
             </div>
           </div>
