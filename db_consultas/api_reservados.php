@@ -17,13 +17,13 @@ if (!$inc || !isset($con)) {
   exit;
 }
 
-// ===== 3) Obtener info/roles del usuario actual =====
-//   Reutilizamos tu misma lógica para traer user_id y privilegios.
+// ===== 3) Traer info del usuario (desde tmx_acceso_usuario) =====
 $sqlUser = "
   SELECT 
     acc.user_id,
     acc.user_name,
-    acc.user_type,
+    acc.user_type,        -- NUMÉRICO (FK a tmx_tipo_usuario)
+    acc.reporta_a,
     acc.r_ejecutivo,
     acc.r_editor,
     acc.r_autorizador,
@@ -32,7 +32,11 @@ $sqlUser = "
   WHERE acc.user_name = ?
   LIMIT 1
 ";
-$stmtUser = $con->prepare($sqlUser);
+if (!($stmtUser = $con->prepare($sqlUser))) {
+  http_response_code(500);
+  echo json_encode(["error" => "Error preparando consulta de usuario"]);
+  exit;
+}
 $stmtUser->bind_param("s", $_SESSION['username']);
 $stmtUser->execute();
 $resUser = $stmtUser->get_result();
@@ -44,26 +48,21 @@ if (!$userRow) {
   exit;
 }
 
-$userId         = (int)($userRow['user_id'] ?? 0);
-$userType       = strtoupper(trim($userRow['user_type'] ?? ''));
-$r_ejecutivo    = (int)($userRow['r_ejecutivo'] ?? 0);
-$r_editor       = (int)($userRow['r_editor'] ?? 0);
-$r_autorizador  = (int)($userRow['r_autorizador'] ?? 0);
-$r_analista     = (int)($userRow['r_analista'] ?? 0);
+$currentUserId   = (int)$userRow['user_id'];        // ID en tmx_usuario
+$currentUserType = (int)$userRow['user_type'];      // NUMÉRICO (FK a tmx_tipo_usuario)
+$r_autorizador   = (int)($userRow['r_autorizador'] ?? 0);
 
-// ===== 4) Reglas de acceso =====
-//  - CEO/CTO: vista full
-//  - resto: solo sus reservas
-$isFullView = in_array($userType, ['CEO','CTO'], true);
+// ===== 4) Reglas de acceso (vista full para CTO=5 / CEO=6) =====
+$isFullView = ($currentUserType === 5 || $currentUserType === 6);
 
-// ===== 5) Parámetros opcionales =====
-$estatus = isset($_GET['estatus']) ? (int)$_GET['estatus'] : 3;
+// ===== 5) Estatus (por compatibilidad con tu API actual) =====
+$estatus = isset($_GET['estatus']) ? (int)$_GET['estatus'] : 3; // 3 = reservado (según tu API original)
 
-// ===== 6) SQL base =====
-//  - auto: datos del vehículo
-//  - modelo/marca/m_auto: nombres legibles
-//  - sucursal: añade si la quieres en la respuesta (útil en “entrega”)
-$selectBase = "
+// ===== 6) SELECT base =====
+// Nota: unimos el ÚLTIMO requerimiento de tipo 'reserva' por auto para saber
+// quién lo reservó, su estado y la fecha. Si quieres solo los que realmente
+// tienen requerimiento de reserva, el LEFT JOIN se puede volver INNER JOIN.
+$sql = "
   SELECT 
     a.id,
     m_auto.auto          AS nombre,
@@ -75,12 +74,11 @@ $selectBase = "
     r.created_at,
     r.id_usuario
   FROM mobility_solutions.tmx_auto a
-  LEFT JOIN mobility_solutions.tmx_modelo mo      ON a.modelo   = mo.id
-  LEFT JOIN mobility_solutions.tmx_marca ma       ON a.marca    = ma.id
-  LEFT JOIN mobility_solutions.tmx_marca_auto m_auto ON a.nombre = m_auto.id
-  LEFT JOIN mobility_solutions.tmx_sucursal s     ON a.sucursal = s.id
-  /* Traemos el ÚLTIMO requerimiento de tipo 'reserva' por auto,
-     para saber quién lo reservó y su estado actual */
+  LEFT JOIN mobility_solutions.tmx_modelo mo          ON a.modelo   = mo.id
+  LEFT JOIN mobility_solutions.tmx_marca ma           ON a.marca    = ma.id
+  LEFT JOIN mobility_solutions.tmx_marca_auto m_auto  ON a.nombre   = m_auto.id
+  LEFT JOIN mobility_solutions.tmx_sucursal s         ON a.sucursal = s.id
+  /* Último requerimiento de tipo 'reserva' por auto */
   LEFT JOIN (
     SELECT rr.*
     FROM mobility_solutions.tmx_requerimiento rr
@@ -94,29 +92,29 @@ $selectBase = "
   WHERE a.estatus = ?
 ";
 
-// ===== 7) Filtro por jerarquía =====
+// ===== 7) Filtros por jerarquía =====
 $params = [];
 $types  = "i"; // estatus
 
 if (!$isFullView) {
-  // Usuarios normales: solo sus reservas
-  $selectBase .= " AND r.id_usuario = ? ";
+  // Usuario normal: solo lo que él reservó (según último req de 'reserva')
+  $sql .= " AND r.id_usuario = ? ";
   $params[] = $estatus;
-  $params[] = $userId;
+  $params[] = $currentUserId;
   $types   .= "i";
 } else {
-  // Full view: CTO/CEO/autorizadores
+  // Vista completa: CTO/CEO/autorizador ven todos los reservados
   $params[] = $estatus;
 }
 
-// Orden
-$selectBase .= " ORDER BY a.id DESC";
+// Ordenar por más recientes
+$sql .= " ORDER BY a.id DESC";
 
 // ===== 8) Ejecutar =====
-$stmt = $con->prepare($selectBase);
+$stmt = $con->prepare($sql);
 if (!$stmt) {
   http_response_code(500);
-  echo json_encode(["error" => "Error al preparar la consulta"]);
+  echo json_encode(["error" => "Error al preparar la consulta principal"]);
   exit;
 }
 
@@ -127,7 +125,7 @@ $result = $stmt->get_result();
 $data = [];
 if ($result && $result->num_rows > 0) {
   while ($row = $result->fetch_assoc()) {
-    // Si no es full view, por seguridad evita exponer id_usuario de otros.
+    // Por seguridad, si NO es full view, no exponemos id_usuario de otros
     if (!$isFullView) {
       unset($row['id_usuario']);
     }
