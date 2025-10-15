@@ -359,6 +359,19 @@ if (isset($_POST['verificar'])) {
 </div>
 <!-- ===== /NUEVO LAYOUT · AJUSTES ===== -->
 
+<script>
+  // Parámetros para la API de reservados
+  const USER_ID = <?= (int)($user_id ?? 0) ?>;   // viene de PHP
+  const ESTATUS_RESERVADO = 3;                   // tu estatus para “reservado”
+
+  // Helper para armar la URL (evita caché con _=timestamp)
+  function urlReservados(userId = USER_ID, estatus = ESTATUS_RESERVADO){
+    const ts = Date.now();
+    return `https://mobilitysolutionscorp.com/db_consultas/api_reservados.php?user_id=${encodeURIComponent(userId)}&estatus=${encodeURIComponent(estatus)}&_=${ts}`;
+  }
+</script>
+
+
 <!-- ========== JS ========== -->
 <script>
   // Helpers de UI para badges
@@ -445,7 +458,7 @@ if (isset($_POST['verificar'])) {
     wrap.innerHTML = '<div class="text-center text-muted py-3">Cargando...</div>';
 
     const xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://mobilitysolutionscorp.com/db_consultas/api_reservados.php", true);
+    xhr.open("GET", urlReservados(), true);s
 
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4) {

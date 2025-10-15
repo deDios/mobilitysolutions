@@ -1,15 +1,21 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
-session_start();
 
-// ===== 1) Autenticación =====
-if (!isset($_SESSION['username'])) {
-  http_response_code(401);
-  echo json_encode(["error" => "No autenticado"]);
+// ===============================
+// 1) Parámetros de entrada
+// ===============================
+$userId  = isset($_GET['user_id']) ? (int)$_GET['user_id'] : 0; // <-- ahora por GET
+$estatus = isset($_GET['estatus']) ? (int)$_GET['estatus'] : 3; // 3 = reservado (por tu API original)
+
+if ($userId <= 0) {
+  http_response_code(400);
+  echo json_encode(["error" => "Falta el parámetro user_id (numérico)"]);
   exit;
 }
 
-// ===== 2) Conexión =====
+// ===============================
+// 2) Conexión BD
+// ===============================
 $inc = include "../db/Conexion.php";
 if (!$inc || !isset($con)) {
   http_response_code(500);
@@ -17,7 +23,9 @@ if (!$inc || !isset($con)) {
   exit;
 }
 
-// ===== 3) Traer info del usuario (desde tmx_acceso_usuario) =====
+// ===============================
+// 3) Cargar rol del usuario (por user_id)
+// ===============================
 $sqlUser = "
   SELECT 
     acc.user_id,
@@ -29,7 +37,7 @@ $sqlUser = "
     acc.r_autorizador,
     acc.r_analista
   FROM mobility_solutions.tmx_acceso_usuario acc
-  WHERE acc.user_name = ?
+  WHERE acc.user_id = ?
   LIMIT 1
 ";
 if (!($stmtUser = $con->prepare($sqlUser))) {
@@ -37,31 +45,31 @@ if (!($stmtUser = $con->prepare($sqlUser))) {
   echo json_encode(["error" => "Error preparando consulta de usuario"]);
   exit;
 }
-$stmtUser->bind_param("s", $_SESSION['username']);
+$stmtUser->bind_param("i", $userId);
 $stmtUser->execute();
 $resUser = $stmtUser->get_result();
 $userRow = $resUser ? $resUser->fetch_assoc() : null;
 
 if (!$userRow) {
-  http_response_code(403);
+  http_response_code(404);
   echo json_encode(["error" => "Usuario no encontrado"]);
   exit;
 }
 
 $currentUserId   = (int)$userRow['user_id'];        // ID en tmx_usuario
-$currentUserType = (int)$userRow['user_type'];      // NUMÉRICO (FK a tmx_tipo_usuario)
+$currentUserType = (int)$userRow['user_type'];      // 5=CTO, 6=CEO
 $r_autorizador   = (int)($userRow['r_autorizador'] ?? 0);
 
-// ===== 4) Reglas de acceso (vista full para CTO=5 / CEO=6) =====
-$isFullView = ($currentUserType === 5 || $currentUserType === 6);
+// ===============================
+// 4) Regla de acceso
+// ===============================
+$isFullView = ($currentUserType === 5 || $currentUserType === 6 || $r_autorizador === 1);
 
-// ===== 5) Estatus (por compatibilidad con tu API actual) =====
-$estatus = isset($_GET['estatus']) ? (int)$_GET['estatus'] : 3; // 3 = reservado (según tu API original)
-
-// ===== 6) SELECT base =====
-// Nota: unimos el ÚLTIMO requerimiento de tipo 'reserva' por auto para saber
-// quién lo reservó, su estado y la fecha. Si quieres solo los que realmente
-// tienen requerimiento de reserva, el LEFT JOIN se puede volver INNER JOIN.
+// ===============================
+// 5) Consulta principal
+//    - Unimos la info del auto
+//    - Sumamos el ÚLTIMO requerimiento de tipo 'reserva' por auto
+// ===============================
 $sql = "
   SELECT 
     a.id,
@@ -92,12 +100,12 @@ $sql = "
   WHERE a.estatus = ?
 ";
 
-// ===== 7) Filtros por jerarquía =====
 $params = [];
-$types  = "i"; // estatus
+$types  = "i"; // estatus primero
 
 if (!$isFullView) {
-  // Usuario normal: solo lo que él reservó (según último req de 'reserva')
+  // Usuario normal: solo los autos donde el ÚLTIMO req de 'reserva'
+  // fue creado por ese usuario
   $sql .= " AND r.id_usuario = ? ";
   $params[] = $estatus;
   $params[] = $currentUserId;
@@ -107,10 +115,11 @@ if (!$isFullView) {
   $params[] = $estatus;
 }
 
-// Ordenar por más recientes
 $sql .= " ORDER BY a.id DESC";
 
-// ===== 8) Ejecutar =====
+// ===============================
+// 6) Ejecutar consulta
+// ===============================
 $stmt = $con->prepare($sql);
 if (!$stmt) {
   http_response_code(500);
@@ -125,8 +134,8 @@ $result = $stmt->get_result();
 $data = [];
 if ($result && $result->num_rows > 0) {
   while ($row = $result->fetch_assoc()) {
-    // Por seguridad, si NO es full view, no exponemos id_usuario de otros
     if (!$isFullView) {
+      // Por seguridad: no exponemos id_usuario a perfiles no-full
       unset($row['id_usuario']);
     }
     $data[] = $row;
@@ -135,7 +144,9 @@ if ($result && $result->num_rows > 0) {
 
 echo json_encode($data);
 
-// ===== 9) Cierre =====
+// ===============================
+// 7) Cierre
+// ===============================
 $stmt->close();
 $stmtUser->close();
 $con->close();
