@@ -161,7 +161,62 @@ footer .hr3{ height:3px; border-color:gray;     background-color:gray }
 }
 .qdot.active{ background: var(--yellow); }
 
+/* ===== Ajuste visual para que la frase se parezca al ejemplo ===== */
+.motivation-hero{
+  background:#fff;
+  border:1px solid #eceef2;     /* borde sutil como en la captura */
+  box-shadow: 0 2px 10px rgba(0,0,0,.05); /* sombra muy leve */
+  border-radius:12px;
+  padding: clamp(24px, 4vw, 56px);
+  display:flex;                 /* centrado vertical real */
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  min-height: 260px;            /* altura mínima similar a tu ejemplo */
+}
 
+.quote-big{
+  font-family: "Merriweather", Georgia, serif;
+  font-weight:700;
+  color:#1f2937;
+  /* Tipografía más grande y compacta, similar al ejemplo */
+  font-size: clamp(22px, 2.2vw + 16px, 36px);
+  line-height: 1.35;
+  letter-spacing: .1px;
+  margin: 0 auto;
+  max-width: 30ch;              /* columna corta para buena lectura */
+  /* animación suave ya la tienes vía .in */
+}
+
+/* Dots tipo “pastillitas” como en la imagen (no puntos redondos) */
+.q-dots{
+  margin-top: 16px;
+  display:flex;
+  gap: 8px;
+  justify-content:center;
+}
+.qdot{
+  width: 14px;
+  height: 6px;
+  border-radius: 3px;           /* esquinas redondeadas pequeñas */
+  background: #cfd3da;
+  border: 1px solid #c2c6cf;
+  opacity: .95;
+  transition: transform .2s ease, background .2s ease, border-color .2s ease;
+}
+.qdot.active{
+  background: var(--yellow);
+  border-color: var(--yellow);
+  transform: translateY(-1px);
+}
+
+/* En pantallas grandes, iguala alturas entre columnas para que “respire” */
+@media (min-width: 992px){
+  .motivation-hero,
+  #reviewCarousel .testimonial-card{
+    height: 100%;
+  }
+}
 
 /* ====== RESPONSIVE ====== */
 @media (max-width:700px){

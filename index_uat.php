@@ -328,25 +328,6 @@
   }
 </script>
 
-<script>
-  (function(){
-    const quotes = Array.from(document.querySelectorAll('.quote-rotator .quote'));
-    const dots   = Array.from(document.querySelectorAll('.qdot'));
-    if(!quotes.length) return;
-
-    let idx = 0;
-    function show(i){
-      quotes.forEach((q,k)=> q.classList.toggle('active', k===i));
-      dots.forEach  ((d,k)=> d.classList.toggle('active',  k===i%dots.length));
-    }
-    show(idx);
-
-    setInterval(()=>{
-      idx = (idx + 1) % quotes.length;
-      show(idx);
-    }, 6000);
-  })();
-</script>
 
 <script>
 (() => {
