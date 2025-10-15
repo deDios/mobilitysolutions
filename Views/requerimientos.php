@@ -364,11 +364,12 @@ if (isset($_POST['verificar'])) {
   const USER_ID = <?= (int)($user_id ?? 0) ?>;   // viene de PHP
   const ESTATUS_RESERVADO = 3;                   // tu estatus para “reservado”
 
-  // Helper para armar la URL (evita caché con _=timestamp)
-  function urlReservados(userId = USER_ID, estatus = ESTATUS_RESERVADO){
+  
+    function urlReservados(userId = USER_ID, estatus = ESTATUS_RESERVADO){
     const ts = Date.now();
-    return `https://mobilitysolutionscorp.com/db_consultas/api_reservados.php?user_id=${encodeURIComponent(userId)}&estatus=${encodeURIComponent(estatus)}`;
-  }
+    return `https://mobilitysolutionscorp.com/db_consultas/api_reservados.php?user_id=${encodeURIComponent(userId)}&estatus=${encodeURIComponent(estatus)}&_=${ts}`;
+    }
+
 </script>
 
 
@@ -453,42 +454,46 @@ if (isset($_POST['verificar'])) {
 
   // Carga de autos (API) + conexión con tabla (ENTREGA)
   function cargarAutos() {
-    const wrap = document.getElementById('listaAutos');
-    if (!wrap) return;
-    wrap.innerHTML = '<div class="text-center text-muted py-3">Cargando...</div>';
+  const wrap = document.getElementById('listaAutos');
+  if (!wrap) return;
+  wrap.innerHTML = '<div class="text-center text-muted py-3">Cargando...</div>';
 
-    const xhr = new XMLHttpRequest();
-    xhr.open("GET", urlReservados(), true);
+  const url = urlReservados();             // <-- usa SIEMPRE esta URL
+  console.log('GET', url);                 // ayuda a verificar en la consola
 
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4) {
-        if (xhr.status === 200) {
-          try {
-            const autos = JSON.parse(xhr.responseText) || [];
-            renderTablaReservas(autos);
+  const xhr = new XMLHttpRequest();
+  xhr.open("GET", url, true);              // <-- ojo: nada de “s” al final
 
-            // filtrar en vivo
-            const filtro = document.getElementById('filtroAutos');
-            if (filtro && !filtro.__wired) {
-              filtro.__wired = true;
-              filtro.addEventListener('input', ()=> renderTablaReservas(autos));
-            }
-          } catch (e) {
-            console.error("Error JSON:", e);
-            wrap.innerHTML = '<div class="alert alert-danger mb-0">Error al procesar la respuesta.</div>';
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        try {
+          const autos = JSON.parse(xhr.responseText) || [];
+          renderTablaReservas(autos);
+          const filtro = document.getElementById('filtroAutos');
+          if (filtro && !filtro.__wired) {
+            filtro.__wired = true;
+            filtro.addEventListener('input', ()=> renderTablaReservas(autos));
           }
-        } else {
-          wrap.innerHTML = '<div class="alert alert-danger mb-0">Error al cargar la información.</div>';
+        } catch (e) {
+          console.error("Error JSON:", e, xhr.responseText);
+          wrap.innerHTML = '<div class="alert alert-danger mb-0">Error al procesar la respuesta.</div>';
         }
+      } else {
+        console.error('HTTP', xhr.status, 'URL:', url);
+        wrap.innerHTML = '<div class="alert alert-danger mb-0">Error al cargar la información.</div>';
       }
-    };
+    }
+  };
 
-    xhr.onerror = function(){
-      wrap.innerHTML = '<div class="alert alert-danger mb-0">Error en la solicitud.</div>';
-    };
+  xhr.onerror = function(){
+    console.error('XHR error URL:', url);
+    wrap.innerHTML = '<div class="alert alert-danger mb-0">Error en la solicitud.</div>';
+  };
 
-    xhr.send();
-  }
+  xhr.send();
+}
+
 
   // Confirmar entrega (flujo de venta)
   function confirmarEntrega(id_auto, id_usuario) {
