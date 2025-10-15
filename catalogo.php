@@ -46,7 +46,7 @@ function facet($col, array $exclude = []){
           WHERE $w
           GROUP BY 1
           HAVING c>0
-          ORDER BY 1";
+          ORDER BY RAND()";
   return mysqli_query($con,$sql);
 }
 
