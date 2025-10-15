@@ -114,39 +114,53 @@ footer .hr1{ height:3px; border-color:var(--yellow); background-color:var(--yell
 footer .hr2{ height:3px; border-color:black;    background-color:black }
 footer .hr3{ height:3px; border-color:gray;     background-color:gray }
 
-/* Frases motivadoras */
-.motivation-card{
-  border-radius:14px;
+/* Tipografía elegante para la frase (opcional) */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
+
+.motivation-hero{
   background:#fff;
+  border-radius:14px;
+  padding: clamp(16px, 4vw, 48px);
+  display:grid;
+  place-items:center;
+  text-align:center;
 }
 
-.quote-rotator{
-  position: relative;
-  min-height: 96px; /* asegura espacio estable */
-}
-
-.quote{
-  position:absolute;
-  inset:0;
+/* Tamaño y estilo de la frase (similar al ejemplo) */
+.quote-big{
+  font-family: "Merriweather", Georgia, serif;
+  font-weight:700;
+  font-size: clamp(20px, 2.1vw + 14px, 34px);
+  line-height:1.35;
+  color:#1f2937;
+  margin:0;
+  max-width: 42ch;        /* limita el ancho para mejor lectura */
+  min-height: 8.5em;       /* evita “saltos” al rotar */
   opacity:0;
   transform: translateY(8px);
   transition: opacity .5s ease, transform .5s ease;
-  font-size:1.15rem;
-  line-height:1.5;
-  font-weight:600;
-  color:#111;
 }
-
-.quote.active{
+.quote-big.in{
   opacity:1;
   transform: translateY(0);
 }
 
+/* Dots / indicadores */
+.q-dots{
+  margin-top: 18px;
+  display:flex;
+  gap:10px;
+  justify-content:center;
+}
 .qdot{
-  width:8px; height:8px; border-radius:50%;
-  background:#d0d0d0; display:inline-block;
+  width:10px; height:10px;
+  border-radius:50%;
+  border:0;
+  background:#d0d0d0;
+  cursor:pointer;
 }
 .qdot.active{ background: var(--yellow); }
+
 
 
 /* ====== RESPONSIVE ====== */

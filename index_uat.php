@@ -198,35 +198,24 @@
   <!-- Reseña destacada (testimonial) -->
 <section class="container my-5">
   <div class="row g-4 align-items-stretch">
-    <!-- Columna IZQUIERDA: Frases -->
+    <!-- IZQUIERDA: Frase individual que cambia -->
     <div class="col-12 col-lg-6">
-      <div class="card motivation-card h-100 shadow-sm border-0">
-        <div class="card-body p-4">
-          <h3 class="fw-bold mb-3">¿Listo para tu seminuevo?</h3>
-          <p class="text-muted mb-4">Un auto perfecto para tu momento. Inspírate:</p>
+      <figure class="motivation-hero h-100 shadow-sm">
+        <blockquote id="mot-quote" class="quote-big in">
+          Gracias por elegirnos para comenzar un nuevo capítulo sobre ruedas. En cada auto que entregamos, prometemos emociones, aventuras y un camino lleno de experiencias inolvidables. ¡Bienvenidos a tu próximo viaje!
+        </blockquote>
+        <figcaption class="visually-hidden">Frases motivadoras sobre seminuevos</figcaption>
 
-          <!-- Rotador de frases -->
-          <div class="quote-rotator" aria-live="polite">
-            <div class="quote active">“Estrena confianza: un seminuevo certificado rinde como nuevo.”</div>
-            <div class="quote">“Paga menos, maneja más: rendimiento y estilo sin devaluación.”</div>
-            <div class="quote">“Elige inteligente: historial claro, precio honesto, valor real.”</div>
-            <div class="quote">“Tu próximo destino empieza con este volante.”</div>
-            <div class="quote">“Seminuevo premium: tecnología, seguridad y ahorro en un solo paso.”</div>
-            <div class="quote">“Manejo de alto nivel sin romper tu presupuesto.”</div>
-            <div class="quote">“Cada kilómetro cuenta cuando pagas el precio correcto.”</div>
-            <div class="quote">“Apuesta por el valor, no por la etiqueta de ‘nuevo’.”</div>
-            <div class="quote">“Menos trámites, más momentos al volante.”</div>
-            <div class="quote">“Hoy tomas la decisión, mañana disfrutas el camino.”</div>
-          </div>
-
-          <div class="d-flex gap-2 mt-3">
-            <span class="qdot active"></span><span class="qdot"></span><span class="qdot"></span><span class="qdot"></span>
-          </div>
+        <div class="q-dots" role="tablist" aria-label="Frases">
+          <button class="qdot active" aria-label="Frase 1" type="button"></button>
+          <button class="qdot" aria-label="Frase 2" type="button"></button>
+          <button class="qdot" aria-label="Frase 3" type="button"></button>
+          <button class="qdot" aria-label="Frase 4" type="button"></button>
         </div>
-      </div>
+      </figure>
     </div>
 
-    <!-- Columna DERECHA: Reseñas (tu carrusel existente) -->
+    <!-- DERECHA: Carrusel de reseñas (tu código existente) -->
     <div class="col-12 col-lg-6">
       <div id="reviewCarousel" class="carousel slide testimonial h-100" data-bs-ride="carousel" data-bs-interval="8000">
         <div class="carousel-inner h-100">
@@ -287,7 +276,6 @@
     </div>
   </div>
 </section>
-
 
 </main>
 
@@ -358,6 +346,51 @@
       show(idx);
     }, 6000);
   })();
+</script>
+
+<script>
+(() => {
+  const frases = [
+    'Estrena confianza: un seminuevo certificado rinde como nuevo.',
+    'Paga menos, maneja más: rendimiento y estilo sin devaluación.',
+    'Elige inteligente: historial claro, precio honesto, valor real.',
+    'Tu próximo destino empieza con este volante.'
+  ];
+
+  const quoteEl = document.getElementById('mot-quote');
+  const dots    = Array.from(document.querySelectorAll('.qdot'));
+  if(!quoteEl || !dots.length) return;
+
+  let idx = 0, timer = null;
+
+  function setActive(i){
+    idx = i % frases.length;
+    // animación out -> in
+    quoteEl.classList.remove('in');
+    setTimeout(() => {
+      quoteEl.textContent = frases[idx];
+      quoteEl.classList.add('in');
+      dots.forEach((d,k)=> d.classList.toggle('active', k===idx));
+    }, 180); // timing corto para el fade-out
+  }
+
+  function auto(){
+    clearInterval(timer);
+    timer = setInterval(() => setActive((idx+1)%frases.length), 6000);
+  }
+
+  // dots clicables
+  dots.forEach((d,k)=> d.addEventListener('click', () => {
+    setActive(k);
+    auto(); // reinicia el ciclo
+  }));
+
+  // init
+  quoteEl.textContent = frases[idx];
+  quoteEl.classList.add('in');
+  dots[0].classList.add('active');
+  auto();
+})();
 </script>
 
 
