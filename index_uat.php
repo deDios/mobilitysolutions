@@ -109,15 +109,6 @@
           <img src="Imagenes/Carrusel/carrusel 3.jpg" class="d-block w-100" alt="Banner 3">
         </div>
 
-        <!-- Controles -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon"></span>
-          <span class="visually-hidden">Anterior</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-          <span class="carousel-control-next-icon"></span>
-          <span class="visually-hidden">Siguiente</span>
-        </button>
       </div>
     </div>
   </div>
@@ -222,54 +213,48 @@
 
     <!-- DERECHA: Carrusel de reseñas (tu código existente) -->
     <div class="col-12 col-lg-6">
-      <div id="reviewCarousel" class="carousel slide testimonial h-100" data-bs-ride="carousel" data-bs-interval="8000">
-        <div class="carousel-inner h-100">
-          <?php 
-            $inc = include "db/Conexion.php";
-            if ($inc){
-              $query = "SELECT Id, Nombre, Dias, Descripcion 
-                        FROM mobility_solutions.tmx_resenas 
-                        ORDER BY RAND() LIMIT 6;";
-              $result = mysqli_query($con,$query);
-              $isFirst = true;
-              if ($result){
-                while($row = mysqli_fetch_assoc($result)){
-                  $id = (int)$row['Id'];
-                  $Nombre = $row['Nombre'];
-                  $Dias = (int)$row['Dias'];
-                  $Descripcion = $row['Descripcion'];
-                  ?>
-                  <div class="carousel-item <?= $isFirst ? 'active' : '' ?>">
-                    <div class="card testimonial-card shadow-sm border-0 h-100">
-                      <div class="card-body p-4">
-                        <div class="d-flex align-items-center gap-3 mb-2">
-                          <div class="position-relative reviewer-avatar">
-                            <img src="Imagenes/Perfil_resena/Img<?= $id ?>.jpg" class="rounded-circle" alt="Foto <?= htmlspecialchars($Nombre) ?>">
-                            <img src="Imagenes/logo_google.jpg" class="logo-mini" alt="Google">
-                          </div>
-                          <div class="flex-grow-1">
-                            <h5 class="mb-0"><?= htmlspecialchars($Nombre) ?></h5>
-                            <div class="stars" aria-label="5 estrellas">★★★★★</div>
-                            <small class="text-muted"><?= $Dias ?> días atrás</small>
-                          </div>
+      <div id="reviewVCarousel" class="vcarousel" aria-label="Reseñas de clientes" aria-live="polite">
+        <?php 
+          $inc = include "db/Conexion.php";
+          if ($inc){
+            $q = "SELECT Id, Nombre, Dias, Descripcion 
+                  FROM mobility_solutions.tmx_resenas 
+                  ORDER BY RAND() LIMIT 6;";
+            $r = mysqli_query($con,$q);
+            if ($r){
+              while($row = mysqli_fetch_assoc($r)){
+                $id=(int)$row['Id']; $Nombre=$row['Nombre']; $Dias=(int)$row['Dias']; $Desc=$row['Descripcion'];
+                ?>
+                <article class="vslide">
+                  <div class="card testimonial-card shadow-sm border-0">
+                    <div class="card-body p-4">
+                      <div class="d-flex align-items-center gap-3 mb-2">
+                        <div class="position-relative reviewer-avatar">
+                          <img src="Imagenes/Perfil_resena/Img<?= $id ?>.jpg" class="rounded-circle" alt="Foto <?= htmlspecialchars($Nombre) ?>">
+                          <img src="Imagenes/logo_google.jpg" class="logo-mini" alt="Google">
                         </div>
-                        <p class="mb-3 text-secondary lh-base"><?= nl2br(htmlspecialchars($Descripcion)) ?></p>
-                        <div class="testimonial-photo mt-3">
-                          <img src="Imagenes/Entregas/entrega<?= ($id % 6) + 1 ?>.jpg" alt="Entrega Mobility" onerror="this.style.display='none'">
+                        <div class="flex-grow-1">
+                          <h5 class="mb-0"><?= htmlspecialchars($Nombre) ?></h5>
+                          <div class="stars" aria-label="5 estrellas">★★★★★</div>
+                          <small class="text-muted"><?= $Dias ?> días atrás</small>
                         </div>
+                      </div>
+                      <p class="mb-3 text-secondary lh-base"><?= nl2br(htmlspecialchars($Desc)) ?></p>
+                      <div class="testimonial-photo mt-3">
+                        <img src="Imagenes/Entregas/entrega<?= ($id % 6) + 1 ?>.jpg" alt="Entrega Mobility" onerror="this.style.display='none'">
                       </div>
                     </div>
                   </div>
-                  <?php
-                  $isFirst = false;
-                }
-              } else {
-                echo '<div class="carousel-item active"><div class="alert alert-warning m-0">No pudimos cargar reseñas por ahora.</div></div>';
+                </article>
+                <?php
               }
-              if ($result) { mysqli_free_result($result); }
+              mysqli_free_result($r);
             }
-          ?>
-        </div>
+          }
+        ?>
+      </div>
+    </div>
+
 
         <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev">
           <span class="carousel-control-prev-icon"></span><span class="visually-hidden">Anterior</span>
@@ -339,7 +324,7 @@
   const frases = [
     'Invierte con inteligencia: calidad verificada, historial claro y precio competitivo.',
     'Elige con certeza: seminuevos certificados, valor transparente y desempeño probado.',
-    'Conduce con confianza: vehículos seleccionados para ofrecer seguridad, rendimiento y tranquilidad.s',
+    'Conduce con confianza: vehículos seleccionados para ofrecer seguridad, rendimiento y tranquilidad.',
     'Estrena confianza: un seminuevo certificado rinde como nuevo.',
     'Paga menos, maneja más: rendimiento y estilo sin devaluación.',
     'Elige inteligente: historial claro, precio honesto, valor real.'
@@ -384,6 +369,75 @@
   auto();
 })();
 </script>
+
+<script>
+(() => {
+  const root = document.getElementById('reviewVCarousel');
+  if (!root) return;
+
+  // Envolvemos los slides en un track interno
+  const slides = Array.from(root.querySelectorAll('.vslide'));
+  const track  = document.createElement('div');
+  track.className = 'vtrack';
+  slides.forEach(s => track.appendChild(s));
+  root.appendChild(track);
+
+  let idx = 0, timer = null;
+  let tops = [], heights = [];
+
+  function measure(){
+    // Reset transform para medir correctamente
+    track.style.transform = 'translateY(0)';
+    const rectTop = track.getBoundingClientRect().top;
+    tops    = slides.map(s => s.getBoundingClientRect().top - rectTop + track.scrollTop);
+    heights = slides.map(s => s.getBoundingClientRect().height);
+  }
+
+  function setClasses(){
+    slides.forEach((s,i)=>{
+      s.classList.remove('is-active','is-adj');
+      if (i === idx) s.classList.add('is-active');
+      if (i === idx-1 || i === idx+1) s.classList.add('is-adj');
+    });
+  }
+
+  function centerActive(animate=true){
+    const ch = root.clientHeight;
+    const targetTop = tops[idx];
+    const targetH   = heights[idx];
+    const offset = -(targetTop - (ch/2 - targetH/2));
+    if (!animate) track.style.transition = 'none';
+    track.style.transform = `translateY(${offset}px)`;
+    if (!animate) requestAnimationFrame(()=> track.style.transition = '');
+  }
+
+  function go(to){
+    idx = (to + slides.length) % slides.length;
+    setClasses();
+    centerActive();
+  }
+
+  function autoplay(){
+    clearInterval(timer);
+    timer = setInterval(() => go(idx+1), 5000);
+  }
+
+  // Medir en carga y en resize (con debounce)
+  const doMeasure = () => { measure(); setClasses(); centerActive(false); };
+  window.addEventListener('load', doMeasure);
+  window.addEventListener('resize', () => { clearTimeout(window.__vrcR); window.__vrcR=setTimeout(doMeasure, 120); });
+
+  // Pausar cuando la pestaña no está visible o al pasar el mouse
+  document.addEventListener('visibilitychange', () => document.hidden ? clearInterval(timer) : autoplay());
+  root.addEventListener('mouseenter', () => clearInterval(timer));
+  root.addEventListener('mouseleave', autoplay);
+
+  // Inicializa
+  doMeasure();
+  autoplay();
+})();
+</script>
+
 
 
 </body>

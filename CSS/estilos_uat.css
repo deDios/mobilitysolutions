@@ -36,18 +36,21 @@ a{ color:#0a0a0a; text-decoration:none }
 
 /* NUEVO: el “lienzo” del slide toma altura y centra el contenido */
 #heroCarousel .carousel-item{
-  min-height: clamp(460px, 66vh, 820px);  /* usa min-height, no height */
+  display:flex;               /* centra el contenido vertical */
+  align-items:center;
+  justify-content:center;
+  min-height: clamp(460px, 66vh, 820px);
   background:#f5f5f7;
 }
-
-/* Imagen adaptada al alto del slide */
 #heroCarousel .carousel-item > a,
 #heroCarousel .carousel-item > img{
-  display:block;
   width:100%;
-  height:100%;
+  height:auto;                /* en vez de height:100% */
+  max-height:100%;            /* respeta el alto del slide */
   object-fit: contain;
+  display:block;
 }
+
 
 /* Borde redondeado y sombra del contenedor de slides (igual que ya tenías) */
 #heroCarousel .carousel-inner{
@@ -144,8 +147,6 @@ footer .hr3{ height:3px; border-color:gray;     background-color:gray }
   transform: translateY(8px);
   transition: opacity .5s ease, transform .5s ease;
 }
-.quote-big.in{ opacity:1; transform: translateY(0); }
-
 
 .quote-big.in{ opacity:1; transform: translateY(0); }
 
@@ -170,6 +171,37 @@ footer .hr3{ height:3px; border-color:gray;     background-color:gray }
   transform: translateY(-1px);
 }
 
+/* Carrusel vertical */
+.vcarousel{
+  position: relative;
+  height: 420px;                  /* alto visible */
+  overflow: hidden;
+  border-radius: 12px;
+}
+.vcarousel .vtrack{
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  will-change: transform;
+  transition: transform .55s cubic-bezier(.22,.84,.32,1);
+}
+
+/* Slides: no clic, solo lectura */
+.vslide{
+  pointer-events: none;
+  user-select: none;
+  padding: 6px 0;                 /* separación vertical entre tarjetas */
+}
+
+/* Estados visuales */
+.vslide .card{ transition: transform .45s ease, opacity .45s ease, filter .45s ease; }
+.vslide{ opacity:.30; transform: scale(.96); filter: saturate(.9); }
+.vslide.is-adj{ opacity:.60; transform: scale(.985); }
+.vslide.is-active{ opacity:1; transform: scale(1); filter: none; }
+
+/* Asegurar alturas consistentes (puedes ajustar) */
+.vslide .card{ min-height: 200px; }
+.vslide .testimonial-photo img{ max-height:160px; width:100%; object-fit:cover; border-radius:10px; }
 
 /* En pantallas grandes, iguala alturas entre columnas para que “respire” */
 @media (min-width: 992px){
