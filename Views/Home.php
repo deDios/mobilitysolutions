@@ -492,6 +492,17 @@ window.renderRewards = function () {
           <div class="texto-tareas">Tareas en curso</div>
         </div>
 
+        <!-- Pastel morado Cumpleaños del mes -->
+        <div id="cumple-resumen" class="cumple-resumen" onclick="openCumpleModal()">
+          <div class="pastel-cumple">
+            <div class="pastel-icon">
+              <div class="pastel-frosting"></div>
+              <div class="pastel-num" id="cumple-count">0</div>
+            </div>
+          </div>
+          <div class="texto-cumple">Cumpleaños este mes</div>
+        </div>
+
         <!-- 
         Indicadores de Reportes
         <div id="reportes-resumen" class="reportes-resumen">
@@ -576,7 +587,7 @@ window.renderRewards = function () {
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
         <h2>Editar Información</h2>
-        <form id="editForm"> <!-- Quitamos action y method -->
+        <form id="editForm">
             <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
 
             <label>Email:</label>
@@ -590,6 +601,17 @@ window.renderRewards = function () {
 
             <button type="submit">Guardar Cambios</button>
         </form>
+    </div>
+</div>
+
+<!-- Modal Cumpleañeros -->
+<div id="cumpleModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeCumpleModal()">&times;</span>
+        <h2 id="cumpleTituloMes">Cumpleaños del mes</h2>
+        <ul id="cumpleLista" class="cumple-lista">
+            <!-- Llenado dinámico -->
+        </ul>
     </div>
 </div>
 
@@ -627,6 +649,7 @@ const centerTextPlugin = {
 document.addEventListener("DOMContentLoaded", () => {
   const userId = <?php echo intval($user_id); ?>;
 
+  // ====== TAREAS EN CURSO ======
   fetch(`https://mobilitysolutionscorp.com/web/MS_get_tareas.php?user_id=${userId}`)
     .then(res => res.json())
     .then(data => {
@@ -637,6 +660,46 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(error => {
       console.error("Error al cargar tareas en curso:", error);
+    });
+
+  // ====== CUMPLEAÑEROS DEL MES ======
+  // Servicio requerido: /web/MS_get_cumples_mes.php
+  // Esperado: { success:true, mes:"Octubre", cumpleaneros:[ {nombre:"Juan", dia:"05"}, ... ] }
+  fetch("https://mobilitysolutionscorp.com/web/MS_get_cumples_mes.php")
+    .then(res => res.json())
+    .then(data => {
+      const lista = (data && Array.isArray(data.cumpleaneros)) ? data.cumpleaneros : [];
+      const conteo = lista.length;
+
+      const numEl = document.getElementById("cumple-count");
+      if (numEl) numEl.textContent = conteo;
+
+      const tituloMes = document.getElementById("cumpleTituloMes");
+      if (tituloMes && data && data.mes) {
+        tituloMes.textContent = "Cumpleaños de " + data.mes;
+      }
+
+      const ul = document.getElementById("cumpleLista");
+      if (ul) {
+        ul.innerHTML = "";
+        if (lista.length === 0) {
+          const li = document.createElement("li");
+          li.className = "cumple-empty";
+          li.textContent = "Sin cumpleaños este mes.";
+          ul.appendChild(li);
+        } else {
+          lista.forEach(p => {
+            const li = document.createElement("li");
+            const nombre = p.nombre || p.user_name || "";
+            const dia = p.dia || p.day || "";
+            li.textContent = nombre + " — " + dia;
+            ul.appendChild(li);
+          });
+        }
+      }
+    })
+    .catch(err => {
+      console.error("Error al cargar cumpleañeros:", err);
     });
 });
 </script>
@@ -651,12 +714,29 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("editModal").style.display = "none";
     }
 
+    // Nuevo: abrir / cerrar modal de cumpleañeros
+    function openCumpleModal() {
+        document.getElementById("cumpleModal").style.display = "block";
+    }
+
+    function closeCumpleModal() {
+        document.getElementById("cumpleModal").style.display = "none";
+    }
+
     window.onclick = function(event) {
         const modal = document.getElementById("editModal");
         if (event.target == modal) {
             modal.style.display = "none";
         }
     }
+
+    // Cierre para modal de cumpleañeros sin tocar el anterior
+    window.addEventListener("click", function(e){
+        const cmodal = document.getElementById("cumpleModal");
+        if (e.target === cmodal) {
+            cmodal.style.display = "none";
+        }
+    });
 
     // Enviar datos como JSON
     document.getElementById("editForm").addEventListener("submit", function(e) {
@@ -769,16 +849,15 @@ document.addEventListener("DOMContentLoaded", () => {
       // Animar el “llenado”
       window.renderRewards();
 
-      // ====== Grid de reconocimientos (tu lógica actual) ======
-      // ====== Agrupar por tipo y mostrar como acordeón (siempre 3 grupos) ======
+      // ====== Grid de reconocimientos ======
+      // Agrupar por tipo y mostrar acordeón
       const NOMBRES_TIPO = { 1: "Desempeño", 2: "Seguimiento", 3: "Innovación" };
       const CLASE_TIPO   = { 1: "recono-desempeno", 2: "recono-liderazgo", 3: "recono-innovacion" };
       const PUNTOS_TIPO  = { 1: 2, 2: 2, 3: 2 };
 
-      const tiposOrden = [1, 2, 3]; // orden fijo de grupos
-      const grupos = { 1: [], 2: [], 3: [] }; // inicia vacío para garantizar presencia
+      const tiposOrden = [1, 2, 3];
+      const grupos = { 1: [], 2: [], 3: [] };
 
-      // llena con los datos que llegaron (si hay)
       lista.forEach(it => {
         const t = parseInt(it.tipo, 10);
         if (grupos[t]) grupos[t].push(it);
@@ -788,11 +867,11 @@ document.addEventListener("DOMContentLoaded", () => {
       groupsWrap.className = "rec-groups";
 
       tiposOrden.forEach((tipo, idx) => {
-        const items = grupos[tipo];                  // puede ser []
+        const items = grupos[tipo];
         const totalPtsGrupo = items.length * (PUNTOS_TIPO[tipo] || 0);
 
         const card = document.createElement("div");
-        card.className = "rec-group" + (idx === 0 ? " open" : ""); // el 1º inicia abierto
+        card.className = "rec-group" + (idx === 0 ? " open" : "");
 
         const header = document.createElement("div");
         header.className = "rec-group__header";
@@ -816,7 +895,12 @@ document.addEventListener("DOMContentLoaded", () => {
           grid.className = "rec-grid";
           items.forEach(item => {
             const tile = document.createElement("div");
-            tile.className = `reconocimiento-item ${CLASE_TIPO[tipo]}`;
+            tile.className = `reconocimiento-item ${CLASE_TIPO[tipo]} recon-tooltip`;
+            // tooltip con comentario / descripción del reconocimiento
+            tile.setAttribute(
+              "data-tooltip",
+              (item.comentario || item.descripcion || "").toString()
+            );
             tile.innerHTML = `
               <div class="titulo">${item.reconocimiento}</div>
               <div class="fecha">${item.mes}/${item.anio}</div>
@@ -825,7 +909,6 @@ document.addEventListener("DOMContentLoaded", () => {
           });
           body.appendChild(grid);
         } else {
-          // Mensaje de vacío
           const empty = document.createElement("div");
           empty.className = "rec-empty";
           empty.textContent = `No hay reconocimientos de ${NOMBRES_TIPO[tipo].toLowerCase()}.`;
@@ -837,7 +920,6 @@ document.addEventListener("DOMContentLoaded", () => {
         groupsWrap.appendChild(card);
       });
 
-      // sustituye la sección de reconocimientos en el contenedor
       contenedorSkills.appendChild(groupsWrap);
 
 
@@ -1175,7 +1257,7 @@ function showLine(tipo) {
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3Z9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 </body>
