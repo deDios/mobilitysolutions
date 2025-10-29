@@ -371,3 +371,291 @@ li {
     box-shadow: 0 1rem 3rem rgba(132,138,163,0.1) !important;
 }
 
+
+/* ======================
+   SECCIÓN CONTACTO REMAKE
+   ====================== */
+
+/* wrapper general: mantiene tu separación del nav fijo */
+.contact-section {
+  padding-top: 150px;   /* igual que .div_contact que tenías */
+  padding-bottom: 60px;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255,192,10,0.18) 0%, rgba(255,192,10,0) 60%),
+    radial-gradient(circle at 85% 30%, rgba(27,30,33,0.15) 0%, rgba(27,30,33,0) 60%);
+}
+
+/* tarjeta 2 columnas */
+.contact-card {
+  position: relative;
+  border-radius: 20px;
+  background: #ffffff;
+  overflow: hidden;
+  box-shadow: 0 24px 48px rgba(0,0,0,.08);
+  border: 1px solid rgba(0,0,0,.03);
+}
+
+/* columna del formulario */
+.contact-form-col {
+  background-color: #fff;
+  position: relative;
+  z-index: 2;
+}
+
+/* header del form */
+.form-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1b1e21;
+  line-height: 1.2;
+  margin-bottom: .25rem;
+}
+.form-subtitle {
+  color: #6b7280;
+  font-size: .9rem;
+  line-height: 1.4;
+  max-width: 480px;
+  margin: 0;
+}
+
+/* flotantes bonitas */
+.form-floating > label {
+  color: #6b7280;
+  font-size: .9rem;
+}
+.form-floating > .form-control,
+.form-floating > textarea.form-control {
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  background-color: #fff;
+  box-shadow: 0 8px 20px rgba(0,0,0,.03);
+  font-size: .95rem;
+  color: #1b1e21;
+}
+.form-floating > .form-control:focus,
+.form-floating > textarea.form-control:focus {
+  border-color: #FFC00A;
+  box-shadow: 0 0 0 3px rgba(255,192,10,.35);
+  outline: none;
+}
+
+/* textarea autosize-ish look */
+.textarea-auto {
+  resize: none;
+  min-height: 120px;
+  line-height: 1.4;
+}
+
+/* botón marca propia (amarillo / negro) */
+.btn-brand {
+  background-color: #FFC00A;
+  color: #1b1e21;
+  font-weight: 700;
+  border: 0;
+  border-radius: 10px;
+  padding: .8rem 1.2rem;
+  font-size: 1rem;
+  line-height: 1.2;
+  box-shadow: 0 16px 32px rgba(255,192,10,.4);
+  transition: all .18s ease;
+  text-align: center;
+  display: inline-block;
+}
+.btn-brand:hover,
+.btn-brand:focus {
+  background-color: #ffad00;
+  color: #1b1e21;
+  box-shadow: 0 20px 40px rgba(255,192,10,.55);
+}
+
+/* Columna derecha (info contacto). La volvemos tipo "panel oscuro premium" */
+.contact-aside {
+  position: relative;
+  background-color: #1b1e21; /* negro de tu paleta */
+  color: #fff;
+  padding: 2rem 1.5rem 2.5rem;
+  display: flex;
+  align-items: stretch;
+  z-index: 1;
+}
+@media (min-width:768px){
+  .contact-aside {
+    padding: 2.5rem 2rem 3rem;
+  }
+}
+@media (min-width:992px){
+  .contact-aside {
+    border-left: 1px solid rgba(255,255,255,.07);
+  }
+}
+
+/* capitas internas para layout */
+.aside-inner {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.aside-blob {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,192,10,.25) 0%, rgba(27,30,33,0) 60%),
+    radial-gradient(circle at 80% 80%, rgba(255,255,255,.07) 0%, rgba(27,30,33,0) 70%);
+  opacity: .6;
+  z-index: 1;
+}
+
+/* encabezado del panel */
+.aside-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 .25rem;
+  line-height: 1.2;
+}
+.aside-desc {
+  color: #9ca3af;
+  font-size: .9rem;
+  line-height: 1.4;
+  margin: 0 0 1.5rem;
+  max-width: 260px;
+}
+
+/* lista de medios de contacto */
+.aside-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+}
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: .75rem;
+  margin-bottom: 1.25rem;
+}
+.info-icon {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  border-radius: 12px;
+  background-color: #FFC00A;
+  color: #1b1e21;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 16px 30px rgba(255,192,10,.45);
+}
+.info-text {
+  color: #fff;
+  line-height: 1.4;
+  font-size: .9rem;
+}
+.info-label {
+  font-weight: 600;
+  font-size: .8rem;
+  color: #FFC00A;
+  margin-bottom: .15rem;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+}
+.info-value {
+  font-weight: 500;
+  color: #fff;
+}
+.info-hint {
+  font-size: .8rem;
+  color: #9ca3af;
+  line-height: 1.3;
+  margin-top: .25rem;
+}
+
+/* Caja de confianza / seguridad */
+.trust-box {
+  background-color: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 12px;
+  padding: 1rem 1rem .75rem;
+  box-shadow: 0 24px 40px rgba(0,0,0,.6);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  max-width: 320px;
+}
+.trust-title {
+  color: #fff;
+  font-weight: 600;
+  font-size: .9rem;
+  margin-bottom: .5rem;
+  line-height: 1.2;
+}
+.trust-list {
+  list-style: none;
+  padding-left: 1rem;
+  margin: 0;
+  color: #9ca3af;
+  font-size: .8rem;
+  line-height: 1.4;
+}
+.trust-list li {
+  margin-bottom: .4rem;
+  text-indent: -0.6rem;
+}
+.trust-list li::before {
+  content: "•";
+  color: #FFC00A;
+  font-weight: 700;
+  display: inline-block;
+  width: .6rem;
+  margin-right: .2rem;
+}
+
+/* ----------- Responsive tweaks ----------- */
+
+/* en pantallas chicas, queremos que el formulario salga primero y el panel info debajo */
+@media (max-width: 991.98px){
+  .contact-card {
+    border-radius: 16px;
+  }
+  .contact-form-col {
+    border-bottom: 1px solid rgba(0,0,0,.05);
+  }
+  .contact-aside {
+    border-left: 0;
+    border-top: 1px solid rgba(255,255,255,.08);
+    border-radius: 0 0 16px 16px;
+  }
+}
+
+/* mejora tamaños de texto en mobile */
+@media (max-width: 575.98px){
+  .form-title {
+    font-size: 1.25rem;
+  }
+  .form-subtitle {
+    font-size: .85rem;
+  }
+  .aside-title {
+    font-size: 1rem;
+  }
+  .aside-desc {
+    font-size: .8rem;
+  }
+  .info-text {
+    font-size: .85rem;
+  }
+  .info-icon {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    font-size: .9rem;
+  }
+  .btn-brand {
+    font-size: .95rem;
+  }
+}
+
