@@ -947,3 +947,89 @@ h1 {
 .recon-tooltip:hover::after {
     opacity: 1;
 }
+
+/* ---------- Cumpleaños pastel morado ---------- */
+
+.cumple-cake-wrapper {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 16px; /* separarlo un poquito de "Tareas en curso" */
+}
+
+.cake-icon {
+  position: relative;
+  width: 45px;
+  height: 40px;
+}
+
+/* Base del pastel */
+.cake-layer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 45px;
+  height: 32px;
+  background: #6d28d9; /* morado intenso */
+  border-radius: 6px 6px 4px 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  border: 2px solid rgba(255,255,255,0.4);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
+  font-family: system-ui,-apple-system,Segoe UI,Roboto;
+}
+
+/* Betún superior */
+.cake-layer:before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: #8b5cf6; /* tono más claro lila */
+  border-radius: 6px 6px 0 0;
+  box-shadow: inset 0 -3px 0 rgba(0,0,0,0.15);
+}
+
+/* Velita */
+.cake-candle {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 14px;
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0 0 3px rgba(0,0,0,0.3);
+}
+
+/* Flama */
+.candle-flame {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 10px;
+  border-radius: 50% 50% 50% 50%;
+  background: radial-gradient(circle at 50% 30%, #fff 0%, #fde047 30%, #facc15 60%, #ea580c 100%);
+  box-shadow: 0 0 6px rgba(255,200,0,0.7);
+}
+
+/* Asegurar que la fila de tareas + pastel estén en línea */
+.tareas-circulo {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 10px;
+}

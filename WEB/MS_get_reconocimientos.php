@@ -12,7 +12,7 @@ if (!$asignado) {
     exit;
 }
 
-$query = "SELECT tipo, reconocimiento, mes, anio 
+$query = "SELECT tipo, reconocimiento, mes, anio, descripcion 
           FROM mobility_solutions.tmx_reconocimientos 
           WHERE asignado = ? 
           ORDER BY anio DESC, mes DESC";

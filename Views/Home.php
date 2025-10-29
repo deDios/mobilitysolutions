@@ -484,12 +484,25 @@ window.renderRewards = function () {
         </div>
 
         <div id="tareas-resumen" class="tareas-circulo">
+  <!-- cápsula de tareas (igual que ya tenías) -->
           <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/tareas.php">
             <div class="circulo-tareas">
               <span id="cantidad-tareas">0</span>
             </div>
           </a>
           <div class="texto-tareas">Tareas en curso</div>
+
+          <!-- pastel de cumpleaños -->
+          <div class="cumple-cake-wrapper" id="cumpleTrigger" title="Cumpleaños este mes">
+            <div class="cake-icon">
+              <div class="cake-candle">
+                <div class="candle-flame"></div>
+              </div>
+              <div class="cake-layer">
+                <span id="cumple-count">0</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Pastel morado Cumpleaños del mes -->
@@ -604,16 +617,15 @@ window.renderRewards = function () {
     </div>
 </div>
 
-<!-- Modal Cumpleañeros -->
+<!-- Modal de Cumpleaños -->
 <div id="cumpleModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeCumpleModal()">&times;</span>
-        <h2 id="cumpleTituloMes">Cumpleaños del mes</h2>
-        <ul id="cumpleLista" class="cumple-lista">
-            <!-- Llenado dinámico -->
-        </ul>
-    </div>
+  <div class="modal-content">
+    <span class="close" onclick="closeCumpleModal()">&times;</span>
+    <h2 id="cumpleTituloMes">Cumpleaños</h2>
+    <ul id="cumpleLista" style="list-style:none; padding-left:0; max-height:250px; overflow-y:auto; margin-top:15px; font-size:14px; line-height:1.4;"></ul>
+  </div>
 </div>
+
 
 <script>
 // Texto en el centro de una doughnut
@@ -781,7 +793,7 @@ document.addEventListener("DOMContentLoaded", () => {
       contenedorSkills.innerHTML = "<h2>Reconocimientos</h2>";
 
       // ====== Cálculo de puntos por tipo ======
-      // tipo: 1 = Desempeño (2), 2 = Seguimiento (2), 3 = Innovación (4)
+      // tipo: 1 = Desempeño, 2 = Seguimiento, 3 = Innovación
       const puntosPorTipo = {1: 2, 2: 2, 3: 2};
       const lista = (data && Array.isArray(data.reconocimientos)) ? data.reconocimientos : [];
       const totalPuntos = lista.reduce((acc, item) => {
@@ -797,18 +809,16 @@ document.addEventListener("DOMContentLoaded", () => {
         { pts: 55, nombre: "Bono especial" },
         { pts: 75, nombre: "Viaje anual" }
       ];
-      const maxPts = 75; // explícito (coincide con window.rew.max)
+      const maxPts = 75;
       window.rew.max = maxPts;
-      window.rew.metas = metas.map(m => m.pts); // sincroniza metas globales
-      const pct = Math.min(100, (totalPuntos / maxPts) * 100);
+      window.rew.metas = metas.map(m => m.pts);
 
-      // Calcular siguiente premio
       const siguiente = metas.find(m => totalPuntos < m.pts);
       const textoSiguiente = siguiente
-        ? `Siguiente: ${siguiente.nombre} a ${siguiente.pts} pts`
+        ? `Siguiente: Premio ${metas.indexOf(siguiente) + 2} a ${siguiente.pts} pts`
         : `¡Todos los premios conseguidos!`;
 
-      // ====== Render del termómetro ======
+      // ====== Render del termómetro visual ======
       const rewardsWrapper = document.createElement("div");
       rewardsWrapper.className = "rewards-wrapper";
       rewardsWrapper.innerHTML = `
@@ -825,14 +835,16 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
 
         <div class="rewards-legend">
-          <span>2 (Desempeño) · 2 (Seguimiento) · 2 (Innovación)<br>
-                1 (Ventas) · 4 (Entregas)  · <span class="neg">-2 (Faltas)</span>     · <span class="neg">-3 (Quejas)</span></span>
+          <span>
+            2 (Desempeño) · 2 (Seguimiento) · 2 (Innovación)<br>
+            1 (Ventas) · 4 (Entregas) · <span class="neg">-2 (Faltas)</span> · <span class="neg">-3 (Quejas)</span>
+          </span>
           <span class="next" id="rewards-next">${textoSiguiente}</span>
         </div>
       `;
       contenedorSkills.appendChild(rewardsWrapper);
 
-      // Colocar marcadores de premios
+      // Marcadores en la barra
       const markers = document.getElementById("rewards-markers");
       metas.forEach((m) => {
         const left = (m.pts / maxPts) * 100;
@@ -846,11 +858,10 @@ document.addEventListener("DOMContentLoaded", () => {
         markers.appendChild(marker);
       });
 
-      // Animar el “llenado”
+      // Llenar barra y texto de puntos usando tu helper global
       window.renderRewards();
 
-      // ====== Grid de reconocimientos ======
-      // Agrupar por tipo y mostrar acordeón
+      // ====== Agrupar reconocimientos por tipo (1,2,3) ======
       const NOMBRES_TIPO = { 1: "Desempeño", 2: "Seguimiento", 3: "Innovación" };
       const CLASE_TIPO   = { 1: "recono-desempeno", 2: "recono-liderazgo", 3: "recono-innovacion" };
       const PUNTOS_TIPO  = { 1: 2, 2: 2, 3: 2 };
@@ -893,20 +904,24 @@ document.addEventListener("DOMContentLoaded", () => {
         if (items.length > 0) {
           const grid = document.createElement("div");
           grid.className = "rec-grid";
+
           items.forEach(item => {
             const tile = document.createElement("div");
-            tile.className = `reconocimiento-item ${CLASE_TIPO[tipo]} recon-tooltip`;
-            // tooltip con comentario / descripción del reconocimiento
-            tile.setAttribute(
-              "data-tooltip",
-              (item.comentario || item.descripcion || "").toString()
-            );
+            tile.className = `reconocimiento-item ${CLASE_TIPO[tipo]}`;
+
+            // 👇 AQUI el tooltip con la descripción
+            //    usamos title="" nativo del browser
+            if (item.descripcion) {
+              tile.setAttribute("title", item.descripcion);
+            }
+
             tile.innerHTML = `
               <div class="titulo">${item.reconocimiento}</div>
               <div class="fecha">${item.mes}/${item.anio}</div>
             `;
             grid.appendChild(tile);
           });
+
           body.appendChild(grid);
         } else {
           const empty = document.createElement("div");
@@ -921,14 +936,13 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       contenedorSkills.appendChild(groupsWrap);
-
-
     })
     .catch(error => {
       console.error("Error al cargar reconocimientos:", error);
     });
 });
 </script>
+
 
 
 <script>
@@ -1253,6 +1267,87 @@ function showLine(tipo) {
     if (hexE) hexE.addEventListener('click', () => renderGaugeEntrega());
   })();
 
+</script>
+
+
+
+<script>
+// Abrir / cerrar modal de cumpleaños
+function openCumpleModal() {
+  document.getElementById("cumpleModal").style.display = "block";
+}
+function closeCumpleModal() {
+  document.getElementById("cumpleModal").style.display = "none";
+}
+
+// Click en el pastel
+document.addEventListener("DOMContentLoaded", () => {
+  const pastelBtn = document.getElementById("cumpleTrigger");
+  if (pastelBtn) {
+    pastelBtn.addEventListener("click", openCumpleModal);
+  }
+});
+
+// Cerrar modal si hacen click afuera (extendemos tu lógica actual)
+window.onclick = function(event) {
+    const modal = document.getElementById("editModal");
+    const cumpleModal = document.getElementById("cumpleModal");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+    if (event.target == cumpleModal) {
+        cumpleModal.style.display = "none";
+    }
+};
+
+// Fetch de cumpleañeros del mes
+document.addEventListener("DOMContentLoaded", () => {
+
+  fetch("https://mobilitysolutionscorp.com/web/MS_get_cumples_mes.php")
+    .then(res => res.json())
+    .then(data => {
+      const lista = (data && Array.isArray(data.cumpleaneros)) ? data.cumpleaneros : [];
+      const conteo = data.count || lista.length || 0;
+
+      // número dentro del pastel morado
+      const countEl = document.getElementById("cumple-count");
+      if (countEl) {
+        countEl.textContent = conteo;
+      }
+
+      // título del modal con el mes
+      const tituloMes = document.getElementById("cumpleTituloMes");
+      if (tituloMes && data.mes) {
+        tituloMes.textContent = "Cumpleaños de " + data.mes;
+      }
+
+      // lista en el modal
+      const ul = document.getElementById("cumpleLista");
+      if (ul) {
+        ul.innerHTML = "";
+        if (lista.length === 0) {
+          const li = document.createElement("li");
+          li.textContent = "Sin cumpleaños este mes.";
+          ul.appendChild(li);
+        } else {
+          lista.forEach(p => {
+            const li = document.createElement("li");
+            li.style.marginBottom = "8px";
+            // ejemplo visual: "Juan Pérez — Día 05"
+            li.textContent =
+              (p.nombre ? p.nombre : "Sin nombre") +
+              " — Día " +
+              (p.dia ? p.dia : "--");
+            ul.appendChild(li);
+          });
+        }
+      }
+    })
+    .catch(err => {
+      console.error("Error cumpleaños:", err);
+    });
+
+});
 </script>
 
 
