@@ -18,9 +18,8 @@ body {
     justify-content: space-between;
     padding: 5px;
 }
-/*
-headeer top
-*/
+
+/* ===== header/top bar ===== */
 .topbar{
   background-color: #212529;
   padding: 0;
@@ -139,6 +138,7 @@ ul.social-network {
     transition: .3s ease-out;
     color: #fff;
 }
+
 a {
   color: #0a0a0a;
   text-decoration: none;
@@ -147,6 +147,7 @@ a {
 li {
     list-style-type: none;
 }
+
 .bg-image-full {
     background-position: center center;
     background-repeat: no-repeat;
@@ -172,21 +173,26 @@ li {
     padding-top: 50px;
 }
 
+/* gradiente amarillo usado en otros lados */
 .gradient-brand-color {
     background-image: -webkit-linear-gradient(0deg, #ffad00 0%, #ffd600 100%);
     background-image: -ms-linear-gradient(0deg, #ffad00 0%, #ffd600 100%);
     color: #fff;
 }
+
 .contact-info__wrapper {
     overflow: hidden;
     border-radius: .625rem .625rem 0 0
 }
+
 .div_contact {
     padding-top: 150px;
 }
 .espacio{
     padding-top: 50px;
 }
+
+/* mapa / sucursales (tu layout viejo, lo dejamos por compatibilidad por si lo usas) */
 .sec_map {
     width: 100%;
     height: 100%;
@@ -223,94 +229,86 @@ li {
 }
 .sec_map .mapa{
     border-radius: 10px 10px 10px 10px;
-    /*pointer-events:none;
-    */
+    /* pointer-events:none; */
 }
-/*-------------------*/
-  .cartas {
-    width: 350px;
-    background-color: gainsboro;
-    border-radius: 10px 10px 10px 10px;
-    padding-left: 5px;
-  }
-  .cartas p{
-    color: #aaa;
-    font-weight: bold;
-  }
-  .cartas .titulo_carta { 
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: auto;
-    align-items:center;
-  }
-  .titulo_carta .Imagenes{
-    position: relative;
-    width: 60px;
-    height: 60px;
-  }
-  .Imagenes .imagen-circular {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%; /* Hace que la imagen sea circular */
-      overflow: hidden;
-      object-fit: scale-down; /* Asegura que la imagen se ajuste correctamente */
-  } 
-  .Imagenes .imagen-pequeña {
-      position: absolute;
-      bottom: 1px; /* Ajusta la posición vertical */
-      right: 1px; /* Ajusta la posición horizontal */
-      width: 25px; /* Ajusta el tamaño de la imagen pequeña */
-      height: 25px; /* Ajusta el tamaño de la imagen pequeña */
-      border-radius: 50%; /* Opcional, hace que la imagen pequeña también sea circular */
-  }
-  /*
-  .titulo_carta img {
-    width: 45px;
-    height: 45px;
-    overflow: hidden;
-    object-fit: scale-down;
-  }
-  */
-  .titulo_carta .Descripcion {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-  .Descripcion .T_L{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: auto;
-    align-items:center;
-  }
-  .T_L h6{
-    color: #ffad00;
-  }
-  .T_L h5{
-    padding-top: 5px;
-  }
-  .T_L img {
-    width: 23px;
-    height: 23px;
-    overflow: hidden;
-    object-fit: scale-down;
-    padding-left: 5px;
-  }
-  .ubic_logo {
-    display: grid;
-    grid-template-columns: repeat(5,1fr);
-    grid-column-gap: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 30px;
-  }
- 
 
-/*----------------------*/
+/* tarjetitas info (legacy) */
+.cartas {
+  width: 350px;
+  background-color: gainsboro;
+  border-radius: 10px;
+  padding-left: 5px;
+}
+.cartas p{
+  color: #aaa;
+  font-weight: bold;
+}
+.cartas .titulo_carta { 
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: auto;
+  align-items:center;
+}
+.titulo_carta .Imagenes{
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+.Imagenes .imagen-circular {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    object-fit: scale-down;
+} 
+.Imagenes .imagen-pequeña {
+    position: absolute;
+    bottom: 1px;
+    right: 1px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+.titulo_carta .Descripcion {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.Descripcion .T_L{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: auto;
+  align-items:center;
+}
+.T_L h6{
+  color: #ffad00;
+}
+.T_L h5{
+  padding-top: 5px;
+}
+.T_L img {
+  width: 23px;
+  height: 23px;
+  overflow: hidden;
+  object-fit: scale-down;
+  padding-left: 5px;
+}
+.ubic_logo {
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  grid-column-gap: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 30px;
+}
+
+/* =========================
+   RESPONSIVE LEGACY BLOQUES
+   ========================= */
 @media (max-width:700px){
-  
   .mx-background-top-linear {
     background: -webkit-linear-gradient(45deg, #FFC00A 70%, #1b1e21 26%);
     background: -webkit-linear-gradient(left, #FFC00A 70%, #1b1e21 26%);
@@ -328,49 +326,15 @@ li {
   .cartas {
     width: 100%;
     background-color: gainsboro;
-    border-radius: 10px 10px 10px 10px;
+    border-radius: 10px;
     padding-left: 5px;
   }
-  
-  }
-
-
-@media (min-width: 1024px) {
-    .contact-info__wrapper {
-        border-radius: 0 .625rem .625rem 0;
-        padding: 5rem !important
-    }
-}
-.contact-info__list span.position-absolute {
-    left: 0
-}
-.z-index-101 {
-    z-index: 101;
-}
-.list-style--none {
-    list-style: none;
-}
-.contact__wrapper {
-    background-color: #fff;
-    border-radius: 0 0 .625rem .625rem
 }
 
-@media (min-width: 1024px) {
-    .contact__wrapper {
-        border-radius: .625rem 0 .625rem .625rem
-    }
-}
-@media (min-width: 1024px) {
-    .contact-form__wrapper {
-        padding: 5rem !important
-    }
-    
-
-}
+/* sombras bootstrap override */
 .shadow-lg, .shadow-lg--on-hover:hover {
     box-shadow: 0 1rem 3rem rgba(132,138,163,0.1) !important;
 }
-
 
 /* ======================
    SECCIÓN CONTACTO REMAKE
@@ -378,7 +342,7 @@ li {
 
 /* wrapper general: mantiene tu separación del nav fijo */
 .contact-section {
-  padding-top: 150px;   /* igual que .div_contact que tenías */
+  padding-top: 150px;   /* igual que .div_contact */
   padding-bottom: 60px;
   background:
     radial-gradient(circle at 15% 20%, rgba(255,192,10,0.18) 0%, rgba(255,192,10,0) 60%),
@@ -439,7 +403,7 @@ li {
   outline: none;
 }
 
-/* textarea autosize-ish look */
+/* textarea estilo "auto-height" */
 .textarea-auto {
   resize: none;
   min-height: 120px;
@@ -468,28 +432,33 @@ li {
   box-shadow: 0 20px 40px rgba(255,192,10,.55);
 }
 
-/* Columna derecha (info contacto). La volvemos tipo "panel oscuro premium" */
+/* Columna derecha (info contacto) */
 .contact-aside {
   position: relative;
-  background-color: #1b1e21; /* negro de tu paleta */
+  background-color: #1b1e21;
   color: #fff;
-  padding: 2rem 1.5rem 2.5rem;
+  /* MÁS AIRE A LA IZQUIERDA 👇 */
+  padding: 2rem 1.5rem 2.5rem 2rem;
   display: flex;
   align-items: stretch;
   z-index: 1;
+  border-left: 0;
 }
+
+/* escalamos padding en pantallas medianas/grandes */
 @media (min-width:768px){
   .contact-aside {
-    padding: 2.5rem 2rem 3rem;
+    padding: 2.5rem 2rem 3rem 2.25rem;
   }
 }
 @media (min-width:992px){
   .contact-aside {
     border-left: 1px solid rgba(255,255,255,.07);
+    padding: 2.5rem 2rem 3rem 3rem; /* aquí damos todavía más margen izquierdo */
   }
 }
 
-/* capitas internas para layout */
+/* capa interna */
 .aside-inner {
   position: relative;
   z-index: 3;
@@ -498,6 +467,8 @@ li {
   flex-direction: column;
   justify-content: space-between;
 }
+
+/* glow / blobs */
 .aside-blob {
   position: absolute;
   inset: 0;
@@ -529,7 +500,20 @@ li {
   list-style: none;
   padding: 0;
   margin: 0 0 2rem;
+  /* EMPUJE EXTRA INTERNO SOLO PARA LOS BLOQUES DE CONTACTO 👇 */
+  padding-left: .75rem;
 }
+@media (min-width:768px){
+  .aside-list {
+    padding-left: 1rem;
+  }
+}
+@media (min-width:992px){
+  .aside-list {
+    padding-left: 1rem; /* en desktop ya tenemos padding-left 3rem en .contact-aside, esto termina de centrar bonito */
+  }
+}
+
 .info-item {
   display: flex;
   align-items: flex-start;
@@ -613,18 +597,6 @@ li {
   width: .6rem;
   margin-right: .2rem;
 }
-/* espacio interno extra en la columna oscura de contacto */
-.contact-aside {
-  padding-left: 2rem;   /* antes estaba 2rem en desktop pero casi nada en mobile */
-}
-
-@media (max-width: 991.98px){
-  .contact-aside {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-}
-
 
 /* ----------- Responsive tweaks ----------- */
 
@@ -671,3 +643,33 @@ li {
   }
 }
 
+/* ===== Bootstrappy helpers (compatibilidad vieja) ===== */
+@media (min-width: 1024px) {
+    .contact-info__wrapper {
+        border-radius: 0 .625rem .625rem 0;
+        padding: 5rem !important
+    }
+}
+.contact-info__list span.position-absolute {
+    left: 0
+}
+.z-index-101 {
+    z-index: 101;
+}
+.list-style--none {
+    list-style: none;
+}
+.contact__wrapper {
+    background-color: #fff;
+    border-radius: 0 0 .625rem .625rem
+}
+@media (min-width: 1024px) {
+    .contact__wrapper {
+        border-radius: .625rem 0 .625rem .625rem
+    }
+}
+@media (min-width: 1024px) {
+    .contact-form__wrapper {
+        padding: 5rem !important
+    }
+}
