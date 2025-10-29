@@ -380,6 +380,72 @@ window.renderRewards = function () {
   .mini-hex{ width:82px; height:70px; }
 }
 
+/* ===== Override modales personalizados (editar perfil y cumpleaños) ===== */
+
+/* Fondo oscuro pantalla completa */
+#editModal.modal,
+#cumpleModal.modal {
+  display: none;               /* se muestra con JS */
+  position: fixed;
+  inset: 0;                    /* top/right/bottom/left:0 */
+  z-index: 9999;
+  background-color: rgba(0,0,0,0.55);  /* overlay oscuro */
+  padding: 40px 16px;          /* respeta espacio arriba/abajo */
+  overflow-y: auto;
+}
+
+/* Tarjeta interna centrada */
+#editModal .modal-content,
+#cumpleModal .modal-content {
+  background-color: #fff;
+  margin: 0 auto;              /* centrar */
+  width: 100%;
+  max-width: 400px;            /* <-- ESTA ES LA MAGIA: modal pequeñito */
+  border-radius: 10px;
+  border: 1px solid #888;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  padding: 24px 24px 20px;
+  position: relative;
+}
+
+/* Header del modal de cumple */
+#cumpleModal .modal-content h2,
+#editModal .modal-content h2 {
+  margin-top: 0;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  color: #111;
+}
+
+/* Botón X */
+#editModal .close,
+#cumpleModal .close {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  color: #333;
+}
+
+/* Lista de cumpleañeros en el modal */
+#cumpleModal #cumpleLista {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 16px;
+  max-height: 220px;
+  overflow-y: auto;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+#cumpleModal #cumpleLista li {
+  margin-bottom: 8px;
+}
+
 
 </style>
 
@@ -505,16 +571,6 @@ window.renderRewards = function () {
           </div>
         </div>
 
-        <!-- Pastel morado Cumpleaños del mes -->
-        <div id="cumple-resumen" class="cumple-resumen" onclick="openCumpleModal()">
-          <div class="pastel-cumple">
-            <div class="pastel-icon">
-              <div class="pastel-frosting"></div>
-              <div class="pastel-num" id="cumple-count">0</div>
-            </div>
-          </div>
-          <div class="texto-cumple">Cumpleaños este mes</div>
-        </div>
 
         <!-- 
         Indicadores de Reportes
