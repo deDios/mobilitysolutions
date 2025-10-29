@@ -104,140 +104,169 @@
 </div>
 
 <main>
-<div class="div_contact">
-<div class="container">
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-card shadow-lg">
 
+        <div class="row g-0">
 
-    <div class="contact__wrapper shadow-lg mt-n9">
-        <div class="row no-gutters">
-          
-            <div class="col-lg-5 contact-info__wrapper gradient-brand-color p-5 order-lg-2">
-                <h3 class="color--white mb-5">Contacta con nosotros</h3>
-    
-                <ul class="contact-info__list list-style--none position-relative z-index-101">
-                    <li class="mb-4 pl-4">
-                        <span class="position-absolute"><i class="fa fa-envelope"></i></span> Atencioncte@mobilitysolutionscorp.com
-                    </li>
-                    <li class="mb-4 pl-4">
-                        <span class="position-absolute"><i class="fa fa-phone"></i></span> (443)-522-7213
-                    </li>
-                    <li class="mb-4 pl-4">
-                        <span class="position-absolute"><i class="fa fa-whatsapp"></i></span> (551)-095-4444
-                    </li>
-                    <li class="mb-4 pl-4">
-                        <span class="position-absolute"><i class="fa fa-map-marker"></i></span> Av. P. de la Reforma #505
-                        <br> Piso 37, Cuauhtémoc,
-                        <br> C.P. 06500 CDMX
-    
-                        <div class="mt-3">
-                        </div>
-                    </li>
-                </ul>
-    
-                <figure class="figure position-absolute m-0 opacity-06 z-index-100" style="bottom:0; right: 10px">
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="444px" height="626px">
-                        <defs>
-                            <linearGradient id="PSgrad_1" x1="0%" x2="81.915%" y1="57.358%" y2="0%">
-                                <stop offset="0%" stop-color="rgb(255,255,255)" stop-opacity="1"></stop>
-                                <stop offset="100%" stop-color="rgb(0,54,207)" stop-opacity="0"></stop>
-                            </linearGradient>
-    
-                        </defs>
-                        <path fill-rule="evenodd" opacity="0.302" fill="rgb(72, 155, 248)" d="M816.210,-41.714 L968.999,111.158 L-197.210,1277.998 L-349.998,1125.127 L816.210,-41.714 Z"></path>
-                        <path fill="url(#PSgrad_1)" d="M816.210,-41.714 L968.999,111.158 L-197.210,1277.998 L-349.998,1125.127 L816.210,-41.714 Z"></path>
-                    </svg>
-                </figure>
+          <!-- FORMULARIO -->
+          <div class="col-lg-7 p-4 p-md-5 contact-form-col order-lg-1">
+            <div class="form-header mb-4">
+              <h2 class="form-title">Hablemos 🚗</h2>
+              <p class="form-subtitle">
+                Cuéntanos qué necesitas (financiamiento, inventario, proceso, dudas de seguridad, etc.)
+                y un asesor oficial de Mobility Solutions te responde.
+              </p>
             </div>
-    
-            <div class="col-lg-7 contact-form__wrapper p-5 order-lg-1">
-                <form class="contact-form needs-validation" novalidate>
-                    <div class="row">
-                        <div class="col-sm-6 mb-3">
-                            <div class="form-group">
-                                <label class="required-field" for="firstName">Nombre</label>
-                                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Wendy" required>
-                            </div>
-                            <div class="invalid-feedback">
-                                Porfavor llenar campo de auto
-                            </div>
-                        </div>
-    
-                        <div class="col-sm-6 mb-3">
-                            <div class="form-group">
-                                <label for="lastName">Apellidos</label>
-                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Ramirez" required>
-                            </div>
-                        </div>
-    
-                        <div class="col-sm-6 mb-3">
-                            <div class="form-group">
-                                <label class="required-field" for="email">Email</label>
-                                <input type="text" class="form-control" id="email" name="email" placeholder="wendy.apple@gmail.com" required>
-                            </div>
-                            <div class="invalid-feedback">
-                                Porfavor llenar campo de auto
-                            </div>
-                        </div>
-    
-                        <div class="col-sm-6 mb-3">
-                            <div class="form-group">
-                                <label for="phone">Número teléfonico</label>
-                                <input type="tel" class="form-control" id="phone" name="phone" placeholder="(044)-352272-13" required >
-                            </div>
-                            <div class="valid-feedback">
-                                ¡Se ve bien!
-                            </div>
-                            <div class="invalid-feedback">
-                                Porfavor llenar numero teléfonico
-                            </div>
-                        </div>
-    
-                        <div class="col-sm-12 mb-3">
-                            <div class="form-group">
-                                <label class="required-field" for="message">¿Cómo podemos ayudarte?</label>
-                                <textarea class="form-control" id="message" name="message" rows="4" placeholder="Hola, me gustaria saber....." required></textarea>
-                            </div>
-                            <div class="invalid-feedback">
-                                Porfavor llenar campo de auto
-                            </div>
-                        </div>
-    
-                        <div class="col-sm-12 mb-3">
-                            <button type="submit" name="submit" class="btn btn-primary">Enviar</button>
-                        </div>
 
-                        <script>
-                            // Ejemplo de JavaScript inicial para deshabilitar el envío de formularios si hay campos no válidos
-                            (function () {
-                            'use strict'
+            <form class="contact-form needs-validation" novalidate>
+              <div class="row">
 
-                            // Obtener todos los formularios a los que queremos aplicar estilos de validación de Bootstrap personalizados
-                            var forms = document.querySelectorAll('.needs-validation')
+                <div class="col-sm-6 mb-3">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Wendy" required>
+                    <label for="firstName">Nombre *</label>
+                    <div class="invalid-feedback">Por favor ingresa tu nombre.</div>
+                  </div>
+                </div>
 
-                            // Bucle sobre ellos y evitar el envío
-                            Array.prototype.slice.call(forms)
-                                .forEach(function (form) {
-                                form.addEventListener('submit', function (event) {
-                                    if (!form.checkValidity()) {
-                                    event.preventDefault()
-                                    event.stopPropagation()
-                                    }
+                <div class="col-sm-6 mb-3">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Ramírez" required>
+                    <label for="lastName">Apellidos *</label>
+                    <div class="invalid-feedback">Por favor ingresa tus apellidos.</div>
+                  </div>
+                </div>
 
-                                    form.classList.add('was-validated')
-                                }, false)
-                                })
-                            })();                                
-                        </script>
-    
+                <div class="col-sm-6 mb-3">
+                  <div class="form-floating">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="wendy.apple@gmail.com" required>
+                    <label for="email">Email *</label>
+                    <div class="invalid-feedback">Necesitamos un correo válido.</div>
+                  </div>
+                </div>
+
+                <div class="col-sm-6 mb-3">
+                  <div class="form-floating">
+                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="(044)-352272-13" required>
+                    <label for="phone">Número telefónico *</label>
+                    <div class="invalid-feedback">Ingresa tu número telefónico.</div>
+                  </div>
+                </div>
+
+                <div class="col-sm-12 mb-3">
+                  <div class="form-floating">
+                    <textarea class="form-control textarea-auto" id="message" name="message" placeholder="Hola, me gustaría saber..." style="height:120px" required></textarea>
+                    <label for="message">¿Cómo podemos ayudarte? *</label>
+                    <div class="invalid-feedback">Por favor escribe tu mensaje.</div>
+                  </div>
+                </div>
+
+                <div class="col-sm-12">
+                  <button type="submit" name="submit" class="btn btn-brand w-100 w-md-auto">
+                    Enviar mensaje
+                  </button>
+                </div>
+
+              </div>
+            </form>
+
+            <!-- validación bootstrap -->
+            <script>
+              (function () {
+                'use strict';
+                var forms = document.querySelectorAll('.needs-validation');
+                Array.prototype.slice.call(forms).forEach(function (form) {
+                  form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                      event.preventDefault();
+                      event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                  }, false);
+                });
+              })();
+            </script>
+          </div>
+
+          <!-- PANEL DE CONTACTO / INFO -->
+          <div class="col-lg-5 contact-aside order-lg-2">
+            <div class="aside-inner">
+              <div class="aside-head">
+                <h3 class="aside-title">Contacto directo</h3>
+                <p class="aside-desc">Solo personal autorizado de Mobility Solutions te contactará.</p>
+              </div>
+
+              <ul class="aside-list">
+                <li class="info-item">
+                  <div class="info-icon">
+                    <i class="fa fa-envelope"></i>
+                  </div>
+                  <div class="info-text">
+                    <div class="info-label">Correo</div>
+                    <div class="info-value">Atencioncte@mobilitysolutionscorp.com</div>
+                  </div>
+                </li>
+
+                <li class="info-item">
+                  <div class="info-icon">
+                    <i class="fa fa-phone"></i>
+                  </div>
+                  <div class="info-text">
+                    <div class="info-label">Teléfono</div>
+                    <div class="info-value">(443)-522-7213</div>
+                  </div>
+                </li>
+
+                <li class="info-item">
+                  <div class="info-icon">
+                    <i class="fa fa-whatsapp"></i>
+                  </div>
+                  <div class="info-text">
+                    <div class="info-label">WhatsApp</div>
+                    <div class="info-value">(551)-095-4444</div>
+                    <div class="info-hint">Respuestas más rápidas 📲</div>
+                  </div>
+                </li>
+
+                <li class="info-item">
+                  <div class="info-icon">
+                    <i class="fa fa-map-marker"></i>
+                  </div>
+                  <div class="info-text">
+                    <div class="info-label">Oficinas</div>
+                    <div class="info-value">
+                      Av. P. de la Reforma #505<br>
+                      Piso 37, Cuauhtémoc<br>
+                      C.P. 06500 CDMX
                     </div>
-                </form>
+                  </div>
+                </li>
+              </ul>
+
+              <div class="trust-box">
+                <div class="trust-title">Seguridad y servicio</div>
+                <ul class="trust-list">
+                  <li>✔ Nunca pedimos depósitos en cuentas personales.</li>
+                  <li>✔ Te confirmamos por SMS cuando recibimos tu solicitud.</li>
+                  <li>✔ Atendemos de L a S, 9am – 7pm.</li>
+                </ul>
+              </div>
             </div>
-            <!-- End Contact Form Wrapper -->  
-        </div>
-    </div>
-</div>
-</div>
+
+            <!-- fondo decorativo -->
+            <div class="aside-blob"></div>
+          </div>
+
+        </div><!-- row -->
+      </div><!-- contact-card -->
+    </div><!-- container -->
+  </section>
+
+  <hr class="mt-5 mb-3"/>
 </main>
+
 
 <hr class="mt-5 mb-3"/> 
 
