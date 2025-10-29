@@ -1,0 +1,95 @@
+/* ====== Base ====== */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+:root{
+  --brand:#FFC00A;
+  --dark:#1b1e21;
+  --card:#ffffff;
+  --text:#212529;
+  --muted:#6c757d;
+  --bg:#f7f7f7;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: "Open Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  color:var(--text);
+  background-color:var(--bg);
+}
+
+/* ====== Topbar / Nav ====== */
+.topbar{ background:#212529; padding:0; }
+ul.social-network{
+  list-style:none; margin:5px 0 10px -25px; padding:0; float:right;
+}
+ul.social-network li{ display:inline-block; width:32px; height:32px; text-align:center; margin:0 5px; }
+.waves-effect{ color:#fff; transition:.25s; }
+.waves-effect:hover{ opacity:.85; }
+
+.mx-background-top-linear{
+  background: linear-gradient(45deg, var(--brand) 48%, var(--dark) 48%);
+}
+
+/* ====== Utilerías ====== */
+.section-pad{ padding: clamp(48px, 8vw, 96px) 0; }
+.object-cover{ width:100%; height:100%; object-fit:cover; }
+.hover-lift{ transition: transform .25s ease, box-shadow .25s ease; }
+.hover-lift:hover{ transform: translateY(-4px); box-shadow:0 8px 24px rgba(0,0,0,.08); }
+
+/* ====== HERO ====== */
+.hero{
+  background: linear-gradient(180deg, #fff 0%, #f6f7fb 100%);
+  margin-top: 96px;  /* despeje del fixed-top */
+}
+.hero .hero-media{
+  position:relative; border-radius:18px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+.hero .hero-media img{ width:100%; height:100%; object-fit:cover; }
+
+/* ====== Features ====== */
+.feature-card{
+  background:var(--card);
+  border:1px solid #e9ecef;
+  border-radius:14px;
+  padding:18px;
+  height:100%;
+  box-shadow:0 4px 12px rgba(0,0,0,.04);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.feature-card:hover{ transform: translateY(-3px); box-shadow:0 10px 24px rgba(0,0,0,.08); }
+.feature-card i{ font-size:28px; color:#0d6efd; margin-bottom:6px; display:block; }
+.feature-card h6{ font-weight:700; margin:4px 0 4px; }
+.feature-card p{ margin:0; color:var(--muted); font-size:.95rem; }
+
+/* ====== Cards de álbum ====== */
+.card{ border:1px solid #eaecef; border-radius:14px; }
+.card .card-body{ padding:14px 16px; }
+
+/* ====== FAQ ====== */
+.accordion-button{ font-weight:600; }
+.accordion-button:not(.collapsed){ color:#0d6efd; background:#eef4ff; }
+
+/* ====== CTA ====== */
+.cta-band{
+  background: radial-gradient(1200px 300px at 10% 10%, #2a52ff 0, #1630aa 60%, #0d1b2a 100%);
+  padding: 38px 0;
+  color:#fff;
+}
+
+/* ====== Footer ====== */
+footer{ padding-bottom:20px; }
+footer .hr1{ height:3px; border-color:var(--brand); }
+footer .hr2{ height:3px; border-color:black; }
+footer .hr3{ height:3px; border-color:gray; }
+
+/* ====== Reveal on scroll ====== */
+.reveal{ opacity:0; transform: translateY(14px); }
+.reveal.reveal-in{ opacity:1; transform:none; transition: opacity .6s ease, transform .6s ease; }
+
+/* ====== Responsive ajustes ====== */
+@media (max-width:700px){
+  .mx-background-top-linear{
+    background: linear-gradient(45deg, var(--brand) 70%, var(--dark) 26%);
+  }
+}
