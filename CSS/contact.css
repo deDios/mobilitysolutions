@@ -613,6 +613,18 @@ li {
   width: .6rem;
   margin-right: .2rem;
 }
+/* espacio interno extra en la columna oscura de contacto */
+.contact-aside {
+  padding-left: 2rem;   /* antes estaba 2rem en desktop pero casi nada en mobile */
+}
+
+@media (max-width: 991.98px){
+  .contact-aside {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
 
 /* ----------- Responsive tweaks ----------- */
 
