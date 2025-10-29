@@ -453,24 +453,75 @@
 <script>
 $(document).ready(function () {
 
-    // ----- lógica mostrar/ocultar años de adeudo -----
-    let campoInput = $('.anios');
-    $("#InputRefrendo").change(function () {
-      if($(this).is(':checked')) {
-          campoInput.show();
-      } else {
-          campoInput.hide();
-      }
-    });
-    $("#InputRefrendo2").change(function () {
-      if($(this).is(':checked')) {
-          campoInput.hide();
-      } else {
-          campoInput.show();
-      }
-    });
+    // ------------------------------
+    // Mostrar / ocultar "Años de adeudo"
+    // ------------------------------
+    let $campoAdeudoWrapper = $('.anios'); // div que contiene el select de años adeudo
 
-    // ----- wizard multipaso -----
+    function toggleAdeudo() {
+      if ($("#InputRefrendo").is(':checked')) {
+        $campoAdeudoWrapper.show();
+        // si debe adeudo, hacemos que el select sea obligatorio
+        $('#InputAdeudo').attr('required', 'required');
+      } else {
+        $campoAdeudoWrapper.hide();
+        // si está al corriente, ya no es obligatorio
+        $('#InputAdeudo').removeAttr('required');
+        $('#InputAdeudo').removeClass('is-invalid');
+      }
+    }
+
+    $("#InputRefrendo, #InputRefrendo2").on('change', toggleAdeudo);
+    toggleAdeudo(); // correr al arrancar
+
+
+    // ------------------------------
+    // Función de validación por paso
+    // ------------------------------
+    function validateStep(stepNumber){
+        let isValid = true;
+
+        const $step = $('.wizard-step-content[data-step="'+stepNumber+'"]');
+
+        // buscamos todos los campos required dentro de ese paso
+        const $requiredFields = $step.find('input[required], select[required], textarea[required]');
+
+        // limpiamos estado previo
+        $requiredFields.removeClass('is-invalid');
+
+        $requiredFields.each(function(){
+            const $field = $(this);
+
+            // caso especial: radios (refrendo vehicular)
+            if ($field.attr('type') === 'radio') {
+                const groupName = $field.attr('name');
+                const $group = $step.find('input[name="'+groupName+'"]');
+
+                // ¿hay alguno de ese grupo seleccionado?
+                if ($group.filter(':checked').length === 0) {
+                    isValid = false;
+                    $group.addClass('is-invalid');
+                } else {
+                    $group.removeClass('is-invalid');
+                }
+
+            } else {
+                // inputs normales, selects y textarea
+                const value = ($field.val() || "").trim();
+                if (value === "") {
+                    isValid = false;
+                    $field.addClass('is-invalid');
+                }
+            }
+        });
+
+        return isValid;
+    }
+
+
+    // ------------------------------
+    // Mover entre pasos
+    // ------------------------------
     const $stepsContent = $('.wizard-step-content');
     const $progressSteps = $('.progress-step');
 
@@ -479,7 +530,7 @@ $(document).ready(function () {
         $stepsContent.hide();
         $('.wizard-step-content[data-step="'+stepNumber+'"]').show();
 
-        // actualizar barra de progreso
+        // actualizar barra de progreso (active / completed)
         $progressSteps.each(function(){
             const thisStep = parseInt($(this).data('step'),10);
             $(this).removeClass('active completed');
@@ -492,19 +543,30 @@ $(document).ready(function () {
         });
     }
 
+    // click en "Siguiente"
     $('.btn-next').on('click', function(){
         const $curStep = $(this).closest('.wizard-step-content');
         const current = parseInt($curStep.data('step'),10);
         const next = current + 1;
+
+        // 1) validar el paso actual
+        if (!validateStep(current)) {
+            // si hay errores, no avanzamos
+            return;
+        }
+
+        // 2) si todo OK, avanzar al siguiente
         if(next <= $stepsContent.length){
             goToStep(next);
         }
     });
 
-    // inicia en paso 1
+    // inicia en paso 1 visible
     goToStep(1);
+
 });
 </script>
+
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

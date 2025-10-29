@@ -498,6 +498,17 @@ footer .hr3 {
   margin:0;
 }
 
+/* estados inválidos en validación del wizard */
+.is-invalid {
+  border-color: #dc3545 !important;
+  box-shadow: 0 0 0 3px rgba(220,53,69,.25) !important;
+}
+
+.is-invalid + .input-group-text {
+  border-color: #dc3545 !important;
+}
+
+
 /* ==========================
    RESPONSIVE EXTRA
    ========================== */
