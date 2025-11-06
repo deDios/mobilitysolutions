@@ -1,377 +1,322 @@
 <?php
 // Configuración básica de la página
 $title = "Aviso de Privacidad";
-$pdf_file = "/DOCS/AP.pdf"; 
+$pdf_file = "/DOCS/AP.pdf";
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $title; ?></title>
-    <link rel="shortcut icon" href="../Imagenes/movility.ico" />
-    <link rel="stylesheet" href="../CSS/estilos.css">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title><?php echo $title; ?></title>
+  <link rel="shortcut icon" href="../Imagenes/movility.ico" />
 
-    <!-- Meta Pixel Code -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1571195254265630');
-    fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1571195254265630&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Meta Pixel Code -->
-    <!------ Include the above in your HEAD tag ---------->
+  <!-- Tus hojas existentes -->
+  <link rel="stylesheet" href="../CSS/estilos.css">
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C7J5YGXNDS">
-    </script>
-    <script>
+  <!-- Bootstrap (deja tus cargas tal cual) -->
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- NUEVO estilo aislado para esta vista -->
+  <link rel="stylesheet" href="../CSS/privacy.css">
+
+  <!-- Meta Pixel / gtag: dejas igual -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','1571195254265630');fbq('track','PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1571195254265630&ev=PageView&noscript=1"/></noscript>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C7J5YGXNDS"></script>
+  <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-C7J5YGXNDS');
-    </script>
+    gtag('js', new Date()); gtag('config', 'G-C7J5YGXNDS');
+  </script>
 </head>
 <body>
-   
-<!-- Navigation -->
+
+<!-- ======= NAV (NO TOCAR) ======= -->
 <div class="fixed-top">
   <header class="topbar">
-      <div class="container">
-        <div class="row">
-          <!-- social icon-->
-          <div class="col-sm-12">
-            <ul class="social-network">
-              <li><a class="waves-effect waves-dark" href="https://www.facebook.com/profile.php?id=61563909313215&mibextid=kFxxJD"><i class="fa fa-facebook"></i></a></li>
-              <li><a class="waves-effect waves-dark" href="https://www.instagram.com/mobility__solutions?igsh=MTA5cWFocWhqNmlqYw=="><i class="fa fa-instagram"></i></a></li>
-              <li><a class="waves-effect waves-dark" href="https://mobilitysolutionscorp.com/views/ubicacion.php"><i class="fa fa-map-marker"></i></a></li>
-              <li><a class="waves-effect waves-dark" href="https://mobilitysolutionscorp.com/views/login.php"><i class="fa fa-user"></i></a></li>
-            </ul>
-          </div>
-
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <ul class="social-network">
+            <li><a class="waves-effect waves-dark" href="https://www.facebook.com/profile.php?id=61563909313215&mibextid=kFxxJD"><i class="fa fa-facebook"></i></a></li>
+            <li><a class="waves-effect waves-dark" href="https://www.instagram.com/mobility__solutions?igsh=MTA5cWFocWhqNmlqYw=="><i class="fa fa-instagram"></i></a></li>
+            <li><a class="waves-effect waves-dark" href="https://mobilitysolutionscorp.com/views/ubicacion.php"><i class="fa fa-map-marker"></i></a></li>
+            <li><a class="waves-effect waves-dark" href="https://mobilitysolutionscorp.com/views/login.php"><i class="fa fa-user"></i></a></li>
+          </ul>
         </div>
       </div>
+    </div>
   </header>
+
   <nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear">
     <div class="container">
-      <a class="navbar-brand" rel="nofollow" target="_blank" href="https://mobilitysolutionscorp.com"> Mobility Solutions</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand" rel="nofollow" target="_blank" href="https://mobilitysolutionscorp.com">Mobility Solutions</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+              aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarResponsive">
-
         <ul class="navbar-nav ml-auto">
-
-          <li class="nav-item active">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com">Inicio
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-
-        <li class="nav-item">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/catalogo.php?buscar=&InputMarca=Todos&InputAnio=Todos&InputColor=Todos&InputTransmision=Todos&InputInterior=Todos&InputTipo=Todos&InputPasajeros=Todos&InputMensualidad_Mayor=&InputMensualidad_Menor=&enviar=">Catálogo</a>
-        </li>
-
-         <li class="nav-item">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/about_us.php">Nosotros</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/contact.php">Contacto</a>
-          </li>
-
+          <li class="nav-item active"><a class="nav-link" href="https://mobilitysolutionscorp.com">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://mobilitysolutionscorp.com/catalogo.php?buscar=&InputMarca=Todos&InputAnio=Todos&InputColor=Todos&InputTransmision=Todos&InputInterior=Todos&InputTipo=Todos&InputPasajeros=Todos&InputMensualidad_Mayor=&InputMensualidad_Menor=&enviar=">Catálogo</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://mobilitysolutionscorp.com/about_us.php">Nosotros</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://mobilitysolutionscorp.com/contact.php">Contacto</a></li>
         </ul>
-
       </div>
     </div>
   </nav>
 </div>
-    
-<div  class="col-lg-8 mt-5 text-center">&</div>
-    <div class="col-lg-8 col-md-8 mt-5 mx-auto">
-        <h1 class="fw-light mt-5 text-center">AVISO DE PRIVACIDAD PARA CLIENTES Y PROSPECTOS</h1>
-        
-        <h6 class="mt-5"> I.- FINALIDAD DEL TRATAMIENTO Y DATOS PERSONALES RECABADOS POR EL RESPONSABLE. </h6>
-        <p class="fs-6 lh-sm text-muted text-justify">
-            MSC únicamente solicita los datos personales que sean necesarios para llevar a cabo las finalidades descritas en el
-            presente Aviso de Privacidad, el cual se hace del conocimiento de los clientes o prospectos antes de que éstos los
-            proporcionan. Los datos personales que MSC solicita u obtiene de sus clientes o prospectos son los siguientes:
-        </p>
-            <ul class="mx-5 text-muted list-unstyled">
-                <li> • Datos Personales de Identificación </li>
-                <li> • Datos Personales de Contacto </li>
-                <li> • Datos Personales Laborales </li>
-                <li> • Datos Personales Financieros </li>
-                <li> • Datos Personales Sensibles, consistentes en datos biométricos </li>
-                <li> • Datos electrónicos, y en particular datos de geolocalización </li>
-            </ul>
-        <p class="fs-6 lh-sm text-muted text-justify">
-            Asimismo, se le informa que MSC puede obtener los datos personales mediante cualquiera de los siguientes mecanismos:
-        </p>
-            <ul class="mx-5 text-muted text-justify list-unstyled">
-                <li> A. Obtenerlos directamente del cliente o prospecto, o bien, a través de terceros proveedores de servicios que actúan
-                a nombre de MSC. </li>
-                <li> B. Por medio de la red de agencias de vehículos autorizadas de todas las marcas (en lo sucesivo el <b>"Proveedor de
-                    los Vehículos"</b>). Toda vez que, MSC trabaja con los proveedores de los vehículos para recabar información de los
-                    clientes o prospectos, es importante señalar son personas morales distintas e independientes a MSC. Por lo
-                    anterior, MSC no es responsable del tratamiento que dichos proveedores de los vehículos den a los datos
-                    personales que recaban para sus propias finalidades, diferentes las informadas en el presente Aviso de Privacidad. </li>
-                <li> C. Por medio de los fabricantes de los vehículos de todas las marcas (en lo sucesivo el <b>"Fabricante de los
-                Vehículos”</b>). Toda vez que, MSC trabaja con los fabricantes de los vehículos para recabar información de los
-                clientes o prospectos, es importante señalar son personas morales distintas e independientes a MSC. Por lo
-                anterior, MSC no es responsable del tratamiento que dichos fabricantes de los vehículos den a los datos personales
-                que recaban para sus propias finalidades, diferentes las informadas en el presente Aviso de Privacidad.</li>
-            </ul>
-        <p class="fs-6 lh-sm text-muted text-justify">
-            Los clientes o prospectos pueden acceder a los sitios web de MSC sin necesidad de proporcionar datos personales. Sin
-            embargo, para poder utilizar ciertas funciones de los sitios web de MSC como cotizaciones de productos y/o servicios, será
-            necesario que los interesados se registren en el sitio web o proporcionen sus datos personales. Como parte de este registro
-            voluntario, MSC podrá solicitar los siguientes datos personales: datos personales de identificación, datos personales de
-            contacto y datos personales patrimoniales, los cuales serán necesarios para el funcionamiento de esos servicios y/o
-            promociones. En caso de que los clientes o prospectos compartan datos personales en áreas públicas de los sitios web de
-            MSC y/o redes sociales, estos datos personales podrán ser vistos y utilizados por otros, sin responsabilidad alguna para
-            MSC.
-            MSC trata los datos personales de <b>clientes</b> para las siguientes <b>finalidades primarias</b>
-        </p>
-        <ul class="mx-5 text-muted text-justify list-unstyled">
-            <li>i. Acreditar y verificar la identidad de nuestros clientes o prospectos, de acuerdo con los procedimientos y políticas
-            de MSC. </li>
-            <li>ii. Autenticarlo a través de la información que proporcione para el cumplimiento con las disposiciones legales
-            aplicables.</li>
-            <li>iii. En su caso, verificar los datos de su identificación oficial, incluidos aquellos datos considerados como biométricos,
-            a través de los mecanismos establecidos con el Instituto Nacional Electoral.</li>
-            <li>iv. Llevar a cabo evaluaciones de la información crediticia que la o las sociedades de información crediticia nos
-            proporcionen, previa autorización de su parte.</li>
-            <li>v. En su caso, celebrar el correspondiente contrato de apertura de crédito simple con garantía prendaria para la
-            adquisición de vehículos nuevos y/o seminuevos, así como los accesorios que deriven del mismo;</li>
-            <li>vi. En su caso, celebrar el correspondiente contrato de vehículos nuevos y/o seminuevos.</li>
-            <li>vii. Para la cotización y/o contratación de productos y/o servicios ofertados por terceros relacionados con nuestros
-            créditos.</li>
-            <li>viii. Para el procesamiento de las solicitudes de crédito.</li>
-            <li>ix. Para realizar gestiones de cobranza, buscando la recuperación de cartera vencida, así como para realizar acciones
-            preventivas o reactivas con esa finalidad, incluyendo la ubicación geográfica del vehículo que funge como garantía
-            prendaría en términos del contrato (“Contrato”).</li>
-            <li>x. Para dar cumplimiento a obligaciones contraídas con nuestros clientes, así como a requerimientos de autoridades
-            judiciales y/o administrativas.</li>
-            <li>xi. Mantener actualizados sus datos personales en los sistemas operados con la red de proveedores de los vehículos
-            de todas las marcas.</li>
-            <li>xii. Archivo y registro legal de contratos, pagos, requerimientos de pago y cualquier otra información relacionada con
-            la relación jurídica existente entre usted y MSC, incluyendo el uso de esa información</li>
-            <li>xiii. Las que resulten compatibles o análogas con las demás finalidades para las que MSC hubiese recabado sus datos
-            personales en primer lugar.</li>
-        </ul>
-        <p class="fs-6 lh-sm text-muted text-justify">
-            De manera adicional, MSC tratará los datos personales de <b>clientes</b> para las siguientes <b>finalidades secundarias</b>, que
-            permiten y facilitan a MSC brindarle una mejor atención:
-        </p>
-        <ul class="mx-5 text-muted text-justify list-unstyled">
-            <li>i. Comunicarle por medios físico y/o electrónicos, actividades promocionales y de prospección de MSC.</li>
-            <li>ii. Ofrecerle productos e información de las marcas, así como de nuestros socios de negocios.</li>
-            <li>iii. Realizar análisis estadísticos y de mercado.</li>
-        </ul>
-        <p class="fs-6 lh-sm text-muted text-justify">
-            En caso de que cualquiera de los clientes no desee que sus datos personales sean tratados para los fines adicionales
-            descritos en este párrafo, puede presentar desde este momento una solicitud manifestando lo anterior, conforme al proceso
-            que para ejercitar su derecho de acceso, rectificación, cancelación y oposición (ARCO), mismo que se define más adelante.
-            La negativa para el tratamiento de sus datos personales para estas finalidades no serán un motivo para que se le niegue
-            los servicios y productos que solicita o contrata con MSC.
-        </p>
-        <p class="fs-6 lh-sm text-muted text-justify">
-            MSC trata los datos personales de los <b>prospectos</b> para las siguientes finalidades primarias:
-        </p>
-        <ul class="mx-5 text-muted text-justify list-unstyled">
-            <li>i. Bajo demanda del titular, atender las solicitudes sobre el posible otorgamiento de algún producto financiero y/o
-            arrendamiento de MSC.</li>
-            <li>ii. Comunicar por cualquier medio autorizado las cotizaciones de productos y servicios de MSC.
-        </ul>
-        <p class="fs-6 lh-sm text-muted text-justify">
-            De manera adicional, MSC tratará los datos personales de <b>prospectos</b> para las siguientes <b>finalidades secundarias</b>, que
-            permiten y facilitan a MSC brindarle una mejor atención:
-        </p>
-            <ul class="mx-5 text-muted text-justify list-unstyled">
-                <li>i. Comunicarle por medios físicos y/o electrónicos, actividades promocionales y de prospección de MSC.</li>
-                <li>ii. Ofrecerle productos e información de las marcas, así como de nuestros socios de negocios.</li>
-                <li>iii. Realizar análisis estadísticos y de mercado.</li>
-            </ul>
-        <p class="fs-6 lh-sm text-muted text-justify">
-            En caso de que cualquier prospecto, no desee que sus datos personales sean tratados para estos fines adicionales, puede
-            presentar desde este momento una solicitud manifestando lo anterior, conforme al proceso que para ejercitar su derecho
-            de acceso, rectificación, cancelación y oposición (ARCO), mismo que se define más adelante. La negativa para el uso de
-            sus datos personales para estas finalidades no serán un motivo para que se le niegue los servicios y productos que solicita
-            o contrata con MSC.
-        </p>
-        <br>
-        <h6>II.- TRANSFERENCIA Y REMISIÓN DE DATOS PERSONALES</h6>
-        <p class="fs-6 lh-sm text-muted text-justify">
-            MSC puede transferir y/o remitir sus datos personales a terceros con los que MSC tenga una relación jurídica tales como
-            proveedores de servicios, aseguradoras, procesadores de tarjetas de crédito, proveedores de administración de bases de
-            datos, auditores, despachos de cobranza, consultores, Proveedor de vehículos donde el ACREDITADO haya adquirido el
-            vehículo objeto de la relación jurídica con el responsable, proveedor y/o el fabricante del/los vehículo(s), a efecto de llevar
-            a cabo las finalidades previstas en este Aviso de Privacidad o hacer efectivo el cumplimiento de las obligaciones que
-            emanen de la relación jurídica entre usted y MSC.
-        </p>
-        <p class="fs-6 lh-sm text-muted text-justify">
-            Para aquellas transferencias que requieren de su consentimiento, a través del presente aviso de privacidad usted acepta
-            y reconoce que nos otorga su consentimiento, en caso de que se oponga podrá manifestar su negativa a través del
-            correo <b>atcliente@mobilitysolutionscorp.com</b>.
-        </p>
-        <p class="fs-6 lh-sm text-muted text-justify">
-            Asimismo, se le informa que conforme a lo previsto en el artículo 37 fracción III, IV y VII, de la Ley Federal de Protección
-            de Datos Personales en Posesión de los Particulares, MSC podrá transferir sus datos personales a los siguientes terceros:
-        </p>
-        <ul class="mx-5 text-muted text-justify list-unstyled">
-            <li>I. La red de agencias de vehículos autorizadas de todas las marcas ("Proveedor de los vehículos y/o distribuidor de
-            vehículos indistintamente”).</li>
-            <li>II. Empresas de Seguros.</li>
-        </ul>
-        <p class="fs-6 lh-sm text-muted text-justify">
-            Los destinatarios de datos personales trataran esta información conforme a las finalidades descritas en el capítulo que
-            antecede “FINALIDADES DEL TRATAMIENTO DE LOS DATOS PERSONALES”.
-        </p>
+<!-- ======= /NAV ======= -->
 
-        <br>
-        <h6>III.- SEGURIDAD DE LOS DATOS PERSONALES: </h6>
-        <p class="fs-6 lh-sm text-muted text-justify">
-            MSC está comprometido a salvaguardar la seguridad de los datos personales de sus clientes y prospectos, por lo que, ha
-            implementado diversos mecanismos de seguridad físicos, administrativos y tecnológicos para protegerlos contra cualquier
-            daño, pérdida, alteración, destrucción o el tratamiento no autorizado. En el mismo sentido, MSC tiene políticas y
-            procedimientos para la seguridad de la información y sus terceros proveedores de servicio están comprometidos a
-            respetarlas.
-        </p>
-        <br>
-        <h6>IV.- EJERCICIO DE DERECHOS ARCO:</h6>
-        <p class="fs-6 lh-sm text-muted text-justify">    
-            Todos los clientes o prospectos de MSC tienen derecho a:
-        </p>
-        <ul class="mx-5 text-muted text-justify list-unstyled">
-            <li> a. Conocer qué datos personales tiene MSC de ellos, para qué los utiliza y las condiciones del tratamiento (<b>derecho
-            de acceso</b>);</li>
-            <li> b. Solicitar la corrección de su información personal, en caso de que esté desactualizada, sea inexacta o incompleta
-            (<b>derecho de rectificación</b>); </li>
-            <li> c. Solicitar que se elimine de los registros o bases de datos de MSC sus datos personales, cuando considere que la
-            misma no está siendo utilizada conforme a los principios, deberes y obligaciones previstas en la legislación
-            aplicable (<b>derecho de cancelación</b>);</li>
-            <li> d. Oponerse al uso de sus datos personales para fines específicos (<b>derecho de oposición</b>).</li>
-        </ul>
-        <p class="fs-6 lh-sm text-muted text-justify">
-            Todos estos derechos de acceso, rectificación, cancelación y oposición se conocen como derechos ARCO; mismos que
-            se pueden ejercer conforme al siguiente procedimiento:
-        </p>
-        <ul class="mx-5 text-muted text-justify list-unstyled">
-            <li> 1. Conforme lo previsto en el artículo 29 de la LFPDPPP, para ejercer algún derecho ARCO deberá elaborar una
-            solicitud, dirigida a MSC y enviarla vía correo electrónico a <b>atcliente@mobilitysolutionscorp.com</b>. Dicha solicitud
-            deberá contener todos los siguientes puntos:</li>
-            <ul class="mx-5 text-muted text-justify list-unstyled">
-                <li> o Nombre completo del titular del derecho reclamado y domicilio u otro medio para comunicarle la r</li>
-                <li> o Respuesta a su solicitud. </li>
-                <li> o Documentos que acrediten la identidad o, en su caso, la representación legal del titular del derecho
-                reclamado. </li>
-                <li> o Descripción clara y precisa de los datos personales respecto de los que se busca ejercer alguno de los
-                derechos que marca la LFPDPPP.</li>
-                <li> o Cualquier otro elemento o documento que facilite la localización de los datos personales.</li>
-            </ul>
-            <li> 2. Dentro de los <b>cinco días hábiles</b> siguientes a la recepción de su solicitud, MSC podrá solicitarle que aporte
-            información adicional en caso de que su solicitud este incompleta, errónea o no contenga todos los puntos que
-            refiere el artículo 29 de LFPDPPP. </li>
-            <li> 3. En el supuesto del punto anterior, el cliente o prospecto tendrá un lapso de diez días hábiles contados a partir del
-            día siguiente en que lo haya recibido correo por parte de MSC, para atender al requerimiento de información
-            adicional.</li>
-            <li> 4. Posteriormente, conforme a lo dispuesto en los artículos del 28 al 35 de la LFPDPPP, MSC le comunicará la
-            determinación adoptada en un plazo máximo de veinte días contados desde la recepción de su solicitud si resulta
-            procedente, MSC tendrá un lapso de quince días para adoptar dicha determinación. MSC puede ampliar los plazos
-            señalados en el presente punto por sola vez por un periodo igual, siempre y cuando así lo justifiquen las
-            circunstancias del caso. </li>
-        </ul>
-        <p class="fs-6 lh-sm text-muted text-justify">
-            Los clientes y prospectos de MSC pueden, en todo momento, revocar el consentimiento otorgado a MSC para el tratamiento
-            de sus datos personales, conforme al procedimiento antes descrito. Sin embargo, es importante que tenga en cuenta que
-            no en todos los casos MSC podrá atender su solicitud o concluir el uso de forma inmediata, ya que es posible que por
-            alguna obligación legal requiera seguir tratando sus datos personales.
-        </p>
-        <br>
-        <h6>V.- USO DE COOKIES:</h6>
-        <p class="fs-6 lh-sm text-muted text-justify">
-            MSC le informa que durante la navegación en este sitio web se utilizan cookies. Las cookies son asientos de memoria que
-            pueden quedar almacenadas dentro de la computadora del usuario y de la cual MSC obtiene automáticamente la siguiente
-            información:
-        </p>
-        <ul class="mx-5 text-muted text-justify list-unstyled">
-            <li> • La fecha y hora de acceso al sitio web de MSC. </li>
-            <li> • Tiempo de navegación en el sitio web de MSC. </li>
-            <li> • El número de visitas diarias en cada sección del sitio web de MSC. </li>
-            <li> • La fecha y hora de la última vez que el usuario visitó el sitio web de MSC. </li>
-            <li> • El diseño de contenidos que el usuario escogió en su primera visita al sitio web de MSC. </li>
-            <li> • Páginas de Internet accedidas previo a la visita al sitio web de MSC. </li>
-        </ul>
-        <p class="fs-6 lh-sm text-muted text-justify">
-            El uso de las cookies le permite a MSC adaptar y mejorar sus servicios a los intereses del usuario, para brindarle un mejor
-            servicio y experiencia de usuario al navegar en este sitio web. Sin embargo, el usuario tiene la opción de impedir la
-            generación de cookies, mediante la inhabilitación de dicha función desde su programa navegador. Para tal efecto, puede
-            consultar el proceso de eliminación de cookies en los siguientes navegadores más comunes:
-        </p>
-        <ul class="mx-5 text-muted text-justify list-unstyled">
-            <li> • Chrome: Configuración -> Mostrar opciones avanzadas -> Privacidad -> Configuración de contenido. Para más
-            información, puede consultar el soporte de Google o la Ayuda del navegador. </li>
-            <li> • Firefox: Herramientas -> Opciones -> Privacidad -> Historial -> Configuración Personalizada. Para más
-            información, puede consultar el soporte de Mozilla o la Ayuda del navegador. </li>
-            <li> • Internet Explorer: Herramientas -> Opciones de Internet -> Privacidad -> Configuración. Para más información,
-            puede consultar el soporte de Microsoft o la Ayuda del navegador. </li>
-            <li> • Safari: Preferencias -> Seguridad. Para más información, puede consultar el soporte de Apple o la Ayuda del
-            navegado. </li>
-        </ul>
-        <br>
-        <h6>VI.- CAMBIOS AL AVISO DE PRIVACIDAD:</h6>
-        <p class="fs-6 lh-sm text-muted text-justify">
-            MSC se reserva el derecho a modificar el presente Aviso de Privacidad, para adaptarlo a novedades legislativas o
-            jurisprudenciales, cambios o actualizaciones en las propias del tratamiento de los datos personales. En dichos supuestos,
-            MSC se compromete a mantenerlo informado sobre dichos cambios, anunciando la versión más reciente del presente
-            Aviso de Privacidad, en el sitio web de MSC.
-        </p>
-        <br>
-        <h6>VII.- DEPARTAMENTO DE PROTECCIÓN DE DATOS PERSONALES:</h6>
-        <p class="fs-6 lh-sm text-muted text-justify">
-            MSC le informa que cuenta con un órgano interno enfocado a la protección de datos personales y garantizar el debido
-            tratamiento de los datos personales. Para tal efecto, dicho órgano interno verifica la implementación de las medidas de
-            seguridad físicas, administrativas y tecnológicas, que garanticen la seguridad de sus datos personales. Asimismo, dicho
-            órgano interno de MSC designó un departamento de protección de datos personales, que tiene a su cargo la recepción,
-            registro y atención de sus solicitudes de derechos ARCO, conforme al proceso antes descrito. Por lo que, para cualquier
-            solicitud, aclaración o comentario relacionado con el presente Aviso de Privacidad sírvase contactar a dicho departamento
-            de NRFM, vía correo electrónico <b>atcliente@mobilitysolutionscorp.com</b>.
-        </p>
-        <p class="fs-6 lh-sm text-muted text-justify">
-            Última Actualización en la Ciudad de México al 17 de MAYO de 2019.
-        </p>
-        
-        
-        
+<!-- ======= CONTENIDO REMAKE ======= -->
+<main class="privacy-main">
+  <!-- HERO -->
+  <section class="privacy-hero text-center">
+    <div class="container">
+      <p class="privacy-eyebrow mb-2">Documento legal</p>
+      <h1 class="privacy-title">Aviso de Privacidad</h1>
+      <p class="privacy-subtitle mx-auto">
+        Conoce cómo recabamos, utilizamos y protegemos tus datos personales en Mobility Solutions Corp.
+      </p>
+      <div class="d-flex gap-2 justify-content-center flex-wrap mt-3">
+        <a href="<?php echo htmlspecialchars($pdf_file); ?>" class="btn btn-dark btn-sm" target="_blank" rel="noopener">
+          <i class="fa fa-file-pdf-o me-1"></i> Descargar PDF
+        </a>
+        <a href="#toc" class="btn btn-outline-dark btn-sm">
+          <i class="fa fa-list-ul me-1"></i> Ver índice
+        </a>
+      </div>
     </div>
+  </section>
 
-    <footer>
-        <p>&copy; <?php echo date("Y"); ?> Mobility Solutions. Todos los derechos reservados.</p>
-    </footer>
+  <!-- CONTENT -->
+  <section class="privacy-content container">
+    <div class="row g-4">
+      <!-- TOC -->
+      <aside class="col-12 col-lg-4 col-xl-3">
+        <div id="toc" class="privacy-toc card shadow-sm">
+          <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <h6 class="mb-0">Contenido</h6>
+              <a href="<?php echo htmlspecialchars($pdf_file); ?>" class="small" target="_blank" rel="noopener">PDF</a>
+            </div>
+            <nav class="nav flex-column privacy-toc-list">
+              <a class="nav-link" href="#sec1">I. Finalidades y datos recabados</a>
+              <a class="nav-link" href="#sec2">II. Transferencias y remisiones</a>
+              <a class="nav-link" href="#sec3">III. Seguridad de los datos</a>
+              <a class="nav-link" href="#sec4">IV. Ejercicio de derechos ARCO</a>
+              <a class="nav-link" href="#sec5">V. Uso de cookies</a>
+              <a class="nav-link" href="#sec6">VI. Cambios al aviso</a>
+              <a class="nav-link" href="#sec7">VII. Contacto y DPO</a>
+              <a class="nav-link" href="#visor">Visor del Aviso (PDF)</a>
+            </nav>
+          </div>
+        </div>
+      </aside>
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+      <!-- BODY -->
+      <div class="col-12 col-lg-8 col-xl-9">
+        <div class="privacy-card card shadow-sm">
+          <div class="card-body">
+
+            <!-- I -->
+            <article id="sec1" class="privacy-section">
+              <h5 class="privacy-h">I. Finalidad del tratamiento y datos recabados</h5>
+              <p class="privacy-p">
+                MSC únicamente solicita los datos personales necesarios para las finalidades descritas. Los datos que podemos solicitar u obtener incluyen:
+              </p>
+              <ul class="privacy-ul">
+                <li>Datos de identificación y contacto</li>
+                <li>Datos laborales y financieros</li>
+                <li>Datos sensibles (biométricos)</li>
+                <li>Datos electrónicos y de geolocalización</li>
+              </ul>
+              <p class="privacy-p">Vías de obtención:</p>
+              <ul class="privacy-ul">
+                <li>A) Directamente del cliente/prospecto o por terceros que actúan a nombre de MSC.</li>
+                <li>B) Red de agencias (Proveedor de los Vehículos). Son independientes de MSC.</li>
+                <li>C) Fabricantes de vehículos. Son independientes de MSC.</li>
+              </ul>
+              <p class="privacy-p">
+                Para funciones como cotizaciones/servicios, puede requerirse registro con datos de identificación, contacto y patrimoniales.
+              </p>
+              <p class="privacy-p mb-1"><strong>Finalidades primarias (clientes):</strong></p>
+              <ol class="privacy-ol">
+                <li>Verificar identidad y autenticación conforme a la ley.</li>
+                <li>Validación de identificación oficial (INE, biométricos).</li>
+                <li>Evaluaciones crediticias (con autorización).</li>
+                <li>Contratación (crédito prendario/compra de vehículos).</li>
+                <li>Gestión de cobranza y acciones preventivas/reactivas.</li>
+                <li>Cumplimiento de obligaciones y requerimientos de autoridad.</li>
+                <li>Actualización de datos con red de proveedores.</li>
+                <li>Archivo y registro legal relacionado con la relación jurídica.</li>
+              </ol>
+              <p class="privacy-p mb-1"><strong>Finalidades secundarias (clientes):</strong></p>
+              <ul class="privacy-ul">
+                <li>Comunicaciones promocionales y prospección</li>
+                <li>Ofertas de productos/aliados</li>
+                <li>Análisis estadísticos y de mercado</li>
+              </ul>
+              <div class="privacy-alert">
+                Si no deseas finalidades secundarias, puedes oponerte vía derechos ARCO (ver sección IV).
+              </div>
+              <p class="privacy-p mb-1"><strong>Prospectos:</strong></p>
+              <ul class="privacy-ul">
+                <li>Atención de solicitudes y cotizaciones</li>
+                <li>Comunicación de productos/servicios</li>
+              </ul>
+            </article>
+
+            <!-- II -->
+            <article id="sec2" class="privacy-section">
+              <h5 class="privacy-h">II. Transferencia y remisión de datos personales</h5>
+              <p class="privacy-p">
+                Podemos transferir/remitir datos a terceros con relación jurídica (proveedores, aseguradoras, procesadores de pago, auditores, despachos de cobranza, proveedores/fabricantes de vehículos), para cumplir finalidades del aviso o la relación jurídica.
+              </p>
+              <p class="privacy-p">
+                Para transferencias que requieran consentimiento, a través de este aviso nos lo otorgas; puedes oponerte escribiendo a <b>atcliente@mobilitysolutionscorp.com</b>.
+              </p>
+              <p class="privacy-p">
+                Con fundamento en el art. 37 fracc. III, IV y VII LFPDPPP, se podrán transferir datos a:
+              </p>
+              <ul class="privacy-ul">
+                <li>Red de agencias/distribuidores</li>
+                <li>Empresas de seguros</li>
+              </ul>
+            </article>
+
+            <!-- III -->
+            <article id="sec3" class="privacy-section">
+              <h5 class="privacy-h">III. Seguridad de los datos personales</h5>
+              <p class="privacy-p">
+                Implementamos medidas físicas, administrativas y tecnológicas para proteger tus datos contra daño, pérdida, alteración o uso no autorizado. Exigimos a terceros el respeto de nuestras políticas de seguridad.
+              </p>
+            </article>
+
+            <!-- IV -->
+            <article id="sec4" class="privacy-section">
+              <h5 class="privacy-h">IV. Ejercicio de derechos ARCO</h5>
+              <p class="privacy-p">
+                Puedes ejercer acceso, rectificación, cancelación y oposición enviando solicitud a <b>atcliente@mobilitysolutionscorp.com</b>. Incluye:
+              </p>
+              <ul class="privacy-ul">
+                <li>Nombre completo y medio de contacto para respuesta</li>
+                <li>Documentos de identidad/representación legal</li>
+                <li>Descripción clara de los datos y el derecho que ejerces</li>
+                <li>Información adicional que ayude a localizarlos</li>
+              </ul>
+              <p class="privacy-p small text-muted">
+                Plazos orientativos conforme LFPDPPP: 5 días para pedir info adicional; 10 días para responder a ese requerimiento; 20 días para comunicar determinación; 15 días para hacerla efectiva (posible ampliación una sola vez).
+              </p>
+            </article>
+
+            <!-- V -->
+            <article id="sec5" class="privacy-section">
+              <h5 class="privacy-h">V. Uso de cookies</h5>
+              <p class="privacy-p">
+                Utilizamos cookies para mejorar la experiencia (fecha/hora de acceso, tiempo de navegación, secciones visitadas, preferencias, páginas previas). Puedes deshabilitarlas en tu navegador (Chrome, Firefox, IE, Safari).
+              </p>
+            </article>
+
+            <!-- VI -->
+            <article id="sec6" class="privacy-section">
+              <h5 class="privacy-h">VI. Cambios al aviso de privacidad</h5>
+              <p class="privacy-p">
+                Podemos actualizar este aviso para atender cambios legislativos o de operación. Publicaremos la versión vigente en nuestro sitio web.
+              </p>
+            </article>
+
+            <!-- VII -->
+            <article id="sec7" class="privacy-section">
+              <h5 class="privacy-h">VII. Departamento de Protección de Datos</h5>
+              <p class="privacy-p">
+                Para solicitudes ARCO, aclaraciones o comentarios, escribe a <b>atcliente@mobilitysolutionscorp.com</b>.
+              </p>
+              <p class="privacy-p text-muted mb-0">
+                Última actualización: Ciudad de México, 17 de mayo de 2019.
+              </p>
+            </article>
+
+            <!-- Visor PDF -->
+            <article id="visor" class="privacy-section">
+              <h5 class="privacy-h">Visor del Aviso (PDF)</h5>
+              <div class="ratio ratio-4x3 privacy-pdf">
+                <iframe src="<?php echo htmlspecialchars($pdf_file); ?>" title="Aviso de Privacidad PDF" loading="lazy"></iframe>
+              </div>
+              <div class="text-end mt-2">
+                <a class="btn btn-outline-dark btn-sm" href="<?php echo htmlspecialchars($pdf_file); ?>" target="_blank" rel="noopener">
+                  <i class="fa fa-download me-1"></i> Descargar
+                </a>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Back to top -->
+  <a href="#" class="privacy-to-top" aria-label="Volver arriba"><i class="fa fa-arrow-up"></i></a>
+</main>
+
+<!-- ======= FOOTER (NO TOCAR) ======= -->
+<footer>
+  <p>&copy; <?php echo date("Y"); ?> Mobility Solutions. Todos los derechos reservados.</p>
+</footer>
+
+<!-- Tus scripts existentes -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+<!-- JS pequeño para TOC activo + scroll suave -->
+<script>
+  // Scroll suave
+  document.querySelectorAll('.privacy-toc a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const id = a.getAttribute('href').substring(1);
+      const el = document.getElementById(id);
+      if(!el) return;
+      window.scrollTo({ top: el.offsetTop - 90, behavior: 'smooth' });
+    });
+  });
+
+  // TOC activo al hacer scroll
+  const sections = Array.from(document.querySelectorAll('.privacy-section'));
+  const tocLinks = Array.from(document.querySelectorAll('.privacy-toc a'));
+  window.addEventListener('scroll', ()=>{
+    const pos = window.scrollY + 120;
+    let current = sections[0]?.id;
+    sections.forEach(sec=>{ if(sec.offsetTop <= pos) current = sec.id; });
+    tocLinks.forEach(l=>{
+      l.classList.toggle('active', l.getAttribute('href') === '#'+current);
+    });
+  });
+
+  // Botón volver arriba
+  const toTop = document.querySelector('.privacy-to-top');
+  window.addEventListener('scroll', ()=>{
+    toTop.classList.toggle('show', window.scrollY > 300);
+  });
+</script>
 
 </body>
 </html>
