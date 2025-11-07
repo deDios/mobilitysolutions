@@ -1,94 +1,110 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sucursales</title>
-  <link rel="shortcut icon" href="../Imagenes/movility.ico" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sucursales</title>
+    <link rel="shortcut icon" href="../Imagenes/movility.ico" />
+    <!-- Tu CSS previo (si lo usas en otras vistas); aquí no es necesario modificarlo -->
+    <link rel="stylesheet" href="../CSS/contact.css">
 
-  <!-- (Opcional) Deja tu contact.css si lo usa otra vista, aquí NO lo necesitamos -->
-  <!-- <link rel="stylesheet" href="../CSS/contact.css"> -->
+    <!-- Bootstrap & fuentes (igual a tu plantilla original) -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <!-- Bootstrap & fuentes (igual que tu plantilla) -->
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- CSS NUEVO AISLADO PARA ESTA VISTA -->
+    <link rel="stylesheet" href="../CSS/locations.css">
 
-  <!-- NUEVO CSS AISLADO -->
-  <link rel="stylesheet" href="../CSS/locations.css">
+    <!-- Meta Pixel Code (original, sin cambios) -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1571195254265630');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1571195254265630&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
 
-  <!-- Meta Pixel Code -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1571195254265630');
-  fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1571195254265630&ev=PageView&noscript=1"
-  /></noscript>
-  <!-- End Meta Pixel Code -->
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C7J5YGXNDS"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date()); gtag('config', 'G-C7J5YGXNDS');
-  </script>
+    <!-- Google tag (gtag.js) (original, sin cambios) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C7J5YGXNDS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-C7J5YGXNDS');
+    </script>
 </head>
 <body>
-
-<!-- ========= NAV (NO TOCAR) ========= -->
+    
+<!-- ================== NAV (ORIGINAL SIN CAMBIOS) ================== -->
 <div class="fixed-top">
   <header class="topbar">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <ul class="social-network">
-            <li><a class="waves-effect waves-dark" href="https://www.facebook.com/profile.php?id=61563909313215&mibextid=kFxxJD"><i class="fa fa-facebook"></i></a></li>
-            <li><a class="waves-effect waves-dark" href="https://www.instagram.com/mobility__solutions?igsh=MTA5cWFocWhqNmlqYw=="><i class="fa fa-instagram"></i></a></li>
-            <li><a class="waves-effect waves-dark" href="https://mobilitysolutionscorp.com/views/ubicacion.php"><i class="fa fa-map-marker"></i></a></li>
-            <li><a class="waves-effect waves-dark" href="https://mobilitysolutionscorp.com/views/login.php"><i class="fa fa-user"></i></a></li>
-          </ul>
+      <div class="container">
+        <div class="row">
+          <!-- social icon-->
+          <div class="col-sm-12">
+            <ul class="social-network">
+              <li><a class="waves-effect waves-dark" href="https://www.facebook.com/profile.php?id=61563909313215&mibextid=kFxxJD"><i class="fa fa-facebook"></i></a></li>
+              <li><a class="waves-effect waves-dark" href="https://www.instagram.com/mobility__solutions?igsh=MTA5cWFocWhqNmlqYw=="><i class="fa fa-instagram"></i></a></li>
+              <li><a class="waves-effect waves-dark" href="https://mobilitysolutionscorp.com/views/ubicacion.php"><i class="fa fa-map-marker"></i></a></li>
+              <li><a class="waves-effect waves-dark" href="https://mobilitysolutionscorp.com/views/login.php"><i class="fa fa-user"></i></a></li>
+            </ul>
+          </div>
+
         </div>
       </div>
-    </div>
   </header>
-
   <nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear">
     <div class="container">
-      <a class="navbar-brand" rel="nofollow" target="_blank" href="https://mobilitysolutionscorp.com">Mobility Solutions</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-              aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand" rel="nofollow" target="_blank" href="https://mobilitysolutionscorp.com"> Mobility Solutions</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="navbarResponsive">
+
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a class="nav-link" href="https://mobilitysolutionscorp.com">Inicio</a></li>
-          <li class="nav-item"><a class="nav-link" href="https://mobilitysolutionscorp.com/catalogo.php?buscar=&InputMarca=Todos&InputAnio=Todos&InputColor=Todos&InputTransmision=Todos&InputInterior=Todos&InputTipo=Todos&InputPasajeros=Todos&InputMensualidad_Mayor=&InputMensualidad_Menor=&enviar=">Catálogo</a></li>
-          <li class="nav-item"><a class="nav-link" href="https://mobilitysolutionscorp.com/about_us.php">Nosotros</a></li>
-          <li class="nav-item active"><a class="nav-link" href="https://mobilitysolutionscorp.com/contact.php">Contacto</a></li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://mobilitysolutionscorp.com">Inicio
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://mobilitysolutionscorp.com/catalogo.php?buscar=&InputMarca=Todos&InputAnio=Todos&InputColor=Todos&InputTransmision=Todos&InputInterior=Todos&InputTipo=Todos&InputPasajeros=Todos&InputMensualidad_Mayor=&InputMensualidad_Menor=&enviar=">Catálogo</a>
+          </li>
+
+         <li class="nav-item">
+            <a class="nav-link" href="https://mobilitysolutionscorp.com/about_us.php">Nosotros</a>
+          </li>
+
+          <li class="nav-item active">
+            <a class="nav-link" href="https://mobilitysolutionscorp.com/contact.php">Contacto</a>
+          </li>
+
         </ul>
+
       </div>
     </div>
   </nav>
 </div>
-<!-- ========= /NAV ========= -->
+<!-- ================== /NAV ================== -->
 
-<!-- ========= CONTENIDO NUEVO ========= -->
+<!-- ================== CONTENIDO (REMAKE) ================== -->
 <main class="loc-main">
 
   <!-- Hero -->
@@ -143,7 +159,7 @@
 
       <div class="col-12 col-lg-5">
         <div class="loc-list">
-          <!-- Tarjetas de sucursales -->
+          <!-- Tarjetas de sucursales (SIN botón 'Cómo llegar') -->
           <div class="loc-card card shadow-sm" data-city="CDMX">
             <div class="card-body d-flex gap-3">
               <img class="loc-thumb" src="../Imagenes/ubicaciones/cdmx.jpg" alt="Sucursal CDMX"
@@ -153,12 +169,7 @@
                   <h5 class="loc-name">CDMX</h5>
                   <span class="badge text-bg-dark">Centro</span>
                 </div>
-                <p class="loc-addr mb-2">Av. P. de la Reforma #505 Piso 37, Cuauhtémoc, 06500</p>
-                <div class="loc-actions">
-                  <a target="_blank" rel="noopener"
-                     href="https://www.google.com/maps/search/?api=1&query=Av.+Paseo+de+la+Reforma+505,+Cuauht%C3%A9moc,+06500+CDMX"
-                     class="btn btn-dark btn-sm"><i class="fa fa-location-arrow me-1"></i>Cómo llegar</a>
-                </div>
+                <p class="loc-addr mb-0">Av. P. de la Reforma #505 Piso 37, Cuauhtémoc, 06500</p>
               </div>
             </div>
           </div>
@@ -172,12 +183,7 @@
                   <h5 class="loc-name">Guadalajara</h5>
                   <span class="badge text-bg-dark">Occidente</span>
                 </div>
-                <p class="loc-addr mb-2">Av Rafael Sanzio #150, Camichines Vallarta, 45020</p>
-                <div class="loc-actions">
-                  <a target="_blank" rel="noopener"
-                     href="https://www.google.com/maps/search/?api=1&query=Av+Rafael+Sanzio+150,+Zapopan+Jal"
-                     class="btn btn-dark btn-sm"><i class="fa fa-location-arrow me-1"></i>Cómo llegar</a>
-                </div>
+                <p class="loc-addr mb-0">Av Rafael Sanzio #150, Camichines Vallarta, 45020</p>
               </div>
             </div>
           </div>
@@ -191,12 +197,7 @@
                   <h5 class="loc-name">León</h5>
                   <span class="badge text-bg-dark">Bajío</span>
                 </div>
-                <p class="loc-addr mb-2">Blvd. Juan Alonso de Torres Pte. #2002, Valle del Campestre, 37150</p>
-                <div class="loc-actions">
-                  <a target="_blank" rel="noopener"
-                     href="https://www.google.com/maps/search/?api=1&query=Blvd+Juan+Alonso+de+Torres+2002,+Le%C3%B3n+Gto"
-                     class="btn btn-dark btn-sm"><i class="fa fa-location-arrow me-1"></i>Cómo llegar</a>
-                </div>
+                <p class="loc-addr mb-0">Blvd. Juan Alonso de Torres Pte. #2002, Valle del Campestre, 37150</p>
               </div>
             </div>
           </div>
@@ -210,12 +211,7 @@
                   <h5 class="loc-name">Morelia</h5>
                   <span class="badge text-bg-dark">Centro</span>
                 </div>
-                <p class="loc-addr mb-2">C. Vicente Sta. María #1516, Félix Ireta, 58070</p>
-                <div class="loc-actions">
-                  <a target="_blank" rel="noopener"
-                     href="https://www.google.com/maps/search/?api=1&query=Vicente+Santa+Mar%C3%ADa+1516,+Morelia"
-                     class="btn btn-dark btn-sm"><i class="fa fa-location-arrow me-1"></i>Cómo llegar</a>
-                </div>
+                <p class="loc-addr mb-0">C. Vicente Sta. María #1516, Félix Ireta, 58070</p>
               </div>
             </div>
           </div>
@@ -229,12 +225,7 @@
                   <h5 class="loc-name">Puebla</h5>
                   <span class="badge text-bg-dark">Centro</span>
                 </div>
-                <p class="loc-addr mb-2">C. Ignacio Allende #512, Santiago Momoxpan, 72774</p>
-                <div class="loc-actions">
-                  <a target="_blank" rel="noopener"
-                     href="https://www.google.com/maps/search/?api=1&query=Ignacio+Allende+512,+Santiago+Momoxpan"
-                     class="btn btn-dark btn-sm"><i class="fa fa-location-arrow me-1"></i>Cómo llegar</a>
-                </div>
+                <p class="loc-addr mb-0">C. Ignacio Allende #512, Santiago Momoxpan, 72774</p>
               </div>
             </div>
           </div>
@@ -257,50 +248,67 @@
     </div>
   </section>
 </main>
-<!-- ========= /CONTENIDO ========= -->
+<!-- ================== /CONTENIDO ================== -->
 
-<!-- ========= FOOTER (NO TOCAR) ========= -->
-<footer class="foo mt-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-3">
-        <h6>Conoce más</h6>
-        <hr class="hr1 mt-2 mb-3" style="height:5px;border-width:0;color:#FFC00A;background-color:#FFC00A">
+<hr class="mb-5"/> 
+
+<!-- ================== FOOTER (ORIGINAL SIN CAMBIOS) ================== -->
+<footer class="foo mt-5">  
+  <div class="container">    
+    <div class="row">      
+      <div class="col-lg-3">        
+        <h6>Conoce más</h6>  
+        <hr class="hr1 mt-2 mb-3" style="height:5px;border-width:0;color:#FFC00A;background-color:#FFC00A">    
         <ul class="text-secondary list-unstyled">
-          <li><a class="text-secondary" href="https://mobilitysolutionscorp.com/about_us.php">¿Quiénes Somos?</a></li>
-          <li><a class="text-secondary" href="https://mobilitysolutionscorp.com/Views/vende.php">Vende tu auto</a></li>
-          <li><a class="text-secondary" href="https://mobilitysolutionscorp.com/views/ubicacion.php">Sucursales</a></li>
-        </ul>
-      </div>
-      <div class="col-lg-3">
-        <h6>Legales</h6>
-        <hr class="hr2 mt-2 mb-3" style="height:5px;border-width:0;color:gainsboro;background-color:gainsboro">
+        <li>
+            <a class="text-secondary" href="https://mobilitysolutionscorp.com/about_us.php">¿Quiénes Somos?</a>
+          </li>
+          <li>
+            <a class="text-secondary" href="https://mobilitysolutionscorp.com/Views/vende.php">Vende tu auto</a>
+          </li>
+          <li>
+            <a class="text-secondary" href="https://mobilitysolutionscorp.com/views/ubicacion.php">Sucursales</a>
+          </li>
+          
+        </ul>     
+      </div>      
+      <div class="col-lg-3">        
+        <h6>Legales</h6>    
+        <hr class="hr2 mt-2 mb-3" style="height:5px;border-width:0;color:gainsboro;background-color:gainsboro">     
         <ul class="text-secondary list-unstyled">
-          <li><a class="text-secondary" href="/Views/privacy.php">Aviso de privacidad</a></li>
-        </ul>
-      </div>
-      <div class="col-lg-3">
-        <h6>Ayuda</h6>
-        <hr class="hr3 mt-2 mb-3" style="height:5px;border-width:0;color:black;background-color:black">
+          <li>
+            <a class="text-secondary" href="/Views/privacy.php">Aviso de privacidad</a>
+          </li>
+        </ul>       
+      </div>      
+      <div class="col-lg-3">        
+        <h6>Ayuda</h6>    
+        <hr class="hr3 mt-2 mb-3" style="height:5px;border-width:0;color:black;background-color:black">    
         <ul class="text-secondary list-unstyled">
-          <li><a class="text-secondary" href="https://mobilitysolutionscorp.com/contact.php">Contacto</a></li>
-          <li><a class="text-secondary" href="https://mobilitysolutionscorp.com/about_us.php">Preguntas frecuentes</a></li>
-        </ul>
-      </div>
-      <div class="col-lg-3">
-        <p class="float-end mb-1"><a href="#">Regresa al inicio</a></p>
-      </div>
-    </div>
+          <li>
+            <a class="text-secondary" href="https://mobilitysolutionscorp.com/contact.php">Contacto</a>
+          </li>
+          <li>
+            <a class="text-secondary" href="https://mobilitysolutionscorp.com/about_us.php">Preguntas frecuentes</a>
+          </li>
+        </ul>     
+      </div>  
+      <div class="col-lg-3">     
+        <p class="float-end mb-1">
+          <a href="#">Regresa al inicio</a>
+        </p>
+      </div>    
+    </div>  
   </div>
 </footer>
-<!-- ========= /FOOTER ========= -->
+<!-- ================== /FOOTER ================== -->
 
-<!-- Scripts (iguales a tu plantilla) -->
+<!-- Scripts originales -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
 
-<!-- JS de filtro y chips -->
+<!-- JS de filtro y chips (sin botones de llegar) -->
 <script>
   const $filter = document.getElementById('locFilter');
   const $cards = Array.from(document.querySelectorAll('.loc-card'));
@@ -345,10 +353,9 @@
     applyFilter('');
   });
 
-  // Click en tarjeta -> scroll al mapa
+  // Click en tarjeta -> scroll al mapa (opcional, se mantiene)
   document.querySelectorAll('.loc-card').forEach(c=>{
     c.addEventListener('click', (e)=>{
-      if(e.target.closest('a')) return; // no interceptar CTAs
       const map = document.getElementById('locMyMap');
       if(map){
         window.scrollTo({ top: map.getBoundingClientRect().top + window.scrollY - 90, behavior:'smooth' });
