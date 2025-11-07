@@ -58,8 +58,7 @@ ul.social-network li{ display:inline-block; width:32px; height:32px; text-align:
   transition: transform .2s ease, box-shadow .2s ease;
 }
 .feature-card:hover{ transform: translateY(-3px); box-shadow:0 10px 24px rgba(0,0,0,.08); }
-/* Ajuste: ícono en amarillo de marca */
-.feature-card i{ font-size:28px; color:var(--brand); margin-bottom:6px; display:block; }
+.feature-card i{ font-size:28px; color:#FFC00A; margin-bottom:6px; display:block; }
 .feature-card h6{ font-weight:700; margin:4px 0 4px; }
 .feature-card p{ margin:0; color:var(--muted); font-size:.95rem; }
 
@@ -68,13 +67,12 @@ ul.social-network li{ display:inline-block; width:32px; height:32px; text-align:
 .card .card-body{ padding:14px 16px; }
 
 /* ====== FAQ ====== */
-/* Ajuste: estado activo con color de marca y fondo suave */
 .accordion-button{ font-weight:600; }
-.accordion-button:not(.collapsed){ color:var(--brand); background:#fff8d6; }
+.accordion-button:not(.collapsed){ color:#FFC00A; background:#eef4ff; }
 
 /* ====== CTA ====== */
 .cta-band{
-  background: radial-gradient(1200px 300px at 10% 10%, #2a52ff 0, #1630aa 60%, #0d1b2a 100%);
+  background: radial-gradient(1200px 300px at 10% 10%, #FFC00A 0, #987305 60%, #0d1b2a 100%);
   padding: 38px 0;
   color:#fff;
 }
@@ -94,22 +92,4 @@ footer .hr3{ height:3px; border-color:gray; }
   .mx-background-top-linear{
     background: linear-gradient(45deg, var(--brand) 70%, var(--dark) 26%);
   }
-}
-
-/* ====== Overrides globales para íconos azules → amarillo de marca ====== */
-/* Font Awesome (i/span con clases fa-*) */
-i[class^="fa"], i[class*=" fa-"],
-span[class^="fa"], span[class*=" fa-"]{
-  color: var(--brand) !important;
-}
-
-/* Bootstrap Icons (i.bi, span.bi y svg.bi) */
-i.bi, span.bi, svg.bi{
-  color: var(--brand) !important;
-  fill: var(--brand) !important; /* por si es SVG */
-}
-
-/* Extras comunes: íconos en tarjetas/listas/nav */
-.card i, .list-group i, .nav i{
-  color: var(--brand) !important;
 }
