@@ -106,7 +106,7 @@
           <div class="feature-card">
             <i class="fa fa-credit-card"></i>
             <h6>Financiamiento flexible</h6>
-            <p>Planes a tu medida y aportaciones periódicas.</p>
+            <p>Planes a tu medida.</p>
           </div>
         </div>
         <div class="col-6 col-lg-3 reveal">
