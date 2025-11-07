@@ -84,7 +84,7 @@
           </p>
           <div class="d-flex gap-2 flex-wrap">
             <a href="https://mobilitysolutionscorp.com/catalogo.php?buscar=&InputMarca=Todos&InputAnio=Todos&InputColor=Todos&InputTransmision=Todos&InputInterior=Todos&InputTipo=Todos&InputPasajeros=Todos&InputMensualidad_Mayor=&InputMensualidad_Menor=&enviar="
-               class="btn btn-primary btn-lg shadow-sm">Ir al catálogo</a>
+               class="btn btn-warning btn-lg shadow-sm">Ir al catálogo</a>
             <a href="https://mobilitysolutionscorp.com/contact.php"
                class="btn btn-outline-light btn-lg text-dark border-2 shadow-sm">Contáctanos</a>
           </div>
