@@ -602,6 +602,52 @@ window.renderRewards = function () {
         </div>
 
         <a href="#" class="edit-button" onclick="openModal()">Editar Perfil</a>
+
+        <!-- ====== Actividad del mes (debajo del botón Editar Perfil) ====== -->
+        <div id="mesActividad" class="mes-actividad-card">
+          <div class="mes-actividad-head">
+            <div class="mes-actividad-title">Actividad del mes</div>
+            <div class="mes-actividad-controls">
+              <button id="mesPrev" type="button" class="mes-ctrl-btn" aria-label="Mes anterior">‹</button>
+              <span id="mesLabel" class="mes-actividad-label">—</span>
+              <button id="mesNext" type="button" class="mes-ctrl-btn" aria-label="Mes siguiente">›</button>
+            </div>
+          </div>
+
+          <div class="mes-actividad-subtle">Resumen diario por tipo</div>
+
+          <div class="tabla-mes-wrap">
+            <table id="tablaMes" class="tabla-mes">
+              <thead>
+                <tr>
+                  <th>Día</th>
+                  <th>Nuevo</th>
+                  <th>Venta</th>
+                  <th>Entrega</th>
+                  <th>Recon.</th>
+                  <th>Quejas</th>
+                  <th>Faltas</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Se llena por JS -->
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Total</th>
+                  <th id="tNuevo">0</th>
+                  <th id="tVenta">0</th>
+                  <th id="tEntrega">0</th>
+                  <th id="tRecon">0</th>
+                  <th id="tQuejas">0</th>
+                  <th id="tFaltas">0</th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+        <!-- ====== /Actividad del mes ====== -->
+
     </div>
 
     <!-- Panel derecho con hexágonos -->
@@ -1405,6 +1451,140 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 </script>
+
+
+<script>
+(function(){
+  const userId   = <?php echo intval($user_id); ?>;
+  const lbl      = () => document.getElementById('mesLabel');
+  const tbody    = () => document.querySelector('#tablaMes tbody');
+  const tNuevo   = () => document.getElementById('tNuevo');
+  const tVenta   = () => document.getElementById('tVenta');
+  const tEntrega = () => document.getElementById('tEntrega');
+  const tRecon   = () => document.getElementById('tRecon');
+  const tQuejas  = () => document.getElementById('tQuejas');
+  const tFaltas  = () => document.getElementById('tFaltas');
+
+  // Mes actual por defecto (puedes cambiar a último mes si prefieres):
+  // const start = new Date(); start.setMonth(start.getMonth()-1);
+  const start = new Date();
+
+  let curYear  = start.getFullYear();
+  let curMonth = start.getMonth(); // 0..11
+
+  const MES_NOMBRES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+
+  function pad2(n){ return String(n).padStart(2,'0'); }
+  function yyyymm(y,m){ return `${y}-${pad2(m+1)}`; }
+
+  // Render de encabezado (mes)
+  function pintarMesLabel(){
+    const el = lbl();
+    if (!el) return;
+    el.textContent = `${MES_NOMBRES[curMonth]} ${curYear}`;
+  }
+
+  // Dibuja filas + totales
+  function renderTabla(rows){
+    const tb = tbody();
+    if (!tb) return;
+    tb.innerHTML = '';
+
+    let sNuevo=0, sVenta=0, sEntrega=0, sRecon=0, sQuejas=0, sFaltas=0;
+
+    if (!Array.isArray(rows) || !rows.length){
+      const tr = document.createElement('tr');
+      const td = document.createElement('td');
+      td.colSpan = 7;
+      td.textContent = 'Sin datos para este mes.';
+      td.style.color = '#6b7280';
+      td.style.fontStyle = 'italic';
+      tr.appendChild(td);
+      tb.appendChild(tr);
+    } else {
+      rows.forEach(r=>{
+        const d  = Number(r.dia) || 0;
+        const n  = Number(r.nuevo) || 0;
+        const v  = Number(r.venta) || 0;
+        const e  = Number(r.entrega) || 0;
+        const re = Number(r.reconocimientos) || 0;
+        const q  = Number(r.quejas) || 0;
+        const f  = Number(r.faltas) || 0;
+
+        sNuevo+=n; sVenta+=v; sEntrega+=e; sRecon+=re; sQuejas+=q; sFaltas+=f;
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${d}</td>
+          <td class="num"><span class="badge-mini">${n}</span></td>
+          <td class="num"><span class="badge-mini">${v}</span></td>
+          <td class="num"><span class="badge-mini badge-verde">${e}</span></td>
+          <td class="num"><span class="badge-mini">${re}</span></td>
+          <td class="num"><span class="badge-mini badge-rojo">${q}</span></td>
+          <td class="num"><span class="badge-mini badge-ambar">${f}</span></td>
+        `;
+        tb.appendChild(tr);
+      });
+    }
+
+    if (tNuevo())   tNuevo().textContent   = sNuevo;
+    if (tVenta())   tVenta().textContent   = sVenta;
+    if (tEntrega()) tEntrega().textContent = sEntrega;
+    if (tRecon())   tRecon().textContent   = sRecon;
+    if (tQuejas())  tQuejas().textContent  = sQuejas;
+    if (tFaltas())  tFaltas().textContent  = sFaltas;
+  }
+
+  // Carga datos del backend (ajusta URL si tu servicio cambia)
+  async function fetchMes(yyyy_mm){
+    try{
+      // Esperado: { success:true, yyyymm:"2025-11", rows:[{dia, nuevo, venta, entrega, reconocimientos, quejas, faltas}, ...] }
+      const url = `https://mobilitysolutionscorp.com/web/MS_get_resumen_mes.php?user_id=${userId}&yyyymm=${encodeURIComponent(yyyy_mm)}`;
+      const res = await fetch(url);
+      const data = await res.json();
+
+      if (data && data.success && Array.isArray(data.rows)){
+        return data.rows;
+      }
+      // Si tu API aún no existe, renderiza vacío
+      return [];
+    } catch(e){
+      console.error('Error al cargar resumen mensual:', e);
+      return [];
+    }
+  }
+
+  async function cargarMes(){
+    const ym = yyyymm(curYear, curMonth);
+    pintarMesLabel();
+    const rows = await fetchMes(ym);
+    renderTabla(rows);
+  }
+
+  // Navegación
+  function goPrev(){
+    curMonth--;
+    if (curMonth < 0){ curMonth = 11; curYear--; }
+    cargarMes();
+  }
+  function goNext(){
+    curMonth++;
+    if (curMonth > 11){ curMonth = 0; curYear++; }
+    cargarMes();
+  }
+
+  // Wire-up al cargar
+  document.addEventListener('DOMContentLoaded', ()=>{
+    const prev = document.getElementById('mesPrev');
+    const next = document.getElementById('mesNext');
+    if (prev) prev.addEventListener('click', goPrev);
+    if (next) next.addEventListener('click', goNext);
+
+    cargarMes();
+  });
+})();
+</script>
+
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

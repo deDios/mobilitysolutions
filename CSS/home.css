@@ -1033,3 +1033,82 @@ h1 {
   gap: 12px;
   margin-bottom: 10px;
 }
+
+/* ====== Actividad del mes (tarjeta + tabla) ====== */
+.mes-actividad-card{
+  background:#fff;
+  border:1px solid #e9ecef;
+  border-radius:12px;
+  padding:16px;
+  margin-top:18px;
+  box-shadow:0 2px 10px rgba(0,0,0,.04);
+}
+
+.mes-actividad-head{
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+}
+
+.mes-actividad-title{
+  font-size:16px; font-weight:800; color:#1f2937;
+}
+
+.mes-actividad-controls{
+  display:flex; align-items:center; gap:8px;
+}
+
+.mes-actividad-label{
+  font-weight:700; color:#111827; min-width:140px; text-align:center;
+}
+
+.mes-ctrl-btn{
+  border:1px solid #e5e7eb;
+  background:#f9fafb;
+  border-radius:8px;
+  padding:4px 10px;
+  font-weight:800;
+  line-height:1;
+  cursor:pointer;
+}
+.mes-ctrl-btn:hover{ background:#f3f4f6; }
+
+.mes-actividad-subtle{
+  font-size:12px; color:#6b7280; margin-top:6px; margin-bottom:8px;
+}
+
+.tabla-mes-wrap{ overflow:auto; margin-top:8px; }
+
+.tabla-mes{
+  width:100%; border-collapse:separate; border-spacing:0; font-size:14px;
+}
+.tabla-mes thead th{
+  position:sticky; top:0;
+  background:#f8fafc; color:#111827;
+  font-weight:800; text-align:left;
+  padding:10px 8px;
+  border-bottom:1px solid #e5e7eb;
+}
+.tabla-mes tbody td{
+  padding:8px;
+  border-bottom:1px solid #f1f5f9;
+}
+.tabla-mes tfoot th{
+  padding:10px 8px; background:#f9fafb; border-top:1px solid #e5e7eb; font-weight:800;
+}
+
+.tabla-mes td, .tabla-mes th{ white-space:nowrap; }
+
+.tabla-mes .num{
+  font-variant-numeric: tabular-nums;
+  text-align:right;
+}
+
+.badge-mini{
+  display:inline-block; min-width:20px; text-align:center;
+  padding:2px 6px; border-radius:999px; font-weight:800; font-size:12px;
+  background:#eef2ff; color:#3730a3; border:1px solid #e5e7eb;
+}
+
+.badge-rojo{ background:#fee2e2; color:#b91c1c; }
+.badge-ambar{ background:#fff7ed; color:#9a3412; }
+.badge-verde{ background:#dcfce7; color:#065f46; }
+
