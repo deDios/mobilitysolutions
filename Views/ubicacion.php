@@ -138,10 +138,7 @@
         <div class="loc-map card shadow-sm">
           <div class="card-header d-flex align-items-center justify-content-between">
             <span class="fw-semibold"><i class="fa fa-map-marker me-2"></i> Mapa de sucursales</span>
-            <a class="btn btn-outline-dark btn-sm" target="_blank"
-               href="https://www.google.com/maps/d/viewer?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&usp=sharing">
-              Abrir en Google Maps
-            </a>
+            <!-- Botón "Abrir en Google Maps" REMOVIDO -->
           </div>
           <div class="card-body p-0">
             <div class="ratio ratio-4x3 loc-mapframe">
@@ -159,7 +156,7 @@
 
       <div class="col-12 col-lg-5">
         <div class="loc-list">
-          <!-- Tarjetas de sucursales (SIN botón 'Cómo llegar') -->
+          <!-- Tarjetas de sucursales -->
           <div class="loc-card card shadow-sm" data-city="CDMX">
             <div class="card-body d-flex gap-3">
               <img class="loc-thumb" src="../Imagenes/ubicaciones/cdmx.jpg" alt="Sucursal CDMX"
@@ -308,7 +305,7 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
 
-<!-- JS de filtro y chips (sin botones de llegar) -->
+<!-- JS de filtro y chips (sin interacciones con el mapa) -->
 <script>
   const $filter = document.getElementById('locFilter');
   const $cards = Array.from(document.querySelectorAll('.loc-card'));
@@ -338,12 +335,11 @@
       const city = btn.getAttribute('data-city');
       $filter.value = city;
       applyFilter(city);
-      // realce visual en la primera coincidencia
+      // realce visual en la primera coincidencia (sin scroll al mapa)
       const first = $cards.find(c=> (c.dataset.city||'').toLowerCase() === city.toLowerCase());
       if(first){
         first.classList.add('loc-highlight');
         setTimeout(()=> first.classList.remove('loc-highlight'), 1200);
-        window.scrollTo({ top: first.getBoundingClientRect().top + window.scrollY - 90, behavior:'smooth' });
       }
     });
   });
@@ -353,17 +349,7 @@
     applyFilter('');
   });
 
-  // Click en tarjeta -> scroll al mapa (opcional, se mantiene)
-  document.querySelectorAll('.loc-card').forEach(c=>{
-    c.addEventListener('click', (e)=>{
-      const map = document.getElementById('locMyMap');
-      if(map){
-        window.scrollTo({ top: map.getBoundingClientRect().top + window.scrollY - 90, behavior:'smooth' });
-      }
-      c.classList.add('loc-highlight');
-      setTimeout(()=> c.classList.remove('loc-highlight'), 1000);
-    });
-  });
+  // Eliminado: click en tarjeta -> scroll al mapa
 </script>
 </body>
 </html>
