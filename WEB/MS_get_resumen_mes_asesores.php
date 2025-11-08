@@ -1,18 +1,15 @@
 <?php
-// === Encabezados CORS + JSON ===
+// === CORS + JSON ===
 header('Content-Type: application/json; charset=utf-8');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, Idempotency-Key, Accept');
 
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-  http_response_code(204);
-  exit;
-}
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') { http_response_code(204); exit; }
 
 include "../db/Conexion.php";
 
-// Mostrar errores de mysqli como excepciones (útil en dev)
+// Mostrar errores de mysqli como excepciones (útil en dev; quítalo en prod si quieres)
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 // ===== Helpers =====
@@ -30,15 +27,14 @@ function rol_label($t){
   }
 }
 function column_exists(mysqli $con, string $table, string $column): bool {
-  // Nota: no se pueden parametrizar identificadores; el LIKE sí puede ir como parámetro.
   $sql = "SHOW COLUMNS FROM {$table} LIKE ?";
   $stmt = $con->prepare($sql);
   $stmt->bind_param("s", $column);
   $stmt->execute();
   $res = $stmt->get_result();
-  $exists = ($res && $res->num_rows > 0);
+  $ok = ($res && $res->num_rows > 0);
   $stmt->close();
-  return $exists;
+  return $ok;
 }
 
 // Solo POST (como tu API funcional)
@@ -48,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
   exit;
 }
 
-// Unificar entrada: JSON body (prioritario) y luego POST plano
+// Entrada
 $raw  = file_get_contents('php://input');
 $body = json_decode($raw, true);
 $in   = array_merge($_POST ?? [], is_array($body) ? $body : []);
@@ -66,31 +62,29 @@ if (!$user_id || !$user_type) {
 }
 if (!valid_yyyymm($yyyymm)) $yyyymm = date('Y-m');
 
-// Rango de mes
+// Rango del mes
 list($Y,$M) = array_map('intval', explode('-', $yyyymm));
 $daysInMonth = (int)cal_days_in_month(CAL_GREGORIAN, $M, $Y);
-$start = sprintf('%04d-%02d-01 00:00:00',$Y,$M);
-$end   = sprintf('%04d-%02d-%02d 23:59:59',$Y,$M,$daysInMonth);
+$start = sprintf('%04d-%02d-01 00:00:00', $Y, $M);
+$end   = sprintf('%04d-%02d-%02d 23:59:59', $Y, $M, $daysInMonth);
 
-// ====== Detección de columnas en tmx_requerimiento ======
-$tblReq = 'mobility_solutions.tmx_requerimiento';
-$col_status  = null;
-$col_created = null;
+// ==== Schema (ajusta si fuera necesario) ====
+$SCHEMA = "mobility_solutions";
+
+// ==== Autodetección en requerimiento ====
+$tblReq = "{$SCHEMA}.tmx_requerimiento";
+$col_status  = column_exists($con, $tblReq, 'estatus')      ? 'estatus'      : (column_exists($con, $tblReq, 'status_req') ? 'status_req' : null);
+$col_created = column_exists($con, $tblReq, 'req_created_at')? 'req_created_at' : (column_exists($con, $tblReq, 'created_at') ? 'created_at' : null);
 
 try {
-  if (column_exists($con, $tblReq, 'estatus'))        $col_status = 'estatus';
-  elseif (column_exists($con, $tblReq, 'status_req')) $col_status = 'status_req';
-
-  if (column_exists($con, $tblReq, 'created_at'))          $col_created = 'created_at';
-  elseif (column_exists($con, $tblReq, 'req_created_at'))  $col_created = 'req_created_at';
-
   if (!$col_status || !$col_created) {
-    throw new RuntimeException("No se encontraron columnas esperadas en {$tblReq} (status: estatus/status_req, fecha: created_at/req_created_at).");
+    throw new RuntimeException("tmx_requerimiento sin columnas esperadas (estatus/status_req, req_created_at/created_at).");
   }
 
   // ====== Jerarquía ======
-  function obtenerSubordinados($con, $id, &$acc){
-    $stmt = $con->prepare("SELECT user_id FROM mobility_solutions.tmx_acceso_usuario WHERE reporta_a = ?");
+  function obtenerSubordinados($con, $id, &$acc, $SCHEMA){
+    $sql = "SELECT user_id FROM {$SCHEMA}.tmx_acceso_usuario WHERE reporta_a = ?";
+    $stmt = $con->prepare($sql);
     $stmt->bind_param("i",$id);
     $stmt->execute();
     $res = $stmt->get_result();
@@ -98,30 +92,30 @@ try {
       $sid = (int)$r['user_id'];
       if (!in_array($sid,$acc, true)){
         $acc[] = $sid;
-        obtenerSubordinados($con, $sid, $acc);
+        obtenerSubordinados($con, $sid, $acc, $SCHEMA);
       }
     }
     $stmt->close();
   }
 
-  // Construir lista de IDs
+  // IDs bajo alcance
   $ids = [];
   if ($solo_usuario){
     $ids = [$user_id];
   } elseif (in_array($user_type,[5,6], true)) {
-    $rs = $con->query("SELECT user_id FROM mobility_solutions.tmx_acceso_usuario");
+    $rs = $con->query("SELECT user_id FROM {$SCHEMA}.tmx_acceso_usuario");
     while($r = $rs->fetch_assoc()){ $ids[] = (int)$r['user_id']; }
   } else {
     $ids[] = $user_id;
     if ($include_jefe){
-      $stmt = $con->prepare("SELECT reporta_a FROM mobility_solutions.tmx_acceso_usuario WHERE user_id=?");
+      $stmt = $con->prepare("SELECT reporta_a FROM {$SCHEMA}.tmx_acceso_usuario WHERE user_id=?");
       $stmt->bind_param("i",$user_id);
       $stmt->execute();
       $stmt->bind_result($boss);
       if ($stmt->fetch() && $boss) $ids[] = (int)$boss;
       $stmt->close();
     }
-    obtenerSubordinados($con, $user_id, $ids);
+    obtenerSubordinados($con, $user_id, $ids, $SCHEMA);
   }
 
   $ids = array_values(array_unique(array_map('intval',$ids)));
@@ -130,18 +124,18 @@ try {
     exit;
   }
 
-  // Placeholders y tipos para IN (...)
+  // IN dinámico
   $ph = implode(',', array_fill(0, count($ids), '?'));
   $types_ids = str_repeat('i', count($ids));
 
-  // ====== Inicializar mapa de usuarios ======
+  // ====== Mapa de usuarios ======
   $map = [];
   $infoSql = "
     SELECT 
       acc.user_id, acc.user_type,
       CONCAT(COALESCE(us.user_name,''),' ',COALESCE(us.second_name,''),' ',COALESCE(us.last_name,'')) AS nombre
-    FROM mobility_solutions.tmx_acceso_usuario acc
-    LEFT JOIN mobility_solutions.tmx_usuario us ON acc.user_id = us.id
+    FROM {$SCHEMA}.tmx_acceso_usuario acc
+    LEFT JOIN {$SCHEMA}.tmx_usuario us ON acc.user_id = us.id
     WHERE acc.user_id IN ($ph)
   ";
   $stmt = $con->prepare($infoSql);
@@ -166,9 +160,9 @@ try {
     exit;
   }
 
-  // ====== Helper para ejecutar SELECT con IN dinámico ======
+  // Helper para consultas con IN
   $run = function($sqlBase, $bindTailTypes, $bindTailValues, $onRow) use ($con, $ph, $types_ids, $ids){
-    $sql = sprintf($sqlBase, $ph); // Inserta los placeholders del IN
+    $sql = sprintf($sqlBase, $ph);
     $types = $types_ids . $bindTailTypes;
     $values = array_merge($ids, $bindTailValues);
 
@@ -182,18 +176,19 @@ try {
     $stmt->close();
   };
 
-  // ====== 1) Nuevo/Reserva/Entrega ======
-  // Usa columnas detectadas dinámicamente
+  // ===== 1) Nuevo/Reserva/Entrega (Requerimientos) =====
+  // Fecha: COALESCE(req_created_at, created_at) para tomar la que tengas poblada
+  $exprFecha = ($col_created === 'req_created_at') ? 'COALESCE(r.req_created_at, r.created_at)' : 'COALESCE(r.req_created_at, r.created_at)';
   $sqlNre = "
     SELECT
       r.created_by AS uid,
       SUM(CASE WHEN LOWER(TRIM(r.tipo_req)) LIKE '%nuevo%'   THEN 1 ELSE 0 END) AS nuevo,
       SUM(CASE WHEN LOWER(TRIM(r.tipo_req)) LIKE '%reserva%' THEN 1 ELSE 0 END) AS venta,
       SUM(CASE WHEN LOWER(TRIM(r.tipo_req)) LIKE '%entrega%' THEN 1 ELSE 0 END) AS entrega
-    FROM {$tblReq} r
+    FROM {$SCHEMA}.tmx_requerimiento r
     WHERE r.{$col_status} = 2
       AND r.created_by IN (%s)
-      AND r.{$col_created} BETWEEN ? AND ?
+      AND {$exprFecha} BETWEEN ? AND ?
     GROUP BY r.created_by
   ";
   $run($sqlNre, "ss", [$start,$end], function($row) use (&$map){
@@ -204,32 +199,29 @@ try {
     $map[$u]['entrega'] = (int)$row['entrega'];
   });
 
-  // ====== 2) Reconocimientos ======
+  // ===== 2) Reconocimientos =====
+  // created_at es NOT NULL en tu DDL; filtramos solo por rango
   $sqlRec = "
-    SELECT
-      asignado AS uid,
-      COUNT(*) AS reconocimientos
-    FROM mobility_solutions.tmx_reconocimientos
+    SELECT asignado AS uid, COUNT(*) AS reconocimientos
+    FROM {$SCHEMA}.tmx_reconocimientos
     WHERE asignado IN (%s)
-      AND (
-        (created_at IS NOT NULL AND created_at BETWEEN ? AND ?)
-        OR (created_at IS NULL AND anio = ? AND mes = ?)
-      )
+      AND created_at BETWEEN ? AND ?
     GROUP BY asignado
   ";
-  $run($sqlRec, "ssii", [$start,$end,$Y,$M], function($row) use (&$map){
+  $run($sqlRec, "ss", [$start,$end], function($row) use (&$map){
     $u = (int)$row['uid'];
     if (!isset($map[$u])) return;
     $map[$u]['reconocimientos'] = (int)$row['reconocimientos'];
   });
 
-  // ====== 3) Quejas ======
+  // ===== 3) Quejas (usa id_empleado) =====
   $sqlQ = "
-    SELECT usuario AS uid, COUNT(*) AS quejas
-    FROM mobility_solutions.tmx_queja
-    WHERE usuario IN (%s)
+    SELECT id_empleado AS uid, COUNT(*) AS quejas
+    FROM {$SCHEMA}.tmx_queja
+    WHERE id_empleado IN (%s)
+      AND is_active = 1
       AND created_at BETWEEN ? AND ?
-    GROUP BY usuario
+    GROUP BY id_empleado
   ";
   $run($sqlQ, "ss", [$start,$end], function($row) use (&$map){
     $u = (int)$row['uid'];
@@ -237,13 +229,13 @@ try {
     $map[$u]['quejas'] = (int)$row['quejas'];
   });
 
-  // ====== 4) Inasistencias ======
+  // ===== 4) Inasistencias (usa id_empleado) =====
   $sqlF = "
-    SELECT usuario AS uid, COUNT(*) AS faltas
-    FROM mobility_solutions.tmx_inasistencia
-    WHERE usuario IN (%s)
+    SELECT id_empleado AS uid, COUNT(*) AS faltas
+    FROM {$SCHEMA}.tmx_inasistencia
+    WHERE id_empleado IN (%s)
       AND created_at BETWEEN ? AND ?
-    GROUP BY usuario
+    GROUP BY id_empleado
   ";
   $run($sqlF, "ss", [$start,$end], function($row) use (&$map){
     $u = (int)$row['uid'];
@@ -271,7 +263,6 @@ try {
   echo json_encode([
     "success" => false,
     "message" => "Error interno al procesar la solicitud.",
-    // En prod puedes ocultar esto; en debug=1 lo mostramos.
     "error"   => $debug ? $e->getMessage() : null
   ]);
 } finally {
