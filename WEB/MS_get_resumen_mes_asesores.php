@@ -505,7 +505,7 @@ if ($step == 9) {
   if ($solo_usuario){ $ids = [$user_id]; }
   elseif (in_array($user_type, [5,6], true)) {
     $rs = $con->query("SELECT user_id FROM {$SCHEMA}.tmx_acceso_usuario");
-    while ($r = $rs->fetch_assoc()) { $ids[] = (int)$r['user_id']; }
+    while ($r = $rs && $rs->fetch_assoc()) { $ids[] = (int)$r['user_id']; }
     if ($rs) $rs->close();
   } else {
     $ids[] = $user_id;
@@ -530,7 +530,10 @@ if ($step == 9) {
     LEFT JOIN {$SCHEMA}.tmx_usuario us ON acc.user_id = us.id
     WHERE acc.user_id IN ($ph)
   ";
-  $stmt = $con->prepare($sql_info); $stmt->bind_param($types_ids, ...$ids); $stmt->execute();
+  $stmt = $con->prepare($sql_info);
+  if(!$stmt) respond(["success"=>false,"step"=>9,"error"=>"prepare info falló"],200);
+  $stmt->bind_param($types_ids, ...$ids);
+  if(!$stmt->execute()) respond(["success"=>false,"step"=>9,"error"=>"execute info falló"],200);
   $res = $stmt->get_result();
   while ($r = $res->fetch_assoc()) {
     $uid = (int)$r['user_id'];
@@ -539,12 +542,19 @@ if ($step == 9) {
   }
   $stmt->close();
 
+  // ⚠️ IMPORTANTE: NO usar sprintf por los % de LIKE. Usar str_replace.
   $run = function($sqlBase, $tailTypes, $tailValues, $onRow) use ($con,$ph,$types_ids,$ids){
-    $sql = sprintf($sqlBase, $ph);
+    $sql = str_replace('%s', $ph, $sqlBase);  // reemplaza SOLO el IN (%s)
     $types = $types_ids . $tailTypes;
     $vals  = array_merge($ids, $tailValues);
-    $stmt = $con->prepare($sql); $stmt->bind_param($types, ...$vals); $stmt->execute();
-    $res = $stmt->get_result(); while($row = $res->fetch_assoc()){ $onRow($row); } $stmt->close();
+
+    $stmt = $con->prepare($sql);
+    if(!$stmt) respond(["success"=>false,"step"=>9,"error"=>"prepare falló","sql"=>$sql],200);
+    $stmt->bind_param($types, ...$vals);
+    if(!$stmt->execute()) respond(["success"=>false,"step"=>9,"error"=>"execute falló","sql"=>$sql],200);
+    $res = $stmt->get_result();
+    while($row = $res->fetch_assoc()){ $onRow($row); }
+    $stmt->close();
   };
 
   // N/R/E
