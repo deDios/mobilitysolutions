@@ -1546,7 +1546,7 @@ document.addEventListener("DOMContentLoaded", () => {
       user_type: userType,
       yyyymm:    yyyy_mm,
       solo_usuario: 0,
-      include_jefe: 1
+      include_jefe: 0
     };
 
     const res = await fetch(url, {
