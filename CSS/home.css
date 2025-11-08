@@ -1108,6 +1108,16 @@ h1 {
   background:#eef2ff; color:#3730a3; border:1px solid #e5e7eb;
 }
 
+.badge-rol{
+  font-size:11px; font-weight:700; color:#374151; background:#eef2ff;
+  border:1px solid #e5e7eb; padding:2px 6px; border-radius:999px; margin-left:6px;
+}
+.tabla-mes td.num { text-align:right; }
+.badge-mini{display:inline-block; min-width:26px; text-align:center; border-radius:12px; padding:2px 6px; background:#f3f4f6;}
+.badge-verde{ background:#e6ffe8; }
+.badge-rojo{ background:#ffe6e6; }
+.badge-ambar{ background:#fff2cc; }
+
 .badge-rojo{ background:#fee2e2; color:#b91c1c; }
 .badge-ambar{ background:#fff7ed; color:#9a3412; }
 .badge-verde{ background:#dcfce7; color:#065f46; }

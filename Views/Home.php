@@ -603,10 +603,10 @@ window.renderRewards = function () {
 
         <a href="#" class="edit-button" onclick="openModal()">Editar Perfil</a>
 
-        <!-- ====== Actividad del mes (debajo del botón Editar Perfil) ====== -->
+        <!-- ====== Actividad del mes (por asesor) ====== -->
         <div id="mesActividad" class="mes-actividad-card">
           <div class="mes-actividad-head">
-            <div class="mes-actividad-title">Actividad del mes</div>
+            <div class="mes-actividad-title">Actividad del mes (por asesor)</div>
             <div class="mes-actividad-controls">
               <button id="mesPrev" type="button" class="mes-ctrl-btn" aria-label="Mes anterior">‹</button>
               <span id="mesLabel" class="mes-actividad-label">—</span>
@@ -614,19 +614,20 @@ window.renderRewards = function () {
             </div>
           </div>
 
-          <div class="mes-actividad-subtle">Resumen diario por tipo</div>
+          <div class="mes-actividad-subtle">Totales del mes seleccionado (con jerarquía)</div>
 
           <div class="tabla-mes-wrap">
             <table id="tablaMes" class="tabla-mes">
               <thead>
                 <tr>
-                  <th>Día</th>
+                  <th>Asesor</th>
                   <th>Nuevo</th>
                   <th>Venta</th>
                   <th>Entrega</th>
                   <th>Recon.</th>
                   <th>Quejas</th>
                   <th>Faltas</th>
+                  <th>Total</th>
                 </tr>
               </thead>
               <tbody>
@@ -641,12 +642,14 @@ window.renderRewards = function () {
                   <th id="tRecon">0</th>
                   <th id="tQuejas">0</th>
                   <th id="tFaltas">0</th>
+                  <th id="tTotal">0</th>
                 </tr>
               </tfoot>
             </table>
           </div>
         </div>
         <!-- ====== /Actividad del mes ====== -->
+
 
     </div>
 
@@ -1456,6 +1459,8 @@ document.addEventListener("DOMContentLoaded", () => {
 <script>
 (function(){
   const userId   = <?php echo intval($user_id); ?>;
+  const userType = <?php echo intval($user_type); ?>;
+
   const lbl      = () => document.getElementById('mesLabel');
   const tbody    = () => document.querySelector('#tablaMes tbody');
   const tNuevo   = () => document.getElementById('tNuevo');
@@ -1464,11 +1469,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const tRecon   = () => document.getElementById('tRecon');
   const tQuejas  = () => document.getElementById('tQuejas');
   const tFaltas  = () => document.getElementById('tFaltas');
+  const tTotal   = () => document.getElementById('tTotal');
 
-  // Mes actual por defecto (puedes cambiar a último mes si prefieres):
-  // const start = new Date(); start.setMonth(start.getMonth()-1);
-  const start = new Date();
-
+  const start = new Date(); // mes actual
   let curYear  = start.getFullYear();
   let curMonth = start.getMonth(); // 0..11
 
@@ -1477,25 +1480,21 @@ document.addEventListener("DOMContentLoaded", () => {
   function pad2(n){ return String(n).padStart(2,'0'); }
   function yyyymm(y,m){ return `${y}-${pad2(m+1)}`; }
 
-  // Render de encabezado (mes)
   function pintarMesLabel(){
     const el = lbl();
-    if (!el) return;
-    el.textContent = `${MES_NOMBRES[curMonth]} ${curYear}`;
+    if (el) el.textContent = `${MES_NOMBRES[curMonth]} ${curYear}`;
   }
 
-  // Dibuja filas + totales
   function renderTabla(rows){
-    const tb = tbody();
-    if (!tb) return;
+    const tb = tbody(); if (!tb) return;
     tb.innerHTML = '';
 
-    let sNuevo=0, sVenta=0, sEntrega=0, sRecon=0, sQuejas=0, sFaltas=0;
+    let sNuevo=0, sVenta=0, sEntrega=0, sRecon=0, sQuejas=0, sFaltas=0, sTotal=0;
 
-    if (!Array.isArray(rows) || !rows.length){
+    if (!Array.isArray(rows) || rows.length === 0){
       const tr = document.createElement('tr');
       const td = document.createElement('td');
-      td.colSpan = 7;
+      td.colSpan = 8;
       td.textContent = 'Sin datos para este mes.';
       td.style.color = '#6b7280';
       td.style.fontStyle = 'italic';
@@ -1503,25 +1502,28 @@ document.addEventListener("DOMContentLoaded", () => {
       tb.appendChild(tr);
     } else {
       rows.forEach(r=>{
-        const d  = Number(r.dia) || 0;
+        const nombre = r.nombre || ('Usuario ' + (r.id ?? ''));
+        const rol    = r.rol || '';
         const n  = Number(r.nuevo) || 0;
         const v  = Number(r.venta) || 0;
         const e  = Number(r.entrega) || 0;
         const re = Number(r.reconocimientos) || 0;
         const q  = Number(r.quejas) || 0;
         const f  = Number(r.faltas) || 0;
+        const t  = Number(r.total) || (n+v+e);
 
-        sNuevo+=n; sVenta+=v; sEntrega+=e; sRecon+=re; sQuejas+=q; sFaltas+=f;
+        sNuevo+=n; sVenta+=v; sEntrega+=e; sRecon+=re; sQuejas+=q; sFaltas+=f; sTotal+=t;
 
         const tr = document.createElement('tr');
         tr.innerHTML = `
-          <td>${d}</td>
+          <td>${nombre}${rol ? `<span class="badge-rol">${rol}</span>`:''}</td>
           <td class="num"><span class="badge-mini">${n}</span></td>
           <td class="num"><span class="badge-mini">${v}</span></td>
           <td class="num"><span class="badge-mini badge-verde">${e}</span></td>
           <td class="num"><span class="badge-mini">${re}</span></td>
           <td class="num"><span class="badge-mini badge-rojo">${q}</span></td>
           <td class="num"><span class="badge-mini badge-ambar">${f}</span></td>
+          <td class="num"><strong>${t}</strong></td>
         `;
         tb.appendChild(tr);
       });
@@ -1533,23 +1535,21 @@ document.addEventListener("DOMContentLoaded", () => {
     if (tRecon())   tRecon().textContent   = sRecon;
     if (tQuejas())  tQuejas().textContent  = sQuejas;
     if (tFaltas())  tFaltas().textContent  = sFaltas;
+    if (tTotal())   tTotal().textContent   = sTotal;
   }
 
-  // Carga datos del backend (ajusta URL si tu servicio cambia)
-  async function fetchMes(yyyy_mm){
+  async function fetchResumen(yyyy_mm){
     try{
-      // Esperado: { success:true, yyyymm:"2025-11", rows:[{dia, nuevo, venta, entrega, reconocimientos, quejas, faltas}, ...] }
-      const url = `https://mobilitysolutionscorp.com/web/MS_get_resumen_mes.php?user_id=${userId}&yyyymm=${encodeURIComponent(yyyy_mm)}`;
+      const url = `https://mobilitysolutionscorp.com/web/MS_get_resumen_mes_asesores.php` +
+                  `?user_id=${encodeURIComponent(userId)}` +
+                  `&user_type=${encodeURIComponent(userType)}` +
+                  `&yyyymm=${encodeURIComponent(yyyy_mm)}`;
       const res = await fetch(url);
       const data = await res.json();
-
-      if (data && data.success && Array.isArray(data.rows)){
-        return data.rows;
-      }
-      // Si tu API aún no existe, renderiza vacío
+      if (data && data.success && Array.isArray(data.rows)) return data.rows;
       return [];
     } catch(e){
-      console.error('Error al cargar resumen mensual:', e);
+      console.error('Error al cargar resumen asesores:', e);
       return [];
     }
   }
@@ -1557,33 +1557,23 @@ document.addEventListener("DOMContentLoaded", () => {
   async function cargarMes(){
     const ym = yyyymm(curYear, curMonth);
     pintarMesLabel();
-    const rows = await fetchMes(ym);
+    const rows = await fetchResumen(ym);
     renderTabla(rows);
   }
 
-  // Navegación
-  function goPrev(){
-    curMonth--;
-    if (curMonth < 0){ curMonth = 11; curYear--; }
-    cargarMes();
-  }
-  function goNext(){
-    curMonth++;
-    if (curMonth > 11){ curMonth = 0; curYear++; }
-    cargarMes();
-  }
+  function goPrev(){ curMonth--; if (curMonth < 0){ curMonth = 11; curYear--; } cargarMes(); }
+  function goNext(){ curMonth++; if (curMonth > 11){ curMonth = 0; curYear++; } cargarMes(); }
 
-  // Wire-up al cargar
   document.addEventListener('DOMContentLoaded', ()=>{
     const prev = document.getElementById('mesPrev');
     const next = document.getElementById('mesNext');
     if (prev) prev.addEventListener('click', goPrev);
     if (next) next.addEventListener('click', goNext);
-
     cargarMes();
   });
 })();
 </script>
+
 
 
 
