@@ -1122,3 +1122,8 @@ h1 {
 .badge-ambar{ background:#fff7ed; color:#9a3412; }
 .badge-verde{ background:#dcfce7; color:#065f46; }
 
+.tabla-mes thead th:last-child,
+.tabla-mes tbody td:last-child,
+.tabla-mes tfoot th:last-child{
+  display:none;
+}
