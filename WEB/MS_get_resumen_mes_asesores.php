@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') { http_response_code(204); exit; }
 
 include "../db/Conexion.php";
 
-// Modo exceptions para ver errores claros en dev (opcional desactivar en prod)
+// Errores como excepciones (útil mientras depuramos)
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 // ===== Helpers =====
@@ -26,18 +26,6 @@ function rol_label($t){
     default: return "Sin rol";
   }
 }
-// Checa existencia de columna usando information_schema (sí funciona con prepare)
-function column_exists(mysqli $con, string $schema, string $table, string $column): bool {
-  $sql = "SELECT COUNT(*) FROM information_schema.columns
-          WHERE table_schema = ? AND table_name = ? AND column_name = ?";
-  $stmt = $con->prepare($sql);
-  $stmt->bind_param("sss", $schema, $table, $column);
-  $stmt->execute();
-  $stmt->bind_result($cnt);
-  $stmt->fetch();
-  $stmt->close();
-  return ($cnt > 0);
-}
 
 // Solo POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -51,7 +39,6 @@ $raw  = file_get_contents('php://input');
 $body = json_decode($raw, true);
 $in   = array_merge($_POST ?? [], is_array($body) ? $body : []);
 
-$debug        = as_int($in['debug'] ?? 0) === 1;
 $user_id      = as_int($in['user_id'] ?? null);
 $user_type    = as_int($in['user_type'] ?? null);
 $yyyymm       = $in['yyyymm'] ?? null;
@@ -73,47 +60,25 @@ $end   = sprintf('%04d-%02d-%02d 23:59:59', $Y, $M, $daysInMonth);
 // ==== Schema/base ====
 $SCHEMA = "mobility_solutions";
 
-// ==== Autodetección en tmx_requerimiento usando information_schema ====
-$tblReq = "tmx_requerimiento";
-try {
-  $has_estatus      = column_exists($con, $SCHEMA, $tblReq, 'estatus');
-  $has_status_req   = column_exists($con, $SCHEMA, $tblReq, 'status_req');
-  $has_created_at   = column_exists($con, $SCHEMA, $tblReq, 'created_at');
-  $has_req_created  = column_exists($con, $SCHEMA, $tblReq, 'req_created_at');
-
-  if ((!$has_estatus && !$has_status_req) || (!$has_created_at && !$has_req_created)) {
-    throw new RuntimeException("tmx_requerimiento sin columnas esperadas (estatus/status_req, req_created_at/created_at).");
-  }
-
-  // Preferencias según tu DDL
-  $col_status  = $has_estatus     ? 'estatus'        : 'status_req';
-  // Fecha: usar COALESCE(req_created_at, created_at) si existen ambas; si no, la disponible
-  if ($has_req_created && $has_created_at) {
-    $exprFecha = "COALESCE(r.req_created_at, r.created_at)";
-  } elseif ($has_req_created) {
-    $exprFecha = "r.req_created_at";
-  } else {
-    $exprFecha = "r.created_at";
-  }
-
-  // ====== Jerarquía ======
-  function obtenerSubordinados($con, $id, &$acc, $SCHEMA){
-    $sql = "SELECT user_id FROM {$SCHEMA}.tmx_acceso_usuario WHERE reporta_a = ?";
-    $stmt = $con->prepare($sql);
-    $stmt->bind_param("i",$id);
-    $stmt->execute();
-    $res = $stmt->get_result();
-    while($r = $res->fetch_assoc()){
-      $sid = (int)$r['user_id'];
-      if (!in_array($sid,$acc, true)){
-        $acc[] = $sid;
-        obtenerSubordinados($con, $sid, $acc, $SCHEMA);
-      }
+// ====== Jerarquía ======
+function obtenerSubordinados($con, $id, &$acc, $SCHEMA){
+  $sql = "SELECT user_id FROM {$SCHEMA}.tmx_acceso_usuario WHERE reporta_a = ?";
+  $stmt = $con->prepare($sql);
+  $stmt->bind_param("i",$id);
+  $stmt->execute();
+  $res = $stmt->get_result();
+  while($r = $res->fetch_assoc()){
+    $sid = (int)$r['user_id'];
+    if (!in_array($sid,$acc, true)){
+      $acc[] = $sid;
+      obtenerSubordinados($con, $sid, $acc, $SCHEMA);
     }
-    $stmt->close();
   }
+  $stmt->close();
+}
 
-  // IDs bajo alcance
+// IDs bajo alcance
+try {
   $ids = [];
   if ($solo_usuario){
     $ids = [$user_id];
@@ -191,7 +156,8 @@ try {
     $stmt->close();
   };
 
-  // ===== 1) Nuevo/Reserva/Entrega (Requerimientos) =====
+  // ===== 1) N/R/E (tmx_requerimiento) =====
+  // Según tus DDL usamos estatus=2 y fecha COALESCE(req_created_at, created_at)
   $sqlNre = "
     SELECT
       r.created_by AS uid,
@@ -199,9 +165,9 @@ try {
       SUM(CASE WHEN LOWER(TRIM(r.tipo_req)) LIKE '%reserva%' THEN 1 ELSE 0 END) AS venta,
       SUM(CASE WHEN LOWER(TRIM(r.tipo_req)) LIKE '%entrega%' THEN 1 ELSE 0 END) AS entrega
     FROM {$SCHEMA}.tmx_requerimiento r
-    WHERE r.{$col_status} = 2
+    WHERE r.estatus = 2
       AND r.created_by IN (%s)
-      AND {$exprFecha} BETWEEN ? AND ?
+      AND COALESCE(r.req_created_at, r.created_at) BETWEEN ? AND ?
     GROUP BY r.created_by
   ";
   $run($sqlNre, "ss", [$start,$end], function($row) use (&$map){
@@ -212,7 +178,7 @@ try {
     $map[$u]['entrega'] = (int)$row['entrega'];
   });
 
-  // ===== 2) Reconocimientos (created_at NOT NULL en tu DDL) =====
+  // ===== 2) Reconocimientos (tmx_reconocimientos) =====
   $sqlRec = "
     SELECT asignado AS uid, COUNT(*) AS reconocimientos
     FROM {$SCHEMA}.tmx_reconocimientos
@@ -226,7 +192,7 @@ try {
     $map[$u]['reconocimientos'] = (int)$row['reconocimientos'];
   });
 
-  // ===== 3) Quejas (id_empleado) =====
+  // ===== 3) Quejas (tmx_queja.id_empleado) =====
   $sqlQ = "
     SELECT id_empleado AS uid, COUNT(*) AS quejas
     FROM {$SCHEMA}.tmx_queja
@@ -241,7 +207,7 @@ try {
     $map[$u]['quejas'] = (int)$row['quejas'];
   });
 
-  // ===== 4) Inasistencias (id_empleado) =====
+  // ===== 4) Inasistencias (tmx_inasistencia.id_empleado) =====
   $sqlF = "
     SELECT id_empleado AS uid, COUNT(*) AS faltas
     FROM {$SCHEMA}.tmx_inasistencia
@@ -275,8 +241,9 @@ try {
   echo json_encode([
     "success" => false,
     "message" => "Error interno al procesar la solicitud.",
-    "error"   => $debug ? $e->getMessage() : null
+    "error"   => $e->getMessage()  // mostramos siempre el mensaje mientras depuramos
   ]);
 } finally {
   if (isset($con) && $con instanceof mysqli) { $con->close(); }
 }
+
