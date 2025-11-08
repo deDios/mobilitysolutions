@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') { http_response_code(204); exit; }
 
 include "../db/Conexion.php";
 
-// Mostrar errores de mysqli como excepciones (útil en dev; quítalo en prod si quieres)
+// Modo exceptions para ver errores claros en dev (opcional desactivar en prod)
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 // ===== Helpers =====
@@ -26,18 +26,20 @@ function rol_label($t){
     default: return "Sin rol";
   }
 }
-function column_exists(mysqli $con, string $table, string $column): bool {
-  $sql = "SHOW COLUMNS FROM {$table} LIKE ?";
+// Checa existencia de columna usando information_schema (sí funciona con prepare)
+function column_exists(mysqli $con, string $schema, string $table, string $column): bool {
+  $sql = "SELECT COUNT(*) FROM information_schema.columns
+          WHERE table_schema = ? AND table_name = ? AND column_name = ?";
   $stmt = $con->prepare($sql);
-  $stmt->bind_param("s", $column);
+  $stmt->bind_param("sss", $schema, $table, $column);
   $stmt->execute();
-  $res = $stmt->get_result();
-  $ok = ($res && $res->num_rows > 0);
+  $stmt->bind_result($cnt);
+  $stmt->fetch();
   $stmt->close();
-  return $ok;
+  return ($cnt > 0);
 }
 
-// Solo POST (como tu API funcional)
+// Solo POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
   http_response_code(405);
   echo json_encode(["success"=>false,"message"=>"Método no permitido; usa POST"]);
@@ -68,17 +70,30 @@ $daysInMonth = (int)cal_days_in_month(CAL_GREGORIAN, $M, $Y);
 $start = sprintf('%04d-%02d-01 00:00:00', $Y, $M);
 $end   = sprintf('%04d-%02d-%02d 23:59:59', $Y, $M, $daysInMonth);
 
-// ==== Schema (ajusta si fuera necesario) ====
+// ==== Schema/base ====
 $SCHEMA = "mobility_solutions";
 
-// ==== Autodetección en requerimiento ====
-$tblReq = "{$SCHEMA}.tmx_requerimiento";
-$col_status  = column_exists($con, $tblReq, 'estatus')      ? 'estatus'      : (column_exists($con, $tblReq, 'status_req') ? 'status_req' : null);
-$col_created = column_exists($con, $tblReq, 'req_created_at')? 'req_created_at' : (column_exists($con, $tblReq, 'created_at') ? 'created_at' : null);
-
+// ==== Autodetección en tmx_requerimiento usando information_schema ====
+$tblReq = "tmx_requerimiento";
 try {
-  if (!$col_status || !$col_created) {
+  $has_estatus      = column_exists($con, $SCHEMA, $tblReq, 'estatus');
+  $has_status_req   = column_exists($con, $SCHEMA, $tblReq, 'status_req');
+  $has_created_at   = column_exists($con, $SCHEMA, $tblReq, 'created_at');
+  $has_req_created  = column_exists($con, $SCHEMA, $tblReq, 'req_created_at');
+
+  if ((!$has_estatus && !$has_status_req) || (!$has_created_at && !$has_req_created)) {
     throw new RuntimeException("tmx_requerimiento sin columnas esperadas (estatus/status_req, req_created_at/created_at).");
+  }
+
+  // Preferencias según tu DDL
+  $col_status  = $has_estatus     ? 'estatus'        : 'status_req';
+  // Fecha: usar COALESCE(req_created_at, created_at) si existen ambas; si no, la disponible
+  if ($has_req_created && $has_created_at) {
+    $exprFecha = "COALESCE(r.req_created_at, r.created_at)";
+  } elseif ($has_req_created) {
+    $exprFecha = "r.req_created_at";
+  } else {
+    $exprFecha = "r.created_at";
   }
 
   // ====== Jerarquía ======
@@ -177,8 +192,6 @@ try {
   };
 
   // ===== 1) Nuevo/Reserva/Entrega (Requerimientos) =====
-  // Fecha: COALESCE(req_created_at, created_at) para tomar la que tengas poblada
-  $exprFecha = ($col_created === 'req_created_at') ? 'COALESCE(r.req_created_at, r.created_at)' : 'COALESCE(r.req_created_at, r.created_at)';
   $sqlNre = "
     SELECT
       r.created_by AS uid,
@@ -199,8 +212,7 @@ try {
     $map[$u]['entrega'] = (int)$row['entrega'];
   });
 
-  // ===== 2) Reconocimientos =====
-  // created_at es NOT NULL en tu DDL; filtramos solo por rango
+  // ===== 2) Reconocimientos (created_at NOT NULL en tu DDL) =====
   $sqlRec = "
     SELECT asignado AS uid, COUNT(*) AS reconocimientos
     FROM {$SCHEMA}.tmx_reconocimientos
@@ -214,7 +226,7 @@ try {
     $map[$u]['reconocimientos'] = (int)$row['reconocimientos'];
   });
 
-  // ===== 3) Quejas (usa id_empleado) =====
+  // ===== 3) Quejas (id_empleado) =====
   $sqlQ = "
     SELECT id_empleado AS uid, COUNT(*) AS quejas
     FROM {$SCHEMA}.tmx_queja
@@ -229,7 +241,7 @@ try {
     $map[$u]['quejas'] = (int)$row['quejas'];
   });
 
-  // ===== 4) Inasistencias (usa id_empleado) =====
+  // ===== 4) Inasistencias (id_empleado) =====
   $sqlF = "
     SELECT id_empleado AS uid, COUNT(*) AS faltas
     FROM {$SCHEMA}.tmx_inasistencia
