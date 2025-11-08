@@ -1127,3 +1127,21 @@ h1 {
 .tabla-mes tfoot th:last-child{
   display:none;
 }
+
+/* Centrar totales en la fila del pie */
+.tabla-mes tfoot th {
+  text-align: center;      /* centra horizontal */
+  vertical-align: middle;  /* centra vertical */
+}
+
+/* Mantener la celda "Total" alineada a la izquierda */
+.tabla-mes tfoot th:first-child{
+  text-align: left;
+}
+
+/* (opcional) que los números no se vean corridos por el padding */
+.tabla-mes tfoot th {
+  padding-left: 8px;
+  padding-right: 8px;
+  font-variant-numeric: tabular-nums; /* alineación uniforme de dígitos */
+}
