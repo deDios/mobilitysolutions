@@ -158,7 +158,7 @@ try {
            SUM(CASE WHEN LOWER(TRIM(r.tipo_req)) LIKE '%reserva%' THEN 1 ELSE 0 END) AS venta,
            SUM(CASE WHEN LOWER(TRIM(r.tipo_req)) LIKE '%entrega%' THEN 1 ELSE 0 END) AS entrega
     FROM {$SCHEMA}.tmx_requerimiento r
-    WHERE r.estatus = 2
+    WHERE r.status_req = 2
       AND r.created_by IN (%s)
       AND COALESCE(r.req_created_at, r.created_at) BETWEEN ? AND ?
     GROUP BY r.created_by
