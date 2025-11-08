@@ -1,20 +1,20 @@
 <?php
-
     session_start();
 
-    if (!isset ($_SESSION['username'])){
+    if (!isset($_SESSION['username'])){
         echo ' 
             <script>
                 alert("Es necesario hacer login, por favor ingrese sus credenciales") ;
                 window.location = "../views/login.php";
             </script> ';
-            session_destroy();
-            die();
+        session_destroy();
+        die();
     }
 
     $inc = include "../db/Conexion.php";
 
-    $query ='select 
+    // ===== AJUSTE 1: consulta segura con prepare =====
+    $query = 'SELECT 
                 acc.user_id, 
                 acc.user_name, 
                 acc.user_password, 
@@ -23,42 +23,41 @@
                 acc.r_editor, 
                 acc.r_autorizador, 
                 acc.r_analista, 
-                us.user_name as nombre, 
-                us.second_name as s_nombre, 
+                us.user_name   AS nombre, 
+                us.second_name AS s_nombre, 
                 us.last_name, 
                 us.email, 
                 us.cumpleaños, 
                 us.telefono
-            from mobility_solutions.tmx_acceso_usuario  as acc
-            left join mobility_solutions.tmx_usuario as us
-                on acc.user_id = us.id
-            where acc.user_name = '.$_SESSION['username'].';';
+              FROM mobility_solutions.tmx_acceso_usuario AS acc
+              LEFT JOIN mobility_solutions.tmx_usuario AS us
+                ON acc.user_id = us.id
+              WHERE acc.user_name = ?';
 
-    $result = mysqli_query($con,$query); 
+    $stmt = $con->prepare($query);
+    $stmt->bind_param("s", $_SESSION['username']);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    if ($result){ 
-        while($row = mysqli_fetch_assoc($result)){
-                            $user_id = $row['user_id'];
-                            $user_name = $row['user_name'];
-                            $user_password = $row['user_password'];
-                            $user_type = $row['user_type'];
-                            $r_ejecutivo = $row['r_ejecutivo'];
-                            $r_editor = $row['r_editor'];
-                            $r_autorizador = $row['r_autorizador'];
-                            $r_analista = $row['r_analista'];
-                            $nombre = $row['nombre'];
-                            $s_nombre = $row['s_nombre'];
-                            $last_name = $row['last_name'];
-                            $email = $row['email'];
-                            $cumpleaños = $row['cumpleaños'];
-                            $telefono = $row['telefono'];
-                           
-        }
-    }
-    else{
+    if ($result && ($row = $result->fetch_assoc())) {
+        $user_id       = $row['user_id'];
+        $user_name     = $row['user_name'];
+        $user_password = $row['user_password'];
+        $user_type     = $row['user_type'];
+        $r_ejecutivo   = $row['r_ejecutivo'];
+        $r_editor      = $row['r_editor'];
+        $r_autorizador = $row['r_autorizador'];
+        $r_analista    = $row['r_analista'];
+        $nombre        = $row['nombre'];
+        $s_nombre      = $row['s_nombre'];
+        $last_name     = $row['last_name'];
+        $email         = $row['email'];
+        $cumpleaños    = $row['cumpleaños'];
+        $telefono      = $row['telefono'];
+    } else {
         echo 'Falla en conexión.';
     }
-
+    $stmt->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -265,18 +264,17 @@ window.renderRewards = function () {
 
 /* === Panal de mini-hex debajo de los hex grandes === */
 .hex-honey{
-  /* se colocan debajo y "embonados" entre los 3 hex grandes */
   display:flex;
   justify-content:center;
   align-items:center;
-  gap: 120px;              /* separación horizontal entre los dos mini-hex */
-  margin-top: -28px;       /* los sube un poco para que embonen */
+  gap: 120px;
+  margin-top: -28px;
   margin-bottom: 12px;
 }
 
 .mini-hex{
-  width: 90px;             /* más chico que los 120px de los grandes */
-  height: 78px;            /* proporción del hex para que embone visualmente */
+  width: 90px;
+  height: 78px;
   clip-path: polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);
   display:flex;
   flex-direction:column;
@@ -295,7 +293,7 @@ window.renderRewards = function () {
 #lineChart{
   display: block;
   width: 100% !important;
-  height: 260px !important;     /* ajusta a gusto (240–360px) */
+  height: 260px !important;
 }
 
 .chart-wrapper{ position: relative; }
@@ -303,8 +301,8 @@ window.renderRewards = function () {
 #gaugeChart{
   display: none;
   width: 100%;
-  height: 300px;              /* NO 100% */
-  aspect-ratio: 1 / 1;       /* cuadrado */
+  height: 300px;
+  aspect-ratio: 1 / 1;
   transform: none !important;
   -webkit-clip-path: none !important;
   clip-path: none !important;
@@ -315,12 +313,12 @@ window.renderRewards = function () {
   position: relative;
   display: flex; align-items: center; justify-content: center;
   gap: 12px; padding: 0; margin: 0 auto;
-  max-width: 620px;          /* <— más chico */
+  max-width: 620px;
 }
 
 .entrega-kpi .left{
   display: flex; flex-direction: column; align-items: flex-end;
-  gap: 6px; min-width: 200px;  /* <— más chico */
+  gap: 6px; min-width: 200px;
 }
 
 .entrega-kpi .num{
@@ -335,19 +333,19 @@ window.renderRewards = function () {
 
 .entrega-kpi .meta-wrap{
   display: flex; flex-direction: column; align-items: flex-end;
-  gap: 6px;                   /* “Meta” arriba de la línea */
+  gap: 6px;
 }
 
 .entrega-kpi .hline{
   height: 4px;
-  width: clamp(110px, 14vw, 170px);  /* <— línea más corta */
+  width: clamp(110px, 14vw, 170px);
   background: #0b7285;
   border-radius: 4px;
   box-shadow: 0 1px 2px rgba(0,0,0,.2);
 }
 
 .entrega-kpi .divider{
-  width: 6px; min-height: 120px;     /* <— más delgado y bajo */
+  width: 6px; min-height: 120px;
   background: #0b7285; border-radius: 6px;
   box-shadow: inset 0 0 0 2px rgba(0,0,0,.12);
 }
@@ -361,46 +359,40 @@ window.renderRewards = function () {
   .entrega-kpi .divider{ min-height: 110px; }
 }
 
-
 .mini-hex span{font-size:12px; line-height:1; opacity:.95; margin-bottom:2px;}
 .mini-hex strong{font-size:16px; line-height:1;}
 
 .mini-hex:hover{ transform: scale(1.05); filter: brightness(1.02); }
 
-/* Colores por tipo (alineados con tus cápsulas anteriores) */
 .mini-hex.quejas{ background:#ff6b6b; }
 .mini-hex.inasistencias{ background:#ff6b6b; }
 
-/* Responsivo: si la pantalla es angosta, que no se solapen */
 @media (max-width: 768px){
   .hex-honey{
     gap: 40px;
-    margin-top: 6px;     /* no los “metas” en pantallas chicas */
+    margin-top: 6px;
   }
   .mini-hex{ width:82px; height:70px; }
 }
 
-/* ===== Override modales personalizados (editar perfil y cumpleaños) ===== */
-
-/* Fondo oscuro pantalla completa */
+/* ===== Override modales personalizados ===== */
 #editModal.modal,
 #cumpleModal.modal {
-  display: none;               /* se muestra con JS */
+  display: none;
   position: fixed;
-  inset: 0;                    /* top/right/bottom/left:0 */
+  inset: 0;
   z-index: 9999;
-  background-color: rgba(0,0,0,0.55);  /* overlay oscuro */
-  padding: 40px 16px;          /* respeta espacio arriba/abajo */
+  background-color: rgba(0,0,0,0.55);
+  padding: 40px 16px;
   overflow-y: auto;
 }
 
-/* Tarjeta interna centrada */
 #editModal .modal-content,
 #cumpleModal .modal-content {
   background-color: #fff;
-  margin: 0 auto;              /* centrar */
+  margin: 0 auto;
   width: 100%;
-  max-width: 400px;            /* <-- ESTA ES LA MAGIA: modal pequeñito */
+  max-width: 400px;
   border-radius: 10px;
   border: 1px solid #888;
   box-shadow: 0 20px 40px rgba(0,0,0,0.2);
@@ -408,7 +400,6 @@ window.renderRewards = function () {
   position: relative;
 }
 
-/* Header del modal de cumple */
 #cumpleModal .modal-content h2,
 #editModal .modal-content h2 {
   margin-top: 0;
@@ -418,7 +409,6 @@ window.renderRewards = function () {
   color: #111;
 }
 
-/* Botón X */
 #editModal .close,
 #cumpleModal .close {
   position: absolute;
@@ -431,7 +421,6 @@ window.renderRewards = function () {
   color: #333;
 }
 
-/* Lista de cumpleañeros en el modal */
 #cumpleModal #cumpleLista {
   list-style: none;
   padding-left: 0;
@@ -442,14 +431,8 @@ window.renderRewards = function () {
   line-height: 1.4;
 }
 
-#cumpleModal #cumpleLista li {
-  margin-bottom: 8px;
-}
-
-
+#cumpleModal #cumpleLista li { margin-bottom: 8px; }
 </style>
-
-
 </head>
 
 <body>
@@ -457,17 +440,13 @@ window.renderRewards = function () {
   <header class="topbar">
       <div class="container">
         <div class="row">
-          <!-- social icon-->
           <div class="col-sm-12">
             <ul class="social-network">
               <li><a class="waves-effect waves-dark" href="https://www.facebook.com/profile.php?id=61563909313215&mibextid=kFxxJD"><i class="fa fa-facebook"></i></a></li>
-              
               <li><a class="waves-effect waves-dark" href="" data-toggle="modal" data-target="#exampleModal2"><i class="fa fa-map-marker"></i></a></li>       
-
               <li><a class="waves-effect waves-dark" href="https://mobilitysolutionscorp.com/db_consultas/cerrar_sesion.php"><i class="fa fa-sign-out"></i></a></li>
             </ul>
           </div>
-
         </div>
       </div>
   </header>
@@ -479,35 +458,17 @@ window.renderRewards = function () {
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
-
         <ul class="navbar-nav ml-auto">
-
           <li class="nav-item active">
             <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/Home.php">Inicio
               <span class="sr-only">(current)</span>
             </a>
           </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/edicion_catalogo.php">Catálogo</a>
-          </li>
-
-         <li class="nav-item">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/requerimientos.php">Requerimientos</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/tareas.php">Tareas</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/Autoriza.php">Aprobaciones</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/asignacion.php">Asignaciones</a> 
-          </li>
-
+          <li class="nav-item"><a class="nav-link" href="https://mobilitysolutionscorp.com/Views/edicion_catalogo.php">Catálogo</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://mobilitysolutionscorp.com/Views/requerimientos.php">Requerimientos</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://mobilitysolutionscorp.com/Views/tareas.php">Tareas</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://mobilitysolutionscorp.com/Views/Autoriza.php">Aprobaciones</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://mobilitysolutionscorp.com/Views/asignacion.php">Asignaciones</a></li>
         </ul>
       </div>
     </div>
@@ -524,9 +485,7 @@ window.renderRewards = function () {
             <form id="uploadForm" action="../db_consultas/upload_photo.php" method="POST" enctype="multipart/form-data">
                 <label for="profilePicInput" class="profile-image-wrapper">
                     <img src="../Imagenes/Usuarios/<?php echo $user_id; ?>.jpg?<?php echo time(); ?>" alt="Foto de perfil" class="profile-image" title="Haz clic para cambiar tu foto">
-                    <div class="edit-icon-overlay">
-                        ✎
-                    </div>
+                    <div class="edit-icon-overlay">✎</div>
                 </label>
                 <input type="file" id="profilePicInput" name="profilePic" style="display: none;" onchange="document.getElementById('uploadForm').submit();">
                 <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
@@ -550,7 +509,6 @@ window.renderRewards = function () {
         </div>
 
         <div id="tareas-resumen" class="tareas-circulo">
-  <!-- cápsula de tareas (igual que ya tenías) -->
           <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/tareas.php">
             <div class="circulo-tareas">
               <span id="cantidad-tareas">0</span>
@@ -561,35 +519,11 @@ window.renderRewards = function () {
           <!-- pastel de cumpleaños -->
           <div class="cumple-cake-wrapper" id="cumpleTrigger" title="Cumpleaños este mes">
             <div class="cake-icon">
-              <div class="cake-candle">
-                <div class="candle-flame"></div>
-              </div>
-              <div class="cake-layer">
-                <span id="cumple-count">0</span>
-              </div>
+              <div class="cake-candle"><div class="candle-flame"></div></div>
+              <div class="cake-layer"><span id="cumple-count">0</span></div>
             </div>
           </div>
         </div>
-
-
-        <!-- 
-        Indicadores de Reportes
-        <div id="reportes-resumen" class="reportes-resumen">
-          <a class="resumen-pill pill-quejas" href="https://mobilitysolutionscorp.com/Views/asignacion.php" title="Ver quejas">
-            <div class="pill-circle">
-              <span id="cantidad-quejas">0</span>
-            </div>
-            <div class="pill-text">Quejas</div>
-          </a>
-          
-          <a class="resumen-pill pill-inasistencias" href="https://mobilitysolutionscorp.com/Views/asignacion.php" title="Ver inasistencias">
-            <div class="pill-circle">
-              <span id="cantidad-inasistencias">0</span>
-            </div>
-            <div class="pill-text">Inasistencias</div>
-          </a>
-        </div>
-        -->
 
         <!-- Información de contacto -->
         <div class="profile-info">
@@ -649,54 +583,38 @@ window.renderRewards = function () {
           </div>
         </div>
         <!-- ====== /Actividad del mes ====== -->
-
-
     </div>
 
     <!-- Panel derecho con hexágonos -->
     <div class="container_2">
         <div class="hex-container">
-            <div class="hex" id="hex-nuevo">
-                <span>Nuevo</span>
-                <strong>0</strong>
-            </div>
-            <div class="hex" id="hex-reserva">
-                <span>Venta</span>
-                <strong>0</strong>
-            </div>
-            <div class="hex" id="hex-entrega">
-                <span>Entrega</span>
-                <strong>0</strong>
-            </div>
+            <div class="hex" id="hex-nuevo"><span>Nuevo</span><strong>0</strong></div>
+            <div class="hex" id="hex-reserva"><span>Venta</span><strong>0</strong></div>
+            <div class="hex" id="hex-entrega"><span>Entrega</span><strong>0</strong></div>
         </div>
 
-        <!-- MINI-HEXs en panal (quejas / inasistencias) -->
         <div class="hex-honey">
           <a class="mini-hex quejas" href="https://mobilitysolutionscorp.com/Views/asignacion.php" title="Ver quejas">
             <span>Quejas</span>
             <strong id="hc-quejas">0</strong>
           </a>
-
           <a class="mini-hex inasistencias" href="https://mobilitysolutionscorp.com/Views/asignacion.php" title="Ver inasistencias">
             <span>Faltas</span>
             <strong id="hc-inasistencias">0</strong>
           </a>
         </div>
 
-
         <div class="chart-wrapper">
           <canvas id="lineChart"></canvas>
           <canvas id="gaugeChart" style="display:none;"></canvas>
         </div>
 
-        <!-- Sección de Reconocimientos / Skills -->
         <div class="skills-section">
             <h2>Reconocimientos</h2>
             <div id="reconocimientosWrapper" class="reconocimientos-wrapper">
                 <p class="placeholder">Aquí aparecerán los reconocimientos otorgados al usuario.</p>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -707,16 +625,12 @@ window.renderRewards = function () {
         <h2>Editar Información</h2>
         <form id="editForm">
             <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
-
             <label>Email:</label>
             <input type="email" name="email" value="<?php echo $email; ?>" required>
-
             <label>Fecha de Cumpleaños:</label>
             <input type="date" name="cumpleanos" value="<?php echo $cumpleaños; ?>" required>
-
             <label>Teléfono:</label>
             <input type="text" name="telefono" value="<?php echo $telefono; ?>" required>
-
             <button type="submit">Guardar Cambios</button>
         </form>
     </div>
@@ -731,7 +645,6 @@ window.renderRewards = function () {
   </div>
 </div>
 
-
 <script>
 // Texto en el centro de una doughnut
 const centerTextPlugin = {
@@ -743,14 +656,12 @@ const centerTextPlugin = {
     const y = (chartArea.top + chartArea.bottom) / 2;
 
     ctx.save();
-    // número grande (entregas)
     ctx.font = '700 32px system-ui, -apple-system, Segoe UI, Roboto';
     ctx.fillStyle = '#0f172a';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(String(opts.text || ''), x, y);
 
-    // subtítulo opcional (ej. "Entregas" o "%")
     if (opts.subtext) {
       ctx.font = '600 12px system-ui, -apple-system, Segoe UI, Roboto';
       ctx.fillStyle = '#64748b';
@@ -761,7 +672,6 @@ const centerTextPlugin = {
 };
 </script>
 
-
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const userId = <?php echo intval($user_id); ?>;
@@ -771,7 +681,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(res => res.json())
     .then(data => {
       if (data.success && Array.isArray(data.tareas)) {
-        const tareasEnCurso = data.tareas.filter(t => t.status != 4); // Excluye "Hecho"
+        const tareasEnCurso = data.tareas.filter(t => t.status != 4);
         document.getElementById("cantidad-tareas").textContent = tareasEnCurso.length;
       }
     })
@@ -780,8 +690,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
   // ====== CUMPLEAÑEROS DEL MES ======
-  // Servicio requerido: /web/MS_get_cumples_mes.php
-  // Esperado: { success:true, mes:"Octubre", cumpleaneros:[ {nombre:"Juan", dia:"05"}, ... ] }
   fetch("https://mobilitysolutionscorp.com/web/MS_get_cumples_mes.php")
     .then(res => res.json())
     .then(data => {
@@ -823,282 +731,107 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <!-- JavaScript para abrir/cerrar modal y enviar JSON -->
 <script>
-    function openModal() {
-        document.getElementById("editModal").style.display = "block";
-    }
+function openModal() {
+  document.getElementById("editModal").style.display = "block";
+}
+function closeModal() {
+  document.getElementById("editModal").style.display = "none";
+}
+function openCumpleModal() {
+  document.getElementById("cumpleModal").style.display = "block";
+}
+function closeCumpleModal() {
+  document.getElementById("cumpleModal").style.display = "none";
+}
+window.onclick = function(event) {
+  const modal = document.getElementById("editModal");
+  if (event.target == modal) {
+      modal.style.display = "none";
+  }
+}
+window.addEventListener("click", function(e){
+  const cmodal = document.getElementById("cumpleModal");
+  if (e.target === cmodal) {
+      cmodal.style.display = "none";
+  }
+});
 
-    function closeModal() {
-        document.getElementById("editModal").style.display = "none";
-    }
-
-    // Nuevo: abrir / cerrar modal de cumpleañeros
-    function openCumpleModal() {
-        document.getElementById("cumpleModal").style.display = "block";
-    }
-
-    function closeCumpleModal() {
-        document.getElementById("cumpleModal").style.display = "none";
-    }
-
-    window.onclick = function(event) {
-        const modal = document.getElementById("editModal");
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-
-    // Cierre para modal de cumpleañeros sin tocar el anterior
-    window.addEventListener("click", function(e){
-        const cmodal = document.getElementById("cumpleModal");
-        if (e.target === cmodal) {
-            cmodal.style.display = "none";
-        }
-    });
-
-    // Enviar datos como JSON
-    document.getElementById("editForm").addEventListener("submit", function(e) {
-        e.preventDefault();
-
-        const form = e.target;
-        const data = {
-            user_id: form.user_id.value,
-            email: form.email.value,
-            cumpleanos: form.cumpleanos.value,
-            telefono: form.telefono.value
-        };
-
-        fetch("https://mobilitysolutionscorp.com/db_consultas/update_profile.php", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.text())
-        .then(result => {
-            alert(result); // puedes usar toast o modal también
-            closeModal();
-            location.reload();
-        })
-        .catch(error => {
-            console.error("Error:", error);
-            alert("Error al actualizar perfil");
-        });
-    });
+// Enviar datos como JSON
+document.getElementById("editForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const data = {
+      user_id: form.user_id.value,
+      email: form.email.value,
+      cumpleanos: form.cumpleanos.value,
+      telefono: form.telefono.value
+  };
+  fetch("https://mobilitysolutionscorp.com/db_consultas/update_profile.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+  })
+  .then(response => response.text())
+  .then(result => {
+      alert(result);
+      closeModal();
+      location.reload();
+  })
+  .catch(error => {
+      console.error("Error:", error);
+      alert("Error al actualizar perfil");
+  });
+});
 </script>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const userId = <?php echo intval($user_id); ?>;
 
-  fetch(`https://mobilitysolutionscorp.com/web/MS_get_reconocimientos.php?asignado=${userId}`)
-    .then(response => response.json())
-    .then(data => {
-      const contenedorSkills = document.querySelector(".skills-section");
-      contenedorSkills.innerHTML = "<h2>Reconocimientos</h2>";
-
-      // ====== Cálculo de puntos por tipo ======
-      // tipo: 1 = Desempeño, 2 = Seguimiento, 3 = Innovación
-      const puntosPorTipo = {1: 2, 2: 2, 3: 2};
-      const lista = (data && Array.isArray(data.reconocimientos)) ? data.reconocimientos : [];
-      const totalPuntos = lista.reduce((acc, item) => {
-        const tipo = parseInt(item.tipo, 10);
-        return acc + (puntosPorTipo[tipo] || 0);
-      }, 0);
-
-      window.rew.reconocimientos = totalPuntos;
-
-      // ====== Configuración del termómetro ======
-      const metas = [
-        { pts: 35, nombre: "Tarjeta Amazon" },
-        { pts: 55, nombre: "Bono especial" },
-        { pts: 75, nombre: "Viaje anual" }
-      ];
-      const maxPts = 75;
-      window.rew.max = maxPts;
-      window.rew.metas = metas.map(m => m.pts);
-
-      const siguiente = metas.find(m => totalPuntos < m.pts);
-      const textoSiguiente = siguiente
-        ? `Siguiente: Premio ${metas.indexOf(siguiente) + 2} a ${siguiente.pts} pts`
-        : `¡Todos los premios conseguidos!`;
-
-      // ====== Render del termómetro visual ======
-      const rewardsWrapper = document.createElement("div");
-      rewardsWrapper.className = "rewards-wrapper";
-      rewardsWrapper.innerHTML = `
-        <div class="rewards-head">
-          <div class="rewards-title">Línea de recompensas</div>
-          <div class="rewards-stats">
-            Puntos: <strong id="pts-actuales">0</strong> / ${maxPts}
-          </div>
-        </div>
-
-        <div class="rewards-bar">
-          <div class="rewards-fill" id="rewards-fill" style="width:0%"></div>
-          <div class="rewards-markers" id="rewards-markers"></div>
-        </div>
-
-        <div class="rewards-legend">
-          <span>
-            2 (Desempeño) · 2 (Seguimiento) · 2 (Innovación)<br>
-            1 (Ventas) · 4 (Entregas) · <span class="neg">-2 (Faltas)</span> · <span class="neg">-3 (Quejas)</span>
-          </span>
-          <span class="next" id="rewards-next">${textoSiguiente}</span>
-        </div>
-      `;
-      contenedorSkills.appendChild(rewardsWrapper);
-
-      // Marcadores en la barra
-      const markers = document.getElementById("rewards-markers");
-      metas.forEach((m) => {
-        const left = (m.pts / maxPts) * 100;
-        const marker = document.createElement("div");
-        marker.className = "rewards-marker";
-        marker.style.left = `${left}%`;
-        marker.innerHTML = `
-          <div class="dot"></div>
-          <div class="label">${m.nombre}<br>${m.pts} pts</div>
-        `;
-        markers.appendChild(marker);
-      });
-
-      // Llenar barra y texto de puntos usando tu helper global
-      window.renderRewards();
-
-      // ====== Agrupar reconocimientos por tipo (1,2,3) ======
-      const NOMBRES_TIPO = { 1: "Desempeño", 2: "Seguimiento", 3: "Innovación" };
-      const CLASE_TIPO   = { 1: "recono-desempeno", 2: "recono-liderazgo", 3: "recono-innovacion" };
-      const PUNTOS_TIPO  = { 1: 2, 2: 2, 3: 2 };
-
-      const tiposOrden = [1, 2, 3];
-      const grupos = { 1: [], 2: [], 3: [] };
-
-      lista.forEach(it => {
-        const t = parseInt(it.tipo, 10);
-        if (grupos[t]) grupos[t].push(it);
-      });
-
-      const groupsWrap = document.createElement("div");
-      groupsWrap.className = "rec-groups";
-
-      tiposOrden.forEach((tipo, idx) => {
-        const items = grupos[tipo];
-        const totalPtsGrupo = items.length * (PUNTOS_TIPO[tipo] || 0);
-
-        const card = document.createElement("div");
-        card.className = "rec-group" + (idx === 0 ? " open" : "");
-
-        const header = document.createElement("div");
-        header.className = "rec-group__header";
-        header.innerHTML = `
-          <div class="rec-group__left">
-            <span class="rec-group__title">${NOMBRES_TIPO[tipo]}</span>
-            <span class="rec-group__badge">${items.length}</span>
-          </div>
-          <div class="rec-group__right">
-            <span class="rec-group__points">${totalPtsGrupo} pts</span>
-            <span class="rec-group__chev">▶</span>
-          </div>
-        `;
-        header.addEventListener("click", () => card.classList.toggle("open"));
-
-        const body = document.createElement("div");
-        body.className = "rec-group__body";
-
-        if (items.length > 0) {
-          const grid = document.createElement("div");
-          grid.className = "rec-grid";
-
-          items.forEach(item => {
-            const tile = document.createElement("div");
-            tile.className = `reconocimiento-item ${CLASE_TIPO[tipo]}`;
-
-            // 👇 AQUI el tooltip con la descripción
-            //    usamos title="" nativo del browser
-            if (item.descripcion) {
-              tile.setAttribute("title", item.descripcion);
-            }
-
-            tile.innerHTML = `
-              <div class="titulo">${item.reconocimiento}</div>
-              <div class="fecha">${item.mes}/${item.anio}</div>
-            `;
-            grid.appendChild(tile);
-          });
-
-          body.appendChild(grid);
-        } else {
-          const empty = document.createElement("div");
-          empty.className = "rec-empty";
-          empty.textContent = `No hay reconocimientos de ${NOMBRES_TIPO[tipo].toLowerCase()}.`;
-          body.appendChild(empty);
-        }
-
-        card.appendChild(header);
-        card.appendChild(body);
-        groupsWrap.appendChild(card);
-      });
-
-      contenedorSkills.appendChild(groupsWrap);
-    })
-    .catch(error => {
-      console.error("Error al cargar reconocimientos:", error);
+  function actualizarContadores(selectores, count){
+    (Array.isArray(selectores) ? selectores : [selectores]).forEach(sel=>{
+      const el = document.querySelector(sel);
+      if (el) el.textContent = count;
     });
+  }
+
+  function extraerConteo(respuesta, nombreArrayPosible) {
+    if (respuesta && typeof respuesta.count === 'number') return respuesta.count;
+    if (respuesta && Array.isArray(respuesta.rows)) return respuesta.rows.length;
+    if (respuesta && Array.isArray(respuesta[nombreArrayPosible])) return respuesta[nombreArrayPosible].length;
+    return 0;
+  }
+
+  // Quejas
+  fetch("https://mobilitysolutionscorp.com/web/MS_queja_get.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ usuario: userId })
+  })
+  .then(r => r.json())
+  .then(data => {
+    const count = extraerConteo(data, "quejas");
+    actualizarContadores(["#cantidad-quejas", "#hc-quejas"], count);
+    window.rew.quejas = count;
+    window.renderRewards();
+  })
+  .catch(() => actualizarContadores(["#cantidad-quejas", "#hc-quejas"], 0));
+
+  // Inasistencias
+  fetch("https://mobilitysolutionscorp.com/web/MS_inasistencia_get.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ usuario: userId })
+  })
+  .then(r => r.json())
+  .then(data => {
+    const count = extraerConteo(data, "inasistencias");
+    actualizarContadores(["#cantidad-inasistencias", "#hc-inasistencias"], count);
+    window.rew.inasistencias = count;
+    window.renderRewards();
+  })
+  .catch(() => actualizarContadores(["#cantidad-inasistencias", "#hc-inasistencias"], 0));
 });
-</script>
-
-
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const userId = <?php echo intval($user_id); ?>;
-
-    function actualizarContadores(selectores, count){
-      (Array.isArray(selectores) ? selectores : [selectores]).forEach(sel=>{
-        const el = document.querySelector(sel);
-        if (el) el.textContent = count;
-      });
-    }
-
-    // Intenta leer count, rows.length o un arreglo con nombre conocido
-    function extraerConteo(respuesta, nombreArrayPosible) {
-      if (respuesta && typeof respuesta.count === 'number') return respuesta.count;
-      if (respuesta && Array.isArray(respuesta.rows)) return respuesta.rows.length;
-      if (respuesta && Array.isArray(respuesta[nombreArrayPosible])) return respuesta[nombreArrayPosible].length;
-      return 0;
-    }
-
-    // Quejas
-    fetch("https://mobilitysolutionscorp.com/web/MS_queja_get.php", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ usuario: userId })
-    })
-    .then(r => r.json())
-    .then(data => {
-      const count = extraerConteo(data, "quejas");
-      actualizarContadores(["#cantidad-quejas", "#hc-quejas"], count);
-      window.rew.quejas = count;
-      window.renderRewards();
-    })
-    .catch(() => actualizarContadores(["#cantidad-quejas", "#hc-quejas"], 0));
-
-    // Inasistencias
-    fetch("https://mobilitysolutionscorp.com/web/MS_inasistencia_get.php", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ usuario: userId })
-    })
-    .then(r => r.json())
-    .then(data => {
-      const count = extraerConteo(data, "inasistencias");
-      actualizarContadores(["#cantidad-inasistencias", "#hc-inasistencias"], count);
-      window.rew.inasistencias = count;
-      window.renderRewards();
-    })
-    .catch(() => actualizarContadores(["#cantidad-inasistencias", "#hc-inasistencias"], 0));
-  });
 </script>
 
 <script>
@@ -1124,9 +857,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const gaugeNeedlePlugin = {
     id: 'gaugeNeedle',
     afterDatasetDraw(chart, args, pluginOptions) {
-      // Solo después del primer dataset
       if (args.index !== 0) return;
-
       const { ctx } = chart;
       const meta = chart.getDatasetMeta(0);
       const arc  = meta.data[0];
@@ -1137,13 +868,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const r  = arc.outerRadius;
 
       const value  = Math.max(0, toInt(pluginOptions.value));
-      const target = Math.max(1, toInt(pluginOptions.target)); // evita división por 0
+      const target = Math.max(1, toInt(pluginOptions.target));
       const capped = Math.min(value, target);
 
-      // Ángulo en rango semicircular: rotation .. rotation + circumference
       const angle = chart.options.rotation + (capped / target) * chart.options.circumference;
 
-      // Aguja
       ctx.save();
       ctx.translate(cx, cy);
       ctx.rotate(angle);
@@ -1153,14 +882,12 @@ document.addEventListener("DOMContentLoaded", () => {
       ctx.lineWidth = 3;
       ctx.strokeStyle = '#111827';
       ctx.stroke();
-      // pivote
       ctx.beginPath();
       ctx.arc(0, 0, 5, 0, Math.PI * 2);
       ctx.fillStyle = '#111827';
       ctx.fill();
       ctx.restore();
 
-      // Texto al centro: "valor / target"
       ctx.save();
       ctx.font = '600 16px system-ui, -apple-system, Segoe UI, Roboto';
       ctx.fillStyle = '#111827';
@@ -1229,89 +956,80 @@ document.addEventListener("DOMContentLoaded", () => {
     lineChart.data.datasets[1].label = 'Meta';
     lineChart.update();
 
-    // resalta hex correspondiente
     document.querySelectorAll('.hex').forEach(h => h.classList.remove('active'));
     const hexMap = { 'New': '#hex-nuevo', 'Reserva': '#hex-reserva', 'Entrega': '#hex-entrega' };
     const hexSel = hexMap[tipo];
     if (hexSel) { const el = document.querySelector(hexSel); if (el) el.classList.add('active'); }
   }
 
-  
-function renderGaugeEntrega() {
-  const wrap = document.querySelector('.chart-wrapper');
-  const lineCanvas = document.getElementById('lineChart');
+  function renderGaugeEntrega() {
+    const wrap = document.querySelector('.chart-wrapper');
+    const lineCanvas = document.getElementById('lineChart');
 
-  // Oculta la línea
-  if (lineCanvas) lineCanvas.style.display = 'none';
+    if (lineCanvas) lineCanvas.style.display = 'none';
 
-  // Crea o normaliza el KPI
-  let kpi = document.getElementById('entregaKPI');
-  if (!kpi) {
-    kpi = document.createElement('div');
-    kpi.id = 'entregaKPI';
-    kpi.className = 'entrega-kpi';
-    wrap.appendChild(kpi);
-  }
+    let kpi = document.getElementById('entregaKPI');
+    if (!kpi) {
+      kpi = document.createElement('div');
+      kpi.id = 'entregaKPI';
+      kpi.className = 'entrega-kpi';
+      wrap.appendChild(kpi);
+    }
 
-  // Si la estructura vieja existe, la reemplazamos
-  if (!kpi.querySelector('.meta-wrap')) {
-    kpi.innerHTML = `
-      <div class="left">
-        <div class="num" id="kpiMetaNum">0</div>
-        <div class="meta-wrap">
-          <div class="label">Meta</div>
-          <div class="hline"></div>
+    if (!kpi.querySelector('.meta-wrap')) {
+      kpi.innerHTML = `
+        <div class="left">
+          <div class="num" id="kpiMetaNum">0</div>
+          <div class="meta-wrap">
+            <div class="label">Meta</div>
+            <div class="hline"></div>
+          </div>
+          <div class="num" id="kpiEntregasNum">0</div>
+          <div class="label">Entregas</div>
         </div>
-        <div class="num" id="kpiEntregasNum">0</div>
-        <div class="label">Entregas</div>
-      </div>
 
-      <div class="divider"></div>
+        <div class="divider"></div>
 
-      <div class="right">
-        <span class="symbol">%</span>
-        <span class="pct" id="kpiPct">0</span>
-      </div>
-    `;
-  } else {
-    kpi.style.display = 'flex';
+        <div class="right">
+          <span class="symbol">%</span>
+          <span class="pct" id="kpiPct">0</span>
+        </div>
+      `;
+    } else {
+      kpi.style.display = 'flex';
+    }
+
+    let meta = (metasPorTipo[3] || []).reduce((a,b)=>a + toInt(b), 0);
+    if (!meta) meta = Math.max(toInt(totalEntrega), 1);
+
+    const valor = toInt(totalEntrega);
+    const pct   = Math.round((valor / meta) * 1000) / 10;
+
+    document.getElementById('kpiMetaNum').textContent     = meta;
+    document.getElementById('kpiEntregasNum').textContent = valor;
+    document.getElementById('kpiPct').textContent         = pct;
+
+    document.querySelectorAll('.hex').forEach(h => h.classList.remove('active'));
+    const hexEntrega = document.getElementById('hex-entrega');
+    if (hexEntrega) hexEntrega.classList.add('active');
   }
 
-  // Cálculos
-  let meta = (metasPorTipo[3] || []).reduce((a,b)=>a + toInt(b), 0);
-  if (!meta) meta = Math.max(toInt(totalEntrega), 1);
+  function showLine(tipo) {
+    const kpi = document.getElementById('entregaKPI');
+    if (kpi) kpi.style.display = 'none';
 
-  const valor = toInt(totalEntrega);
-  const pct   = Math.round((valor / meta) * 1000) / 10; // 1 decimal
-
-  // Pinta valores
-  document.getElementById('kpiMetaNum').textContent     = meta;
-  document.getElementById('kpiEntregasNum').textContent = valor;
-  document.getElementById('kpiPct').textContent         = pct;
-
-  // Resalta hex de “Entrega”
-  document.querySelectorAll('.hex').forEach(h => h.classList.remove('active'));
-  const hexEntrega = document.getElementById('hex-entrega');
-  if (hexEntrega) hexEntrega.classList.add('active');
-}
-
-function showLine(tipo) {
-  const kpi = document.getElementById('entregaKPI');
-  if (kpi) kpi.style.display = 'none';   // <— ocultar KPI
-
-  const gaugeCanvas = document.getElementById('gaugeChart'); // ya no se usa, pero por si quedó
-  const lineCanvas  = document.getElementById('lineChart');
-  if (gaugeCanvas) gaugeCanvas.style.display = 'none';
-  if (lineCanvas)  lineCanvas.style.display  = 'block';
-  if (!lineChart) initLineChart();
-  actualizarGrafica(tipo);
-}
-
+    const gaugeCanvas = document.getElementById('gaugeChart');
+    const lineCanvas  = document.getElementById('lineChart');
+    if (gaugeCanvas) gaugeCanvas.style.display = 'none';
+    if (lineCanvas)  lineCanvas.style.display  = 'block';
+    if (!lineChart) initLineChart();
+    actualizarGrafica(tipo);
+  }
 
   // === FLUJO: inicializa y carga datos + metas ===
   initLineChart();
 
-  // 1) Datos por mes (totales)
+  // 1) Datos por mes (totales) -> sin cambios en hex de la derecha
   fetch('https://mobilitysolutionscorp.com/db_consultas/hex_status.php?user_id=' + userId)
     .then(r => r.json())
     .then(data => {
@@ -1323,29 +1041,25 @@ function showLine(tipo) {
         totalEntrega += toInt(mes.Entrega);
       });
 
-      // Totales en hex
       document.querySelector('#hex-nuevo strong').textContent   = totalNuevo;
       document.querySelector('#hex-reserva strong').textContent = totalReserva;
       document.querySelector('#hex-entrega strong').textContent = totalEntrega;
 
-      // Recompensas
       if (window.rew) {
         window.rew.entregas = totalEntrega;
         window.rew.reservas = totalReserva;
         if (typeof window.renderRewards === 'function') window.renderRewards();
       }
 
-      // Vista por defecto
       showLine('Reserva');
 
-      // 2) Metas
       return fetch('https://mobilitysolutionscorp.com/web/MS_get_metas_usuario.php?asignado=' + userId);
     })
     .then(r => r.json())
     .then(data => {
       if (data && data.success && Array.isArray(data.metas)) {
         data.metas.forEach(meta => {
-          const t = toInt(meta.tipo_meta); // 1,2,3
+          const t = toInt(meta.tipo_meta);
           metasPorTipo[t] = [
             toInt(meta.enero), toInt(meta.febrero), toInt(meta.marzo),
             toInt(meta.abril), toInt(meta.mayo), toInt(meta.junio),
@@ -1354,79 +1068,42 @@ function showLine(tipo) {
           ];
         });
       }
-
-      // (3) Si la DONA está visible, redibujarla con el target correcto
       const gauge = document.getElementById('gaugeChart');
       const visible = gauge && getComputedStyle(gauge).display !== 'none';
       if (visible) renderGaugeEntrega(); else showLine('Reserva');
     })
     .catch(err => console.error('Error al obtener datos/metas:', err));
-
-  // Listeners una sola vez
-  (function wireClicks(){
-    const hexN = document.getElementById('hex-nuevo');
-    const hexR = document.getElementById('hex-reserva');
-    const hexE = document.getElementById('hex-entrega');
-    if (hexN) hexN.addEventListener('click', () => showLine('New'));
-    if (hexR) hexR.addEventListener('click', () => showLine('Reserva'));
-    if (hexE) hexE.addEventListener('click', () => renderGaugeEntrega());
-  })();
-
 </script>
-
-
 
 <script>
 // Abrir / cerrar modal de cumpleaños
-function openCumpleModal() {
-  document.getElementById("cumpleModal").style.display = "block";
-}
-function closeCumpleModal() {
-  document.getElementById("cumpleModal").style.display = "none";
-}
-
-// Click en el pastel
+function openCumpleModal() { document.getElementById("cumpleModal").style.display = "block"; }
+function closeCumpleModal() { document.getElementById("cumpleModal").style.display = "none"; }
 document.addEventListener("DOMContentLoaded", () => {
   const pastelBtn = document.getElementById("cumpleTrigger");
-  if (pastelBtn) {
-    pastelBtn.addEventListener("click", openCumpleModal);
-  }
+  if (pastelBtn) pastelBtn.addEventListener("click", openCumpleModal);
 });
-
-// Cerrar modal si hacen click afuera (extendemos tu lógica actual)
 window.onclick = function(event) {
-    const modal = document.getElementById("editModal");
-    const cumpleModal = document.getElementById("cumpleModal");
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-    if (event.target == cumpleModal) {
-        cumpleModal.style.display = "none";
-    }
+  const modal = document.getElementById("editModal");
+  const cumpleModal = document.getElementById("cumpleModal");
+  if (event.target == modal) modal.style.display = "none";
+  if (event.target == cumpleModal) cumpleModal.style.display = "none";
 };
 
 // Fetch de cumpleañeros del mes
 document.addEventListener("DOMContentLoaded", () => {
-
   fetch("https://mobilitysolutionscorp.com/web/MS_get_cumples_mes.php")
     .then(res => res.json())
     .then(data => {
       const lista = (data && Array.isArray(data.cumpleaneros)) ? data.cumpleaneros : [];
       const conteo = data.count || lista.length || 0;
 
-      // número dentro del pastel morado
       const countEl = document.getElementById("cumple-count");
-      if (countEl) {
-        countEl.textContent = conteo;
-      }
+      if (countEl) countEl.textContent = conteo;
 
-      // título del modal con el mes
       const tituloMes = document.getElementById("cumpleTituloMes");
-      if (tituloMes && data.mes) {
-        tituloMes.textContent = "Cumpleaños de " + data.mes;
-      }
+      if (tituloMes && data.mes) tituloMes.textContent = "Cumpleaños de " + data.mes;
 
-      // lista en el modal
       const ul = document.getElementById("cumpleLista");
       if (ul) {
         ul.innerHTML = "";
@@ -1438,23 +1115,15 @@ document.addEventListener("DOMContentLoaded", () => {
           lista.forEach(p => {
             const li = document.createElement("li");
             li.style.marginBottom = "8px";
-            // ejemplo visual: "Juan Pérez — Día 05"
-            li.textContent =
-              (p.nombre ? p.nombre : "Sin nombre") +
-              " — Día " +
-              (p.dia ? p.dia : "--");
+            li.textContent = (p.nombre ? p.nombre : "Sin nombre") + " — Día " + (p.dia ? p.dia : "--");
             ul.appendChild(li);
           });
         }
       }
     })
-    .catch(err => {
-      console.error("Error cumpleaños:", err);
-    });
-
+    .catch(err => { console.error("Error cumpleaños:", err); });
 });
 </script>
-
 
 <script>
 (function(){
@@ -1538,13 +1207,24 @@ document.addEventListener("DOMContentLoaded", () => {
     if (tTotal())   tTotal().textContent   = sTotal;
   }
 
+  // ===== AJUSTE 2: POST JSON a MS_get_resumen_mes_asesores.php =====
   async function fetchResumen(yyyy_mm){
     try{
-      const url = `https://mobilitysolutionscorp.com/web/MS_get_resumen_mes_asesores.php` +
-                  `?user_id=${encodeURIComponent(userId)}` +
-                  `&user_type=${encodeURIComponent(userType)}` +
-                  `&yyyymm=${encodeURIComponent(yyyy_mm)}`;
-      const res = await fetch(url);
+      const url = `https://mobilitysolutionscorp.com/web/MS_get_resumen_mes_asesores.php`;
+      const payload = {
+        user_id:   userId,
+        user_type: userType,
+        yyyymm:    yyyy_mm,
+        solo_usuario: 0,
+        include_jefe: 0
+      };
+
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
       const data = await res.json();
       if (data && data.success && Array.isArray(data.rows)) return data.rows;
       return [];
@@ -1573,9 +1253,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 })();
 </script>
-
-
-
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3Z9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
