@@ -1145,3 +1145,28 @@ h1 {
   padding-right: 5px;
   font-variant-numeric: tabular-nums; /* alineación uniforme de dígitos */
 }
+
+/* Centrar valores de las columnas de métricas (de la 2 en adelante) */
+.tabla-mes thead th:nth-child(n+2),
+.tabla-mes tbody td:nth-child(n+2),
+.tabla-mes tfoot th:nth-child(n+2){
+  text-align: center !important;   /* anula .num { text-align:right } */
+  vertical-align: middle;
+}
+
+/* Mantener la columna "Asesor" a la izquierda */
+.tabla-mes thead th:first-child,
+.tabla-mes tbody td:first-child,
+.tabla-mes tfoot th:first-child{
+  text-align: left;
+}
+
+/* Si dentro usas chips/badges (span/div) en inline-block, asegúralos al centro */
+.tabla-mes td:nth-child(n+2) > span,
+.tabla-mes td:nth-child(n+2) > .badge-mini,
+.tabla-mes tfoot th:nth-child(n+2) > span{
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
