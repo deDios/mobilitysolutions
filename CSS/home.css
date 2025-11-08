@@ -174,14 +174,14 @@ li {
     justify-content: space-between;
     width: 100%;
     padding-top: 100px;
-    max-width: 1200px;
+    max-width: 1280px;
     margin: 0 auto;
     gap: 20px;
 }
 
 /* Perfil (lado izquierdo) */
 .container_1 {
-    width: 50%;
+    width: 60%;
     background-color: #fff;
     padding: 20px;
     padding-top: 50px;
@@ -258,7 +258,7 @@ h1 {
 
 /* Panel derecho con hexágonos */
 .container_2 {
-    width: 50%;
+    width: 40%;
     background-color: #f9f9f9;
     padding: 40px 20px;
     border-radius: 8px;
