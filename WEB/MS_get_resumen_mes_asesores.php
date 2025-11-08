@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 
 include "../db/Conexion.php";
 
-// Opcional: forzar exceptions para ver errores claros (quítalo en prod si no lo quieres)
+// Mostrar errores de mysqli como excepciones (útil en dev)
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 // ===== Helpers =====
@@ -29,6 +29,17 @@ function rol_label($t){
     default: return "Sin rol";
   }
 }
+function column_exists(mysqli $con, string $table, string $column): bool {
+  // Nota: no se pueden parametrizar identificadores; el LIKE sí puede ir como parámetro.
+  $sql = "SHOW COLUMNS FROM {$table} LIKE ?";
+  $stmt = $con->prepare($sql);
+  $stmt->bind_param("s", $column);
+  $stmt->execute();
+  $res = $stmt->get_result();
+  $exists = ($res && $res->num_rows > 0);
+  $stmt->close();
+  return $exists;
+}
 
 // Solo POST (como tu API funcional)
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -42,6 +53,7 @@ $raw  = file_get_contents('php://input');
 $body = json_decode($raw, true);
 $in   = array_merge($_POST ?? [], is_array($body) ? $body : []);
 
+$debug        = as_int($in['debug'] ?? 0) === 1;
 $user_id      = as_int($in['user_id'] ?? null);
 $user_type    = as_int($in['user_type'] ?? null);
 $yyyymm       = $in['yyyymm'] ?? null;
@@ -60,34 +72,47 @@ $daysInMonth = (int)cal_days_in_month(CAL_GREGORIAN, $M, $Y);
 $start = sprintf('%04d-%02d-01 00:00:00',$Y,$M);
 $end   = sprintf('%04d-%02d-%02d 23:59:59',$Y,$M,$daysInMonth);
 
-// ====== Funciones de jerarquía ======
-function obtenerSubordinados($con, $id, &$acc){
-  $stmt = $con->prepare("SELECT user_id FROM mobility_solutions.tmx_acceso_usuario WHERE reporta_a = ?");
-  $stmt->bind_param("i",$id);
-  $stmt->execute();
-  $res = $stmt->get_result();
-  while($r = $res->fetch_assoc()){
-    $sid = (int)$r['user_id'];
-    if (!in_array($sid,$acc, true)){
-      $acc[] = $sid;
-      obtenerSubordinados($con, $sid, $acc);
-    }
-  }
-  $stmt->close();
-}
+// ====== Detección de columnas en tmx_requerimiento ======
+$tblReq = 'mobility_solutions.tmx_requerimiento';
+$col_status  = null;
+$col_created = null;
 
-// ====== Construir lista de IDs ======
-$ids = [];
 try {
+  if (column_exists($con, $tblReq, 'estatus'))        $col_status = 'estatus';
+  elseif (column_exists($con, $tblReq, 'status_req')) $col_status = 'status_req';
+
+  if (column_exists($con, $tblReq, 'created_at'))          $col_created = 'created_at';
+  elseif (column_exists($con, $tblReq, 'req_created_at'))  $col_created = 'req_created_at';
+
+  if (!$col_status || !$col_created) {
+    throw new RuntimeException("No se encontraron columnas esperadas en {$tblReq} (status: estatus/status_req, fecha: created_at/req_created_at).");
+  }
+
+  // ====== Jerarquía ======
+  function obtenerSubordinados($con, $id, &$acc){
+    $stmt = $con->prepare("SELECT user_id FROM mobility_solutions.tmx_acceso_usuario WHERE reporta_a = ?");
+    $stmt->bind_param("i",$id);
+    $stmt->execute();
+    $res = $stmt->get_result();
+    while($r = $res->fetch_assoc()){
+      $sid = (int)$r['user_id'];
+      if (!in_array($sid,$acc, true)){
+        $acc[] = $sid;
+        obtenerSubordinados($con, $sid, $acc);
+      }
+    }
+    $stmt->close();
+  }
+
+  // Construir lista de IDs
+  $ids = [];
   if ($solo_usuario){
     $ids = [$user_id];
   } elseif (in_array($user_type,[5,6], true)) {
-    // CTO/CEO -> todos
     $rs = $con->query("SELECT user_id FROM mobility_solutions.tmx_acceso_usuario");
     while($r = $rs->fetch_assoc()){ $ids[] = (int)$r['user_id']; }
   } else {
     $ids[] = $user_id;
-
     if ($include_jefe){
       $stmt = $con->prepare("SELECT reporta_a FROM mobility_solutions.tmx_acceso_usuario WHERE user_id=?");
       $stmt->bind_param("i",$user_id);
@@ -136,7 +161,6 @@ try {
   }
   $stmt->close();
 
-  // Si por alguna razón no hay usuarios válidos, responde vacío
   if (empty($map)){
     echo json_encode(["success"=>true,"yyyymm"=>$yyyymm,"rows"=>[]], JSON_UNESCAPED_UNICODE);
     exit;
@@ -158,18 +182,18 @@ try {
     $stmt->close();
   };
 
-  // ====== 1) Nuevo/Reserva/Entrega por requerimientos ======
-  // ATENCIÓN: aquí uso 'r.estatus = 2' y 'r.created_at' (ajusta si tus nombres difieren)
+  // ====== 1) Nuevo/Reserva/Entrega ======
+  // Usa columnas detectadas dinámicamente
   $sqlNre = "
     SELECT
       r.created_by AS uid,
       SUM(CASE WHEN LOWER(TRIM(r.tipo_req)) LIKE '%nuevo%'   THEN 1 ELSE 0 END) AS nuevo,
       SUM(CASE WHEN LOWER(TRIM(r.tipo_req)) LIKE '%reserva%' THEN 1 ELSE 0 END) AS venta,
       SUM(CASE WHEN LOWER(TRIM(r.tipo_req)) LIKE '%entrega%' THEN 1 ELSE 0 END) AS entrega
-    FROM mobility_solutions.tmx_requerimiento r
-    WHERE r.estatus = 2
+    FROM {$tblReq} r
+    WHERE r.{$col_status} = 2
       AND r.created_by IN (%s)
-      AND r.created_at BETWEEN ? AND ?
+      AND r.{$col_created} BETWEEN ? AND ?
     GROUP BY r.created_by
   ";
   $run($sqlNre, "ss", [$start,$end], function($row) use (&$map){
@@ -231,7 +255,6 @@ try {
   foreach ($map as $k => $v){
     $map[$k]['total'] = (int)$v['nuevo'] + (int)$v['venta'] + (int)$v['entrega'];
   }
-  // Ordenar por total desc, luego nombre asc
   usort($map, function($a,$b){
     if ($a['total'] === $b['total']) return strcmp($a['nombre'],$b['nombre']);
     return $b['total'] <=> $a['total'];
@@ -244,12 +267,12 @@ try {
   ], JSON_UNESCAPED_UNICODE);
 
 } catch (Throwable $e){
-  // Respuesta de error clara (útil en dev)
   http_response_code(500);
   echo json_encode([
     "success" => false,
     "message" => "Error interno al procesar la solicitud.",
-    "error"   => $e->getMessage()
+    // En prod puedes ocultar esto; en debug=1 lo mostramos.
+    "error"   => $debug ? $e->getMessage() : null
   ]);
 } finally {
   if (isset($con) && $con instanceof mysqli) { $con->close(); }
