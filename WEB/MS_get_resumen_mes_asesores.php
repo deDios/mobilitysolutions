@@ -1,28 +1,16 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, Authorization');
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') { http_response_code(204); exit; }
+
 include "../db/Conexion.php";
 
 /**
  * Resumen mensual POR ASESOR (totales) bajo jerarquía.
- * Parámetros (GET o POST):
- *   - user_id      (int)   requerido
- *   - user_type    (int)   requerido  (1=Asesor, 2=Supervisor, 3=Analista, 4=Manager, 5=CTO, 6=CEO)
- *   - yyyymm       (str)   opcional   (formato YYYY-MM). Default: mes actual del servidor.
- *   - solo_usuario (int)   opcional   (1=true) solo ese usuario, sin jerarquía
- *   - include_jefe (int)   opcional   (1=true) incluye jefe directo (solo para no-CTO/CEO)
- *
- * Respuesta:
- * {
- *   "success": true,
- *   "yyyymm": "2025-11",
- *   "rows": [
- *     {"id":12,"nombre":"Ana López","rol":"Asesor(a)","nuevo":3,"venta":4,"entrega":1,"reconocimientos":2,"quejas":0,"faltas":1,"total":8},
- *     ...
- *   ]
- * }
  */
-
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') { http_response_code(204); exit; }
 
 function as_int($v, $def=0){ return (is_numeric($v)? (int)$v : (int)$def); }
 function valid_yyyymm($s){ return is_string($s) && preg_match('/^\d{4}\-(0[1-9]|1[0-2])$/',$s); }
@@ -38,11 +26,16 @@ function rol_label($t){
   }
 }
 
-$user_id      = as_int($_REQUEST['user_id'] ?? null);
-$user_type    = as_int($_REQUEST['user_type'] ?? null);
-$yyyymm       = $_REQUEST['yyyymm'] ?? null;
-$solo_usuario = as_int($_REQUEST['solo_usuario'] ?? 0) === 1;
-$include_jefe = as_int($_REQUEST['include_jefe'] ?? 0) === 1;
+/* === Unificar entrada: GET/POST + JSON body === */
+$raw  = file_get_contents('php://input');
+$body = json_decode($raw, true);
+$in   = array_merge($_GET ?? [], $_POST ?? [], is_array($body) ? $body : []);
+
+$user_id      = as_int($in['user_id'] ?? null);
+$user_type    = as_int($in['user_type'] ?? null);
+$yyyymm       = $in['yyyymm'] ?? null;
+$solo_usuario = as_int($in['solo_usuario'] ?? 0) === 1;
+$include_jefe = as_int($in['include_jefe'] ?? 0) === 1;
 
 if (!$user_id || !$user_type) {
   echo json_encode(["success"=>false,"message"=>"Faltan parámetros requeridos (user_id, user_type)"]);
@@ -55,7 +48,7 @@ $daysInMonth = (int)cal_days_in_month(CAL_GREGORIAN, $M, $Y);
 $start = sprintf('%04d-%02d-01 00:00:00',$Y,$M);
 $end   = sprintf('%04d-%02d-%02d 23:59:59',$Y,$M,$daysInMonth);
 
-// ---------- helpers jerarquía ----------
+/* === Helpers jerarquía === */
 function obtenerSubordinados($con, $id, &$acc){
   $stmt = $con->prepare("SELECT user_id FROM mobility_solutions.tmx_acceso_usuario WHERE reporta_a = ?");
   $stmt->bind_param("i",$id);
@@ -71,12 +64,11 @@ function obtenerSubordinados($con, $id, &$acc){
   $stmt->close();
 }
 
-// ---------- armar lista de IDs bajo la jerarquía ----------
+/* === Armar lista de IDs bajo jerarquía === */
 $ids = [];
 if ($solo_usuario){
   $ids = [$user_id];
 } elseif (in_array($user_type,[5,6])) {
-  // CTO/CEO: todos
   $rs = $con->query("SELECT user_id FROM mobility_solutions.tmx_acceso_usuario");
   while($r = $rs->fetch_assoc()){ $ids[] = (int)$r['user_id']; }
 } else {
@@ -91,23 +83,15 @@ if ($solo_usuario){
   }
   obtenerSubordinados($con, $user_id, $ids);
 }
+
 $ids = array_values(array_unique(array_map('intval',$ids)));
 if (empty($ids)){
   echo json_encode(["success"=>true,"yyyymm"=>$yyyymm,"rows"=>[]]);
   exit;
 }
-
-// Para IN list segura (ya son enteros provenientes de BD)
 $id_list = implode(',', $ids);
 
-// ---------- 1) N/R/E desde requerimientos ----------
-/*
-  tmx_requerimiento:
-    - req_created_at (fecha)
-    - status_req = 2 (vigente según MS_get_hex_usuario_jerarquia)
-    - created_by (autor / asesor)
-    - tipo_req texto: usamos LIKE %nuevo% | %reserva% | %entrega%
-*/
+/* === Queries === */
 $sqlNre = "
   SELECT
     r.created_by AS uid,
@@ -121,7 +105,6 @@ $sqlNre = "
   GROUP BY r.created_by
 ";
 
-// ---------- 2) Reconocimientos por asignado ----------
 $sqlRec = "
   SELECT
     asignado AS uid,
@@ -135,7 +118,6 @@ $sqlRec = "
   GROUP BY asignado
 ";
 
-// ---------- 3) Quejas por usuario ----------
 $sqlQ = "
   SELECT usuario AS uid, COUNT(*) AS quejas
   FROM mobility_solutions.tmx_queja
@@ -144,7 +126,6 @@ $sqlQ = "
   GROUP BY usuario
 ";
 
-// ---------- 4) Inasistencias por usuario ----------
 $sqlF = "
   SELECT usuario AS uid, COUNT(*) AS faltas
   FROM mobility_solutions.tmx_inasistencia
@@ -153,9 +134,8 @@ $sqlF = "
   GROUP BY usuario
 ";
 
-// ---------- inicializar mapa resultado por usuario ----------
+/* === Inicializar mapa === */
 $map = [];
-// nombres/rol/foto
 $infoSql = "
   SELECT 
     acc.user_id, acc.user_type,
@@ -178,7 +158,7 @@ if ($rs = $con->query($infoSql)){
   }
 }
 
-// helper exec bind
+/* === Helper de ejecución === */
 function run_stmt($con, $sql, $bindTypes, $bindValues, $apply){
   $stmt = $con->prepare($sql);
   if ($bindTypes){
@@ -192,7 +172,7 @@ function run_stmt($con, $sql, $bindTypes, $bindValues, $apply){
   $stmt->close();
 }
 
-// 1) N/R/E
+/* 1) N/R/E */
 run_stmt(
   $con, $sqlNre, "ss", [$start,$end],
   function($row) use (&$map){
@@ -204,9 +184,9 @@ run_stmt(
   }
 );
 
-// 2) Reconocimientos
+/* 2) Reconocimientos — usa $Y y $M (no $GLOBALS) */
 run_stmt(
-  $con, $sqlRec, "ssii", [$start,$end,$GLOBALS['Y'],$GLOBALS['M']],
+  $con, $sqlRec, "ssii", [$start,$end,$Y,$M],
   function($row) use (&$map){
     $u = (int)$row['uid'];
     if (!isset($map[$u])) return;
@@ -214,7 +194,7 @@ run_stmt(
   }
 );
 
-// 3) Quejas
+/* 3) Quejas */
 run_stmt(
   $con, $sqlQ, "ss", [$start,$end],
   function($row) use (&$map){
@@ -224,7 +204,7 @@ run_stmt(
   }
 );
 
-// 4) Faltas
+/* 4) Faltas */
 run_stmt(
   $con, $sqlF, "ss", [$start,$end],
   function($row) use (&$map){
@@ -234,12 +214,10 @@ run_stmt(
   }
 );
 
-// calcular “total” = Nuevo + Venta + Entrega (si quieres otro criterio, ajústalo)
+/* Totales y orden */
 foreach ($map as $k => $v){
   $map[$k]['total'] = (int)$v['nuevo'] + (int)$v['venta'] + (int)$v['entrega'];
 }
-
-// Salida ordenada por “total” desc (o por nombre si prefieres)
 usort($map, function($a,$b){
   if ($a['total'] === $b['total']) return strcmp($a['nombre'],$b['nombre']);
   return $b['total'] <=> $a['total'];
