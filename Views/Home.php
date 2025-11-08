@@ -606,7 +606,7 @@ window.renderRewards = function () {
         <!-- ====== Actividad del mes (por asesor) ====== -->
         <div id="mesActividad" class="mes-actividad-card">
           <div class="mes-actividad-head">
-            <div class="mes-actividad-title">Actividad del mes (por asesor)</div>
+            <div class="mes-actividad-title">Actividad del mes</div>
             <div class="mes-actividad-controls">
               <button id="mesPrev" type="button" class="mes-ctrl-btn" aria-label="Mes anterior">‹</button>
               <span id="mesLabel" class="mes-actividad-label">—</span>
@@ -614,7 +614,7 @@ window.renderRewards = function () {
             </div>
           </div>
 
-          <div class="mes-actividad-subtle">Totales del mes seleccionado (con jerarquía)</div>
+          <div class="mes-actividad-subtle">Totales del mes seleccionado</div>
 
           <div class="tabla-mes-wrap">
             <table id="tablaMes" class="tabla-mes">
