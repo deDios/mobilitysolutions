@@ -1142,6 +1142,6 @@ h1 {
 /* (opcional) que los números no se vean corridos por el padding */
 .tabla-mes tfoot th {
   padding-left: 10px;
-  padding-right: 8px;
+  padding-right: 5px;
   font-variant-numeric: tabular-nums; /* alineación uniforme de dígitos */
 }
