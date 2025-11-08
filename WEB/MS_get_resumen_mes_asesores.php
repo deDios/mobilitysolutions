@@ -346,5 +346,258 @@ if ($step == 8){
   respond(["success"=>true,"step"=>8,"rows"=>$rows,"hint"=>"Si ok, cerramos integrando todo"],200);
 }
 
+// ===== Paso 7a: Quejas - Diagnóstico extendido =====
+if ($step == '7a') {
+  // Recalcular IDs
+  $ids = [];
+  if ($solo_usuario){ $ids = [$user_id]; }
+  elseif (in_array($user_type,[5,6], true)) {
+    $rs = $con->query("SELECT user_id FROM {$SCHEMA}.tmx_acceso_usuario");
+    while ($r = $rs->fetch_assoc()) { $ids[] = (int)$r['user_id']; }
+    if ($rs) $rs->close();
+  } else {
+    $ids[] = $user_id;
+    if ($include_jefe){
+      $stmt=$con->prepare("SELECT reporta_a FROM {$SCHEMA}.tmx_acceso_usuario WHERE user_id=?");
+      if($stmt){ $stmt->bind_param("i",$user_id); if($stmt->execute()){ $stmt->bind_result($boss); if($stmt->fetch()&&$boss)$ids[]=(int)$boss; } $stmt->close(); }
+    }
+    obtenerSubordinados($con,$SCHEMA,$user_id,$ids);
+  }
+  $ids = array_values(array_unique(array_map('intval',$ids)));
+  if (empty($ids)) respond(["success"=>false,"step"=>"7a","error"=>"Sin IDs"],200);
+
+  $ph = implode(',', array_fill(0, count($ids), '?'));
+  $types_ids = str_repeat('i', count($ids));
+
+  // 7a-1) Conteo con is_active=1
+  $sql_active = "
+    SELECT id_empleado AS uid, COUNT(*) AS c
+    FROM {$SCHEMA}.tmx_queja
+    WHERE id_empleado IN ($ph)
+      AND is_active = 1
+      AND created_at BETWEEN ? AND ?
+    GROUP BY id_empleado
+  ";
+
+  // 7a-2) Conteo sin filtrar is_active
+  $sql_any = "
+    SELECT id_empleado AS uid, COUNT(*) AS c
+    FROM {$SCHEMA}.tmx_queja
+    WHERE id_empleado IN ($ph)
+      AND created_at BETWEEN ? AND ?
+    GROUP BY id_empleado
+  ";
+
+  // 7a-3) Rangos min/max por empleado (sin filtrar periodo)
+  $sql_range = "
+    SELECT id_empleado AS uid,
+           MIN(created_at) AS min_created,
+           MAX(created_at) AS max_created,
+           SUM(CASE WHEN is_active=1 THEN 1 ELSE 0 END) AS activos
+    FROM {$SCHEMA}.tmx_queja
+    WHERE id_empleado IN ($ph)
+    GROUP BY id_empleado
+  ";
+
+  // 7a-4) Muestra (últimos 20)
+  $sql_sample = "
+    SELECT id, id_empleado AS uid, is_active, created_at
+    FROM {$SCHEMA}.tmx_queja
+    WHERE id_empleado IN ($ph)
+    ORDER BY created_at DESC
+    LIMIT 20
+  ";
+
+  $runSelect = function($sql, $tailTypes = "", $tailValues = []) use ($con,$ph,$types_ids,$ids){
+    $sql = sprintf($sql, $ph); $types = $types_ids . $tailTypes; $vals = array_merge($ids, $tailValues);
+    $stmt = $con->prepare($sql); $stmt->bind_param($types, ...$vals); $stmt->execute();
+    $res = $stmt->get_result(); $out=[]; while($r=$res->fetch_assoc()){ $out[]=$r; } $stmt->close(); return $out;
+  };
+
+  $counts_active = $runSelect($sql_active, "ss", [$start,$end]);
+  $counts_any    = $runSelect($sql_any, "ss", [$start,$end]);
+  $ranges        = $runSelect($sql_range);
+  $sample        = $runSelect($sql_sample);
+
+  respond([
+    "success"=>true, "step"=>"7a",
+    "counts_active"=>$counts_active,
+    "counts_any"=>$counts_any,
+    "ranges"=>$ranges,
+    "sample"=>$sample,
+    "period"=>["start"=>$start,"end"=>$end],
+    "hint"=>"Si counts_any trae datos pero counts_active no, revisa is_active; si ranges trae datos fuera del mes, entonces el periodo no los incluye."
+  ],200);
+}
+
+// ===== Paso 8a: Inasistencias - Diagnóstico extendido =====
+if ($step == '8a') {
+  // Recalcular IDs
+  $ids = [];
+  if ($solo_usuario){ $ids = [$user_id]; }
+  elseif (in_array($user_type,[5,6], true)) {
+    $rs = $con->query("SELECT user_id FROM {$SCHEMA}.tmx_acceso_usuario");
+    while ($r = $rs->fetch_assoc()) { $ids[] = (int)$r['user_id']; }
+    if ($rs) $rs->close();
+  } else {
+    $ids[] = $user_id;
+    if ($include_jefe){
+      $stmt=$con->prepare("SELECT reporta_a FROM {$SCHEMA}.tmx_acceso_usuario WHERE user_id=?");
+      if($stmt){ $stmt->bind_param("i",$user_id); if($stmt->execute()){ $stmt->bind_result($boss); if($stmt->fetch()&&$boss)$ids[]=(int)$boss; } $stmt->close(); }
+    }
+    obtenerSubordinados($con,$SCHEMA,$user_id,$ids);
+  }
+  $ids = array_values(array_unique(array_map('intval',$ids)));
+  if (empty($ids)) respond(["success"=>false,"step"=>"8a","error"=>"Sin IDs"],200);
+
+  $ph = implode(',', array_fill(0, count($ids), '?'));
+  $types_ids = str_repeat('i', count($ids));
+
+  // Conteo dentro del periodo
+  $sql_count = "
+    SELECT id_empleado AS uid, COUNT(*) AS c
+    FROM {$SCHEMA}.tmx_inasistencia
+    WHERE id_empleado IN ($ph)
+      AND created_at BETWEEN ? AND ?
+    GROUP BY id_empleado
+  ";
+  // Rangos globales
+  $sql_range = "
+    SELECT id_empleado AS uid,
+           MIN(created_at) AS min_created,
+           MAX(created_at) AS max_created
+    FROM {$SCHEMA}.tmx_inasistencia
+    WHERE id_empleado IN ($ph)
+    GROUP BY id_empleado
+  ";
+  // Muestra
+  $sql_sample = "
+    SELECT id, id_empleado AS uid, created_at
+    FROM {$SCHEMA}.tmx_inasistencia
+    WHERE id_empleado IN ($ph)
+    ORDER BY created_at DESC
+    LIMIT 20
+  ";
+
+  $runSelect = function($sql, $tailTypes = "", $tailValues = []) use ($con,$ph,$types_ids,$ids){
+    $sql = sprintf($sql, $ph); $types = $types_ids . $tailTypes; $vals = array_merge($ids, $tailValues);
+    $stmt = $con->prepare($sql); $stmt->bind_param($types, ...$vals); $stmt->execute();
+    $res = $stmt->get_result(); $out=[]; while($r=$res->fetch_assoc()){ $out[]=$r; } $stmt->close(); return $out;
+  };
+
+  $counts = $runSelect($sql_count, "ss", [$start,$end]);
+  $ranges = $runSelect($sql_range);
+  $sample = $runSelect($sql_sample);
+
+  respond([
+    "success"=>true, "step"=>"8a",
+    "counts"=>$counts,
+    "ranges"=>$ranges,
+    "sample"=>$sample,
+    "period"=>["start"=>$start,"end"=>$end]
+  ],200);
+}
+
+// ===== Paso 9: Resultado final integrado (como producción) =====
+if ($step == 9) {
+  // Recalcular IDs
+  $ids = [];
+  if ($solo_usuario){ $ids = [$user_id]; }
+  elseif (in_array($user_type, [5,6], true)) {
+    $rs = $con->query("SELECT user_id FROM {$SCHEMA}.tmx_acceso_usuario");
+    while ($r = $rs->fetch_assoc()) { $ids[] = (int)$r['user_id']; }
+    if ($rs) $rs->close();
+  } else {
+    $ids[] = $user_id;
+    if ($include_jefe){
+      $stmt = $con->prepare("SELECT reporta_a FROM {$SCHEMA}.tmx_acceso_usuario WHERE user_id=?");
+      if($stmt){ $stmt->bind_param("i",$user_id); if($stmt->execute()){ $stmt->bind_result($boss); if($stmt->fetch() && $boss) $ids[]=(int)$boss; } $stmt->close(); }
+    }
+    obtenerSubordinados($con, $SCHEMA, $user_id, $ids);
+  }
+  $ids = array_values(array_unique(array_map('intval',$ids)));
+  if (empty($ids)) respond(["success"=>true,"step"=>9,"rows"=>[]],200);
+
+  $ph = implode(',', array_fill(0, count($ids), '?'));
+  $types_ids = str_repeat('i', count($ids));
+
+  // Mapa base
+  $map = [];
+  $sql_info = "
+    SELECT acc.user_id, acc.user_type,
+           CONCAT(COALESCE(us.user_name,''),' ',COALESCE(us.second_name,''),' ',COALESCE(us.last_name,'')) AS nombre
+    FROM {$SCHEMA}.tmx_acceso_usuario acc
+    LEFT JOIN {$SCHEMA}.tmx_usuario us ON acc.user_id = us.id
+    WHERE acc.user_id IN ($ph)
+  ";
+  $stmt = $con->prepare($sql_info); $stmt->bind_param($types_ids, ...$ids); $stmt->execute();
+  $res = $stmt->get_result();
+  while ($r = $res->fetch_assoc()) {
+    $uid = (int)$r['user_id'];
+    $map[$uid] = ["id"=>$uid,"nombre"=>trim($r['nombre']??''),"rol"=>rol_label($r['user_type']??0),
+                  "nuevo"=>0,"venta"=>0,"entrega"=>0,"reconocimientos"=>0,"quejas"=>0,"faltas"=>0,"total"=>0];
+  }
+  $stmt->close();
+
+  $run = function($sqlBase, $tailTypes, $tailValues, $onRow) use ($con,$ph,$types_ids,$ids){
+    $sql = sprintf($sqlBase, $ph);
+    $types = $types_ids . $tailTypes;
+    $vals  = array_merge($ids, $tailValues);
+    $stmt = $con->prepare($sql); $stmt->bind_param($types, ...$vals); $stmt->execute();
+    $res = $stmt->get_result(); while($row = $res->fetch_assoc()){ $onRow($row); } $stmt->close();
+  };
+
+  // N/R/E
+  $run("
+    SELECT r.created_by AS uid,
+           SUM(CASE WHEN LOWER(TRIM(r.tipo_req)) LIKE '%nuevo%'   THEN 1 ELSE 0 END) AS nuevo,
+           SUM(CASE WHEN LOWER(TRIM(r.tipo_req)) LIKE '%reserva%' THEN 1 ELSE 0 END) AS venta,
+           SUM(CASE WHEN LOWER(TRIM(r.tipo_req)) LIKE '%entrega%' THEN 1 ELSE 0 END) AS entrega
+    FROM {$SCHEMA}.tmx_requerimiento r
+    WHERE r.estatus = 2 AND r.created_by IN (%s)
+      AND COALESCE(r.req_created_at, r.created_at) BETWEEN ? AND ?
+    GROUP BY r.created_by
+  ", "ss", [$start,$end], function($row) use (&$map){
+    $u=(int)$row['uid']; if(isset($map[$u])){ $map[$u]['nuevo']=(int)$row['nuevo']; $map[$u]['venta']=(int)$row['venta']; $map[$u]['entrega']=(int)$row['entrega']; }
+  });
+
+  // Reconocimientos
+  $run("
+    SELECT asignado AS uid, COUNT(*) AS reconocimientos
+    FROM {$SCHEMA}.tmx_reconocimientos
+    WHERE asignado IN (%s) AND created_at BETWEEN ? AND ?
+    GROUP BY asignado
+  ", "ss", [$start,$end], function($row) use (&$map){
+    $u=(int)$row['uid']; if(isset($map[$u])) $map[$u]['reconocimientos']=(int)$row['reconocimientos'];
+  });
+
+  // Quejas
+  $run("
+    SELECT id_empleado AS uid, COUNT(*) AS quejas
+    FROM {$SCHEMA}.tmx_queja
+    WHERE id_empleado IN (%s) AND is_active=1
+      AND created_at BETWEEN ? AND ?
+    GROUP BY id_empleado
+  ", "ss", [$start,$end], function($row) use (&$map){
+    $u=(int)$row['uid']; if(isset($map[$u])) $map[$u]['quejas']=(int)$row['quejas'];
+  });
+
+  // Inasistencias
+  $run("
+    SELECT id_empleado AS uid, COUNT(*) AS faltas
+    FROM {$SCHEMA}.tmx_inasistencia
+    WHERE id_empleado IN (%s)
+      AND created_at BETWEEN ? AND ?
+    GROUP BY id_empleado
+  ", "ss", [$start,$end], function($row) use (&$map){
+    $u=(int)$row['uid']; if(isset($map[$u])) $map[$u]['faltas']=(int)$row['faltas'];
+  });
+
+  foreach ($map as $k=>$v){ $map[$k]['total'] = (int)$v['nuevo'] + (int)$v['venta'] + (int)$v['entrega']; }
+  usort($map, function($a,$b){ if($a['total']===$b['total']) return strcmp($a['nombre'],$b['nombre']); return $b['total']<=>$a['total']; });
+
+  respond(["success"=>true,"step"=>9,"yyyymm"=>$yyyymm,"rows"=>array_values($map)],200);
+}
+
 // ===== Paso no reconocido =====
-respond(["success"=>false,"step"=>$step,"error"=>"Paso no reconocido. Usa step 1..8"],200);
+respond(["success"=>false,"step"=>$step,"error"=>"Paso no reconocido. Usa step 1..9 o '7a' y '8a'"],200);
