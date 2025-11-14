@@ -112,8 +112,8 @@
         <div class="col-6 col-lg-3 reveal">
           <div class="feature-card">
             <i class="fa fa-check-circle"></i>
-            <h6>Autos verificados</h6>
-            <p>Inspección previa y garantía en seminuevos.</p>
+            <h6>Autos certificados</h6>
+            <p>Inspección previa y garantía en cada kilómetro.</p>
           </div>
         </div>
         <div class="col-6 col-lg-3 reveal">
