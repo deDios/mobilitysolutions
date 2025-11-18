@@ -454,7 +454,6 @@ function tipoReqBadgeClass($tipo) {
                       <div>
                         <div class="fw-semibold mb-1">
                           #<?php echo $req['id']; ?> · <?php echo htmlspecialchars($req['nombre']); ?>
-                          <span class="text-muted">/ Catálogo</span>
                         </div>
                         <div class="small text-muted mb-1">
                           Creado: <?php echo htmlspecialchars($req['req_created_at']); ?>
