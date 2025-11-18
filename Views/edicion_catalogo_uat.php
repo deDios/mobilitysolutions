@@ -297,9 +297,6 @@ $iniciales = mb_substr($parts[0] ?? 'U', 0, 1) . mb_substr($parts[1] ?? '', 0, 1
         <a href="#resumen" class="list-group-item list-group-item-action active">
           <i class="fa fa-bar-chart me-2"></i> Resumen catálogo
         </a>
-        <a href="#tabla" class="list-group-item list-group-item-action">
-          <i class="fa fa-table me-2"></i> Listado de autos
-        </a>
       </nav>
     </aside>
 
