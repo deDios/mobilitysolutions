@@ -485,7 +485,7 @@ function tipoReqBadgeClass($tipo) {
     </aside>
 
     <!-- ======= DETALLE DERECHA ======= -->
-    <section class="col-12 col-lg-8">
+    <section class="col-12 col-lg-10">
       <div class="card ms-card shadow-sm">
         <div class="card-header d-flex align-items-center justify-content-between">
           <span class="fw-semibold">
