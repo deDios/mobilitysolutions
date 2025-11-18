@@ -592,7 +592,7 @@ document.querySelectorAll('.requerimiento-item').forEach(item => {
         // Nombre de quien levanta el req
         const autorLabel = document.getElementById('detalleAutor');
         if (autorLabel) {
-            autorLabel.textContent = creador ? `Levantado por ${creador}` : '';
+            autorLabel.textContent = creador ? `Por ${creador}` : '';
         }
 
         // Marcar el requerimiento como seleccionado
