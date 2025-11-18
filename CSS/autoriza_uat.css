@@ -315,13 +315,13 @@ li {
   color:#ffffff;
 }
 .badge-tipo-otro{
-  background:#e2e3e5;
+  background:#FFC00A;
   color:#383d41;
 }
 
 /* Badge para “hace X días” */
 .ms-badge-age{
-  background:#f1f3f5;
+  background:#FFC00A;
   color:#495057;
   font-size:.7rem;
 }
