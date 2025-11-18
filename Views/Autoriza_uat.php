@@ -505,7 +505,6 @@ function tipoReqBadgeClass($tipo) {
                 </div>
                 <div class="ms-detalle-head">
                   <h6 id="detalleTitulo" class="mb-1">Seleccione un requerimiento</h6>
-                  <div class="small text-muted">Aquí verás el detalle del vehículo a autorizar.</div>
                 </div>
               </div>
 
