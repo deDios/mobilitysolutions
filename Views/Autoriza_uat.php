@@ -411,7 +411,7 @@ function tipoReqBadgeClass($tipo) {
   <div class="row g-3">
 
     <!-- ======= LISTA IZQUIERDA ======= -->
-    <aside class="col-12 col-lg-4">
+    <aside class="col-12 col-lg-3">
       <div class="card ms-card shadow-sm">
         <div class="card-header d-flex align-items-center justify-content-between">
           <span class="fw-semibold">
