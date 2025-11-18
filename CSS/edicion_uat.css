@@ -382,6 +382,17 @@ li {
   font-weight:700;
 }
 
+/* Tamaño de fuente más pequeño en la tabla de catálogo */
+#example thead th {
+    font-size: 0.78rem;   /* encabezados un poco más pequeños */
+}
+
+#example tbody td,
+#example tbody th {
+    font-size: 0.72rem;   /* valores más pequeños */
+}
+
+
 @media (max-width:991px){
   .ms-settings-wrap{ 
     padding-top:100px; 
