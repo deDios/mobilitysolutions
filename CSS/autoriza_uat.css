@@ -1,0 +1,467 @@
+body {
+    margin: 0;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #f7f7f7;
+}
+.navbar {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 5px;
+}
+/*
+header top
+*/
+.topbar{
+  background-color: #212529;
+  padding: 0;
+}
+
+.topbar .container .row {
+  margin:-7px;
+  padding:0;
+}
+
+.topbar .container .row .col-md-12 { 
+  padding:0;
+}
+
+.topbar p{
+  margin:0;
+  display:inline-block;
+  font-size: 13px;
+  color: #f1f6ff;
+}
+
+.topbar p > i{
+  margin-right:5px;
+}
+.topbar p:last-child{
+  text-align:right;
+} 
+
+header .navbar {
+    margin-bottom: 0;
+}
+
+.topbar li.topbar {
+    display: inline;
+    padding-right: 18px;
+    line-height: 52px;
+    transition: all .3s linear;
+}
+
+.topbar li.topbar:hover {
+    color: #1bbde8;
+}
+
+.topbar ul.info i {
+    color: #131313;
+    font-style: normal;
+    margin-right: 8px;
+    display: inline-block;
+    position: relative;
+    top: 4px;
+}
+
+.topbar ul.info li {
+    float: right;
+    padding-left: 30px;
+    color: #ffffff;
+    font-size: 13px;
+    line-height: 44px;
+}
+
+.topbar ul.info i span {
+    color: #aaa;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 50px;
+    padding-left: 18px;
+}
+
+ul.social-network {
+  border:none;
+  margin:0;
+  padding:0;
+}
+
+ul.social-network li {
+  border:none;  
+  margin:0;
+}
+
+ul.social-network li i {
+  margin:0;
+}
+
+ul.social-network li {
+    display:inline;
+    margin: 0 5px;
+    border: 0px solid #2D2D2D;
+    padding: 5px 0 0;
+    width: 32px;
+    display: inline-block;
+    text-align: center;
+    height: 32px;
+    vertical-align: baseline;
+    color: #000;
+}
+
+ul.social-network {
+  list-style: none;
+  margin: 5px 0 10px -25px;
+  float: right;
+}
+
+.waves-effect {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    vertical-align: middle;
+    z-index: 1;
+    will-change: opacity, transform;
+    transition: .3s ease-out;
+    color: #fff;
+}
+a {
+  color: #0a0a0a;
+  text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
+.bg-image-full {
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+.bg-dark {
+    background-color: #222!important;
+}
+
+.mx-background-top-linear {
+    background: -webkit-linear-gradient(45deg, #e3e3e3 48%, #1b1e21 48%);
+    background: -webkit-linear-gradient(left, #e3e3e3 48%, #1b1e21 48%);
+    background: linear-gradient(45deg, #e3e3e3 48%, #1b1e21 48%);
+}
+
+/*--------------------------------------------------------------------------------------------------*/
+
+/* Sucursales (modal) -----------------------------------------------------------------------------*/
+.div_sucursales {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.div_sucursales a {
+    text-decoration: none;
+}
+
+/* Totalizadores genéricos (si llegas a usarlos aquí) ---------------------------------------------*/
+.apartado_tabla2{
+    display: grid;
+    grid-template-columns: 2fr 6fr 2fr;
+    padding-top: 130px;
+    padding-bottom: 50px;
+}
+.apartado_tabla2 .barra_totalizadores{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;  
+}
+.barra_totalizadores .totalizador{
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+    width: 100%;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+.totalizador .fig{
+    padding-left: 20px;
+}
+.fig img {
+    width: 60px;
+    height: 60px;
+}
+.totalizador .fig2{
+    padding-right: 100px;
+}
+.totalizador .total_info {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+/* ================== NUEVO ESTILO TIPO "MS SETTINGS" ================== */
+
+:root{
+  --brand:#FFC00A;
+  --ink:#1b1e21;
+  --card:#ffffff;
+  --bg:#f7f7f7;
+  --muted:#6c757d;
+  --radius:16px;
+}
+
+.ms-settings-wrap{
+  padding-top:120px;
+  padding-bottom:24px;
+}
+
+.ms-head .ms-avatar{
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-weight:700;
+  background:#ffe076;
+  border:2px solid #fff;
+  box-shadow:0 2px 6px rgba(0,0,0,.08);
+}
+
+.ms-card{
+  border:none;
+  border-radius:var(--radius);
+}
+.ms-card .card-header{
+  background:#fff;
+  border-bottom:1px solid #eee;
+  border-top-left-radius:var(--radius);
+  border-top-right-radius:var(--radius);
+}
+
+/* Lista izquierda */
+.lista-requerimientos{
+  max-height: calc(100vh - 260px);
+  overflow-y:auto;
+  padding-right:4px;
+}
+
+/* Ítems de la lista */
+.requerimiento-item{
+  cursor:pointer;
+  border-radius:10px !important;
+  border:none;
+  margin-bottom:.35rem;
+  box-shadow:0 1px 3px rgba(0,0,0,.04);
+  font-size:.8rem;
+}
+.requerimiento-item:hover{
+  background: #f8f9fa;
+}
+.requerimiento-item.active{
+  border:1px solid var(--brand);
+  background:#fff9e6;
+}
+
+/* Badges por tipo de requerimiento */
+.badge-tipo-nuevo{
+  background:#e3f2fd;
+  color:#0d47a1;
+}
+.badge-tipo-reserva{
+  background:#fff3cd;
+  color:#856404;
+}
+.badge-tipo-entrega{
+  background:#d4edda;
+  color:#155724;
+}
+.badge-tipo-otro{
+  background:#e2e3e5;
+  color:#383d41;
+}
+
+/* Badge para “hace X días” */
+.ms-badge-age{
+  background:#f1f3f5;
+  color:#495057;
+  font-size:.7rem;
+}
+
+/* Botones de filtro */
+.req-filters .btn{
+  font-size:.75rem;
+  padding:.15rem .6rem;
+  border-radius:999px;
+  margin-right:.25rem;
+  margin-bottom:.25rem;
+}
+.req-filters .btn.active{
+  background:var(--ink);
+  color:#fff;
+}
+
+/* Detalle lado derecho */
+.detalle-requerimiento{
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
+}
+
+.detalle-texto{
+  position:relative;
+}
+
+/* Foto + título + autor */
+.img_detalle{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+.detalle-imagen img{
+  width:100px;
+  height:100px;
+  object-fit:cover;
+  border-radius:50%;
+  border:2px solid #ccc;
+}
+
+.ms-detalle-head h6{
+  font-size:1rem;
+  font-weight:600;
+}
+
+/* Botones aprobar / rechazar */
+#botonesAccion{
+  display:flex;
+  justify-content:flex-end;
+  gap:.5rem;
+  margin-top:.5rem;
+}
+#botonesAccion button{
+  margin-left:5px;
+}
+
+/* Detalle + carrusel */
+.datalle_carrusel{
+  display:grid;
+  grid-template-columns: 2fr 4fr;
+  gap:16px;
+}
+
+.carrusel{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+.flechas{
+  display:flex;
+  justify-content:space-between;
+  width:100%;
+}
+
+.flecha{
+  font-size:2rem;
+  cursor:pointer;
+}
+
+.imagen-grande img{
+  width:100%;
+  max-height:500px;
+  object-fit:cover;
+}
+
+.miniaturas img{
+  width:60px;
+  height:60px;
+  margin:5px;
+  cursor:pointer;
+}
+
+/* Estados visuales */
+.aprobado{
+  background-color:#d4edda !important;
+  color:#155724 !important;
+}
+.rechazado{
+  background-color:#f8d7da !important;
+  color:#721c24 !important;
+}
+
+/* -------------------- Responsive -------------------- */
+@media (max-width:700px){
+    .menu_fix {
+        padding-top: 85px;
+        padding-bottom: 20px;
+        width: 94%;
+        background-color: white;
+    }
+    header{
+        flex-direction: column;
+    }
+    nav{
+        padding: 0px 0px ;
+    }
+    .pie_pag{
+        background: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .anuncios {
+        display: none;
+    }
+
+    .mx-background-top-linear {
+        background: -webkit-linear-gradient(45deg, #e3e3e3 70%, #1b1e21 26%);
+        background: -webkit-linear-gradient(left, #e3e3e3 70%, #1b1e21 26%);
+        background: linear-gradient(45deg, #e3e3e3 70%, #1b1e21 26%);
+    }
+
+    .div_sucursales {
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        grid-row-gap: 10px;
+    }
+    .div_sucursales .sucursal_list{
+        width: auto;
+        height: 100%;
+    }
+    .div_sucursales .sucursal_map{
+        display: none;
+    }
+    .div_sucursales a {
+        text-decoration: none;
+    }
+
+    .lista-requerimientos{
+        max-height:none;
+    }
+    .datalle_carrusel{
+        grid-template-columns: 1fr;
+    }
+}
