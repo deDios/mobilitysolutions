@@ -230,9 +230,13 @@ li {
   --radius:16px;
 }
 
+/* MÁS ANCHO: ampliamos el contenedor principal */
 .ms-settings-wrap{
   padding-top:120px;
   padding-bottom:24px;
+  max-width:1400px;     /* antes solo tenía padding */
+  width:96%;
+  margin:0 auto;
 }
 
 .ms-head .ms-avatar{
@@ -273,7 +277,22 @@ li {
   margin-bottom:.35rem;
   box-shadow:0 1px 3px rgba(0,0,0,.04);
   font-size:.8rem;
+  background:#ffffff;
+  color:#000000;              /* TEXTO PRINCIPAL EN NEGRO */
 }
+
+/* Texto interno también oscuro para mejor contraste */
+.requerimiento-item .fw-semibold,
+.requerimiento-item .small,
+.requerimiento-item div {
+  color:#000000;
+}
+
+/* Los text-muted se ven más oscuros para leerse mejor */
+.requerimiento-item .text-muted{
+  color:#555555 !important;
+}
+
 .requerimiento-item:hover{
   background: #f8f9fa;
 }
