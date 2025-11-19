@@ -264,10 +264,11 @@ li {
 
 /* Lista izquierda */
 .lista-requerimientos{
-  max-height: calc(100vh - 260px);
-  overflow-y:auto;
-  padding-right:4px;
+  height: 460px;          /* 👉 alto fijo en desktop */
+  overflow-y: auto;       /* scroll interno si hay muchos items */
+  padding-right: 4px;
 }
+
 
 /* Ítems de la lista */
 .requerimiento-item{
@@ -391,13 +392,16 @@ li {
 
 /* Botones aprobar / rechazar */
 #botonesAccion{
-  display:flex;
-  justify-content:flex-end;
-  gap:.5rem;
-  margin-top:.5rem;
+  position: absolute;      /* se posiciona dentro de .detalle-texto */
+  top: 18px;               /* alineado vertical con la foto */
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: .5rem;
+  margin-top: 0;           /* ya no lo usamos como margen inferior */
 }
 #botonesAccion button{
-  margin-left:5px;
+  margin-left: 5px;
 }
 
 /* ================== Detalle + carrusel ================== */
@@ -585,8 +589,11 @@ li {
     }
 
     .lista-requerimientos{
-        max-height:none;
+        height: auto;       /* en móvil se adapta al contenido */
+        max-height: none;
+        overflow-y: visible;
     }
+
 
     /* en móvil detalle y carrusel se apilan */
     .datalle_carrusel{
