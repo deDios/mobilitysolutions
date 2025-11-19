@@ -506,7 +506,8 @@ li {
 
 .miniaturas img{
   flex: 0 0 56px;         /* ancho fijo de cada miniatura */
-  height: 56px;
+  height: 50px;
+  width : 55px;
   border-radius: 8px;
   object-fit: cover;
   border: 2px solid transparent;
