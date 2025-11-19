@@ -541,6 +541,31 @@ li {
   color:#721c24 !important;
 }
 
+/* --- Forzar el amarillo cuando el item está seleccionado --- */
+.list-group-item.requerimiento-item.active,
+.list-group-item.requerimiento-item.active:hover,
+.list-group-item.requerimiento-item.active:focus {
+  background-color: #FFF7D1 !important;   /* amarillo suave */
+  border: 1px solid #FFC00A !important;
+  box-shadow:
+    0 0 0 1px rgba(255,192,10,.25),
+    0 4px 10px rgba(0,0,0,.05);
+  color: #1b1e21 !important;
+}
+
+/* Texto dentro del item seleccionado */
+.list-group-item.requerimiento-item.active .fw-semibold,
+.list-group-item.requerimiento-item.active .small,
+.list-group-item.requerimiento-item.active div {
+  color: #1b1e21 !important;
+}
+
+/* Hover de items NO seleccionados (gris suave) */
+.list-group-item.requerimiento-item:hover {
+  background-color: #f1f3f5;
+}
+
+
 /* -------------------- Responsive -------------------- */
 @media (max-width:700px){
     .menu_fix {
