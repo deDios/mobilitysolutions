@@ -264,7 +264,7 @@ li {
 
 /* Lista izquierda */
 .lista-requerimientos{
-  height: 460px;          /* 👉 alto fijo en desktop */
+  height: 650px;          /* 👉 alto fijo en desktop */
   overflow-y: auto;       /* scroll interno si hay muchos items */
   padding-right: 4px;
 }
