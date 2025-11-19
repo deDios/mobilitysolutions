@@ -294,12 +294,32 @@ li {
 }
 
 .requerimiento-item:hover{
-  background: #f8f9fa;
+  background: #aaa;
 }
+
+/* Ítem seleccionado: amarillo suave en la misma gama del badge de días */
 .requerimiento-item.active{
-  border:1px solid var(--brand);
-  background:#fff9e6;
+  border: 1px solid #FFC00A;
+  background: #FFF7D1; /* amarillo suave */
+  box-shadow:
+    0 0 0 1px rgba(255,192,10,.25),
+    0 4px 10px rgba(0,0,0,.05);
+  color: #1b1e21;
 }
+
+/* Aseguramos buen contraste en los textos cuando está activo */
+.requerimiento-item.active .fw-semibold,
+.requerimiento-item.active .small,
+.requerimiento-item.active div{
+  color: #1b1e21;
+}
+
+/* El badge de "hace X días" invertido para que resalte en el seleccionado */
+.requerimiento-item.active .ms-badge-age{
+  background: #1b1e21;
+  color: #FFC00A;
+}
+
 
 /* Badges por tipo de requerimiento */
 .badge-tipo-nuevo{
