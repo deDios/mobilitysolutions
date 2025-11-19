@@ -417,7 +417,8 @@ li {
   padding: 16px 20px;
   font-size: .9rem;
   line-height: 1.5;
-  border-left: 4px solid var(--brand);
+  /* border-left: 4px solid var(--brand);  QUITADO */
+  border: 1px solid #e9ecef;   /* borde gris suave */
   max-height: 420px;
   overflow-y: auto;
 }
@@ -492,17 +493,19 @@ li {
   object-fit: contain;
 }
 
-/* Tira de miniaturas */
 .miniaturas{
   display: flex;
+  flex-wrap: wrap;       
   gap: 6px;
   width: 100%;
-  overflow-x: auto;
+  max-height: 140px;      /* para que no crezca infinito */
+  overflow-y: auto;       /* scroll vertical si son muchas */
+  overflow-x: hidden;     /* sin scroll horizontal */
   padding-top: 2px;
 }
 
 .miniaturas img{
-  flex: 0 0 56px;
+  flex: 0 0 56px;         /* ancho fijo de cada miniatura */
   height: 56px;
   border-radius: 8px;
   object-fit: cover;
