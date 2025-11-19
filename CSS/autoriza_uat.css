@@ -633,4 +633,19 @@ li {
     .datalle_carrusel{
         grid-template-columns: 1fr;
     }
+
+        /* Botones en mobile: que no se encimen */
+    #botonesAccion{
+        position: static;          /* deja de ser absoluto */
+        width: 100%;
+        margin-top: 12px;
+        justify-content: flex-start;
+        flex-wrap: wrap;           /* por si el ancho es muy pequeño */
+        gap: .5rem;
+    }
+
+    #botonesAccion button{
+        flex: 1 0 120px;           /* se acomodan uno junto al otro y pueden bajar de línea */
+    }
+
 }
