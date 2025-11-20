@@ -1477,12 +1477,88 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const MES_NOMBRES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 
+  // === NUEVO: estado de ordenamiento ===
+  let currentRows = [];                       // filas del mes actual
+  let sortCol  = 'total';                    // columna actual de orden
+  let sortDir  = 'desc';                     // 'asc' o 'desc'
+  const colKeys = [                          // columnas de la tabla
+    'nombre',            // Asesor
+    'nuevo',             // Nuevo
+    'venta',             // Venta
+    'entrega',           // Entrega
+    'reconocimientos',   // Recon.
+    'quejas',            // Quejas
+    'faltas',            // Faltas
+    'total'              // Total
+  ];
+  let headerIndicators = [];                 // spans para ▲ / ▼
+
   function pad2(n){ return String(n).padStart(2,'0'); }
   function yyyymm(y,m){ return `${y}-${pad2(m+1)}`; }
 
   function pintarMesLabel(){
     const el = lbl();
     if (el) el.textContent = `${MES_NOMBRES[curMonth]} ${curYear}`;
+  }
+
+  // helper para obtener valor de una columna en una fila
+  function getCellValue(row, key){
+    if (key === 'nombre'){
+      return (row.nombre || '').toString().toLowerCase();
+    }
+    if (key === 'total'){
+      const totalApi = Number(row.total);
+      if (Number.isFinite(totalApi)) return totalApi;
+      const n = Number(row.nuevo)  || 0;
+      const v = Number(row.venta)  || 0;
+      const e = Number(row.entrega)|| 0;
+      return n + v + e;
+    }
+    return Number(row[key]) || 0;
+  }
+
+  // aplica el orden actual sobre currentRows y vuelve a pintar la tabla
+  function applySortAndRender(){
+    if (!Array.isArray(currentRows)) {
+      renderTabla([]);
+      return;
+    }
+
+    currentRows.sort((a,b)=>{
+      const key = sortCol;
+      let va = getCellValue(a,key);
+      let vb = getCellValue(b,key);
+
+      if (key === 'nombre'){
+        // orden alfabético
+        return sortDir === 'asc'
+          ? String(va).localeCompare(String(vb),'es',{sensitivity:'base'})
+          : String(vb).localeCompare(String(va),'es',{sensitivity:'base'});
+      } else {
+        // numérico
+        va = Number(va) || 0;
+        vb = Number(vb) || 0;
+        return sortDir === 'asc' ? (va - vb) : (vb - va);
+      }
+    });
+
+    renderTabla(currentRows);
+  }
+
+  // actualiza ▲ / ▼ en los encabezados
+  function updateSortIndicators(){
+    const ths = document.querySelectorAll('#tablaMes thead th');
+    ths.forEach((th, idx)=>{
+      const span = headerIndicators[idx];
+      const key  = colKeys[idx];
+      if (!span || !key) return;
+
+      if (key === sortCol){
+        span.textContent = (sortDir === 'asc') ? '▲' : '▼';
+      } else {
+        span.textContent = '';
+      }
+    });
   }
 
   function renderTabla(rows){
@@ -1504,13 +1580,13 @@ document.addEventListener("DOMContentLoaded", () => {
       rows.forEach(r=>{
         const nombre = r.nombre || ('Usuario ' + (r.id ?? ''));
         const rol    = r.rol || '';
-        const n  = Number(r.nuevo) || 0;
-        const v  = Number(r.venta) || 0;
-        const e  = Number(r.entrega) || 0;
+        const n  = Number(r.nuevo)           || 0;
+        const v  = Number(r.venta)           || 0;
+        const e  = Number(r.entrega)         || 0;
         const re = Number(r.reconocimientos) || 0;
-        const q  = Number(r.quejas) || 0;
-        const f  = Number(r.faltas) || 0;
-        const t  = Number(r.total) || (n+v+e);
+        const q  = Number(r.quejas)          || 0;
+        const f  = Number(r.faltas)          || 0;
+        const t  = Number(r.total) || (n+v+e);   // mismo cálculo que ya usabas
 
         sNuevo+=n; sVenta+=v; sEntrega+=e; sRecon+=re; sQuejas+=q; sFaltas+=f; sTotal+=t;
 
@@ -1539,37 +1615,38 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   async function fetchResumen(yyyy_mm){
-  try{
-    const url = `https://mobilitysolutionscorp.com/web/MS_get_resumen_mes_asesores.php`;
-    const payload = {
-      user_id:   userId,
-      user_type: userType,
-      yyyymm:    yyyy_mm,
-      solo_usuario: 0,
-      include_jefe: 0
-    };
+    try{
+      const url = `https://mobilitysolutionscorp.com/web/MS_get_resumen_mes_asesores.php`;
+      const payload = {
+        user_id:      userId,
+        user_type:    userType,
+        yyyymm:       yyyy_mm,
+        solo_usuario: 0,
+        include_jefe: 0
+      };
 
-    const res = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type':'application/json' },
-      body: JSON.stringify(payload)
-    });
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type':'application/json' },
+        body: JSON.stringify(payload)
+      });
 
-    const data = await res.json();
-    if (data && data.success && Array.isArray(data.rows)) return data.rows;
-    return [];
-  } catch(e){
-    console.error('Error al cargar resumen asesores:', e);
-    return [];
+      const data = await res.json();
+      if (data && data.success && Array.isArray(data.rows)) return data.rows;
+      return [];
+    } catch(e){
+      console.error('Error al cargar resumen asesores:', e);
+      return [];
+    }
   }
-}
-
 
   async function cargarMes(){
     const ym = yyyymm(curYear, curMonth);
     pintarMesLabel();
     const rows = await fetchResumen(ym);
-    renderTabla(rows);
+    currentRows = Array.isArray(rows) ? rows.slice() : [];
+    applySortAndRender();
+    updateSortIndicators();
   }
 
   function goPrev(){ curMonth--; if (curMonth < 0){ curMonth = 11; curYear--; } cargarMes(); }
@@ -1580,10 +1657,41 @@ document.addEventListener("DOMContentLoaded", () => {
     const next = document.getElementById('mesNext');
     if (prev) prev.addEventListener('click', goPrev);
     if (next) next.addEventListener('click', goNext);
+
+    // === NUEVO: listeners en encabezados para ordenar ===
+    const ths = document.querySelectorAll('#tablaMes thead th');
+    headerIndicators = [];
+
+    ths.forEach((th, idx)=>{
+      const key = colKeys[idx];
+      if (!key) return;
+
+      th.classList.add('sortable');
+      const span = document.createElement('span');
+      span.className = 'sort-indicator';
+      th.appendChild(span);
+      headerIndicators[idx] = span;
+
+      th.addEventListener('click', ()=>{
+        if (sortCol === key){
+          // si ya está en esa columna, alterna asc/desc
+          sortDir = (sortDir === 'asc') ? 'desc' : 'asc';
+        } else {
+          // nueva columna: por defecto nombre asc, números desc
+          sortCol = key;
+          sortDir = (key === 'nombre') ? 'asc' : 'desc';
+        }
+        applySortAndRender();
+        updateSortIndicators();
+      });
+    });
+
+    // carga inicial del mes actual
     cargarMes();
   });
 })();
 </script>
+
 
 
 
