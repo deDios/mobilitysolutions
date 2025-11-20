@@ -37,26 +37,26 @@
 
     if ($result){ 
         while($row = mysqli_fetch_assoc($result)){
-                            $user_id = $row['user_id'];
-                            $user_name = $row['user_name'];
-                            $user_password = $row['user_password'];
-                            $user_type = $row['user_type'];
-                            $r_ejecutivo = $row['r_ejecutivo'];
-                            $r_editor = $row['r_editor'];
-                            $r_autorizador = $row['r_autorizador'];
-                            $r_analista = $row['r_analista'];
-                            $nombre = $row['nombre'];
-                            $s_nombre = $row['s_nombre'];
-                            $last_name = $row['last_name'];
-                            $email = $row['email'];
-                            $cumpleaños = $row['cumpleaños'];
-                            $telefono = $row['telefono'];
-                           
+            $user_id      = $row['user_id'];
+            $user_name    = $row['user_name'];
+            $user_password= $row['user_password'];
+            $user_type    = $row['user_type'];
+            $r_ejecutivo  = $row['r_ejecutivo'];
+            $r_editor     = $row['r_editor'];
+            $r_autorizador= $row['r_autorizador'];
+            $r_analista   = $row['r_analista'];
+            $nombre       = $row['nombre'];
+            $s_nombre     = $row['s_nombre'];
+            $last_name    = $row['last_name'];
+            $email        = $row['email'];
+            $cumpleaños   = $row['cumpleaños'];
+            $telefono     = $row['telefono'];
         }
     }
     else{
         echo 'Falla en conexión.';
     }
+
     if ($r_editor == 0){
         echo ' 
         <script>
@@ -65,9 +65,7 @@
         </script> ';
         exit();
     }
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -82,6 +80,7 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css" rel="stylesheet">
@@ -95,7 +94,6 @@
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-   
 </head>
 
 <body>
@@ -161,233 +159,264 @@
 </div>
 
 <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel2">Sucursales</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                <!-- Formulario ------------------------------------------------------------->                   
-                    <div class="div_sucursales">
-                        <div class="sucursal_list">
-                        <ol class="list-group">
-                        <a href="https://www.google.com/maps/d/u/0/viewer?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&femb=1&ll=20.11709728888821%2C-100.85436015&z=6">
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                <div class="ms-2 me-auto">
-                                <div class="fw-bold">Matriz CDMX</div>
-                                Av. P. de la Reforma 505 Piso 37, Cuauhtémoc, 06500.
-                                </div>
-                                <span class="badge bg-dark rounded-pill">Activa</span>
-                            </li>
-                        </a>
-                        <a href="https://www.google.com/maps/d/u/0/viewer?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&femb=1&ll=20.11709728888821%2C-100.85436015&z=6">
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                <div class="ms-2 me-auto">
-                                <div class="fw-bold">Sucursal GDL</div>
-                                Av Rafael Sanzio 150, Camichines Vallarta, 45020.
-                                </div>
-                                <span class="badge bg-dark rounded-pill">Activa</span>
-                            </li>
-                        </a>
-                        <a href="https://www.google.com/maps/d/u/0/viewer?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&femb=1&ll=20.11709728888821%2C-100.85436015&z=6">
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                <div class="ms-2 me-auto">
-                                <div class="fw-bold">Sucursal León</div>
-                                Blvd. Juan Alonso de Torres Pte. 2002, Valle del Campestre, 37150.
-                                </div>
-                                <span class="badge bg-dark rounded-pill">Activa</span>
-                            </li>
-                        </a>
-                        <a href="https://www.google.com/maps/d/u/0/viewer?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&femb=1&ll=20.11709728888821%2C-100.85436015&z=6">
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                <div class="ms-2 me-auto">
-                                <div class="fw-bold">Sucursal Morelia</div>
-                                C. Vicente Sta. María 1516, Félix Ireta, 58070.
-                                </div>
-                                <span class="badge bg-dark rounded-pill">Activa</span>
-                            </li>
-                        </a>
-                        <a href="https://www.google.com/maps/d/u/0/viewer?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&femb=1&ll=20.11709728888821%2C-100.85436015&z=6">
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                <div class="ms-2 me-auto">
-                                <div class="fw-bold">Sucursal Puebla</div>
-                                Calle Ignacio Allende 512, Santiago Momoxpan, Alvaro Obregón, 72774.
-                                </div>
-                                <span class="badge bg-dark rounded-pill">Activa</span>
-                            </li>
-                        </a>
-                        </ol>
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel2">Sucursales</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+        <!-- Formulario ------------------------------------------------------------->                   
+            <div class="div_sucursales">
+                <div class="sucursal_list">
+                <ol class="list-group">
+                <a href="https://www.google.com/maps/d/u/0/viewer?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&femb=1&ll=20.11709728888821%2C-100.85436015&z=6">
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                        <div class="fw-bold">Matriz CDMX</div>
+                        Av. P. de la Reforma 505 Piso 37, Cuauhtémoc, 06500.
                         </div>
-                        <div class="sucursal_map">
-                            <iframe src="https://www.google.com/maps/d/embed?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&ehbc=2E312F" width="500" height="660"></iframe>
+                        <span class="badge bg-dark rounded-pill">Activa</span>
+                    </li>
+                </a>
+                <a href="https://www.google.com/maps/d/u/0/viewer?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&femb=1&ll=20.11709728888821%2C-100.85436015&z=6">
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                        <div class="fw-bold">Sucursal GDL</div>
+                        Av Rafael Sanzio 150, Camichines Vallarta, 45020.
                         </div>
-                    </div>                  
-                <!-- Fin de formulario ------------------------------------------------------------->
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                    </div>
+                        <span class="badge bg-dark rounded-pill">Activa</span>
+                    </li>
+                </a>
+                <a href="https://www.google.com/maps/d/u/0/viewer?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&femb=1&ll=20.11709728888821%2C-100.85436015&z=6">
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                        <div class="fw-bold">Sucursal León</div>
+                        Blvd. Juan Alonso de Torres Pte. 2002, Valle del Campestre, 37150.
+                        </div>
+                        <span class="badge bg-dark rounded-pill">Activa</span>
+                    </li>
+                </a>
+                <a href="https://www.google.com/maps/d/u/0/viewer?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&femb=1&ll=20.11709728888821%2C-100.85436015&z=6">
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                        <div class="fw-bold">Sucursal Morelia</div>
+                        C. Vicente Sta. María 1516, Félix Ireta, 58070.
+                        </div>
+                        <span class="badge bg-dark rounded-pill">Activa</span>
+                    </li>
+                </a>
+                <a href="https://www.google.com/maps/d/u/0/viewer?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&femb=1&ll=20.11709728888821%2C-100.85436015&z=6">
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                        <div class="fw-bold">Sucursal Puebla</div>
+                        Calle Ignacio Allende 512, Santiago Momoxpan, Alvaro Obregón, 72774.
+                        </div>
+                        <span class="badge bg-dark rounded-pill">Activa</span>
+                    </li>
+                </a>
+                </ol>
                 </div>
+                <div class="sucursal_map">
+                    <iframe src="https://www.google.com/maps/d/embed?mid=1tICZQyAbkrtIbcuZ5U8Vf4UiSR8&ehbc=2E312F" width="500" height="660"></iframe>
                 </div>
+            </div>                  
+        <!-- Fin de formulario ------------------------------------------------------------->
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+    </div>
+</div>
 
 <!--------------------------------------- Termina Menu ----------------------------------------------->
-<div class="apartado_tabla2">
 
-<div class="">
+<?php
+// ================== Totales del catálogo (un solo query) ==================
+$tot_catalogo    = 0;
+$tot_activos     = 0;
+$tot_por_activar = 0;
+$tot_reservados  = 0;
 
-</div>
-<div class="barra_totalizadores">
-                <?php 
-                $inc = include "../db/Conexion.php";    
-                    if ($inc){
-                        $query = 'select 
-                                    count(*) as catalogo
-                                FROM mobility_solutions.tmx_auto;';
-                        $result = mysqli_query($con,$query);  
-                        if ($result){         
-                            while($row = mysqli_fetch_assoc($result)){
-                                $total_catalogo = $row['catalogo'];
-                ?>
-                <div class="totalizador">
-                        <div class="fig"><img src="../Imagenes/Catalogo/cat.png" alt="logo 1"></div>
-                        <div class="fig2"><div class="Total_info">
-                            <h6>Catálogo</h6>
-                            <h4><small class="text-muted"><?php echo $total_catalogo;?></small>
-                            </h4>
-                        </div> 
-                        </div> 
-                </div>
-                <?php
-                            }
-                        } else{
-                            echo "Hubo un error en la consulta";
-                        }
-                        mysqli_free_result($result);                  
-                    }
-                ?>
+if (isset($con)) {
+    $sqlTotals = "
+        SELECT 
+            COUNT(*)                                           AS total_catalogo,
+            SUM(CASE WHEN estatus = 1 THEN 1 ELSE 0 END)       AS total_activos,
+            SUM(CASE WHEN estatus = 2 THEN 1 ELSE 0 END)       AS total_por_activar,
+            SUM(CASE WHEN estatus = 3 THEN 1 ELSE 0 END)       AS total_reservados
+        FROM mobility_solutions.tmx_auto
+    ";
+    if ($resTotals = mysqli_query($con, $sqlTotals)) {
+        if ($rowT = mysqli_fetch_assoc($resTotals)) {
+            $tot_catalogo    = (int)$rowT['total_catalogo'];
+            $tot_activos     = (int)$rowT['total_activos'];
+            $tot_por_activar = (int)$rowT['total_por_activar'];
+            $tot_reservados  = (int)$rowT['total_reservados'];
+        }
+        mysqli_free_result($resTotals);
+    }
+}
 
-                <?php 
-                $inc = include "../db/Conexion.php";    
-                    if ($inc){
-                        $query = 'select 
-                                    count(*) as activos
-                                FROM mobility_solutions.tmx_auto where estatus = 1;';
-                        $result = mysqli_query($con,$query);  
-                        if ($result){         
-                            while($row = mysqli_fetch_assoc($result)){
-                                $total_activos = $row['activos'];
-                ?>
-                <div class="totalizador">
-                        <div class="fig"><img src="../Imagenes/ver.jpg" alt="logo 1"></div>
-                        <div class="fig2"><div class="Total_info">
-                            <h6>Activo</h6>
-                            <h4><small class="text-muted"><?php echo $total_activos;?></small>
-                            </h4>
-                        </div> 
-                        </div> 
-                </div>
-                <?php
-                            }
-                        } else{
-                            echo "Hubo un error en la consulta";
-                        }
-                        mysqli_free_result($result);                  
-                    }
-                ?>
+// Iniciales para el avatar
+$ini       = trim(($nombre ?? 'Usuario') . ' ' . ($last_name ?? 'Demo'));
+$parts     = preg_split('/\s+/', $ini);
+$iniciales = mb_substr($parts[0] ?? 'U', 0, 1) . mb_substr($parts[1] ?? '', 0, 1);
+?>
 
-                <?php 
-                $inc = include "../db/Conexion.php";    
-                    if ($inc){
-                        $query = 'select 
-                                    count(*) as por_activar
-                                FROM mobility_solutions.tmx_auto where estatus = 2;';
-                        $result = mysqli_query($con,$query);  
-                        if ($result){         
-                            while($row = mysqli_fetch_assoc($result)){
-                                $total_no_activos = $row['por_activar'];
-                ?>
-                <div class="totalizador">
-                        <div class="fig"><img src="../Imagenes/Catalogo/check.png" alt="logo 1"></div>
-                        <div class="fig2"><div class="Total_info">
-                            <h6>Por activar</h6>
-                            <h4><small class="text-muted"><?php echo $total_no_activos;?></small>
-                            </h4>
-                        </div> 
-                        </div> 
-                </div>
-                <?php
-                            }
-                        } else{
-                            echo "Hubo un error en la consulta";
-                        }
-                        mysqli_free_result($result);                  
-                    }
-                ?>
+<!-- ===== MAIN · ESTILO NUEVO ===== -->
+<div class="container ms-settings-wrap">
 
-                <?php 
-                $inc = include "../db/Conexion.php";    
-                    if ($inc){
-                        $query = 'select 
-                                    count(*) as reservados
-                                FROM mobility_solutions.tmx_auto where estatus = 3;';
-                        $result = mysqli_query($con,$query);  
-                        if ($result){         
-                            while($row = mysqli_fetch_assoc($result)){
-                                $total_reservados = $row['reservados'];
-                ?>
-                <div class="totalizador">
-                        <div class="fig"><img src="../Imagenes/Catalogo/reserve.png" alt="logo 1"></div>
-                        <div class="fig2"><div class="Total_info">
-                            <h6>Reservado</h6>
-                            <h4><small class="text-muted"><?php echo $total_reservados;?></small>
-                            </h4>
-                        </div> 
-                        </div> 
-                </div>
-                <?php
-                            }
-                        } else{
-                            echo "Hubo un error en la consulta";
-                        }
-                        mysqli_free_result($result);                  
-                    }
-                ?>
-        
-    </div>
-<div class="">
-
-</div>
-</div>
-<hr class="mt-2 mb-3"/> 
-
-<div class="apartado_tabla">
-<div class="apartado_izq">
-
-</div>
-<div>
-<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
-  +
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Agregar automóvil</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+  <!-- Encabezado con usuario -->
+  <div class="ms-head card shadow-sm mb-3">
+    <div class="card-body d-flex align-items-center gap-3 flex-wrap">
+      <div class="ms-avatar">
+        <?= htmlspecialchars(strtoupper($iniciales)) ?>
       </div>
-      <div class="modal-body">
- <!-- Formulario ------------------------------------------------------------->                   
-    <form action="../db_consultas/insert_sp.php" method="POST" enctype="multipart/form-data">
+      <div class="flex-grow-1">
+        <div class="h5 mb-0">
+          <?= htmlspecialchars(($nombre ?? 'Usuario') . ' ' . ($last_name ?? 'Demo')) ?>
+        </div>
+        <small class="text-muted">
+          <?= htmlspecialchars($user_name ?? 'usuario') ?> · Editor de catálogo
+        </small>
+      </div>
+      <a class="btn btn-outline-dark btn-sm" href="https://mobilitysolutionscorp.com/db_consultas/cerrar_sesion.php">
+        <i class="fa fa-sign-out me-1"></i>Salir
+      </a>
+    </div>
+  </div>
+
+  <div class="row g-3">
+    <!-- Sidebar lateral -->
+    <aside class="col-12 col-lg-3">
+      <nav class="list-group ms-side sticky-lg-top">
+        <a href="#resumen" class="list-group-item list-group-item-action active">
+          <i class="fa fa-bar-chart me-2"></i> Resumen catálogo
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Contenido principal -->
+    <section class="col-12 col-lg-9">
+
+      <!-- ========== CARD RESUMEN (Totales) ========== -->
+      <div id="resumen" class="card ms-card shadow-sm mb-3">
+        <div class="card-header d-flex align-items-center justify-content-between">
+          <span class="fw-semibold">
+            <i class="fa fa-bar-chart me-2"></i> Resumen del catálogo
+          </span>
+          <button type="button" class="btn btn-outline-dark btn-sm" onclick="location.reload()">
+            <i class="fa fa-refresh me-1"></i> Actualizar
+          </button>
+        </div>
+        <div class="card-body">
+          <div class="row g-3">
+            <!-- Catálogo total -->
+            <div class="col-6 col-md-3">
+              <div class="ms-stat card shadow-sm h-100">
+                <div class="card-body d-flex align-items-center gap-3">
+                  <div class="ms-stat-icon">
+                    <img src="../Imagenes/Catalogo/cat.png" alt="Catálogo">
+                  </div>
+                  <div>
+                    <div class="ms-stat-label">Catálogo</div>
+                    <div class="ms-stat-value">
+                      <?= number_format($tot_catalogo) ?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Activos -->
+            <div class="col-6 col-md-3">
+              <div class="ms-stat card shadow-sm h-100">
+                <div class="card-body d-flex align-items-center gap-3">
+                  <div class="ms-stat-icon">
+                    <img src="../Imagenes/ver.jpg" alt="Activos">
+                  </div>
+                  <div>
+                    <div class="ms-stat-label">Activo</div>
+                    <div class="ms-stat-value">
+                      <?= number_format($tot_activos) ?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Por activar -->
+            <div class="col-6 col-md-3">
+              <div class="ms-stat card shadow-sm h-100">
+                <div class="card-body d-flex align-items-center gap-3">
+                  <div class="ms-stat-icon">
+                    <img src="../Imagenes/Catalogo/check.png" alt="Por activar">
+                  </div>
+                  <div>
+                    <div class="ms-stat-label">Por activar</div>
+                    <div class="ms-stat-value">
+                      <?= number_format($tot_por_activar) ?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Reservado -->
+            <div class="col-6 col-md-3">
+              <div class="ms-stat card shadow-sm h-100">
+                <div class="card-body d-flex align-items-center gap-3">
+                  <div class="ms-stat-icon">
+                    <img src="../Imagenes/Catalogo/reserve.png" alt="Reservado">
+                  </div>
+                  <div>
+                    <div class="ms-stat-label">Reservado</div>
+                    <div class="ms-stat-value">
+                      <?= number_format($tot_reservados) ?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div> <!-- /row -->
+        </div>
+      </div>
+      <!-- ========== /CARD RESUMEN ========== -->
+
+
+      <!-- ========== CARD TABLA CATÁLOGO ========== -->
+      <div id="tabla" class="card ms-card shadow-sm">
+        <div class="card-header d-flex align-items-center justify-content-between">
+          <span class="fw-semibold">
+            <i class="fa fa-car me-2"></i> Catálogo de autos
+          </span>
+          <!-- Botón que abre el modal de alta -->
+          <button type="button" class="btn btn-sm btn-brand" data-toggle="modal" data-target="#exampleModal">
+            <i class="fa fa-plus me-1"></i> Nuevo auto
+          </button>
+        </div>
+        <div class="card-body">
+
+          <!-- Modal AGREGAR AUTOMÓVIL -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Agregar automóvil</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <!-- Formulario ------------------------------------------------------------->                   
+                  <form action="../db_consultas/insert_sp.php" method="POST" enctype="multipart/form-data">
                     
-    <input id="Inputuser" type="text" class="form-control" name="Inputuser" value="<?php echo $user_id;?>" required>
+                    <input id="Inputuser" type="text" class="form-control" name="Inputuser" value="<?php echo $user_id;?>" required>
 
                     <div class="col-12 mt-2">
                         <label for="InputSucursal" class="form-label">Sucursal</label>
@@ -403,10 +432,10 @@
                                     $result = mysqli_query($con,$query);  
                                     if ($result){         
                                         while($row = mysqli_fetch_assoc($result)){
-                                            $id = $row['id'];
-                                            $nombre = $row['nombre'];
+                                            $id_suc = $row['id'];
+                                            $nombre_suc = $row['nombre'];
                             ?> 
-                                        <option value="<?php echo $id;?>"><?php echo $nombre;?></option>
+                                        <option value="<?php echo $id_suc;?>"><?php echo $nombre_suc;?></option>
                             <?php
                                         }
                                     } else{
@@ -432,10 +461,10 @@
                                     $result = mysqli_query($con,$query);  
                                     if ($result){         
                                         while($row = mysqli_fetch_assoc($result)){
-                                            $id = $row['id'];
-                                            $nombre = $row['nombre'];
+                                            $id_mar = $row['id'];
+                                            $nombre_mar = $row['nombre'];
                             ?> 
-                                        <option value="<?php echo $id;?>"><?php echo $nombre;?></option>
+                                        <option value="<?php echo $id_mar;?>"><?php echo $nombre_mar;?></option>
                             <?php
                                         }
                                     } else{
@@ -522,8 +551,8 @@
                                 <label class="form-check-label" for="InputTransmision">TM (Manual)</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="InputTransmision" id="InputTransmision" value="Automatico">
-                                <label class="form-check-label" for="InputTransmision">TA (Automatico)</label>
+                                <input class="form-check-input" type="radio" name="InputTransmision" id="InputTransmision2" value="Automatico">
+                                <label class="form-check-label" for="InputTransmision2">TA (Automatico)</label>
                             </div>
                         </div>
                     </div>
@@ -537,8 +566,8 @@
                                 <label class="form-check-label" for="InputInterior">Tela</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="InputInterior" id="InputInterior" value="Piel">
-                                <label class="form-check-label" for="InputInterior">Piel</label>
+                                <input class="form-check-input" type="radio" name="InputInterior" id="InputInterior2" value="Piel">
+                                <label class="form-check-label" for="InputInterior2">Piel</label>
                             </div>
                         </div>
                     </div>
@@ -561,16 +590,16 @@
                                 <label class="form-check-label" for="InputCombustible">Gasolina</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible" value="Electrico">
-                                <label class="form-check-label" for="InputCombustible">Electrico</label>
+                                <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible2" value="Electrico">
+                                <label class="form-check-label" for="InputCombustible2">Electrico</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible" value="Hibrido">
-                                <label class="form-check-label" for="InputCombustible">Hibrido</label>
+                                <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible3" value="Hibrido">
+                                <label class="form-check-label" for="InputCombustible3">Hibrido</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible" value="Disel">
-                                <label class="form-check-label" for="InputCombustible">Disel</label>
+                                <input class="form-check-input" type="radio" name="InputCombustible" id="InputCombustible4" value="Disel">
+                                <label class="form-check-label" for="InputCombustible4">Disel</label>
                             </div>
                         </div>
                     </div>
@@ -632,158 +661,162 @@
                         </div>
                     </div>
 
-
                     <button type="submit" class="btn btn-success mt-5">Guardar registro</button>
-            </form>
-                    
- <!-- Fin de formulario ------------------------------------------------------------->
+                  </form>
+                  <!-- Fin formulario -->
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /Modal AGREGAR AUTOMÓVIL -->
+
+          <!-- Tabla de catálogo -->
+          <div class="table-responsive mt-3">
+            <table id="example" class="table table-striped nowrap mt-2" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Marca</th>
+                        <th>Auto / Modelo</th>
+                        <th>Color</th>
+                        <th>Transmisión</th>
+                        <th>Interior</th>
+                        <th>Tipo</th>
+                        <th>$ Mensual</th>
+                        <th>$ Contado</th>
+                        <th>Estatus</th>
+                        <th>DT Registro</th>
+                        <th>DT Update</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <?php 
+                        $inc = include "../db/Conexion.php";    
+                            if ($inc){
+                                $query = 'select 
+                                            auto.id,
+                                            m_auto.auto as nombre, 
+                                            auto.nombre as id_vehiculo,
+                                            modelo.nombre as modelo, 
+                                            auto.modelo as id_modelo,
+                                            marca.nombre as marca, 
+                                            auto.marca as id_marca,
+                                            auto.mensualidad, 
+                                            auto.costo, 
+                                            sucursal.nombre as sucursal, 
+                                            auto.sucursal as id_sucursal,
+                                            auto.img1, 
+                                            auto.img2, 
+                                            auto.img3, 
+                                            auto.img4, 
+                                            auto.img5, 
+                                            auto.img6, 
+                                            auto.color, 
+                                            auto.transmision, 
+                                            auto.interior, 
+                                            auto.kilometraje, 
+                                            auto.combustible, 
+                                            auto.cilindros, 
+                                            auto.eje, 
+                                            estatus.nombre as estatus, 
+                                            auto.pasajeros, 
+                                            auto.propietarios,
+                                            auto.c_type,
+                                            DATE_SUB(auto.created_at, INTERVAL 6 HOUR) as created_at, 
+                                            DATE_SUB(auto.updated_at, INTERVAL 6 HOUR) as updated_at
+                                        FROM mobility_solutions.tmx_auto as auto
+                                        left join mobility_solutions.tmx_sucursal as sucursal on auto.sucursal = sucursal.id 
+                                        left join mobility_solutions.tmx_estatus as estatus on auto.estatus = estatus.id
+                                        left join mobility_solutions.tmx_modelo as modelo on auto.modelo = modelo.id 
+                                        left join mobility_solutions.tmx_marca as marca on auto.marca = marca.id
+                                        left join mobility_solutions.tmx_marca_auto as m_auto on auto.nombre = m_auto.id
+                                        order by auto.id desc;';
+                                $result = mysqli_query($con,$query);  
+                                if ($result){         
+                                    while($row = mysqli_fetch_assoc($result)){
+                                        $id          = $row['id'];
+                                        $nombre_auto = $row['nombre'];
+                                        $id_vehiculo = $row['id_vehiculo'];
+                                        $modelo      = $row['modelo'];
+                                        $id_modelo   = $row['id_modelo'];
+                                        $marca       = $row['marca'];
+                                        $id_marca    = $row['id_marca'];
+                                        $mensualidad = $row['mensualidad'];
+                                        $costo       = $row['costo'];
+                                        $sucursal    = $row['sucursal'];
+                                        $id_sucursal = $row['id_sucursal'];
+                                        $color       = $row['color'];
+                                        $interior    = $row['interior'];
+                                        $combustible = $row['combustible'];
+                                        $cilindros   = $row['cilindros'];
+                                        $transmision = $row['transmision'];
+                                        $kilometraje = $row['kilometraje'];
+                                        $eje         = $row['eje'];
+                                        $estatus     = $row['estatus'];
+                                        $created_at  = $row['created_at'];
+                                        $updated_at  = $row['updated_at'];
+                                        $c_type      = $row['c_type'];
+                    ?> 
+                        <tr>
+                            <th class="text-muted"><?php echo $id;?></th>
+                            <td><?php echo $marca;?></td>
+                            <td><?php echo $nombre_auto . ' / ' . $modelo;?></td>
+                            <td><?php echo $color;?></td>
+                            <td><?php echo $transmision;?></td>
+                            <td><?php echo $interior;?></td>
+                            <td><?php echo $c_type;?></td>
+                            <td><?php echo "$" . number_format($mensualidad);?></td>
+                            <td><?php echo "$" . number_format($costo);?></td>
+                            <td><?php echo $estatus;?></td>
+                            <td><?php echo $created_at;?></td>
+                            <td><?php echo $updated_at;?></td>
+                            <td>
+                                <a href="javascript:detalle(<?php echo $id;?>)">
+                                    <i class="fa fa-eye" style="font-size:20px; color:black;"></i>
+                                </a>
+                                <?php 
+                                    if ($estatus !== 3){
+                                ?>
+                                    <a href="../Views/up_reg.php?i=<?php echo $id;?>&s=<?php echo $id_sucursal;?>&m=<?php echo $id_marca;?>&v=<?php echo $id_vehiculo;?>&mm=<?php echo $id_modelo;?>">
+                                        <i class="fa fa-edit" style="font-size:20px; color:black; padding-left: 5px;"></i>
+                                    </a>
+                                <?php
+                                    } else {
+                                ?>
+                                <?php
+                                  }
+                                ?>
+                                <a href="#">
+                                    <i class="fa fa-trash" style="font-size:20px; color:red; padding-left: 5px;"></i>
+                                </a>  
+                            </td>
+                        </tr>
+                    <?php
+                                    }
+                                } else{
+                                    echo "<tr><td colspan='13'>Hubo un error en la consulta</td></tr>";
+                                }
+                                mysqli_free_result($result);                  
+                            }
+                    ?>
+                </tbody>
+            </table>
+          </div> <!-- /table-responsive -->
+
+        </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
+      <!-- ========== /CARD TABLA CATÁLOGO ========== -->
+
+    </section>
   </div>
 </div>
+<!-- ===== /MAIN · ESTILO NUEVO ===== -->
 
-
-<table id="example" class="table table-striped nowrap mt-2" style="width:100%">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Marca</th>
-            <th>Auto / Modelo</th>
-            <th>Color</th>
-            <th>Transmisión</th>
-            <th>Interior</th>
-            <th>Tipo</th>
-            <th>$ Mensual</th>
-            <th>$ Contado</th>
-            <th>Estatus</th>
-            <th>DT Registro</th>
-            <th>DT Update</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-
-    <tbody>
-        
-        
-        <?php 
-                $inc = include "../db/Conexion.php";    
-                    if ($inc){
-                        $query = 'select 
-                                    auto.id,
-                                    m_auto.auto as nombre, 
-                                    auto.nombre as id_vehiculo,
-                                    modelo.nombre as modelo, 
-                                    auto.modelo as id_modelo,
-                                    marca.nombre as marca, 
-                                    auto.marca as id_marca,
-                                    auto.mensualidad, 
-                                    auto.costo, 
-                                    sucursal.nombre as sucursal, 
-                                    auto.sucursal as id_sucursal,
-                                    auto.img1, 
-                                    auto.img2, 
-                                    auto.img3, 
-                                    auto.img4, 
-                                    auto.img5, 
-                                    auto.img6, 
-                                    auto.color, 
-                                    auto.transmision, 
-                                    auto.interior, 
-                                    auto.kilometraje, 
-                                    auto.combustible, 
-                                    auto.cilindros, 
-                                    auto.eje, 
-                                    estatus.nombre as estatus, 
-                                    auto.pasajeros, 
-                                    auto.propietarios,
-                                    auto.c_type,
-                                    DATE_SUB(auto.created_at, INTERVAL 6 HOUR) as created_at, 
-                                    DATE_SUB(auto.updated_at, INTERVAL 6 HOUR) as updated_at
-                                FROM mobility_solutions.tmx_auto as auto
-                                left join mobility_solutions.tmx_sucursal as sucursal on auto.sucursal = sucursal.id 
-                                left join mobility_solutions.tmx_estatus as estatus on auto.estatus = estatus.id
-                                left join mobility_solutions.tmx_modelo as modelo on auto.modelo = modelo.id 
-                                left join mobility_solutions.tmx_marca as marca on auto.marca = marca.id
-                                left join mobility_solutions.tmx_marca_auto as m_auto on auto.nombre = m_auto.id
-                                order by auto.id desc;';
-                        $result = mysqli_query($con,$query);  
-                        if ($result){         
-                            while($row = mysqli_fetch_assoc($result)){
-                                $id = $row['id'];
-                                $nombre = $row['nombre'];
-                                $id_vehiculo = $row['id_vehiculo'];
-                                $modelo = $row['modelo'];
-                                $id_modelo = $row['id_modelo'];
-                                $marca = $row['marca'];
-                                $id_marca = $row['id_marca'];
-                                $mensualidad = $row['mensualidad'];
-                                $costo = $row['costo'];
-                                $sucursal = $row['sucursal'];
-                                $id_sucursal = $row['id_sucursal'];
-                                $color = $row['color'];
-                                $interior = $row['interior'];
-                                $combustible = $row['combustible'];
-                                $cilindros = $row['cilindros'];
-                                $transmision = $row['transmision'];
-                                $kilometraje = $row['kilometraje'];
-                                $eje = $row['eje'];
-                                $estatus = $row['estatus'];
-                                $created_at = $row['created_at'];
-                                $updated_at = $row['updated_at'];
-                                $c_type = $row['c_type']
-                ?> 
-                    <tr>
-                        <th class=""><?php echo $id;?></th>
-                        <td><?php echo $marca;?></td>
-                        <td><?php echo $nombre . ' / ' . $modelo;?></td>
-                        <td><?php echo $color;?></td>
-                        <td><?php echo $transmision;?></td>
-                        <td><?php echo $interior;?></td>
-                        <td><?php echo $c_type;?></td>
-                        <td><?php echo "$" . number_format($mensualidad);?></td>
-                        <td><?php echo "$" . number_format($costo);?></td>
-                        <td><?php echo $estatus;?></td>
-                        <td><?php echo $created_at;?></td>
-                        <td><?php echo $updated_at;?></td>
-                        <td>
-                            <a href="javascript:detalle(<?php echo $id;?>)">
-                                <i class="fa fa-eye" style="font-size:20px; color:black;"></i>
-                            </a>
-                            <?php 
-                                if ($estatus !== 3){
-                            ?>
-                                <a href="../Views/up_reg.php?i=<?php echo $id;?>&s=<?php echo $id_sucursal;?>&m=<?php echo $id_marca;?>&v=<?php echo $id_vehiculo;?>&mm=<?php echo $id_modelo;?>">
-                                    <i class="fa fa-edit" style="font-size:20px; color:black; padding-left: 5px;"></i>
-                                </a>
-                            <?php
-                                } else {
-                            ?>
-                            <?php
-                              }
-                            ?>
-                            <a href="#">
-                                <i class="fa fa-trash" style="font-size:20px; color:red; padding-left: 5px;"></i>
-                            </a>  
-                        </td>
-                    </tr>
-                <?php
-                            }
-                        } else{
-                            echo "Hubo un error en la consulta";
-                        }
-                        mysqli_free_result($result);                  
-                    }
-                ?>
-    </tbody>
-</table>
-</div>
-<div class="apartado_der">  
-</div>
-
-</div>
 
 <script>
     new DataTable('#example', {
@@ -797,41 +830,40 @@
         }
 </script>
 
-
-                    <script >
-                        $(document).ready(function(){
-                            $('#InputMarca').val(0);
-                            $('#InputMarca').change(function(){
-                                get_marca();
-                                get_modelo();
-                            }); 
-                            $('#div_auto').change(function(){
-                                get_modelo();
-                            });                       
-                        });
-                    </script>                        
-                    <script>
-                        function get_marca(){
-                            $.ajax({
-                                type:   "POST" ,
-                                url:    "get_marca.php",
-                                data:   "Marca=" + $('#InputMarca').val(),
-                                success: function(r){
-                                    $('#div_auto').html(r);
-                                }
-                            });
-                        }
-                        function get_modelo(){
-                            $.ajax({
-                                type:   "POST" ,
-                                url:    "get_modelo.php",
-                                data:   "Auto=" + $('#InputNombre').val(),
-                                success: function(a){
-                                    $('#div_modelo').html(a);
-                                }
-                            });
-                        }
-                    </script> 
+<script >
+    $(document).ready(function(){
+        $('#InputMarca').val(0);
+        $('#InputMarca').change(function(){
+            get_marca();
+            get_modelo();
+        }); 
+        $('#div_auto').change(function(){
+            get_modelo();
+        });                       
+    });
+</script>                        
+<script>
+    function get_marca(){
+        $.ajax({
+            type:   "POST" ,
+            url:    "get_marca.php",
+            data:   "Marca=" + $('#InputMarca').val(),
+            success: function(r){
+                $('#div_auto').html(r);
+            }
+        });
+    }
+    function get_modelo(){
+        $.ajax({
+            type:   "POST" ,
+            url:    "get_modelo.php",
+            data:   "Auto=" + $('#InputNombre').val(),
+            success: function(a){
+                $('#div_modelo').html(a);
+            }
+        });
+    }
+</script> 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
