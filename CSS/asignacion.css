@@ -1,0 +1,441 @@
+/* ===== Estilos base globales ===== */
+body {
+    margin: 0;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #f7f7f7;
+}
+
+.navbar {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+/*===== header top =====*/
+.topbar{
+  background-color: #212529;
+  padding: 0;
+}
+
+.topbar .container .row {
+  margin:-7px;
+  padding:0;
+}
+
+.topbar .container .row .col-md-12 { 
+  padding:0;
+}
+
+.topbar p{
+  margin:0;
+  display:inline-block;
+  font-size: 13px;
+  color: #f1f6ff;
+}
+
+.topbar p > i{
+  margin-right:5px;
+}
+.topbar p:last-child{
+  text-align:right;
+} 
+
+header .navbar {
+    margin-bottom: 0;
+}
+
+.topbar li.topbar {
+    display: inline;
+    padding-right: 18px;
+    line-height: 52px;
+    transition: all .3s linear;
+}
+
+.topbar li.topbar:hover {
+    color: #1bbde8;
+}
+
+.topbar ul.info i {
+    color: #131313;
+    font-style: normal;
+    margin-right: 8px;
+    display: inline-block;
+    position: relative;
+    top: 4px;
+}
+
+.topbar ul.info li {
+    float: right;
+    padding-left: 30px;
+    color: #ffffff;
+    font-size: 13px;
+    line-height: 44px;
+}
+
+.topbar ul.info i span {
+    color: #aaa;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 50px;
+    padding-left: 18px;
+}
+
+/* Social */
+ul.social-network {
+  border:none;
+  margin:0;
+  padding:0;
+}
+
+ul.social-network li {
+  border:none;  
+  margin:0;
+}
+
+ul.social-network li i {
+  margin:0;
+}
+
+ul.social-network li {
+    display:inline;
+    margin: 0 5px;
+    border: 0px solid #2D2D2D;
+    padding: 5px 0 0;
+    width: 32px;
+    display: inline-block;
+    text-align: center;
+    height: 32px;
+    vertical-align: baseline;
+    color: #000;
+}
+
+ul.social-network {
+  list-style: none;
+  margin: 5px 0 10px -25px;
+  float: right;
+}
+
+.waves-effect {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    vertical-align: middle;
+    z-index: 1;
+    will-change: opacity, transform;
+    transition: .3s ease-out;
+    color: #fff;
+}
+
+a {
+  color: #0a0a0a;
+  text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+.bg-image-full {
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.bg-dark {
+    background-color: #222!important;
+}
+
+.mx-background-top-linear {
+    background: -webkit-linear-gradient(45deg, #e3e3e3 48%, #1b1e21 48%);
+    background: -webkit-linear-gradient(left, #e3e3e3 48%, #1b1e21 48%);
+    background: linear-gradient(45deg, #e3e3e3 48%, #1b1e21 48%);
+}
+
+/*--------------------------------------------------------------------------------------------------*/
+/* Layout antiguo basado en grid (lo dejamos por si otras vistas lo usan) */
+
+.contenedor {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    padding-right: 10px;
+    padding-left: 10px;
+    height: 100vh;
+}
+
+.menu_c {
+    border-right: 1px solid #ccc;
+    padding-top: 120px;
+    overflow-y: auto;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.items {
+  padding-top: 140px;
+}
+
+/* Sidebar tipo LinkedIn usado en algunas vistas */
+.sidebar {
+  padding: 20px;
+  background-color: #f3f2ef;
+  font-family: Arial, sans-serif;
+  height: 100%;
+}
+
+.user-card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+}
+
+.user-card img{
+  object-fit: cover;       
+  object-position: center;  
+}
+
+.profile-pic {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.input-mes {
+  width: 100%;
+  max-width: 120px;
+}
+
+.title {
+  color: gray;
+  font-size: 0.9em;
+  margin: 0;
+}
+
+.connections {
+  font-weight: bold;
+  color: #0a66c2;
+  margin: 10px 0;
+}
+
+.view-profile {
+  font-size: 0.85em;
+  color: #0a66c2;
+  text-decoration: none;
+}
+
+.quick-access {
+  margin-top: 20px;
+}
+
+.quick-access ul {
+  list-style: none;
+  padding: 0;
+}
+
+.quick-access li {
+  margin: 10px 0;
+  font-size: 0.9em;
+}
+
+.icon {
+  margin-right: 6px;
+}
+
+.discover-more {
+  margin-top: 20px;
+}
+
+.discover-more button {
+  background-color: transparent;
+  color: #0a66c2;
+  border: none;
+  cursor: pointer;
+}
+
+#masOpciones.hidden {
+  display: none;
+}
+
+#masOpciones ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+/* ===== Formularios reutilizables (Reconocimientos, Tareas, Metas, etc.) ===== */
+.form-container {
+  background: #f9fafb;
+  padding: 20px;
+  border-radius: 16px;
+  max-width: 720px;
+  margin: 0 auto;
+  box-shadow: 0 2px 10px rgba(15,23,42,.06);
+}
+
+.form-container h2 {
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.form-container label {
+  display: block;
+  margin-top: 10px;
+  font-size: .85rem;
+  color: #374151;
+}
+
+.form-container select,
+.form-container textarea,
+.form-container input[type="text"],
+.form-container input[type="number"],
+.form-container input[type="time"] {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: .85rem;
+}
+
+.form-container select:focus,
+.form-container textarea:focus,
+.form-container input:focus {
+  outline: none;
+  border-color: #FFC00A;
+  box-shadow: 0 0 0 1px rgba(255,192,10,.35);
+}
+
+/* Botones del formulario */
+.form-buttons {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.form-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: .85rem;
+}
+
+.form-buttons button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.form-buttons button[type="button"] {
+  background-color: #f44336;
+  color: white;
+}
+
+/*--------------------------------------------------------------------------------------------------*/
+/* ===== Estilos compartidos tipo “Settings / Requerimientos / Asignaciones” ===== */
+
+:root {
+  --brand:#FFC00A;        /* amarillo */
+  --ink:#1b1e21;          /* negro */
+  --card:#ffffff;
+  --bg:#f7f7f7;
+  --muted:#6c757d;
+  --radius:16px;
+}
+
+.ms-settings-wrap {
+  padding-top:120px;
+  padding-bottom:24px;
+}
+
+/* Avatar redondo en card de usuario */
+.ms-head .ms-avatar {
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-weight:700;
+  background:#ffe076;
+  border:2px solid #fff;
+  box-shadow:0 2px 6px rgba(0,0,0,.08);
+}
+
+/* Sidebar lateral */
+.ms-side .list-group-item {
+  border:none;
+  border-radius:10px;
+  margin:.2rem 0;
+  font-weight:500;
+  font-size:.9rem;
+  display:flex;
+  align-items:center;
+  gap:.35rem;
+}
+
+.ms-side .list-group-item.active {
+  background:var(--ink);
+  color:#fff;
+}
+
+.ms-side .list-group-item.disabled {
+  opacity:.6;
+  cursor:not-allowed;
+}
+
+/* Tarjetas de contenido principal */
+.ms-card {
+  border:none;
+  border-radius:var(--radius);
+}
+
+.ms-card .card-header {
+  background:#fff;
+  border-bottom:1px solid #eee;
+  border-top-left-radius:var(--radius);
+  border-top-right-radius:var(--radius);
+}
+
+/* Botón de acción amarillo (si se usa) */
+.btn-brand {
+  background:var(--brand);
+  color:#000;
+  font-weight:600;
+  border:none;
+}
+
+.btn-brand:hover {
+  filter:brightness(.95);
+  color:#000;
+}
+
+/* En vistas con .ms-settings-wrap la .items no necesita tanto padding-top */
+.ms-settings-wrap .items {
+  padding-top:0;
+}
+
+@media (max-width:991px){
+  .ms-settings-wrap{ padding-top:100px; }
+}
