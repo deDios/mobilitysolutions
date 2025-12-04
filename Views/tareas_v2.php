@@ -66,7 +66,7 @@
     <link rel="shortcut icon" href="../Imagenes/movility.ico" />
     <link rel="stylesheet" href="../CSS/tareas_v2.css">
 
-    <!-- Bootstrap / fonts (lo mismo que en otras vistas) -->
+    <!-- Bootstrap / fonts (alineado con otras vistas) -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -76,16 +76,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- DataTables (por si lo usas en algún otro bloque) -->
+    <!-- DataTables (si lo usas en otros bloques) -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
-    <!-- Chart.js (si luego quieres métricas de tareas) -->
+    <!-- Chart.js (para futuras métricas de tareas) -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -97,9 +96,22 @@
         <div class="row">
           <div class="col-sm-12">
             <ul class="social-network">
-              <li><a class="waves-effect waves-dark" href="https://www.facebook.com/profile.php?id=61563909313215&mibextid=kFxxJD"><i class="fa fa-facebook"></i></a></li>
-              <li><a class="waves-effect waves-dark" href="" data-toggle="modal" data-target="#exampleModal2"><i class="fa fa-map-marker"></i></a></li>
-              <li><a class="waves-effect waves-dark" href="https://mobilitysolutionscorp.com/db_consultas/cerrar_sesion.php"><i class="fa fa-sign-out"></i></a></li>
+              <li>
+                <a class="waves-effect waves-dark" href="https://www.facebook.com/profile.php?id=61563909313215&mibextid=kFxxJD">
+                  <i class="fa fa-facebook"></i>
+                </a>
+              </li>
+              <!-- Ajustado a Bootstrap 5 -->
+              <li>
+                <a class="waves-effect waves-dark" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                  <i class="fa fa-map-marker"></i>
+                </a>
+              </li>
+              <li>
+                <a class="waves-effect waves-dark" href="https://mobilitysolutionscorp.com/db_consultas/cerrar_sesion.php">
+                  <i class="fa fa-sign-out"></i>
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -109,32 +121,30 @@
   <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear">
     <div class="container">
-      <a class="navbar-brand" rel="nofollow" target="_blank" href="#"> Mobility Solutions: Tareas</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand" rel="nofollow" target="_blank" href="https://mobilitysolutionscorp.com/"> Mobility Solutions: Tareas </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <?php $self = basename($_SERVER['PHP_SELF']); ?>
       <div class="collapse navbar-collapse" id="navbarResponsive">
-
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/Home.php">Inicio</a>
+            <a class="nav-link <?= $self==='Home.php' ? 'active' : '' ?>" href="https://mobilitysolutionscorp.com/Views/Home.php">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/edicion_catalogo.php">Catálogo</a>
+            <a class="nav-link <?= $self==='edicion_catalogo.php' ? 'active' : '' ?>" href="https://mobilitysolutionscorp.com/Views/edicion_catalogo.php">Catálogo</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/requerimientos.php">Requerimientos</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/tareas.php">Tareas
-              <span class="sr-only">(current)</span>
-            </a>
+            <a class="nav-link <?= $self==='requerimientos.php' ? 'active' : '' ?>" href="https://mobilitysolutionscorp.com/Views/requerimientos.php">Requerimientos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/Autoriza.php">Aprobaciones</a>
+            <a class="nav-link <?= $self==='tareas.php' ? 'active' : '' ?>" href="https://mobilitysolutionscorp.com/Views/tareas.php">Tareas</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/asignacion.php">Asignaciones</a>
+            <a class="nav-link <?= $self==='Autoriza.php' ? 'active' : '' ?>" href="https://mobilitysolutionscorp.com/Views/Autoriza.php">Aprobaciones</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link <?= $self==='asignacion.php' ? 'active' : '' ?>" href="https://mobilitysolutionscorp.com/Views/asignacion.php">Asignaciones</a>
           </li>
         </ul>
       </div>
@@ -142,79 +152,132 @@
   </nav>
 </div>
 
-<!-- ================== CONTENIDO PRINCIPAL: KANBAN + DETALLE ================== -->
-<div class="task-wrapper">
-  <!-- === Columna izquierda: Kanban === -->
-  <section class="kanban-section">
-    <div class="kanban-head">
-      <h2 class="kanban-title">Kanban de tareas</h2>
-      <p class="kanban-subtitle">Arrastra las tarjetas entre columnas para actualizar el estado.</p>
+<!-- ================== WRAPPER GENERAL ESTILO REMAKE ================== -->
+<div class="container ms-settings-wrap">
+
+  <!-- Barra con avatar + usuario + salir -->
+  <div class="ms-head card shadow-sm mb-3">
+    <div class="card-body d-flex align-items-center gap-3 flex-wrap">
+      <div class="ms-avatar">
+        <?php
+          $ini = trim(($nombre ?? 'Usuario').' '.($last_name ?? 'Demo'));
+          $parts = preg_split('/\s+/', $ini);
+          $iniciales = mb_substr($parts[0] ?? 'U',0,1) . mb_substr($parts[1] ?? '',0,1);
+          echo htmlspecialchars(strtoupper($iniciales));
+        ?>
+      </div>
+      <div class="flex-grow-1">
+        <div class="h5 mb-0">
+          <?= htmlspecialchars(($nombre ?? 'Usuario').' '.($last_name ?? 'Demo')) ?>
+        </div>
+        <small class="text-muted">
+          <?= htmlspecialchars($user_name ?? 'usuario') ?> · <?= htmlspecialchars($user_type ?? 'Rol') ?>
+        </small>
+      </div>
+      <a class="btn btn-outline-dark btn-sm" href="https://mobilitysolutionscorp.com/db_consultas/cerrar_sesion.php">
+        <i class="fa fa-sign-out me-1"></i>Salir
+      </a>
     </div>
+  </div>
 
-    <div class="kanban-board">
-      <div class="kanban-column" data-status="1">
-        <div class="kanban-column-head">
-          <h3>Por hacer</h3>
-          <span class="status-pill status-backlog">Backlog</span>
+  <!-- ================== CONTENIDO PRINCIPAL: KANBAN + DETALLE ================== -->
+  <div class="task-wrapper">
+    <!-- === Columna izquierda: Kanban === -->
+    <section class="kanban-section">
+      <div class="kanban-head">
+        <h2 class="kanban-title">Kanban de tareas</h2>
+        <p class="kanban-subtitle">Arrastra las tarjetas entre columnas para actualizar el estado.</p>
+      </div>
+
+      <div class="kanban-board">
+        <div class="kanban-column" data-status="1">
+          <div class="kanban-column-head">
+            <h3>Por hacer</h3>
+            <span class="status-pill status-backlog">Backlog</span>
+          </div>
+          <hr>
+          <div class="kanban-tasks" id="por-hacer"></div>
         </div>
-        <hr>
-        <div class="kanban-tasks" id="por-hacer"></div>
-      </div>
 
-      <div class="kanban-column" data-status="2">
-        <div class="kanban-column-head">
-          <h3>En proceso</h3>
-          <span class="status-pill status-progress">En curso</span>
+        <div class="kanban-column" data-status="2">
+          <div class="kanban-column-head">
+            <h3>En proceso</h3>
+            <span class="status-pill status-progress">En curso</span>
+          </div>
+          <hr>
+          <div class="kanban-tasks" id="en-proceso"></div>
         </div>
-        <hr>
-        <div class="kanban-tasks" id="en-proceso"></div>
-      </div>
 
-      <div class="kanban-column" data-status="3">
-        <div class="kanban-column-head">
-          <h3>Por revisar</h3>
-          <span class="status-pill status-review">Revisión</span>
+        <div class="kanban-column" data-status="3">
+          <div class="kanban-column-head">
+            <h3>Por revisar</h3>
+            <span class="status-pill status-review">Revisión</span>
+          </div>
+          <hr>
+          <div class="kanban-tasks" id="por-revisar"></div>
         </div>
-        <hr>
-        <div class="kanban-tasks" id="por-revisar"></div>
-      </div>
 
-      <div class="kanban-column" data-status="4">
-        <div class="kanban-column-head">
-          <h3>Hecho</h3>
-          <span class="status-pill status-done">Cerradas</span>
+        <div class="kanban-column" data-status="4">
+          <div class="kanban-column-head">
+            <h3>Hecho</h3>
+            <span class="status-pill status-done">Cerradas</span>
+          </div>
+          <hr>
+          <div class="kanban-tasks" id="hecho"></div>
         </div>
-        <hr>
-        <div class="kanban-tasks" id="hecho"></div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- === Columna derecha: Detalle === -->
-  <section class="detalle-section">
-    <div class="detalle-card">
-      <div class="detalle-header">
-        <h2>Detalle de tarea</h2>
-        <span class="detalle-placeholder" id="detalle-placeholder">
-          Selecciona una tarjeta del kanban para ver el detalle.
-        </span>
-      </div>
+    <!-- === Columna derecha: Detalle === -->
+    <section class="detalle-section">
+      <div class="detalle-card">
+        <div class="detalle-header">
+          <h2>Detalle de tarea</h2>
+          <span class="detalle-placeholder" id="detalle-placeholder">
+            Selecciona una tarjeta del kanban para ver el detalle.
+          </span>
+        </div>
 
-      <div id="detalle-tarea" class="detalle-content is-empty">
-        <p><strong>Nombre:</strong> <span id="detalle-nombre"></span></p>
-        <p><strong>Descripción:</strong> <span id="detalle-descripcion"></span></p>
-        <p><strong>Asignado a:</strong> <span id="detalle-asignado"></span></p>
-        <p><strong>Reportado por:</strong> <span id="detalle-creador"></span></p>
-        <p><strong>Comentario:</strong> <span id="detalle-comentario"></span></p>
-        <p><strong>Creado el:</strong> <span id="detalle-creado"></span></p>
+        <div id="detalle-tarea" class="detalle-content is-empty">
+          <p><strong>Nombre:</strong> <span id="detalle-nombre"></span></p>
+          <p><strong>Descripción:</strong> <span id="detalle-descripcion"></span></p>
+          <p><strong>Asignado a:</strong> <span id="detalle-asignado"></span></p>
+          <p><strong>Reportado por:</strong> <span id="detalle-creador"></span></p>
+          <p><strong>Comentario:</strong> <span id="detalle-comentario"></span></p>
+          <p><strong>Creado el:</strong> <span id="detalle-creado"></span></p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </div>
 
-<!-- ================== JS: Carga y drag & drop ================== -->
+<!-- ================== JS: Carga, días transcurridos y drag & drop ================== -->
 <script>
   const userId = <?php echo isset($_SESSION['user_id']) ? intval($_SESSION['user_id']) : 0; ?>;
+
+  // 📌 Calcula días transcurridos desde created_at (YYYY-MM-DD HH:MM:SS)
+  function calcularDiasDesde(fechaStr) {
+    if (!fechaStr) return null;
+
+    // Tomamos solo la parte de fecha
+    const partes = fechaStr.replace('T', ' ').split(' ');
+    const fechaPart = partes[0] || '';
+    const [y, m, d] = fechaPart.split('-').map(Number);
+
+    if (!y || !m || !d) return null;
+
+    const fecha = new Date(y, m - 1, d);
+    if (isNaN(fecha.getTime())) return null;
+
+    const hoy = new Date();
+    hoy.setHours(0, 0, 0, 0);
+    fecha.setHours(0, 0, 0, 0);
+
+    const diffMs = hoy - fecha;
+    if (diffMs < 0) return 0;
+
+    return Math.floor(diffMs / (1000 * 60 * 60 * 24));
+  }
 
   if (userId > 0) {
     fetch(`https://mobilitysolutionscorp.com/web/MS_get_tareas.php?user_id=${userId}`)
@@ -236,10 +299,24 @@
             card.dataset.status = tarea.status;
             card.dataset.creado_por = tarea.creado_por;
 
+            const dias = calcularDiasDesde(tarea.created_at);
+            let diasHtml = '';
+
+            // Solo mostrar contador si NO está en "Hecho" (status != 4) y tenemos fecha
+            if (tarea.status != 4 && dias !== null) {
+              const label = (dias === 0) ? 'Hoy' : `${dias} día${dias === 1 ? '' : 's'}`;
+              diasHtml = `
+                <div class="task-meta">
+                  <span class="task-age">${label}</span>
+                </div>
+              `;
+            }
+
             card.innerHTML = `
               <h4>${tarea.nombre}</h4>
               <p><strong>Asignado a:</strong> ${tarea.asignado_nombre}</p>
               <p><strong>Reportado por:</strong> ${tarea.creado_por_nombre}</p>
+              ${diasHtml}
             `;
 
             // Mostrar detalle al hacer clic
@@ -274,7 +351,7 @@
               const tareaId = parseInt(draggedCard.dataset.id);
               const creador = parseInt(draggedCard.dataset.creado_por);
 
-              // Restricción: solo el creador puede mover a "Hecho"
+              // ✅ Regla original: solo el creador puede mover a "Hecho"
               if (targetStatus === 4 && userId !== creador) {
                 alert("Solo la persona que creó la tarea puede marcarla como 'Hecho'.");
                 return;
@@ -283,7 +360,7 @@
               // Actualizar visualmente
               column.querySelector('.kanban-tasks').appendChild(draggedCard);
 
-              // Llamar al API para actualizar el status
+              // Llamar al API para actualizar el status (misma lógica que ya tenías)
               fetch('https://mobilitysolutionscorp.com/web/MS_update_tarea_status.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -299,7 +376,7 @@
             });
           });
 
-          // Eventos de arrastrar tarjeta
+          // Eventos de arrastrar tarjeta (sin cambios de lógica)
           document.addEventListener('dragstart', e => {
             if (e.target.classList.contains('task-card')) {
               e.target.classList.add('dragging');
@@ -321,9 +398,9 @@
   }
 </script>
 
-<!-- Bootstrap JS (igual que en otras vistas) -->
+<!-- Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3Z9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3z9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 </body>
