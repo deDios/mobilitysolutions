@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             ON c.usuario_id = u.id
         WHERE c.tarea_id = $tarea_id
           AND c.estatus = $estatus
-        ORDER BY c.created_at ASC
+        ORDER BY c.created_at DESC
     ";
 
     $result = mysqli_query($con, $query);
