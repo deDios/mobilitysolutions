@@ -1,0 +1,576 @@
+/* ================== BASE GENERAL (misma línea que otras vistas) ================== */
+body {
+    margin: 0;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #f7f7f7;
+}
+
+.navbar {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+/* header top */
+.topbar{
+  background-color: #212529;
+  padding: 0;
+}
+
+.topbar .container .row {
+  margin:-7px;
+  padding:0;
+}
+
+.topbar .container .row .col-md-12 { 
+  padding:0;
+}
+
+.topbar p{
+  margin:0;
+  display:inline-block;
+  font-size: 13px;
+  color: #f1f6ff;
+}
+
+.topbar p > i{
+  margin-right:5px;
+}
+.topbar p:last-child{
+  text-align:right;
+} 
+
+header .navbar {
+    margin-bottom: 0;
+}
+
+.topbar li.topbar {
+    display: inline;
+    padding-right: 18px;
+    line-height: 52px;
+    transition: all .3s linear;
+}
+
+.topbar li.topbar:hover {
+    color: #1bbde8;
+}
+
+.topbar ul.info i {
+    color: #131313;
+    font-style: normal;
+    margin-right: 8px;
+    display: inline-block;
+    position: relative;
+    top: 4px;
+}
+
+.topbar ul.info li {
+    float: right;
+    padding-left: 30px;
+    color: #ffffff;
+    font-size: 13px;
+    line-height: 44px;
+}
+
+.topbar ul.info i span {
+    color: #aaa;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 50px;
+    padding-left: 18px;
+}
+
+ul.social-network {
+  border:none;
+  margin:0;
+  padding:0;
+}
+
+ul.social-network li {
+  border:none;  
+  margin:0;
+}
+
+ul.social-network li i {
+  margin:0;
+}
+
+ul.social-network li {
+    display:inline;
+    margin: 0 5px;
+    border: 0px solid #2D2D2D;
+    padding: 5px 0 0;
+    width: 32px;
+    display: inline-block;
+    text-align: center;
+    height: 32px;
+    vertical-align: baseline;
+    color: #000;
+}
+
+ul.social-network {
+  list-style: none;
+  margin: 5px 0 10px -25px;
+  float: right;
+}
+
+.waves-effect {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    vertical-align: middle;
+    z-index: 1;
+    will-change: opacity, transform;
+    transition: .3s ease-out;
+    color: #fff;
+}
+
+a {
+  color: #0a0a0a;
+  text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+.bg-image-full {
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.bg-dark {
+    background-color: #222!important;
+}
+
+.mx-background-top-linear {
+    background: -webkit-linear-gradient(45deg, #e3e3e3 48%, #1b1e21 48%);
+    background: -webkit-linear-gradient(left, #e3e3e3 48%, #1b1e21 48%);
+    background: linear-gradient(45deg, #e3e3e3 48%, #1b1e21 48%);
+}
+
+/* ===================================================================== */
+/*             COSAS ANTIGUAS QUE SIGUES USANDO EN OTRAS PARTES          */
+/* ===================================================================== */
+
+.contenedor {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    padding-right: 10px;
+    padding-left: 10px;
+    height: 100vh;
+}
+
+.menu_c {
+    border-right: 1px solid #ccc;
+    padding-top: 120px;
+    overflow-y: auto;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.items {
+  padding-top: 140px;
+}
+
+.sidebar {
+  padding: 20px;
+  background-color: #f3f2ef;
+  font-family: Arial, sans-serif;
+  height: 100%;
+}
+
+.user-card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+}
+
+.user-card img{
+  object-fit: cover;
+  object-position: center;
+}
+
+.profile-pic {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.input-mes {
+    width: 100%;
+    max-width: 120px;
+}
+
+.title {
+  color: gray;
+  font-size: 0.9em;
+  margin: 0;
+}
+
+.connections {
+  font-weight: bold;
+  color: #0a66c2;
+  margin: 10px 0;
+}
+
+.view-profile {
+  font-size: 0.85em;
+  color: #0a66c2;
+  text-decoration: none;
+}
+
+.quick-access {
+  margin-top: 20px;
+}
+
+.quick-access ul {
+  list-style: none;
+  padding: 0;
+}
+
+.quick-access li {
+  margin: 10px 0;
+  font-size: 0.9em;
+}
+
+.icon {
+  margin-right: 6px;
+}
+
+.discover-more {
+  margin-top: 20px;
+}
+
+.discover-more button {
+  background-color: transparent;
+  color: #0a66c2;
+  border: none;
+  cursor: pointer;
+}
+
+#masOpciones.hidden {
+  display: none;
+}
+
+#masOpciones ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.form-container {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.form-container h2 {
+  margin-bottom: 15px;
+}
+.form-container label {
+  display: block;
+  margin-top: 10px;
+}
+.form-container select,
+.form-container textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}
+.form-buttons {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.form-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.form-buttons button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+}
+.form-buttons button[type="button"] {
+  background-color: #f44336;
+  color: white;
+}
+
+/* ===================================================================== */
+/*                       REMAKE TAREAS (KANBAN + DETALLE)                */
+/* ===================================================================== */
+
+:root{
+  --brand:#FFC00A;
+  --ink:#1b1e21;
+  --card:#ffffff;
+  --bg:#f7f7f7;
+  --muted:#6b7280;
+  --radius:16px;
+}
+
+/* Layout general de la vista */
+.task-wrapper{
+  max-width:1400px;
+  width:96%;
+  margin:120px auto 32px;
+  padding-bottom:32px;
+  display:grid;
+  grid-template-columns:minmax(0, 2.2fr) minmax(0, 1.5fr);
+  gap:20px;
+}
+
+/* Columna izquierda (kanban) */
+.kanban-section{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.kanban-head{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+
+.kanban-title{
+  font-size:1.1rem;
+  font-weight:700;
+  color:#111827;
+  margin:0;
+}
+
+.kanban-subtitle{
+  font-size:.8rem;
+  color:#6b7280;
+  margin:0;
+}
+
+/* Tablero */
+.kanban-board{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+}
+
+/* Columna del tablero */
+.kanban-column{
+  background:var(--card);
+  border-radius:var(--radius);
+  border:1px solid #e5e7eb;
+  padding:10px 10px 8px;
+  box-shadow:0 2px 8px rgba(15,23,42,.06);
+  display:flex;
+  flex-direction:column;
+  max-height:640px;
+}
+
+.kanban-column-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:6px;
+}
+
+.kanban-column h3{
+  font-size:.85rem;
+  font-weight:600;
+  color:#111827;
+  margin:0;
+}
+
+/* Línea bajo título */
+.kanban-column hr{
+  margin:8px 0 4px;
+  border-color:#e5e7eb;
+  opacity:.9;
+}
+
+/* Badge de estado en columnas */
+.status-pill{
+  font-size:.65rem;
+  padding:3px 8px;
+  border-radius:999px;
+  font-weight:600;
+  white-space:nowrap;
+}
+
+.status-backlog{   background:#fee2e2; color:#b91c1c; }
+.status-progress{  background:#e0f2fe; color:#075985; }
+.status-review{    background:#fef3c7; color:#92400e; }
+.status-done{      background:#dcfce7; color:#166534; }
+
+/* Contenedor de tarjetas dentro de cada columna */
+.kanban-tasks{
+  margin-top:4px;
+  padding-right:4px;
+  overflow-y:auto;
+  overflow-x:hidden;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+/* Mensaje cuando no hay tareas en una columna */
+.kanban-tasks:empty::before{
+  content:"Sin tareas";
+  font-size:.75rem;
+  color:#9ca3af;
+}
+
+/* Tarjeta de tarea */
+.task-card{
+  background:#fff;
+  border-radius:10px;
+  border:1px solid #e5e7eb;
+  padding:8px 10px;
+  font-size:.8rem;
+  cursor:pointer;
+  box-shadow:0 1px 3px rgba(15,23,42,.06);
+  transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease, background-color .12s ease;
+}
+
+.task-card h4{
+  font-size:.85rem;
+  margin:0 0 4px;
+  font-weight:600;
+  color:#111827;
+}
+
+.task-card p{
+  margin:0;
+  color:#4b5563;
+}
+
+.task-card p strong{
+  font-weight:600;
+  color:#111827;
+}
+
+.task-card:hover{
+  transform:translateY(-1px);
+  box-shadow:0 3px 10px rgba(15,23,42,.12);
+  border-color:var(--brand);
+  background:#fffbeb;
+}
+
+/* Durante drag & drop */
+.task-card.dragging{
+  opacity:.7;
+  border-style:dashed;
+}
+
+/* Columna derecha: detalle */
+.detalle-section{
+  display:flex;
+  flex-direction:column;
+}
+
+.detalle-card{
+  background:#fff;
+  border-radius:var(--radius);
+  border:1px solid #e5e7eb;
+  box-shadow:0 2px 10px rgba(15,23,42,.06);
+  padding:14px 16px 16px;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+}
+
+.detalle-header{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:8px;
+  margin-bottom:6px;
+}
+
+.detalle-header h2{
+  font-size:1rem;
+  font-weight:600;
+  margin:0;
+  color:#111827;
+}
+
+.detalle-placeholder{
+  font-size:.8rem;
+  color:#9ca3af;
+}
+
+/* Bloque de detalle */
+.detalle-content{
+  margin-top:6px;
+  padding-top:8px;
+  border-top:1px dashed #e5e7eb;
+  font-size:.85rem;
+  color:#374151;
+  line-height:1.4;
+}
+
+.detalle-content p{
+  margin-bottom:6px;
+}
+
+.detalle-content p strong{
+  display:inline-block;
+  min-width:110px;
+  font-weight:600;
+  color:#111827;
+}
+
+.detalle-content.is-empty span{
+  color:#9ca3af;
+}
+
+/* Responsive */
+@media (max-width: 1100px){
+  .task-wrapper{
+    grid-template-columns:1fr;
+    margin-top:110px;
+  }
+}
+
+@media (max-width: 900px){
+  .kanban-board{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media (max-width: 600px){
+  .kanban-board{
+    grid-auto-flow:column;
+    grid-template-columns:repeat(4,minmax(220px,1fr));
+    overflow-x:auto;
+    padding-bottom:4px;
+  }
+  .kanban-column{
+    min-width:220px;
+  }
+}
