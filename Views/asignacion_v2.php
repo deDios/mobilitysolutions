@@ -12,92 +12,88 @@ if (!isset($_SESSION['username'])) {
 
 $inc = include "../db/Conexion.php";
 
-$query = 'select 
-                acc.user_id, 
-                acc.user_name, 
-                acc.user_password, 
-                acc.user_type, 
-                acc.r_ejecutivo, 
-                acc.r_editor, 
-                acc.r_autorizador, 
-                acc.r_analista, 
-                us.user_name as nombre, 
-                us.second_name as s_nombre, 
-                us.last_name, 
-                us.email, 
-                us.cumpleaños, 
-                us.telefono
-            from mobility_solutions.tmx_acceso_usuario  as acc
-            left join mobility_solutions.tmx_usuario as us
-                on acc.user_id = us.id
-            where acc.user_name = '.$_SESSION['username'].';';
+$username = mysqli_real_escape_string($con, $_SESSION['username']);
+
+$query = "
+    SELECT 
+        acc.user_id, 
+        acc.user_name, 
+        acc.user_password, 
+        acc.user_type, 
+        acc.r_ejecutivo, 
+        acc.r_editor, 
+        acc.r_autorizador, 
+        acc.r_analista, 
+        us.user_name AS nombre, 
+        us.second_name AS s_nombre, 
+        us.last_name, 
+        us.email, 
+        us.cumpleaños, 
+        us.telefono
+    FROM mobility_solutions.tmx_acceso_usuario AS acc
+    LEFT JOIN mobility_solutions.tmx_usuario AS us
+        ON acc.user_id = us.id
+    WHERE acc.user_name = '$username';
+";
 
 $result = mysqli_query($con, $query);
 
-if ($result) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        $user_id       = $row['user_id'];
-        $_SESSION['user_id'] = $user_id;
-        $user_name     = $row['user_name'];
-        $user_password = $row['user_password'];
-        $user_type     = $row['user_type'];
-        $r_ejecutivo   = $row['r_ejecutivo'];
-        $r_editor      = $row['r_editor'];
-        $r_autorizador = $row['r_autorizador'];
-        $r_analista    = $row['r_analista'];
-        $nombre        = $row['nombre'];
-        $s_nombre      = $row['s_nombre'];
-        $last_name     = $row['last_name'];
-        $email         = $row['email'];
-        $cumpleaños    = $row['cumpleaños'];
-        $telefono      = $row['telefono'];
+if ($result && mysqli_num_rows($result) > 0) {
+    $row           = mysqli_fetch_assoc($result);
+    $user_id       = (int)$row['user_id'];
+    $_SESSION['user_id'] = $user_id;
+    $user_name     = $row['user_name'];
+    $user_password = $row['user_password'];
+    $user_type     = (int)$row['user_type'];
+    $r_ejecutivo   = (int)$row['r_ejecutivo'];
+    $r_editor      = (int)$row['r_editor'];
+    $r_autorizador = (int)$row['r_autorizador'];
+    $r_analista    = (int)$row['r_analista'];
+    $nombre        = $row['nombre'];
+    $s_nombre      = $row['s_nombre'];
+    $last_name     = $row['last_name'];
+    $email         = $row['email'];
+    $cumpleanios   = $row['cumpleaños'];
+    $telefono      = $row['telefono'];
 
-        // Nombre completo
-        $nombre_usuario = trim($nombre . " " . $s_nombre . " " . $last_name);
+    // Nombre completo
+    $nombre_usuario = trim(($nombre ?? '') . ' ' . ($s_nombre ?? '') . ' ' . ($last_name ?? ''));
 
-        // Título profesional según user_type
-        $roles_activos = [];
-        if ($r_ejecutivo == 1) $roles_activos[] = "Ejecutivo";
-        if ($r_editor == 1)    $roles_activos[] = "Editor";
-        if ($r_autorizador == 1) $roles_activos[] = "Autorizador";
-        if ($r_analista == 1)  $roles_activos[] = "Analista";
-
-        switch ((int)$user_type) {
-            case 1:
-                $titulo_profesional = "Asesor(a)";
-                break;
-            case 2:
-                $titulo_profesional = "Supervisor(a)";
-                break;
-            case 3:
-                $titulo_profesional = "Analista";
-                break;
-            case 4:
-                $titulo_profesional = "Manager";
-                break;
-            case 5:
-                $titulo_profesional = "CTO - Líder técnico";
-                break;
-            case 6:
-                $titulo_profesional = "CEO - Mobility Solutions";
-                break;
-            default:
-                $titulo_profesional = "Sin rol";
-        }
+    // Título profesional por tipo de usuario
+    switch ($user_type) {
+        case 1:  $titulo_profesional = "Asesor(a)"; break;
+        case 2:  $titulo_profesional = "Supervisor(a)"; break;
+        case 3:  $titulo_profesional = "Analista"; break;
+        case 4:  $titulo_profesional = "Manager"; break;
+        case 5:  $titulo_profesional = "CTO - Líder técnico"; break;
+        case 6:  $titulo_profesional = "CEO - Mobility Solutions"; break;
+        default: $titulo_profesional = "Sin rol"; break;
     }
 
-    // Restricción de acceso (solo user_type >= 2)
-    if ((int)$user_type < 2) {
-        echo '
-        <script>
-            alert("No tiene acceso para entrar al apartado de asignaciones, favor de solicitarlo al departamento de sistemas");
-            window.location = "../views/Home.php";
-        </script>';
-        exit();
-    }
+    // ==== RESTRICCIONES POR ID (Quejas / Inasistencias) ====
+    // Solo estos IDs pueden usar esos módulos
+    $quejasAllowedIds        = [1, 3, 4];
+    $inasistenciasAllowedIds = [1, 3, 4];
+
+    $puedeQuejas        = in_array($user_id, $quejasAllowedIds, true);
+    $puedeInasistencias = in_array($user_id, $inasistenciasAllowedIds, true);
+
 } else {
-    echo 'Falla en conexión.';
+    echo 'Falla en conexión o usuario no encontrado.';
+    exit();
 }
+
+// Restringir acceso a Asignaciones según tipo de usuario
+if ($user_type < 2) {
+    echo ' 
+    <script>
+        alert("No tiene acceso para entrar al apartado de asignaciones, favor de solicitarlo al departamento de sistemas");
+        window.location = "../views/Home.php";
+    </script>';
+    exit();
+}
+
+$self = basename($_SERVER['PHP_SELF']); // para marcar activo en navbar
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -107,29 +103,31 @@ if ($result) {
     <title>Asignaciones</title>
     <link rel="shortcut icon" href="../Imagenes/movility.ico" />
 
-    <!-- CSS de la vista -->
-    <link rel="stylesheet" href="../CSS/asignacion.css?v=1.1">
-
-    <!-- Bootstrap 5 + Font Awesome + DataTables (opcional) -->
+    <!-- Bootstrap 5 + Font Awesome -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 
-    <!-- jQuery + DataTables + Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- CSS de la vista (ajústalo al nombre real del archivo) -->
+    <link rel="stylesheet" href="../CSS/asignacion.css?v=1.0">
+
+    <script>
+      // Variables globales para JS
+      const usuarioActual       = <?php echo json_encode($user_id); ?>;
+      const tipoUsuarioActual   = <?php echo json_encode($user_type); ?>;
+      const PUEDE_QUEJAS        = <?php echo $puedeQuejas ? 'true' : 'false'; ?>;
+      const PUEDE_INASISTENCIAS = <?php echo $puedeInasistencias ? 'true' : 'false'; ?>;
+    </script>
 </head>
+
 <body>
 <div class="fixed-top">
   <header class="topbar">
       <div class="container">
         <div class="row">
-          <!-- social icon-->
           <div class="col-sm-12">
             <ul class="social-network">
               <li>
-                <a class="waves-effect waves-dark" href="https://www.facebook.com/profile.php?id=61563909313215&mibextid=kFxxJD">
+                <a class="waves-effect waves-dark" href="https://www.facebook.com/profile.php?id=61563909313215&mibextid=kFxxJD" target="_blank">
                   <i class="fa fa-facebook"></i>
                 </a>
               </li>
@@ -145,87 +143,77 @@ if ($result) {
               </li>
             </ul>
           </div>
-        </div> 
+        </div>
       </div>
   </header>
 
   <nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear">
     <div class="container">
-      <a class="navbar-brand" rel="nofollow" target="_blank" href="https://mobilitysolutionscorp.com/">
-        Mobility Solutions: Asignaciones
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-              data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
-              aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand" href="https://mobilitysolutionscorp.com/">Mobility Solutions: Asignaciones</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+              aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <?php $self = basename($_SERVER['PHP_SELF']); ?>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ms-auto">
-
           <li class="nav-item">
-            <a class="nav-link <?= $self==='Home.php' ? 'active' : '' ?>"
-               href="https://mobilitysolutionscorp.com/Views/Home.php">Inicio</a>
+            <a class="nav-link <?= $self==='Home.php' ? 'active' : '' ?>" href="https://mobilitysolutionscorp.com/Views/Home.php">
+              Inicio
+            </a>
           </li>
-
           <li class="nav-item">
-            <a class="nav-link <?= $self==='edicion_catalogo.php' ? 'active' : '' ?>"
-               href="https://mobilitysolutionscorp.com/Views/edicion_catalogo.php">Catálogo</a>
+            <a class="nav-link <?= $self==='edicion_catalogo.php' ? 'active' : '' ?>" href="https://mobilitysolutionscorp.com/Views/edicion_catalogo.php">
+              Catálogo
+            </a>
           </li>
-
           <li class="nav-item">
-            <a class="nav-link <?= $self==='requerimientos.php' ? 'active' : '' ?>"
-               href="https://mobilitysolutionscorp.com/Views/requerimientos.php">Requerimientos</a>
+            <a class="nav-link <?= $self==='requerimientos.php' ? 'active' : '' ?>" href="https://mobilitysolutionscorp.com/Views/requerimientos.php">
+              Requerimientos
+            </a>
           </li>
-
           <li class="nav-item">
-            <a class="nav-link <?= $self==='tareas.php' ? 'active' : '' ?>"
-               href="https://mobilitysolutionscorp.com/Views/tareas.php">Tareas</a>
+            <a class="nav-link <?= $self==='tareas.php' ? 'active' : '' ?>" href="https://mobilitysolutionscorp.com/Views/tareas.php">
+              Tareas
+            </a>
           </li>
-
           <li class="nav-item">
-            <a class="nav-link <?= $self==='Autoriza.php' ? 'active' : '' ?>"
-               href="https://mobilitysolutionscorp.com/Views/Autoriza.php">Aprobaciones</a>
+            <a class="nav-link <?= $self==='Autoriza.php' ? 'active' : '' ?>" href="https://mobilitysolutionscorp.com/Views/Autoriza.php">
+              Aprobaciones
+            </a>
           </li>
-
           <li class="nav-item">
-            <a class="nav-link <?= $self==='asignacion.php' ? 'active' : '' ?>"
-               href="https://mobilitysolutionscorp.com/Views/asignacion.php">Asignaciones</a> 
+            <a class="nav-link <?= $self==='asignacion.php' ? 'active' : '' ?>" href="https://mobilitysolutionscorp.com/Views/asignacion.php">
+              Asignaciones
+            </a>
           </li>
-
         </ul>
       </div>
     </div>
   </nav>
 </div>
 
-<!-- ========== NUEVO LAYOUT tipo Requerimientos / Settings ========== -->
+<!-- ===== LAYOUT PRINCIPAL ===== -->
 <div class="container ms-settings-wrap">
-
-  <!-- Encabezado compacto con usuario -->
+  <!-- Encabezado compacto con info de usuario -->
   <div class="ms-head card shadow-sm mb-3">
     <div class="card-body d-flex align-items-center gap-3 flex-wrap">
       <div class="ms-avatar">
         <?php
-          $ini = trim(($nombre ?? 'Usuario').' '.($last_name ?? 'Demo'));
+          $ini = trim($nombre_usuario !== '' ? $nombre_usuario : ($user_name ?? 'Usuario'));
           $parts = preg_split('/\s+/', $ini);
-          $iniciales = mb_substr($parts[0] ?? 'U',0,1) . mb_substr($parts[1] ?? '',0,1);
+          $iniciales = mb_substr($parts[0] ?? 'U', 0, 1) . mb_substr($parts[1] ?? '', 0, 1);
           echo htmlspecialchars(strtoupper($iniciales));
         ?>
       </div>
-      <div class="flex-grow-1 text-start">
-        <div class="h5 mb-0">
-          <?= htmlspecialchars($nombre_usuario ?? (($nombre ?? 'Usuario').' '.($last_name ?? 'Demo'))) ?>
-        </div>
+      <div class="flex-grow-1">
+        <div class="h5 mb-0"><?= htmlspecialchars($nombre_usuario ?: $user_name) ?></div>
         <small class="text-muted">
-          <?= htmlspecialchars($titulo_profesional ?? 'Colaborador') ?>
-          · <?= htmlspecialchars($user_name ?? 'usuario') ?>
+          <?= htmlspecialchars($titulo_profesional) ?> · <?= htmlspecialchars($user_name) ?>
         </small>
       </div>
-      <a class="btn btn-outline-dark btn-sm"
-         href="https://mobilitysolutionscorp.com/db_consultas/cerrar_sesion.php">
-        <i class="fa fa-sign-out me-1"></i>Salir
+      <a class="btn btn-outline-dark btn-sm" href="https://mobilitysolutionscorp.com/db_consultas/cerrar_sesion.php">
+        <i class="fa fa-sign-out me-1"></i> Salir
       </a>
     </div>
   </div>
@@ -239,69 +227,66 @@ if ($result) {
                 onclick="seleccionarMenu(this); mostrarTareas();">
           <i class="fa fa-tasks me-2"></i> Tareas
         </button>
+
         <button type="button"
                 class="list-group-item list-group-item-action asignacion-menu-item"
                 onclick="seleccionarMenu(this); mostrarMetas();">
           <i class="fa fa-bullseye me-2"></i> Metas
         </button>
+
         <button type="button"
                 class="list-group-item list-group-item-action asignacion-menu-item"
                 onclick="seleccionarMenu(this); mostrarReconocimientos();">
           <i class="fa fa-star me-2"></i> Reconocimientos
         </button>
+
+        <?php if ($puedeQuejas): ?>
         <button type="button"
                 class="list-group-item list-group-item-action asignacion-menu-item"
                 onclick="seleccionarMenu(this); mostrarQuejas();">
           <i class="fa fa-exclamation-triangle me-2"></i> Quejas
         </button>
+        <?php endif; ?>
+
+        <?php if ($puedeInasistencias): ?>
         <button type="button"
                 class="list-group-item list-group-item-action asignacion-menu-item"
                 onclick="seleccionarMenu(this); mostrarInasistencias();">
           <i class="fa fa-clock-o me-2"></i> Inasistencias
         </button>
+        <?php endif; ?>
       </nav>
     </aside>
 
     <!-- Contenido dinámico -->
     <section class="col-12 col-lg-9">
-      <div class="items" style="padding-top:0;">
-        <div class="card ms-card shadow-sm">
-          <div class="card-body">
-            <p class="mb-1"><strong>Asignaciones</strong></p>
-            <p class="text-muted mb-0">
-              Selecciona una opción del menú lateral para registrar tareas, metas,
-              reconocimientos, quejas o inasistencias para tu equipo.
-            </p>
-          </div>
-        </div>
+      <div id="asignacion-content" class="items">
+        <!-- Aquí se inyectan los formularios de cada módulo -->
       </div>
     </section>
   </div>
 </div>
-<!-- ========== /NUEVO LAYOUT ========== -->
 
+<!-- ===== SCRIPTS (Bootstrap) ===== -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- ===== JS de la vista ===== -->
 <script>
-  // Variables globales disponibles en todos los formularios
-  const usuarioActual = <?php echo json_encode($_SESSION['user_id']); ?>;
-  const tipoUsuarioActual = <?php echo json_encode($user_type); ?>;
-
-  // Manejo visual del menú lateral
-  function seleccionarMenu(el){
-    document.querySelectorAll('.asignacion-menu-item').forEach(btn => {
-      btn.classList.remove('active');
-    });
-    el.classList.add('active');
+  function seleccionarMenu(btn) {
+    document.querySelectorAll('.asignacion-menu-item').forEach(el => el.classList.remove('active'));
+    btn.classList.add('active');
   }
 
-  // Si quieres que al entrar cargue Tareas automáticamente, descomenta:
-  // document.addEventListener('DOMContentLoaded', () => { mostrarTareas(); });
-</script>
+  function cancelarFormulario() {
+    if (confirm("¿Estás seguro de que deseas cancelar? Se perderán los datos ingresados.")) {
+      const itemsDiv = document.getElementById("asignacion-content");
+      if (itemsDiv) itemsDiv.innerHTML = "";
+    }
+  }
 
-<!-- ================== FUNCIONES JS ================== -->
-
-<script>
+  // ===================== RECONOCIMIENTOS =====================
   function mostrarReconocimientos() {
-    const itemsDiv = document.querySelector(".items");
+    const itemsDiv = document.getElementById("asignacion-content");
     const currentYear = new Date().getFullYear();
     const previousYear = currentYear - 1;
 
@@ -349,8 +334,7 @@ if ($result) {
           </div>
 
           <label for="descripcion" class="mt-3">Descripción:</label>
-          <textarea id="descripcion" name="descripcion" rows="4"
-                    placeholder="Describe el motivo del reconocimiento" required></textarea>
+          <textarea id="descripcion" name="descripcion" rows="4" placeholder="Describe el motivo del reconocimiento" required></textarea>
 
           <div class="form-buttons mt-3">
             <button type="button" onclick="cancelarFormulario()">Cancelar</button>
@@ -360,14 +344,12 @@ if ($result) {
       </div>
     `;
 
-    // Reconocimientos según tipo
     const reconocimientosPorTipo = {
       1: ['Puntualidad', 'Mejor vendedor', 'Objetivo Alcanzado', 'Mejor Vendedor', 'Trabajo en equipo'],
       2: ['Cobranza Alcanzada', 'Atención al cliente'],
       3: ['Estrella de Cine', 'Colaborador', 'Extraordinario']
     };
 
-    // Llenar combo reconocimiento según tipo
     document.getElementById("tipo").addEventListener("change", function () {
       const tipoSeleccionado = this.value;
       const combo = document.getElementById("reconocimiento");
@@ -380,12 +362,10 @@ if ($result) {
       });
     });
 
-    // Llenar combo de recursos (jerarquía)
+    // Cargar recursos (jerarquía)
     fetch("https://mobilitysolutionscorp.com/web/MS_get_usuarios.php", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         user_id: usuarioActual,
         user_type: tipoUsuarioActual
@@ -393,7 +373,7 @@ if ($result) {
     })
     .then(res => res.json())
     .then(data => {
-      const select = document.getElementById("recurso");  
+      const select = document.getElementById("recurso");
       select.innerHTML = '<option value="">Selecciona un recurso</option>';
 
       if (data.success && Array.isArray(data.usuarios)) {
@@ -413,7 +393,6 @@ if ($result) {
       select.innerHTML = '<option value="">Error al cargar recursos</option>';
     });
 
-    // Submit del formulario
     document.getElementById("formReconocimiento").addEventListener("submit", function(e) {
       e.preventDefault();
 
@@ -455,11 +434,10 @@ if ($result) {
       });
     });
   }
-</script>
 
-<script>
+  // ===================== TAREAS =====================
   function mostrarTareas() {
-    const itemsDiv = document.querySelector(".items");
+    const itemsDiv = document.getElementById("asignacion-content");
 
     itemsDiv.innerHTML = `
       <div class="form-container">
@@ -484,12 +462,9 @@ if ($result) {
       </div>
     `;
 
-    // Cargar opciones de responsable con jerarquía
     fetch("https://mobilitysolutionscorp.com/web/MS_get_usuarios.php", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         user_id: usuarioActual,
         user_type: tipoUsuarioActual
@@ -497,7 +472,7 @@ if ($result) {
     })
     .then(res => res.json())
     .then(data => {
-      const select = document.getElementById("responsable_tarea"); 
+      const select = document.getElementById("responsable_tarea");
       select.innerHTML = '<option value="">Selecciona un recurso</option>';
 
       if (data.success && Array.isArray(data.usuarios)) {
@@ -517,7 +492,6 @@ if ($result) {
       select.innerHTML = '<option value="">Error al cargar recursos</option>';
     });
 
-    // Envío del formulario
     document.getElementById("formTarea").addEventListener("submit", function(e) {
       e.preventDefault();
 
@@ -532,14 +506,12 @@ if ($result) {
 
       fetch("https://mobilitysolutionscorp.com/web/MS_insert_tarea.php", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           nombre: nombre,
           asignado: parseInt(asignado),
           descripcion: descripcion,
-          creado_por: usuarioActual 
+          creado_por: usuarioActual
         })
       })
       .then(response => response.json())
@@ -557,11 +529,10 @@ if ($result) {
       });
     });
   }
-</script> 
 
-<script>
+  // ===================== METAS =====================
   function mostrarMetas() {
-    const itemsDiv = document.querySelector(".items");
+    const itemsDiv = document.getElementById("asignacion-content");
     const currentYear = new Date().getFullYear();
     const lastYear = currentYear - 1;
 
@@ -589,7 +560,7 @@ if ($result) {
             <option value="${lastYear}">${lastYear}</option>
           </select>
 
-          <div class="row">
+          <div class="row mt-3">
             ${['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']
               .map((mes, i) => `
                 <div class="col-md-4">
@@ -608,12 +579,10 @@ if ($result) {
       </div>
     `;
 
-    // Cargar usuarios subordinados (jerarquía)
+    // Cargar usuarios jerárquicos
     fetch("https://mobilitysolutionscorp.com/web/MS_get_usuarios.php", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         user_id: usuarioActual,
         user_type: tipoUsuarioActual
@@ -641,15 +610,15 @@ if ($result) {
       select.innerHTML = '<option value="">Error al cargar recursos</option>';
     });
 
-    // Listener para cargar metas al cambiar selección
-    ["tipo_meta", "responsable_meta", "anio_meta"].forEach(id => {
+    const mesesIds = ["tipo_meta", "responsable_meta", "anio_meta"];
+    mesesIds.forEach(id => {
       document.getElementById(id).addEventListener("change", intentarCargarMetas);
     });
 
     function limpiarInputsMeses() {
       const meses = [
-        "enero", "febrero", "marzo", "abril", "mayo", "junio",
-        "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+        "enero","febrero","marzo","abril","mayo","junio",
+        "julio","agosto","septiembre","octubre","noviembre","diciembre"
       ];
       meses.forEach(mes => {
         document.getElementById(mes).value = 0;
@@ -663,15 +632,15 @@ if ($result) {
 
       if (!tipo_meta || !asignado || !anio) return;
 
-      limpiarInputsMeses(); // Limpia antes de cargar
+      limpiarInputsMeses();
 
       fetch(`https://mobilitysolutionscorp.com/web/MS_get_metas.php?tipo_meta=${tipo_meta}&asignado=${asignado}&anio=${anio}`)
         .then(res => res.json())
         .then(data => {
           if (data.success && data.metas) {
             const meses = [
-              "enero", "febrero", "marzo", "abril", "mayo", "junio",
-              "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+              "enero","febrero","marzo","abril","mayo","junio",
+              "julio","agosto","septiembre","octubre","noviembre","diciembre"
             ];
             meses.forEach(mes => {
               document.getElementById(mes).value = data.metas[mes] ?? 0;
@@ -683,7 +652,6 @@ if ($result) {
         });
     }
 
-    // Guardar metas
     document.getElementById("formMeta").addEventListener("submit", function(e) {
       e.preventDefault();
 
@@ -697,8 +665,8 @@ if ($result) {
       }
 
       const meses = [
-        "enero", "febrero", "marzo", "abril", "mayo", "junio",
-        "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+        "enero","febrero","marzo","abril","mayo","junio",
+        "julio","agosto","septiembre","octubre","noviembre","diciembre"
       ];
 
       const metasPorMes = {};
@@ -711,14 +679,12 @@ if ($result) {
         asignado,
         anio,
         ...metasPorMes,
-        creado_por: parseInt(usuarioActual)
+        creado_por: usuarioActual
       };
 
       fetch("https://mobilitysolutionscorp.com/web/MS_save_meta.php", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
       })
       .then(res => res.json())
@@ -732,17 +698,20 @@ if ($result) {
       });
     });
   }
-</script>
 
-<script>
+  // ===================== QUEJAS =====================
   function mostrarQuejas() {
-    const itemsDiv = document.querySelector(".items");
+    if (!PUEDE_QUEJAS) {
+      alert("No tienes permiso para registrar quejas.");
+      return;
+    }
+
+    const itemsDiv = document.getElementById("asignacion-content");
 
     itemsDiv.innerHTML = `
       <div class="form-container">
         <h2>Registrar Queja</h2>
         <form id="formQueja">
-          
           <label for="empleado_queja">Empleado:</label>
           <select id="empleado_queja" name="empleado_queja" required>
             <option value="">Cargando...</option>
@@ -762,7 +731,6 @@ if ($result) {
       </div>
     `;
 
-    // Cargar usuarios subordinados
     fetch("https://mobilitysolutionscorp.com/web/MS_get_usuarios.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -782,7 +750,6 @@ if ($result) {
       }
     });
 
-    // Guardar Queja
     document.getElementById("formQueja").addEventListener("submit", function(e) {
       e.preventDefault();
 
@@ -806,11 +773,15 @@ if ($result) {
       });
     });
   }
-</script>
 
-<script>
+  // ===================== INASISTENCIAS =====================
   function mostrarInasistencias() {
-    const itemsDiv = document.querySelector(".items");
+    if (!PUEDE_INASISTENCIAS) {
+      alert("No tienes permiso para registrar inasistencias.");
+      return;
+    }
+
+    const itemsDiv = document.getElementById("asignacion-content");
 
     itemsDiv.innerHTML = `
       <div class="form-container">
@@ -836,7 +807,6 @@ if ($result) {
       </div>
     `;
 
-    // Cargar usuarios subordinados
     fetch("https://mobilitysolutionscorp.com/web/MS_get_usuarios.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -856,7 +826,6 @@ if ($result) {
       }
     });
 
-    // Guardar Inasistencia
     document.getElementById("formInasistencia").addEventListener("submit", function(e) {
       e.preventDefault();
 
@@ -886,24 +855,11 @@ if ($result) {
       });
     });
   }
-</script>
 
-<script>
-  function cancelarFormulario() {
-    if (confirm("¿Estás seguro de que deseas cancelar? Se perderán los datos ingresados.")) {
-      document.querySelector(".items").innerHTML = `
-        <div class="card ms-card shadow-sm">
-          <div class="card-body">
-            <p class="mb-1"><strong>Asignaciones</strong></p>
-            <p class="text-muted mb-0">
-              Selecciona una opción del menú lateral para registrar tareas, metas,
-              reconocimientos, quejas o inasistencias para tu equipo.
-            </p>
-          </div>
-        </div>
-      `;
-    }
-  }
+  // Cargar Tareas por default al entrar a la vista
+  document.addEventListener('DOMContentLoaded', function() {
+    mostrarTareas();
+  });
 </script>
 
 </body>
