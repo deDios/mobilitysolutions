@@ -66,7 +66,7 @@
     <link rel="shortcut icon" href="../Imagenes/movility.ico" />
     <link rel="stylesheet" href="../CSS/tareas_v2.css">
 
-    <!-- Bootstrap / fonts (alineado con otras vistas) -->
+    <!-- Bootstrap / fonts -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -101,7 +101,6 @@
                   <i class="fa fa-facebook"></i>
                 </a>
               </li>
-              <!-- Ajustado a Bootstrap 5 -->
               <li>
                 <a class="waves-effect waves-dark" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal2">
                   <i class="fa fa-map-marker"></i>
@@ -228,7 +227,7 @@
       </div>
     </section>
 
-    <!-- === Columna derecha: Detalle === -->
+    <!-- === Columna derecha: Detalle + Comentarios === -->
     <section class="detalle-section">
       <div class="detalle-card">
         <div class="detalle-header">
@@ -246,20 +245,43 @@
           <p><strong>Comentario:</strong> <span id="detalle-comentario"></span></p>
           <p><strong>Creado el:</strong> <span id="detalle-creado"></span></p>
         </div>
+
+        <!-- Sección de comentarios -->
+        <div class="comentarios-wrapper">
+          <div class="comentarios-header">
+            <h3>Comentarios</h3>
+            <small class="text-muted" id="comentarios-resumen"></small>
+          </div>
+          <div id="comentarios-lista" class="comentarios-lista">
+            <div class="comentarios-empty">
+              Selecciona una tarea para ver sus comentarios.
+            </div>
+          </div>
+          <form id="comentario-form" class="comentario-form">
+            <label for="comentario-texto" class="comentario-label">Agregar comentario</label>
+            <textarea id="comentario-texto" rows="3" placeholder="Escribe un comentario sobre la tarea..."></textarea>
+            <div class="d-flex justify-content-end">
+              <button type="submit" class="btn btn-sm btn-comentario">
+                <i class="fa fa-commenting-o me-1"></i> Guardar comentario
+              </button>
+            </div>
+          </form>
+        </div>
+
       </div>
     </section>
   </div>
 </div>
 
-<!-- ================== JS: Carga, días transcurridos y drag & drop ================== -->
+<!-- ================== JS: Carga, selección, comentarios y drag & drop ================== -->
 <script>
   const userId = <?php echo isset($_SESSION['user_id']) ? intval($_SESSION['user_id']) : 0; ?>;
+  let tareaSeleccionadaId = null;
 
   // 📌 Calcula días transcurridos desde created_at (YYYY-MM-DD HH:MM:SS)
   function calcularDiasDesde(fechaStr) {
     if (!fechaStr) return null;
 
-    // Tomamos solo la parte de fecha
     const partes = fechaStr.replace('T', ' ').split(' ');
     const fechaPart = partes[0] || '';
     const [y, m, d] = fechaPart.split('-').map(Number);
@@ -279,6 +301,125 @@
     return Math.floor(diffMs / (1000 * 60 * 60 * 24));
   }
 
+  // ===================== COMENTARIOS: RENDER Y CARGA =====================
+  function renderComentarios(data){
+    const cont = document.getElementById('comentarios-lista');
+    const resumen = document.getElementById('comentarios-resumen');
+    if (!cont) return;
+
+    cont.innerHTML = '';
+
+    if (!data || !data.success) {
+      cont.innerHTML = '<div class="comentarios-empty">No se pudieron cargar los comentarios.</div>';
+      if (resumen) resumen.textContent = '';
+      return;
+    }
+
+    const comentarios = data.comentarios || [];
+
+    if (resumen){
+      resumen.textContent = comentarios.length
+        ? `${comentarios.length} comentario${comentarios.length === 1 ? '' : 's'}`
+        : 'Sin comentarios';
+    }
+
+    if (!comentarios.length){
+      cont.innerHTML = '<div class="comentarios-empty">Sin comentarios todavía. Escribe el primero.</div>';
+      return;
+    }
+
+    comentarios.forEach(c => {
+      const item = document.createElement('div');
+      item.className = 'comentario-item';
+
+      const nombre = (c.nombre_usuario && c.nombre_usuario.trim())
+        ? c.nombre_usuario
+        : `Usuario ${c.usuario_id}`;
+
+      const fecha = c.created_at ? c.created_at : '';
+
+      item.innerHTML = `
+        <div class="comentario-item-header">
+          <span class="comentario-user">${nombre}</span>
+          <span class="comentario-date">${fecha}</span>
+        </div>
+        <div class="comentario-body">${(c.comentario || '').replace(/\n/g,'<br>')}</div>
+      `;
+      cont.appendChild(item);
+    });
+  }
+
+  function cargarComentarios(tareaId){
+    const cont = document.getElementById('comentarios-lista');
+    const resumen = document.getElementById('comentarios-resumen');
+    if (!cont) return;
+
+    if (!tareaId){
+      cont.innerHTML = '<div class="comentarios-empty">Selecciona una tarea para ver sus comentarios.</div>';
+      if (resumen) resumen.textContent = '';
+      return;
+    }
+
+    cont.innerHTML = '<div class="comentarios-empty">Cargando comentarios...</div>';
+    if (resumen) resumen.textContent = '';
+
+    fetch(`https://mobilitysolutionscorp.com/web/MS_c_tarea_comentario.php?tarea_id=${tareaId}`)
+      .then(res => res.json())
+      .then(data => renderComentarios(data))
+      .catch(err => {
+        console.error('Error al cargar comentarios:', err);
+        cont.innerHTML = '<div class="comentarios-empty">Error al cargar comentarios.</div>';
+        if (resumen) resumen.textContent = '';
+      });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('comentario-form');
+    const textarea = document.getElementById('comentario-texto');
+
+    if (form && textarea){
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const texto = textarea.value.trim();
+
+        if (!tareaSeleccionadaId){
+          alert('Selecciona una tarea antes de agregar un comentario.');
+          return;
+        }
+        if (!texto){
+          return;
+        }
+
+        fetch('https://mobilitysolutionscorp.com/web/MS_i_tarea_comentario.php', {
+          method: 'POST',
+          headers: { 'Content-Type':'application/json' },
+          body: JSON.stringify({
+            tarea_id: tareaSeleccionadaId,
+            usuario_id: userId,
+            comentario: texto
+          })
+        })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success){
+            textarea.value = '';
+            cargarComentarios(tareaSeleccionadaId);
+          } else {
+            alert('No se pudo guardar el comentario: ' + (data.message || ''));
+          }
+        })
+        .catch(err => {
+          console.error('Error al guardar comentario:', err);
+          alert('Error al guardar el comentario.');
+        });
+      });
+    }
+
+    // Estado inicial de comentarios
+    cargarComentarios(null);
+  });
+
+  // ===================== KANBAN: CARGA Y DRAG & DROP =====================
   if (userId > 0) {
     fetch(`https://mobilitysolutionscorp.com/web/MS_get_tareas.php?user_id=${userId}`)
       .then(res => res.json())
@@ -319,8 +460,13 @@
               ${diasHtml}
             `;
 
-            // Mostrar detalle al hacer clic
+            // Mostrar detalle y comentarios al hacer clic + marcar activa
             card.addEventListener("click", () => {
+              // Quitar selección previa y marcar esta
+              document.querySelectorAll('.task-card').forEach(c => c.classList.remove('active'));
+              card.classList.add('active');
+              tareaSeleccionadaId = tarea.id;
+
               const detalleBox   = document.getElementById("detalle-tarea");
               const placeholder  = document.getElementById("detalle-placeholder");
 
@@ -333,6 +479,9 @@
               document.getElementById("detalle-creador").textContent      = tarea.creado_por_nombre;
               document.getElementById("detalle-comentario").textContent   = tarea.comentario || 'N/A';
               document.getElementById("detalle-creado").textContent       = tarea.created_at;
+
+              // Cargar comentarios de esta tarea
+              cargarComentarios(tarea.id);
             });
 
             estados[tarea.status]?.appendChild(card);
@@ -360,7 +509,7 @@
               // Actualizar visualmente
               column.querySelector('.kanban-tasks').appendChild(draggedCard);
 
-              // Llamar al API para actualizar el status (misma lógica que ya tenías)
+              // Llamar al API para actualizar el status
               fetch('https://mobilitysolutionscorp.com/web/MS_update_tarea_status.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -376,7 +525,7 @@
             });
           });
 
-          // Eventos de arrastrar tarjeta (sin cambios de lógica)
+          // Eventos de arrastrar tarjeta
           document.addEventListener('dragstart', e => {
             if (e.target.classList.contains('task-card')) {
               e.target.classList.add('dragging');

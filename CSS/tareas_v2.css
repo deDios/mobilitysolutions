@@ -516,6 +516,17 @@ li {
   background:#fffbeb;
 }
 
+/* Tarjeta seleccionada (activo) */
+.task-card.active{
+  border-color:var(--brand);
+  background:#fffbeb;
+  box-shadow:0 3px 10px rgba(15,23,42,.16);
+}
+
+.task-card.active:hover{
+  transform:translateY(-1px);
+}
+
 /* Durante drag & drop */
 .task-card.dragging{
   opacity:.7;
@@ -582,6 +593,124 @@ li {
 
 .detalle-content.is-empty span{
   color:#9ca3af;
+}
+
+/* ======================= COMENTARIOS ======================= */
+
+.comentarios-wrapper{
+  margin-top:10px;
+  padding-top:10px;
+  border-top:1px solid #e5e7eb;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.comentarios-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+}
+
+.comentarios-header h3{
+  font-size:.9rem;
+  margin:0;
+  font-weight:600;
+  color:#111827;
+}
+
+.comentarios-lista{
+  max-height:220px;
+  overflow-y:auto;
+  border-radius:8px;
+  background:#f9fafb;
+  padding:8px;
+  border:1px solid #e5e7eb;
+  font-size:.8rem;
+}
+
+.comentarios-empty{
+  font-size:.8rem;
+  color:#9ca3af;
+}
+
+.comentario-item{
+  padding:6px 8px;
+  border-radius:6px;
+  background:#fff;
+  border:1px solid #e5e7eb;
+  margin-bottom:6px;
+}
+
+.comentario-item:last-child{
+  margin-bottom:0;
+}
+
+.comentario-item-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  font-size:.75rem;
+  margin-bottom:3px;
+}
+
+.comentario-user{
+  font-weight:600;
+  color:#111827;
+}
+
+.comentario-date{
+  color:#9ca3af;
+}
+
+.comentario-body{
+  color:#374151;
+  font-size:.8rem;
+}
+
+/* Formulario de nuevo comentario */
+.comentario-form{
+  margin-top:2px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.comentario-label{
+  font-size:.8rem;
+  font-weight:500;
+  color:#4b5563;
+}
+
+.comentario-form textarea{
+  resize:vertical;
+  min-height:60px;
+  max-height:160px;
+  border-radius:8px;
+  border:1px solid #d1d5db;
+  padding:6px 8px;
+  font-size:.8rem;
+}
+
+.comentario-form textarea:focus{
+  outline:none;
+  border-color:var(--brand);
+  box-shadow:0 0 0 1px rgba(255,192,10,.4);
+}
+
+.btn-comentario{
+  background:var(--brand);
+  color:#000;
+  font-weight:600;
+  border:none;
+  border-radius:999px;
+  padding:6px 14px;
+}
+
+.btn-comentario:hover{
+  filter:brightness(.96);
+  color:#000;
 }
 
 /* Responsive */
