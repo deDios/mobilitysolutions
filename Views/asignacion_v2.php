@@ -781,7 +781,7 @@ if ($result) {
     `;
 
     // Cargar usuarios subordinados
-    fetch("https://mobilitysolutionscorp.com/web/MS_get_usuarios.php", {
+    fetch("https://mobilitysolutionscorp.com/web/MS_get_usuarios_Q.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -855,7 +855,7 @@ if ($result) {
     `;
 
     // Cargar usuarios subordinados
-    fetch("https://mobilitysolutionscorp.com/web/MS_get_usuarios.php", {
+    fetch("https://mobilitysolutionscorp.com/web/MS_get_usuarios_Q.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
