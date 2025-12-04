@@ -476,22 +476,39 @@ li {
   transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease, background-color .12s ease;
 }
 
-.task-card h4{
-  font-size:.85rem;
+/* Título de la tarjeta */
+.task-card .task-title{
+  font-size:.8rem;        /* un poco más pequeño */
   margin:0 0 4px;
-  font-weight:600;
+  font-weight:600;        /* sigue en negritas */
   color:#111827;
 }
 
-.task-card p{
-  margin:0;
-  color:#4b5563;
+/* Contenedor de texto de asignado / reportado */
+.task-info{
+  margin-top:2px;
 }
 
-.task-card p strong{
+/* Cada línea (Asignado / Reportado) */
+.task-line{
+  margin:0 0 2px;
+}
+
+/* Etiqueta (Asignado a / Reportado por) */
+.task-label{
+  display:block;
+  font-size:.68rem;
   font-weight:600;
+  color:#6b7280;          /* gris suave */
+}
+
+/* Valor (nombre de la persona), más pequeño que el título */
+.task-value{
+  display:block;          /* salto de línea */
+  font-size:.7rem;
   color:#111827;
 }
+
 
 /* Bloque para los días transcurridos */
 .task-meta{

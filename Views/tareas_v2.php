@@ -454,11 +454,20 @@
             }
 
             card.innerHTML = `
-              <h4>${tarea.nombre}</h4>
-              <p><strong>Asignado a:</strong> ${tarea.asignado_nombre}</p>
-              <p><strong>Reportado por:</strong> ${tarea.creado_por_nombre}</p>
-              ${diasHtml}
+            <h4 class="task-title">${tarea.nombre}</h4>
+            <div class="task-info">
+                <p class="task-line">
+                <span class="task-label">Asignado a</span>
+                <span class="task-value">${tarea.asignado_nombre}</span>
+                </p>
+                <p class="task-line">
+                <span class="task-label">Reportado por</span>
+                <span class="task-value">${tarea.creado_por_nombre}</span>
+                </p>
+            </div>
+            ${diasHtml}
             `;
+
 
             // Mostrar detalle y comentarios al hacer clic + marcar activa
             card.addEventListener("click", () => {
