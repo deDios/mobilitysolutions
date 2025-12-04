@@ -12,6 +12,13 @@ if (!isset($_SESSION['username'])) {
 
 $inc = include "../db/Conexion.php";
 
+/**
+ * NUEVO:
+ * Flag para controlar la visibilidad de Quejas e Inasistencias
+ * Solo los user_id 1, 3 y 4 los verán en el menú.
+ */
+$mostrar_quejas_inasistencias = false;
+
 $query = 'select 
                 acc.user_id, 
                 acc.user_name, 
@@ -85,6 +92,13 @@ if ($result) {
                 $titulo_profesional = "Sin rol";
         }
     }
+
+    /**
+     * NUEVO:
+     * Solo estos user_id ven los módulos de Quejas e Inasistencias
+     * (IDs permitidos: 1, 3 y 4)
+     */
+    $mostrar_quejas_inasistencias = in_array((int)$user_id, [1, 3, 4], true);
 
     // Restricción de acceso (solo user_type >= 2)
     if ((int)$user_type < 2) {
@@ -249,6 +263,9 @@ if ($result) {
                 onclick="seleccionarMenu(this); mostrarReconocimientos();">
           <i class="fa fa-star me-2"></i> Reconocimientos
         </button>
+
+        <!-- NUEVO: Quejas e Inasistencias solo visibles si user_id es 1, 3 o 4 -->
+        <?php if ($mostrar_quejas_inasistencias): ?>
         <button type="button"
                 class="list-group-item list-group-item-action asignacion-menu-item"
                 onclick="seleccionarMenu(this); mostrarQuejas();">
@@ -259,6 +276,7 @@ if ($result) {
                 onclick="seleccionarMenu(this); mostrarInasistencias();">
           <i class="fa fa-clock-o me-2"></i> Inasistencias
         </button>
+        <?php endif; ?>
       </nav>
     </aside>
 
