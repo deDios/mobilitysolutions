@@ -490,7 +490,7 @@ li {
 
 .cake-count-badge {
     position: absolute;
-    top: 50%;
+    top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);  /* centra exacto al cupcake */   
     min-width: 10px;
