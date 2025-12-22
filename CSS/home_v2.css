@@ -11,6 +11,21 @@ body {
     background-color: #f3f4f6;
 }
 
+
+:root {
+    --nav-bg: #111827;
+
+    /* Amarillos principales */
+    --yellow-main:       #EAB308;  /* dorado/mostaza, menos chillante */
+    --yellow-main-hover: #CA8A04;  /* hover más oscuro */
+    --yellow-soft-bg:    #FEF9C3;  /* fondo muy suave */
+
+    /* Alerta / errores */
+    --red-main:    #B91C1C;  /* Quejas */
+    --orange-main: #C2410C;  /* Faltas */
+}
+
+
 /* Topbar superior */
 .topbar {
     background: #111827;
@@ -602,12 +617,20 @@ li {
     transform: scale(1.05);
     filter: brightness(1.05);
 }
+/* Mini-hex de Quejas y Faltas más arriba y con colores nuevos */
+.mini-hex.quejas,
+.mini-hex.inasistencias {
+    margin-top: -12px;           /* súbelos visualmente */
+}
+
+/* Colores específicos */
 .mini-hex.quejas {
-    background: #ef4444;
+    background: var(--red-main);
 }
 .mini-hex.inasistencias {
-    background: #ef4444;
+    background: var(--orange-main);
 }
+
 
 /* =========================
    GRÁFICAS
@@ -1205,6 +1228,43 @@ li {
     color: #6b7280;
     font-style: italic;
 }
+
+
+/* ===== Overrides de color para bajar el brillo ===== */
+
+/* Botón editar perfil */
+.edit-button {
+    background: var(--yellow-main);
+}
+.edit-button:hover {
+    background: var(--yellow-main-hover);
+}
+
+/* Circulito de tareas */
+.circulo-tareas {
+    background-color: var(--yellow-main);
+}
+
+/* Cupcake cumpleaños */
+.cake-icon {
+    background: var(--yellow-soft-bg);
+}
+.cake-count-badge {
+    background: var(--yellow-main);
+}
+
+/* Hexágonos grandes */
+.hex {
+    background: var(--yellow-main);
+}
+.hex:hover {
+    background-color: var(--yellow-main-hover);
+}
+.hex.active {
+    background-color: var(--yellow-main-hover) !important;
+    transform: scale(1.15); /* un poco menos grande para que no “grite” */
+}
+
 
 /* =========================
    RESPONSIVE
