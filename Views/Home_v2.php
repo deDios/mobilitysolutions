@@ -1038,7 +1038,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
-
 <!-- ========================== -->
 <!-- JS: RESUMEN MES ASESOR    -->
 <!-- ========================== -->
@@ -1074,15 +1073,22 @@ document.addEventListener("DOMContentLoaded", () => {
     'nuevo',
     'venta',
     'entrega',
-    'reconocimientos',  // sigue siendo la columna de sort
+    'reconocimientos',  // la columna Recon. ahora mostrará puntos
     'quejas',
     'faltas',
     'total'
   ];
   let headerIndicators = [];
 
-  // Cache: año -> { userId: totalReconocimientosAnuales }
+  // Cache: año -> { userId: puntosAnuales }
   const reconYearCache = {};
+
+  // Pesos del sistema de recompensas
+  const PTS_RECON   = 2;   // por cada reconocimiento
+  const PTS_VENTA   = 1;
+  const PTS_ENTREGA = 4;
+  const PTS_FALTA   = -2;
+  const PTS_QUEJA   = -3;
 
   function pad2(n){ return String(n).padStart(2,'0'); }
   function yyyymm(y,m){ return `${y}-${pad2(m+1)}`; }
@@ -1092,7 +1098,21 @@ document.addEventListener("DOMContentLoaded", () => {
     if (el) el.textContent = `${MES_NOMBRES[curMonth]} ${curYear}`;
   }
 
-  function getReconAnual(uid){
+  // Calcula los puntos del mes para una fila (mismo criterio que la barra de recompensas)
+  function computePuntosMes(row){
+    const v   = Number(row.venta)           || 0;
+    const e   = Number(row.entrega)         || 0;
+    const reC = Number(row.reconocimientos) || 0; // cantidad de reconocimientos, no puntos
+    const q   = Number(row.quejas)          || 0;
+    const f   = Number(row.faltas)          || 0;
+
+    const rePts = reC * PTS_RECON;
+    const pts = (e * PTS_ENTREGA) + (v * PTS_VENTA) + rePts
+              + (f * PTS_FALTA) + (q * PTS_QUEJA);
+    return pts;
+  }
+
+  function getPuntosAnuales(uid){
     const yearKey = String(curYear);
     const mapa = reconYearCache[yearKey] || {};
     const val = mapa[uid];
@@ -1112,8 +1132,8 @@ document.addEventListener("DOMContentLoaded", () => {
       return n + v + e;
     }
     if (key === 'reconocimientos'){
-      // Para ordenar, usamos el valor mensual, no el anual
-      return Number(row.reconocimientos) || 0;
+      // Ordenamos por puntos del mes
+      return computePuntosMes(row);
     }
     return Number(row[key]) || 0;
   }
@@ -1164,7 +1184,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!tb) return;
     tb.innerHTML = '';
 
-    let sNuevo=0, sVenta=0, sEntrega=0, sRecon=0, sQuejas=0, sFaltas=0, sTotal=0;
+    let sNuevo=0, sVenta=0, sEntrega=0, sPtsMes=0, sQuejas=0, sFaltas=0, sTotal=0;
 
     if (!Array.isArray(rows) || rows.length === 0){
       const tr = document.createElement('tr');
@@ -1184,24 +1204,23 @@ document.addEventListener("DOMContentLoaded", () => {
         const n   = Number(r.nuevo)           || 0;
         const v   = Number(r.venta)           || 0;
         const e   = Number(r.entrega)         || 0;
-        const reM = Number(r.reconocimientos) || 0;              // MES
-        const reY = getReconAnual(uid);                          // AÑO (desde cache)
-
         const q   = Number(r.quejas)          || 0;
         const f   = Number(r.faltas)          || 0;
+
+        const ptsMes  = computePuntosMes(r);      // puntos del mes
+        const ptsAnio = getPuntosAnuales(uid);    // puntos acumulados del año
+
         const t   = Number(r.total) || (n+v+e);
 
-        // Totales: SOLO mes
-        sNuevo  += n;
-        sVenta  += v;
-        sEntrega+= e;
-        sRecon  += reM;
-        sQuejas += q;
-        sFaltas += f;
-        sTotal  += t;
+        sNuevo   += n;
+        sVenta   += v;
+        sEntrega += e;
+        sPtsMes  += ptsMes;
+        sQuejas  += q;
+        sFaltas  += f;
+        sTotal   += t;
 
-        // Texto mostrado en la columna de Recon.: mes/anio
-        const reconTexto = (reY && reY !== reM) ? `${reM}/${reY}` : `${reM}`;
+        const reconTexto = `${ptsMes}/${ptsAnio}`;
 
         const tr = document.createElement('tr');
         tr.innerHTML = `
@@ -1218,11 +1237,11 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // Pie de totales: reconocimiento = solo mes
+    // Pie de totales: Recon. = suma de puntos del mes
     if (tNuevo())   tNuevo().textContent   = sNuevo;
     if (tVenta())   tVenta().textContent   = sVenta;
     if (tEntrega()) tEntrega().textContent = sEntrega;
-    if (tRecon())   tRecon().textContent   = sRecon;
+    if (tRecon())   tRecon().textContent   = sPtsMes;
     if (tQuejas())  tQuejas().textContent  = sQuejas;
     if (tFaltas())  tFaltas().textContent  = sFaltas;
     if (tTotal())   tTotal().textContent   = sTotal;
@@ -1255,8 +1274,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Construye el total ANUAL de reconocimientos por usuario usando
-  // el mismo endpoint mes a mes (enero–diciembre) sin tocar el backend.
+  // Construye el total ANUAL de puntos por usuario (enero–diciembre)
+  // usando el MISMO endpoint mes a mes (sin modificar backend).
   async function buildReconAnual(year){
     const yearKey = String(year);
     if (reconYearCache[yearKey]) return reconYearCache[yearKey];
@@ -1270,8 +1289,13 @@ document.addEventListener("DOMContentLoaded", () => {
       rowsMes.forEach(r => {
         const uid = Number(r.id || r.user_id || 0);
         if (!uid) return;
-        const re = Number(r.reconocimientos) || 0;
-        acumulado[uid] = (acumulado[uid] || 0) + re;
+
+        const ptsMes = computePuntosMes(r);
+
+        if (!Object.prototype.hasOwnProperty.call(acumulado, uid)){
+          acumulado[uid] = 0;
+        }
+        acumulado[uid] += ptsMes;
       });
     }
 
@@ -1283,7 +1307,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const ym = yyyymm(curYear, curMonth);
     pintarMesLabel();
 
-    // Primero aseguramos que ya tengamos el total anual de ese año
+    // Primero aseguramos que ya tengamos los puntos anuales de ese año
     await buildReconAnual(curYear);
 
     // Luego cargamos el mes a mostrar
@@ -1345,6 +1369,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 })();
 </script>
+
 
 </body>
 </html>
