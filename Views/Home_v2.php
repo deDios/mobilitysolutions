@@ -113,9 +113,7 @@
         <ul class="navbar-nav ms-auto">
 
           <li class="nav-item active">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/Home.php">Inicio
-              <span class="sr-only">(current)</span>
-            </a>
+            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/Home.php">Inicio</a>
           </li>
 
           <li class="nav-item">
@@ -154,7 +152,7 @@
                 Hola, <?php echo $nombre . ' ' . $s_nombre . ' ' . $last_name; ?>
             </h1>
             <p class="home-subtitle">
-                Este es tu panel general: tareas, requerimientos, reconocimientos y métricas.
+                Panel general con: tareas, requerimientos, reconocimientos y métricas.
             </p>
         </div>
 
@@ -224,7 +222,7 @@
             <!-- TAREAS & CUMPLEAÑOS -->
             <article class="home-card card-activity">
                 <div class="card-header-row">
-                    <h2 class="card-title">Actividad personal</h2>
+                    <h2 class="card-title">Menú de actividades</h2>
                 </div>
 
                 <div class="activity-row">
@@ -254,7 +252,7 @@
             <!-- RESUMEN MENSUAL POR ASESOR (MOVIDO AQUÍ) -->
             <article class="home-card mes-actividad-card">
                 <div class="mes-actividad-head">
-                    <div class="mes-actividad-title">Actividad del mes por asesor</div>
+                    <div class="mes-actividad-title">Seguimiento del mes por asesor</div>
                     <div class="mes-actividad-controls">
                         <button id="mesPrev" type="button" class="mes-ctrl-btn" aria-label="Mes anterior">‹</button>
                         <span id="mesLabel" class="mes-actividad-label">—</span>
@@ -262,7 +260,7 @@
                     </div>
                 </div>
                 <div class="mes-actividad-subtle">
-                    Totales del mes seleccionado (considerando tu jerarquía).
+                    Totales del mes seleccionado (Con su jerarquía).
                 </div>
 
                 <div class="tabla-mes-wrap">
@@ -305,7 +303,7 @@
             <!-- MÉTRICAS PRINCIPALES -->
             <article class="home-card card-metrics">
                 <div class="card-header-row">
-                    <h2 class="card-title">Indicadores de requerimientos</h2>
+                    <h2 class="card-title">Indicadores</h2>
                     <p class="card-subtitle">
                         Totales del año actual · clic en cada hexágono para ver el detalle.
                     </p>
@@ -314,15 +312,15 @@
                 <div class="metrics-top">
                     <div class="hex-container">
                         <div class="hex" id="hex-nuevo">
-                            <span>Nuevo</span>
+                            <span>Nuevos</span>
                             <strong>0</strong>
                         </div>
                         <div class="hex" id="hex-reserva">
-                            <span>Venta</span>
+                            <span>Ventas</span>
                             <strong>0</strong>
                         </div>
                         <div class="hex" id="hex-entrega">
-                            <span>Entrega</span>
+                            <span>Entregas</span>
                             <strong>0</strong>
                         </div>
                     </div>
@@ -343,9 +341,8 @@
             <!-- GRÁFICAS -->
             <article class="home-card card-chart">
                 <div class="card-header-row">
-                    <h2 class="card-title">Evolución mensual</h2>
                     <p class="card-subtitle">
-                        Línea de tiempo por tipo de requerimiento y cumplimiento de meta.
+                        Cumplimiento vs target por selección.
                     </p>
                 </div>
 
