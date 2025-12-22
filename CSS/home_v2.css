@@ -617,10 +617,11 @@ li {
     transform: scale(1.05);
     filter: brightness(1.05);
 }
+
 /* Mini-hex de Quejas y Faltas más arriba y con colores nuevos */
 .mini-hex.quejas,
 .mini-hex.inasistencias {
-    margin-top: -12px;           /* súbelos visualmente */
+    margin-top: -20px;           /* súbelos visualmente */
 }
 
 /* Colores específicos */
