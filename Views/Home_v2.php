@@ -84,65 +84,64 @@
 
 <body>
 <div class="fixed-top">
-    <!-- TOPBAR -->
-    <header class="topbar">
-        <div class="container-fluid topbar-inner">
-            <div class="topbar-left">
-                <span class="topbar-text">
-                    <i class="fa fa-car"></i> Mobility Solutions · Portal interno
-                </span>
-            </div>
-            <div class="topbar-right">
-                <ul class="social-network">
-                    <li>
-                        <a class="waves-effect waves-dark"
-                           href="https://www.facebook.com/profile.php?id=61563909313215&mibextid=kFxxJD">
-                            <i class="fa fa-facebook"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="waves-effect waves-dark"
-                           href="#"
-                           data-bs-toggle="modal"
-                           data-bs-target="#exampleModal2">
-                            <i class="fa fa-map-marker"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="waves-effect waves-dark"
-                           href="https://mobilitysolutionscorp.com/db_consultas/cerrar_sesion.php">
-                            <i class="fa fa-sign-out"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </header>
+  <header class="topbar">
+      <div class="container">
+        <div class="row">
+          <!-- social icon-->
+          <div class="col-sm-12">
+            <ul class="social-network">
+              <li><a class="waves-effect waves-dark" href="https://www.facebook.com/profile.php?id=61563909313215&mibextid=kFxxJD"><i class="fa fa-facebook"></i></a></li>
+              
+              <li><a class="waves-effect waves-dark" href="" data-toggle="modal" data-target="#exampleModal2"><i class="fa fa-map-marker"></i></a></li>       
 
-    <!-- NAVBAR PRINCIPAL -->
-    <nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear">
-        <div class="container">
-            <a class="navbar-brand" href="#">Mobility Solutions: Home</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+              <li><a class="waves-effect waves-dark" href="https://mobilitysolutionscorp.com/db_consultas/cerrar_sesion.php"><i class="fa fa-sign-out"></i></a></li>
+            </ul>
+          </div>
 
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/Home.php">Inicio</a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="https://mobilitysolutionscorp.com/Views/edicion_catalogo.php">Catálogo</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://mobilitysolutionscorp.com/Views/requerimientos.php">Requerimientos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://mobilitysolutionscorp.com/Views/tareas.php">Tareas</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://mobilitysolutionscorp.com/Views/Autoriza.php">Aprobaciones</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://mobilitysolutionscorp.com/Views/asignacion.php">Asignaciones</a></li>
-                </ul>
-            </div>
         </div>
-    </nav>
+      </div>
+  </header>
+
+  <nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear">
+    <div class="container">
+      <a class="navbar-brand" rel="nofollow" target="_blank" href="#"> Mobility Solutions: Home</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+
+        <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item active">
+            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/Home.php">Inicio
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/edicion_catalogo.php">Catálogo</a>
+          </li>
+
+         <li class="nav-item">
+            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/requerimientos.php">Requerimientos</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/tareas.php">Tareas</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/Autoriza.php">Aprobaciones</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/asignacion.php">Asignaciones</a> 
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
 </div>
 
 <!-- CONTENIDO PRINCIPAL -->
