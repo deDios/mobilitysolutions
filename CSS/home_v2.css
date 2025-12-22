@@ -415,16 +415,16 @@ li {
     font-size: 0.85rem;
     font-weight: 600;
     border-radius: 999px;
-    background: #2563eb;
+    background: #FFC00A;
     color: #f9fafb;
     text-decoration: none;
     border: none;
 }
 .edit-button:hover {
-    background: #1d4ed8;
+    background: #d29e02;
     color: #fff;
 }
-
+ 
 /* =========================
    ACTIVIDAD PERSONAL
    ========================= */
@@ -448,7 +448,7 @@ li {
     width: 46px;
     height: 46px;
     border-radius: 50%;
-    background-color: #2563eb;
+    background-color: #FFC00A;
     color: #ffffff;
     display: flex;
     align-items: center;
@@ -497,7 +497,7 @@ li {
     height: 30px;
     padding: 0 8px;
     border-radius: 999px;
-    background: #2563eb;
+    background: #FFC00A;
     color: #ffffff;
     font-weight: 700;
     font-size: 0.8rem;
@@ -539,7 +539,7 @@ li {
 .hex {
     width: 120px;
     height: 104px;
-    background: #2563eb;
+    background: #FFC00A;
     clip-path: polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);
     display: flex;
     flex-direction: column;
@@ -560,12 +560,12 @@ li {
 }
 .hex:hover {
     transform: scale(1.05);
-    background-color: #1d4ed8;
+    background-color: #bc8e03;
     box-shadow: 0 7px 12px rgba(0,0,0,0.25);
 }
 .hex.active {
     transform: scale(1.08);
-    background-color: #16a34a !important;
+    background-color: #bc8e03 !important;
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
@@ -606,7 +606,7 @@ li {
     background: #ef4444;
 }
 .mini-hex.inasistencias {
-    background: #f97316;
+    background: #ef4444;
 }
 
 /* =========================

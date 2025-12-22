@@ -237,7 +237,7 @@
                             <img src="../Imagenes/cupcake.png" alt="Cumpleaños" class="cake-img">
                             <span id="cumple-count" class="cake-count-badge">0</span>
                         </div>
-                        <div class="texto-tareas">Cumpleaños del equipo</div>
+                        <div class="texto-tareas">Cumpleaños del equipo</div> 
                     </div>
 
                 </div>
