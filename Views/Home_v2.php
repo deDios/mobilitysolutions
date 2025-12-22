@@ -77,6 +77,8 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+
 
     <!-- Font Awesome -->
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -787,6 +789,11 @@ function initLineChart() {
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
 
+  // Registrar plugin de datalabels si está disponible
+  if (window.ChartDataLabels) {
+    try { Chart.register(window.ChartDataLabels); } catch (e) {}
+  }
+
   lineChart = new Chart(ctx, {
     type: 'bar',
     data: {
@@ -795,7 +802,7 @@ function initLineChart() {
         {
           label: 'Acumulado',
           data: Array(12).fill(0),
-          backgroundColor: '#EAB308',       // amarillo principal
+          backgroundColor: '#EAB308',              // amarillo principal
           borderRadius: 6,
           maxBarThickness: 26,
         },
@@ -827,6 +834,21 @@ function initLineChart() {
           enabled: true,
           mode: 'index',
           intersect: false
+        },
+        // AQUÍ configuramos que se vean los valores
+        datalabels: {
+          anchor: 'end',        // en la punta de la barra
+          align: 'top',         // un poco arriba
+          offset: 2,
+          color: '#111827',     // texto gris oscuro (combina con el NAV)
+          font: {
+            weight: '700',
+            size: 10
+          },
+          formatter: function(value) {
+            const v = Number(value);
+            return Number.isFinite(v) ? v : '';
+          }
         }
       },
       scales: {
