@@ -968,7 +968,7 @@ li {
 }
 .rewards-marker .label{
   position:absolute;
-  top:38px;
+  top:26px;
   left:50%;
   transform:translateX(-50%);
   white-space:nowrap;
