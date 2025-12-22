@@ -216,16 +216,6 @@
                     </div>
                 </div>
 
-                <div class="roles">
-                    <p class="roles-title">Roles activos</p>
-                    <ul>
-                        <?php if ($r_ejecutivo)   { echo "<li>Asesor(a)</li>"; } ?>
-                        <?php if ($r_editor)      { echo "<li>Maestro de catálogo</li>"; } ?>
-                        <?php if ($r_autorizador) { echo "<li>Supervisor(a)</li>"; } ?>
-                        <?php if ($r_analista)    { echo "<li>Analista</li>"; } ?>
-                    </ul>
-                </div>
-
                 <div class="edit-profile-wrapper">
                     <a href="#" class="edit-button" onclick="openModal()">Editar perfil</a>
                 </div>
