@@ -929,7 +929,7 @@ li {
   background: linear-gradient(90deg,#f3f4f6 0%, #eef2ff 100%);
   overflow: visible;
   box-shadow: inset 0 0 0 1px rgba(0,0,0,.08);
-  margin: 15px 0 64px;
+  margin: 12px 0 64px;
 }
 .rewards-fill{
   position:absolute;
@@ -968,7 +968,7 @@ li {
 }
 .rewards-marker .label{
   position:absolute;
-  top:30px;
+  top:25px;
   left:50%;
   transform:translateX(-50%);
   white-space:nowrap;
