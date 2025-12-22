@@ -564,7 +564,7 @@ li {
     box-shadow: 0 7px 12px rgba(0,0,0,0.25);
 }
 .hex.active {
-    transform: scale(1.08);
+    transform: scale(1.30);
     background-color: #bc8e03 !important;
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
