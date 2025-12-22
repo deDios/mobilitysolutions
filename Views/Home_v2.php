@@ -1059,9 +1059,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const start = new Date();
   let curYear  = start.getFullYear();
-  let curMonth = start.getMonth();
+  let curMonth = start.getMonth();         // 0 = Enero
 
-  const MES_NOMBRES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  const MES_NOMBRES = [
+    'Enero','Febrero','Marzo','Abril','Mayo','Junio',
+    'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'
+  ];
 
   let currentRows = [];
   let sortCol  = 'total';
@@ -1071,12 +1074,15 @@ document.addEventListener("DOMContentLoaded", () => {
     'nuevo',
     'venta',
     'entrega',
-    'reconocimientos',
+    'reconocimientos',  // sigue siendo la columna de sort
     'quejas',
     'faltas',
     'total'
   ];
   let headerIndicators = [];
+
+  // Cache: año -> { userId: totalReconocimientosAnuales }
+  const reconYearCache = {};
 
   function pad2(n){ return String(n).padStart(2,'0'); }
   function yyyymm(y,m){ return `${y}-${pad2(m+1)}`; }
@@ -1084,6 +1090,13 @@ document.addEventListener("DOMContentLoaded", () => {
   function pintarMesLabel(){
     const el = lbl();
     if (el) el.textContent = `${MES_NOMBRES[curMonth]} ${curYear}`;
+  }
+
+  function getReconAnual(uid){
+    const yearKey = String(curYear);
+    const mapa = reconYearCache[yearKey] || {};
+    const val = mapa[uid];
+    return typeof val === 'number' ? val : 0;
   }
 
   function getCellValue(row, key){
@@ -1097,6 +1110,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const v = Number(row.venta)  || 0;
       const e = Number(row.entrega)|| 0;
       return n + v + e;
+    }
+    if (key === 'reconocimientos'){
+      // Para ordenar, usamos el valor mensual, no el anual
+      return Number(row.reconocimientos) || 0;
     }
     return Number(row[key]) || 0;
   }
@@ -1143,7 +1160,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderTabla(rows){
-    const tb = tbody(); if (!tb) return;
+    const tb = tbody(); 
+    if (!tb) return;
     tb.innerHTML = '';
 
     let sNuevo=0, sVenta=0, sEntrega=0, sRecon=0, sQuejas=0, sFaltas=0, sTotal=0;
@@ -1161,15 +1179,29 @@ document.addEventListener("DOMContentLoaded", () => {
       rows.forEach(r=>{
         const nombre = r.nombre || ('Usuario ' + (r.id ?? ''));
         const rol    = r.rol || '';
-        const n  = Number(r.nuevo)           || 0;
-        const v  = Number(r.venta)           || 0;
-        const e  = Number(r.entrega)         || 0;
-        const re = Number(r.reconocimientos) || 0;
-        const q  = Number(r.quejas)          || 0;
-        const f  = Number(r.faltas)          || 0;
-        const t  = Number(r.total) || (n+v+e);
+        const uid    = Number(r.id || r.user_id || 0);
 
-        sNuevo+=n; sVenta+=v; sEntrega+=e; sRecon+=re; sQuejas+=q; sFaltas+=f; sTotal+=t;
+        const n   = Number(r.nuevo)           || 0;
+        const v   = Number(r.venta)           || 0;
+        const e   = Number(r.entrega)         || 0;
+        const reM = Number(r.reconocimientos) || 0;              // MES
+        const reY = getReconAnual(uid);                          // AÑO (desde cache)
+
+        const q   = Number(r.quejas)          || 0;
+        const f   = Number(r.faltas)          || 0;
+        const t   = Number(r.total) || (n+v+e);
+
+        // Totales: SOLO mes
+        sNuevo  += n;
+        sVenta  += v;
+        sEntrega+= e;
+        sRecon  += reM;
+        sQuejas += q;
+        sFaltas += f;
+        sTotal  += t;
+
+        // Texto mostrado en la columna de Recon.: mes/anio
+        const reconTexto = (reY && reY !== reM) ? `${reM}/${reY}` : `${reM}`;
 
         const tr = document.createElement('tr');
         tr.innerHTML = `
@@ -1177,7 +1209,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <td class="num"><span class="badge-mini">${n}</span></td>
           <td class="num"><span class="badge-mini">${v}</span></td>
           <td class="num"><span class="badge-mini badge-verde">${e}</span></td>
-          <td class="num"><span class="badge-mini">${re}</span></td>
+          <td class="num"><span class="badge-mini">${reconTexto}</span></td>
           <td class="num"><span class="badge-mini badge-rojo">${q}</span></td>
           <td class="num"><span class="badge-mini badge-ambar">${f}</span></td>
           <td class="num"><strong>${t}</strong></td>
@@ -1186,6 +1218,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
+    // Pie de totales: reconocimiento = solo mes
     if (tNuevo())   tNuevo().textContent   = sNuevo;
     if (tVenta())   tVenta().textContent   = sVenta;
     if (tEntrega()) tEntrega().textContent = sEntrega;
@@ -1195,6 +1228,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (tTotal())   tTotal().textContent   = sTotal;
   }
 
+  // Llamada al endpoint para un mes
   async function fetchResumen(yyyy_mm){
     try{
       const url = `https://mobilitysolutionscorp.com/web/MS_get_resumen_mes_asesores.php`;
@@ -1221,16 +1255,60 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // Construye el total ANUAL de reconocimientos por usuario usando
+  // el mismo endpoint mes a mes (enero–diciembre) sin tocar el backend.
+  async function buildReconAnual(year){
+    const yearKey = String(year);
+    if (reconYearCache[yearKey]) return reconYearCache[yearKey];
+
+    const acumulado = {};
+
+    for (let m = 0; m < 12; m++){
+      const ym = yyyymm(year, m);
+      const rowsMes = await fetchResumen(ym);
+
+      rowsMes.forEach(r => {
+        const uid = Number(r.id || r.user_id || 0);
+        if (!uid) return;
+        const re = Number(r.reconocimientos) || 0;
+        acumulado[uid] = (acumulado[uid] || 0) + re;
+      });
+    }
+
+    reconYearCache[yearKey] = acumulado;
+    return acumulado;
+  }
+
   async function cargarMes(){
     const ym = yyyymm(curYear, curMonth);
     pintarMesLabel();
+
+    // Primero aseguramos que ya tengamos el total anual de ese año
+    await buildReconAnual(curYear);
+
+    // Luego cargamos el mes a mostrar
     const rows = await fetchResumen(ym);
     currentRows = Array.isArray(rows) ? rows.slice() : [];
     applySortAndRender();
   }
 
-  function goPrev(){ curMonth--; if (curMonth < 0){ curMonth = 11; curYear--; } cargarMes(); }
-  function goNext(){ curMonth++; if (curMonth > 11){ curMonth = 0; curYear++; } cargarMes(); }
+  function goPrev(){
+    curMonth--;
+    if (curMonth < 0){
+      curMonth = 11;
+      curYear--;
+    }
+    cargarMes();
+  }
+
+  function goNext(){
+    curMonth++;
+    if (curMonth > 11){
+      curMonth = 0;
+      curYear++;
+    }
+    cargarMes();
+  }
 
   document.addEventListener('DOMContentLoaded', ()=>{
     const prev = document.getElementById('mesPrev');
@@ -1262,6 +1340,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
+    // Carga inicial
     cargarMes();
   });
 })();
