@@ -470,9 +470,9 @@ li {
 
 .cake-icon {
     position: relative;
-    width: 70px;          /* tamaño fijo del “botón” */
-    height: 70px;
-    border-radius: 50%;
+    width: 52px;          /* tamaño fijo del “botón” */
+    height: 52px;
+    border-radius: 10%;
     background: #fef3c7;  /* fondo clarito tipo pastel */
     display: flex;
     align-items: center;
