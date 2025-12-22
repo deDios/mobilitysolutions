@@ -333,12 +333,6 @@
 
             <!-- GRÁFICAS -->
             <article class="home-card card-chart">
-                <div class="card-header-row">
-                    <p class="card-subtitle">
-                        Cumplimiento vs TARGET.
-                    </p>
-                </div>
-
                 <div class="chart-wrapper">
                     <canvas id="lineChart"></canvas>
                     <canvas id="gaugeChart"></canvas>
@@ -779,70 +773,107 @@ const userType = <?php echo $user_type; ?>;
 
 let datosPorMes = [];
 let metasPorTipo = {
-  1: Array(12).fill(0),
-  2: Array(12).fill(0),
-  3: Array(12).fill(0),
+  1: Array(12).fill(0), // Nuevos
+  2: Array(12).fill(0), // Ventas
+  3: Array(12).fill(0), // Entregas
 };
 
 let totalNuevo = 0, totalReserva = 0, totalEntrega = 0;
-let lineChart = null;
+let lineChart = null;   // sigue llamándose lineChart, pero ahora es BAR chart
 
+/* --------- CHART: ahora de BARRAS --------- */
 function initLineChart() {
-  const ctx = document.getElementById('lineChart').getContext('2d');
+  const canvas = document.getElementById('lineChart');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
   lineChart = new Chart(ctx, {
-    type: 'line',
+    type: 'bar',
     data: {
       labels: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
       datasets: [
         {
-          label: 'Datos',
+          label: 'Acumulado',
           data: Array(12).fill(0),
-          borderWidth: 2,
-          fill: true,
-          tension: 0.3,
-          pointRadius: 4,
+          backgroundColor: '#EAB308',       // amarillo principal
+          borderRadius: 6,
+          maxBarThickness: 26,
         },
         {
           label: 'Meta',
           data: Array(12).fill(0),
-          borderWidth: 2,
-          fill: false,
-          tension: 0.3,
-          borderDash: [5, 5],
-          pointRadius: 3,
+          backgroundColor: 'rgba(31,41,55,0.35)', // gris oscuro suave
+          borderRadius: 6,
+          maxBarThickness: 26,
         }
       ]
     },
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      scales: { y: { beginAtZero: true, ticks: { stepSize: 5 } } },
+      interaction: {
+        mode: 'index',
+        intersect: false
+      },
       plugins: {
-        legend: { display: true, position: 'top' },
-        tooltip: { mode: 'index', intersect: false }
+        legend: {
+          display: true,
+          position: 'top',
+          labels: {
+            font: { size: 11 }
+          }
+        },
+        tooltip: {
+          enabled: true,
+          mode: 'index',
+          intersect: false
+        }
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          ticks: { font: { size: 11 } }
+        },
+        y: {
+          beginAtZero: true,
+          ticks: {
+            stepSize: 5,
+            font: { size: 11 }
+          },
+          grid: {
+            color: 'rgba(15,23,42,0.06)'
+          }
+        }
       }
     }
   });
 }
 
+/* Actualiza datos de la gráfica (ahora barras Acumulado vs Meta) */
 function actualizarGrafica(tipo) {
   if (!lineChart) return;
 
   const valores = datosPorMes.map(mes => toInt(mes[tipo]));
   const tipoMeta = { 'New': 1, 'Reserva': 2, 'Entrega': 3 }[tipo];
-  const metas = (metasPorTipo[tipoMeta] || Array(12).fill(0)).map(toInt);
-  const label = {
+  const metas    = (metasPorTipo[tipoMeta] || Array(12).fill(0)).map(toInt);
+
+  const labelActual = {
     'New': 'Nuevos por mes',
     'Reserva': 'Ventas por mes',
     'Entrega': 'Entregas por mes'
   }[tipo];
 
+  // Dataset 0 = Acumulado
   lineChart.data.datasets[0].data  = valores;
-  lineChart.data.datasets[0].label = label;
+  lineChart.data.datasets[0].label = labelActual;
+
+  // Dataset 1 = Meta
   lineChart.data.datasets[1].data  = metas;
-  lineChart.data.datasets[1].label = 'Meta';
+  // label "Meta" se mantiene
+
   lineChart.update();
 
+  // Marcar hexágono activo
   document.querySelectorAll('.hex').forEach(h => h.classList.remove('active'));
   const hexMap = { 'New': '#hex-nuevo', 'Reserva': '#hex-reserva', 'Entrega': '#hex-entrega' };
   const hexSel = hexMap[tipo];
@@ -852,6 +883,7 @@ function actualizarGrafica(tipo) {
   }
 }
 
+/* Gauge/KPI de Entregas (se queda igual, solo usa los totales) */
 function renderGaugeEntrega() {
   const wrap       = document.querySelector('.chart-wrapper');
   const lineCanvas = document.getElementById('lineChart');
@@ -902,18 +934,21 @@ function renderGaugeEntrega() {
   if (hexEntrega) hexEntrega.classList.add('active');
 }
 
+/* Mostrar barras (antes showLine) */
 function showLine(tipo) {
   const kpi = document.getElementById('entregaKPI');
   if (kpi) kpi.style.display = 'none';
 
   const gaugeCanvas = document.getElementById('gaugeChart');
-  const lineCanvas  = document.getElementById('lineChart');
+  const barCanvas   = document.getElementById('lineChart');
   if (gaugeCanvas) gaugeCanvas.style.display = 'none';
-  if (lineCanvas)  lineCanvas.style.display  = 'block';
+  if (barCanvas)   barCanvas.style.display   = 'block';
+
   if (!lineChart) initLineChart();
   actualizarGrafica(tipo);
 }
 
+/* Carga de datos, metas y wiring de hexágonos */
 document.addEventListener("DOMContentLoaded", () => {
   initLineChart();
 
@@ -921,7 +956,11 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(r => r.json())
     .then(data => {
       datosPorMes = Array.isArray(data) ? data : [];
-      totalNuevo = 0; totalReserva = 0; totalEntrega = 0;
+
+      totalNuevo = 0; 
+      totalReserva = 0; 
+      totalEntrega = 0;
+
       datosPorMes.forEach(mes => {
         totalNuevo   += toInt(mes.New);
         totalReserva += toInt(mes.Reserva);
@@ -938,7 +977,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (typeof window.renderRewards === 'function') window.renderRewards();
       }
 
+      // Vista inicial: Ventas por mes (barras)
       showLine('Reserva');
+
       return fetch('https://mobilitysolutionscorp.com/web/MS_get_metas_usuario.php?asignado=' + userId);
     })
     .then(r => r.json())
@@ -947,28 +988,34 @@ document.addEventListener("DOMContentLoaded", () => {
         data.metas.forEach(meta => {
           const t = toInt(meta.tipo_meta);
           metasPorTipo[t] = [
-            toInt(meta.enero), toInt(meta.febrero), toInt(meta.marzo),
-            toInt(meta.abril), toInt(meta.mayo), toInt(meta.junio),
-            toInt(meta.julio), toInt(meta.agosto), toInt(meta.septiembre),
-            toInt(meta.octubre), toInt(meta.noviembre), toInt(meta.diciembre)
+            toInt(meta.enero),      toInt(meta.febrero),   toInt(meta.marzo),
+            toInt(meta.abril),      toInt(meta.mayo),      toInt(meta.junio),
+            toInt(meta.julio),      toInt(meta.agosto),    toInt(meta.septiembre),
+            toInt(meta.octubre),    toInt(meta.noviembre), toInt(meta.diciembre)
           ];
         });
       }
 
       const gauge = document.getElementById('gaugeChart');
       const visible = gauge && getComputedStyle(gauge).display !== 'none';
-      if (visible) renderGaugeEntrega(); else showLine('Reserva');
+      if (visible) {
+        renderGaugeEntrega();
+      } else {
+        showLine('Reserva');
+      }
     })
     .catch(err => console.error('Error al obtener datos/metas:', err));
 
   const hexN = document.getElementById('hex-nuevo');
   const hexR = document.getElementById('hex-reserva');
   const hexE = document.getElementById('hex-entrega');
-  if (hexN) hexN.addEventListener('click', () => showLine('New'));
-  if (hexR) hexR.addEventListener('click', () => showLine('Reserva'));
-  if (hexE) hexE.addEventListener('click', () => renderGaugeEntrega());
+
+  if (hexN) hexN.addEventListener('click', () => showLine('New'));      // barras Nuevos vs Meta
+  if (hexR) hexR.addEventListener('click', () => showLine('Reserva'));  // barras Ventas vs Meta
+  if (hexE) hexE.addEventListener('click', () => renderGaugeEntrega()); // KPI Entregas
 });
 </script>
+
 
 <!-- ========================== -->
 <!-- JS: RESUMEN MES ASESOR    -->
