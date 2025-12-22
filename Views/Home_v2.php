@@ -568,8 +568,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         <div class="rewards-legend">
           <span>
-            2 (Desempeño) · 2 (Seguimiento) · 2 (Innovación)<br>
-            1 (Ventas) · 4 (Entregas) · <span class="neg">-2 (Faltas)</span> · <span class="neg">-3 (Quejas)</span>
+            2 (Desempeño) · 2 (Seguimiento) <br> 
+            2 (Innovación) · 1 (Ventas) <br> 
+            4 (Entregas) <br> 
+            <span class="neg">-2 (Faltas)</span> · <span class="neg">-3 (Quejas)</span>
           </span>
           <span class="next" id="rewards-next">${textoSiguiente}</span>
         </div>
