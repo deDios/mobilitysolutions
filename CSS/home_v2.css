@@ -913,6 +913,7 @@ li {
   font-size: 0.98rem;
   font-weight: 700;
   color: #1f2937;
+  padding-bottom: 8px;
 }
 .rewards-stats {
   font-size: 0.85rem;
