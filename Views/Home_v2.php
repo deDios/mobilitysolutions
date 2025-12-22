@@ -1,64 +1,72 @@
 <?php
-    session_start();
+session_start();
 
-    if (!isset($_SESSION['username'])) {
-        echo ' 
-            <script>
-                alert("Es necesario hacer login, por favor ingrese sus credenciales") ;
-                window.location = "../views/login.php";
-            </script> ';
-        session_destroy();
-        die();
-    }
+if (!isset($_SESSION['username']) || !isset($_SESSION['user_id'])) {
+    echo '
+        <script>
+            alert("Es necesario hacer login, por favor ingrese sus credenciales");
+            window.location = "../views/login.php";
+        </script>';
+    session_destroy();
+    die();
+}
 
-    $inc = include "../db/Conexion.php";
+$inc = include "../db/Conexion.php";
 
-    // SIN sanitizar: se usa directamente el valor de sesión en el WHERE
-    $query = "SELECT 
-                acc.user_id, 
-                acc.user_name, 
-                acc.user_password, 
-                acc.user_type, 
-                acc.r_ejecutivo, 
-                acc.r_editor, 
-                acc.r_autorizador, 
-                acc.r_analista, 
-                us.user_name AS nombre, 
-                us.second_name AS s_nombre, 
-                us.last_name, 
-                us.email, 
-                us.cumpleaños, 
-                us.telefono
-            FROM mobility_solutions.tmx_acceso_usuario AS acc
-            LEFT JOIN mobility_solutions.tmx_usuario AS us
-                ON acc.user_id = us.id
-            WHERE acc.user_name = '" . $_SESSION['username'] . "';";
+$user_name = $_SESSION['username'];
+$user_id   = (int)$_SESSION['user_id'];  // TOMAMOS EL USER_ID DE LA SESIÓN, COMO EN TU CÓDIGO ORIGINAL
 
-    $result = mysqli_query($con, $query); 
+$query = "
+    SELECT 
+        acc.user_id,
+        acc.user_name,
+        acc.user_password,
+        acc.user_type,
+        acc.r_ejecutivo,
+        acc.r_editor,
+        acc.r_autorizador,
+        acc.r_analista,
+        us.user_name AS nombre,
+        us.second_name AS s_nombre,
+        us.last_name,
+        us.email,
+        us.cumpleaños,
+        us.telefono
+    FROM mobility_solutions.tmx_acceso_usuario acc
+    LEFT JOIN mobility_solutions.tmx_usuario us
+        ON acc.user_id = us.id
+    WHERE acc.user_id = $user_id
+    LIMIT 1;
+";
 
-    if ($result){ 
-        while($row = mysqli_fetch_assoc($result)){
-            $user_id       = $row['user_id'];
-            $user_name     = $row['user_name'];
-            $user_password = $row['user_password'];
-            $user_type     = $row['user_type'];
-            $r_ejecutivo   = $row['r_ejecutivo'];
-            $r_editor      = $row['r_editor'];
-            $r_autorizador = $row['r_autorizador'];
-            $r_analista    = $row['r_analista'];
-            $nombre        = $row['nombre'];
-            $s_nombre      = $row['s_nombre'];
-            $last_name     = $row['last_name'];
-            $email         = $row['email'];
-            $cumpleaños    = $row['cumpleaños'];
-            $telefono      = $row['telefono'];
-        }
-    } else {
-        echo 'Falla en conexión.';
-    }
+$result = mysqli_query($con, $query);
 
-    date_default_timezone_set('America/Mexico_City');
-    $hora_actual = date('h:i A');
+if ($result && mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+
+    $user_name_db  = $row['user_name'];      // por si difiere de la sesión
+    $user_password = $row['user_password'];
+    $user_type     = (int)$row['user_type'];
+
+    $r_ejecutivo   = (int)$row['r_ejecutivo'];
+    $r_editor      = (int)$row['r_editor'];
+    $r_autorizador = (int)$row['r_autorizador'];
+    $r_analista    = (int)$row['r_analista'];
+
+    $nombre     = $row['nombre'];
+    $s_nombre   = $row['s_nombre'];
+    $last_name  = $row['last_name'];
+    $email      = $row['email'];
+    $cumpleanos = $row['cumpleaños'];
+    $telefono   = $row['telefono'];
+
+} else {
+    echo 'Falla en conexión o usuario no encontrado.';
+    die();
+}
+
+date_default_timezone_set('America/Mexico_City');
+$hora_actual = date('h:i A');
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -68,39 +76,66 @@
     <link rel="shortcut icon" href="../Imagenes/movility.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- CSS principal del sitio -->
-    <link rel="stylesheet" href="../CSS/home_v2.css">
+    <!-- CSS específico de Home -->
+    <link rel="stylesheet" href="../CSS/home.css">
 
     <!-- Bootstrap / jQuery / Chart.js -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Font Awesome -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
 <div class="fixed-top">
+    <!-- TOPBAR -->
     <header class="topbar">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <ul class="social-network">
-                        <li><a class="waves-effect waves-dark" href="https://www.facebook.com/profile.php?id=61563909313215&mibextid=kFxxJD"><i class="fa fa-facebook"></i></a></li>
-                        <li><a class="waves-effect waves-dark" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal2"><i class="fa fa-map-marker"></i></a></li>
-                        <li><a class="waves-effect waves-dark" href="https://mobilitysolutionscorp.com/db_consultas/cerrar_sesion.php"><i class="fa fa-sign-out"></i></a></li>
-                    </ul>
-                </div>
+        <div class="container-fluid topbar-inner">
+            <div class="topbar-left">
+                <span class="topbar-text">
+                    <i class="fa fa-car"></i> Mobility Solutions · Portal interno
+                </span>
+            </div>
+            <div class="topbar-right">
+                <ul class="social-network">
+                    <li>
+                        <a class="waves-effect waves-dark"
+                           href="https://www.facebook.com/profile.php?id=61563909313215&mibextid=kFxxJD">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="waves-effect waves-dark"
+                           href="#"
+                           data-bs-toggle="modal"
+                           data-bs-target="#exampleModal2">
+                            <i class="fa fa-map-marker"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="waves-effect waves-dark"
+                           href="https://mobilitysolutionscorp.com/db_consultas/cerrar_sesion.php">
+                            <i class="fa fa-sign-out"></i>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </header>
 
+    <!-- NAVBAR PRINCIPAL -->
     <nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear">
         <div class="container">
             <a class="navbar-brand" href="#">Mobility Solutions: Home</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
+                    aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item active">
@@ -117,22 +152,31 @@
     </nav>
 </div>
 
-<main class="page-wrapper">
+<!-- CONTENIDO PRINCIPAL -->
+<main class="home-wrapper">
 
-    <!-- Encabezado tipo "requerimientos" -->
-    <section class="page-header-home">
-        <div class="page-header-left">
-            <h1 class="page-title">
-                Hola, <?php echo $nombre . ' ' . $s_nombre; ?>
+    <!-- ENCABEZADO TIPO REQUERIMIENTOS -->
+    <section class="home-header">
+        <div class="home-header-left">
+            <h1 class="home-title">
+                Hola, <?php echo $nombre . ' ' . $s_nombre . ' ' . $last_name; ?>
             </h1>
-            <p class="page-subtitle">
-                Este es tu tablero de inicio: tareas, métricas y reconocimientos.
+            <p class="home-subtitle">
+                Este es tu panel general: tareas, requerimientos, reconocimientos y métricas.
             </p>
         </div>
-        <div class="page-header-right">
-            <div class="user-tag">
-                <span class="user-tag-name"><?php echo $user_name; ?></span>
-                <span class="user-tag-role">
+
+        <div class="home-header-right">
+            <div class="user-pill">
+                <div class="user-pill-main">
+                    <span class="user-pill-name">
+                        <?php echo $user_name_db ? $user_name_db : $user_name; ?>
+                    </span>
+                    <span class="user-pill-city">
+                        Morelia, Michoacán · <?php echo $hora_actual; ?>
+                    </span>
+                </div>
+                <div class="user-pill-roles">
                     <?php
                         $roles = [];
                         if ($r_ejecutivo)   $roles[] = "Asesor(a)";
@@ -141,25 +185,24 @@
                         if ($r_analista)    $roles[] = "Analista";
                         echo implode(" · ", $roles);
                     ?>
-                </span>
-                <span class="user-tag-time"><?php echo "Morelia, Michoacán · " . $hora_actual; ?></span>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Layout 2 columnas tipo requerimientos -->
-    <section class="page-layout">
-        <!-- Columna izquierda: perfil, tareas, contacto, actividad mes -->
-        <section class="page-column left-column">
+    <!-- LAYOUT 2 COLUMNAS (similar requerimientos: sidebar + contenido) -->
+    <section class="home-layout">
 
-            <!-- Perfil -->
-            <article class="card card-profile">
+        <!-- SIDEBAR IZQUIERDA -->
+        <aside class="home-sidebar">
+
+            <!-- PERFIL -->
+            <article class="home-card card-profile">
                 <div class="card-header-row">
                     <h2 class="card-title">Perfil</h2>
                 </div>
 
-                <div class="profile-header">
-                    <!-- Imagen de perfil con overlay de edición -->
+                <div class="profile-block">
                     <form id="uploadForm" action="../db_consultas/upload_photo.php" method="POST" enctype="multipart/form-data">
                         <label for="profilePicInput" class="profile-image-wrapper">
                             <img src="../Imagenes/Usuarios/<?php echo $user_id; ?>.jpg?<?php echo time(); ?>"
@@ -171,56 +214,24 @@
                         <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
                     </form>
 
-                    <div class="roles">
-                        <p class="roles-title">Roles activos</p>
-                        <ul>
-                            <?php if ($r_ejecutivo)   { echo "<li>Asesor(a)</li>"; } ?>
-                            <?php if ($r_editor)      { echo "<li>Maestro de catálogo</li>"; } ?>
-                            <?php if ($r_autorizador) { echo "<li>Supervisor(a)</li>"; } ?>
-                            <?php if ($r_analista)    { echo "<li>Analista</li>"; } ?>
-                        </ul>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Tareas + cumple -->
-            <article class="card card-activity">
-                <div class="card-header-row">
-                    <h2 class="card-title">Actividad personal</h2>
-                </div>
-
-                <div id="tareas-resumen" class="tareas-circulo">
-                    <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/tareas.php">
-                        <div class="circulo-tareas">
-                            <span id="cantidad-tareas">0</span>
+                    <div class="profile-meta">
+                        <div class="profile-name">
+                            <?php echo $nombre . ' ' . $s_nombre; ?>
                         </div>
-                    </a>
-                    <div class="texto-tareas">Tareas en curso</div>
-
-                    <!-- Pastel de cumpleaños -->
-                    <div class="cumple-cake-wrapper" id="cumpleTrigger" title="Cumpleaños este mes">
-                        <div class="cake-icon">
-                            <div class="cake-candle"><div class="candle-flame"></div></div>
-                            <div class="cake-layer">
-                                <span id="cumple-count">0</span>
-                            </div>
+                        <div class="profile-role-line">
+                            <?php echo implode(" · ", $roles); ?>
                         </div>
                     </div>
                 </div>
-            </article>
 
-            <!-- Contacto + botón editar -->
-            <article class="card card-contact">
-                <div class="card-header-row">
-                    <h2 class="card-title">Datos de contacto</h2>
-                </div>
-
-                <div class="profile-info">
-                    <p><strong>Username:</strong> <?php echo $user_name; ?></p>
-                    <p><strong>Email:</strong> <?php echo $email; ?></p>
-                    <p><strong>Fecha de Cumpleaños:</strong> <?php echo $cumpleaños; ?></p>
-                    <p><strong>Teléfono:</strong> <?php echo $telefono; ?></p>
-                    <p><strong>Tipo de Usuario:</strong> <?php echo $user_type; ?></p>
+                <div class="roles">
+                    <p class="roles-title">Roles activos</p>
+                    <ul>
+                        <?php if ($r_ejecutivo)   { echo "<li>Asesor(a)</li>"; } ?>
+                        <?php if ($r_editor)      { echo "<li>Maestro de catálogo</li>"; } ?>
+                        <?php if ($r_autorizador) { echo "<li>Supervisor(a)</li>"; } ?>
+                        <?php if ($r_analista)    { echo "<li>Analista</li>"; } ?>
+                    </ul>
                 </div>
 
                 <div class="edit-profile-wrapper">
@@ -228,113 +239,166 @@
                 </div>
             </article>
 
-            <!-- Actividad del mes (por asesor / jerarquía) -->
-            <article class="mes-actividad-card">
-                <div class="mes-actividad-head">
-                    <div class="mes-actividad-title">Actividad del mes</div>
-                    <div class="mes-actividad-controls">
-                        <button id="mesPrev" type="button" class="mes-ctrl-btn" aria-label="Mes anterior">‹</button>
-                        <span id="mesLabel" class="mes-actividad-label">—</span>
-                        <button id="mesNext" type="button" class="mes-ctrl-btn" aria-label="Mes siguiente">›</button>
-                    </div>
+            <!-- TAREAS & CUMPLEAÑOS -->
+            <article class="home-card card-activity">
+                <div class="card-header-row">
+                    <h2 class="card-title">Actividad personal</h2>
                 </div>
-                <div class="mes-actividad-subtle">Totales del mes seleccionado (por asesor)</div>
 
-                <div class="tabla-mes-wrap">
-                    <table id="tablaMes" class="tabla-mes">
-                        <thead>
-                        <tr>
-                            <th>Asesor</th>
-                            <th>Nuevo</th>
-                            <th>Venta</th>
-                            <th>Entrega</th>
-                            <th>Recon.</th>
-                            <th>Quejas</th>
-                            <th>Faltas</th>
-                            <th>Total</th>
-                        </tr>
-                        </thead>
-                        <tbody></tbody>
-                        <tfoot>
-                        <tr>
-                            <th>Total</th>
-                            <th id="tNuevo">0</th>
-                            <th id="tVenta">0</th>
-                            <th id="tEntrega">0</th>
-                            <th id="tRecon">0</th>
-                            <th id="tQuejas">0</th>
-                            <th id="tFaltas">0</th>
-                            <th id="tTotal">0</th>
-                        </tr>
-                        </tfoot>
-                    </table>
+                <div class="activity-row">
+                    <div class="activity-item">
+                        <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/tareas.php">
+                            <div class="circulo-tareas">
+                                <span id="cantidad-tareas">0</span>
+                            </div>
+                        </a>
+                        <div class="texto-tareas">Tareas en curso</div>
+                    </div>
+
+                    <div class="activity-item cumple-click" id="cumpleTrigger" title="Cumpleaños este mes">
+                        <div class="cake-icon">
+                            <div class="cake-candle">
+                                <div class="candle-flame"></div>
+                            </div>
+                            <div class="cake-layer">
+                                <span id="cumple-count">0</span>
+                            </div>
+                        </div>
+                        <div class="texto-tareas">Cumpleaños del equipo</div>
+                    </div>
                 </div>
             </article>
 
-        </section>
+            <!-- CONTACTO -->
+            <article class="home-card card-contact">
+                <div class="card-header-row">
+                    <h2 class="card-title">Datos de contacto</h2>
+                </div>
 
-        <!-- Columna derecha: hexágonos, gráficas, reconocimientos -->
-        <section class="page-column right-column">
+                <div class="profile-info">
+                    <p><strong>Username:</strong> <?php echo $user_name_db ? $user_name_db : $user_name; ?></p>
+                    <p><strong>Email:</strong> <?php echo $email; ?></p>
+                    <p><strong>Fecha de Cumpleaños:</strong> <?php echo $cumpleanos; ?></p>
+                    <p><strong>Teléfono:</strong> <?php echo $telefono; ?></p>
+                    <p><strong>Tipo de Usuario (ID):</strong> <?php echo $user_type; ?></p>
+                </div>
+            </article>
 
-            <!-- Métricas principales -->
-            <article class="card card-metrics">
+        </aside>
+
+        <!-- COLUMNA DERECHA (contenido principal estilo requerimientos) -->
+        <section class="home-main">
+
+            <!-- MÉTRICAS PRINCIPALES -->
+            <article class="home-card card-metrics">
                 <div class="card-header-row">
                     <h2 class="card-title">Indicadores de requerimientos</h2>
-                    <p class="card-subtitle">Haz clic en cada hexágono para ver su comportamiento mensual.</p>
+                    <p class="card-subtitle">
+                        Totales del año actual · clic en cada hexágono para ver el detalle.
+                    </p>
                 </div>
 
-                <div class="hex-container">
-                    <div class="hex" id="hex-nuevo">
-                        <span>Nuevo</span>
-                        <strong>0</strong>
+                <div class="metrics-top">
+                    <div class="hex-container">
+                        <div class="hex" id="hex-nuevo">
+                            <span>Nuevo</span>
+                            <strong>0</strong>
+                        </div>
+                        <div class="hex" id="hex-reserva">
+                            <span>Venta</span>
+                            <strong>0</strong>
+                        </div>
+                        <div class="hex" id="hex-entrega">
+                            <span>Entrega</span>
+                            <strong>0</strong>
+                        </div>
                     </div>
-                    <div class="hex" id="hex-reserva">
-                        <span>Venta</span>
-                        <strong>0</strong>
-                    </div>
-                    <div class="hex" id="hex-entrega">
-                        <span>Entrega</span>
-                        <strong>0</strong>
-                    </div>
-                </div>
 
-                <!-- Mini-hex (quejas / faltas) estilo panal -->
-                <div class="hex-honey">
-                    <a class="mini-hex quejas" href="https://mobilitysolutionscorp.com/Views/asignacion.php" title="Ver quejas">
-                        <span>Quejas</span>
-                        <strong id="hc-quejas">0</strong>
-                    </a>
-                    <a class="mini-hex inasistencias" href="https://mobilitysolutionscorp.com/Views/asignacion.php" title="Ver inasistencias">
-                        <span>Faltas</span>
-                        <strong id="hc-inasistencias">0</strong>
-                    </a>
+                    <div class="hex-honey">
+                        <a class="mini-hex quejas" href="https://mobilitysolutionscorp.com/Views/asignacion.php">
+                            <span>Quejas</span>
+                            <strong id="hc-quejas">0</strong>
+                        </a>
+                        <a class="mini-hex inasistencias" href="https://mobilitysolutionscorp.com/Views/asignacion.php">
+                            <span>Faltas</span>
+                            <strong id="hc-inasistencias">0</strong>
+                        </a>
+                    </div>
                 </div>
             </article>
 
-            <!-- Gráficas -->
-            <article class="card card-chart">
+            <!-- GRÁFICAS -->
+            <article class="home-card card-chart">
                 <div class="card-header-row">
                     <h2 class="card-title">Evolución mensual</h2>
+                    <p class="card-subtitle">
+                        Línea de tiempo por tipo de requerimiento y cumplimiento de meta.
+                    </p>
                 </div>
+
                 <div class="chart-wrapper">
                     <canvas id="lineChart"></canvas>
                     <canvas id="gaugeChart"></canvas>
                 </div>
             </article>
 
-            <!-- Reconocimientos + línea de recompensas -->
-            <section class="skills-section">
+            <!-- RESUMEN MENSUAL POR ASESOR -->
+            <article class="home-card mes-actividad-card">
+                <div class="mes-actividad-head">
+                    <div class="mes-actividad-title">Actividad del mes por asesor</div>
+                    <div class="mes-actividad-controls">
+                        <button id="mesPrev" type="button" class="mes-ctrl-btn" aria-label="Mes anterior">‹</button>
+                        <span id="mesLabel" class="mes-actividad-label">—</span>
+                        <button id="mesNext" type="button" class="mes-ctrl-btn" aria-label="Mes siguiente">›</button>
+                    </div>
+                </div>
+                <div class="mes-actividad-subtle">
+                    Totales del mes seleccionado (considerando tu jerarquía).
+                </div>
+
+                <div class="tabla-mes-wrap">
+                    <table id="tablaMes" class="tabla-mes">
+                        <thead>
+                            <tr>
+                                <th>Asesor</th>
+                                <th>Nuevo</th>
+                                <th>Venta</th>
+                                <th>Entrega</th>
+                                <th>Recon.</th>
+                                <th>Quejas</th>
+                                <th>Faltas</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Total</th>
+                                <th id="tNuevo">0</th>
+                                <th id="tVenta">0</th>
+                                <th id="tEntrega">0</th>
+                                <th id="tRecon">0</th>
+                                <th id="tQuejas">0</th>
+                                <th id="tFaltas">0</th>
+                                <th id="tTotal">0</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </article>
+
+            <!-- RECONOCIMIENTOS (se rellena por JS) -->
+            <section class="home-card skills-section">
                 <h2>Reconocimientos</h2>
                 <div id="reconocimientosWrapper" class="reconocimientos-wrapper">
                     <p class="placeholder">Aquí aparecerán los reconocimientos otorgados al usuario.</p>
                 </div>
             </section>
-
         </section>
     </section>
 </main>
 
-<!-- Modal edición perfil -->
+<!-- MODAL EDICIÓN PERFIL -->
 <div id="editModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
@@ -346,7 +410,7 @@
             <input type="email" name="email" value="<?php echo $email; ?>" required>
 
             <label>Fecha de Cumpleaños:</label>
-            <input type="date" name="cumpleanos" value="<?php echo $cumpleaños; ?>" required>
+            <input type="date" name="cumpleanos" value="<?php echo $cumpleanos; ?>" required>
 
             <label>Teléfono:</label>
             <input type="text" name="telefono" value="<?php echo $telefono; ?>" required>
@@ -356,7 +420,7 @@
     </div>
 </div>
 
-<!-- Modal de Cumpleaños -->
+<!-- MODAL CUMPLEAÑOS -->
 <div id="cumpleModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeCumpleModal()">&times;</span>
@@ -365,10 +429,10 @@
     </div>
 </div>
 
+<!-- ========================== -->
+<!-- JS: RECOMPENSAS / PUNTOS   -->
+<!-- ========================== -->
 <script>
-// ==========================
-// CONFIG RECOMPENSAS GLOBAL
-// ==========================
 window.rew = {
   quejas: 0,
   inasistencias: 0,
@@ -422,12 +486,12 @@ window.renderRewards = function () {
 };
 </script>
 
+<!-- ========================== -->
+<!-- JS: TAREAS EN CURSO       -->
+<!-- ========================== -->
 <script>
-// ==========================
-// TAREAS EN CURSO
-// ==========================
 document.addEventListener("DOMContentLoaded", () => {
-  const userId = <?php echo intval($user_id); ?>;
+  const userId = <?php echo $user_id; ?>;
 
   fetch(`https://mobilitysolutionscorp.com/web/MS_get_tareas.php?user_id=${userId}`)
     .then(res => res.json())
@@ -444,10 +508,10 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
+<!-- ========================== -->
+<!-- JS: MODAL PERFIL / CUMPLE -->
+<!-- ========================== -->
 <script>
-// ==========================
-// MODAL PERFIL (editar)
-// ==========================
 function openModal() {
     document.getElementById("editModal").style.display = "block";
 }
@@ -489,7 +553,6 @@ document.getElementById("editForm").addEventListener("submit", function(e) {
     });
 });
 
-// Cerrar modales al hacer click fuera
 window.onclick = function(event) {
     const modal       = document.getElementById("editModal");
     const cumpleModal = document.getElementById("cumpleModal");
@@ -498,12 +561,12 @@ window.onclick = function(event) {
 };
 </script>
 
+<!-- ========================== -->
+<!-- JS: RECONOCIMIENTOS       -->
+<!-- ========================== -->
 <script>
-// ==========================
-// RECONOCIMIENTOS + REWARDS
-// ==========================
 document.addEventListener("DOMContentLoaded", () => {
-  const userId = <?php echo intval($user_id); ?>;
+  const userId = <?php echo $user_id; ?>;
 
   fetch(`https://mobilitysolutionscorp.com/web/MS_get_reconocimientos.php?asignado=${userId}`)
     .then(response => response.json())
@@ -574,10 +637,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       window.renderRewards();
 
-      // Agrupar reconocimientos por tipo
       const NOMBRES_TIPO = { 1: "Desempeño", 2: "Seguimiento", 3: "Innovación" };
       const CLASE_TIPO   = { 1: "recono-desempeno", 2: "recono-liderazgo", 3: "recono-innovacion" };
-      const PUNTOS_TIPO  = { 1: 2, 2: 2, 3: 2 };
 
       const tiposOrden = [1, 2, 3];
       const grupos = { 1: [], 2: [], 3: [] };
@@ -592,7 +653,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       tiposOrden.forEach((tipo, idx) => {
         const items = grupos[tipo];
-        const totalPtsGrupo = items.length * (PUNTOS_TIPO[tipo] || 0);
+        const totalPtsGrupo = items.length * (puntosPorTipo[tipo] || 0);
 
         const card = document.createElement("div");
         card.className = "rec-group" + (idx === 0 ? " open" : "");
@@ -650,12 +711,12 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
+<!-- ========================== -->
+<!-- JS: QUEJAS / INASISTENCIAS -->
+<!-- ========================== -->
 <script>
-// ==========================
-// QUEJAS / INASISTENCIAS
-// ==========================
 document.addEventListener("DOMContentLoaded", () => {
-  const userId = <?php echo intval($user_id); ?>;
+  const userId = <?php echo $user_id; ?>;
 
   function actualizarContadores(selectores, count){
     (Array.isArray(selectores) ? selectores : [selectores]).forEach(sel=>{
@@ -701,10 +762,10 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
+<!-- ========================== -->
+<!-- JS: CUMPLEAÑEROS          -->
+<!-- ========================== -->
 <script>
-// ==========================
-// LISTA CUMPLEAÑEROS MES
-// ==========================
 document.addEventListener("DOMContentLoaded", () => {
   const pastelBtn = document.getElementById("cumpleTrigger");
   if (pastelBtn) pastelBtn.addEventListener("click", openCumpleModal);
@@ -749,14 +810,14 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
+<!-- ========================== -->
+<!-- JS: HEX / GRÁFICA / METAS -->
+<!-- ========================== -->
 <script>
-// ==========================
-// GRÁFICAS HEX / METAS
-// ==========================
 function toInt(v){ const n = Number(v); return Number.isFinite(n) ? n : 0; }
 
-const userId   = <?php echo intval($user_id); ?>;
-const userType = <?php echo intval($user_type); ?>;
+const userId   = <?php echo $user_id; ?>;
+const userType = <?php echo $user_type; ?>;
 
 let datosPorMes = [];
 let metasPorTipo = {
@@ -812,7 +873,11 @@ function actualizarGrafica(tipo) {
   const valores = datosPorMes.map(mes => toInt(mes[tipo]));
   const tipoMeta = { 'New': 1, 'Reserva': 2, 'Entrega': 3 }[tipo];
   const metas = (metasPorTipo[tipoMeta] || Array(12).fill(0)).map(toInt);
-  const label = { 'New': 'Nuevos por mes', 'Reserva': 'Ventas por mes', 'Entrega': 'Entregas por mes' }[tipo];
+  const label = {
+    'New': 'Nuevos por mes',
+    'Reserva': 'Ventas por mes',
+    'Entrega': 'Entregas por mes'
+  }[tipo];
 
   lineChart.data.datasets[0].data  = valores;
   lineChart.data.datasets[0].label = label;
@@ -947,13 +1012,13 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
+<!-- ========================== -->
+<!-- JS: RESUMEN MES ASESOR    -->
+<!-- ========================== -->
 <script>
-// ==========================
-// RESUMEN MENSUAL POR ASESOR
-// ==========================
 (function(){
-  const userId   = <?php echo intval($user_id); ?>;
-  const userType = <?php echo intval($user_type); ?>;
+  const userId   = <?php echo $user_id; ?>;
+  const userType = <?php echo $user_type; ?>;
 
   const lbl      = () => document.getElementById('mesLabel');
   const tbody    = () => document.querySelector('#tablaMes tbody');
@@ -1174,9 +1239,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 })();
 </script>
-
-<!-- Font Awesome (para iconos de topbar) -->
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 </body>
 </html>
