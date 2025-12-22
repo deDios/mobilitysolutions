@@ -1,5 +1,4 @@
 <?php
-
     session_start();
 
     if (!isset($_SESSION['username'])) {
@@ -14,7 +13,8 @@
 
     $inc = include "../db/Conexion.php";
 
-    $query = 'select 
+    // SIN sanitizar: se usa directamente el valor de sesión en el WHERE
+    $query = "SELECT 
                 acc.user_id, 
                 acc.user_name, 
                 acc.user_password, 
@@ -23,16 +23,16 @@
                 acc.r_editor, 
                 acc.r_autorizador, 
                 acc.r_analista, 
-                us.user_name as nombre, 
-                us.second_name as s_nombre, 
+                us.user_name AS nombre, 
+                us.second_name AS s_nombre, 
                 us.last_name, 
                 us.email, 
                 us.cumpleaños, 
                 us.telefono
-            from mobility_solutions.tmx_acceso_usuario  as acc
-            left join mobility_solutions.tmx_usuario as us
-                on acc.user_id = us.id
-            where acc.user_name = ' . $_SESSION['username'] . ';';
+            FROM mobility_solutions.tmx_acceso_usuario AS acc
+            LEFT JOIN mobility_solutions.tmx_usuario AS us
+                ON acc.user_id = us.id
+            WHERE acc.user_name = '" . $_SESSION['username'] . "';";
 
     $result = mysqli_query($con, $query); 
 
@@ -57,37 +57,318 @@
         echo 'Falla en conexión.';
     }
 
+    date_default_timezone_set('America/Mexico_City');
+    $hora_actual = date('h:i A');
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="shortcut icon" href="../Imagenes/movility.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS principal del sitio -->
     <link rel="stylesheet" href="../CSS/home_v2.css">
 
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Bootstrap / jQuery / Chart.js -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css" rel="stylesheet">
-
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- DataTable JS -->
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
- 
-    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+<div class="fixed-top">
+    <header class="topbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <ul class="social-network">
+                        <li><a class="waves-effect waves-dark" href="https://www.facebook.com/profile.php?id=61563909313215&mibextid=kFxxJD"><i class="fa fa-facebook"></i></a></li>
+                        <li><a class="waves-effect waves-dark" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal2"><i class="fa fa-map-marker"></i></a></li>
+                        <li><a class="waves-effect waves-dark" href="https://mobilitysolutionscorp.com/db_consultas/cerrar_sesion.php"><i class="fa fa-sign-out"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear">
+        <div class="container">
+            <a class="navbar-brand" href="#">Mobility Solutions: Home</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/Home.php">Inicio</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="https://mobilitysolutionscorp.com/Views/edicion_catalogo.php">Catálogo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://mobilitysolutionscorp.com/Views/requerimientos.php">Requerimientos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://mobilitysolutionscorp.com/Views/tareas.php">Tareas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://mobilitysolutionscorp.com/Views/Autoriza.php">Aprobaciones</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://mobilitysolutionscorp.com/Views/asignacion.php">Asignaciones</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<main class="page-wrapper">
+
+    <!-- Encabezado tipo "requerimientos" -->
+    <section class="page-header-home">
+        <div class="page-header-left">
+            <h1 class="page-title">
+                Hola, <?php echo $nombre . ' ' . $s_nombre; ?>
+            </h1>
+            <p class="page-subtitle">
+                Este es tu tablero de inicio: tareas, métricas y reconocimientos.
+            </p>
+        </div>
+        <div class="page-header-right">
+            <div class="user-tag">
+                <span class="user-tag-name"><?php echo $user_name; ?></span>
+                <span class="user-tag-role">
+                    <?php
+                        $roles = [];
+                        if ($r_ejecutivo)   $roles[] = "Asesor(a)";
+                        if ($r_editor)      $roles[] = "Maestro catálogo";
+                        if ($r_autorizador) $roles[] = "Supervisor(a)";
+                        if ($r_analista)    $roles[] = "Analista";
+                        echo implode(" · ", $roles);
+                    ?>
+                </span>
+                <span class="user-tag-time"><?php echo "Morelia, Michoacán · " . $hora_actual; ?></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Layout 2 columnas tipo requerimientos -->
+    <section class="page-layout">
+        <!-- Columna izquierda: perfil, tareas, contacto, actividad mes -->
+        <section class="page-column left-column">
+
+            <!-- Perfil -->
+            <article class="card card-profile">
+                <div class="card-header-row">
+                    <h2 class="card-title">Perfil</h2>
+                </div>
+
+                <div class="profile-header">
+                    <!-- Imagen de perfil con overlay de edición -->
+                    <form id="uploadForm" action="../db_consultas/upload_photo.php" method="POST" enctype="multipart/form-data">
+                        <label for="profilePicInput" class="profile-image-wrapper">
+                            <img src="../Imagenes/Usuarios/<?php echo $user_id; ?>.jpg?<?php echo time(); ?>"
+                                 alt="Foto de perfil" class="profile-image">
+                            <div class="edit-icon-overlay">✎</div>
+                        </label>
+                        <input type="file" id="profilePicInput" name="profilePic" style="display:none;"
+                               onchange="document.getElementById('uploadForm').submit();">
+                        <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
+                    </form>
+
+                    <div class="roles">
+                        <p class="roles-title">Roles activos</p>
+                        <ul>
+                            <?php if ($r_ejecutivo)   { echo "<li>Asesor(a)</li>"; } ?>
+                            <?php if ($r_editor)      { echo "<li>Maestro de catálogo</li>"; } ?>
+                            <?php if ($r_autorizador) { echo "<li>Supervisor(a)</li>"; } ?>
+                            <?php if ($r_analista)    { echo "<li>Analista</li>"; } ?>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Tareas + cumple -->
+            <article class="card card-activity">
+                <div class="card-header-row">
+                    <h2 class="card-title">Actividad personal</h2>
+                </div>
+
+                <div id="tareas-resumen" class="tareas-circulo">
+                    <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/tareas.php">
+                        <div class="circulo-tareas">
+                            <span id="cantidad-tareas">0</span>
+                        </div>
+                    </a>
+                    <div class="texto-tareas">Tareas en curso</div>
+
+                    <!-- Pastel de cumpleaños -->
+                    <div class="cumple-cake-wrapper" id="cumpleTrigger" title="Cumpleaños este mes">
+                        <div class="cake-icon">
+                            <div class="cake-candle"><div class="candle-flame"></div></div>
+                            <div class="cake-layer">
+                                <span id="cumple-count">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Contacto + botón editar -->
+            <article class="card card-contact">
+                <div class="card-header-row">
+                    <h2 class="card-title">Datos de contacto</h2>
+                </div>
+
+                <div class="profile-info">
+                    <p><strong>Username:</strong> <?php echo $user_name; ?></p>
+                    <p><strong>Email:</strong> <?php echo $email; ?></p>
+                    <p><strong>Fecha de Cumpleaños:</strong> <?php echo $cumpleaños; ?></p>
+                    <p><strong>Teléfono:</strong> <?php echo $telefono; ?></p>
+                    <p><strong>Tipo de Usuario:</strong> <?php echo $user_type; ?></p>
+                </div>
+
+                <div class="edit-profile-wrapper">
+                    <a href="#" class="edit-button" onclick="openModal()">Editar perfil</a>
+                </div>
+            </article>
+
+            <!-- Actividad del mes (por asesor / jerarquía) -->
+            <article class="mes-actividad-card">
+                <div class="mes-actividad-head">
+                    <div class="mes-actividad-title">Actividad del mes</div>
+                    <div class="mes-actividad-controls">
+                        <button id="mesPrev" type="button" class="mes-ctrl-btn" aria-label="Mes anterior">‹</button>
+                        <span id="mesLabel" class="mes-actividad-label">—</span>
+                        <button id="mesNext" type="button" class="mes-ctrl-btn" aria-label="Mes siguiente">›</button>
+                    </div>
+                </div>
+                <div class="mes-actividad-subtle">Totales del mes seleccionado (por asesor)</div>
+
+                <div class="tabla-mes-wrap">
+                    <table id="tablaMes" class="tabla-mes">
+                        <thead>
+                        <tr>
+                            <th>Asesor</th>
+                            <th>Nuevo</th>
+                            <th>Venta</th>
+                            <th>Entrega</th>
+                            <th>Recon.</th>
+                            <th>Quejas</th>
+                            <th>Faltas</th>
+                            <th>Total</th>
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                        <tfoot>
+                        <tr>
+                            <th>Total</th>
+                            <th id="tNuevo">0</th>
+                            <th id="tVenta">0</th>
+                            <th id="tEntrega">0</th>
+                            <th id="tRecon">0</th>
+                            <th id="tQuejas">0</th>
+                            <th id="tFaltas">0</th>
+                            <th id="tTotal">0</th>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- Columna derecha: hexágonos, gráficas, reconocimientos -->
+        <section class="page-column right-column">
+
+            <!-- Métricas principales -->
+            <article class="card card-metrics">
+                <div class="card-header-row">
+                    <h2 class="card-title">Indicadores de requerimientos</h2>
+                    <p class="card-subtitle">Haz clic en cada hexágono para ver su comportamiento mensual.</p>
+                </div>
+
+                <div class="hex-container">
+                    <div class="hex" id="hex-nuevo">
+                        <span>Nuevo</span>
+                        <strong>0</strong>
+                    </div>
+                    <div class="hex" id="hex-reserva">
+                        <span>Venta</span>
+                        <strong>0</strong>
+                    </div>
+                    <div class="hex" id="hex-entrega">
+                        <span>Entrega</span>
+                        <strong>0</strong>
+                    </div>
+                </div>
+
+                <!-- Mini-hex (quejas / faltas) estilo panal -->
+                <div class="hex-honey">
+                    <a class="mini-hex quejas" href="https://mobilitysolutionscorp.com/Views/asignacion.php" title="Ver quejas">
+                        <span>Quejas</span>
+                        <strong id="hc-quejas">0</strong>
+                    </a>
+                    <a class="mini-hex inasistencias" href="https://mobilitysolutionscorp.com/Views/asignacion.php" title="Ver inasistencias">
+                        <span>Faltas</span>
+                        <strong id="hc-inasistencias">0</strong>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Gráficas -->
+            <article class="card card-chart">
+                <div class="card-header-row">
+                    <h2 class="card-title">Evolución mensual</h2>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="lineChart"></canvas>
+                    <canvas id="gaugeChart"></canvas>
+                </div>
+            </article>
+
+            <!-- Reconocimientos + línea de recompensas -->
+            <section class="skills-section">
+                <h2>Reconocimientos</h2>
+                <div id="reconocimientosWrapper" class="reconocimientos-wrapper">
+                    <p class="placeholder">Aquí aparecerán los reconocimientos otorgados al usuario.</p>
+                </div>
+            </section>
+
+        </section>
+    </section>
+</main>
+
+<!-- Modal edición perfil -->
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Editar información</h2>
+        <form id="editForm">
+            <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
+
+            <label>Email:</label>
+            <input type="email" name="email" value="<?php echo $email; ?>" required>
+
+            <label>Fecha de Cumpleaños:</label>
+            <input type="date" name="cumpleanos" value="<?php echo $cumpleaños; ?>" required>
+
+            <label>Teléfono:</label>
+            <input type="text" name="telefono" value="<?php echo $telefono; ?>" required>
+
+            <button type="submit">Guardar cambios</button>
+        </form>
+    </div>
+</div>
+
+<!-- Modal de Cumpleaños -->
+<div id="cumpleModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeCumpleModal()">&times;</span>
+        <h2 id="cumpleTituloMes">Cumpleaños</h2>
+        <ul id="cumpleLista" class="cumple-lista"></ul>
+    </div>
+</div>
 
 <script>
-// === Recompensas basadas en indicadores (global) ===
+// ==========================
+// CONFIG RECOMPENSAS GLOBAL
+// ==========================
 window.rew = {
   quejas: 0,
   inasistencias: 0,
@@ -98,7 +379,6 @@ window.rew = {
   max: 100
 };
 
-// Calcula puntos aplicando fórmula y clamp 0..max (forzando a número)
 window.computeRewardPoints = function () {
   const entregas        = Number(window.rew.entregas)        || 0;
   const reservas        = Number(window.rew.reservas)        || 0;
@@ -111,18 +391,17 @@ window.computeRewardPoints = function () {
   return Math.max(0, Math.min(maxPts, raw));
 };
 
-// Actualiza UI del termómetro (número, barra, markers y “Siguiente:”)
 window.renderRewards = function () {
   const pts = window.computeRewardPoints();
   const maxPts = window.rew.max;
 
-  const fill = document.getElementById("rewards-fill");
-  const ptsEl = document.getElementById("pts-actuales");
-  const nextEl = document.getElementById("rewards-next");
+  const fill    = document.getElementById("rewards-fill");
+  const ptsEl   = document.getElementById("pts-actuales");
+  const nextEl  = document.getElementById("rewards-next");
   const markersWrap = document.getElementById("rewards-markers");
 
   if (ptsEl) ptsEl.textContent = pts;
-  if (fill)   fill.style.width = (pts / maxPts * 100) + "%";
+  if (fill)  fill.style.width = (pts / maxPts * 100) + "%";
 
   if (markersWrap && window.rew.metas) {
     const markers = markersWrap.children;
@@ -143,571 +422,10 @@ window.renderRewards = function () {
 };
 </script>
 
-<style>
-  /* --- Recompensas: barra horizontal y marcadores sobre la barra --- */
-  .rewards-wrapper{
-    background:#fff; border:1px solid #e9ecef; border-radius:12px; padding:14px 16px; 
-    margin-bottom:16px; box-shadow:0 2px 10px rgba(0,0,0,.04);
-  }
-  .rewards-head{display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:10px;}
-  .rewards-title{font-size:16px; font-weight:700; color:#1f2937;}
-  .rewards-stats{font-size:14px; color:#374151;}
-  .rewards-stats strong{font-weight:800;}
-
-  .rewards-bar{
-    position: relative !important;
-    width: 100%;
-    height: 14px;
-    border-radius: 999px;
-    background: linear-gradient(90deg,#f3f4f6 0%, #eef2ff 100%);
-    overflow: visible !important;
-    box-shadow: inset 0 0 0 1px rgba(0,0,0,.08);
-    margin: 40px 0 90px !important;
-  }
-  .rewards-fill{
-    position:absolute; inset:0 auto 0 0; width:0%;
-    border-radius:999px; background:linear-gradient(90deg,#60a5fa,#4f46e5);
-    transition: width .8s ease-in-out;
-  }
-
-  .rewards-markers{
-    position: absolute !important;
-    left: 0; right: 0; top: 0;
-    height: 0; pointer-events:none;
-  }
-
-  .rewards-marker{
-    position: absolute !important;
-    transform: translateX(-50%);
-    top: -12px;
-    width: 2px; height: 34px;
-    background: #cfd8ff;
-  }
-  .rewards-marker .dot{
-    position:absolute; top:-6px; left:50%; transform:translate(-50%,-50%);
-    width:12px; height:12px; border-radius:999px; background:#93c5fd;
-    border:2px solid #fff; box-shadow:0 0 0 2px #cfd8ff;
-  }
-  .rewards-marker .label{
-    position:absolute; top:58px; left:50%; transform:translateX(-50%);
-    white-space:nowrap; font-size:12px; font-weight:700; color:#374151;
-    background:#fff; padding:2px 8px; border-radius:999px;
-    box-shadow:0 1px 4px rgba(0,0,0,.05); border:1px solid #e5e7eb;
-  }
-
-  .rewards-marker.achieved{ background:#60a5fa; }
-  .rewards-marker.achieved .dot{ background:#10b981; box-shadow:0 0 0 2px #bbf7d0; }
-  .rewards-marker.achieved .label{ color:#065f46; border-color:#bbf7d0; background:#ecfdf5; }
-
-  .rewards-legend{display:flex; justify-content:space-between; margin-top:10px; font-size:12px; color:#6b7280;}
-  .rewards-legend .next{font-weight:700; color:#111827;}
-  .rewards-legend .neg { color:#ef4444; font-weight:600; }
-
-  /* === Acordeón de Reconocimientos por tipo === */
-  .rec-groups { margin-top: 8px; display: grid; gap: 10px; }
-
-  .rec-group {
-    background:#fff; border:1px solid #e5e7eb; border-radius:10px;
-    box-shadow:0 2px 6px rgba(0,0,0,.04); overflow: hidden;
-  }
-
-  .rec-group__header {
-    display:flex; align-items:center; justify-content:space-between;
-    padding:12px 14px; cursor:pointer; user-select:none;
-    background:#f9fafb;
-  }
-  .rec-group__left { display:flex; gap:10px; align-items:center; }
-  .rec-group__title {
-    font-weight:700; color:#111827; font-size:14px;
-  }
-  .rec-group__badge {
-    font-size:12px; background:#eef2ff; color:#3730a3; border-radius:999px;
-    padding:2px 8px; font-weight:700;
-  }
-  .rec-group__points { font-size:12px; color:#374151; }
-
-  .rec-group__chev {
-    transition: transform .2s ease;
-  }
-  .rec-group.open .rec-group__chev { transform: rotate(90deg); }
-
-  .rec-group__body {
-    display:none;
-    padding:12px;
-    background:#fff;
-  }
-  .rec-group.open .rec-group__body { display:block; }
-
-  .rec-grid {
-    display:flex; flex-wrap:wrap; gap:16px; justify-content:flex-start;
-  }
-
-  .rec-empty{
-    padding: 10px 4px;
-    font-size: 13px;
-    color: #6b7280;
-    font-style: italic;
-  }
-
-  .hex.active {
-    transform: scale(1.3);
-    background-color:rgb(0, 71, 122) !important;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  }
-
-  /* === Panal de mini-hex debajo de los hex grandes === */
-  .hex-honey{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap: 120px;
-    margin-top: -28px;
-    margin-bottom: 12px;
-  }
-
-  .mini-hex{
-    width: 90px;
-    height: 78px;
-    clip-path: polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    color:#fff;
-    font-weight:700;
-    text-align:center;
-    text-decoration:none;
-    box-shadow: 0 4px 8px rgba(0,0,0,.12);
-    transition: transform .15s ease, filter .15s ease;
-    user-select:none;
-  }
-
-  .mini-hex span{font-size:12px; line-height:1; opacity:.95; margin-bottom:2px;}
-  .mini-hex strong{font-size:16px; line-height:1;}
-
-  .mini-hex:hover{ transform: scale(1.05); filter: brightness(1.02); }
-
-  .mini-hex.quejas{ background:#ff6b6b; }
-  .mini-hex.inasistencias{ background:#ff6b6b; }
-
-  @media (max-width: 768px){
-    .hex-honey{
-      gap: 40px;
-      margin-top: 6px;
-    }
-    .mini-hex{ width:82px; height:70px; }
-  }
-
-  #lineChart{
-    display: block;
-    width: 100% !important;
-    height: 260px !important;
-  }
-
-  .chart-wrapper{ position: relative; }
-
-  #gaugeChart{
-    display: none;
-    width: 100%;
-    height: 300px;
-    aspect-ratio: 1 / 1;
-    transform: none !important;
-    -webkit-clip-path: none !important;
-    clip-path: none !important;
-  }
-
-  /* ===== KPI Entregas (versión compacta) ===== */
-  .entrega-kpi{
-    position: relative;
-    display: flex; align-items: center; justify-content: center;
-    gap: 12px; padding: 0; margin: 0 auto;
-    max-width: 620px;
-  }
-
-  .entrega-kpi .left{
-    display: flex; flex-direction: column; align-items: flex-end;
-    gap: 6px; min-width: 200px;
-  }
-
-  .entrega-kpi .num{
-    font: 700 clamp(22px,3.2vw,38px)/1 system-ui,-apple-system,Segoe UI,Roboto;
-    color: #111; text-shadow: 0 2px 5px rgba(0,0,0,.15);
-  }
-
-  .entrega-kpi .label{
-    font: 600 clamp(11px,1.3vw,15px)/1.1 system-ui,-apple-system,Segoe UI,Roboto;
-    color: #111;
-  }
-
-  .entrega-kpi .meta-wrap{
-    display: flex; flex-direction: column; align-items: flex-end;
-    gap: 6px;
-  }
-
-  .entrega-kpi .hline{
-    height: 4px;
-    width: clamp(110px, 14vw, 170px);
-    background: #0b7285;
-    border-radius: 4px;
-    box-shadow: 0 1px 2px rgba(0,0,0,.2);
-  }
-
-  .entrega-kpi .divider{
-    width: 6px; min-height: 120px;
-    background: #0b7285; border-radius: 6px;
-    box-shadow: inset 0 0 0 2px rgba(0,0,0,.12);
-  }
-
-  .entrega-kpi .right{ display: flex; align-items: center; gap: 6px; color:#111; }
-  .entrega-kpi .right .symbol{ font: 900 clamp(26px,4.2vw,48px)/1 system-ui; }
-  .entrega-kpi .right .pct{    font: 900 clamp(32px,5.8vw,72px)/1 system-ui; text-shadow:0 2px 6px rgba(0,0,0,.18); }
-
-  @media (max-width: 768px){
-    .entrega-kpi{ gap: 10px; max-width: 92%; }
-    .entrega-kpi .divider{ min-height: 110px; }
-  }
-
-  /* ===== Override modales personalizados (editar perfil y cumpleaños) ===== */
-  #editModal.modal,
-  #cumpleModal.modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    background-color: rgba(0,0,0,0.55);
-    padding: 40px 16px;
-    overflow-y: auto;
-  }
-
-  #editModal .modal-content,
-  #cumpleModal .modal-content {
-    background-color: #fff;
-    margin: 0 auto;
-    width: 100%;
-    max-width: 400px;
-    border-radius: 10px;
-    border: 1px solid #888;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-    padding: 24px 24px 20px;
-    position: relative;
-  }
-
-  #cumpleModal .modal-content h2,
-  #editModal .modal-content h2 {
-    margin-top: 0;
-    text-align: center;
-    font-size: 20px;
-    font-weight: 600;
-    color: #111;
-  }
-
-  #editModal .close,
-  #cumpleModal .close {
-    position: absolute;
-    right: 12px;
-    top: 10px;
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 1;
-    cursor: pointer;
-    color: #333;
-  }
-
-  #cumpleModal #cumpleLista {
-    list-style: none;
-    padding-left: 0;
-    margin-top: 16px;
-    max-height: 220px;
-    overflow-y: auto;
-    font-size: 14px;
-    line-height: 1.4;
-  }
-
-  #cumpleModal #cumpleLista li {
-    margin-bottom: 8px;
-  }
-</style>
-
-</head>
-
-<body>
-<div class="fixed-top">
-  <header class="topbar">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12">
-            <ul class="social-network">
-              <li><a class="waves-effect waves-dark" href="https://www.facebook.com/profile.php?id=61563909313215&mibextid=kFxxJD"><i class="fa fa-facebook"></i></a></li>
-              <li><a class="waves-effect waves-dark" href="" data-toggle="modal" data-target="#exampleModal2"><i class="fa fa-map-marker"></i></a></li>       
-              <li><a class="waves-effect waves-dark" href="https://mobilitysolutionscorp.com/db_consultas/cerrar_sesion.php"><i class="fa fa-sign-out"></i></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-  </header>
-
-  <nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear">
-    <div class="container">
-      <a class="navbar-brand" rel="nofollow" target="_blank" href="#"> Mobility Solutions: Home</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-
-          <li class="nav-item active">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/Home.php">Inicio
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/edicion_catalogo.php">Catálogo</a>
-          </li>
-
-         <li class="nav-item">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/requerimientos.php">Requerimientos</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/tareas.php">Tareas</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/Autoriza.php">Aprobaciones</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/asignacion.php">Asignaciones</a> 
-          </li>
-
-        </ul>
-      </div>
-    </div>
-  </nav>
-</div>
-
-<div class="flex-container">
-    <!-- Perfil izquierdo -->
-    <div class="container_1">
-        <h1><?php echo $nombre . ' ' . $s_nombre . ' ' . $last_name; ?></h1>
-
-        <div class="profile-header">
-            <!-- Imagen de perfil con formulario -->
-            <form id="uploadForm" action="../db_consultas/upload_photo.php" method="POST" enctype="multipart/form-data">
-                <label for="profilePicInput" class="profile-image-wrapper">
-                    <img src="../Imagenes/Usuarios/<?php echo $user_id; ?>.jpg?<?php echo time(); ?>" alt="Foto de perfil" class="profile-image" title="Haz clic para cambiar tu foto">
-                    <div class="edit-icon-overlay">
-                        ✎
-                    </div>
-                </label>
-                <input type="file" id="profilePicInput" name="profilePic" style="display: none;" onchange="document.getElementById('uploadForm').submit();">
-                <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
-            </form>
-
-            <!-- Información del rol -->
-            <div class="roles">
-                <p><strong>Roles Activos:</strong></p>
-                <ul>
-                    <?php if ($r_ejecutivo) { echo "<li>Asesor(a)</li>"; } ?>
-                    <?php if ($r_editor) { echo "<li>Maestro de catálogo</li>"; } ?>
-                    <?php if ($r_autorizador) { echo "<li>Supervisor(a)</li>"; } ?>
-                    <?php if ($r_analista) { echo "<li>Analista</li>"; } ?>
-                </ul>
-                <?php
-                    date_default_timezone_set('America/Mexico_City');
-                    $hora_actual = date('h:i A');
-                ?>
-                <p>Morelia Michoacán | <?php echo $hora_actual; ?>.</p>
-            </div>
-        </div>
-
-        <div id="tareas-resumen" class="tareas-circulo">
-          <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/tareas.php">
-            <div class="circulo-tareas">
-              <span id="cantidad-tareas">0</span>
-            </div>
-          </a>
-          <div class="texto-tareas">Tareas en curso</div>
-
-          <!-- pastel de cumpleaños -->
-          <div class="cumple-cake-wrapper" id="cumpleTrigger" title="Cumpleaños este mes">
-            <div class="cake-icon">
-              <div class="cake-candle">
-                <div class="candle-flame"></div>
-              </div>
-              <div class="cake-layer">
-                <span id="cumple-count">0</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Información de contacto -->
-        <div class="profile-info">
-            <p><small>Datos de contacto</small></p> <hr class="mt-2 mb-3"/>
-            <p><strong>Username:</strong> <?php echo $user_name; ?></p>
-            <p><strong>Email:</strong> <?php echo $email; ?></p>
-            <p><strong>Fecha de Cumpleaños:</strong> <?php echo $cumpleaños; ?></p>
-            <p><strong>Teléfono:</strong> <?php echo $telefono; ?></p>
-            <p><strong>Tipo de Usuario:</strong> <?php echo $user_type; ?></p>
-        </div>
-
-        <a href="#" class="edit-button" onclick="openModal()">Editar Perfil</a>
-
-        <!-- ====== Actividad del mes (por asesor) ====== -->
-        <div id="mesActividad" class="mes-actividad-card">
-          <div class="mes-actividad-head">
-            <div class="mes-actividad-title">Actividad del mes</div>
-            <div class="mes-actividad-controls">
-              <button id="mesPrev" type="button" class="mes-ctrl-btn" aria-label="Mes anterior">‹</button>
-              <span id="mesLabel" class="mes-actividad-label">—</span>
-              <button id="mesNext" type="button" class="mes-ctrl-btn" aria-label="Mes siguiente">›</button>
-            </div>
-          </div>
-
-          <div class="mes-actividad-subtle">Totales del mes seleccionado</div>
-
-          <div class="tabla-mes-wrap">
-            <table id="tablaMes" class="tabla-mes">
-              <thead>
-                <tr>
-                  <th>Asesor</th>
-                  <th>Nuevo</th>
-                  <th>Venta</th>
-                  <th>Entrega</th>
-                  <th>Recon.</th>
-                  <th>Quejas</th>
-                  <th>Faltas</th>
-                  <th>Total</th>
-                </tr>
-              </thead>
-              <tbody>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <th>Total</th>
-                  <th id="tNuevo">0</th>
-                  <th id="tVenta">0</th>
-                  <th id="tEntrega">0</th>
-                  <th id="tRecon">0</th>
-                  <th id="tQuejas">0</th>
-                  <th id="tFaltas">0</th>
-                  <th id="tTotal">0</th>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-        </div>
-        <!-- ====== /Actividad del mes ====== -->
-    </div>
-
-    <!-- Panel derecho con hexágonos -->
-    <div class="container_2">
-        <div class="hex-container">
-            <div class="hex" id="hex-nuevo">
-                <span>Nuevo</span>
-                <strong>0</strong>
-            </div>
-            <div class="hex" id="hex-reserva">
-                <span>Venta</span>
-                <strong>0</strong>
-            </div>
-            <div class="hex" id="hex-entrega">
-                <span>Entrega</span>
-                <strong>0</strong>
-            </div>
-        </div>
-
-        <!-- MINI-HEXs en panal (quejas / inasistencias) -->
-        <div class="hex-honey">
-          <a class="mini-hex quejas" href="https://mobilitysolutionscorp.com/Views/asignacion.php" title="Ver quejas">
-            <span>Quejas</span>
-            <strong id="hc-quejas">0</strong>
-          </a>
-
-          <a class="mini-hex inasistencias" href="https://mobilitysolutionscorp.com/Views/asignacion.php" title="Ver inasistencias">
-            <span>Faltas</span>
-            <strong id="hc-inasistencias">0</strong>
-          </a>
-        </div>
-
-        <div class="chart-wrapper">
-          <canvas id="lineChart"></canvas>
-          <canvas id="gaugeChart" style="display:none;"></canvas>
-        </div>
-
-        <!-- Sección de Reconocimientos / Skills -->
-        <div class="skills-section">
-            <h2>Reconocimientos</h2>
-            <div id="reconocimientosWrapper" class="reconocimientos-wrapper">
-                <p class="placeholder">Aquí aparecerán los reconocimientos otorgados al usuario.</p>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<!-- Modal de edición -->
-<div id="editModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h2>Editar Información</h2>
-        <form id="editForm">
-            <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
-
-            <label>Email:</label>
-            <input type="email" name="email" value="<?php echo $email; ?>" required>
-
-            <label>Fecha de Cumpleaños:</label>
-            <input type="date" name="cumpleanos" value="<?php echo $cumpleaños; ?>" required>
-
-            <label>Teléfono:</label>
-            <input type="text" name="telefono" value="<?php echo $telefono; ?>" required>
-
-            <button type="submit">Guardar Cambios</button>
-        </form>
-    </div>
-</div>
-
-<!-- Modal de Cumpleaños -->
-<div id="cumpleModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeCumpleModal()">&times;</span>
-    <h2 id="cumpleTituloMes">Cumpleaños</h2>
-    <ul id="cumpleLista" style="list-style:none; padding-left:0; max-height:250px; overflow-y:auto; margin-top:15px; font-size:14px; line-height:1.4;"></ul>
-  </div>
-</div>
-
 <script>
-// Texto en el centro de una doughnut (plugin de ejemplo, por si lo quieres usar más adelante)
-const centerTextPlugin = {
-  id: 'centerText',
-  afterDraw(chart, args, opts) {
-    const {ctx, chartArea} = chart;
-    if (!chartArea) return;
-    const x = (chartArea.left + chartArea.right) / 2;
-    const y = (chartArea.top + chartArea.bottom) / 2;
-
-    ctx.save();
-    ctx.font = '700 32px system-ui, -apple-system, Segoe UI, Roboto';
-    ctx.fillStyle = '#0f172a';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText(String(opts.text || ''), x, y);
-
-    if (opts.subtext) {
-      ctx.font = '600 12px system-ui, -apple-system, Segoe UI, Roboto';
-      ctx.fillStyle = '#64748b';
-      ctx.fillText(String(opts.subtext), x, y + 22);
-    }
-    ctx.restore();
-  }
-};
-</script>
-
-<script>
-// ====== TAREAS EN CURSO (solo tareas; cumpleaños se maneja en otro bloque) ======
+// ==========================
+// TAREAS EN CURSO
+// ==========================
 document.addEventListener("DOMContentLoaded", () => {
   const userId = <?php echo intval($user_id); ?>;
 
@@ -726,59 +444,64 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
-<!-- JavaScript para abrir/cerrar modal y enviar JSON -->
 <script>
-    function openModal() {
-        document.getElementById("editModal").style.display = "block";
-    }
+// ==========================
+// MODAL PERFIL (editar)
+// ==========================
+function openModal() {
+    document.getElementById("editModal").style.display = "block";
+}
+function closeModal() {
+    document.getElementById("editModal").style.display = "none";
+}
+function openCumpleModal() {
+    document.getElementById("cumpleModal").style.display = "block";
+}
+function closeCumpleModal() {
+    document.getElementById("cumpleModal").style.display = "none";
+}
 
-    function closeModal() {
-        document.getElementById("editModal").style.display = "none";
-    }
+document.getElementById("editForm").addEventListener("submit", function(e) {
+    e.preventDefault();
 
-    // Modal de cumple (lo usamos desde el pastel y el botón de cierre)
-    function openCumpleModal() {
-        document.getElementById("cumpleModal").style.display = "block";
-    }
+    const form = e.target;
+    const data = {
+        user_id: form.user_id.value,
+        email: form.email.value,
+        cumpleanos: form.cumpleanos.value,
+        telefono: form.telefono.value
+    };
 
-    function closeCumpleModal() {
-        document.getElementById("cumpleModal").style.display = "none";
-    }
-
-    // Enviar datos como JSON
-    document.getElementById("editForm").addEventListener("submit", function(e) {
-        e.preventDefault();
-
-        const form = e.target;
-        const data = {
-            user_id: form.user_id.value,
-            email: form.email.value,
-            cumpleanos: form.cumpleanos.value,
-            telefono: form.telefono.value
-        };
-
-        fetch("https://mobilitysolutionscorp.com/db_consultas/update_profile.php", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.text())
-        .then(result => {
-            alert(result);
-            closeModal();
-            location.reload();
-        })
-        .catch(error => {
-            console.error("Error:", error);
-            alert("Error al actualizar perfil");
-        });
+    fetch("https://mobilitysolutionscorp.com/db_consultas/update_profile.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.text())
+    .then(result => {
+        alert(result);
+        closeModal();
+        location.reload();
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("Error al actualizar perfil");
     });
+});
+
+// Cerrar modales al hacer click fuera
+window.onclick = function(event) {
+    const modal       = document.getElementById("editModal");
+    const cumpleModal = document.getElementById("cumpleModal");
+    if (event.target === modal)       modal.style.display = "none";
+    if (event.target === cumpleModal) cumpleModal.style.display = "none";
+};
 </script>
 
 <script>
-// ====== Reconocimientos y línea de recompensas ======
+// ==========================
+// RECONOCIMIENTOS + REWARDS
+// ==========================
 document.addEventListener("DOMContentLoaded", () => {
   const userId = <?php echo intval($user_id); ?>;
 
@@ -788,7 +511,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const contenedorSkills = document.querySelector(".skills-section");
       contenedorSkills.innerHTML = "<h2>Reconocimientos</h2>";
 
-      // Cálculo de puntos por tipo
       const puntosPorTipo = {1: 2, 2: 2, 3: 2};
       const lista = (data && Array.isArray(data.reconocimientos)) ? data.reconocimientos : [];
       const totalPuntos = lista.reduce((acc, item) => {
@@ -823,7 +545,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
 
         <div class="rewards-bar">
-          <div class="rewards-fill" id="rewards-fill" style="width:0%"></div>
+          <div class="rewards-fill" id="rewards-fill"></div>
           <div class="rewards-markers" id="rewards-markers"></div>
         </div>
 
@@ -899,11 +621,7 @@ document.addEventListener("DOMContentLoaded", () => {
           items.forEach(item => {
             const tile = document.createElement("div");
             tile.className = `reconocimiento-item ${CLASE_TIPO[tipo]}`;
-
-            if (item.descripcion) {
-              tile.setAttribute("title", item.descripcion);
-            }
-
+            if (item.descripcion) tile.setAttribute("title", item.descripcion);
             tile.innerHTML = `
               <div class="titulo">${item.reconocimiento}</div>
               <div class="fecha">${item.mes}/${item.anio}</div>
@@ -933,10 +651,112 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 <script>
-// === Utils para métricas por mes ===
+// ==========================
+// QUEJAS / INASISTENCIAS
+// ==========================
+document.addEventListener("DOMContentLoaded", () => {
+  const userId = <?php echo intval($user_id); ?>;
+
+  function actualizarContadores(selectores, count){
+    (Array.isArray(selectores) ? selectores : [selectores]).forEach(sel=>{
+      const el = document.querySelector(sel);
+      if (el) el.textContent = count;
+    });
+  }
+
+  function extraerConteo(respuesta, nombreArrayPosible) {
+    if (respuesta && typeof respuesta.count === 'number') return respuesta.count;
+    if (respuesta && Array.isArray(respuesta.rows)) return respuesta.rows.length;
+    if (respuesta && Array.isArray(respuesta[nombreArrayPosible])) return respuesta[nombreArrayPosible].length;
+    return 0;
+  }
+
+  fetch("https://mobilitysolutionscorp.com/web/MS_queja_get.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ usuario: userId })
+  })
+  .then(r => r.json())
+  .then(data => {
+    const count = extraerConteo(data, "quejas");
+    actualizarContadores(["#hc-quejas"], count);
+    window.rew.quejas = count;
+    window.renderRewards();
+  })
+  .catch(() => actualizarContadores(["#hc-quejas"], 0));
+
+  fetch("https://mobilitysolutionscorp.com/web/MS_inasistencia_get.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ usuario: userId })
+  })
+  .then(r => r.json())
+  .then(data => {
+    const count = extraerConteo(data, "inasistencias");
+    actualizarContadores(["#hc-inasistencias"], count);
+    window.rew.inasistencias = count;
+    window.renderRewards();
+  })
+  .catch(() => actualizarContadores(["#hc-inasistencias"], 0));
+});
+</script>
+
+<script>
+// ==========================
+// LISTA CUMPLEAÑEROS MES
+// ==========================
+document.addEventListener("DOMContentLoaded", () => {
+  const pastelBtn = document.getElementById("cumpleTrigger");
+  if (pastelBtn) pastelBtn.addEventListener("click", openCumpleModal);
+
+  fetch("https://mobilitysolutionscorp.com/web/MS_get_cumples_mes.php")
+    .then(res => res.json())
+    .then(data => {
+      const lista = (data && Array.isArray(data.cumpleaneros)) ? data.cumpleaneros : [];
+      const conteo = data.count || lista.length || 0;
+
+      const countEl = document.getElementById("cumple-count");
+      if (countEl) countEl.textContent = conteo;
+
+      const tituloMes = document.getElementById("cumpleTituloMes");
+      if (tituloMes && data.mes) {
+        tituloMes.textContent = "Cumpleaños de " + data.mes;
+      }
+
+      const ul = document.getElementById("cumpleLista");
+      if (ul) {
+        ul.innerHTML = "";
+        if (lista.length === 0) {
+          const li = document.createElement("li");
+          li.className = "cumple-empty";
+          li.textContent = "Sin cumpleaños este mes.";
+          ul.appendChild(li);
+        } else {
+          lista.forEach(p => {
+            const li = document.createElement("li");
+            li.textContent =
+              (p.nombre ? p.nombre : "Sin nombre") +
+              " — Día " +
+              (p.dia ? p.dia : "--");
+            ul.appendChild(li);
+          });
+        }
+      }
+    })
+    .catch(err => {
+      console.error("Error cumpleaños:", err);
+    });
+});
+</script>
+
+<script>
+// ==========================
+// GRÁFICAS HEX / METAS
+// ==========================
 function toInt(v){ const n = Number(v); return Number.isFinite(n) ? n : 0; }
 
-const userId = <?php echo intval($user_id); ?>;
+const userId   = <?php echo intval($user_id); ?>;
+const userType = <?php echo intval($user_type); ?>;
 
 let datosPorMes = [];
 let metasPorTipo = {
@@ -948,7 +768,6 @@ let metasPorTipo = {
 let totalNuevo = 0, totalReserva = 0, totalEntrega = 0;
 let lineChart = null;
 
-// Línea (Chart.js)
 function initLineChart() {
   const ctx = document.getElementById('lineChart').getContext('2d');
   lineChart = new Chart(ctx, {
@@ -959,24 +778,19 @@ function initLineChart() {
         {
           label: 'Datos',
           data: Array(12).fill(0),
-          borderColor: '#007bff',
-          backgroundColor: 'rgba(0, 123, 255, 0.2)',
           borderWidth: 2,
           fill: true,
           tension: 0.3,
           pointRadius: 4,
-          pointBackgroundColor: '#007bff',
         },
         {
           label: 'Meta',
           data: Array(12).fill(0),
-          borderColor: '#ff9900',
           borderWidth: 2,
           fill: false,
           tension: 0.3,
           borderDash: [5, 5],
           pointRadius: 3,
-          pointBackgroundColor: '#ff9900',
         }
       ]
     },
@@ -1016,7 +830,7 @@ function actualizarGrafica(tipo) {
 }
 
 function renderGaugeEntrega() {
-  const wrap = document.querySelector('.chart-wrapper');
+  const wrap       = document.querySelector('.chart-wrapper');
   const lineCanvas = document.getElementById('lineChart');
 
   if (lineCanvas) lineCanvas.style.display = 'none';
@@ -1040,9 +854,7 @@ function renderGaugeEntrega() {
         <div class="num" id="kpiEntregasNum">0</div>
         <div class="label">Entregas</div>
       </div>
-
       <div class="divider"></div>
-
       <div class="right">
         <span class="symbol">%</span>
         <span class="pct" id="kpiPct">0</span>
@@ -1079,7 +891,6 @@ function showLine(tipo) {
   actualizarGrafica(tipo);
 }
 
-// === FLUJO: inicializa y carga datos + metas ===
 document.addEventListener("DOMContentLoaded", () => {
   initLineChart();
 
@@ -1105,7 +916,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       showLine('Reserva');
-
       return fetch('https://mobilitysolutionscorp.com/web/MS_get_metas_usuario.php?asignado=' + userId);
     })
     .then(r => r.json())
@@ -1138,120 +948,9 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 <script>
-// Quejas / Inasistencias -> mini-hex + termómetro
-document.addEventListener("DOMContentLoaded", () => {
-  const userId = <?php echo intval($user_id); ?>;
-
-  function actualizarContadores(selectores, count){
-    (Array.isArray(selectores) ? selectores : [selectores]).forEach(sel=>{
-      const el = document.querySelector(sel);
-      if (el) el.textContent = count;
-    });
-  }
-
-  function extraerConteo(respuesta, nombreArrayPosible) {
-    if (respuesta && typeof respuesta.count === 'number') return respuesta.count;
-    if (respuesta && Array.isArray(respuesta.rows)) return respuesta.rows.length;
-    if (respuesta && Array.isArray(respuesta[nombreArrayPosible])) return respuesta[nombreArrayPosible].length;
-    return 0;
-  }
-
-  fetch("https://mobilitysolutionscorp.com/web/MS_queja_get.php", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ usuario: userId })
-  })
-  .then(r => r.json())
-  .then(data => {
-    const count = extraerConteo(data, "quejas");
-    actualizarContadores(["#cantidad-quejas", "#hc-quejas"], count);
-    window.rew.quejas = count;
-    window.renderRewards();
-  })
-  .catch(() => actualizarContadores(["#cantidad-quejas", "#hc-quejas"], 0));
-
-  fetch("https://mobilitysolutionscorp.com/web/MS_inasistencia_get.php", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ usuario: userId })
-  })
-  .then(r => r.json())
-  .then(data => {
-    const count = extraerConteo(data, "inasistencias");
-    actualizarContadores(["#cantidad-inasistencias", "#hc-inasistencias"], count);
-    window.rew.inasistencias = count;
-    window.renderRewards();
-  })
-  .catch(() => actualizarContadores(["#cantidad-inasistencias", "#hc-inasistencias"], 0));
-});
-</script>
-
-<script>
-// Click en el pastel de cumpleaños + cierre de modales + listado de cumpleañeros
-document.addEventListener("DOMContentLoaded", () => {
-  const pastelBtn = document.getElementById("cumpleTrigger");
-  if (pastelBtn) {
-    pastelBtn.addEventListener("click", openCumpleModal);
-  }
-});
-
-// Cerrar modales si hacen click afuera
-window.onclick = function(event) {
-    const modal = document.getElementById("editModal");
-    const cumpleModal = document.getElementById("cumpleModal");
-    if (event.target === modal) {
-        modal.style.display = "none";
-    }
-    if (event.target === cumpleModal) {
-        cumpleModal.style.display = "none";
-    }
-};
-
-// Fetch de cumpleañeros del mes
-document.addEventListener("DOMContentLoaded", () => {
-  fetch("https://mobilitysolutionscorp.com/web/MS_get_cumples_mes.php")
-    .then(res => res.json())
-    .then(data => {
-      const lista = (data && Array.isArray(data.cumpleaneros)) ? data.cumpleaneros : [];
-      const conteo = data.count || lista.length || 0;
-
-      const countEl = document.getElementById("cumple-count");
-      if (countEl) {
-        countEl.textContent = conteo;
-      }
-
-      const tituloMes = document.getElementById("cumpleTituloMes");
-      if (tituloMes && data.mes) {
-        tituloMes.textContent = "Cumpleaños de " + data.mes;
-      }
-
-      const ul = document.getElementById("cumpleLista");
-      if (ul) {
-        ul.innerHTML = "";
-        if (lista.length === 0) {
-          const li = document.createElement("li");
-          li.textContent = "Sin cumpleaños este mes.";
-          ul.appendChild(li);
-        } else {
-          lista.forEach(p => {
-            const li = document.createElement("li");
-            li.style.marginBottom = "8px";
-            li.textContent =
-              (p.nombre ? p.nombre : "Sin nombre") +
-              " — Día " +
-              (p.dia ? p.dia : "--");
-            ul.appendChild(li);
-          });
-        }
-      }
-    })
-    .catch(err => {
-      console.error("Error cumpleaños:", err);
-    });
-});
-</script>
-
-<script>
+// ==========================
+// RESUMEN MENSUAL POR ASESOR
+// ==========================
 (function(){
   const userId   = <?php echo intval($user_id); ?>;
   const userType = <?php echo intval($user_type); ?>;
@@ -1333,6 +1032,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     renderTabla(currentRows);
+    updateSortIndicators();
   }
 
   function updateSortIndicators(){
@@ -1435,7 +1135,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const rows = await fetchResumen(ym);
     currentRows = Array.isArray(rows) ? rows.slice() : [];
     applySortAndRender();
-    updateSortIndicators();
   }
 
   function goPrev(){ curMonth--; if (curMonth < 0){ curMonth = 11; curYear--; } cargarMes(); }
@@ -1468,7 +1167,6 @@ document.addEventListener("DOMContentLoaded", () => {
           sortDir = (key === 'nombre') ? 'asc' : 'desc';
         }
         applySortAndRender();
-        updateSortIndicators();
       });
     });
 
@@ -1477,9 +1175,8 @@ document.addEventListener("DOMContentLoaded", () => {
 })();
 </script>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3Z9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<!-- Font Awesome (para iconos de topbar) -->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 </body>
 </html>
