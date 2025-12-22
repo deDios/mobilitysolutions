@@ -289,7 +289,7 @@ li {
     margin: 0 auto;
     padding: 0 16px;
     display: grid;
-    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    grid-template-columns: 60% 40%;
     gap: 18px;
 }
 .home-sidebar {
