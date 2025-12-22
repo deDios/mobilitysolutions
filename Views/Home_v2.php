@@ -188,9 +188,6 @@
 
             <!-- PERFIL -->
             <article class="home-card card-profile">
-                <div class="card-header-row">
-                    <h2 class="card-title">Perfil</h2>
-                </div>
 
                 <div class="profile-block">
                     <form id="uploadForm" action="../db_consultas/upload_photo.php" method="POST" enctype="multipart/form-data">
@@ -303,7 +300,6 @@
             <!-- MÉTRICAS PRINCIPALES -->
             <article class="home-card card-metrics">
                 <div class="card-header-row">
-                    <h2 class="card-title">Indicadores</h2>
                     <p class="card-subtitle">
                         Totales del año actual · clic en cada hexágono para ver el detalle.
                     </p>
@@ -342,7 +338,7 @@
             <article class="home-card card-chart">
                 <div class="card-header-row">
                     <p class="card-subtitle">
-                        Cumplimiento vs target por selección.
+                        Cumplimiento vs TARGET.
                     </p>
                 </div>
 
