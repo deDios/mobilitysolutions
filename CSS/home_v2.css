@@ -1087,7 +1087,7 @@ ul.social-network li i {
       gap: 40px;
   }
 }
-
+ 
 @media (max-width: 576px) {
   .home-wrapper {
       padding-top: 96px;

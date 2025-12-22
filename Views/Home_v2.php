@@ -1,73 +1,66 @@
 <?php
-session_start();
 
-if (!isset($_SESSION['username']) || !isset($_SESSION['user_id'])) {
-    echo '
-        <script>
-            alert("Es necesario hacer login, por favor ingrese sus credenciales");
-            window.location = "../views/login.php";
-        </script>';
-    session_destroy();
-    die();
-}
+    session_start();
 
-$inc = include "../db/Conexion.php";
+    if (!isset ($_SESSION['username'])){
+        echo ' 
+            <script>
+                alert("Es necesario hacer login, por favor ingrese sus credenciales") ;
+                window.location = "../views/login.php";
+            </script> ';
+            session_destroy();
+            die();
+    }
 
-$user_name = $_SESSION['username'];
-$user_id   = (int)$_SESSION['user_id'];  // TOMAMOS EL USER_ID DE LA SESIÓN, COMO EN TU CÓDIGO ORIGINAL
+    $inc = include "../db/Conexion.php";
 
-$query = "
-    SELECT 
-        acc.user_id,
-        acc.user_name,
-        acc.user_password,
-        acc.user_type,
-        acc.r_ejecutivo,
-        acc.r_editor,
-        acc.r_autorizador,
-        acc.r_analista,
-        us.user_name AS nombre,
-        us.second_name AS s_nombre,
-        us.last_name,
-        us.email,
-        us.cumpleaños,
-        us.telefono
-    FROM mobility_solutions.tmx_acceso_usuario acc
-    LEFT JOIN mobility_solutions.tmx_usuario us
-        ON acc.user_id = us.id
-    WHERE acc.user_id = $user_id
-    LIMIT 1;
-";
+    $query ='select 
+                acc.user_id, 
+                acc.user_name, 
+                acc.user_password, 
+                acc.user_type, 
+                acc.r_ejecutivo, 
+                acc.r_editor, 
+                acc.r_autorizador, 
+                acc.r_analista, 
+                us.user_name as nombre, 
+                us.second_name as s_nombre, 
+                us.last_name, 
+                us.email, 
+                us.cumpleaños, 
+                us.telefono
+            from mobility_solutions.tmx_acceso_usuario  as acc
+            left join mobility_solutions.tmx_usuario as us
+                on acc.user_id = us.id
+            where acc.user_name = '.$_SESSION['username'].';';
 
-$result = mysqli_query($con, $query);
+    $result = mysqli_query($con,$query); 
 
-if ($result && mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_assoc($result);
+    if ($result){ 
+        while($row = mysqli_fetch_assoc($result)){
+                            $user_id = $row['user_id'];
+                            $user_name = $row['user_name'];
+                            $user_password = $row['user_password'];
+                            $user_type = $row['user_type'];
+                            $r_ejecutivo = $row['r_ejecutivo'];
+                            $r_editor = $row['r_editor'];
+                            $r_autorizador = $row['r_autorizador'];
+                            $r_analista = $row['r_analista'];
+                            $nombre = $row['nombre'];
+                            $s_nombre = $row['s_nombre'];
+                            $last_name = $row['last_name'];
+                            $email = $row['email'];
+                            $cumpleaños = $row['cumpleaños'];
+                            $telefono = $row['telefono'];
+                           
+        }
+    }
+    else{
+        echo 'Falla en conexión.';
+    }
 
-    $user_name_db  = $row['user_name'];      // por si difiere de la sesión
-    $user_password = $row['user_password'];
-    $user_type     = (int)$row['user_type'];
-
-    $r_ejecutivo   = (int)$row['r_ejecutivo'];
-    $r_editor      = (int)$row['r_editor'];
-    $r_autorizador = (int)$row['r_autorizador'];
-    $r_analista    = (int)$row['r_analista'];
-
-    $nombre     = $row['nombre'];
-    $s_nombre   = $row['s_nombre'];
-    $last_name  = $row['last_name'];
-    $email      = $row['email'];
-    $cumpleanos = $row['cumpleaños'];
-    $telefono   = $row['telefono'];
-
-} else {
-    echo 'Falla en conexión o usuario no encontrado.';
-    die();
-}
-
-date_default_timezone_set('America/Mexico_City');
-$hora_actual = date('h:i A');
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
