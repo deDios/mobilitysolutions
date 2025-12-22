@@ -110,7 +110,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
 
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ms-auto">
 
           <li class="nav-item active">
             <a class="nav-link" href="https://mobilitysolutionscorp.com/Views/Home.php">Inicio
@@ -261,20 +261,51 @@
                 </div>
             </article>
 
-            <!-- CONTACTO -->
-            <article class="home-card card-contact">
-                <div class="card-header-row">
-                    <h2 class="card-title">Datos de contacto</h2>
+            <!-- RESUMEN MENSUAL POR ASESOR (MOVIDO AQUÍ) -->
+            <article class="home-card mes-actividad-card">
+                <div class="mes-actividad-head">
+                    <div class="mes-actividad-title">Actividad del mes por asesor</div>
+                    <div class="mes-actividad-controls">
+                        <button id="mesPrev" type="button" class="mes-ctrl-btn" aria-label="Mes anterior">‹</button>
+                        <span id="mesLabel" class="mes-actividad-label">—</span>
+                        <button id="mesNext" type="button" class="mes-ctrl-btn" aria-label="Mes siguiente">›</button>
+                    </div>
+                </div>
+                <div class="mes-actividad-subtle">
+                    Totales del mes seleccionado (considerando tu jerarquía).
                 </div>
 
-                <div class="profile-info">
-                    <p><strong>Username:</strong> <?php echo $user_name_db ? $user_name_db : $user_name; ?></p>
-                    <p><strong>Email:</strong> <?php echo $email; ?></p>
-                    <p><strong>Fecha de Cumpleaños:</strong> <?php echo $cumpleanos; ?></p>
-                    <p><strong>Teléfono:</strong> <?php echo $telefono; ?></p>
-                    <p><strong>Tipo de Usuario (ID):</strong> <?php echo $user_type; ?></p>
+                <div class="tabla-mes-wrap">
+                    <table id="tablaMes" class="tabla-mes">
+                        <thead>
+                            <tr>
+                                <th>Asesor</th>
+                                <th>Nuevo</th>
+                                <th>Venta</th>
+                                <th>Entrega</th>
+                                <th>Recon.</th>
+                                <th>Quejas</th>
+                                <th>Faltas</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Total</th>
+                                <th id="tNuevo">0</th>
+                                <th id="tVenta">0</th>
+                                <th id="tEntrega">0</th>
+                                <th id="tRecon">0</th>
+                                <th id="tQuejas">0</th>
+                                <th id="tFaltas">0</th>
+                                <th id="tTotal">0</th>
+                            </tr>
+                        </tfoot>
+                    </table>
                 </div>
             </article>
+
 
         </aside>
 
@@ -331,51 +362,6 @@
                 <div class="chart-wrapper">
                     <canvas id="lineChart"></canvas>
                     <canvas id="gaugeChart"></canvas>
-                </div>
-            </article>
-
-            <!-- RESUMEN MENSUAL POR ASESOR -->
-            <article class="home-card mes-actividad-card">
-                <div class="mes-actividad-head">
-                    <div class="mes-actividad-title">Actividad del mes por asesor</div>
-                    <div class="mes-actividad-controls">
-                        <button id="mesPrev" type="button" class="mes-ctrl-btn" aria-label="Mes anterior">‹</button>
-                        <span id="mesLabel" class="mes-actividad-label">—</span>
-                        <button id="mesNext" type="button" class="mes-ctrl-btn" aria-label="Mes siguiente">›</button>
-                    </div>
-                </div>
-                <div class="mes-actividad-subtle">
-                    Totales del mes seleccionado (considerando tu jerarquía).
-                </div>
-
-                <div class="tabla-mes-wrap">
-                    <table id="tablaMes" class="tabla-mes">
-                        <thead>
-                            <tr>
-                                <th>Asesor</th>
-                                <th>Nuevo</th>
-                                <th>Venta</th>
-                                <th>Entrega</th>
-                                <th>Recon.</th>
-                                <th>Quejas</th>
-                                <th>Faltas</th>
-                                <th>Total</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Total</th>
-                                <th id="tNuevo">0</th>
-                                <th id="tVenta">0</th>
-                                <th id="tEntrega">0</th>
-                                <th id="tRecon">0</th>
-                                <th id="tQuejas">0</th>
-                                <th id="tFaltas">0</th>
-                                <th id="tTotal">0</th>
-                            </tr>
-                        </tfoot>
-                    </table>
                 </div>
             </article>
 
