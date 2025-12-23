@@ -1,0 +1,1184 @@
+body {
+    margin: 0;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #f7f7f7;
+}
+.navbar {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 5px;
+}
+/*
+headeer top
+*/
+.topbar{
+  background-color: #212529;
+  padding: 0;
+}
+
+.topbar .container .row {
+  margin:-7px;
+  padding:0;
+}
+
+.topbar .container .row .col-md-12 { 
+  padding:0;
+}
+
+.topbar p{
+  margin:0;
+  display:inline-block;
+  font-size: 13px;
+  color: #f1f6ff;
+}
+
+.topbar p > i{
+  margin-right:5px;
+}
+.topbar p:last-child{
+  text-align:right;
+} 
+
+header .navbar {
+    margin-bottom: 0;
+}
+
+.topbar li.topbar {
+    display: inline;
+    padding-right: 18px;
+    line-height: 52px;
+    transition: all .3s linear;
+}
+
+.topbar li.topbar:hover {
+    color: #1bbde8;
+}
+
+.topbar ul.info i {
+    color: #131313;
+    font-style: normal;
+    margin-right: 8px;
+    display: inline-block;
+    position: relative;
+    top: 4px;
+}
+
+.topbar ul.info li {
+    float: right;
+    padding-left: 30px;
+    color: #ffffff;
+    font-size: 13px;
+    line-height: 44px;
+}
+
+.topbar ul.info i span {
+    color: #aaa;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 50px;
+    padding-left: 18px;
+}
+
+ul.social-network {
+  border:none;
+  margin:0;
+  padding:0;
+}
+
+ul.social-network li {
+  border:none;  
+  margin:0;
+}
+
+ul.social-network li i {
+  margin:0;
+}
+
+ul.social-network li {
+    display:inline;
+    margin: 0 5px;
+    border: 0px solid #2D2D2D;
+    padding: 5px 0 0;
+    width: 32px;
+    display: inline-block;
+    text-align: center;
+    height: 32px;
+    vertical-align: baseline;
+    color: #000;
+}
+
+ul.social-network {
+  list-style: none;
+  margin: 5px 0 10px -25px;
+  float: right;
+}
+
+.waves-effect {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    vertical-align: middle;
+    z-index: 1;
+    will-change: opacity, transform;
+    transition: .3s ease-out;
+    color: #fff;
+}
+a {
+  color: #0a0a0a;
+  text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
+.bg-image-full {
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+.bg-dark {
+    background-color: #222!important;
+}
+
+.mx-background-top-linear {
+    background: -webkit-linear-gradient(45deg, #e3e3e3 48%, #1b1e21 48%);
+    background: -webkit-linear-gradient(left, #e3e3e3 48%, #1b1e21 48%);
+    background: linear-gradient(45deg, #e3e3e3 48%, #1b1e21 48%);
+}
+
+
+/*--------------------------------------------------------------------------------------------------*/
+
+/* Contenedor principal con dos columnas */
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 100px;
+    max-width: 1280px;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+/* Perfil (lado izquierdo) */
+.container_1 {
+    width: 60%;
+    background-color: #fff;
+    padding: 20px;
+    padding-top: 50px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+.profile-header {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding-top: 30px;
+}
+
+.profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.roles {
+    flex-grow: 1;
+    margin-left: 20px;
+}
+
+.roles ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.roles li {
+    font-size: 16px;
+}
+
+.location-info {
+    margin-top: 20px;
+    font-size: 16px;
+    text-align: center;
+    color: #555;
+}
+
+.profile-info {
+    padding-left: 0; /* Cambiado de 220px a 0 */
+    margin-top: 20px;
+    padding-top: 30px;
+}
+
+.profile-info p {
+    font-size: 16px;
+    margin: 8px 0;
+}
+
+.edit-button {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    padding: 10px;
+    text-align: center;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.edit-button:hover {
+    background-color: #0056b3;
+}
+
+/* Panel derecho con hexágonos */
+.container_2 {
+    width: 40%;
+    background-color: #f9f9f9;
+    padding: 40px 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.container_2 h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* Hexágonos */
+.hex-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.hex {
+    width: 120px;
+    height: 104px;
+    background: #007bff;
+    clip-path: polygon(
+        50% 0%,
+        93% 25%,
+        93% 75%,
+        50% 100%,
+        7% 75%,
+        7% 25%
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.hex span {
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.hex strong {
+    font-size: 18px;
+}
+
+.hex:hover {
+    transform: scale(1.05);
+    background-color: #0056b3;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    padding-top: 80px;
+    left: 0;
+    top: 0;
+    width: 60%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #888;
+    width: 400px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.modal-content label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.modal-content button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-content button:hover {
+    background-color: #0056b3;
+}
+
+.close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.profile-image-wrapper {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.edit-icon-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.profile-image-wrapper:hover .edit-icon-overlay {
+    opacity: 1;
+}
+
+#lineChart {
+    margin-top: 20px;
+    max-height: 300px;
+}
+
+.skills-section {
+    margin-top: 40px;
+    text-align: left;
+    padding: 20px;
+    padding-top: 40px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.skills-section h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.skills-section .placeholder {
+    font-style: italic;
+    color: #777;
+}
+
+/* Estilos adicionales para que los reconocimientos se acomoden horizontalmente */
+
+.reconocimientos-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 20px;
+  justify-content: space-between;
+}
+
+.reconocimiento-item {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 11px;
+  padding: 5px;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 6px 10px rgba(0,0,0,0.3);
+  border: 2px solid rgba(255,255,255,0.6);
+  background-image: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15), transparent 70%);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reconocimiento-item:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+/* Efecto de brillo animado tipo medalla */
+.reconocimiento-item::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, rgba(255,255,255,0.2), transparent 50%, rgba(255,255,255,0.2));
+  z-index: 0;
+  animation: giro 4s linear infinite;
+  opacity: 0.2;
+}
+
+@keyframes giro {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* 🟡 Desempeño (Hexágono dorado) */
+.recono-desempeno {
+  background: #FFC500;
+  clip-path: polygon(
+    50% 0%,
+    93% 25%,
+    93% 75%,
+    50% 100%,
+    7% 75%,
+    7% 25%
+  );
+}
+
+/* ⚪ Liderazgo (Rombo plateado) */
+.recono-liderazgo {
+  background: #3A99FC;
+  clip-path: polygon(
+    50% 0%,
+    100% 50%,
+    50% 100%,
+    0% 50%
+  );
+}
+
+/* 🟤 Innovación (Cuadrado bronce) */
+.recono-innovacion {
+  background: #00448B;
+  clip-path: inset(0);
+}
+
+.reconocimiento-item .titulo,
+.reconocimiento-item .fecha {
+  position: relative;
+  z-index: 1;
+}
+
+.reconocimiento-item .titulo {
+  font-weight: bold;
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+.reconocimiento-item .fecha {
+  font-size: 10px;
+  margin-top: 4px;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.tareas-circulo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.circulo-tareas {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.texto-tareas {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* ===== Indicadores Quejas / Inasistencias ===== */
+.reportes-resumen {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-top: 14px;
+}
+
+.resumen-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  background: #ffffff;
+  border-radius: 999px;
+  padding: 8px 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+  color: #222;
+}
+
+.resumen-pill:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0,0,0,.08);
+  background: #fafafa;
+}
+
+.pill-circle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: #fff;
+}
+
+.pill-text {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.hex.active {
+  transform: scale(1.1);
+  background-color: #28a745 !important; /* Verde o el color que prefieras */
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+
+/* Colores por tipo */
+.pill-quejas .pill-circle {
+  background: #ff6b6b; /* rojo suave */
+}
+
+.pill-inasistencias .pill-circle {
+  background: #6c8cff; /* azul suave */
+}
+
+/* ===== Línea de recompensas (termómetro) ===== */
+.rewards-wrapper {
+  background: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.04);
+}
+
+.rewards-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.rewards-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1f2937;
+}
+.rewards-stats {
+  font-size: 14px;
+  color: #374151;
+}
+.rewards-stats strong {
+  font-weight: 800;
+}
+
+.rewards-bar {
+  position: relative;
+  width: 100%;
+  height: 14px;
+  border-radius: 999px;
+  background: linear-gradient(90deg,#f3f4f6 0%, #eef2ff 100%);
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.05);
+}
+
+.rewards-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0%;
+  background: linear-gradient(90deg,#60a5fa,#4f46e5);
+  border-radius: 999px;
+  transition: width .8s ease-in-out;
+}
+
+.rewards-markers {
+  position: relative;
+  height: 0;
+}
+
+.rewards-marker {
+  position: absolute;
+  top: -10px;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 34px;
+  background: #cfd8ff;
+}
+.rewards-marker .dot {
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: #93c5fd;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 2px #cfd8ff;
+}
+.rewards-marker .label {
+  position: absolute;
+  top: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 700;
+  color: #374151;
+  background: #ffffff;
+  padding: 2px 8px;
+  border-radius: 999px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.05);
+  border: 1px solid #e5e7eb;
+}
+
+/* estados ganados */
+.rewards-marker.achieved {
+  background: #60a5fa;
+}
+.rewards-marker.achieved .dot {
+  background: #10b981;
+  box-shadow: 0 0 0 2px #bbf7d0;
+}
+.rewards-marker.achieved .label {
+  color: #065f46;
+  border-color: #bbf7d0;
+  background: #ecfdf5;
+}
+
+.rewards-legend {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #6b7280;
+}
+.rewards-legend .next {
+  font-weight: 700;
+  color: #111827;
+}
+
+/* ---- FIX: posicionar marcadores y etiquetas sobre la barra ---- */
+.rewards-bar{
+  position: relative;          
+  width: 100%;
+  height: 14px;
+  border-radius: 999px;
+  background: linear-gradient(90deg,#f3f4f6 0%, #eef2ff 100%);
+  overflow: visible;           
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.08);
+  margin: 8px 0 30px;          
+}
+
+/* contenedor de marcadores flotando sobre la barra */
+.rewards-markers{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;                      
+  height: 0;                   
+  pointer-events: none;        
+}
+
+/* línea del marcador */
+.rewards-marker{
+  position: absolute;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 34px;                
+  top: -10px;                  
+  background: #cfd8ff;
+}
+
+/* puntito del marcador */
+.rewards-marker .dot{
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px; height: 12px;
+  border-radius: 999px;
+  background: #93c5fd;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 2px #cfd8ff;
+}
+
+/* etiqueta del marcador (debajo de la barra) */
+.rewards-marker .label{
+  position: absolute;
+  top: 38px;                   
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 700;
+  color: #374151;
+  background: #fff;
+  padding: 2px 8px;
+  border-radius: 999px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.05);
+  border: 1px solid #e5e7eb;
+}
+
+/* barra de progreso */
+.rewards-fill{
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg,#60a5fa,#4f46e5);
+  transition: width .8s ease-in-out;
+}
+
+/* estados logrados */
+.rewards-marker.achieved{ background:#60a5fa; }
+.rewards-marker.achieved .dot{
+  background:#10b981; box-shadow:0 0 0 2px #bbf7d0;
+}
+.rewards-marker.achieved .label{
+  color:#065f46; border-color:#bbf7d0; background:#ecfdf5;
+}
+
+
+
+/* Responsivo */
+@media (max-width: 480px) {
+  .reportes-resumen {
+    gap: 10px;
+  }
+  .pill-circle {
+    width: 38px;
+    height: 38px;
+    font-size: 14px;
+  }
+  .pill-text {
+    font-size: 13px;
+  }
+}
+
+
+/* ========================= */
+/* NUEVO: Pastel morado      */
+/* ========================= */
+
+.cumple-resumen {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.pastel-cumple {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pastel-icon {
+    position: relative;
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+    background: #6c2bd9; /* morado */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #fff;
+    font-size: 18px;
+}
+
+.pastel-frosting {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background: #ffffff;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.15) inset;
+}
+
+.pastel-num {
+    position: relative;
+    z-index: 2;
+    line-height: 1;
+}
+
+.texto-cumple {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Lista del modal de cumpleañeros */
+.cumple-lista {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 15px;
+    max-height: 300px;
+    overflow-y: auto;
+    font-size: 14px;
+    color: #333;
+}
+.cumple-lista li {
+    padding: 6px 0;
+    border-bottom: 1px solid #eee;
+}
+.cumple-empty {
+    color: #6b7280;
+    font-style: italic;
+}
+
+/* ========================= */
+/* NUEVO: tooltip reconoc.   */
+/* ========================= */
+
+.recon-tooltip {
+    position: relative;
+}
+
+.recon-tooltip::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    transform: translate(-50%, -8px);
+    background: rgba(0,0,0,0.8);
+    color: #fff;
+    font-size: 11px;
+    line-height: 1.3;
+    padding: 6px 8px;
+    border-radius: 6px;
+    white-space: normal;
+    text-align: left;
+    min-width: 120px;
+    max-width: 220px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.4);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.recon-tooltip:hover::after {
+    opacity: 1;
+}
+
+/* ---------- Cumpleaños pastel morado ---------- */
+
+.cumple-cake-wrapper {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 16px; /* separarlo un poquito de "Tareas en curso" */
+}
+
+.cake-icon {
+  position: relative;
+  width: 45px;
+  height: 40px;
+}
+
+/* Base del pastel */
+.cake-layer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 45px;
+  height: 32px;
+  background: #FFC00A;  /* morado intenso */
+  border-radius: 6px 6px 4px 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  border: 2px solid rgba(255,255,255,0.4);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
+  font-family: system-ui,-apple-system,Segoe UI,Roboto;
+}
+
+/* Betún superior */
+.cake-layer:before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: #ffc20a54; /* tono más claro lila */
+  border-radius: 6px 6px 0 0;
+  box-shadow: inset 0 -3px 0 rgba(0,0,0,0.15);
+}
+
+/* Velita */
+.cake-candle {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 14px;
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0 0 3px rgba(0,0,0,0.3);
+}
+
+/* Flama */
+.candle-flame {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 10px;
+  border-radius: 50% 50% 50% 50%;
+  background: radial-gradient(circle at 50% 30%, #fff 0%, #fde047 30%, #facc15 60%, #ea580c 100%);
+  box-shadow: 0 0 6px rgba(255,200,0,0.7);
+}
+
+/* Asegurar que la fila de tareas + pastel estén en línea */
+.tareas-circulo {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+/* ====== Actividad del mes (tarjeta + tabla) ====== */
+.mes-actividad-card{
+  background:#fff;
+  border:1px solid #e9ecef;
+  border-radius:12px;
+  padding:16px;
+  margin-top:18px;
+  box-shadow:0 2px 10px rgba(0,0,0,.04);
+}
+
+.mes-actividad-head{
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+}
+
+.mes-actividad-title{
+  font-size:16px; font-weight:800; color:#1f2937;
+}
+
+.mes-actividad-controls{
+  display:flex; align-items:center; gap:8px;
+}
+
+.mes-actividad-label{
+  font-weight:700; color:#111827; min-width:140px; text-align:center;
+}
+
+.mes-ctrl-btn{
+  border:1px solid #e5e7eb;
+  background:#f9fafb;
+  border-radius:8px;
+  padding:4px 10px;
+  font-weight:800;
+  line-height:1;
+  cursor:pointer;
+}
+.mes-ctrl-btn:hover{ background:#f3f4f6; }
+
+.mes-actividad-subtle{
+  font-size:12px; color:#6b7280; margin-top:6px; margin-bottom:8px;
+}
+
+.tabla-mes-wrap{ overflow:auto; margin-top:8px; }
+
+.tabla-mes{
+  width:100%; border-collapse:separate; border-spacing:0; font-size:14px;
+}
+.tabla-mes thead th{
+  position:sticky; top:0;
+  background:#f8fafc; color:#111827;
+  font-weight:800; text-align:left;
+  padding:10px 8px;
+  border-bottom:1px solid #e5e7eb;
+}
+.tabla-mes tbody td{
+  padding:8px;
+  border-bottom:1px solid #f1f5f9;
+}
+.tabla-mes tfoot th{
+  padding:10px 8px; background:#f9fafb; border-top:1px solid #e5e7eb; font-weight:800;
+}
+
+.tabla-mes td, .tabla-mes th{ white-space:nowrap; }
+
+.tabla-mes .num{
+  font-variant-numeric: tabular-nums;
+  text-align:right;
+}
+
+.badge-mini{
+  display:inline-block; min-width:20px; text-align:center;
+  padding:2px 6px; border-radius:999px; font-weight:800; font-size:12px;
+  background:#eef2ff; color:#3730a3; border:1px solid #e5e7eb;
+}
+
+.badge-rol{
+  font-size:11px; font-weight:700; color:#374151; background:#eef2ff;
+  border:1px solid #e5e7eb; padding:2px 6px; border-radius:999px; margin-left:6px;
+}
+.tabla-mes td.num { text-align:right; }
+.badge-mini{display:inline-block; min-width:26px; text-align:center; border-radius:12px; padding:2px 6px; background:#f3f4f6;}
+.badge-verde{ background:#e6ffe8; }
+.badge-rojo{ background:#ffe6e6; }
+.badge-ambar{ background:#fff2cc; }
+
+.badge-rojo{ background:#fee2e2; color:#b91c1c; }
+.badge-ambar{ background:#fff7ed; color:#9a3412; }
+.badge-verde{ background:#dcfce7; color:#065f46; }
+
+.tabla-mes thead th:last-child,
+.tabla-mes tbody td:last-child,
+.tabla-mes tfoot th:last-child{
+  display:none;
+}
+
+/* Centrar totales en la fila del pie */
+.tabla-mes tfoot th {
+  text-align: center;      /* centra horizontal */
+  vertical-align: middle;  /* centra vertical */
+}
+
+/* Mantener la celda "Total" alineada a la izquierda */
+.tabla-mes tfoot th:first-child{
+  text-align: left;
+}
+
+/* (opcional) que los números no se vean corridos por el padding */
+.tabla-mes tfoot th {
+  padding-left: 5px;
+  padding-right: 5px;
+  font-variant-numeric: tabular-nums; /* alineación uniforme de dígitos */
+}
+
+/* Centrar valores de las columnas de métricas (de la 2 en adelante) */
+.tabla-mes thead th:nth-child(n+2),
+.tabla-mes tbody td:nth-child(n+2),
+.tabla-mes tfoot th:nth-child(n+2){
+  text-align: center !important;   /* anula .num { text-align:right } */
+  vertical-align: middle;
+}
+
+/* Mantener la columna "Asesor" a la izquierda */
+.tabla-mes thead th:first-child,
+.tabla-mes tbody td:first-child,
+.tabla-mes tfoot th:first-child{
+  text-align: left;
+}
+
+/* Si dentro usas chips/badges (span/div) en inline-block, asegúralos al centro */
+.tabla-mes td:nth-child(n+2) > span,
+.tabla-mes td:nth-child(n+2) > .badge-mini,
+.tabla-mes tfoot th:nth-child(n+2) > span{
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* --- Ordenamiento columnas tabla de Actividad del mes --- */
+#tablaMes thead th.sortable{
+  cursor: pointer;
+  user-select: none;
+}
+
+#tablaMes thead th .sort-indicator{
+  margin-left: 4px;
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
+
+
