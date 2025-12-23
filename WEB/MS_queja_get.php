@@ -4,11 +4,19 @@ include "../db/Conexion.php";
 
 try {
     $data = json_decode(file_get_contents("php://input"), true) ?: [];
+
     $usuario = isset($data['usuario']) ? (int)$data['usuario']
               : (isset($data['user_id']) ? (int)$data['user_id'] : 0);
 
+    // Año: si no lo mandas en el JSON, toma el año actual
+    $anio = isset($data['anio']) ? (int)$data['anio'] : (int)date('Y');
+
     if ($usuario <= 0) {
-        echo json_encode(["success" => false, "message" => "Parámetro 'usuario' es requerido."]); exit;
+        echo json_encode([
+            "success" => false,
+            "message" => "Parámetro 'usuario' es requerido."
+        ]);
+        exit;
     }
 
     $sql = "
@@ -28,18 +36,21 @@ try {
     ";
 
     if ($usuario === 9999) {
-        $sql .= " ORDER BY q.created_at DESC";
+        // Admin: todas las quejas del año actual
+        $sql .= " WHERE YEAR(q.created_at) = ? ORDER BY q.created_at DESC";
         $stmt = $con->prepare($sql);
+        $stmt->bind_param("i", $anio);
     } else {
-        // Solo del usuario indicado:
-        $sql .= " WHERE q.id_empleado = ? ";
-        // 👉 Si quieres incluir también las quejas reportadas por él/ella:
-        // $sql .= " WHERE (q.id_empleado = ? OR q.reportado_por = ?) ";
-
-        $sql .= " ORDER BY q.created_at DESC";
+        // Solo del usuario indicado, en el año actual
+        $sql .= " WHERE q.id_empleado = ? AND YEAR(q.created_at) = ? 
+                  ORDER BY q.created_at DESC";
         $stmt = $con->prepare($sql);
-        $stmt->bind_param("i", $usuario);
-        // Para la versión OR, usa: $stmt->bind_param("ii", $usuario, $usuario);
+        $stmt->bind_param("ii", $usuario, $anio);
+
+        // Si quisieras incluir también las que él reportó:
+        // $sql .= " WHERE (q.id_empleado = ? OR q.reportado_por = ?) AND YEAR(q.created_at) = ? ORDER BY q.created_at DESC";
+        // $stmt = $con->prepare($sql);
+        // $stmt->bind_param("iii", $usuario, $usuario, $anio);
     }
 
     $stmt->execute();
@@ -52,6 +63,7 @@ try {
 
     echo json_encode([
         "success" => true,
+        "anio"    => $anio,
         "count"   => count($items),
         "items"   => $items
     ]);
@@ -61,3 +73,4 @@ try {
 } catch (Exception $e) {
     echo json_encode(["success" => false, "message" => "Error: ".$e->getMessage()]);
 }
+?>
