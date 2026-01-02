@@ -393,8 +393,8 @@ window.rew = {
   entregas: 0,
   reservas: 0,
   reconocimientos: 0,
-  metas: [25, 50, 75, 100],
-  max: 100
+  metas: [20, 40, 80, 120],
+  max: 120
 };
 
 window.computeRewardPoints = function () {
@@ -538,11 +538,11 @@ document.addEventListener("DOMContentLoaded", () => {
       window.rew.reconocimientos = totalPuntos;
 
       const metas = [
-        { pts: 35, nombre: "Tarjeta Amazon" },
-        { pts: 55, nombre: "Bono especial" },
-        { pts: 75, nombre: "Viaje anual" }
+        { pts: 50, nombre: "Tarjeta Amazon" },
+        { pts: 80, nombre: "Premio especial" },
+        { pts: 100, nombre: "Viaje Playa" }
       ];
-      const maxPts = 75;
+      const maxPts = 120;
       window.rew.max = maxPts;
       window.rew.metas = metas.map(m => m.pts);
 
