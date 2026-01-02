@@ -539,7 +539,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const metas = [
         { pts: 50, nombre: "Tarjeta Amazon" },
-        { pts: 80, nombre: "Premio especial" },
+        { pts: 80, nombre: "Premio esp." },
         { pts: 100, nombre: "Viaje Playa" }
       ];
       const maxPts = 100;
