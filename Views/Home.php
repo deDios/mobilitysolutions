@@ -393,8 +393,8 @@ window.rew = {
   entregas: 0,
   reservas: 0,
   reconocimientos: 0,
-  metas: [20, 40, 80, 120],
-  max: 120
+  metas: [20, 40, 80, 100],
+  max: 100
 };
 
 window.computeRewardPoints = function () {
@@ -542,7 +542,7 @@ document.addEventListener("DOMContentLoaded", () => {
         { pts: 80, nombre: "Premio especial" },
         { pts: 100, nombre: "Viaje Playa" }
       ];
-      const maxPts = 120;
+      const maxPts = 100;
       window.rew.max = maxPts;
       window.rew.metas = metas.map(m => m.pts);
 
