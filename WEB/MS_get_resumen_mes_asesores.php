@@ -58,7 +58,8 @@ $SCHEMA = "mobility_solutions";
 
 // ===== Recursivo jerarquía =====
 function obtenerSubordinados($con, $schema, $id, &$acc){
-  $sql = "SELECT user_id FROM {$schema}.tmx_acceso_usuario WHERE reporta_a = ?";
+  // AGREGADO estatus = 1
+  $sql = "SELECT user_id FROM {$schema}.tmx_acceso_usuario WHERE reporta_a = ? AND estatus = 1";
   $stmt = $con->prepare($sql);
   $stmt->bind_param("i", $id);
   $stmt->execute();
@@ -79,13 +80,15 @@ try {
   if ($solo_usuario){
     $ids = [$user_id];
   } elseif (in_array($user_type, [5,6], true)) {
-    $rs = $con->query("SELECT user_id FROM {$SCHEMA}.tmx_acceso_usuario");
+    // AGREGADO estatus = 1
+    $rs = $con->query("SELECT user_id FROM {$SCHEMA}.tmx_acceso_usuario WHERE estatus = 1");
     while ($r = $rs->fetch_assoc()) { $ids[] = (int)$r['user_id']; }
     $rs->close();
   } else {
     $ids[] = $user_id;
     if ($include_jefe){
-      $stmt = $con->prepare("SELECT reporta_a FROM {$SCHEMA}.tmx_acceso_usuario WHERE user_id = ?");
+      // AGREGADO estatus = 1
+      $stmt = $con->prepare("SELECT reporta_a FROM {$SCHEMA}.tmx_acceso_usuario WHERE user_id = ? AND estatus = 1");
       $stmt->bind_param("i", $user_id);
       $stmt->execute();
       $stmt->bind_result($boss);
@@ -112,6 +115,7 @@ try {
     FROM {$SCHEMA}.tmx_acceso_usuario acc
     LEFT JOIN {$SCHEMA}.tmx_usuario us ON acc.user_id = us.id
     WHERE acc.user_id IN ($ph)
+      AND acc.estatus = 1
   ";
   $stmt = $con->prepare($infoSql);
   $stmt->bind_param($types_ids, ...$ids);
