@@ -341,8 +341,17 @@ if ($result) {
 
   // Helper para construir URL de avatar desde la fila
   function getAvatarFromRow(row) {
-    const cand = row.user_id || row.asignado || row.id_usuario || row.id_empleado || row.created_by || null;
+    const cand =
+      row._user_id ||
+      row.user_id ||
+      row.asignado ||
+      row.id_usuario ||
+      row.id_empleado ||
+      row.created_by ||
+      null;
+
     if (!cand) return null;
+
     const id = Number(cand) || cand;
     return `https://mobilitysolutionscorp.com/Imagenes/Usuarios/${id}.jpg`;
   }
@@ -562,7 +571,13 @@ if ($result) {
           .then(res => res.json().catch(() => ({})))
           .then(data => {
             const rows = Array.isArray(data.rows) ? data.rows : [];
-            rows.forEach(r => allRows.push(r));
+            rows.forEach(r => {
+              // Inyectamos el usuario al que pertenece este historial
+              allRows.push({
+                ...r,
+                _user_id: uid
+              });
+            });
           })
           .catch(err => {
             console.error("Error historial requerimientos (uid=" + uid + "):", err);
@@ -652,7 +667,12 @@ if ($result) {
           .then(res => res.json().catch(() => ({})))
           .then(data => {
             const rows = Array.isArray(data.rows) ? data.rows : [];
-            rows.forEach(r => allRows.push(r));
+            rows.forEach(r => {
+              allRows.push({
+                ...r,
+                _user_id: uid
+              });
+            });
           })
           .catch(err => {
             console.error("Error historial reconocimientos (uid=" + uid + "):", err);
