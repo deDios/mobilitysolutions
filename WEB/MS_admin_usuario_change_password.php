@@ -1,60 +1,40 @@
 <?php
 header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: https://mobilitysolutionscorp.com');
-header('Access-Control-Allow-Methods: POST, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type');
+header("Access-Control-Allow-Origin: https://mobilitysolutionscorp.com");
+header("Access-Control-Allow-Headers: Content-Type");
+header("Access-Control-Allow-Methods: POST");
 
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    http_response_code(204);
-    exit;
-}
+require_once "../db/Conexion.php";
 
-include "../db/Conexion.php";
+$input = file_get_contents("php://input");
+$data  = json_decode($input, true);
 
-$input = json_decode(file_get_contents("php://input"), true);
-
-$userId      = isset($input["user_id"])      ? (int)$input["user_id"]      : 0;
-$newPassword = isset($input["new_password"]) ? trim($input["new_password"]) : "";
-
-if ($userId <= 0 || $newPassword === "") {
+if (!$data || !isset($data['user_id']) || !isset($data['new_password'])) {
     echo json_encode([
         "success" => false,
-        "message" => "Parámetros 'user_id' y 'new_password' son obligatorios."
+        "message" => "Parámetros incompletos."
     ]);
     exit;
 }
 
-// Verificar que exista el usuario en tmx_acceso_usuario
-$stmt = $con->prepare("
-    SELECT id FROM mobility_solutions.tmx_acceso_usuario
-    WHERE user_id = ?
-    LIMIT 1
-");
-$stmt->bind_param("i", $userId);
-$stmt->execute();
-$res = $stmt->get_result();
+$user_id      = (int)$data['user_id'];
+$new_password = $data['new_password']; // TEXTO PLANO
 
-if ($res->num_rows === 0) {
+// OJO: aquí NO usamos password_hash ni md5, se guarda tal cual
+$sql  = "UPDATE mobility_solutions.tmx_acceso_usuario
+         SET user_password = ?
+         WHERE user_id = ?";
+
+$stmt = $con->prepare($sql);
+if (!$stmt) {
     echo json_encode([
         "success" => false,
-        "message" => "No se encontró el usuario de acceso."
+        "message" => "Error al preparar statement."
     ]);
-    $stmt->close();
-    $con->close();
     exit;
 }
-$stmt->close();
 
-// Actualizar contraseña
-$passwordHash = password_hash($newPassword, PASSWORD_BCRYPT);
-
-$stmt = $con->prepare("
-    UPDATE mobility_solutions.tmx_acceso_usuario
-       SET user_password = ?,
-           updated_at    = NOW()
-     WHERE user_id = ?
-");
-$stmt->bind_param("si", $passwordHash, $userId);
+$stmt->bind_param("si", $new_password, $user_id);
 
 if ($stmt->execute()) {
     echo json_encode([
@@ -64,8 +44,7 @@ if ($stmt->execute()) {
 } else {
     echo json_encode([
         "success" => false,
-        "message" => "Error al actualizar la contraseña.",
-        "error"   => $con->error
+        "message" => "Error al actualizar la contraseña."
     ]);
 }
 
