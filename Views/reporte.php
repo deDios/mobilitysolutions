@@ -342,10 +342,8 @@ if ($result) {
   // ============================
   async function getDataUsuario(userId, year, soloUsuario = false) {
 
-    // AJUSTE CLAVE:
     // Si eres CTO/CEO y hay un supervisor seleccionado en "Equipo",
-    // simulamos que el tipo de usuario es 2 (Supervisor) para que
-    // el endpoint calcule sólo la jerarquía de ese supervisor.
+    // simulamos tipo 2 (Supervisor) para que el endpoint cargue su jerarquía.
     const effectiveUserType =
       (esCtoOCeo && Number(equipoSupervisorId) !== 0)
         ? 2
@@ -514,6 +512,7 @@ if ($result) {
   // ============================
   //  HISTORIALES (versiones _dash)
   // ============================
+  // AJUSTE: ahora soportan "Todos" = todos los usuarios del contexto (contextoUsuarios)
   async function loadHistorialRequerimientos(userId, year, month) {
     const tbody = document.querySelector("#tablaHistReq tbody");
     if (!tbody) return;
@@ -523,20 +522,46 @@ if ($result) {
     `;
 
     try {
-      const res = await fetch("https://mobilitysolutionscorp.com/web/MS_get_historial_requerimientos_dash.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          user_id: userId,
-          year: year,
-          month: month
+      // Si NO hay usuario específico seleccionado, usamos todos los usuarios del contexto
+      let idsToFetch = [];
+
+      if (soloUsuarioSeleccionado) {
+        idsToFetch = [userId];
+      } else if (Array.isArray(contextoUsuarios) && contextoUsuarios.length > 0) {
+        idsToFetch = contextoUsuarios.map(u => Number(u.id));
+      } else {
+        idsToFetch = [userId]; // fallback
+      }
+
+      // Eliminar duplicados y valores vacíos
+      idsToFetch = [...new Set(idsToFetch.filter(Boolean))];
+
+      const allRows = [];
+
+      // Consultar el endpoint una vez por usuario del contexto
+      const requests = idsToFetch.map(uid =>
+        fetch("https://mobilitysolutionscorp.com/web/MS_get_historial_requerimientos_dash.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            user_id: uid,
+            year: year,
+            month: month
+          })
         })
-      });
+          .then(res => res.json().catch(() => ({})))
+          .then(data => {
+            const rows = Array.isArray(data.rows) ? data.rows : [];
+            rows.forEach(r => allRows.push(r));
+          })
+          .catch(err => {
+            console.error("Error historial requerimientos (uid=" + uid + "):", err);
+          })
+      );
 
-      const data = await res.json().catch(() => ({}));
-      const rows = Array.isArray(data.rows) ? data.rows : [];
+      await Promise.all(requests);
 
-      if (!rows.length) {
+      if (!allRows.length) {
         tbody.innerHTML = `
           <tr><td colspan="3" class="empty">
             Sin requerimientos para los filtros seleccionados.
@@ -544,8 +569,10 @@ if ($result) {
         return;
       }
 
+      // (Opcional) podrías ordenar por fecha si el formato lo permite
+
       tbody.innerHTML = "";
-      rows.forEach(r => {
+      allRows.forEach(r => {
         const tr = document.createElement("tr");
         tr.className = "history-row";
         tr.innerHTML = `
@@ -586,20 +613,43 @@ if ($result) {
     `;
 
     try {
-      const res = await fetch("https://mobilitysolutionscorp.com/web/MS_get_historial_reconocimientos_dash.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          asignado: userId,
-          year: year,
-          month: month
+      let idsToFetch = [];
+
+      if (soloUsuarioSeleccionado) {
+        idsToFetch = [userId];
+      } else if (Array.isArray(contextoUsuarios) && contextoUsuarios.length > 0) {
+        idsToFetch = contextoUsuarios.map(u => Number(u.id));
+      } else {
+        idsToFetch = [userId];
+      }
+
+      idsToFetch = [...new Set(idsToFetch.filter(Boolean))];
+
+      const allRows = [];
+
+      const requests = idsToFetch.map(uid =>
+        fetch("https://mobilitysolutionscorp.com/web/MS_get_historial_reconocimientos_dash.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            asignado: uid,
+            year: year,
+            month: month
+          })
         })
-      });
+          .then(res => res.json().catch(() => ({})))
+          .then(data => {
+            const rows = Array.isArray(data.rows) ? data.rows : [];
+            rows.forEach(r => allRows.push(r));
+          })
+          .catch(err => {
+            console.error("Error historial reconocimientos (uid=" + uid + "):", err);
+          })
+      );
 
-      const data = await res.json().catch(() => ({}));
-      const rows = Array.isArray(data.rows) ? data.rows : [];
+      await Promise.all(requests);
 
-      if (!rows.length) {
+      if (!allRows.length) {
         tbody.innerHTML = `
           <tr><td colspan="3" class="empty">
             Sin reconocimientos para los filtros seleccionados.
@@ -608,7 +658,7 @@ if ($result) {
       }
 
       tbody.innerHTML = "";
-      rows.forEach(r => {
+      allRows.forEach(r => {
         const tr = document.createElement("tr");
         tr.className = "history-row";
         tr.innerHTML = `
@@ -698,7 +748,7 @@ if ($result) {
     // Filtro Equipo solo para CTO/CEO
     if (grupoEquipo && selEquipo) {
       if (esCtoOCeo) {
-        grupoEquipo.style.display = "flex"; // o "block" según tu CSS
+        grupoEquipo.style.display = "flex"; // o "block"
         populateFiltroEquipo(selEquipo, usuariosGlobal);
       } else {
         grupoEquipo.style.display = "none";
@@ -880,6 +930,7 @@ if ($result) {
       titulo.textContent = `Resumen anual de requerimientos - ${contextoTexto} (${year})`;
     }
 
+    // Aquí ya usan la lógica nueva de contexto
     await loadHistorialRequerimientos(usuarioActual, year, mesParam);
     await loadHistorialReconocimientos(usuarioActual, year, mesParam);
   }
