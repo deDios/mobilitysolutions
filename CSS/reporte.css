@@ -275,7 +275,7 @@ ul.social-network {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
   gap: 16px;
-  min-height: 460px;
+  /* quitamos min-height para usar alto fijo en las tarjetas */
 }
 
 .history-card {
@@ -285,7 +285,8 @@ ul.social-network {
   padding: 12px 14px 12px;
   box-shadow: 0 1px 4px rgba(15, 23, 42, 0.06);
 
-  /* NUEVO: para que el body se estire a todo el alto disponible */
+  /* Alto fijo y layout flex para que el body se adapte */
+  height: 460px;
   display: flex;
   flex-direction: column;
 }
@@ -298,9 +299,9 @@ ul.social-network {
 }
 
 .history-body {
-  /* antes: max-height: 260px; */
-  flex: 1;        /* ocupa todo el alto restante de la tarjeta */
-  min-height: 0;  /* necesario para que el scroll funcione bien */
+  /* Ocupa todo el espacio restante dentro de los 460px */
+  flex: 1;
+  min-height: 0;
   overflow-y: auto;
 }
 
