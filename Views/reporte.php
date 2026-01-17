@@ -283,22 +283,38 @@ if ($result) {
   const MESES_CORTOS = ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
 
   // ============================
-  //  APIs PRINCIPALES
+  //  APIs PRINCIPALES (versiones _dash, vía POST)
   // ============================
   async function getDataUsuario(userId, year, soloUsuario = false) {
-    const soloParam = soloUsuario ? "&solo_usuario=1" : "";
-    const yearParam = year ? `&year=${year}` : "";
+    const metasPayload = {
+      asignado: userId,
+      user_type: tipoUsuarioActual,
+      solo_usuario: soloUsuario,
+      year: year
+    };
 
-    const metasUrl = `https://mobilitysolutionscorp.com/web/MS_get_metas_usuario_jerarquia.php?asignado=${userId}&user_type=${tipoUsuarioActual}${soloParam}${yearParam}`;
-    const hexUrl   = `https://mobilitysolutionscorp.com/web/MS_get_hex_usuario_jerarquia.php?user_id=${userId}&user_type=${tipoUsuarioActual}${soloParam}${yearParam}`;
+    const hexPayload = {
+      user_id: userId,
+      user_type: tipoUsuarioActual,
+      solo_usuario: soloUsuario,
+      year: year
+    };
 
     const [metasRes, hexRes] = await Promise.all([
-      fetch(metasUrl),
-      fetch(hexUrl)
+      fetch("https://mobilitysolutionscorp.com/web/MS_get_metas_usuario_jerarquia_dash.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(metasPayload)
+      }),
+      fetch("https://mobilitysolutionscorp.com/web/MS_get_hex_usuario_jerarquia_dash.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(hexPayload)
+      })
     ]);
 
     const metasData = await metasRes.json().catch(() => ({}));
-    const hexData   = await hexRes.json().catch(() => ([]));
+    const hexData   = await hexRes.json().catch(() => ({}));
 
     return {
       metas: metasData && Array.isArray(metasData.metas) ? metasData.metas : [],
@@ -343,7 +359,7 @@ if ($result) {
     return serie;
   }
 
-  // === NUEVO: calcular meta mensual de reservas (tipo_meta = 2) ===
+  // === Meta mensual de reservas (tipo_meta = 2) ===
   function buildMetaReservaSeries(metas) {
     const meta = new Array(12).fill(0);
     if (!Array.isArray(metas)) return meta;
@@ -366,7 +382,7 @@ if ($result) {
     return meta;
   }
 
-  // Ajustada: ahora recibe metas para usar meta de reservas como primer dataset
+  // Gráfica: meta de reservas + reservas + entregas
   function renderChartFromHex(hexRows, metas, year) {
     const { labels, nuevo, reserva, entrega } = buildSeries(hexRows);
     const metaReserva = buildMetaReservaSeries(metas);
@@ -431,7 +447,7 @@ if ($result) {
   }
 
   // ============================
-  //  HISTORIALES
+  //  HISTORIALES (versiones _dash)
   // ============================
   async function loadHistorialRequerimientos(userId, year, month) {
     const tbody = document.querySelector("#tablaHistReq tbody");
@@ -442,8 +458,7 @@ if ($result) {
     `;
 
     try {
-      // Ajusta esta URL / payload a tu API real
-      const res = await fetch("https://mobilitysolutionscorp.com/web/MS_get_historial_requerimientos.php", {
+      const res = await fetch("https://mobilitysolutionscorp.com/web/MS_get_historial_requerimientos_dash.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -506,8 +521,7 @@ if ($result) {
     `;
 
     try {
-      // Ajusta esta URL / payload a tu API real
-      const res = await fetch("https://mobilitysolutionscorp.com/web/MS_get_historial_reconocimientos.php", {
+      const res = await fetch("https://mobilitysolutionscorp.com/web/MS_get_historial_reconocimientos_dash.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -668,7 +682,6 @@ if ($result) {
     const mesParam = mesCombo === 0 ? null : mesCombo;             // 1-12 si se eligió
 
     const data = await getDataUsuario(usuarioActual, year, soloUsuarioSeleccionado);
-    // AHORA pasamos también metas para que la gráfica use meta de reservas
     renderChartFromHex(data.hex || [], data.metas || [], year);
 
     const titulo = document.getElementById("tituloGrafica");
