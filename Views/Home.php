@@ -224,6 +224,13 @@
                 </div>
 
                 <div class="edit-profile-wrapper">
+                    <!-- Nuevo botón a la izquierda -->
+                    <a href="https://mobilitysolutionscorp.com/Views/reporte.php"
+                      class="edit-button report-button">
+                        Ver dashboard
+                    </a>
+
+                    <!-- Botón existente de Editar perfil -->
                     <a href="#" class="edit-button" onclick="openModal()">Editar perfil</a>
                 </div>
             </article>

@@ -114,7 +114,6 @@ if ($result) {
     <link rel="stylesheet" href="../CSS/reporte.css?v=2.1">
 </head>
 
-
 <body>
 <div class="fixed-top">
   <header class="topbar">

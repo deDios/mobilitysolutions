@@ -419,11 +419,25 @@ li {
     color: #374151;
 }
 
-/* Botón editar perfil */
+/* Botones de perfil (Editar + Ver dashboard) */
 .edit-profile-wrapper {
     margin-top: 10px;
-    text-align: right;
+    display: flex;
+    justify-content: flex-end;  /* sigue alineado a la derecha */
+    gap: 8px;                   /* espacio entre botones */
 }
+
+/* Botón nuevo de ir al dashboard */
+.report-button {
+    background: #111827;
+    color: #f9fafb;
+}
+
+.report-button:hover {
+    background: #030712;
+    color: #ffffff;
+}
+
 .edit-button {
     display: inline-block;
     padding: 7px 14px;
