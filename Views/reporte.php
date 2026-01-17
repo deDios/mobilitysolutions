@@ -95,11 +95,11 @@ if ($result) {
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-    <!-- Bootstrap 5 (lo mantengo igual que tu código original) -->
+    <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- DataTables (por si lo usas en esta vista) -->
+    <!-- DataTables -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
@@ -115,7 +115,6 @@ if ($result) {
   <header class="topbar">
       <div class="container">
         <div class="row">
-          <!-- social icon-->
           <div class="col-sm-12">
             <ul class="social-network">
               <li><a class="waves-effect waves-dark" href="https://www.facebook.com/profile.php?id=61563909313215&mibextid=kFxxJD"><i class="fa fa-facebook"></i></a></li>
@@ -401,17 +400,17 @@ if ($result) {
           {
             label: "Meta de reservas",
             data: metaReserva,
-            backgroundColor: "#9ca3af"      // gris para la meta
+            backgroundColor: "#9ca3af"
           },
           {
             label: "Reservas realizadas",
             data: reserva,
-            backgroundColor: "#2563eb"      // azul reservas
+            backgroundColor: "#2563eb"
           },
           {
             label: "Entregas realizadas",
             data: entrega,
-            backgroundColor: "#eab308"      // amarillo entregas
+            backgroundColor: "#eab308"
           }
         ]
       },
@@ -464,7 +463,7 @@ if ($result) {
         body: JSON.stringify({
           user_id: userId,
           year: year,
-          month: month   // null o 1-12
+          month: month
         })
       });
 
@@ -574,18 +573,31 @@ if ($result) {
     if (!selUsuario || !selAnio || !selMes) return;
 
     selUsuario.innerHTML = "";
+
+    // Opción "Todos"
+    const optTodos = document.createElement("option");
+    optTodos.value = "0";
+    optTodos.textContent = "Todos";
+    selUsuario.appendChild(optTodos);
+
+    // Opción "Mi jerarquía"
     const optEquipo = document.createElement("option");
     optEquipo.value = String(usuarioOriginal);
     optEquipo.textContent = "Mi jerarquía";
     selUsuario.appendChild(optEquipo);
 
+    // Usuarios individuales
     usuarios.forEach(u => {
       const opt = document.createElement("option");
       opt.value = String(u.id);
       opt.textContent = u.nombre;
       selUsuario.appendChild(opt);
     });
-    selUsuario.value = String(usuarioOriginal);
+
+    // Valor inicial: "Todos"
+    selUsuario.value = "0";
+    usuarioActual = usuarioOriginal;
+    soloUsuarioSeleccionado = false;
 
     const now = new Date();
     const yearNow = now.getFullYear();
@@ -608,13 +620,24 @@ if ($result) {
 
     selUsuario.addEventListener("change", () => {
       const val = parseInt(selUsuario.value, 10);
-      usuarioActual = val;
-      soloUsuarioSeleccionado = (val !== usuarioOriginal);
 
-      document.querySelectorAll(".user-list-item").forEach(el => {
-        const id = parseInt(el.dataset.id, 10);
-        el.classList.toggle("active", soloUsuarioSeleccionado && id === val);
-      });
+      if (val === 0) {
+        // Todos: vista general
+        usuarioActual = usuarioOriginal;
+        soloUsuarioSeleccionado = false;
+
+        document.querySelectorAll(".user-list-item").forEach(el => {
+          el.classList.remove("active");
+        });
+      } else {
+        usuarioActual = val;
+        soloUsuarioSeleccionado = (val !== usuarioOriginal);
+
+        document.querySelectorAll(".user-list-item").forEach(el => {
+          const id = parseInt(el.dataset.id, 10);
+          el.classList.toggle("active", soloUsuarioSeleccionado && id === val);
+        });
+      }
 
       refreshDashboard();
     });
@@ -650,10 +673,11 @@ if ($result) {
         document.querySelectorAll(".user-list-item").forEach(el => el.classList.remove("active"));
 
         if (yaActivo) {
+          // Volver a "Todos"
           usuarioActual = usuarioOriginal;
           soloUsuarioSeleccionado = false;
           const selUsuario = document.getElementById("filtroUsuario");
-          if (selUsuario) selUsuario.value = String(usuarioOriginal);
+          if (selUsuario) selUsuario.value = "0";
         } else {
           usuarioActual = u.id;
           soloUsuarioSeleccionado = true;
@@ -705,9 +729,9 @@ if ($result) {
   });
 </script>
 
-<!-- Scripts extra que ya tenías (Select2, etc.) -->
+<!-- Scripts extra -->
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1YfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
