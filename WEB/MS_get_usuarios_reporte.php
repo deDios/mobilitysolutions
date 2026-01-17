@@ -10,9 +10,9 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 // Obtener parámetros POST
-$input = json_decode(file_get_contents("php://input"), true);
-$userId = isset($input['user_id']) ? (int)$input['user_id'] : 0;
-$userType = isset($input['user_type']) ? (int)$input['user_type'] : 0;
+$input    = json_decode(file_get_contents("php://input"), true);
+$userId   = isset($input['user_id'])  ? (int)$input['user_id']  : 0;
+$userType = isset($input['user_type'])? (int)$input['user_type']: 0;
 
 if (!$userId || !$userType) {
     echo json_encode(["success" => false, "message" => "Faltan parámetros obligatorios."]);
@@ -21,14 +21,20 @@ if (!$userId || !$userType) {
 
 // Función para obtener subordinados recursivamente
 function obtenerSubordinados($con, $id, &$resultados) {
-    $stmt = $con->prepare("SELECT user_id FROM mobility_solutions.tmx_acceso_usuario WHERE reporta_a = ?");
+    // AJUSTE: solo subordinados con estatus = 1
+    $stmt = $con->prepare("
+        SELECT user_id 
+        FROM mobility_solutions.tmx_acceso_usuario 
+        WHERE reporta_a = ? 
+          AND estatus = 1
+    ");
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $res = $stmt->get_result();
 
     while ($row = $res->fetch_assoc()) {
-        $subId = $row['user_id'];
-        if (!in_array($subId, $resultados)) {
+        $subId = (int)$row['user_id'];
+        if (!in_array($subId, $resultados, true)) {
             $resultados[] = $subId;
             obtenerSubordinados($con, $subId, $resultados); // recursivo
         }
@@ -40,37 +46,59 @@ function obtenerSubordinados($con, $id, &$resultados) {
 // Obtener lista final de IDs de usuarios a mostrar
 $ids = [];
 
-if (in_array($userType, [5, 6])) {
-    // CTO o CEO, obtener todos
-    $query = "SELECT user_id FROM mobility_solutions.tmx_acceso_usuario";
+if (in_array($userType, [5, 6], true)) {
+    // CTO o CEO, obtener TODOS los activos
+    // AJUSTE: solo registros con estatus = 1
+    $query = "
+        SELECT user_id 
+        FROM mobility_solutions.tmx_acceso_usuario
+        WHERE estatus = 1
+    ";
     $res = $con->query($query);
     while ($row = $res->fetch_assoc()) {
-        $ids[] = $row['user_id'];
+        $ids[] = (int)$row['user_id'];
     }
 } else {
     // Usuarios regulares: subordinados + self + jefe directo
     $ids[] = $userId;
 
-    // Obtener jefe directo
-    $stmt = $con->prepare("SELECT reporta_a FROM mobility_solutions.tmx_acceso_usuario WHERE user_id = ?");
+    // Obtener jefe directo (solo si el propio acceso está activo)
+    // AJUSTE: filtrar también por estatus = 1
+    $stmt = $con->prepare("
+        SELECT reporta_a 
+        FROM mobility_solutions.tmx_acceso_usuario 
+        WHERE user_id = ? 
+          AND estatus = 1
+    ");
     $stmt->bind_param("i", $userId);
     $stmt->execute();
     $stmt->bind_result($jefeId);
     if ($stmt->fetch() && $jefeId) {
-        $ids[] = $jefeId;
+        $ids[] = (int)$jefeId;
     }
     $stmt->close();
 
-    // Subordinados recursivos
+    // Subordinados recursivos (solo activos)
     obtenerSubordinados($con, $userId, $ids);
 }
 
 // Eliminar duplicados
 $ids = array_unique($ids);
 
-// Preparar consulta de usuarios
+// Si por alguna razón quedó vacío, regresamos lista vacía
+if (empty($ids)) {
+    echo json_encode([
+        "success"  => true,
+        "usuarios" => []
+    ]);
+    $con->close();
+    exit;
+}
+
+// Preparar consulta de usuarios solo activos
 $placeholders = implode(',', array_fill(0, count($ids), '?'));
-$tipos = str_repeat('i', count($ids));
+$tipos        = str_repeat('i', count($ids));
+
 $stmt = $con->prepare("
     SELECT 
         acc.user_id, 
@@ -88,8 +116,10 @@ $stmt = $con->prepare("
         us.cumpleaños, 
         us.telefono
     FROM mobility_solutions.tmx_acceso_usuario acc
-    LEFT JOIN mobility_solutions.tmx_usuario us ON acc.user_id = us.id
+    LEFT JOIN mobility_solutions.tmx_usuario us 
+           ON acc.user_id = us.id
     WHERE acc.user_id IN ($placeholders)
+      AND acc.estatus = 1      -- AJUSTE: solo usuarios activos
 ");
 
 $stmt->bind_param($tipos, ...$ids);
@@ -123,22 +153,22 @@ while ($row = $result->fetch_assoc()) {
     }
 
     $usuarios[] = [
-        "id" => $row["user_id"],
-        "username" => $row["user_name"],
-        "rol" => $rol,
-        "reporta_a" => $row["reporta_a"],
-        "nombre" => trim("{$row['nombre']} {$row['s_nombre']} {$row['last_name']}"),
-        "email" => $row["email"],
-        "telefono" => $row["telefono"],
+        "id"         => (int)$row["user_id"],
+        "username"   => $row["user_name"],
+        "rol"        => $rol,
+        "reporta_a"  => $row["reporta_a"],
+        "nombre"     => trim("{$row['nombre']} {$row['s_nombre']} {$row['last_name']}"),
+        "email"      => $row["email"],
+        "telefono"   => $row["telefono"],
         "cumpleaños" => $row["cumpleaños"],
-        "foto" => "https://mobilitysolutionscorp.com/Imagenes/Usuarios/{$row['user_id']}.jpg"
+        "foto"       => "https://mobilitysolutionscorp.com/Imagenes/Usuarios/{$row['user_id']}.jpg"
     ];
 }
 
 echo json_encode([
-    "success" => true,
+    "success"  => true,
     "usuarios" => $usuarios
 ]);
 
 $con->close();
-?> 
+?>
