@@ -90,7 +90,7 @@ if ($result) {
     <title>Dashboard</title>
     <link rel="shortcut icon" href="../Imagenes/movility.ico" />
 
-    <!-- Bootstrap / jQuery (mismos que tenías) -->
+    <!-- Bootstrap / jQuery -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -280,6 +280,15 @@ if ($result) {
 
   const MESES_DB     = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
   const MESES_CORTOS = ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
+
+  const esCtoOCeo = (Number(tipoUsuarioActual) === 5 || Number(tipoUsuarioActual) === 6);
+
+  function getJefeDirectoId(usuarios) {
+    const yo = usuarios.find(u => Number(u.id) === Number(usuarioOriginal));
+    if (!yo || yo.reporta_a === null || yo.reporta_a === undefined) return null;
+    const jefeId = Number(yo.reporta_a);
+    return isNaN(jefeId) ? null : jefeId;
+  }
 
   // ============================
   //  APIs PRINCIPALES (versiones _dash, vía POST)
@@ -572,29 +581,31 @@ if ($result) {
 
     if (!selUsuario || !selAnio || !selMes) return;
 
+    const jefeDirectoId = getJefeDirectoId(usuarios);
+
+    // Filtrar jefe directo para no CTO/CEO
+    let usuariosParaFiltros = usuarios;
+    if (!esCtoOCeo && jefeDirectoId) {
+      usuariosParaFiltros = usuarios.filter(u => Number(u.id) !== jefeDirectoId);
+    }
+
     selUsuario.innerHTML = "";
 
-    // Opción "Todos"
+    // Opción "Todos" (siempre)
     const optTodos = document.createElement("option");
     optTodos.value = "0";
     optTodos.textContent = "Todos";
     selUsuario.appendChild(optTodos);
 
-    // Opción "Mi jerarquía"
-    const optEquipo = document.createElement("option");
-    optEquipo.value = String(usuarioOriginal);
-    optEquipo.textContent = "Mi jerarquía";
-    selUsuario.appendChild(optEquipo);
-
-    // Usuarios individuales
-    usuarios.forEach(u => {
+    // Usuarios individuales (sin jefe directo para no CTO/CEO)
+    usuariosParaFiltros.forEach(u => {
       const opt = document.createElement("option");
       opt.value = String(u.id);
       opt.textContent = u.nombre;
       selUsuario.appendChild(opt);
     });
 
-    // Valor inicial: "Todos"
+    // Valor inicial: "Todos" => usuarioActual = usuarioOriginal
     selUsuario.value = "0";
     usuarioActual = usuarioOriginal;
     soloUsuarioSeleccionado = false;
@@ -622,7 +633,7 @@ if ($result) {
       const val = parseInt(selUsuario.value, 10);
 
       if (val === 0) {
-        // Todos: vista general
+        // Todos: vista general (mi jerarquía)
         usuarioActual = usuarioOriginal;
         soloUsuarioSeleccionado = false;
 
@@ -651,7 +662,15 @@ if ($result) {
     if (!list) return;
 
     list.innerHTML = "";
-    usuarios.forEach(u => {
+
+    const jefeDirectoId = getJefeDirectoId(usuarios);
+
+    // Filtrar jefe directo para no CTO/CEO
+    const usuariosParaLista = (!esCtoOCeo && jefeDirectoId)
+      ? usuarios.filter(u => Number(u.id) !== jefeDirectoId)
+      : usuarios;
+
+    usuariosParaLista.forEach(u => {
       const item = document.createElement("div");
       item.className = "user-list-item";
       item.dataset.id = String(u.id);
@@ -710,7 +729,7 @@ if ($result) {
 
     const titulo = document.getElementById("tituloGrafica");
     if (titulo && selUsu) {
-      const textUsu = selUsu.options[selUsu.selectedIndex]?.textContent || "Mi jerarquía";
+      const textUsu = selUsu.options[selUsu.selectedIndex]?.textContent || "Todos";
       titulo.textContent = `Resumen anual de requerimientos - ${textUsu} (${year})`;
     }
 
