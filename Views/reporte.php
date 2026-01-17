@@ -343,8 +343,34 @@ if ($result) {
     return serie;
   }
 
-  function renderChartFromHex(hexRows, year) {
+  // === NUEVO: calcular meta mensual de reservas (tipo_meta = 2) ===
+  function buildMetaReservaSeries(metas) {
+    const meta = new Array(12).fill(0);
+    if (!Array.isArray(metas)) return meta;
+
+    const metasReserva = metas.filter(m => {
+      const tm = m.tipo_meta;
+      return tm === 2 || tm === "2" || tm === "Reserva" || tm === "reserva";
+    });
+
+    metasReserva.forEach(m => {
+      MESES_DB.forEach((mesName, idx) => {
+        const raw = m[mesName];
+        const val = parseInt(raw ?? 0, 10);
+        if (!isNaN(val)) {
+          meta[idx] += val;
+        }
+      });
+    });
+
+    return meta;
+  }
+
+  // Ajustada: ahora recibe metas para usar meta de reservas como primer dataset
+  function renderChartFromHex(hexRows, metas, year) {
     const { labels, nuevo, reserva, entrega } = buildSeries(hexRows);
+    const metaReserva = buildMetaReservaSeries(metas);
+
     const canvas = document.getElementById("graficaMetas");
     if (!canvas) return;
 
@@ -357,19 +383,19 @@ if ($result) {
         labels,
         datasets: [
           {
-            label: "Nuevo catálogo",
-            data: nuevo,
-            backgroundColor: "#2563eb"
+            label: "Meta de reservas",
+            data: metaReserva,
+            backgroundColor: "#9ca3af"      // gris para la meta
           },
           {
-            label: "Reserva vehículo",
+            label: "Reservas realizadas",
             data: reserva,
-            backgroundColor: "#22c55e"
+            backgroundColor: "#2563eb"      // azul reservas
           },
           {
-            label: "Entrega vehículo",
+            label: "Entregas realizadas",
             data: entrega,
-            backgroundColor: "#eab308"
+            backgroundColor: "#eab308"      // amarillo entregas
           }
         ]
       },
@@ -642,7 +668,8 @@ if ($result) {
     const mesParam = mesCombo === 0 ? null : mesCombo;             // 1-12 si se eligió
 
     const data = await getDataUsuario(usuarioActual, year, soloUsuarioSeleccionado);
-    renderChartFromHex(data.hex || [], year);
+    // AHORA pasamos también metas para que la gráfica use meta de reservas
+    renderChartFromHex(data.hex || [], data.metas || [], year);
 
     const titulo = document.getElementById("tituloGrafica");
     if (titulo && selUsu) {
@@ -668,7 +695,7 @@ if ($result) {
 <!-- Scripts extra que ya tenías (Select2, etc.) -->
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 </body>
