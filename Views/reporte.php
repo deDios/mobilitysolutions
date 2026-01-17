@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-if (!isset ($_SESSION['username'])){
+if (!isset($_SESSION['username'])) {
     echo '<script>
-            alert("Es necesario hacer login, por favor ingrese sus credenciales") ;
+            alert("Es necesario hacer login, por favor ingrese sus credenciales");
             window.location = "../views/login.php";
           </script>';
     session_destroy();
@@ -12,7 +12,7 @@ if (!isset ($_SESSION['username'])){
 
 $inc = include "../db/Conexion.php";
 
-$query ='select 
+$query = 'select 
                 acc.user_id, 
                 acc.user_name, 
                 acc.user_password, 
@@ -27,76 +27,61 @@ $query ='select
                 us.email, 
                 us.cumpleaños, 
                 us.telefono
-            from mobility_solutions.tmx_acceso_usuario  as acc
-            left join mobility_solutions.tmx_usuario as us
-                on acc.user_id = us.id
-            where acc.user_name = '.$_SESSION['username'].';';
+          from mobility_solutions.tmx_acceso_usuario  as acc
+          left join mobility_solutions.tmx_usuario as us
+            on acc.user_id = us.id
+          where acc.user_name = ' . $_SESSION['username'] . ';';
 
-    $result = mysqli_query($con,$query); 
+$result = mysqli_query($con, $query);
 
-    if ($result){ 
-        while($row = mysqli_fetch_assoc($result)){
-                            $user_id = $row['user_id'];
-                            $_SESSION['user_id'] = $user_id;
-                            $user_name = $row['user_name'];
-                            $user_password = $row['user_password'];
-                            $user_type = $row['user_type'];
-                            $r_ejecutivo = $row['r_ejecutivo'];
-                            $r_editor = $row['r_editor'];
-                            $r_autorizador = $row['r_autorizador'];
-                            $r_analista = $row['r_analista'];
-                            $nombre = $row['nombre'];
-                            $s_nombre = $row['s_nombre'];
-                            $last_name = $row['last_name'];
-                            $email = $row['email'];
-                            $cumpleaños = $row['cumpleaños'];
-                            $telefono = $row['telefono'];
-                           
-        // Concatenar nombre completo
+if ($result) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $user_id      = $row['user_id'];
+        $_SESSION['user_id'] = $user_id;
+        $user_name    = $row['user_name'];
+        $user_password= $row['user_password'];
+        $user_type    = $row['user_type'];
+        $r_ejecutivo  = $row['r_ejecutivo'];
+        $r_editor     = $row['r_editor'];
+        $r_autorizador= $row['r_autorizador'];
+        $r_analista   = $row['r_analista'];
+        $nombre       = $row['nombre'];
+        $s_nombre     = $row['s_nombre'];
+        $last_name    = $row['last_name'];
+        $email        = $row['email'];
+        $cumpleaños   = $row['cumpleaños'];
+        $telefono     = $row['telefono'];
+
+        // Nombre completo
         $nombre_usuario = trim($nombre . " " . $s_nombre . " " . $last_name);
 
-        // Determinar título profesional
+        // Título profesional
         $roles_activos = [];
-
-        if ($r_ejecutivo == 1) $roles_activos[] = "Ejecutivo";
-        if ($r_editor == 1) $roles_activos[] = "Editor";
+        if ($r_ejecutivo == 1)   $roles_activos[] = "Ejecutivo";
+        if ($r_editor == 1)      $roles_activos[] = "Editor";
         if ($r_autorizador == 1) $roles_activos[] = "Autorizador";
-        if ($r_analista == 1) $roles_activos[] = "Analista";
+        if ($r_analista == 1)    $roles_activos[] = "Analista";
 
         if ($user_id == 4) {
             $titulo_profesional = "CEO - Mobility Solutions";
-        }
-        elseif ($user_id == 1) {
-          $titulo_profesional = "CTO - Líder técnico";
-        } 
-        elseif ($user_id == 18) {
-          $titulo_profesional = "CTO - Líder técnico";
-        } 
-        elseif ($user_id == 17) {
-          $titulo_profesional = "CTO - Líder técnico";
-        } 
-        else {
+        } elseif ($user_id == 1 || $user_id == 18 || $user_id == 17) {
+            $titulo_profesional = "CTO - Líder técnico";
+        } else {
             $titulo_profesional = implode(" | ", $roles_activos);
-        }    
+        }
     }
 
     if ((int)$user_type < 2) {
-        echo ' 
-        <script>
-            alert("No tiene acceso para entrar al apartado de asignaciones, favor de solicitarlo al departamento de sistemas");
-            window.location = "../views/Home.php";
-        </script>'; 
+        echo '<script>
+                alert("No tiene acceso para entrar al apartado de asignaciones, favor de solicitarlo al departamento de sistemas");
+                window.location = "../views/Home.php";
+              </script>';
         exit();
     }
-
-  } 
-  else {
+} else {
     echo 'Falla en conexión.';
-  }
-
+}
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -105,27 +90,24 @@ $query ='select
     <title>Dashboard</title>
     <link rel="shortcut icon" href="../Imagenes/movility.ico" />
 
+    <!-- Bootstrap / jQuery (mismos que tenías) -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap 5 (lo mantengo igual que tu código original) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- DataTables (por si lo usas en esta vista) -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
-    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- DataTable JS -->
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
- 
+
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-   
-    <link rel="stylesheet" href="../CSS/reporte.css?v=1.1">
 
-
+    <!-- CSS del dashboard -->
+    <link rel="stylesheet" href="../CSS/reporte.css?v=2.0">
 </head>
 
 <body>
@@ -137,14 +119,11 @@ $query ='select
           <div class="col-sm-12">
             <ul class="social-network">
               <li><a class="waves-effect waves-dark" href="https://www.facebook.com/profile.php?id=61563909313215&mibextid=kFxxJD"><i class="fa fa-facebook"></i></a></li>
-              
-              <li><a class="waves-effect waves-dark" href="" data-toggle="modal" data-target="#exampleModal2"><i class="fa fa-map-marker"></i></a></li>       
-
+              <li><a class="waves-effect waves-dark" href="" data-toggle="modal" data-target="#exampleModal2"><i class="fa fa-map-marker"></i></a></li>
               <li><a class="waves-effect waves-dark" href="https://mobilitysolutionscorp.com/db_consultas/cerrar_sesion.php"><i class="fa fa-sign-out"></i></a></li>
             </ul>
           </div>
-
-        </div> 
+        </div>
       </div>
   </header>
 
@@ -193,416 +172,503 @@ $query ='select
 <div class="ds">
   <div class="dashboard-container">
 
-    <!-- PRIMERA SECCIÓN: TOTALIZADORES + CÍRCULOS + GRÁFICA -->
-    <div class="upper-section">
-      <h3 id="tituloGrafica" style="text-align: center; margin-top: 10px;">Gráfica de Avance - New</h3>
+    <!-- COLUMNA IZQUIERDA: FILTROS + GRÁFICA + HISTORIALES -->
+    <section class="dash-left">
 
-      <!-- Contenedor para hexágonos + círculos -->
-      <div class="upper-content">
-        <div class="hex-totalizadores-container">
-          <div class="hex-totalizadores">
-            <div class="hex-box" id="dealsBox">
-              <h2 id="dealsTotal">0</h2>
-              <p>Cargas catálogo</p>
-            </div>
-            <div class="hex-box" id="reservasBox">
-              <h2 id="reservasTotal">0</h2>
-              <p>Contratos</p>
-            </div>
-            <div class="hex-box" id="entregasBox">
-              <h2 id="entregasTotal">0</h2>
-              <p>Entregas</p>
-            </div>
-          </div>
-
-          <div class="circulos">
-            <div id="avanceMensual" class="month-circles-container">
-              <!-- Los círculos mensuales se insertarán dinámicamente aquí -->
-            </div>
-          </div>
+      <!-- Filtros superiores -->
+      <header class="filters-bar">
+        <div class="filter-group">
+          <label for="filtroUsuario">Filtro usuario</label>
+          <select id="filtroUsuario"></select>
         </div>
-        <!-- Contenedor para la gráfica -->
-        <div class="chart-container">
+        <div class="filter-group">
+          <label for="filtroAnio">Año</label>
+          <select id="filtroAnio"></select>
+        </div>
+        <div class="filter-group">
+          <label for="filtroMes">Mes</label>
+          <select id="filtroMes"></select>
+        </div>
+      </header>
+
+      <!-- Gráfica principal -->
+      <section class="main-card">
+        <h3 class="card-title" id="tituloGrafica">
+          Resumen anual de requerimientos
+        </h3>
+        <div class="chart-wrapper">
           <canvas id="graficaMetas"></canvas>
         </div>
-      </div> 
-    </div>
+      </section>
 
+      <!-- Historiales inferiores -->
+      <section class="bottom-row">
+        <!-- Historial de requerimientos -->
+        <article class="history-card">
+          <header class="history-header">
+            <h4>Historial de requerimientos</h4>
+          </header>
+          <div class="history-body">
+            <table class="history-table" id="tablaHistReq">
+              <thead>
+                <tr>
+                  <th>Detalle</th>
+                  <th>Fecha</th>
+                  <th>Tipo de requerimiento</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="3" class="empty">
+                    Selecciona un usuario para ver su historial.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
 
-    <!-- SEGUNDA SECCIÓN: ÁRBOL DE USUARIOS -->
-    <div>
-      <h4> Organigrama </h4>
-      <div class="lower-section">
-        <div id="userTree" class="hierarchy-tree-container">
-          <div id="userMetrics"></div>
-        </div>
+        <!-- Historial de reconocimientos -->
+        <article class="history-card">
+          <header class="history-header">
+            <h4>Historial de reconocimientos</h4>
+          </header>
+          <div class="history-body">
+            <table class="history-table" id="tablaHistRec">
+              <thead>
+                <tr>
+                  <th>Reconocimiento</th>
+                  <th>Fecha</th>
+                  <th>Descripción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="3" class="empty">
+                    Selecciona un usuario para ver su historial.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+    </section>
+
+    <!-- COLUMNA DERECHA: LISTA DE USUARIOS -->
+    <aside class="dash-right">
+      <h3 class="right-title">Equipo</h3>
+      <div id="userList" class="user-list">
+        <!-- Se llena por JS -->
       </div>
-    </div>
+    </aside>
 
   </div>
-
 </div>
 
+<!-- Estado global -->
 <script>
-  const usuarioOriginal = <?php echo json_encode($_SESSION['user_id']); ?>;
-  let usuarioActual = usuarioOriginal;
-  const tipoUsuarioActual = <?php echo json_encode($user_type); ?>;
-  let soloUsuarioSeleccionado = false; 
+  const usuarioOriginal           = <?php echo json_encode($_SESSION['user_id']); ?>;
+  let   usuarioActual             = usuarioOriginal;
+  const tipoUsuarioActual         = <?php echo json_encode($user_type); ?>;
+  let   soloUsuarioSeleccionado   = false;
 </script>
 
-
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <script>
   let currentChart = null;
 
-  async function getDataUsuario(userId, soloUsuario = false) {
+  const MESES_DB     = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+  const MESES_CORTOS = ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
+
+  // ============================
+  //  APIs PRINCIPALES
+  // ============================
+  async function getDataUsuario(userId, year, soloUsuario = false) {
     const soloParam = soloUsuario ? "&solo_usuario=1" : "";
-    const metasRes = await fetch(`https://mobilitysolutionscorp.com/web/MS_get_metas_usuario_jerarquia.php?asignado=${userId}&user_type=${tipoUsuarioActual}${soloParam}`);
-    const hexRes = await fetch(`https://mobilitysolutionscorp.com/web/MS_get_hex_usuario_jerarquia.php?user_id=${userId}&user_type=${tipoUsuarioActual}${soloParam}`);
-    const metasData = await metasRes.json();
-    const hexData = await hexRes.json();
-    return { metas: metasData?.metas || [], hex: hexData || [] };
-  }
+    const yearParam = year ? `&year=${year}` : "";
 
+    const metasUrl = `https://mobilitysolutionscorp.com/web/MS_get_metas_usuario_jerarquia.php?asignado=${userId}&user_type=${tipoUsuarioActual}${soloParam}${yearParam}`;
+    const hexUrl   = `https://mobilitysolutionscorp.com/web/MS_get_hex_usuario_jerarquia.php?user_id=${userId}&user_type=${tipoUsuarioActual}${soloParam}${yearParam}`;
 
+    const [metasRes, hexRes] = await Promise.all([
+      fetch(metasUrl),
+      fetch(hexUrl)
+    ]);
 
-  async function getUsuarios() {
-    const res = await fetch("https://mobilitysolutionscorp.com/web/MS_get_usuario.php");
-    const data = await res.json();
-    return data.usuarios || [];
-  }
+    const metasData = await metasRes.json().catch(() => ({}));
+    const hexData   = await hexRes.json().catch(() => ([]));
 
-  function generarTotales(data) {
-    let totalDeals = 0, totalReservas = 0, totalEntregas = 0;
-
-    data.hex.forEach(row => {
-      totalDeals += row.New;
-      totalReservas += row.Reserva;
-      totalEntregas += row.Entrega;
-    });
-
-    document.getElementById("dealsTotal").innerText = totalDeals;
-    document.getElementById("reservasTotal").innerText = totalReservas;
-    document.getElementById("entregasTotal").innerText = totalEntregas;
-  }
-
-  function renderAvanceMensual(tipo, avance, metas) {
-    const container = document.getElementById("avanceMensual");
-    container.innerHTML = "";
-    const meses = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
-
-    if (tipo === "Entrega") {
-      const totalAvance = avance.reduce((acc, val) => acc + val, 0);
-      const totalMeta = metas.reduce((acc, val) => acc + val, 0);
-      const pct = totalMeta ? (totalAvance / totalMeta) * 100 : 0;
-      const color = pct < 90 ? 'gray' : pct < 96 ? 'yellow' : 'green';
-      const circle = `<div class="month-circle ${color}"><div>${Math.round(pct)}%</div></div>`;
-      container.innerHTML = circle;
-    } else {
-      meses.forEach((mes, i) => {
-        const pct = metas[i] ? (avance[i] / metas[i]) * 100 : 0;
-        const color = pct < 90 ? 'gray' : pct < 96 ? 'yellow' : 'green';
-        const circle = `<div class="month-circle ${color}"><div>${mes}<br>${Math.round(pct)}%</div></div>`;
-        container.innerHTML += circle;
-      });
-    }
-  }
-
-  function renderGraficaPorTipo(tipo) {
-    actualizarTituloGrafica(tipo);
-    getDataUsuario(usuarioActual, soloUsuarioSeleccionado).then(data => {
-      const tipoMeta = { New: 1, Reserva: 2, Entrega: 3 }[tipo];
-      const meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
-
-      const avanceMensual = new Array(12).fill(0);
-      data.hex.forEach(row => {
-        const index = meses.findIndex(m => m.toLowerCase() === row.Mes.toLowerCase());
-        if (index >= 0) avanceMensual[index] += row[tipo] || 0;
-      });
-
-      const metasFiltradas = data.metas.filter(m => m.tipo_meta == tipoMeta);
-      const metasMensuales = meses.map(mes =>
-        metasFiltradas.reduce((sum, meta) => sum + (parseInt(meta[mes]) || 0), 0)
-      );
-
-      renderAvanceMensual(tipo, avanceMensual, metasMensuales);
-
-      if (currentChart) currentChart.destroy();
-      const ctx = document.getElementById("graficaMetas").getContext("2d");
-      currentChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: meses.map(m => m.charAt(0).toUpperCase() + m.slice(1)),
-          datasets: [
-            { label: `Avance mensual - ${tipo}`, data: avanceMensual, backgroundColor: '#3498db' },
-            { label: 'Meta', data: metasMensuales, backgroundColor: '#95a5a6' }
-          ]
-        },
-        options: { responsive: true, maintainAspectRatio: false }
-      });
-    });
-  }
-
-  function actualizarTituloGrafica(tipo) {
-  const mapa = {
-    New: 'Carga en catálogo',
-    Reserva: 'Reserva de vehículo',
-    Entrega: 'Entrega de vehículo'
-  };
-  const titulo = mapa[tipo] || tipo;
-  document.getElementById("tituloGrafica").innerText = `Gráfica de Avance - ${titulo}`;
-}
-
-  function renderGauge(tipo) {
-    actualizarTituloGrafica(tipo);
-    getDataUsuario(usuarioActual, soloUsuarioSeleccionado).then(data => {
-      const tipoMeta = { New: 1, Reserva: 2, Entrega: 3 }[tipo];
-      const meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
-
-      const totalAvance = data.hex.reduce((acc, row) => acc + (row[tipo] || 0), 0);
-      const metasFiltradas = data.metas.filter(m => m.tipo_meta == tipoMeta);
-      const metaAnual = meses.reduce((sum, mes) =>
-        sum + metasFiltradas.reduce((subtotal, meta) => subtotal + (parseInt(meta[mes]) || 0), 0), 0
-      );
-
-      renderAvanceMensual(tipo, [totalAvance], [metaAnual]);
-
-      if (currentChart) currentChart.destroy();
-      const ctx = document.getElementById("graficaMetas").getContext("2d");
-      currentChart = new Chart(ctx, {
-        type: 'polarArea',
-        data: {
-          labels: ['Avance', 'Pendiente'],
-          datasets: [{
-            data: [totalAvance, Math.max(0, metaAnual - totalAvance)],
-            backgroundColor: ['#2980b9', '#dcdde1']
-          }]
-        },
-        options: {
-          responsive: true,
-          plugins: {
-            legend: { display: true, position: 'bottom' },
-            tooltip: {
-              enabled: true,
-              callbacks: {
-                label: context => `${context.label || ''}: ${context.raw || 0}`
-              }
-            }
-          }
-        }
-      });
-    });
+    return {
+      metas: metasData && Array.isArray(metasData.metas) ? metasData.metas : [],
+      hex:   Array.isArray(hexData) ? hexData : (Array.isArray(hexData.rows) ? hexData.rows : [])
+    };
   }
 
   async function getUsuariosJerarquia() {
-  const res = await fetch("https://mobilitysolutionscorp.com/web/MS_get_usuarios_reporte.php", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      user_id: usuarioActual,
-      user_type: tipoUsuarioActual
-    })
-  });
-
-  const data = await res.json();
-  return data.usuarios || [];
-}
-
-async function renderUserCards() {
-  const usuarios = await getUsuariosJerarquia();
-  const contenedor = document.getElementById("userMetrics");
-  contenedor.innerHTML = "";
-
-  for (const usuario of usuarios) {
-    const datos = await getDataUsuario(usuario.id);
-    let totalNew = 0, totalReserva = 0, totalEntrega = 0;
-
-    datos.hex.forEach(row => {
-      totalNew += row.New;
-      totalReserva += row.Reserva;
-      totalEntrega += row.Entrega;
+    const res  = await fetch("https://mobilitysolutionscorp.com/web/MS_get_usuarios_reporte.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        user_id:  usuarioOriginal,
+        user_type: tipoUsuarioActual
+      })
     });
-
-    usuario.totalNew = totalNew;
-    usuario.totalReserva = totalReserva;
-    usuario.totalEntrega = totalEntrega;
-
-    const div = document.createElement("div");
-    div.className = "user-metric";
-    div.innerHTML = `
-      <div class="user-header">
-        <img src="${usuario.foto}" alt="${usuario.nombre}" class="user-avatar">
-        <div class="user-info">
-          <h4>${usuario.nombre}</h4>
-          <div class="user-role">${usuario.rol}</div>
-        </div>
-      </div>
-    `;
-
-    // 🔁 CLICK PARA SELECCIONAR / DESELECCIONAR USUARIO
-    div.addEventListener("click", async () => {
-      const yaSeleccionado = div.classList.contains("selected");
-      document.querySelectorAll(".user-metric").forEach(card => card.classList.remove("selected"));
-
-      if (yaSeleccionado) {
-        // 🔄 Restablecer al usuario original
-        usuarioActual = usuarioOriginal;
-        soloUsuarioSeleccionado = false;
-      } else {
-        // ✅ Seleccionar nuevo usuario
-        div.classList.add("selected");
-        usuarioActual = usuario.id;
-        soloUsuarioSeleccionado = true;
-      }
-
-
-      const data = await getDataUsuario(usuarioActual, soloUsuarioSeleccionado);
-      generarTotales(data);
-      renderGraficaPorTipo("New");
-      activarHexagono("dealsBox");
-    });
-
-
-    contenedor.appendChild(div);
+    const data = await res.json().catch(() => ({}));
+    return Array.isArray(data.usuarios) ? data.usuarios : [];
   }
 
-  return usuarios;
-}
+  // ============================
+  //  SERIE PARA LA GRÁFICA
+  // ============================
+  function buildSeries(hexRows) {
+    const serie = {
+      labels: MESES_CORTOS.slice(),
+      nuevo:   new Array(12).fill(0),
+      reserva: new Array(12).fill(0),
+      entrega: new Array(12).fill(0)
+    };
 
+    hexRows.forEach(row => {
+      const mesNombre = (row.Mes || row.mes || "").toString().toLowerCase();
+      const idx = MESES_DB.indexOf(mesNombre);
+      if (idx === -1) return;
 
-function renderUserTree(usuarios) {
-  const treeContainer = document.getElementById("userTree");
-  if (!treeContainer) return;
-
-  // Mapear por ID
-  const userMap = {};
-  usuarios.forEach(u => {
-    userMap[u.id] = { ...u, children: [] };
-  });
-
-  // Construir jerarquía
-  const rootNodes = [];
-  usuarios.forEach(u => {
-    if (u.reporta_a && userMap[u.reporta_a]) {
-      userMap[u.reporta_a].children.push(userMap[u.id]);
-    } else {
-      rootNodes.push(userMap[u.id]);
-    }
-  });
-
-  // Crear raíz visual
-  const ul = document.createElement("ul");
-  ul.className = "tree-vertical";
-
-  rootNodes.forEach(root => {
-    ul.appendChild(createTreeNode(root));
-  });
-
-  treeContainer.innerHTML = "";
-  treeContainer.appendChild(ul);
-}
-
-function createTreeNode(usuario) {
-    const li = document.createElement("li");
-    li.className = "tree-node";
-
-    const card = document.createElement("div");
-    card.className = "user-metric";
-    card.innerHTML = `
-      <div class="user-header">
-        <img src="${usuario.foto}" alt="${usuario.nombre}" class="user-avatar">
-        <div class="user-info">
-          <h4>${usuario.nombre}</h4>
-          <div class="user-role">${usuario.rol}</div>
-        </div>
-      </div>
-    `;
-
-    // 👇 Aquí agregamos el evento de clic
-    card.addEventListener("click", async (e) => {
-      e.stopPropagation();
-      const yaSeleccionado = card.classList.contains("selected");
-      document.querySelectorAll(".user-metric").forEach(c => c.classList.remove("selected"));
-
-      if (yaSeleccionado) {
-        usuarioActual = usuarioOriginal;
-        soloUsuarioSeleccionado = false;
-      } else {
-        card.classList.add("selected");
-        usuarioActual = usuario.id;
-        soloUsuarioSeleccionado = true;
-      }
-
-
-      const data = await getDataUsuario(usuarioActual, soloUsuarioSeleccionado);
-      generarTotales(data);
-      renderGraficaPorTipo("New");
-      activarHexagono("dealsBox");
+      serie.nuevo[idx]   += Number(row.New      ?? row.nuevo   ?? 0) || 0;
+      serie.reserva[idx] += Number(row.Reserva  ?? row.reserva ?? 0) || 0;
+      serie.entrega[idx] += Number(row.Entrega  ?? row.entrega ?? 0) || 0;
     });
 
+    return serie;
+  }
 
-    li.appendChild(card);
+  function renderChartFromHex(hexRows, year) {
+    const { labels, nuevo, reserva, entrega } = buildSeries(hexRows);
+    const canvas = document.getElementById("graficaMetas");
+    if (!canvas) return;
 
-    if (usuario.children.length > 0) {
-      const childUl = document.createElement("ul");
-      childUl.className = "tree-vertical";
+    const ctx = canvas.getContext("2d");
+    if (currentChart) currentChart.destroy();
 
-      usuario.children.forEach(child => {
-        childUl.appendChild(createTreeNode(child));
+    currentChart = new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels,
+        datasets: [
+          {
+            label: "Nuevo catálogo",
+            data: nuevo,
+            backgroundColor: "#2563eb"
+          },
+          {
+            label: "Reserva vehículo",
+            data: reserva,
+            backgroundColor: "#22c55e"
+          },
+          {
+            label: "Entrega vehículo",
+            data: entrega,
+            backgroundColor: "#eab308"
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: {
+          mode: "index",
+          intersect: false
+        },
+        plugins: {
+          legend: {
+            position: "bottom"
+          },
+          tooltip: {
+            mode: "index",
+            intersect: false
+          }
+        },
+        scales: {
+          x: {
+            grid: { display: false }
+          },
+          y: {
+            beginAtZero: true,
+            ticks: {
+              stepSize: 1
+            }
+          }
+        }
+      }
+    });
+  }
+
+  // ============================
+  //  HISTORIALES
+  // ============================
+  async function loadHistorialRequerimientos(userId, year, month) {
+    const tbody = document.querySelector("#tablaHistReq tbody");
+    if (!tbody) return;
+
+    tbody.innerHTML = `
+      <tr><td colspan="3" class="empty">Cargando requerimientos...</td></tr>
+    `;
+
+    try {
+      // Ajusta esta URL / payload a tu API real
+      const res = await fetch("https://mobilitysolutionscorp.com/web/MS_get_historial_requerimientos.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          user_id: userId,
+          year: year,
+          month: month   // null o 1-12
+        })
       });
 
-      li.appendChild(childUl);
+      const data = await res.json().catch(() => ({}));
+      const rows = Array.isArray(data.rows) ? data.rows : [];
+
+      if (!rows.length) {
+        tbody.innerHTML = `
+          <tr><td colspan="3" class="empty">
+            Sin requerimientos para los filtros seleccionados.
+          </td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = "";
+      rows.forEach(r => {
+        const tr = document.createElement("tr");
+        tr.className = "history-row";
+        tr.innerHTML = `
+          <td>
+            <div class="hist-item">
+              ${r.imagen_url ? `<img src="${r.imagen_url}" class="hist-thumb" alt="">` : ""}
+              <div class="hist-main">
+                <div class="hist-title">
+                  ${r.titulo || r.auto || ("Req #" + (r.id ?? ""))}
+                </div>
+                <div class="hist-sub">
+                  ${r.subtitulo || r.detalle || ""}
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>${r.fecha || ""}</td>
+          <td>${r.tipo || r.tipo_requerimiento || ""}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+    } catch (err) {
+      console.error("Error historial requerimientos:", err);
+      tbody.innerHTML = `
+        <tr><td colspan="3" class="empty">
+          Error al consultar el historial de requerimientos.
+        </td></tr>`;
+    }
+  }
+
+  async function loadHistorialReconocimientos(userId, year, month) {
+    const tbody = document.querySelector("#tablaHistRec tbody");
+    if (!tbody) return;
+
+    tbody.innerHTML = `
+      <tr><td colspan="3" class="empty">Cargando reconocimientos...</td></tr>
+    `;
+
+    try {
+      // Ajusta esta URL / payload a tu API real
+      const res = await fetch("https://mobilitysolutionscorp.com/web/MS_get_historial_reconocimientos.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          asignado: userId,
+          year: year,
+          month: month
+        })
+      });
+
+      const data = await res.json().catch(() => ({}));
+      const rows = Array.isArray(data.rows) ? data.rows : [];
+
+      if (!rows.length) {
+        tbody.innerHTML = `
+          <tr><td colspan="3" class="empty">
+            Sin reconocimientos para los filtros seleccionados.
+          </td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = "";
+      rows.forEach(r => {
+        const tr = document.createElement("tr");
+        tr.className = "history-row";
+        tr.innerHTML = `
+          <td>${r.reconocimiento || r.titulo || "Reconocimiento"}</td>
+          <td>${r.fecha || (r.mes && r.anio ? `${r.mes}/${r.anio}` : "")}</td>
+          <td>${r.descripcion || ""}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+    } catch (err) {
+      console.error("Error historial reconocimientos:", err);
+      tbody.innerHTML = `
+        <tr><td colspan="3" class="empty">
+          Error al consultar el historial de reconocimientos.
+        </td></tr>`;
+    }
+  }
+
+  // ============================
+  //  LISTA DE USUARIOS / FILTROS
+  // ============================
+  function setupFiltros(usuarios) {
+    const selUsuario = document.getElementById("filtroUsuario");
+    const selAnio    = document.getElementById("filtroAnio");
+    const selMes     = document.getElementById("filtroMes");
+
+    if (!selUsuario || !selAnio || !selMes) return;
+
+    selUsuario.innerHTML = "";
+    const optEquipo = document.createElement("option");
+    optEquipo.value = String(usuarioOriginal);
+    optEquipo.textContent = "Mi jerarquía";
+    selUsuario.appendChild(optEquipo);
+
+    usuarios.forEach(u => {
+      const opt = document.createElement("option");
+      opt.value = String(u.id);
+      opt.textContent = u.nombre;
+      selUsuario.appendChild(opt);
+    });
+    selUsuario.value = String(usuarioOriginal);
+
+    const now = new Date();
+    const yearNow = now.getFullYear();
+    [yearNow - 1, yearNow, yearNow + 1].forEach(y => {
+      const opt = document.createElement("option");
+      opt.value = String(y);
+      opt.textContent = String(y);
+      selAnio.appendChild(opt);
+    });
+    selAnio.value = String(yearNow);
+
+    const mesesCombo = ["Todos","Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+    mesesCombo.forEach((m, idx) => {
+      const opt = document.createElement("option");
+      opt.value = String(idx); // 0 = todos
+      opt.textContent = m;
+      selMes.appendChild(opt);
+    });
+    selMes.value = "0";
+
+    selUsuario.addEventListener("change", () => {
+      const val = parseInt(selUsuario.value, 10);
+      usuarioActual = val;
+      soloUsuarioSeleccionado = (val !== usuarioOriginal);
+
+      document.querySelectorAll(".user-list-item").forEach(el => {
+        const id = parseInt(el.dataset.id, 10);
+        el.classList.toggle("active", soloUsuarioSeleccionado && id === val);
+      });
+
+      refreshDashboard();
+    });
+
+    selAnio.addEventListener("change", refreshDashboard);
+    selMes.addEventListener("change", refreshDashboard);
+  }
+
+  function renderUserList(usuarios) {
+    const list = document.getElementById("userList");
+    if (!list) return;
+
+    list.innerHTML = "";
+    usuarios.forEach(u => {
+      const item = document.createElement("div");
+      item.className = "user-list-item";
+      item.dataset.id = String(u.id);
+
+      item.innerHTML = `
+        <img src="${u.foto}" alt="${u.nombre}" class="user-list-avatar">
+        <div class="user-list-text">
+          <div class="user-list-name">${u.nombre}</div>
+          <div class="user-list-meta">
+            ${u.rol || ""}${u.ultima_actividad ? " · " + u.ultima_actividad : ""}
+          </div>
+        </div>
+        <span class="status-dot ${u.activo ? "online" : ""}"></span>
+      `;
+
+      item.addEventListener("click", () => {
+        const yaActivo = item.classList.contains("active");
+
+        document.querySelectorAll(".user-list-item").forEach(el => el.classList.remove("active"));
+
+        if (yaActivo) {
+          usuarioActual = usuarioOriginal;
+          soloUsuarioSeleccionado = false;
+          const selUsuario = document.getElementById("filtroUsuario");
+          if (selUsuario) selUsuario.value = String(usuarioOriginal);
+        } else {
+          usuarioActual = u.id;
+          soloUsuarioSeleccionado = true;
+          item.classList.add("active");
+          const selUsuario = document.getElementById("filtroUsuario");
+          if (selUsuario) selUsuario.value = String(u.id);
+        }
+
+        refreshDashboard();
+      });
+
+      list.appendChild(item);
+    });
+  }
+
+  // ============================
+  //  REFRESH GENERAL
+  // ============================
+  async function refreshDashboard() {
+    const selAnio = document.getElementById("filtroAnio");
+    const selMes  = document.getElementById("filtroMes");
+    const selUsu  = document.getElementById("filtroUsuario");
+
+    const year = selAnio ? parseInt(selAnio.value, 10) || (new Date()).getFullYear() : (new Date()).getFullYear();
+    const mesCombo = selMes ? parseInt(selMes.value, 10) || 0 : 0; // 0=todos
+    const mesParam = mesCombo === 0 ? null : mesCombo;             // 1-12 si se eligió
+
+    const data = await getDataUsuario(usuarioActual, year, soloUsuarioSeleccionado);
+    renderChartFromHex(data.hex || [], year);
+
+    const titulo = document.getElementById("tituloGrafica");
+    if (titulo && selUsu) {
+      const textUsu = selUsu.options[selUsu.selectedIndex]?.textContent || "Mi jerarquía";
+      titulo.textContent = `Resumen anual de requerimientos - ${textUsu} (${year})`;
     }
 
-    return li;
+    await loadHistorialRequerimientos(usuarioActual, year, mesParam);
+    await loadHistorialReconocimientos(usuarioActual, year, mesParam);
   }
 
-
-  function activarHexagono(hexId) {
-    document.querySelectorAll(".hex-box").forEach(box => box.classList.remove("active"));
-    const box = document.getElementById(hexId);
-    if (box) box.classList.add("active");
-  }
-
-async function init() {
-  const data = await getDataUsuario(usuarioActual, soloUsuarioSeleccionado);
-  generarTotales(data);
-  renderGraficaPorTipo("New");
-  activarHexagono("dealsBox");
-
-  const usuarios = await renderUserCards(); 
-  renderUserTree(usuarios); 
-
-  document.getElementById("dealsBox").addEventListener("click", () => {
-    activarHexagono("dealsBox");
-    renderGraficaPorTipo("New");
+  // ============================
+  //  INIT
+  // ============================
+  document.addEventListener("DOMContentLoaded", async () => {
+    const usuarios = await getUsuariosJerarquia();
+    setupFiltros(usuarios);
+    renderUserList(usuarios);
+    refreshDashboard();
   });
-
-  document.getElementById("reservasBox").addEventListener("click", () => {
-    activarHexagono("reservasBox");
-    renderGraficaPorTipo("Reserva");
-  });
-
-  document.getElementById("entregasBox").addEventListener("click", () => {
-    activarHexagono("entregasBox");
-    renderGauge("Entrega");
-  });
-}
-
-
-
-  init();
 </script>
- 
-<!-- CSS y JS de Select2 -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+<!-- Scripts extra que ya tenías (Select2, etc.) -->
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
-
-
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 </body>
