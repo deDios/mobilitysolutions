@@ -315,7 +315,7 @@ ul.social-network {
 .history-table tbody td {
   padding: 6px 4px;
   border-bottom: 1px solid #f3f4f6;
-  vertical-align: top;
+  vertical-align: middle;
 }
 
 .history-table tbody tr:last-child td {
@@ -358,6 +358,19 @@ ul.social-network {
 .hist-sub {
   font-size: 0.78rem;
   color: #6b7280;
+}
+
+/* Avatar en historiales (Solicitante / Usuario) */
+.history-avatar-cell {
+  text-align: center;
+}
+
+.history-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
 }
 
 /* =========================

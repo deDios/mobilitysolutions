@@ -107,7 +107,7 @@ if ($result) {
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
 
     <!-- CSS del dashboard -->
-    <link rel="stylesheet" href="../CSS/reporte.css?v=2.0">
+    <link rel="stylesheet" href="../CSS/reporte.css?v=2.1">
 </head>
 
 <body>
@@ -219,13 +219,14 @@ if ($result) {
               <thead>
                 <tr>
                   <th>Detalle</th>
+                  <th>Solicitante</th>
                   <th>Fecha</th>
                   <th>Tipo de requerimiento</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td colspan="3" class="empty">
+                  <td colspan="4" class="empty">
                     Selecciona un usuario para ver su historial.
                   </td>
                 </tr>
@@ -243,6 +244,7 @@ if ($result) {
             <table class="history-table" id="tablaHistRec">
               <thead>
                 <tr>
+                  <th>Usuario</th>
                   <th>Reconocimiento</th>
                   <th>Fecha</th>
                   <th>Descripción</th>
@@ -250,7 +252,7 @@ if ($result) {
               </thead>
               <tbody>
                 <tr>
-                  <td colspan="3" class="empty">
+                  <td colspan="4" class="empty">
                     Selecciona un usuario para ver su historial.
                   </td>
                 </tr>
@@ -337,8 +339,16 @@ if ($result) {
     return usuarios.filter(u => resultIds.has(Number(u.id)));
   }
 
+  // Helper para construir URL de avatar desde la fila
+  function getAvatarFromRow(row) {
+    const cand = row.user_id || row.asignado || row.id_usuario || row.id_empleado || row.created_by || null;
+    if (!cand) return null;
+    const id = Number(cand) || cand;
+    return `https://mobilitysolutionscorp.com/Imagenes/Usuarios/${id}.jpg`;
+  }
+
   // ============================
-  //  APIs PRINCIPALES (versiones _dash, vía POST)
+  //  APIs PRINCIPALES (_dash, vía POST)
   // ============================
   async function getDataUsuario(userId, year, soloUsuario = false) {
 
@@ -512,13 +522,13 @@ if ($result) {
   // ============================
   //  HISTORIALES (versiones _dash)
   // ============================
-  // AJUSTE: ahora soportan "Todos" = todos los usuarios del contexto (contextoUsuarios)
+  // Soporta "Todos" = todos los usuarios del contexto (contextoUsuarios)
   async function loadHistorialRequerimientos(userId, year, month) {
     const tbody = document.querySelector("#tablaHistReq tbody");
     if (!tbody) return;
 
     tbody.innerHTML = `
-      <tr><td colspan="3" class="empty">Cargando requerimientos...</td></tr>
+      <tr><td colspan="4" class="empty">Cargando requerimientos...</td></tr>
     `;
 
     try {
@@ -563,16 +573,15 @@ if ($result) {
 
       if (!allRows.length) {
         tbody.innerHTML = `
-          <tr><td colspan="3" class="empty">
+          <tr><td colspan="4" class="empty">
             Sin requerimientos para los filtros seleccionados.
           </td></tr>`;
         return;
       }
 
-      // (Opcional) podrías ordenar por fecha si el formato lo permite
-
       tbody.innerHTML = "";
       allRows.forEach(r => {
+        const avatarUrl = getAvatarFromRow(r);
         const tr = document.createElement("tr");
         tr.className = "history-row";
         tr.innerHTML = `
@@ -589,6 +598,9 @@ if ($result) {
               </div>
             </div>
           </td>
+          <td class="history-avatar-cell">
+            ${avatarUrl ? `<img src="${avatarUrl}" class="history-avatar" alt="">` : ""}
+          </td>
           <td>${r.fecha || ""}</td>
           <td>${r.tipo || r.tipo_requerimiento || ""}</td>
         `;
@@ -598,7 +610,7 @@ if ($result) {
     } catch (err) {
       console.error("Error historial requerimientos:", err);
       tbody.innerHTML = `
-        <tr><td colspan="3" class="empty">
+        <tr><td colspan="4" class="empty">
           Error al consultar el historial de requerimientos.
         </td></tr>`;
     }
@@ -609,7 +621,7 @@ if ($result) {
     if (!tbody) return;
 
     tbody.innerHTML = `
-      <tr><td colspan="3" class="empty">Cargando reconocimientos...</td></tr>
+      <tr><td colspan="4" class="empty">Cargando reconocimientos...</td></tr>
     `;
 
     try {
@@ -651,7 +663,7 @@ if ($result) {
 
       if (!allRows.length) {
         tbody.innerHTML = `
-          <tr><td colspan="3" class="empty">
+          <tr><td colspan="4" class="empty">
             Sin reconocimientos para los filtros seleccionados.
           </td></tr>`;
         return;
@@ -659,9 +671,13 @@ if ($result) {
 
       tbody.innerHTML = "";
       allRows.forEach(r => {
+        const avatarUrl = getAvatarFromRow(r);
         const tr = document.createElement("tr");
         tr.className = "history-row";
         tr.innerHTML = `
+          <td class="history-avatar-cell">
+            ${avatarUrl ? `<img src="${avatarUrl}" class="history-avatar" alt="">` : ""}
+          </td>
           <td>${r.reconocimiento || r.titulo || "Reconocimiento"}</td>
           <td>${r.fecha || (r.mes && r.anio ? `${r.mes}/${r.anio}` : "")}</td>
           <td>${r.descripcion || ""}</td>
@@ -672,7 +688,7 @@ if ($result) {
     } catch (err) {
       console.error("Error historial reconocimientos:", err);
       tbody.innerHTML = `
-        <tr><td colspan="3" class="empty">
+        <tr><td colspan="4" class="empty">
           Error al consultar el historial de reconocimientos.
         </td></tr>`;
     }
@@ -748,7 +764,7 @@ if ($result) {
     // Filtro Equipo solo para CTO/CEO
     if (grupoEquipo && selEquipo) {
       if (esCtoOCeo) {
-        grupoEquipo.style.display = "flex"; // o "block"
+        grupoEquipo.style.display = "flex";
         populateFiltroEquipo(selEquipo, usuariosGlobal);
       } else {
         grupoEquipo.style.display = "none";
@@ -930,7 +946,6 @@ if ($result) {
       titulo.textContent = `Resumen anual de requerimientos - ${contextoTexto} (${year})`;
     }
 
-    // Aquí ya usan la lógica nueva de contexto
     await loadHistorialRequerimientos(usuarioActual, year, mesParam);
     await loadHistorialReconocimientos(usuarioActual, year, mesParam);
   }
