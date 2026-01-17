@@ -227,7 +227,7 @@
                     <!-- Nuevo botón a la izquierda -->
                     <a href="https://mobilitysolutionscorp.com/Views/reporte.php"
                       class="edit-button report-button">
-                        Ver dashboard
+                        Reporte
                     </a>
 
                     <!-- Botón existente de Editar perfil -->
