@@ -106,9 +106,14 @@ if ($result) {
 
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
 
+    <!-- Font Awesome para los iconos -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <!-- CSS del dashboard -->
     <link rel="stylesheet" href="../CSS/reporte.css?v=2.1">
 </head>
+
 
 <body>
 <div class="fixed-top">
