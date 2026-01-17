@@ -476,6 +476,15 @@ li {
   color: #374151;
 }
 
+/* Ajuste visual para formularios de Admin dentro de un modal */
+.form-container.form-container-modal {
+  max-width: 100%;
+  margin: 0;
+  box-shadow: none;
+  padding: 0;
+  background: transparent;
+}
+
 @media (max-width:991px){
   .ms-settings-wrap{ padding-top:100px; }
 }

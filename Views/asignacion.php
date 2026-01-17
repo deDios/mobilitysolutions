@@ -332,7 +332,7 @@ if ($result) {
 
 <!-- ================== FUNCIONES JS ================== -->
 
-<!-- ========== NUEVO: ADMIN DE CUENTAS ========== -->
+<!-- ========== NUEVO: ADMIN DE CUENTAS (con modales) ========== -->
 <script>
   let adminUsuarios = [];
 
@@ -387,111 +387,135 @@ if ($result) {
         </div>
       </div>
 
-      <div id="adminEditFormWrap" class="form-container mt-3" style="display:none;">
-        <h2 id="adminEditTitle">Editar usuario</h2>
-        <form id="adminUsuarioForm">
-          <input type="hidden" id="admin_id">
+      <!-- Modal Edición de Usuario -->
+      <div class="modal fade" id="adminEditModal" tabindex="-1" aria-labelledby="adminEditModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="adminEditModalLabel">Editar usuario</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+              <div class="form-container form-container-modal">
+                <form id="adminUsuarioForm">
+                  <input type="hidden" id="admin_id">
 
-          <div class="row">
-            <div class="col-md-4">
-              <label for="admin_user_name">Nombre:</label>
-              <input type="text" id="admin_user_name" required>
-            </div>
-            <div class="col-md-4">
-              <label for="admin_second_name">Segundo nombre:</label>
-              <input type="text" id="admin_second_name">
-            </div>
-            <div class="col-md-4">
-              <label for="admin_last_name">Apellidos:</label>
-              <input type="text" id="admin_last_name" required>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <label for="admin_user_name">Nombre:</label>
+                      <input type="text" id="admin_user_name" required>
+                    </div>
+                    <div class="col-md-4">
+                      <label for="admin_second_name">Segundo nombre:</label>
+                      <input type="text" id="admin_second_name">
+                    </div>
+                    <div class="col-md-4">
+                      <label for="admin_last_name">Apellidos:</label>
+                      <input type="text" id="admin_last_name" required>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4">
+                      <label for="admin_email">Email:</label>
+                      <input type="email" id="admin_email" required>
+                    </div>
+                    <div class="col-md-4">
+                      <label for="admin_cumpleanos">Cumpleaños:</label>
+                      <input type="date" id="admin_cumpleanos" required>
+                    </div>
+                    <div class="col-md-4">
+                      <label for="admin_telefono">Teléfono:</label>
+                      <input type="text" id="admin_telefono" required>
+                    </div>
+                  </div>
+
+                  <div class="admin-extra-fields mt-3">
+                    <hr>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <label for="admin_login">Login (usuario):</label>
+                        <input type="text" id="admin_login">
+                      </div>
+                      <div class="col-md-4">
+                        <label for="admin_user_type">Tipo de usuario:</label>
+                        <select id="admin_user_type">
+                          <option value="1">Asesor(a)</option>
+                          <option value="2">Supervisor(a)</option>
+                          <option value="3">Analista</option>
+                          <option value="4">Manager</option>
+                          <option value="5">CTO</option>
+                          <option value="6">CEO</option>
+                        </select>
+                      </div>
+                      <div class="col-md-4">
+                        <label for="admin_reporta_a">Reporta a:</label>
+                        <select id="admin_reporta_a">
+                          <option value="">Sin jefe asignado</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="row mt-2">
+                      <div class="col-md-6">
+                        <label>Roles:</label>
+                        <div class="admin-roles-checks">
+                          <label><input type="checkbox" id="admin_r_ejecutivo"> Ejecutivo</label>
+                          <label><input type="checkbox" id="admin_r_editor"> Maestro catálogo</label>
+                          <label><input type="checkbox" id="admin_r_autorizador"> Supervisor</label>
+                          <label><input type="checkbox" id="admin_r_analista"> Analista</label>
+                        </div>
+                      </div>
+                      <div class="col-md-3 d-flex align-items-end">
+                        <label class="me-2">
+                          <input type="checkbox" id="admin_estatus" checked> Activo
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-buttons mt-3">
+                    <button type="button" onclick="adminCancelarEdicion()">Cancelar</button>
+                    <button type="submit">Guardar</button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
-
-          <div class="row">
-            <div class="col-md-4">
-              <label for="admin_email">Email:</label>
-              <input type="email" id="admin_email" required>
-            </div>
-            <div class="col-md-4">
-              <label for="admin_cumpleanos">Cumpleaños:</label>
-              <input type="date" id="admin_cumpleanos" required>
-            </div>
-            <div class="col-md-4">
-              <label for="admin_telefono">Teléfono:</label>
-              <input type="text" id="admin_telefono" required>
-            </div>
-          </div>
-
-          <div class="admin-extra-fields mt-3">
-            <hr>
-            <div class="row">
-              <div class="col-md-4">
-                <label for="admin_login">Login (usuario):</label>
-                <input type="text" id="admin_login">
-              </div>
-              <div class="col-md-4">
-                <label for="admin_user_type">Tipo de usuario:</label>
-                <select id="admin_user_type">
-                  <option value="1">Asesor(a)</option>
-                  <option value="2">Supervisor(a)</option>
-                  <option value="3">Analista</option>
-                  <option value="4">Manager</option>
-                  <option value="5">CTO</option>
-                  <option value="6">CEO</option>
-                </select>
-              </div>
-              <div class="col-md-4">
-                <label for="admin_reporta_a">Reporta a:</label>
-                <select id="admin_reporta_a">
-                  <option value="">Sin jefe asignado</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="row mt-2">
-              <div class="col-md-6">
-                <label>Roles:</label>
-                <div class="admin-roles-checks">
-                  <label><input type="checkbox" id="admin_r_ejecutivo"> Ejecutivo</label>
-                  <label><input type="checkbox" id="admin_r_editor"> Maestro catálogo</label>
-                  <label><input type="checkbox" id="admin_r_autorizador"> Supervisor</label>
-                  <label><input type="checkbox" id="admin_r_analista"> Analista</label>
-                </div>
-              </div>
-              <div class="col-md-3 d-flex align-items-end">
-                <label class="me-2">
-                  <input type="checkbox" id="admin_estatus" checked> Activo
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-buttons mt-3">
-            <button type="button" onclick="adminCancelarEdicion()">Cancelar</button>
-            <button type="submit">Guardar</button>
-          </div>
-        </form>
+        </div>
       </div>
 
-      <div id="adminPasswordFormWrap" class="form-container mt-3" style="display:none;">
-        <h2>Cambio de contraseña</h2>
-        <form id="adminPasswordForm">
-          <input type="hidden" id="admin_pwd_user_id">
+      <!-- Modal Cambio de contraseña -->
+      <div class="modal fade" id="adminPasswordModal" tabindex="-1" aria-labelledby="adminPasswordModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="adminPasswordModalLabel">Cambio de contraseña</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+              <div class="form-container form-container-modal">
+                <form id="adminPasswordForm">
+                  <input type="hidden" id="admin_pwd_user_id">
 
-          <label for="admin_pwd_nombre">Usuario:</label>
-          <input type="text" id="admin_pwd_nombre" disabled>
+                  <label for="admin_pwd_nombre">Usuario:</label>
+                  <input type="text" id="admin_pwd_nombre" disabled>
 
-          <label for="admin_pwd_new">Nueva contraseña:</label>
-          <input type="password" id="admin_pwd_new" required>
+                  <label for="admin_pwd_new">Nueva contraseña:</label>
+                  <input type="password" id="admin_pwd_new" required>
 
-          <label for="admin_pwd_confirm">Confirmar contraseña:</label>
-          <input type="password" id="admin_pwd_confirm" required>
+                  <label for="admin_pwd_confirm">Confirmar contraseña:</label>
+                  <input type="password" id="admin_pwd_confirm" required>
 
-          <div class="form-buttons mt-3">
-            <button type="button" onclick="adminCancelarPassword()">Cancelar</button>
-            <button type="submit">Guardar</button>
+                  <div class="form-buttons mt-3">
+                    <button type="button" onclick="adminCancelarPassword()">Cancelar</button>
+                    <button type="submit">Guardar</button>
+                  </div>
+                </form>
+              </div>
+            </div>
           </div>
-        </form>
+        </div>
       </div>
     `;
 
@@ -615,7 +639,6 @@ if ($result) {
 
       const nombre = u.nombre_completo || (u.user_name || "");
       const rol    = adminUserTypeLabel(u.user_type);
-      const estatusLabel = u.estatus === 1 ? "Activo" : "Inactivo";
       const estatusBadge = u.estatus === 1
         ? '<span class="badge bg-success-subtle text-success">Activo</span>'
         : '<span class="badge bg-secondary-subtle text-secondary">Inactivo</span>';
@@ -656,14 +679,6 @@ if ($result) {
       return;
     }
 
-    const wrap = document.getElementById("adminEditFormWrap");
-    const pwdWrap = document.getElementById("adminPasswordFormWrap");
-    if (wrap) wrap.style.display = "block";
-    if (pwdWrap) pwdWrap.style.display = "none";
-
-    const title = document.getElementById("adminEditTitle");
-    if (title) title.textContent = "Editar usuario";
-
     document.getElementById("admin_id").value           = u.id;
     document.getElementById("admin_user_name").value    = u.user_name || "";
     document.getElementById("admin_second_name").value  = u.second_name || "";
@@ -695,11 +710,18 @@ if ($result) {
       if (chkAn) chkAn.checked = u.r_analista === 1;
       if (chkEs) chkEs.checked = u.estatus === 1;
     }
+
+    const modalEl = document.getElementById("adminEditModal");
+    if (!modalEl) return;
+    const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
+    modal.show();
   }
 
   function adminCancelarEdicion() {
-    const wrap = document.getElementById("adminEditFormWrap");
-    if (wrap) wrap.style.display = "none";
+    const modalEl = document.getElementById("adminEditModal");
+    if (!modalEl) return;
+    const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
+    modal.hide();
   }
 
   function adminMostrarPassword(idUsuario) {
@@ -715,20 +737,22 @@ if ($result) {
       return;
     }
 
-    const wrap = document.getElementById("adminPasswordFormWrap");
-    const editWrap = document.getElementById("adminEditFormWrap");
-    if (wrap) wrap.style.display = "block";
-    if (editWrap) editWrap.style.display = "none";
-
     document.getElementById("admin_pwd_user_id").value = u.id;
     document.getElementById("admin_pwd_nombre").value = u.nombre_completo || u.user_name || "";
     document.getElementById("admin_pwd_new").value = "";
     document.getElementById("admin_pwd_confirm").value = "";
+
+    const modalEl = document.getElementById("adminPasswordModal");
+    if (!modalEl) return;
+    const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
+    modal.show();
   }
 
   function adminCancelarPassword() {
-    const wrap = document.getElementById("adminPasswordFormWrap");
-    if (wrap) wrap.style.display = "none";
+    const modalEl = document.getElementById("adminPasswordModal");
+    if (!modalEl) return;
+    const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
+    modal.hide();
   }
 
   function adminSubmitUsuarioForm(e) {
