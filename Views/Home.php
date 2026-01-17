@@ -224,15 +224,18 @@
                 </div>
 
                 <div class="edit-profile-wrapper">
-                    <!-- Nuevo botón a la izquierda -->
-                    <a href="https://mobilitysolutionscorp.com/Views/reporte.php"
-                      class="edit-button report-button">
-                        Reporte
-                    </a>
+                    <?php if (in_array((int)$user_type, [2, 5, 6])): ?>
+                        <!-- Botón visible solo para Supervisor, CTO y CEO -->
+                        <a href="https://mobilitysolutionscorp.com/Views/reporte.php"
+                          class="edit-button report-button">
+                            Reporte
+                        </a>
+                    <?php endif; ?>
 
-                    <!-- Botón existente de Editar perfil -->
+                    <!-- Botón existente de Editar perfil (siempre visible) -->
                     <a href="#" class="edit-button" onclick="openModal()">Editar perfil</a>
                 </div>
+
             </article>
 
             <!-- TAREAS & CUMPLEAÑOS -->
