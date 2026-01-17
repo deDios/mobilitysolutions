@@ -18,6 +18,8 @@ $inc = include "../db/Conexion.php";
  * Solo los user_id 1, 3 y 4 los verán en el menú.
  */
 $mostrar_quejas_inasistencias = false;
+/** NUEVO: flag para permisos de Admin de cuentas (CTO, CEO o user_id=1) */
+$es_admin_cuentas = false;
 
 $query = 'select 
                 acc.user_id, 
@@ -99,6 +101,11 @@ if ($result) {
      * (IDs permitidos: 1, 3 y 4)
      */
     $mostrar_quejas_inasistencias = in_array((int)$user_id, [1, 3, 4], true);
+
+    /** NUEVO:
+     * Admin de cuentas: CTO (5), CEO (6) o user_id = 1
+     */
+    $es_admin_cuentas = ((int)$user_id === 1 || (int)$user_type === 5 || (int)$user_type === 6);
 
     // Restricción de acceso (solo user_type >= 2)
     if ((int)$user_type < 2) {
@@ -277,6 +284,13 @@ if ($result) {
           <i class="fa fa-clock-o me-2"></i> Inasistencias
         </button>
         <?php endif; ?>
+
+        <!-- NUEVO: Admin cuentas (visible para todos, pero con reglas de permisos en JS) -->
+        <button type="button"
+                class="list-group-item list-group-item-action asignacion-menu-item"
+                onclick="seleccionarMenu(this); mostrarAdminCuentas();">
+          <i class="fa fa-user-circle me-2"></i> Admin cuentas
+        </button>
       </nav>
     </aside>
 
@@ -300,8 +314,9 @@ if ($result) {
 
 <script>
   // Variables globales disponibles en todos los formularios
-  const usuarioActual = <?php echo json_encode($_SESSION['user_id']); ?>;
-  const tipoUsuarioActual = <?php echo json_encode($user_type); ?>;
+  const usuarioActual       = <?php echo json_encode($_SESSION['user_id']); ?>;
+  const tipoUsuarioActual   = <?php echo json_encode($user_type); ?>;
+  const esAdminCuentas      = <?php echo $es_admin_cuentas ? 'true' : 'false'; ?>;
 
   // Manejo visual del menú lateral
   function seleccionarMenu(el){
@@ -316,6 +331,536 @@ if ($result) {
 </script>
 
 <!-- ================== FUNCIONES JS ================== -->
+
+<!-- ========== NUEVO: ADMIN DE CUENTAS ========== -->
+<script>
+  let adminUsuarios = [];
+
+  function adminUserTypeLabel(t) {
+    const n = Number(t);
+    switch (n) {
+      case 1: return 'Asesor(a)';
+      case 2: return 'Supervisor(a)';
+      case 3: return 'Analista';
+      case 4: return 'Manager';
+      case 5: return 'CTO';
+      case 6: return 'CEO';
+      default: return 'Sin rol';
+    }
+  }
+
+  function mostrarAdminCuentas() {
+    const itemsDiv = document.querySelector(".items");
+    if (!itemsDiv) return;
+
+    itemsDiv.innerHTML = `
+      <div class="card ms-card shadow-sm">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+            <div>
+              <h2 class="h5 mb-0">Administración de cuentas</h2>
+              <p id="adminInfoPrivilegios" class="text-muted small mb-0">
+                Como administrador puedes revisar las cuentas de acceso de tu equipo.
+              </p>
+            </div>
+          </div>
+          <div class="admin-cuentas-table-wrap">
+            <table class="table table-sm admin-cuentas-table" id="tablaAdminCuentas">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Login</th>
+                  <th>Rol</th>
+                  <th>Estatus</th>
+                  <th style="width: 180px;">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="5" class="text-center text-muted">
+                    Cargando usuarios...
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div id="adminEditFormWrap" class="form-container mt-3" style="display:none;">
+        <h2 id="adminEditTitle">Editar usuario</h2>
+        <form id="adminUsuarioForm">
+          <input type="hidden" id="admin_id">
+
+          <div class="row">
+            <div class="col-md-4">
+              <label for="admin_user_name">Nombre:</label>
+              <input type="text" id="admin_user_name" required>
+            </div>
+            <div class="col-md-4">
+              <label for="admin_second_name">Segundo nombre:</label>
+              <input type="text" id="admin_second_name">
+            </div>
+            <div class="col-md-4">
+              <label for="admin_last_name">Apellidos:</label>
+              <input type="text" id="admin_last_name" required>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+              <label for="admin_email">Email:</label>
+              <input type="email" id="admin_email" required>
+            </div>
+            <div class="col-md-4">
+              <label for="admin_cumpleanos">Cumpleaños:</label>
+              <input type="date" id="admin_cumpleanos" required>
+            </div>
+            <div class="col-md-4">
+              <label for="admin_telefono">Teléfono:</label>
+              <input type="text" id="admin_telefono" required>
+            </div>
+          </div>
+
+          <div class="admin-extra-fields mt-3">
+            <hr>
+            <div class="row">
+              <div class="col-md-4">
+                <label for="admin_login">Login (usuario):</label>
+                <input type="text" id="admin_login">
+              </div>
+              <div class="col-md-4">
+                <label for="admin_user_type">Tipo de usuario:</label>
+                <select id="admin_user_type">
+                  <option value="1">Asesor(a)</option>
+                  <option value="2">Supervisor(a)</option>
+                  <option value="3">Analista</option>
+                  <option value="4">Manager</option>
+                  <option value="5">CTO</option>
+                  <option value="6">CEO</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label for="admin_reporta_a">Reporta a:</label>
+                <select id="admin_reporta_a">
+                  <option value="">Sin jefe asignado</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row mt-2">
+              <div class="col-md-6">
+                <label>Roles:</label>
+                <div class="admin-roles-checks">
+                  <label><input type="checkbox" id="admin_r_ejecutivo"> Ejecutivo</label>
+                  <label><input type="checkbox" id="admin_r_editor"> Maestro catálogo</label>
+                  <label><input type="checkbox" id="admin_r_autorizador"> Supervisor</label>
+                  <label><input type="checkbox" id="admin_r_analista"> Analista</label>
+                </div>
+              </div>
+              <div class="col-md-3 d-flex align-items-end">
+                <label class="me-2">
+                  <input type="checkbox" id="admin_estatus" checked> Activo
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-buttons mt-3">
+            <button type="button" onclick="adminCancelarEdicion()">Cancelar</button>
+            <button type="submit">Guardar</button>
+          </div>
+        </form>
+      </div>
+
+      <div id="adminPasswordFormWrap" class="form-container mt-3" style="display:none;">
+        <h2>Cambio de contraseña</h2>
+        <form id="adminPasswordForm">
+          <input type="hidden" id="admin_pwd_user_id">
+
+          <label for="admin_pwd_nombre">Usuario:</label>
+          <input type="text" id="admin_pwd_nombre" disabled>
+
+          <label for="admin_pwd_new">Nueva contraseña:</label>
+          <input type="password" id="admin_pwd_new" required>
+
+          <label for="admin_pwd_confirm">Confirmar contraseña:</label>
+          <input type="password" id="admin_pwd_confirm" required>
+
+          <div class="form-buttons mt-3">
+            <button type="button" onclick="adminCancelarPassword()">Cancelar</button>
+            <button type="submit">Guardar</button>
+          </div>
+        </form>
+      </div>
+    `;
+
+    // Mensaje de privilegios para usuarios no admin
+    const info = document.getElementById("adminInfoPrivilegios");
+    if (info) {
+      if (esAdminCuentas) {
+        info.textContent = "Puedes consultar y editar las cuentas de todo el equipo.";
+      } else {
+        info.textContent = "Solo puedes consultar y actualizar los datos de tu propia cuenta.";
+      }
+    }
+
+    // Ocultar campos extra si NO es admin de cuentas (solo ve/edita sus datos básicos)
+    if (!esAdminCuentas) {
+      document.querySelectorAll(".admin-extra-fields").forEach(el => {
+        el.style.display = "none";
+      });
+    }
+
+    // Listeners de formularios
+    const formUsuario = document.getElementById("adminUsuarioForm");
+    if (formUsuario) {
+      formUsuario.addEventListener("submit", adminSubmitUsuarioForm);
+    }
+    const formPwd = document.getElementById("adminPasswordForm");
+    if (formPwd) {
+      formPwd.addEventListener("submit", adminSubmitPasswordForm);
+    }
+
+    // Cargar usuarios
+    cargarAdminUsuarios();
+  }
+
+  function cargarAdminUsuarios() {
+    const tbody = document.querySelector("#tablaAdminCuentas tbody");
+    if (tbody) {
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="5" class="text-center text-muted">Cargando usuarios...</td>
+        </tr>
+      `;
+    }
+
+    fetch("https://mobilitysolutionscorp.com/web/MS_admin_usuario_list.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({})
+    })
+    .then(res => res.json())
+    .then(data => {
+      let usuarios = Array.isArray(data.usuarios) ? data.usuarios : [];
+
+      // Regla 1:
+      // Solo CTO, CEO y user_id=1 ven todos.
+      // Los demás solo ven su propio usuario.
+      if (!esAdminCuentas) {
+        usuarios = usuarios.filter(u => Number(u.id) === Number(usuarioActual));
+      }
+
+      // Normalizamos algunos campos a número
+      adminUsuarios = usuarios.map(u => ({
+        ...u,
+        id: Number(u.id),
+        user_type: Number(u.user_type),
+        reporta_a: u.reporta_a !== null ? Number(u.reporta_a) : null,
+        r_ejecutivo: Number(u.r_ejecutivo) || 0,
+        r_editor: Number(u.r_editor) || 0,
+        r_autorizador: Number(u.r_autorizador) || 0,
+        r_analista: Number(u.r_analista) || 0,
+        estatus: Number(u.estatus) || 0
+      }));
+
+      renderTablaAdminCuentas();
+
+      // Llenar combo "reporta_a" solo para admins
+      if (esAdminCuentas) {
+        const sel = document.getElementById("admin_reporta_a");
+        if (sel) {
+          sel.innerHTML = '<option value="">Sin jefe asignado</option>';
+          adminUsuarios.forEach(u => {
+            const opt = document.createElement("option");
+            opt.value = u.id;
+            opt.textContent = u.nombre_completo || u.user_name;
+            sel.appendChild(opt);
+          });
+        }
+      }
+    })
+    .catch(err => {
+      console.error("Error al cargar usuarios:", err);
+      if (tbody) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="5" class="text-center text-danger">Error al cargar usuarios.</td>
+          </tr>
+        `;
+      }
+    });
+  }
+
+  function renderTablaAdminCuentas() {
+    const tbody = document.querySelector("#tablaAdminCuentas tbody");
+    if (!tbody) return;
+
+    tbody.innerHTML = "";
+
+    if (!adminUsuarios.length) {
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="5" class="text-center text-muted">
+            No se encontraron usuarios.
+          </td>
+        </tr>
+      `;
+      return;
+    }
+
+    adminUsuarios.forEach(u => {
+      const tr = document.createElement("tr");
+
+      const nombre = u.nombre_completo || (u.user_name || "");
+      const rol    = adminUserTypeLabel(u.user_type);
+      const estatusLabel = u.estatus === 1 ? "Activo" : "Inactivo";
+      const estatusBadge = u.estatus === 1
+        ? '<span class="badge bg-success-subtle text-success">Activo</span>'
+        : '<span class="badge bg-secondary-subtle text-secondary">Inactivo</span>';
+
+      tr.innerHTML = `
+        <td>
+          ${nombre}
+          <span class="badge-role ms-1">${rol}</span>
+        </td>
+        <td>${u.login || u.user_name || ""}</td>
+        <td>${rol}</td>
+        <td>${estatusBadge}</td>
+        <td>
+          <button type="button"
+                  class="btn btn-sm btn-outline-dark me-1"
+                  onclick="adminMostrarPassword(${u.id});">
+            Cambio de contraseña
+          </button>
+          <button type="button"
+                  class="btn btn-sm btn-outline-secondary"
+                  onclick="adminMostrarEdit(${u.id});">
+            Editar
+          </button>
+        </td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  function adminBuscarUsuario(id) {
+    return adminUsuarios.find(u => Number(u.id) === Number(id));
+  }
+
+  function adminMostrarEdit(idUsuario) {
+    const u = adminBuscarUsuario(idUsuario);
+    if (!u) {
+      alert("No se encontró la información del usuario.");
+      return;
+    }
+
+    const wrap = document.getElementById("adminEditFormWrap");
+    const pwdWrap = document.getElementById("adminPasswordFormWrap");
+    if (wrap) wrap.style.display = "block";
+    if (pwdWrap) pwdWrap.style.display = "none";
+
+    const title = document.getElementById("adminEditTitle");
+    if (title) title.textContent = "Editar usuario";
+
+    document.getElementById("admin_id").value           = u.id;
+    document.getElementById("admin_user_name").value    = u.user_name || "";
+    document.getElementById("admin_second_name").value  = u.second_name || "";
+    document.getElementById("admin_last_name").value    = u.last_name || "";
+    document.getElementById("admin_email").value        = u.email || "";
+    document.getElementById("admin_cumpleanos").value   = u.cumpleanos || "";
+    document.getElementById("admin_telefono").value     = u.telefono || "";
+
+    // Campos extra solo para administradores
+    if (esAdminCuentas) {
+      const loginEl = document.getElementById("admin_login");
+      if (loginEl) loginEl.value = u.login || u.user_name || "";
+
+      const tipoEl = document.getElementById("admin_user_type");
+      if (tipoEl) tipoEl.value = u.user_type || 1;
+
+      const repEl = document.getElementById("admin_reporta_a");
+      if (repEl) repEl.value = u.reporta_a ? u.reporta_a : "";
+
+      const chkEj = document.getElementById("admin_r_ejecutivo");
+      const chkEd = document.getElementById("admin_r_editor");
+      const chkAu = document.getElementById("admin_r_autorizador");
+      const chkAn = document.getElementById("admin_r_analista");
+      const chkEs = document.getElementById("admin_estatus");
+
+      if (chkEj) chkEj.checked = u.r_ejecutivo === 1;
+      if (chkEd) chkEd.checked = u.r_editor === 1;
+      if (chkAu) chkAu.checked = u.r_autorizador === 1;
+      if (chkAn) chkAn.checked = u.r_analista === 1;
+      if (chkEs) chkEs.checked = u.estatus === 1;
+    }
+  }
+
+  function adminCancelarEdicion() {
+    const wrap = document.getElementById("adminEditFormWrap");
+    if (wrap) wrap.style.display = "none";
+  }
+
+  function adminMostrarPassword(idUsuario) {
+    const u = adminBuscarUsuario(idUsuario);
+    if (!u) {
+      alert("No se encontró la información del usuario.");
+      return;
+    }
+
+    // Regla extra: si NO es admin de cuentas, solo puede cambiar su propia contraseña
+    if (!esAdminCuentas && Number(idUsuario) !== Number(usuarioActual)) {
+      alert("No puedes cambiar la contraseña de otros usuarios.");
+      return;
+    }
+
+    const wrap = document.getElementById("adminPasswordFormWrap");
+    const editWrap = document.getElementById("adminEditFormWrap");
+    if (wrap) wrap.style.display = "block";
+    if (editWrap) editWrap.style.display = "none";
+
+    document.getElementById("admin_pwd_user_id").value = u.id;
+    document.getElementById("admin_pwd_nombre").value = u.nombre_completo || u.user_name || "";
+    document.getElementById("admin_pwd_new").value = "";
+    document.getElementById("admin_pwd_confirm").value = "";
+  }
+
+  function adminCancelarPassword() {
+    const wrap = document.getElementById("adminPasswordFormWrap");
+    if (wrap) wrap.style.display = "none";
+  }
+
+  function adminSubmitUsuarioForm(e) {
+    e.preventDefault();
+
+    const id          = Number(document.getElementById("admin_id").value) || 0;
+    const user_name   = document.getElementById("admin_user_name").value.trim();
+    const second_name = document.getElementById("admin_second_name").value.trim();
+    const last_name   = document.getElementById("admin_last_name").value.trim();
+    const email       = document.getElementById("admin_email").value.trim();
+    const cumpleanos  = document.getElementById("admin_cumpleanos").value;
+    const telefono    = document.getElementById("admin_telefono").value.trim();
+
+    if (!user_name || !last_name || !email || !cumpleanos || !telefono) {
+      alert("Por favor completa todos los campos obligatorios.");
+      return;
+    }
+
+    const original = adminBuscarUsuario(id);
+
+    // Base del payload: campos que SIEMPRE puede editar
+    const payload = {
+      id,
+      user_name,
+      second_name,
+      last_name,
+      email,
+      cumpleanos,
+      telefono
+    };
+
+    if (esAdminCuentas) {
+      // Admin: puede cambiar todos los parámetros del endpoint
+      const login      = document.getElementById("admin_login").value.trim();
+      const user_type  = Number(document.getElementById("admin_user_type").value) || 1;
+      const reporta_a_val = document.getElementById("admin_reporta_a").value;
+      const reporta_a  = reporta_a_val ? Number(reporta_a_val) : null;
+
+      const r_ejecutivo   = document.getElementById("admin_r_ejecutivo").checked ? 1 : 0;
+      const r_editor      = document.getElementById("admin_r_editor").checked ? 1 : 0;
+      const r_autorizador = document.getElementById("admin_r_autorizador").checked ? 1 : 0;
+      const r_analista    = document.getElementById("admin_r_analista").checked ? 1 : 0;
+      const estatus       = document.getElementById("admin_estatus").checked ? 1 : 0;
+
+      payload.login         = login || (original ? original.user_name : "");
+      payload.user_type     = user_type;
+      payload.reporta_a     = reporta_a;
+      payload.r_ejecutivo   = r_ejecutivo;
+      payload.r_editor      = r_editor;
+      payload.r_autorizador = r_autorizador;
+      payload.r_analista    = r_analista;
+      payload.estatus       = estatus;
+
+    } else {
+      // Usuario normal:
+      // Regla 2: NO puede editar tipo, rol, reporta_a, estatus.
+      // Tomamos esos valores del registro original.
+      if (!original) {
+        alert("No se encontró el usuario original para completar la actualización.");
+        return;
+      }
+      payload.login         = original.login || original.user_name;
+      payload.user_type     = original.user_type;
+      payload.reporta_a     = original.reporta_a;
+      payload.r_ejecutivo   = original.r_ejecutivo;
+      payload.r_editor      = original.r_editor;
+      payload.r_autorizador = original.r_autorizador;
+      payload.r_analista    = original.r_analista;
+      payload.estatus       = original.estatus;
+    }
+
+    fetch("https://mobilitysolutionscorp.com/web/MS_admin_usuario_save.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    })
+    .then(res => res.json())
+    .then(data => {
+      alert(data.message || (data.success ? "Actualizado correctamente" : "Error al actualizar"));
+      if (data.success) {
+        adminCancelarEdicion();
+        cargarAdminUsuarios();
+      }
+    })
+    .catch(err => {
+      console.error("Error al guardar usuario:", err);
+      alert("Error al guardar usuario.");
+    });
+  }
+
+  function adminSubmitPasswordForm(e) {
+    e.preventDefault();
+
+    const user_id  = Number(document.getElementById("admin_pwd_user_id").value) || 0;
+    const pwd      = document.getElementById("admin_pwd_new").value;
+    const pwdConf  = document.getElementById("admin_pwd_confirm").value;
+
+    if (!user_id || !pwd || !pwdConf) {
+      alert("Completa todos los campos.");
+      return;
+    }
+
+    if (pwd !== pwdConf) {
+      alert("La contraseña y la confirmación no coinciden.");
+      return;
+    }
+
+    // Check de seguridad adicional
+    if (!esAdminCuentas && Number(user_id) !== Number(usuarioActual)) {
+      alert("No puedes cambiar la contraseña de otros usuarios.");
+      return;
+    }
+
+    fetch("https://mobilitysolutionscorp.com/web/MS_admin_usuario_change_password.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ user_id, new_password: pwd })
+    })
+    .then(res => res.json())
+    .then(data => {
+      alert(data.message || (data.success ? "Contraseña actualizada" : "Error al actualizar la contraseña"));
+      if (data.success) {
+        adminCancelarPassword();
+      }
+    })
+    .catch(err => {
+      console.error("Error al cambiar contraseña:", err);
+      alert("Error al cambiar la contraseña.");
+    });
+  }
+</script>
+<!-- ========== /NUEVO: ADMIN DE CUENTAS ========== -->
 
 <script>
   function mostrarReconocimientos() {

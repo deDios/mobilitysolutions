@@ -310,7 +310,10 @@ li {
 .form-container textarea,
 .form-container input[type="text"],
 .form-container input[type="number"],
-.form-container input[type="time"] {
+.form-container input[type="time"],
+.form-container input[type="email"],
+.form-container input[type="date"],
+.form-container input[type="password"] {
   width: 100%;
   padding: 8px;
   margin-top: 5px;
@@ -434,6 +437,43 @@ li {
 /* En vistas con .ms-settings-wrap la .items no necesita tanto padding-top */
 .ms-settings-wrap .items {
   padding-top:0;
+}
+
+/* ===== Admin de cuentas (tabla y formularios) ===== */
+.admin-cuentas-table-wrap {
+  margin-top: 8px;
+  overflow-x: auto;
+}
+
+.admin-cuentas-table th,
+.admin-cuentas-table td {
+  font-size: 0.85rem;
+  vertical-align: middle;
+}
+
+.admin-cuentas-table th {
+  white-space: nowrap;
+}
+
+.admin-roles-checks label {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-right: 10px;
+  font-size: 0.8rem;
+}
+
+.admin-roles-checks input[type="checkbox"] {
+  margin: 0;
+}
+
+.badge-role {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  background-color: #e5e7eb;
+  color: #374151;
 }
 
 @media (max-width:991px){
