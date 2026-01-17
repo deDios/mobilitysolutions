@@ -356,6 +356,44 @@ if ($result) {
     return `https://mobilitysolutionscorp.com/Imagenes/Usuarios/${id}.jpg`;
   }
 
+  // ===== Helper para ordenar por fecha DESC =====
+  function getOrderTimestamp(row) {
+    // 1) Campo 'fecha' si existe
+    if (row.fecha) {
+      let ts = Date.parse(row.fecha);
+      if (!isNaN(ts)) return ts;
+
+      // Soporta formato dd/mm/yyyy (opcionalmente con hora)
+      const m = row.fecha.match(/^(\d{2})\/(\d{2})\/(\d{4})/);
+      if (m) {
+        const d  = parseInt(m[1], 10);
+        const mo = parseInt(m[2], 10) - 1;
+        const y  = parseInt(m[3], 10);
+        ts = new Date(y, mo, d).getTime();
+        if (!isNaN(ts)) return ts;
+      }
+    }
+
+    // 2) Campo 'req_created_at' por si viene crudo del backend
+    if (row.req_created_at) {
+      const ts = Date.parse(row.req_created_at);
+      if (!isNaN(ts)) return ts;
+    }
+
+    // 3) Mes / Año (para reconocimientos)
+    if (row.mes && row.anio) {
+      const mesNum = parseInt(row.mes, 10);
+      const anio   = parseInt(row.anio, 10);
+      if (!isNaN(mesNum) && !isNaN(anio)) {
+        const ts = new Date(anio, mesNum - 1, 1).getTime();
+        if (!isNaN(ts)) return ts;
+      }
+    }
+
+    // 4) Fallback
+    return 0;
+  }
+
   // ============================
   //  APIs PRINCIPALES (_dash, vía POST)
   // ============================
@@ -594,6 +632,9 @@ if ($result) {
         return;
       }
 
+      // ORDENAR POR FECHA DESC
+      allRows.sort((a, b) => getOrderTimestamp(b) - getOrderTimestamp(a));
+
       tbody.innerHTML = "";
       allRows.forEach(r => {
         const avatarUrl = getAvatarFromRow(r);
@@ -688,6 +729,9 @@ if ($result) {
           </td></tr>`;
         return;
       }
+
+      // ORDENAR POR FECHA DESC
+      allRows.sort((a, b) => getOrderTimestamp(b) - getOrderTimestamp(a));
 
       tbody.innerHTML = "";
       allRows.forEach(r => {
