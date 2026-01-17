@@ -180,6 +180,13 @@ if ($result) {
           <label for="filtroUsuario">Filtro usuario</label>
           <select id="filtroUsuario"></select>
         </div>
+
+        <!-- NUEVO: Filtro Equipo (solo CTO/CEO) -->
+        <div class="filter-group" id="grupoEquipo" style="display:none;">
+          <label for="filtroEquipo">Equipo</label>
+          <select id="filtroEquipo"></select>
+        </div>
+
         <div class="filter-group">
           <label for="filtroAnio">Año</label>
           <select id="filtroAnio"></select>
@@ -283,11 +290,51 @@ if ($result) {
 
   const esCtoOCeo = (Number(tipoUsuarioActual) === 5 || Number(tipoUsuarioActual) === 6);
 
+  // Nuevos estados globales
+  let usuariosGlobal       = [];
+  let contextoUsuarios     = [];
+  let equipoSupervisorId   = 0;      // 0 = sin filtro de equipo
+  let jefeDirectoIdGlobal  = null;   // jefe directo del usuario logueado (para no CTO/CEO)
+
   function getJefeDirectoId(usuarios) {
     const yo = usuarios.find(u => Number(u.id) === Number(usuarioOriginal));
     if (!yo || yo.reporta_a === null || yo.reporta_a === undefined) return null;
     const jefeId = Number(yo.reporta_a);
     return isNaN(jefeId) ? null : jefeId;
+  }
+
+  // Detectar si un usuario es Supervisor
+  function esSupervisorUsuario(u) {
+    const posibleTipo = u.user_type ?? u.tipo_usuario ?? u.tipo;
+    if (posibleTipo !== undefined && posibleTipo !== null) {
+      const n = Number(posibleTipo);
+      if (!isNaN(n) && n === 2) return true; // 2 = Supervisor
+      const s = String(posibleTipo).toLowerCase();
+      if (s.includes("supervisor")) return true;
+    }
+    if (u.rol && u.rol.toLowerCase().includes("supervisor")) return true;
+    if (u.nombre_rol && u.nombre_rol.toLowerCase().includes("supervisor")) return true;
+    return false;
+  }
+
+  // Obtener subárbol de un supervisor (él + sus subordinados recursivos)
+  function getSubtree(usuarios, rootId) {
+    const root = Number(rootId);
+    if (isNaN(root)) return [];
+
+    const resultIds = new Set();
+    function dfs(id) {
+      if (resultIds.has(id)) return;
+      resultIds.add(id);
+      usuarios.forEach(u => {
+        if (Number(u.reporta_a) === id) {
+          dfs(Number(u.id));
+        }
+      });
+    }
+    dfs(root);
+
+    return usuarios.filter(u => resultIds.has(Number(u.id)));
   }
 
   // ============================
@@ -367,7 +414,7 @@ if ($result) {
     return serie;
   }
 
-  // === Meta mensual de reservas (tipo_meta = 2) ===
+  // Meta mensual de reservas (tipo_meta = 2)
   function buildMetaReservaSeries(metas) {
     const meta = new Array(12).fill(0);
     if (!Array.isArray(metas)) return meta;
@@ -572,44 +619,86 @@ if ($result) {
   }
 
   // ============================
-  //  LISTA DE USUARIOS / FILTROS
+  //  FILTROS (USUARIO / EQUIPO / AÑO / MES)
   // ============================
-  function setupFiltros(usuarios) {
-    const selUsuario = document.getElementById("filtroUsuario");
-    const selAnio    = document.getElementById("filtroAnio");
-    const selMes     = document.getElementById("filtroMes");
-
-    if (!selUsuario || !selAnio || !selMes) return;
-
-    const jefeDirectoId = getJefeDirectoId(usuarios);
-
-    // Filtrar jefe directo para no CTO/CEO
-    let usuariosParaFiltros = usuarios;
-    if (!esCtoOCeo && jefeDirectoId) {
-      usuariosParaFiltros = usuarios.filter(u => Number(u.id) !== jefeDirectoId);
-    }
+  function populateFiltroUsuario(selUsuario, listaUsuarios) {
+    if (!selUsuario) return;
 
     selUsuario.innerHTML = "";
 
-    // Opción "Todos" (siempre)
+    // Opción "Todos" = contexto actual (mi jerarquía o jerarquía del supervisor seleccionado)
     const optTodos = document.createElement("option");
     optTodos.value = "0";
     optTodos.textContent = "Todos";
     selUsuario.appendChild(optTodos);
 
-    // Usuarios individuales (sin jefe directo para no CTO/CEO)
-    usuariosParaFiltros.forEach(u => {
+    listaUsuarios.forEach(u => {
       const opt = document.createElement("option");
       opt.value = String(u.id);
       opt.textContent = u.nombre;
       selUsuario.appendChild(opt);
     });
 
-    // Valor inicial: "Todos" => usuarioActual = usuarioOriginal
+    // Siempre arrancamos en "Todos" dentro del contexto
     selUsuario.value = "0";
-    usuarioActual = usuarioOriginal;
+    usuarioActual = equipoSupervisorId ? equipoSupervisorId : usuarioOriginal;
     soloUsuarioSeleccionado = false;
+  }
 
+  function populateFiltroEquipo(selEquipo, usuarios) {
+    if (!selEquipo) return;
+
+    selEquipo.innerHTML = "";
+
+    const optTodos = document.createElement("option");
+    optTodos.value = "0";
+    optTodos.textContent = "Todos";
+    selEquipo.appendChild(optTodos);
+
+    const supervisores = usuarios.filter(esSupervisorUsuario);
+    supervisores.forEach(u => {
+      const opt = document.createElement("option");
+      opt.value = String(u.id);
+      opt.textContent = u.nombre;
+      selEquipo.appendChild(opt);
+    });
+
+    selEquipo.value = "0";
+  }
+
+  function setupFiltros(usuarios) {
+    const selUsuario = document.getElementById("filtroUsuario");
+    const selAnio    = document.getElementById("filtroAnio");
+    const selMes     = document.getElementById("filtroMes");
+    const selEquipo  = document.getElementById("filtroEquipo");
+    const grupoEquipo= document.getElementById("grupoEquipo");
+
+    if (!selUsuario || !selAnio || !selMes) return;
+
+    usuariosGlobal      = usuarios.slice();
+    jefeDirectoIdGlobal = getJefeDirectoId(usuariosGlobal);
+
+    // Usuarios permitidos por defecto (no CTO/CEO no ven a su jefe directo)
+    let usuariosPermitidos = usuariosGlobal;
+    if (!esCtoOCeo && jefeDirectoIdGlobal) {
+      usuariosPermitidos = usuariosGlobal.filter(u => Number(u.id) !== jefeDirectoIdGlobal);
+    }
+    contextoUsuarios = usuariosPermitidos;
+
+    // Filtro Equipo solo para CTO/CEO
+    if (grupoEquipo && selEquipo) {
+      if (esCtoOCeo) {
+        grupoEquipo.style.display = "flex"; // o "block" según tu CSS
+        populateFiltroEquipo(selEquipo, usuariosGlobal);
+      } else {
+        grupoEquipo.style.display = "none";
+      }
+    }
+
+    // Filtro Usuario dentro del contexto actual
+    populateFiltroUsuario(selUsuario, contextoUsuarios);
+
+    // Filtro Año
     const now = new Date();
     const yearNow = now.getFullYear();
     [yearNow - 1, yearNow, yearNow + 1].forEach(y => {
@@ -620,6 +709,7 @@ if ($result) {
     });
     selAnio.value = String(yearNow);
 
+    // Filtro Mes
     const mesesCombo = ["Todos","Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
     mesesCombo.forEach((m, idx) => {
       const opt = document.createElement("option");
@@ -629,46 +719,83 @@ if ($result) {
     });
     selMes.value = "0";
 
-    selUsuario.addEventListener("change", () => {
-      const val = parseInt(selUsuario.value, 10);
-
-      if (val === 0) {
-        // Todos: vista general (mi jerarquía)
-        usuarioActual = usuarioOriginal;
-        soloUsuarioSeleccionado = false;
-
-        document.querySelectorAll(".user-list-item").forEach(el => {
-          el.classList.remove("active");
-        });
-      } else {
-        usuarioActual = val;
-        soloUsuarioSeleccionado = (val !== usuarioOriginal);
-
-        document.querySelectorAll(".user-list-item").forEach(el => {
-          const id = parseInt(el.dataset.id, 10);
-          el.classList.toggle("active", soloUsuarioSeleccionado && id === val);
-        });
-      }
-
-      refreshDashboard();
-    });
-
+    // Eventos
+    selUsuario.addEventListener("change", onFiltroUsuarioChange);
     selAnio.addEventListener("change", refreshDashboard);
     selMes.addEventListener("change", refreshDashboard);
+
+    if (selEquipo && esCtoOCeo) {
+      selEquipo.addEventListener("change", onFiltroEquipoChange);
+    }
   }
 
-  function renderUserList(usuarios) {
+  function onFiltroUsuarioChange() {
+    const selUsuario = document.getElementById("filtroUsuario");
+    if (!selUsuario) return;
+
+    const val = parseInt(selUsuario.value, 10);
+
+    if (val === 0) {
+      // "Todos" dentro del contexto actual
+      usuarioActual = equipoSupervisorId ? equipoSupervisorId : usuarioOriginal;
+      soloUsuarioSeleccionado = false;
+      document.querySelectorAll(".user-list-item").forEach(el => el.classList.remove("active"));
+    } else {
+      usuarioActual = val;
+      const rootContext = equipoSupervisorId || usuarioOriginal;
+      soloUsuarioSeleccionado = (val !== rootContext);
+
+      document.querySelectorAll(".user-list-item").forEach(el => {
+        const id = parseInt(el.dataset.id, 10);
+        el.classList.toggle("active", id === val);
+      });
+    }
+
+    refreshDashboard();
+  }
+
+  function onFiltroEquipoChange() {
+    const selEquipo   = document.getElementById("filtroEquipo");
+    const selUsuario  = document.getElementById("filtroUsuario");
+    if (!selEquipo || !selUsuario) return;
+
+    const val = parseInt(selEquipo.value, 10);
+
+    if (!val || val === 0) {
+      // Sin filtro de equipo: volvemos al contexto normal (mi jerarquía)
+      equipoSupervisorId = 0;
+
+      let usuariosPermitidos = usuariosGlobal;
+      if (!esCtoOCeo && jefeDirectoIdGlobal) {
+        usuariosPermitidos = usuariosGlobal.filter(u => Number(u.id) !== jefeDirectoIdGlobal);
+      }
+      contextoUsuarios = usuariosPermitidos;
+    } else {
+      // Equipo = jerarquía del supervisor seleccionado
+      equipoSupervisorId = val;
+      contextoUsuarios   = getSubtree(usuariosGlobal, equipoSupervisorId);
+    }
+
+    // Repintar filtro usuario y lista de tarjetas con el nuevo contexto
+    populateFiltroUsuario(selUsuario, contextoUsuarios);
+    renderUserList(contextoUsuarios);
+
+    // Quitar selección de tarjetas
+    document.querySelectorAll(".user-list-item").forEach(el => el.classList.remove("active"));
+
+    refreshDashboard();
+  }
+
+  function renderUserList(usuariosContexto) {
     const list = document.getElementById("userList");
     if (!list) return;
 
     list.innerHTML = "";
 
-    const jefeDirectoId = getJefeDirectoId(usuarios);
-
-    // Filtrar jefe directo para no CTO/CEO
-    const usuariosParaLista = (!esCtoOCeo && jefeDirectoId)
-      ? usuarios.filter(u => Number(u.id) !== jefeDirectoId)
-      : usuarios;
+    // Para no CTO/CEO, nunca mostrar al jefe directo
+    const usuariosParaLista = (!esCtoOCeo && jefeDirectoIdGlobal)
+      ? usuariosContexto.filter(u => Number(u.id) !== jefeDirectoIdGlobal)
+      : usuariosContexto;
 
     usuariosParaLista.forEach(u => {
       const item = document.createElement("div");
@@ -692,8 +819,8 @@ if ($result) {
         document.querySelectorAll(".user-list-item").forEach(el => el.classList.remove("active"));
 
         if (yaActivo) {
-          // Volver a "Todos"
-          usuarioActual = usuarioOriginal;
+          // Volver a "Todos" dentro del contexto
+          usuarioActual = equipoSupervisorId ? equipoSupervisorId : usuarioOriginal;
           soloUsuarioSeleccionado = false;
           const selUsuario = document.getElementById("filtroUsuario");
           if (selUsuario) selUsuario.value = "0";
@@ -716,21 +843,31 @@ if ($result) {
   //  REFRESH GENERAL
   // ============================
   async function refreshDashboard() {
-    const selAnio = document.getElementById("filtroAnio");
-    const selMes  = document.getElementById("filtroMes");
-    const selUsu  = document.getElementById("filtroUsuario");
+    const selAnio   = document.getElementById("filtroAnio");
+    const selMes    = document.getElementById("filtroMes");
+    const selUsu    = document.getElementById("filtroUsuario");
+    const selEquipo = document.getElementById("filtroEquipo");
 
     const year = selAnio ? parseInt(selAnio.value, 10) || (new Date()).getFullYear() : (new Date()).getFullYear();
     const mesCombo = selMes ? parseInt(selMes.value, 10) || 0 : 0; // 0=todos
     const mesParam = mesCombo === 0 ? null : mesCombo;             // 1-12 si se eligió
 
+    // usuarioActual ya está calculado según contexto (equipo + filtro usuario)
     const data = await getDataUsuario(usuarioActual, year, soloUsuarioSeleccionado);
     renderChartFromHex(data.hex || [], data.metas || [], year);
 
     const titulo = document.getElementById("tituloGrafica");
-    if (titulo && selUsu) {
-      const textUsu = selUsu.options[selUsu.selectedIndex]?.textContent || "Todos";
-      titulo.textContent = `Resumen anual de requerimientos - ${textUsu} (${year})`;
+    if (titulo) {
+      let contextoTexto = "Todos";
+
+      if (selEquipo && parseInt(selEquipo.value, 10) !== 0) {
+        const textEquipo = selEquipo.options[selEquipo.selectedIndex]?.textContent || "Equipo";
+        contextoTexto = `Equipo: ${textEquipo}`;
+      } else if (selUsu) {
+        contextoTexto = selUsu.options[selUsu.selectedIndex]?.textContent || "Todos";
+      }
+
+      titulo.textContent = `Resumen anual de requerimientos - ${contextoTexto} (${year})`;
     }
 
     await loadHistorialRequerimientos(usuarioActual, year, mesParam);
@@ -743,7 +880,7 @@ if ($result) {
   document.addEventListener("DOMContentLoaded", async () => {
     const usuarios = await getUsuariosJerarquia();
     setupFiltros(usuarios);
-    renderUserList(usuarios);
+    renderUserList(contextoUsuarios);
     refreshDashboard();
   });
 </script>
