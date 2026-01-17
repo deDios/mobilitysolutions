@@ -341,16 +341,26 @@ if ($result) {
   //  APIs PRINCIPALES (versiones _dash, vía POST)
   // ============================
   async function getDataUsuario(userId, year, soloUsuario = false) {
+
+    // AJUSTE CLAVE:
+    // Si eres CTO/CEO y hay un supervisor seleccionado en "Equipo",
+    // simulamos que el tipo de usuario es 2 (Supervisor) para que
+    // el endpoint calcule sólo la jerarquía de ese supervisor.
+    const effectiveUserType =
+      (esCtoOCeo && Number(equipoSupervisorId) !== 0)
+        ? 2
+        : tipoUsuarioActual;
+
     const metasPayload = {
       asignado: userId,
-      user_type: tipoUsuarioActual,
+      user_type: effectiveUserType,
       solo_usuario: soloUsuario,
       year: year
     };
 
     const hexPayload = {
       user_id: userId,
-      user_type: tipoUsuarioActual,
+      user_type: effectiveUserType,
       solo_usuario: soloUsuario,
       year: year
     };
