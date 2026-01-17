@@ -284,6 +284,10 @@ ul.social-network {
   border: 1px solid #e5e7eb;
   padding: 12px 14px 12px;
   box-shadow: 0 1px 4px rgba(15, 23, 42, 0.06);
+
+  /* NUEVO: para que el body se estire a todo el alto disponible */
+  display: flex;
+  flex-direction: column;
 }
 
 .history-header h4 {
@@ -294,7 +298,9 @@ ul.social-network {
 }
 
 .history-body {
-  max-height: 260px;
+  /* antes: max-height: 260px; */
+  flex: 1;        /* ocupa todo el alto restante de la tarjeta */
+  min-height: 0;  /* necesario para que el scroll funcione bien */
   overflow-y: auto;
 }
 
