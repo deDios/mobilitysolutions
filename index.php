@@ -253,7 +253,7 @@ function timeAgoEsFromDays(int $dias): string {
                       <div class="d-flex align-items-center gap-3 mb-2">
                         <div class="position-relative reviewer-avatar">
                           <img src="Imagenes/Perfil_resena/Img<?= $id ?>.jpg" class="rounded-circle" alt="Foto <?= htmlspecialchars($Nombre) ?>">
-                          <img src="Imagenes/logo_google.jpg" class="logo-mini" alt="Google">
+                          <img src="Imagenes/logo_google_2.jpg" class="logo-mini" alt="Google">
                         </div>
                         <div class="flex-grow-1">
                           <h5 class="mb-0"><?= htmlspecialchars($Nombre) ?></h5>
