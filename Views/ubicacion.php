@@ -2,7 +2,7 @@
 session_start();
 
     echo '<script>
-            window.location = "../views/login.php";
+            window.location = "../index.php";
           </script>';
 
 
