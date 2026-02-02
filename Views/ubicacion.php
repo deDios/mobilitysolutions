@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+    echo '<script>
+            window.location = "../views/login.php";
+          </script>';
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
