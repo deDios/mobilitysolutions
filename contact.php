@@ -237,9 +237,9 @@
                   <div class="info-text">
                     <div class="info-label">Oficinas</div>
                     <div class="info-value">
-                      Av. P. de la Reforma #505<br>
-                      Piso 37, Cuauhtémoc<br>
-                      C.P. 06500 CDMX
+                      C.Vicente Sta.María #1403<br>
+                      Félix Ireta, 58070<br>
+                      Morelia, Mich
                     </div>
                   </div>
                 </li>
